@@ -1,0 +1,33 @@
+.. _ttl_-install:
+
+============
+Installation
+============
+
+Requirements
+------------
+
+In order to usefully install the TTL library your require and existing working opencl installation
+such as [pocl](https://github.com/pocl/pocl.git).
+
+
+Configure & Build
+-----------------
+
+CMake version 3.3 or higher is required.
+
+The build+install is the usual CMake way::
+
+  cd <directory-with-ttl-sources>
+  mkdir build
+  cd build
+  cmake .. [OPTIONS]
+  make install
+
+ cmake Options are
+
+CMake Options
+-------------
+*INSTALL_DIR* changes the default locations all installs, see cmake -LAH for the default locations on a platform.
+
+To see the default detected values, run ``cmake ..`` without any options, it will produce a summary.

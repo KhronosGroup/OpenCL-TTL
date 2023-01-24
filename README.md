@@ -1,56 +1,80 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-![](doc/tensor_tiling_library_slim.png)
+<p align="center"><img width="30%" src="doc/tensor_tiling_library.png" /></p>
 
-*This readme will shortly be followed by a drop of the library source for review
-within the Khronos organization, with an intent to go public once that review
-cycle is complete.*
+# Tensor Tiling Library
+
+Tensor & Tiling Library is an open-source library to enable the efficient tiling and compute with tensors.
+
+Please reach out to chris.gearing@mobileye.com or ayal.zaks@mobileye.com for more information.
+
+This document outlines the purpose of this sample implementation as well as provide build and execution instructions.
+
+## CONTENTS: <!-- omit in toc -->
 
 - [Tensor Tiling Library](#tensor-tiling-library)
   - [Purpose](#purpose)
-  - [Design Principles](#design-principles)
+  - [Building And Executing](#building-and-executing)
+    - [CMake](#cmake)
+      - [Supported systems:](#supported-systems)
+      - [Pre-requisite:](#pre-requisite)
+      - [Building Samples:](#building-samples)
+      - [Install:](#install)
+  - [Included Unit Tests](#included-unit-tests)
+  - [Bug Reporting](#bug-reporting)
 
-Tensor Tiling Library
-=====================
+## Purpose
 
-Tensor & Tiling Library is an open-source library to enable the efficient 
-tiling and compute with tensors.
+The purpose of this software package is to provide a simple to use standardized way of tiling tensors to allow performance optimization in heterogenous machines. Tiling is one of the pillars of performance and the Tensor Tiling Library is intended to provide a standardized approach.
 
-Please reach out to chris.gearing@mobileye.com for more information.
+The library is intended to be general purpose and usable on all architectures.
 
-Purpose
--------
+Currently the Tensor Tiling Library is:
 
-The purpose of this software package is to provide a simple-to-use standardized
-way of tiling tensors to allow performance optimization in heterogeneous
-machines with heterogeneous architectures. Tiling is one of the
-pillars of performance. The Tensor Tiling Library is intended to provide a
-standard approach that can be enhanced over time to allow for increased
-automation and performance. The library is meant to be general purpose and
-usable for a wide range of architectures and platforms.
+* passing its own unit tests
+* contains reference implementations
+* optimized
 
-Contributions, inputs, and requests from the greater community are most welcome to
-allow this library to develop in a direction that one day leads to
-full automation of tiling.
+## Building And Executing
 
-Design Principles
------------------
+The sample implementation builds under POCL on x86 and demonstrates a number of buffering schemes.
 
-The Tensor Tiling Library is designed to be
+It builds using cmake and has been tested on Linux
 
--   **Transparent**: the types and functions of the library are all exposed and
-    visible to the user; there are no hidden components. This helps clarify
-    exactly what the library supports, and how.
+### CMake
 
--   **Modular**: the library provides several constructs that can be used
-    separately or in combination. This includes a construct for regular tiling,
-    a construct for importing and exporting single tiles, and a construct for
-    pipelining a single or pairs of import/export transactions.
+#### Tested Supported systems:
 
--   **Extensible**: any part of the library can be copied and modified locally;
-    new parts can be added locally to the library. Modification and additions
-    regarded as generally useful should be considered for inclusion in the
-    library.
+* Linux
 
--   **Easy to use**: provides simple and easy to use patterns, all included in
-    header-files only.
+#### Pre-requisite:
+
+* python 2.x (Tested with python 2.7)
+* CMAKE 2.8.12 or higher. (should be in PATH)
+
+#### Building Samples:
+
+    Install Pocl http://portablecl.org/docs/html/install.html or other environment of your choice.
+    Install pyopencl https://pypi.org/project/pyopencl/
+
+    Linux:
+    ------
+    From shell:
+
+    > cd opencl/samples
+    > ./ttl_sample_runner.py *.cl
+    > cd ../c/samples
+    > ./ttl_sample_runner.py *.c
+
+#### Install:
+
+    See INSTALL file
+
+## Included Unit Tests
+
+    See opencl/test/README.md
+
+
+## Bug Reporting
+
+Bug reports can be reported by filing an [issue on the GitHub](https://github.com/KhronosGroup/OpenCL-TTL/issues)
