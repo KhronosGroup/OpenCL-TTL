@@ -42,8 +42,8 @@ or
 At the edges of the input [-1,0] for example a zero value is augmented meaning that the input tensor the kernel receives
 is effectively bigger than the actual input tensor with the augmentation being zero values.
 
-The TTL_sample_runner.py based tests run through a random set of tensor and tile sizes, with and augmentation or 1 - providing a fairly
-broad-based testing.
+The TTL_sample_runner.py based tests run through a random set of tensor and tile sizes, with an augmentation of 1 - providing
+a fairly broad-based testing.
 
 The compute.h file which contains the calculations also contains a checker function. This checker function and a checker
 function in the ./TTL_sample_runner.py file validate the tiled calculations.

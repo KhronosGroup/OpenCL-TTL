@@ -83,8 +83,8 @@ static inline void TTL_clear_void_space(TTL_local(void *) const dst, const size_
 
 static inline TTL_shape_t TTL_import_pre_fill(const TTL_int_sub_tensor_t internal_sub_tensor,
                                               const TTL_const_ext_tensor_t const_external_tensor,
-                                              TTL_local(char *) *const dst_address,
-                                              TTL_global(char *) *const src_address) {
+                                              TTL_local(void *) *const dst_address,
+                                              TTL_global(void *) *const src_address) {
     size_t x_offset;
     size_t x_cut;
     size_t y_offset;
@@ -111,11 +111,12 @@ static inline TTL_shape_t TTL_import_pre_fill(const TTL_int_sub_tensor_t interna
                 //     1 /*internal_sub_tensor.origin.shape.depth*/,
                 // 0);
 
-    *dst_address = (TTL_local(char *))internal_sub_tensor.tensor.base + x_offset +
+    *dst_address = (TTL_local(char *))internal_sub_tensor.tensor.base +
+                   (x_offset * internal_sub_tensor.tensor.elem_size) +
                    (y_offset * internal_sub_tensor.tensor.layout.row_spacing * internal_sub_tensor.tensor.elem_size) +
                    (z_offset * internal_sub_tensor.tensor.layout.plane_spacing * internal_sub_tensor.tensor.elem_size);
 
-    *src_address = (TTL_global(char *))const_external_tensor.base + x_offset +
+    *src_address = (TTL_global(char *))const_external_tensor.base + (x_offset * const_external_tensor.elem_size) +
                    (y_offset * const_external_tensor.layout.row_spacing * const_external_tensor.elem_size) +
                    (z_offset * const_external_tensor.layout.plane_spacing * const_external_tensor.elem_size);
 
@@ -145,8 +146,8 @@ static inline TTL_shape_t TTL_import_pre_fill(const TTL_int_sub_tensor_t interna
  */
 static inline void __TTL_TRACE_FN(TTL_import_sub_tensor, const TTL_int_sub_tensor_t internal_sub_tensor,
                                   const TTL_const_ext_tensor_t const_external_tensor, TTL_event_t *event) {
-    TTL_local(char *) dst_address;
-    TTL_global(char *) src_address;
+    TTL_local(void *) dst_address;
+    TTL_global(void *) src_address;
 
     const TTL_shape_t import_shape =
         TTL_import_pre_fill(internal_sub_tensor, const_external_tensor, &dst_address, &src_address);
