@@ -1,0 +1,25 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: OpenCL TTL
+Upstream-Contact: The Khronos Group, Inc.
+Source: https://github.com/KhronosGroup/OpenCL-TTL/
+
+Files: *.cpp
+Copyright: 2023 The Khronos Group, Inc.
+License: Apache-2.0
+
+Files: *.h *.cl *.c *CMakeLists*.txt  *.py scripts/*
+Copyright: 2023 Mobileye
+License: Apache-2.0
+
+Files: INSTALL *.png *.jpg
+Copyright: 2023 Mobileye
+License: CC-BY-4.0
+
+Files: opencl/TTL_async_work_group_copy_3D3D.h
+Copyright: 2018 pocl developers
+License: MIT
+
+Files: *.md
+Copyright: 2023 The Khronos Group, Inc.
+License: CC-BY-4.0
+
