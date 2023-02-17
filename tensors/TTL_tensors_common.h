@@ -583,3 +583,4 @@ static inline TTL_offset_dim_t TTL_linearize(const TTL_offset_t offset, const TT
                                                                                          origin_tensor.shape,     \
                                                                                          TTL_create_offset());    \
     }
+    

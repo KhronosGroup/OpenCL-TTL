@@ -24,8 +24,8 @@
 #define TILE_OVERLAP_BOTTOM 1
 
 void compute(TTL_int_sub_tensor_t tensor_in, TTL_int_sub_tensor_t tensor_out) {
-    __local const unsigned char* const restrict l_in = tensor_in.tensor.base;
-    __local unsigned char* const restrict l_out = tensor_out.tensor.base;
+    __local const unsigned char* const l_in = tensor_in.tensor.base;
+    __local unsigned char* const l_out = tensor_out.tensor.base;
 
     const int x_shift = tensor_out.origin.sub_offset.x - tensor_in.origin.sub_offset.x;
     const int y_shift = tensor_out.origin.sub_offset.y - tensor_in.origin.sub_offset.y;

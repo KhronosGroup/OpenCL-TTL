@@ -50,10 +50,9 @@ void TTL_duplex_buffering(unsigned char *restrict ext_base_in, int external_stri
     const TTL_ext_tensor_t ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
     const TTL_ext_tensor_t ext_output_tensor = TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
 
-    // duplex_scheme must be defined outside, before the loop - because we "time-shift" the export to work on a recorded
-    // tile written to in previous iteration.
     TTL_event_t sb_e_in_out[2] = { TTL_get_event(), TTL_get_event() };
 
+    // The first data data from host->device starts here.
     TTL_duplex_buffering_t duplex_scheme = TTL_start_duplex_buffering(
         ext_input_tensor, l_in, ext_output_tensor, l_out, &sb_e_in_out, TTL_get_tile(0, input_tiler));
 
@@ -61,14 +60,14 @@ void TTL_duplex_buffering(unsigned char *restrict ext_base_in, int external_stri
         TTL_tile_t tile_next_import = TTL_get_tile(i, input_tiler);
         TTL_tile_t tile_current_export = TTL_get_tile(i, output_tiler);
 
-        // Import current tile, export previous tile and wait for both transactions.
+        // This waits for the current transfers to complete, and begins the next
         TTL_io_tensors_t tensors =
             TTL_step_buffering(&duplex_scheme, tile_next_import, tile_current_export);
 
+        // Compute whilst the transfers are taking place (on seperat buffers)
         compute(tensors.imported_to, tensors.to_export_from);
     }
 
+    // This waits for the last transfers to complete.
     TTL_finish_duplex_buffering(&duplex_scheme);
-
-    result_check(ext_base_in, ext_base_out, width, height, tile_width, tile_height);
 }

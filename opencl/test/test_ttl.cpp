@@ -241,8 +241,6 @@ __kernel void TTL_duplex_buffering(__global uchar *restrict ext_base_in, int ext
     const TTL_ext_tensor_t ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
     const TTL_ext_tensor_t ext_output_tensor = TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
 
-    // duplex_scheme must be defined outside, before the loop - because we "time-shift" the export to work on a recorded
-    // tile written to in previous iteration.
     TTL_event_t sb_e_in_out[2] = { TTL_get_event(), TTL_get_event() };
 
     TTL_duplex_buffering_t duplex_scheme = TTL_start_duplex_buffering(

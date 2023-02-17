@@ -44,11 +44,9 @@ typedef unsigned char TTL_augmented_dim_t;  ///< A number of a "augmented" eleme
 /**
  * @brief 3D description of the augmented margins
  *
- * TTL_augmentation_t represents the number of elements that will be augmented
- * outside of the input tensor.
+ * TTL_augmentation_t represents the number of elements that a tensor will be expanded in each dimension.
  *
- * For example if left = 1 then the imported tensor will have a column to the
- * left of the actual input tensor augmented.
+ * For example if left = 1 then one column of elements will be added to a tensor thereby increasing its width by 1.
  *
  * The type used to hold the augmentation of tiles along all dimensions
  */
