@@ -42,6 +42,8 @@ This is a double tiling example where the data is simultaneously moved from host
 compute is occurring.
 
 ```
+#include "TTL/TTL.h"
+
 __kernel void TTL_double_buffering(__global uchar *restrict ext_base_in, int external_stride_in,
                                    __global uchar *restrict ext_base_out, int external_stride_out, int width,
                                    int height, int tile_width, int tile_height) {
@@ -66,11 +68,11 @@ __kernel void TTL_double_buffering(__global uchar *restrict ext_base_in, int ext
     // TTL_start_import_double_buffering will being the import of the first tile
     TTL_event_t import_DB_e = TTL_get_event();
     TTL_import_double_buffering_t import_db = TTL_start_import_double_buffering(
-        input_buffer_1, input_buffer_2, ext_input_tensor, &import_DB_e, TTL_get_tile(0, tiler));
+        l_in1, l_in2, ext_input_tensor, &import_DB_e, TTL_get_tile(0, tiler));
 
     TTL_event_t export_DB_e = TTL_get_event();
     TTL_export_double_buffering_t export_db =
-        TTL_start_export_double_buffering(output_buffer_1, output_buffer_2, ext_output_tensor, &export_DB_e);
+        TTL_start_export_double_buffering(l_out1, l_out2, ext_output_tensor, &export_DB_e);
 
     for (int i = 0; i < TTL_number_of_tiles(tiler); ++i) {
         TTL_tile_t tile_next_import = TTL_get_tile(i + 1, tiler);
