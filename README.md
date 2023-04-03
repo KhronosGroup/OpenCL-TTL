@@ -125,9 +125,9 @@ Execute the following commands:
 
 ```sh
 $ cd opencl/samples
-$ ./ttl_sample_runner.py *.cl
+$ ./TTL_sample_runner.py *.cl
 $ cd ../c/samples
-$ ./ttl_sample_runner.py *.c
+$ ./TTL_sample_runner.py *.c
 ```
 
 #### Installation
