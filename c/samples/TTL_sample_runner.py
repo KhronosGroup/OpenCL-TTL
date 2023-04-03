@@ -63,20 +63,17 @@ def TestTTL(program_name):
                         for j in range(0, tensor_width):
                             expected = 0
 
-                            if True:
-                                if j > 0:
-                                    expected += input_data[i * tensor_width + (j - 1)];
-                                if i  > 0:
-                                    expected += input_data[(i -1 )* tensor_width + j];
+                            if j > 0:
+                                expected += input_data[i * tensor_width + (j - 1)];
+                            if i  > 0:
+                                expected += input_data[(i -1 )* tensor_width + j];
 
-                                expected += input_data[i * tensor_width + j];
+                            expected += input_data[i * tensor_width + j];
 
-                                if j < (tensor_width - 1):
-                                    expected += input_data[i * tensor_width + (j + 1)]
-                                if i < (tensor_height - 1):
-                                    expected += input_data[(i + 1) * tensor_width + j]
-                            else:
-                                expected = (input_data[i * tensor_width + j] + 1) * (input_data[i * tensor_width + j] + 2) * (input_data[i * tensor_width + j] + 3)
+                            if j < (tensor_width - 1):
+                                expected += input_data[i * tensor_width + (j + 1)]
+                            if i < (tensor_height - 1):
+                                expected += input_data[(i + 1) * tensor_width + j]
                                 
                             expected &= 0xff
 
