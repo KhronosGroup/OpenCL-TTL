@@ -40,7 +40,7 @@ def TestTTL(program_name):
     # For convenience remove the .cl extension if it included.
     program_name = os.path.splitext(program_name)[0]
     program = cl.Program(context, open(program_name + ".cl").read()).build(
-        options=ttl_include_path + " -D__TTL_VERSION__=04 -DTTL_COPY_3D"
+        options=ttl_include_path + " -DTTL_COPY_3D"
     )
 
     # For variation a number of tensor random sizes are used, then tiled with random tile sizes

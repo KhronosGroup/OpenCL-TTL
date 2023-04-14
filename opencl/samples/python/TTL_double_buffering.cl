@@ -1,5 +1,5 @@
 /*
-* ttl_simplex_buffering.cl
+* ttl_double_buffering.cl
 *
 * Copyright (c) 2023 Mobileye
 *
@@ -21,12 +21,13 @@
 
 #define MEMSZ 0x8000
 
-__kernel void TTL_simplex_buffering(__global uchar *restrict ext_base_in, int external_stride_in,
-                                    __global uchar *restrict ext_base_out, int external_stride_out, int width,
-                                    int height, int tile_width, int tile_height) {
-    __local uchar l_buff1[MEMSZ];
-    __local uchar l_buff2[MEMSZ];
-    __local uchar l_buff3[MEMSZ];
+__kernel void TTL_double_buffering(__global uchar *restrict ext_base_in, int external_stride_in,
+                                   __global uchar *restrict ext_base_out, int external_stride_out, int width,
+                                   int height, int tile_width, int tile_height) {
+    local uchar l_in1[MEMSZ];
+    local uchar l_in2[MEMSZ];
+    local uchar l_out1[MEMSZ];
+    local uchar l_out2[MEMSZ];
 
     // Logical input tiling.
     const TTL_shape_t tensor_shape_in = TTL_create_shape(width, height);
@@ -47,28 +48,31 @@ __kernel void TTL_simplex_buffering(__global uchar *restrict ext_base_in, int ex
     const TTL_layout_t ext_layout_in = TTL_create_layout(external_stride_in);
     const TTL_layout_t ext_layout_out = TTL_create_layout(external_stride_out);
 
-    const TTL_ext_tensor_t ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
+    const TTL_const_ext_tensor_t ext_input_tensor = TTL_create_const_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
     const TTL_ext_tensor_t ext_output_tensor = TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
 
-    TTL_event_t tb_e_in = TTL_get_event();
-    TTL_event_t tb_e_out = TTL_get_event();
-    TTL_simplex_buffering_t simplex_scheme = TTL_start_simplex_buffering(l_buff1,
-                                                                    l_buff2,
-                                                                    l_buff3,
-                                                                    ext_input_tensor,
-                                                                    ext_output_tensor,
-                                                                    &tb_e_in,
-                                                                    &tb_e_out,
-                                                                    TTL_get_tile(0, input_tiler));
+    // import_db and export_db need to be defined outside, before the loop, as
+    // they record the event to wait on
+    TTL_event_t import_DB_e = TTL_get_event();
+    TTL_import_double_buffering_t import_db = TTL_start_import_double_buffering(
+        l_in1, l_in2, ext_input_tensor, &import_DB_e, TTL_get_tile(0, input_tiler));
+
+    TTL_event_t export_DB_e = TTL_get_event();
+    TTL_export_double_buffering_t export_db =
+        TTL_start_export_double_buffering(l_out1, l_out2, ext_output_tensor, &export_DB_e);
 
     for (int i = 0; i < TTL_number_of_tiles(input_tiler); ++i) {
-        TTL_tile_t tile_next_import = TTL_get_tile(i + 1, input_tiler);
-        TTL_tile_t tile_current_export = TTL_get_tile(i, output_tiler);
+        TTL_tile_t t_next = TTL_get_tile(i + 1, input_tiler);
+        // Wait for import #i and issue import #i+1
+        TTL_int_sub_tensor_t imported_to = TTL_step_buffering(&import_db, t_next);
 
-        TTL_io_tensors_t tensors = TTL_step_buffering(&simplex_scheme, tile_next_import, tile_current_export);
+        TTL_tile_t t_curr = TTL_get_tile(i, output_tiler);
+        // Wait for export #i-2 and issue export #i-1
+        TTL_int_sub_tensor_t exported_from = TTL_step_buffering(&export_db, t_curr);
 
-        compute(tensors.imported_to, tensors.to_export_from);
+        compute(imported_to, exported_from);
     }
 
-    TTL_finish_simplex_buffering(&simplex_scheme);
+    TTL_finish_buffering(&import_db);
+    TTL_finish_buffering(&export_db);
 }

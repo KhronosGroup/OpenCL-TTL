@@ -73,8 +73,8 @@ void TTL_double_buffering(unsigned char *restrict ext_base_in, int external_stri
         compute(imported_to, exported_from);
     }
 
-    TTL_finish_import_double_buffering(&import_db);
-    TTL_finish_export_double_buffering(&export_db);
+    TTL_finish_buffering(&import_db);
+    TTL_finish_buffering(&export_db);
 
     result_check(ext_base_in, ext_base_out, width, height, tile_width, tile_height);
 }

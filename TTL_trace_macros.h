@@ -39,16 +39,13 @@
 #define TTL_step_buffering(...) TTL_step_buffering(__VA_ARGS__, __LINE__)
 
 #define TTL_start_simplex_buffering(...) TTL_start_simplex_buffering(__VA_ARGS__, __LINE__)
-#define TTL_finish_simplex_buffering(...) TTL_finish_simplex_buffering(__VA_ARGS__, __LINE__)
+#define TTL_finish_buffering(...) TTL_finish_buffering(__VA_ARGS__, __LINE__)
 
 #define TTL_step_buffering(...) TTL_step_buffering(__VA_ARGS__, __LINE__)
 
 #define TTL_start_import_double_buffering(...) TTL_start_import_double_buffering(__VA_ARGS__)
-#define TTL_finish_import_double_buffering(...) TTL_finish_import_double_buffering(__VA_ARGS__, __LINE__)
 
 #define TTL_start_export_double_buffering(...) TTL_start_export_double_buffering(__VA_ARGS__, __LINE__)
-#define TTL_finish_export_double_buffering(...) TTL_finish_export_double_buffering(__VA_ARGS__, __LINE__)
 
 #define TTL_start_duplex_buffering(...) TTL_start_duplex_buffering(__VA_ARGS__, __LINE__)
-#define TTL_finish_duplex_buffering(...) TTL_finish_duplex_buffering(__VA_ARGS__, __LINE__)
 #endif

@@ -69,5 +69,5 @@ void TTL_duplex_buffering(unsigned char *restrict ext_base_in, int external_stri
     }
 
     // This waits for the last transfers to complete.
-    TTL_finish_duplex_buffering(&duplex_scheme);
+    TTL_finish_buffering(&duplex_scheme);
 }

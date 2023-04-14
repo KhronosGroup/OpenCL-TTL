@@ -129,8 +129,8 @@ __kernel void TTL_double_buffering(__global uchar *restrict ext_base_in, int ext
         compute(imported_to, exported_from);
     }
 
-    TTL_finish_import_double_buffering(&import_db);
-    TTL_finish_export_double_buffering(&export_db);
+    TTL_finish_buffering(&import_db);
+    TTL_finish_buffering(&export_db);
 }
 )";
 
@@ -196,7 +196,7 @@ __kernel void TTL_simplex_buffering(__global uchar *restrict ext_base_in, int ex
         compute(tensors.imported_to, tensors.to_export_from);
     }
 
-    TTL_finish_simplex_buffering(&simplex_scheme);
+    TTL_finish_buffering(&simplex_scheme);
 }
 )";
 
@@ -256,7 +256,7 @@ __kernel void TTL_duplex_buffering(__global uchar *restrict ext_base_in, int ext
         compute(tensors.imported_to, tensors.to_export_from);
     }
 
-    TTL_finish_duplex_buffering(&duplex_scheme);
+    TTL_finish_buffering(&duplex_scheme);
 }
 )";
 // clang-format on

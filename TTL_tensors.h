@@ -20,3 +20,12 @@
 
 #include "tensors/TTL_ext_tensors.h"
 #include "tensors/TTL_int_tensors.h"
+
+
+#ifndef FROM_C
+void TTL_fetch_tensor(__local TTL_ext_tensor_t *local_ext_tensor, const __global TTL_ext_tensor_t *global_ext_tensor) {
+    event_t event = async_work_group_copy(
+        (__local uchar *)local_ext_tensor, (const __global uchar *)global_ext_tensor, sizeof(*local_ext_tensor), 0);
+    wait_group_events(1, &event);
+}
+#endif

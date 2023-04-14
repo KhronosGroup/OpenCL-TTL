@@ -237,6 +237,6 @@ static inline TTL_io_tensors_t __attribute__((overloadable)) __TTL_TRACE_FN(TTL_
     return TTL_create_io_tensors(next_import_int_sub_tensor, to_export_from);
 }
 
-static inline void __TTL_TRACE_FN(TTL_finish_duplex_buffering, TTL_duplex_buffering_t *duplex_buffering) {
+static inline void __attribute__((overloadable)) __TTL_TRACE_FN(TTL_finish_buffering, TTL_duplex_buffering_t *duplex_buffering) {
     TTL_step_buffering(duplex_buffering, TTL_create_empty_tile(), TTL_create_empty_tile() __TTL_TRACE_LINE);
 }

@@ -71,7 +71,7 @@ void TTL_simplex_buffering(unsigned char *restrict ext_base_in, int external_str
         compute(tensors.imported_to, tensors.to_export_from);
     }
 
-    TTL_finish_simplex_buffering(&simplex_scheme);
+    TTL_finish_buffering(&simplex_scheme);
 
     result_check(ext_base_in, ext_base_out, width, height, tile_width, tile_height);
 }
