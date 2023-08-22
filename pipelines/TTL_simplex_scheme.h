@@ -213,7 +213,7 @@ static inline TTL_io_tensors_t __attribute__((overloadable)) __TTL_TRACE_FN(TTL_
     return TTL_create_io_tensors(int_curr_buff_in, int_curr_buff_out);
 }
 
-static inline void __TTL_TRACE_FN(TTL_finish_simplex_buffering, TTL_simplex_buffering_t *simplex_buffering) {
+static inline void __attribute__((overloadable)) __TTL_TRACE_FN(TTL_finish_buffering, TTL_simplex_buffering_t *simplex_buffering) {
     TTL_step_buffering(simplex_buffering, TTL_create_empty_tile(), TTL_create_empty_tile() __TTL_TRACE_LINE);
     TTL_step_buffering(simplex_buffering, TTL_create_empty_tile(), TTL_create_empty_tile() __TTL_TRACE_LINE);
 }
