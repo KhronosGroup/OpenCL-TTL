@@ -197,13 +197,6 @@ int main(int argc, char *argv[]) {
         output[x] = rand();
     }
 
-    cl_mem input_buffer =
-        clCreateBuffer(context, CL_MEM_COPY_HOST_PTR, tensor_width * tensor_height, input, &error_code_ret);
-    CHECK_STATUS(error_code_ret);
-    cl_mem output_buffer =
-        clCreateBuffer(context, CL_MEM_COPY_HOST_PTR, tensor_width * tensor_height, output, &error_code_ret);
-    CHECK_STATUS(error_code_ret);
-
     constexpr uint32_t cout_len = 2048;
     unsigned char *const cout_buffer = new unsigned char[cout_len];
 
@@ -213,18 +206,18 @@ int main(int argc, char *argv[]) {
     const TTL_shape_t tensor_shape_out = TTL_create_shape(tensor_width, tensor_height);
     const TTL_layout_t ext_layout_in = TTL_create_layout(tensor_width);
     const TTL_layout_t ext_layout_out = TTL_create_layout(tensor_width);
+    const TTL_ext_void_tensor_t ext_input_tensor = TTL_create_ext_tensor(input, tensor_shape_in, ext_layout_in);
+    const TTL_ext_tensor_t ext_output_tensor = TTL_create_ext_tensor(output, tensor_shape_out, ext_layout_out);
+    void *const v = nullptr;
 
     /* Step 8: Create kernel object */
     cl_kernel kernel = clCreateKernel(program, "TTL_sample_overlap", nullptr);
 
     /* Step 9: Sets Kernel arguments.*/
     int arg = 0;
-    CHECK_STATUS(clSetKernelArg(kernel, arg++, sizeof(input_buffer), &input_buffer));
-    CHECK_STATUS(clSetKernelArg(kernel, arg++, sizeof(tensor_shape_in), &tensor_shape_in));
-    CHECK_STATUS(clSetKernelArg(kernel, arg++, sizeof(ext_layout_in), &ext_layout_in));
-    CHECK_STATUS(clSetKernelArg(kernel, arg++, sizeof(output_buffer), &output_buffer));
-    CHECK_STATUS(clSetKernelArg(kernel, arg++, sizeof(tensor_shape_out), &tensor_shape_out));
-    CHECK_STATUS(clSetKernelArg(kernel, arg++, sizeof(ext_layout_out), &ext_layout_out));
+    CHECK_STATUS(clSetKernelArg(kernel, arg++, sizeof(ext_input_tensor.base), (void *)&v));
+    CHECK_STATUS(clSetKernelArg(kernel, arg++, sizeof(ext_input_tensor), (void *)&ext_input_tensor));
+    CHECK_STATUS(clSetKernelArg(kernel, arg++, sizeof(ext_output_tensor), (void *)&ext_output_tensor));
 
     /* Step 10: Running the kernel.*/
     size_t global_work_size[1] = { 1 };
@@ -236,15 +229,6 @@ int main(int argc, char *argv[]) {
     /* Step 11: Read the std and output and  back to host memory.*/
     CHECK_STATUS(clEnqueueReadBuffer(
         command_queue, std_out_buffer, CL_TRUE, 0, cout_len * sizeof(char), cout_buffer, 0, nullptr, nullptr));
-    CHECK_STATUS(clEnqueueReadBuffer(command_queue,
-                                     output_buffer,
-                                     CL_TRUE,
-                                     0,
-                                     tensor_width * tensor_height * sizeof(char),
-                                     output,
-                                     0,
-                                     nullptr,
-                                     nullptr));
 
     std::cout << (result_check(input, output, tensor_width, tensor_height) ? "Passed!" : "Failed") << endl;
 
