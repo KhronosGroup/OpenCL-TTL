@@ -23,9 +23,10 @@
 #define TILE_OVERLAP_TOP 1
 #define TILE_OVERLAP_BOTTOM 1
 
-void compute(TTL_int_sub_tensor_t tensor_in, TTL_int_sub_tensor_t tensor_out) {
-    const unsigned char* const l_in = tensor_in.tensor.base;
-    unsigned char* const l_out = tensor_out.tensor.base;
+void compute(__TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_in,
+             __TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_out) {
+    const TEST_TENSOR_TYPE* const restrict l_in = tensor_in.tensor.base;
+    TEST_TENSOR_TYPE* const restrict l_out = tensor_out.tensor.base;
 
     const int x_shift = tensor_out.origin.sub_offset.x - tensor_in.origin.sub_offset.x;
     const int y_shift = tensor_out.origin.sub_offset.y - tensor_in.origin.sub_offset.y;
@@ -44,28 +45,30 @@ void compute(TTL_int_sub_tensor_t tensor_in, TTL_int_sub_tensor_t tensor_out) {
             const int right = (y_in * stride_in) + (x_in + 1);
             const int bottom = ((y_in + 1) * stride_in) + x_in;
 
-            l_out[y * stride_out + (x)] = l_in[left] + l_in[above] + l_in[centre] + l_in[right] + l_in[bottom];
+            if (true)
+                l_out[y * stride_out + (x)] = l_in[left] + l_in[above] + l_in[centre] + l_in[right] + l_in[bottom];
+            else
+                l_out[y * stride_out + (x)] = l_in[centre];
         }
     }
 }
 
-void result_check(unsigned char* const ext_base_in, unsigned char* const ext_base_out, const int width,
+bool result_check(TEST_TENSOR_TYPE* const ext_base_in, TEST_TENSOR_TYPE* const ext_base_out, const int width,
                   const int height, const int tile_width, const int tile_height) {
-    uint8_t(*const input_buffer)[height][width] = (uint8_t(*)[height][width])ext_base_in;
-    uint8_t(*const output_buffer)[height][width] = (uint8_t(*)[height][width])ext_base_out;
+    TEST_TENSOR_TYPE(*const input_buffer)[height][width] = (TEST_TENSOR_TYPE(*)[height][width])ext_base_in;
+    TEST_TENSOR_TYPE(*const output_buffer)[height][width] = (TEST_TENSOR_TYPE(*)[height][width])ext_base_out;
     bool result = true;
 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            uint8_t expected = 0;
+            TEST_TENSOR_TYPE expected = input_buffer[0][y][x];
 
-            if (x > 0) expected += input_buffer[0][y][x - 1];
-            if (y > 0) expected += input_buffer[0][y - 1][x];
-
-            expected += input_buffer[0][y][x];
-
-            if (x < (width - 1)) expected += input_buffer[0][y][x + 1];
-            if (y < (height - 1)) expected += input_buffer[0][y + 1][x];
+            if (true) {
+                if (x > 0) expected += input_buffer[0][y][x - 1];
+                if (y > 0) expected += input_buffer[0][y - 1][x];
+                if (x < (width - 1)) expected += input_buffer[0][y][x + 1];
+                if (y < (height - 1)) expected += input_buffer[0][y + 1][x];
+            }
 
             if (output_buffer[0][y][x] != expected) {
                 printf("Mismatch at [%d, %d] %d != %d Tensor size [%d, %d], Tile size [%d, %d]\n",
@@ -82,7 +85,5 @@ void result_check(unsigned char* const ext_base_in, unsigned char* const ext_bas
         }
     }
 
-    if (result == true) {
-        printf("Compute checked and successful\n");
-    }
+    return result;
 }

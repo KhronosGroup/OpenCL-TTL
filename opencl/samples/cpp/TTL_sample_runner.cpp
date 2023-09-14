@@ -37,12 +37,14 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define CHECKER_NAME_STR xstr(M_CONC(check_, COMPUTE))
 #define COMPUTE_NAME_STR xstr(M_CONC(compute_, COMPUTE))
 
-#define FROM_C
 #include "TTL/TTL.h"
 #include CHECKER_NAME_STR
 
 #define xstr(s) str(s)
 #define str(s) #s
+
+#undef TTL_EXT_TENSOR_TYPE
+#define TTL_EXT_TENSOR_TYPE __TTL_tensor_name(TTL_, , ext_, TEST_TENSOR_TYPE, , _t)
 
 #define SUCCESS 0
 #define FAILURE 1
@@ -50,7 +52,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     {                                                                        \
         cl_int status = (x);                                                 \
         if (status != 0) {                                                   \
-            cout << "Status: " << status << " at line " << __LINE__ << endl; \
+            std::cout << "Status: " << status << " at line " << __LINE__ << std::endl; \
             return status;                                                   \
         }                                                                    \
     }
@@ -59,12 +61,10 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     {                                                                        \
         cl_int status = (x);                                                 \
         if (status != 0) {                                                   \
-            cout << "Status: " << status << " at line " << __LINE__ << endl; \
+            std::cout << "Status: " << status << " at line " << __LINE__ << std::endl; \
             return FAILURE;                                                  \
         }                                                                    \
     }
-
-using namespace std;
 
 /* convert the kernel file into a string */
 int convertToString(const char *filename, std::string &s) {
@@ -91,7 +91,7 @@ int convertToString(const char *filename, std::string &s) {
         delete[] str;
         return 0;
     }
-    cout << "Error: failed to open file\n:" << filename << endl;
+    std::cout << "Error: failed to open file\n:" << filename << std::endl;
     return FAILURE;
 }
 
@@ -110,8 +110,8 @@ cl_int GetFirstDevice(const cl_platform_id platform_id, cl_device_id *const devi
 
     if (num_device_ids == 0)  // no GPU available.
     {
-        cout << "No GPU device available." << endl;
-        cout << "Choose CPU as default device." << endl;
+        std::cout << "No GPU device available." << std::endl;
+        std::cout << "Choose CPU as default device." << std::endl;
         RETURN_STATUS_ON_ERROR(clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_CPU, 0, nullptr, &num_device_ids));
     }
 
@@ -149,25 +149,19 @@ int main(int argc, char *argv[]) {
     cl_command_queue command_queue = clCreateCommandQueueWithProperties(context, device_id, nullptr, nullptr);
 
     /* Step 5: Create program object */
-    string source_string;
+    std::string source_string;
     CHECK_STATUS(convertToString("TTL_sample_overlap.cl", source_string));
     const char *source = source_string.c_str();
     size_t source_size[] = { strlen(source) };
     cl_program program = clCreateProgramWithSource(context, 1, &source, source_size, nullptr);
 
     const char *const ttl_include_library = std::getenv("TTL_INCLUDE_PATH");
-    char command_line_options[128];
+    char command_line_options[256];
 
-    if (ttl_include_library != nullptr) {
-        sprintf(command_line_options,
-                "-I %s -D TTL_COPY_3D -cl-std=CL3.0 -D CL_TARGET_OPENCL_VERSION=300 -D COMPUTE_NAME=%s",
-                ttl_include_library,
-                COMPUTE_NAME_STR);
-    } else {
-        sprintf(command_line_options,
-                "-D TTL_COPY_3D -cl-std=CL3.0 -D CL_TARGET_OPENCL_VERSION=300 -D COMPUTE_NAME=%s",
-                COMPUTE_NAME_STR);
-    }
+    sprintf(command_line_options,
+            "-I %s -D TTL_COPY_3D -cl-std=CL3.0 -D CL_TARGET_OPENCL_VERSION=300 -D COMPUTE_NAME=%s -D TEST_TENSOR_TYPE=%s",
+            (ttl_include_library != nullptr)?ttl_include_library:".",
+            COMPUTE_NAME_STR, xstr(TEST_TENSOR_TYPE));
 
     /* Step 6: Build program. */
     if (clBuildProgram(program, 1, &device_id, command_line_options, nullptr, nullptr) != 0) {
@@ -179,7 +173,7 @@ int main(int argc, char *argv[]) {
         char *const build_log = new char[size + 1];
 
         clGetProgramBuildInfo(program, device_id, CL_PROGRAM_BUILD_LOG, size, build_log, nullptr);
-        cout << endl << endl << "Buildlog:   " << build_log << endl << endl;
+        std::cout << std::endl << std::endl << "Buildlog:   " << build_log << std::endl << std::endl;
         delete[] build_log;
         exit(-1);
     }
@@ -187,10 +181,10 @@ int main(int argc, char *argv[]) {
     cl_int error_code_ret;
 
     /* Step 7: Initial input,output for the host and create memory objects for the kernel*/
-    constexpr uint32_t tensor_width = 5;
-    constexpr uint32_t tensor_height = 5;
-    unsigned char *const input = new unsigned char[tensor_width * tensor_height];
-    unsigned char *const output = new unsigned char[tensor_width * tensor_height];
+    constexpr uint32_t tensor_width = 500;
+    constexpr uint32_t tensor_height = 500;
+    TEST_TENSOR_TYPE *const input = new TEST_TENSOR_TYPE[tensor_width * tensor_height];
+    TEST_TENSOR_TYPE *const output = new TEST_TENSOR_TYPE[tensor_width * tensor_height];
 
     for (int x = 0; x < (tensor_width * tensor_height); x++) {
         input[x] = rand();
@@ -206,8 +200,8 @@ int main(int argc, char *argv[]) {
     const TTL_shape_t tensor_shape_out = TTL_create_shape(tensor_width, tensor_height);
     const TTL_layout_t ext_layout_in = TTL_create_layout(tensor_width);
     const TTL_layout_t ext_layout_out = TTL_create_layout(tensor_width);
-    const TTL_ext_void_tensor_t ext_input_tensor = TTL_create_ext_tensor(input, tensor_shape_in, ext_layout_in);
-    const TTL_ext_tensor_t ext_output_tensor = TTL_create_ext_tensor(output, tensor_shape_out, ext_layout_out);
+    const TTL_EXT_TENSOR_TYPE ext_input_tensor = TTL_create_ext_tensor(input, tensor_shape_in, ext_layout_in);
+    const TTL_EXT_TENSOR_TYPE ext_output_tensor = TTL_create_ext_tensor(output, tensor_shape_out, ext_layout_out);
     void *const v = nullptr;
 
     /* Step 8: Create kernel object */
@@ -230,7 +224,7 @@ int main(int argc, char *argv[]) {
     CHECK_STATUS(clEnqueueReadBuffer(
         command_queue, std_out_buffer, CL_TRUE, 0, cout_len * sizeof(char), cout_buffer, 0, nullptr, nullptr));
 
-    std::cout << (result_check(input, output, tensor_width, tensor_height) ? "Passed!" : "Failed") << endl;
+    std::cout << (result_check(input, output, tensor_width, tensor_height) ? "Passed!" : "Failed") << std::endl;
 
     /* Step 13: Clean the resources.*/
     CHECK_STATUS(clReleaseKernel(kernel));    // Release kernel.

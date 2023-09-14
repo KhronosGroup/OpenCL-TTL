@@ -17,12 +17,15 @@ Compile as follows
 ```
 export TTL_INCLUDE_PATH=[PATH TO TTL]
 export OPEN_CL_INCLUDE_PATH=[PATH_TO_OPENCL_INCLUDE_FILES]
-clang -O0 -g -D TTL_TARGET=c -D COMPUTE=square.h -D CL_TARGET_OPENCL_VERSION=300 -I $TTL_INCLUDE_PATH -I $OPEN_CL_INCLUDE_PATH -o TTL_sample_overlap TTL_sample_runner.cpp -lOpenCL -lstdc++
+for type in char uchar short ushort int uint long ulong; do
+for compute in cross square copy; do
+
+echo Compute $compute with Tensor of type $type
+clang -O0 -g -D TTL_TARGET=c -D TEST_TENSOR_TYPE=$type -D COMPUTE=$compute.h -D CL_TARGET_OPENCL_VERSION=300 -I $TTL_INCLUDE_PATH -I $OPEN_CL_INCLUDE_PATH -o TTL_sample_overlap TTL_sample_runner.cpp -lOpenCL -lstdc++
 ./TTL_sample_overlap
-clang -O0 -g -D TTL_TARGET=c -D COMPUTE=cross.h -D CL_TARGET_OPENCL_VERSION=300 -I $TTL_INCLUDE_PATH -I $OPEN_CL_INCLUDE_PATH -o TTL_sample_overlap TTL_sample_runner.cpp -lOpenCL -lstdc++
-./TTL_sample_overlap
-clang -O0 -g -D TTL_TARGET=c -D COMPUTE=copy.h -D CL_TARGET_OPENCL_VERSION=300 -I $TTL_INCLUDE_PATH -I $OPEN_CL_INCLUDE_PATH -o TTL_sample_overlap TTL_sample_runner.cpp -lOpenCL -lstdc++
-./TTL_sample_overlap
+
+done
+done
 ```
 
 ## The "Copy Kernel" 

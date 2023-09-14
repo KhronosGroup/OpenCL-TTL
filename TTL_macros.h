@@ -70,6 +70,7 @@
 #if __TTL_DEBUG > 0
 #define __TTL_TRACE_FN(func, ...) func(__VA_ARGS__, unsigned int line)
 #define __TTL_TRACE_LINE , line
+
 #else
 /**
  * @def __TTL_TRACE_FN
@@ -102,4 +103,63 @@
  * The file TTL_trace_macros deals with this for calls post TTL.h
  */
 #define __TTL_TRACE_LINE
+
 #endif
+
+
+/************************************************************************************************************
+ * Generic name generator
+ ***********************************************************************************************************/
+/**
+ * @def __TTL_tensor_name
+ *
+ * @brief Generate a generic "[prefix][const]_[ext, int]_[type]_[sub]_tensor[suffix]" style name from the elements
+ *
+ * @param prefix The prefixed to apply to the name
+ * @param const_2 The const name to place after the prefix - should be empty or const_
+ * @param location The location of the tensor - should be ext or int
+ * @param type The type of the tensor - should be any valid c type
+ * @param sub If the tensor is a sub tensor or not - should be empty or sub_
+ * @param suffix The suffix of to apply to the name
+ *
+ * @details
+ * __TTL_tensor_name(TTL_create, const_, ext, char, sub_, ) will give TTL_create_const_ext_char_sub_tensor
+ * __TTL_tensor_name(TTL_, ,int, void, , _t) will give TTL_int_void_tensor_t
+ *
+ * The 'double' call is some 'magic' to allow the caller itself to contain a macro.
+ * 
+ * @return The generated name
+ */
+#define __TTL_tensor_name_1(prefix, const_1, location, type, sub, suffix) \
+    prefix##const_1##location##type##_##sub##tensor##suffix
+#define __TTL_tensor_name(prefix, const_1, location, type, sub, suffix) \
+    __TTL_tensor_name_1(prefix, const_1, location, type, sub, suffix)
+
+#define __TTL_tensor_overloaded_name_1(prefix, const_1, location, type, sub, suffix) \
+    prefix##const_1##location##sub##tensor##suffix
+#define __TTL_tensor_overloaded_name(prefix, const_1, location, type, sub, suffix) \
+    __TTL_tensor_overloaded_name_1(prefix, const_1, location, type, sub, suffix)
+
+/**
+ * @def __TTL_tensor_no_type_name
+ *
+ * @brief Generate a generic "[prefix][const]_[ext, int]_[sub]_tensor[suffix]" style name from the elements
+ *
+ * @param prefix The prefixed to apply to the name
+ * @param const_2 The const name to place after the prefix - should be empty or const_
+ * @param location The location of the tensor - should be ext or int
+ * @param sub If the tensor is a sub tensor or not - should be empty or sub_
+ * @param suffix The suffix of to apply to the name
+ *
+ * @details
+ * __TTL_tensor_no_type_name(TTL_create, const_, ext, sub_, ) will give TTL_create_const_ext_sub_tensor
+ * __TTL_tensor_no_type_name(TTL_, ,int, , _t) will give TTL_int_tensor_t
+ *
+ * The 'double' call is some 'magic' to allow the caller itself to contain a macro.
+ * 
+ * @return The generated name
+ */
+#define __TTL_tensor_no_type_name_1(prefix, const_1, location, sub, suffix) \
+    prefix##const_1##location##sub##tensor##suffix
+#define __TTL_tensor_no_type_name(prefix, const_1, location, sub, suffix) \
+    __TTL_tensor_no_type_name_1(prefix, const_1, location, sub, suffix)

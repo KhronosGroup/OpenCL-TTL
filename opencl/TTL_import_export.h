@@ -62,11 +62,11 @@ static inline void TTL_wait(const int num_events, TTL_event_t *const events) {
  *
  * @return No return value
  */
-static inline void __TTL_TRACE_FN(TTL_import, const TTL_int_tensor_t internal_tensor,
+static inline void __attribute__((overloadable)) __TTL_TRACE_FN(TTL_import_base, const TTL_int_tensor_t internal_tensor,
                                   const TTL_const_ext_tensor_t external_tensor, TTL_event_t *event) {
-    *event = async_work_group_copy_3D3D(internal_tensor.base,
+    *event = async_work_group_copy_3D3D((__local void *)internal_tensor.base,
                                         0,
-                                        external_tensor.base,
+                                        (__global void *)external_tensor.base,
                                         0,
                                         internal_tensor.elem_size,
                                         internal_tensor.shape.width,
@@ -93,10 +93,10 @@ static inline void __TTL_TRACE_FN(TTL_import, const TTL_int_tensor_t internal_te
  *
  * @return No return value
  */
-static inline void __TTL_TRACE_FN(TTL_blocking_import, const TTL_int_tensor_t internal_tensor,
+static inline void  __TTL_TRACE_FN(TTL_blocking_import_base, const TTL_int_tensor_t internal_tensor,
                                   const TTL_const_ext_tensor_t external_tensor) {
     TTL_event_t event = TTL_get_event();
-    TTL_import(internal_tensor, external_tensor, &event __TTL_TRACE_LINE);
+    TTL_import_base(internal_tensor, external_tensor, &event __TTL_TRACE_LINE);
     TTL_wait(1, &event);
 }
 
@@ -112,11 +112,11 @@ static inline void __TTL_TRACE_FN(TTL_blocking_import, const TTL_int_tensor_t in
  *
  * @return No return value
  */
-static inline void __TTL_TRACE_FN(TTL_export, const TTL_const_int_tensor_t internal_tensor,
+static inline void __TTL_TRACE_FN(TTL_export_base, const TTL_const_int_tensor_t internal_tensor,
                                   const TTL_ext_tensor_t external_tensor, TTL_event_t *const event) {
-    *event = async_work_group_copy_3D3D(external_tensor.base,
+    *event = async_work_group_copy_3D3D((__global void *)external_tensor.base,
                                         0,
-                                        internal_tensor.base,
+                                        (__local void *)internal_tensor.base,
                                         0,
                                         internal_tensor.elem_size,
                                         internal_tensor.shape.width,
@@ -144,9 +144,9 @@ static inline void __TTL_TRACE_FN(TTL_export, const TTL_const_int_tensor_t inter
  *
  * @return No return value
  */
-static inline void __TTL_TRACE_FN(TTL_blocking_export, const TTL_const_int_tensor_t internal_tensor,
+static inline void __TTL_TRACE_FN(TTL_blocking_export_base, const TTL_const_int_tensor_t internal_tensor,
                                   const TTL_ext_tensor_t external_tensor) {
     TTL_event_t event = TTL_get_event();
-    TTL_export(internal_tensor, external_tensor, &event __TTL_TRACE_LINE);
+    TTL_export_base(internal_tensor, external_tensor, &event __TTL_TRACE_LINE);
     TTL_wait(1, &event);
 }

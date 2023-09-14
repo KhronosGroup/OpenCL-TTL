@@ -18,5 +18,6 @@
 
 #pragma once
 
+#include "tensors/TTL_tensors_common.h"
 #include "tensors/TTL_ext_tensors.h"
 #include "tensors/TTL_int_tensors.h"

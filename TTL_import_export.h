@@ -108,8 +108,8 @@ static inline TTL_shape_t TTL_import_pre_fill(const TTL_int_sub_tensor_t interna
 
     z_offset = 0;  // TTL_MAX(-internal_sub_tensor.origin.sub_offset.z, 0);
     z_cut = 0;     // TTL_MAX((internal_sub_tensor.origin.sub_offset.z + internal_sub_tensor.tensor.shape.depth) -
-                //     1 /*internal_sub_tensor.origin.shape.depth*/,
-                // 0);
+                   //     1 /*internal_sub_tensor.origin.shape.depth*/,
+                   // 0);
 
     *dst_address = (TTL_local(char *))internal_sub_tensor.tensor.base +
                    (x_offset * internal_sub_tensor.tensor.elem_size) +
@@ -135,28 +135,6 @@ static inline TTL_shape_t TTL_import_pre_fill(const TTL_int_sub_tensor_t interna
                             internal_sub_tensor.tensor.shape.depth - z_offset - z_cut);
 }
 
-/**
- * @brief Implementation of TTL_import_sub_tensor
- *
- * @param internal_sub_tensor A TTL_int_tensor_t describing the internal tensor.
- * @param const_external_tensor A TTL_const_ext_tensor_t describing the external tensor.
- * @param event A TTL_event_t type to allow detection of import completion.
- *
- * @see TTL_import for full API and parameter information
- */
-static inline void __TTL_TRACE_FN(TTL_import_sub_tensor, const TTL_int_sub_tensor_t internal_sub_tensor,
-                                  const TTL_const_ext_tensor_t const_external_tensor, TTL_event_t *event) {
-    TTL_local(void *) dst_address;
-    TTL_global(void *) src_address;
 
-    const TTL_shape_t import_shape =
-        TTL_import_pre_fill(internal_sub_tensor, const_external_tensor, &dst_address, &src_address);
-
-    const TTL_int_tensor_t import_int_tensor = TTL_create_int_tensor(
-        dst_address, import_shape, internal_sub_tensor.tensor.layout, internal_sub_tensor.tensor.elem_size);
-
-    const TTL_const_ext_tensor_t import_ext_tensor = TTL_create_const_ext_tensor(
-        src_address, import_shape, const_external_tensor.layout, TTL_create_offset(), const_external_tensor.elem_size);
-
-    TTL_import(import_int_tensor, import_ext_tensor, event __TTL_TRACE_LINE);
-}
+#define TYPES_INCLUDE_FILE "import_export/TTL_typed_import_export.h"
+#include "TTL_create_types.h"
