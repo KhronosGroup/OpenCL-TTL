@@ -81,7 +81,7 @@ static inline TTL_int_sub_tensor_t __attribute__((overloadable)) __TTL_TRACE_FN(
  * @param tile_current A description of the tile to begin exporting.
  *
  */
-static inline TTL_int_sub_tensor_t __TTL_TRACE_FN(TTL_step_buffering, TTL_export_double_buffering_t *db,
+static inline TTL_int_sub_tensor_t __attribute__((overloadable)) __TTL_TRACE_FN(TTL_step_buffering, TTL_export_double_buffering_t *db,
                                                   TTL_tile_t tile_current) {
     const TTL_layout_t int_layout = TTL_create_layout(db->prev_tile.shape.width, db->prev_tile.shape.height);
     const TTL_const_int_tensor_t export_from = TTL_create_const_int_tensor(
