@@ -22,6 +22,7 @@ This document outlines the purpose of this sample implementation and provides bu
 - [Tensor Tiling Library](#tensor-tiling-library)
   - [Purpose](#purpose)
   - [Example](#example)
+  - [Doxygen](#doxygen)
   - [Building And Executing](#building-and-executing)
     - [CMake](#cmake)
       - [Tested Supported Systems](#tested-supported-systems)
@@ -98,6 +99,11 @@ __kernel void TTL_double_buffering(__global uchar *restrict ext_base_in, int ext
     TTL_finish_export_double_buffering(&export_db);
 }
 ```
+
+## Doxygen
+
+Doxygen is supported and can be build using the scripts/generate_doxygen.sh script. It is
+built automatically by github for main and the latest version can be found at https://github.khronos.org/OpenCL-TTL/
 
 ## Building And Executing
 
