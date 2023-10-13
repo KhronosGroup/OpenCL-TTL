@@ -113,11 +113,11 @@ typedef struct {
  *
  * @enduml
  */
-static inline TTL_double_buffering_internal_t TTL_start_import_double_buffering(TTL_local(TTL_int_ptr) int_base1,
-                                                                                TTL_local(TTL_int_ptr) int_base2,
-                                                                                TTL_ext_tensor_type ext_tensor,
-                                                                                TTL_event_t *event,
-                                                                                TTL_tile_t first_tile);
+static inline TTL_double_buffering_internal_t __TTL_TRACE_FN(TTL_start_import_double_buffering,
+                                                             TTL_local(TTL_int_ptr) int_base1,
+                                                             TTL_local(TTL_int_ptr) int_base2,
+                                                             TTL_ext_tensor_type ext_tensor, TTL_event_t *event,
+                                                             TTL_tile_t first_tile);
 #endif
 
 #ifdef TTL_EXPORT_DOUBLE
@@ -154,14 +154,14 @@ static inline TTL_double_buffering_internal_t TTL_start_import_double_buffering(
  *
  * @enduml
  */
-static inline TTL_double_buffering_internal_t TTL_start_export_double_buffering(TTL_local(TTL_int_ptr) int_base1,
-                                                                                TTL_local(TTL_int_ptr) int_base2,
-                                                                                TTL_ext_tensor_type ext_tensor,
-                                                                                TTL_event_t *event);
+static inline TTL_double_buffering_internal_t __TTL_TRACE_FN(TTL_start_export_double_buffering,
+                                                             TTL_local(TTL_int_ptr) int_base1,
+                                                             TTL_local(TTL_int_ptr) int_base2,
+                                                             TTL_ext_tensor_type ext_tensor, TTL_event_t *event);
 #endif
 
-static inline TTL_int_sub_tensor_t __attribute__((overloadable))__TTL_TRACE_FN(TTL_step_buffering, TTL_import_double_buffering_t *const dbi,
-                                                  const TTL_tile_t next_tile);
+static inline TTL_int_sub_tensor_t __attribute__((overloadable))
+__TTL_TRACE_FN(TTL_step_buffering, TTL_import_double_buffering_t *const dbi, const TTL_tile_t next_tile);
 
 static inline TTL_double_buffering_internal_t __TTL_TRACE_FN(TTL_name(TTL_start, double_buffering),
                                                              TTL_local(TTL_int_ptr) int_base1,
