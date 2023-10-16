@@ -14,12 +14,39 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
  
- cmake_minimum_required (VERSION 3.3)
+cmake_minimum_required (VERSION 3.3)
 
 project(TemplateTilingLibrary)
 
 include(GNUInstallDirs)
 
+if(DEFINED TTL_PRE_GENERATE)
+set(TTL_COMMON_FILES
+    TTL.h
+)
+set(TTL_HEADER_C_FILES
+    ${TTL_COMMON_FILES}
+)
+set(TTL_HEADER_OPENCL_FILES
+    ${TTL_COMMON_FILES}
+)
+set(TTL_SOURCE_DIRECTORY
+    ${CMAKE_BINARY_DIR}
+)
+
+if(DEFINED TTL_COPY_3D)
+    set(TTL_EXTRA_DEFINES "${TTL_EXTRA_DEFINES} -DTTL_COPY_3D")
+    set(TTL_COPY_3D "${TTL_COPY_3D}" CACHE PATH "Defined if precompiled TTL should provide an implementation of async_work_group_copy_3D3D.")
+endif()
+
+if(DEFINED TTL_DEBUG)
+    set(TTL_EXTRA_DEFINES "${TTL_EXTRA_DEFINES} -D__TTL_DEBUG=1")
+    set(TTL_DEBUG "${TTL_DEBUG}" CACHE PATH "Defined if precompiled TTL should include debug information.")
+endif()
+
+set(TTL_PRE_GENERATE "${TTL_PRE_GENERATE}" CACHE STRING "The pre-generation option chosen.")
+
+else()
 set(TTL_COMMON_FILES
     TTL.h
     TTL_trace_macros.h
@@ -54,22 +81,50 @@ set(TTL_HEADER_OPENCL_FILES
     opencl/TTL_async_work_group_copy_3D3D.h
 )
 
-if(DEFINED TTL_INSTALL_DIR)
-    if(NOT IS_ABSOLUTE ${TTL_INSTALL_DIR})
-        set(TTL_INSTALL_DIR "${CMAKE_CURRENT_LIST_DIR}/${TTL_INSTALL_DIR}")
-    endif()
-else()
-    set(TTL_INSTALL_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
+set(TTL_SOURCE_DIRECTORY
+    ${CMAKE_CURRENT_LIST_DIR}
+)
+
+if(DEFINED TTL_COPY_3D)
+    message(FATAL_ERROR "TTL_COPY_3D not a valid option for when TTL_PRE_GENERATE is not set")
 endif()
 
-set(TTL_INSTALL_DIR "${TTL_INSTALL_DIR}" CACHE PATH "The install location for all installation types.")
+if(DEFINED TTL_DEBUG)
+    message(FATAL_ERROR "TTL_DEBUG not a valid option for when TTL_PRE_GENERATE is not set")
+endif()
 
-set(TTL_C_INSTALL_PATH 
-    ${TTL_INSTALL_DIR}/TTL)
-set(TTL_OPENCL_INSTALL_PATH 
-    ${TTL_INSTALL_DIR}/TTL)
+endif()
 
-macro(InstallTTL type install_directory ttl_header_files)
+if(DEFINED TTL_INSTALL_PATH)
+    if(NOT IS_ABSOLUTE ${TTL_INSTALL_PATH})
+        set(TTL_INSTALL_PATH "${CMAKE_CURRENT_LIST_DIR}/${TTL_INSTALL_PATH}")
+    endif()
+else()
+    set(TTL_INSTALL_PATH ${CMAKE_INSTALL_FULL_INCLUDEDIR})
+endif()
+
+set(TTL_INSTALL_PATH "${TTL_INSTALL_PATH}" CACHE PATH "The install location for all installation types.")
+
+if(DEFINED TTL_C_INSTALL_PATH)
+    if(NOT IS_ABSOLUTE ${TTL_C_INSTALL_PATH})
+        set(TTL_C_INSTALL_PATH "${CMAKE_CURRENT_LIST_DIR}/${TTL_C_INSTALL_PATH}")
+    endif()
+else()
+    set(TTL_C_INSTALL_PATH ${TTL_INSTALL_PATH})
+endif()
+
+if(DEFINED TTL_OPENCL_INSTALL_PATH)
+    if(NOT IS_ABSOLUTE ${TTL_OPENCL_INSTALL_PATH})
+        set(TTL_OPENCL_INSTALL_PATH "${CMAKE_CURRENT_LIST_DIR}/${TTL_OPENCL_INSTALL_PATH}")
+    endif()
+else()
+    set(TTL_OPENCL_INSTALL_PATH ${TTL_INSTALL_PATH})
+endif()
+
+macro(InstallTTL type source_directory install_directory ttl_header_files)
+    install(CODE "execute_process(COMMAND \"${CMAKE_CURRENT_SOURCE_DIR}/generation/generate_single_TTL.sh\" \"${CMAKE_BINARY_DIR}/TTL.h\" \"${type}\" \"${TTL_EXTRA_DEFINES}\")")
+    install(CODE "MESSAGE(\"${CMAKE_CURRENT_SOURCE_DIR}/generation/generate_single_TTL.sh ${CMAKE_BINARY_DIR}/TTL.h ${type} ${TTL_EXTRA_DEFINES}\")")
+
     install(CODE "MESSAGE(\"Removing old TTL ${type} Library from ${install_directory}.\")")
     file (REMOVE_RECURSE ${install_directory})
 
@@ -77,9 +132,20 @@ macro(InstallTTL type install_directory ttl_header_files)
 
     foreach (file ${ttl_header_files} )
         get_filename_component(dir ${file} DIRECTORY)
-        install(FILES ${CMAKE_CURRENT_LIST_DIR}/${file} DESTINATION ${install_directory}/${dir})
+        install(FILES ${source_directory}/${file} DESTINATION ${install_directory}/${dir})
     endforeach()
 endmacro()
 
-InstallTTL("C" ${TTL_C_INSTALL_PATH} "${TTL_HEADER_C_FILES}")
-InstallTTL("OpenCL" ${TTL_OPENCL_INSTALL_PATH} "${TTL_HEADER_OPENCL_FILES}")
+InstallTTL("c" ${TTL_SOURCE_DIRECTORY} ${TTL_C_INSTALL_PATH} "${TTL_HEADER_C_FILES}")
+InstallTTL("opencl" ${TTL_SOURCE_DIRECTORY} ${TTL_OPENCL_INSTALL_PATH} "${TTL_HEADER_OPENCL_FILES}")
+
+if(DEFINED TTL_PRE_GENERATE)
+    message("TTL will be precompiled before installation")
+endif()
+
+message("C files will be installed to ${TTL_C_INSTALL_PATH}")
+message("OpenCL files will be installed to ${TTL_OPENCL_INSTALL_PATH}")
+
+if(DEFINED TTL_COPY_3D)
+    message("TTL will include an implementation of async_work_group_copy_3D3D")
+endif()
