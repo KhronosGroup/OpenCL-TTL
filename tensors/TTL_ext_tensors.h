@@ -21,10 +21,10 @@
 #define TENSOR_LOCATION ext_
 #define TENSOR_ADDRESS TTL_global
 // EXT TENSORS START
-#define TYPES_INCLUDE_FILE "tensors/TTL_int_ext_typed_tensors.h"
+#define TTL_TYPES_INCLUDE_FILE "tensors/TTL_int_ext_typed_tensors.h"
 #include "../TTL_create_types.h"
 // EXT TENSORS END
-#undef TYPES_INCLUDE_FILE
+#undef TTL_TYPES_INCLUDE_FILE
 #undef TENSOR_LOCATION
 #undef TENSOR_ADDRESS
 

@@ -22,9 +22,12 @@
 
 #pragma push_macro("TTL_TENSOR_TYPE")
 
+#ifndef TTL_TYPES_NO_VOID
 #define TTL_TENSOR_TYPE void
 #define sizeof_void sizeof(char)
 #include "TTL_create_type.h"
+#endif
+#undef TTL_TYPES_NO_VOID
 
 #define TTL_TENSOR_TYPE char
 #define sizeof_char sizeof(char)
@@ -58,6 +61,6 @@
 #define sizeof_ulong sizeof(ulong)
 #include "TTL_create_type.h"
 
-#undef TYPES_INCLUDE_FILE
+#undef TTL_TYPES_INCLUDE_FILE
 
 #pragma pop_macro("TTL_TENSOR_TYPE")

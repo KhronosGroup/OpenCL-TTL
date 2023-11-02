@@ -21,3 +21,8 @@
 #include "tensors/TTL_tensors_common.h"
 #include "tensors/TTL_ext_tensors.h"
 #include "tensors/TTL_int_tensors.h"
+
+
+#define TTL_TYPES_INCLUDE_FILE "tensors/TTL_tensor_rw.h"
+#define TTL_TYPES_NO_VOID
+#include "TTL_create_types.h"

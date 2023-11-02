@@ -37,28 +37,18 @@
 // clang-format off
 
 static const char *computeFunction = R"(
-void compute(TTL_int_sub_tensor_t tensor_in, TTL_int_sub_tensor_t tensor_out) {
-    __local const unsigned char* const restrict l_in = tensor_in.tensor.base;
-    __local unsigned char* const restrict l_out = tensor_out.tensor.base;
+void compute(TTL_int_uchar_sub_tensor_t tensor_in, TTL_int_uchar_sub_tensor_t tensor_out) {
+    for (int y = 0; y < tensor_out.tensor.shape.height; ++y) {
+        for (int x = 0; x < tensor_out.tensor.shape.width; ++x) {
+            const int x_in = x + TILE_OVERLAP_LEFT;
+            const int y_in = y + TILE_OVERLAP_TOP;
+            const uchar left = TTL_read_tensor(tensor_in, x_in - 1, y_in);
+            const uchar above = TTL_read_tensor(tensor_in, x_in, y_in - 1);
+            const uchar centre = TTL_read_tensor(tensor_in, x_in, y_in);
+            const uchar right = TTL_read_tensor(tensor_in, x_in + 1, y_in);
+            const uchar bottom = TTL_read_tensor(tensor_in, x_in, y_in + 1);
 
-    const int x_shift = tensor_out.origin.sub_offset.x - tensor_in.origin.sub_offset.x;
-    const int y_shift = tensor_out.origin.sub_offset.y - tensor_in.origin.sub_offset.y;
-    const int width = tensor_out.tensor.shape.width;
-    const int height = tensor_out.tensor.shape.height;
-    const int stride_in = tensor_in.tensor.layout.row_spacing;
-    const int stride_out = tensor_out.tensor.layout.row_spacing;
-
-    for (int y = 0; y < height; ++y) {
-        for (int x = 0; x < width; ++x) {
-            const int x_in = x + x_shift;
-            const int y_in = y + y_shift;
-            const int left = (y_in * stride_in) + (x_in - 1);
-            const int above = ((y_in - 1) * stride_in) + x_in;
-            const int centre = (y_in * stride_in) + x_in;
-            const int right = (y_in * stride_in) + (x_in + 1);
-            const int bottom = ((y_in + 1) * stride_in) + x_in;
-
-            l_out[y * stride_out + (x)] = l_in[left] + l_in[above] + l_in[centre] + l_in[right] + l_in[bottom];
+            TTL_write_tensor(tensor_out, left + above + centre + right + bottom, x, y);
         }
     }
 }
@@ -68,18 +58,18 @@ static const char *ttlDoubleBufferingKernel = R"(
 #define TTL_COPY_3D
 #include "%s/TTL.h"
 
-#define TILE_OVERLAP_LEFT %d
-#define TILE_OVERLAP_RIGHT %d
-#define TILE_OVERLAP_TOP %d
-#define TILE_OVERLAP_BOTTOM %d
+#define TILE_OVERLAP_LEFT % d
+#define TILE_OVERLAP_RIGHT % d
+#define TILE_OVERLAP_TOP % d
+#define TILE_OVERLAP_BOTTOM % d
 
-%s
-
+% s
 #define MEMSZ 0x8000
 
-__kernel void TTL_double_buffering(__global uchar *restrict ext_base_in, int external_stride_in,
-                                   __global uchar *restrict ext_base_out, int external_stride_out, int width,
-                                   int height, int tile_width, int tile_height) {
+        __kernel void
+        TTL_double_buffering(__global uchar *restrict ext_base_in, int external_stride_in,
+                             __global uchar *restrict ext_base_out, int external_stride_out, int width, int height,
+                             int tile_width, int tile_height) {
     local uchar l_in1[MEMSZ];
     local uchar l_in2[MEMSZ];
     local uchar l_out1[MEMSZ];
@@ -88,7 +78,7 @@ __kernel void TTL_double_buffering(__global uchar *restrict ext_base_in, int ext
     // Logical input tiling.
     const TTL_shape_t tensor_shape_in = TTL_create_shape(width, height);
     const TTL_shape_t tile_shape_in = TTL_create_shape(tile_width + (TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT),
-                                                          tile_height + (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM));
+                                                       tile_height + (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM));
     const TTL_overlap_t overlap_in =
         TTL_create_overlap(TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT, TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM);
     const TTL_augmentation_t augmentation_in =
@@ -104,27 +94,29 @@ __kernel void TTL_double_buffering(__global uchar *restrict ext_base_in, int ext
     const TTL_layout_t ext_layout_in = TTL_create_layout(external_stride_in);
     const TTL_layout_t ext_layout_out = TTL_create_layout(external_stride_out);
 
-    const TTL_const_ext_tensor_t ext_input_tensor = TTL_create_const_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
-    const TTL_ext_tensor_t ext_output_tensor = TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
+    const TTL_const_ext_uchar_tensor_t ext_input_tensor =
+        TTL_create_const_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
+    const TTL_ext_uchar_tensor_t ext_output_tensor =
+        TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
 
     // import_db and export_db need to be defined outside, before the loop, as
     // they record the event to wait on
     TTL_event_t import_DB_e = TTL_get_event();
-    TTL_import_double_buffering_t import_db = TTL_start_import_double_buffering(
-        l_in1, l_in2, ext_input_tensor, &import_DB_e, TTL_get_tile(0, input_tiler));
+    TTL_import_double_const_uchar_tensor_buffering_t import_db =
+        TTL_start_import_double_buffering(l_in1, l_in2, ext_input_tensor, &import_DB_e, TTL_get_tile(0, input_tiler));
 
     TTL_event_t export_DB_e = TTL_get_event();
-    TTL_export_double_buffering_t export_db =
+    TTL_export_double_const_uchar_tensor_buffering_t export_db =
         TTL_start_export_double_buffering(l_out1, l_out2, ext_output_tensor, &export_DB_e);
 
     for (int i = 0; i < TTL_number_of_tiles(input_tiler); ++i) {
         TTL_tile_t t_next = TTL_get_tile(i + 1, input_tiler);
         // Wait for import #i and issue import #i+1
-        TTL_int_sub_tensor_t imported_to = TTL_step_buffering(&import_db, t_next);
+        TTL_int_uchar_sub_tensor_t imported_to = TTL_step_buffering(&import_db, t_next);
 
         TTL_tile_t t_curr = TTL_get_tile(i, output_tiler);
         // Wait for export #i-2 and issue export #i-1
-        TTL_int_sub_tensor_t exported_from = TTL_step_buffering(&export_db, t_curr);
+        TTL_int_uchar_sub_tensor_t exported_from = TTL_step_buffering(&export_db, t_curr);
 
         compute(imported_to, exported_from);
     }
@@ -138,18 +130,18 @@ static const char *ttlSimplexBufferingKernel = R"(
 #define TTL_COPY_3D
 #include "%s/TTL.h"
 
-#define TILE_OVERLAP_LEFT %d
-#define TILE_OVERLAP_RIGHT %d
-#define TILE_OVERLAP_TOP %d
-#define TILE_OVERLAP_BOTTOM %d
+#define TILE_OVERLAP_LEFT % d
+#define TILE_OVERLAP_RIGHT % d
+#define TILE_OVERLAP_TOP % d
+#define TILE_OVERLAP_BOTTOM % d
 
-%s
-
+% s
 #define MEMSZ 0x8000
 
-__kernel void TTL_simplex_buffering(__global uchar *restrict ext_base_in, int external_stride_in,
-                                    __global uchar *restrict ext_base_out, int external_stride_out, int width,
-                                    int height, int tile_width, int tile_height) {
+        __kernel void
+        TTL_simplex_buffering(__global uchar *restrict ext_base_in, int external_stride_in,
+                              __global uchar *restrict ext_base_out, int external_stride_out, int width, int height,
+                              int tile_width, int tile_height) {
     __local uchar l_buff1[MEMSZ];
     __local uchar l_buff2[MEMSZ];
     __local uchar l_buff3[MEMSZ];
@@ -157,7 +149,7 @@ __kernel void TTL_simplex_buffering(__global uchar *restrict ext_base_in, int ex
     // Logical input tiling.
     const TTL_shape_t tensor_shape_in = TTL_create_shape(width, height);
     const TTL_shape_t tile_shape_in = TTL_create_shape(tile_width + (TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT),
-                                                          tile_height + (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM));
+                                                       tile_height + (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM));
     const TTL_overlap_t overlap_in =
         TTL_create_overlap(TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT, TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM);
     const TTL_augmentation_t augmentation_in =
@@ -173,25 +165,27 @@ __kernel void TTL_simplex_buffering(__global uchar *restrict ext_base_in, int ex
     const TTL_layout_t ext_layout_in = TTL_create_layout(external_stride_in);
     const TTL_layout_t ext_layout_out = TTL_create_layout(external_stride_out);
 
-    const TTL_ext_tensor_t ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
-    const TTL_ext_tensor_t ext_output_tensor = TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
+    const TTL_ext_uchar_tensor_t ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
+    const TTL_ext_uchar_tensor_t ext_output_tensor =
+        TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
 
     TTL_event_t tb_e_in = TTL_get_event();
     TTL_event_t tb_e_out = TTL_get_event();
-    TTL_simplex_buffering_t simplex_scheme = TTL_start_simplex_buffering(l_buff1,
-                                                                    l_buff2,
-                                                                    l_buff3,
-                                                                    ext_input_tensor,
-                                                                    ext_output_tensor,
-                                                                    &tb_e_in,
-                                                                    &tb_e_out,
-                                                                    TTL_get_tile(0, input_tiler));
+    TTL_simplex_const_uchar_tensor_buffering_t simplex_scheme =
+        TTL_start_simplex_buffering(l_buff1,
+                                    l_buff2,
+                                    l_buff3,
+                                    ext_input_tensor,
+                                    ext_output_tensor,
+                                    &tb_e_in,
+                                    &tb_e_out,
+                                    TTL_get_tile(0, input_tiler));
 
     for (int i = 0; i < TTL_number_of_tiles(input_tiler); ++i) {
         TTL_tile_t tile_next_import = TTL_get_tile(i + 1, input_tiler);
         TTL_tile_t tile_current_export = TTL_get_tile(i, output_tiler);
 
-        TTL_io_tensors_t tensors = TTL_step_buffering(&simplex_scheme, tile_next_import, tile_current_export);
+        TTL_io_uchar_tensor_t tensors = TTL_step_buffering(&simplex_scheme, tile_next_import, tile_current_export);
 
         compute(tensors.imported_to, tensors.to_export_from);
     }
@@ -204,25 +198,25 @@ static const char *ttlDuplexBufferingKernel = R"(
 #define TTL_COPY_3D
 #include "%s/TTL.h"
 
-#define TILE_OVERLAP_LEFT %d
-#define TILE_OVERLAP_RIGHT %d
-#define TILE_OVERLAP_TOP %d
-#define TILE_OVERLAP_BOTTOM %d
+#define TILE_OVERLAP_LEFT % d
+#define TILE_OVERLAP_RIGHT % d
+#define TILE_OVERLAP_TOP % d
+#define TILE_OVERLAP_BOTTOM % d
 
-%s
-
+% s
 #define MEMSZ 0x8000
 
-__kernel void TTL_duplex_buffering(__global uchar *restrict ext_base_in, int external_stride_in,
-                                   __global uchar *restrict ext_base_out, int external_stride_out, int width,
-                                   int height, int tile_width, int tile_height) {
+        __kernel void
+        TTL_duplex_buffering(__global uchar *restrict ext_base_in, int external_stride_in,
+                             __global uchar *restrict ext_base_out, int external_stride_out, int width, int height,
+                             int tile_width, int tile_height) {
     __local uchar l_in[MEMSZ];
     __local uchar l_out[MEMSZ];
 
     // Logical input tiling.
     const TTL_shape_t tensor_shape_in = TTL_create_shape(width, height);
     const TTL_shape_t tile_shape_in = TTL_create_shape(tile_width + (TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT),
-                                                          tile_height + (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM));
+                                                       tile_height + (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM));
     const TTL_overlap_t overlap_in =
         TTL_create_overlap(TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT, TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM);
     const TTL_augmentation_t augmentation_in =
@@ -238,12 +232,13 @@ __kernel void TTL_duplex_buffering(__global uchar *restrict ext_base_in, int ext
     const TTL_layout_t ext_layout_in = TTL_create_layout(external_stride_in);
     const TTL_layout_t ext_layout_out = TTL_create_layout(external_stride_out);
 
-    const TTL_ext_tensor_t ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
-    const TTL_ext_tensor_t ext_output_tensor = TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
+    const TTL_ext_uchar_tensor_t ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
+    const TTL_ext_uchar_tensor_t ext_output_tensor =
+        TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
 
     TTL_event_t sb_e_in_out[2] = { TTL_get_event(), TTL_get_event() };
 
-    TTL_duplex_buffering_t duplex_scheme = TTL_start_duplex_buffering(
+    TTL_duplex_const_uchar_tensor_buffering_t duplex_scheme = TTL_start_duplex_buffering(
         ext_input_tensor, l_in, ext_output_tensor, l_out, &sb_e_in_out, TTL_get_tile(0, input_tiler));
 
     for (int i = 0; i < TTL_number_of_tiles(input_tiler); ++i) {
@@ -251,7 +246,7 @@ __kernel void TTL_duplex_buffering(__global uchar *restrict ext_base_in, int ext
         TTL_tile_t tile_current_export = TTL_get_tile(i, output_tiler);
 
         // Import current tile, export previous tile and wait for both transactions.
-        TTL_io_tensors_t tensors = TTL_step_buffering(&duplex_scheme, tile_next_import, tile_current_export);
+        TTL_io_uchar_tensor_t tensors = TTL_step_buffering(&duplex_scheme, tile_next_import, tile_current_export);
 
         compute(tensors.imported_to, tensors.to_export_from);
     }

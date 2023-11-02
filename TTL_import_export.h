@@ -136,5 +136,5 @@ static inline TTL_shape_t TTL_import_pre_fill(const TTL_int_sub_tensor_t interna
 }
 
 
-#define TYPES_INCLUDE_FILE "import_export/TTL_typed_import_export.h"
+#define TTL_TYPES_INCLUDE_FILE "import_export/TTL_typed_import_export.h"
 #include "TTL_create_types.h"
