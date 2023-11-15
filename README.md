@@ -1,6 +1,6 @@
 <h1 align="center">Tensor Tiling Library</h1>
 <p align="center">
-  <img width="30%" src="doc/tensor_tiling_library.png" />
+  <img width="30%" src="docs/tensor_tiling_library.png" />
 </p>
 <p align="center">
   <a href="https://opensource.org/licenses/Apache-2.0">
@@ -19,18 +19,18 @@ This document outlines the purpose of this sample implementation and provides bu
 
 ## Contents <!-- omit in toc -->
 
-- [Tensor Tiling Library](#tensor-tiling-library)
-  - [Purpose](#purpose)
-  - [Example](#example)
-  - [Doxygen](#doxygen)
-  - [Building And Executing](#building-and-executing)
-    - [CMake](#cmake)
-      - [Tested Supported Systems](#tested-supported-systems)
-      - [Requirements](#requirements)
-      - [Building the Samples](#building-the-samples)
-      - [Installation](#installation)
-  - [Included Unit Tests](#included-unit-tests)
-  - [Bug Reporting](#bug-reporting)
+-   [Tensor Tiling Library](#tensor-tiling-library)
+    -   [Purpose](#purpose)
+    -   [Example](#example)
+    -   [Doxygen](#doxygen)
+    -   [Building And Executing](#building-and-executing)
+        -   [CMake](#cmake)
+            -   [Tested Supported Systems](#tested-supported-systems)
+            -   [Requirements](#requirements)
+            -   [Building the Samples](#building-the-samples)
+            -   [Installation](#installation)
+    -   [Included Unit Tests](#included-unit-tests)
+    -   [Bug Reporting](#bug-reporting)
 
 ## Purpose
 
@@ -40,9 +40,9 @@ The library is intended to be general purpose and usable on all architectures.
 
 Currently the Tensor Tiling Library:
 
-* passes its own unit tests
-* contains reference implementations
-* is optimized
+-   passes its own unit tests
+-   contains reference implementations
+-   is optimized
 
 ## Example
 
@@ -100,10 +100,15 @@ __kernel void TTL_double_buffering(__global uchar *restrict ext_base_in, int ext
 }
 ```
 
+## Documentation
+
+Documentation using Read The Docs (sphinx) can be built by running `make install` inside the docs directory. It is
+built automatically by GitHub for main and the latest version can be found at https://github.khronos.org/OpenCL-TTL/docs/
+
 ## Doxygen
 
-Doxygen is supported and can be build using the scripts/generate_doxygen.sh script. It is
-built automatically by github for main and the latest version can be found at https://github.khronos.org/OpenCL-TTL/
+Doxygen is supported and can be built using the scripts/generate_doxygen.sh script. It is
+built automatically by GitHub for main and the latest version can be found at https://github.khronos.org/OpenCL-TTL/
 
 ## Building And Executing
 
@@ -115,17 +120,17 @@ It builds using CMake and has been tested on Linux.
 
 #### Tested Supported Systems
 
-* Linux
+-   Linux
 
 #### Requirements
 
-* Python 2.x (Tested with Python 2.7)
-* CMake 2.8.12 or higher (should be in PATH)
+-   Python 2.x (Tested with Python 2.7)
+-   CMake 2.8.12 or higher (should be in PATH)
 
 #### Building the Samples
 
-- Install [PoCL](http://portablecl.org/docs/html/install.html) or another environment of your choice.
-- Install [pyopencl](https://pypi.org/project/pyopencl/)
+-   Install [PoCL](http://portablecl.org/docs/html/install.html) or another environment of your choice.
+-   Install [pyopencl](https://pypi.org/project/pyopencl/).
 
 Execute the following commands:
 
@@ -143,7 +148,6 @@ See [INSTALL](./INSTALL).
 ## Included Unit Tests
 
 See [the test README](./opencl/test/).
-
 
 ## Bug Reporting
 
