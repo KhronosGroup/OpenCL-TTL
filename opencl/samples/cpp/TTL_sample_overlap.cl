@@ -27,14 +27,9 @@
 #define TILE_WIDTH 10
 #define TILE_HEIGHT 10
 
-__kernel void TTL_sample_overlap(__global uchar* const restrict ext_base_in, const TTL_shape_t shape_in,
-                                 const TTL_layout_t layout_in, __global uchar* const restrict ext_base_out,
-                                 const TTL_shape_t shape_out, const TTL_layout_t layout_out) {
-    __local TTL_ext_tensor_t ext_input_tensor, ext_output_tensor;
+__kernel void TTL_sample_overlap(__global void *unused_ptr_1, const TTL_ext_tensor_t ext_input_tensor,
+                                 const TTL_ext_tensor_t ext_output_tensor) {
     __local uchar l_in[TILE_SIZE], l_out[TILE_SIZE];
-
-    ext_input_tensor = TTL_create_ext_tensor(ext_base_in, shape_in, layout_in);
-    ext_output_tensor = TTL_create_ext_tensor(ext_base_out, shape_out, layout_out);
 
     // Logical input tiling.
     const TTL_shape_t tile_shape_in = TTL_create_shape(TILE_WIDTH + (TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT),
