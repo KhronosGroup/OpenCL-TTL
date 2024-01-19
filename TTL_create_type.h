@@ -17,5 +17,5 @@
  */
 
 // Simplly designed to prevent multiple #undef TTL_TENSOR_TYPE
-#include TYPES_INCLUDE_FILE
+#include TTL_TYPES_INCLUDE_FILE
 #undef TTL_TENSOR_TYPE

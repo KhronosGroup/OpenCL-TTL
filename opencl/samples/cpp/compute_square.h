@@ -23,18 +23,38 @@
 #define TILE_OVERLAP_TOP 0
 #define TILE_OVERLAP_BOTTOM 0
 
-void compute(__TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_in,
-             __TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_out) {
-    __local const TEST_TENSOR_TYPE* const l_in = tensor_in.tensor.base;
-    __local TEST_TENSOR_TYPE* const l_out = tensor_out.tensor.base;
-    const int width = tensor_out.tensor.shape.width;
-    const int height = tensor_out.tensor.shape.height;
-    const int stride_in = tensor_in.tensor.layout.row_spacing;
-    const int stride_out = tensor_out.tensor.layout.row_spacing;
+/*
+ * @brief Compute code based on a tensor
+ *
+ * Compute the square of the input tensor placing the result into the output tensor
+ *
+ * @param tensor_in The input tensor
+ * @param tensor_out The output tensor
+ *
+ * We split compute into compute and compute_square to demonstrate use of TTL_[read|write]_tensor
+ * with a simple tensor
+ */
+void compute_square(__TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, , _t) tensor_in,
+             __TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, , _t) tensor_out) {
 
-    for (int y = 0; y < height; ++y) {
-        for (int x = 0; x < width; ++x) {
-            l_out[(y * stride_out) + x] = l_in[(y * stride_in) + x] * l_in[(y * stride_in) + x];
+    for (int y = 0; y < tensor_out.shape.height; ++y) {
+        for (int x = 0; x < tensor_out.shape.width; ++x) {
+            TTL_write_tensor(tensor_out, TTL_read_tensor(tensor_in, x, y) * TTL_read_tensor(tensor_in, x, y), x, y);
         }
     }
+}
+
+/*
+ * @brief Compute code based on a tensor
+ *
+ * Compute the square of the input tensor placing the result into the output tensor
+ *
+ * @param tensor_in The input sub tensor
+ * @param tensor_out The output sub tensor
+ *
+ * We split compute into compute and compute_square to demonstrate use of TTL_[read|write]_tensor
+*/
+void compute(__TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_in,
+             __TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_out) {
+    compute_square(tensor_in.tensor, tensor_out.tensor);
 }

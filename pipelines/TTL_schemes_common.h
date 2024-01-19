@@ -20,14 +20,14 @@
 // this is not done here for path reasons.
 // #include "TTL_core.h"
 #ifndef DEFINING_TTL_SCHEMES_COMMON
-#pragma push_macro("TYPES_INCLUDE_FILE")
-#undef TYPES_INCLUDE_FILE
-#define TYPES_INCLUDE_FILE "pipelines/TTL_schemes_common.h"
+#pragma push_macro("TTL_TYPES_INCLUDE_FILE")
+#undef TTL_TYPES_INCLUDE_FILE
+#define TTL_TYPES_INCLUDE_FILE "pipelines/TTL_schemes_common.h"
 #define DEFINING_TTL_SCHEMES_COMMON BOB
 #include "../TTL_create_types.h"
 #pragma once
 #undef DEFINING_TTL_SCHEMES_COMMON
-#pragma pop_macro("TYPES_INCLUDE_FILE")
+#pragma pop_macro("TTL_TYPES_INCLUDE_FILE")
 #else
 /**
  * @def TTL_common_buffering_t

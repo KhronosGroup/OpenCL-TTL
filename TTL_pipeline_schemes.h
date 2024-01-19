@@ -22,11 +22,11 @@
 #include "TTL_import_export.h"
 #include TTL_IMPORT_EXPORT_INCLUDE_H
 
-#define TYPES_INCLUDE_FILE "pipelines/TTL_double_scheme.h"
+#define TTL_TYPES_INCLUDE_FILE "pipelines/TTL_double_scheme.h"
 #include "TTL_create_types.h"
 
-#define TYPES_INCLUDE_FILE "pipelines/TTL_simplex_scheme.h"
+#define TTL_TYPES_INCLUDE_FILE "pipelines/TTL_simplex_scheme.h"
 #include "TTL_create_types.h"
 
-#define TYPES_INCLUDE_FILE "pipelines/TTL_duplex_scheme.h"
+#define TTL_TYPES_INCLUDE_FILE "pipelines/TTL_duplex_scheme.h"
 #include "TTL_create_types.h"
