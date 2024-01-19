@@ -28,22 +28,19 @@
 #if __TTL_DEBUG > 0
 
 #define TTL_import_sub_tensor(...) TTL_import_sub_tensor(__VA_ARGS__, __LINE__)
+
 #define TTL_import(...) TTL_import(__VA_ARGS__, __LINE__)
 #define TTL_blocking_import(...) TTL_blocking_import(__VA_ARGS__, __LINE__)
-#define TTL_step_buffering(...) TTL_step_buffering(__VA_ARGS__, __LINE__)
 
+#define TTL_export(...) TTL_export(__VA_ARGS__, __LINE__)
 #define TTL_blocking_export(...) TTL_blocking_export(__VA_ARGS__, __LINE__)
-#define TTL_step_buffering(...) TTL_step_buffering(__VA_ARGS__, __LINE__)
 
-#define TTL_step_buffering(...) TTL_step_buffering(__VA_ARGS__, __LINE__)
 #define TTL_step_buffering(...) TTL_step_buffering(__VA_ARGS__, __LINE__)
 
 #define TTL_start_simplex_buffering(...) TTL_start_simplex_buffering(__VA_ARGS__, __LINE__)
 #define TTL_finish_simplex_buffering(...) TTL_finish_simplex_buffering(__VA_ARGS__, __LINE__)
 
-#define TTL_step_buffering(...) TTL_step_buffering(__VA_ARGS__, __LINE__)
-
-#define TTL_start_import_double_buffering(...) TTL_start_import_double_buffering(__VA_ARGS__)
+#define TTL_start_import_double_buffering(...) TTL_start_import_double_buffering(__VA_ARGS__, __LINE__)
 #define TTL_finish_import_double_buffering(...) TTL_finish_import_double_buffering(__VA_ARGS__, __LINE__)
 
 #define TTL_start_export_double_buffering(...) TTL_start_export_double_buffering(__VA_ARGS__, __LINE__)

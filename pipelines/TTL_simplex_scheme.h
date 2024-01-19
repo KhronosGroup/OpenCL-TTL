@@ -118,7 +118,7 @@ static inline TTL_io_tensors_t __attribute__((overloadable)) __TTL_TRACE_FN(TTL_
  * @enduml
  *
  */
-static inline TTL_simplex_buffering_t TTL_start_simplex_buffering(
+static inline TTL_simplex_buffering_t __TTL_TRACE_FN(TTL_start_simplex_buffering,
     TTL_local(void *) int_base1, TTL_local(void *) int_base2, TTL_local(void *) int_base3,
     TTL_ext_tensor_t ext_tensor_in, TTL_ext_tensor_t ext_tensor_out, TTL_event_t *event_in, TTL_event_t *event_out,
     TTL_tile_t first_tile) {

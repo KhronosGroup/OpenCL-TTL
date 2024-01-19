@@ -13,11 +13,20 @@ Install an OpenCL environment such a POCL. The tests were carried out with POCL.
 
 ## Python Wrapper
 
-    ./TTL_sample_runner.py TTL_double_buffering.cl
+    export TTL_INCLUDE_PATH=[PATH TO TTL]
+    export TTL_EXTRA_DEFINES=[ANY EXTRA DEFINES]
+   ./TTL_sample_runner.py TTL_double_buffering.cl
 
 The name can be wildcarded
 
+    export TTL_INCLUDE_PATH=[PATH TO TTL]
+    export TTL_EXTRA_DEFINES=[ANY EXTRA DEFINES]
     ./TTL_sample_runner.py TTL_*.cl
+
+TTL_EXTRA_DEFINES can for example define __TTL_DEBUG=1 to provide additional
+debug output. 
+
+    export TTL_EXTRA_DEFINES="__TTL_DEBUG=1"
 
 ## The "Kernel"
 
