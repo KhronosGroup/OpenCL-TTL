@@ -24,11 +24,16 @@
 #define TILE_WIDTH 1
 #define TILE_HEIGHT 1
 
-void KERNEL_NAME(unsigned char *restrict ext_base_in, int external_stride_in, unsigned char *restrict ext_base_out,
-                 int external_stride_out, int width, int height, int tile_width, int tile_height);
+#include "TTL/TTL.h"
 
-static uint8_t input_buffer[TENSOR_HEIGHT][TENSOR_WIDTH];
-static uint8_t output_buffer[TENSOR_HEIGHT][TENSOR_WIDTH];
+typedef unsigned int unsigned_int;
+
+bool KERNEL_NAME(TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
+                 TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, int width, int height,
+                 int tile_width, int tile_height);
+
+static TEST_TENSOR_TYPE input_buffer[TENSOR_HEIGHT][TENSOR_WIDTH];
+static TEST_TENSOR_TYPE output_buffer[TENSOR_HEIGHT][TENSOR_WIDTH];
 
 int main(void) {
     for (uint32_t y = 0; y < TENSOR_HEIGHT; y++) {
@@ -38,12 +43,14 @@ int main(void) {
         }
     }
 
-    KERNEL_NAME((uint8_t *)input_buffer,
-                TENSOR_WIDTH,
-                (uint8_t *)output_buffer,
-                TENSOR_WIDTH,
-                TENSOR_WIDTH,
-                TENSOR_HEIGHT,
-                TILE_WIDTH,
-                TILE_HEIGHT);
+    if (KERNEL_NAME(&input_buffer[0][0],
+                    TENSOR_WIDTH,
+                    &output_buffer[0][0],
+                    TENSOR_WIDTH,
+                    TENSOR_WIDTH,
+                    TENSOR_HEIGHT,
+                    TILE_WIDTH,
+                    TILE_HEIGHT) == true) {
+        printf("Compute checked and successful\n");
+    }
 }

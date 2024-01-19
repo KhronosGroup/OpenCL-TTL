@@ -16,15 +16,15 @@
  * limitations under the License.
  */
 
-bool result_check(unsigned char* const ext_base_in, unsigned char* const ext_base_out, const int width,
+bool result_check(TEST_TENSOR_TYPE* const ext_base_in, TEST_TENSOR_TYPE* const ext_base_out, const int width,
                   const int height) {
-#define input_buffer ((uint8_t(*)[height][width])ext_base_in)
-#define output_buffer ((uint8_t(*)[height][width])ext_base_out)
+#define input_buffer ((TEST_TENSOR_TYPE(*)[height][width])ext_base_in)
+#define output_buffer ((TEST_TENSOR_TYPE(*)[height][width])ext_base_out)
     bool result = true;
 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            unsigned char expected = input_buffer[0][y][x] ^ 2;
+            TEST_TENSOR_TYPE expected = input_buffer[0][y][x] * input_buffer[0][y][x];
 
             if (output_buffer[0][y][x] != expected) {
                 printf("Mismatch at [%d, %d] %d != %d Tensor size [%d, %d]\n",

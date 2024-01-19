@@ -19,13 +19,20 @@
 #include "TTL/TTL.h"
 #include "compute_cross.h"
 
+#undef TTL_IO_TENSORS_TYPE
+#define TTL_IO_TENSORS_TYPE __TTL_tensor_name(TTL_io_, , , TEST_TENSOR_TYPE, , _t)
+#undef TTL_DUPLEX_BUFFERING_TYPE
+#define TTL_DUPLEX_BUFFERING_TYPE __TTL_tensor_name(TTL_duplex_, const_, , TEST_TENSOR_TYPE, , _buffering_t)
+#undef TTL_EXT_TENSOR_TYPE
+#define TTL_EXT_TENSOR_TYPE __TTL_tensor_name(TTL_, , ext_, TEST_TENSOR_TYPE, , _t)
+
 #define MEMSZ 0x8000
 
-__kernel void TTL_duplex_buffering(__global uchar *restrict ext_base_in, int external_stride_in,
-                                   __global uchar *restrict ext_base_out, int external_stride_out, int width,
+__kernel void TTL_duplex_buffering(__global TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
+                                   __global TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, int width,
                                    int height, int tile_width, int tile_height) {
-    __local uchar l_in[MEMSZ];
-    __local uchar l_out[MEMSZ];
+    __local TEST_TENSOR_TYPE l_in[MEMSZ];
+    __local TEST_TENSOR_TYPE l_out[MEMSZ];
 
     // Logical input tiling.
     const TTL_shape_t tensor_shape_in = TTL_create_shape(width, height);
@@ -46,13 +53,13 @@ __kernel void TTL_duplex_buffering(__global uchar *restrict ext_base_in, int ext
     const TTL_layout_t ext_layout_in = TTL_create_layout(external_stride_in);
     const TTL_layout_t ext_layout_out = TTL_create_layout(external_stride_out);
 
-    const TTL_ext_tensor_t ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
-    const TTL_ext_tensor_t ext_output_tensor = TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
+    const TTL_EXT_TENSOR_TYPE ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
+    const TTL_EXT_TENSOR_TYPE ext_output_tensor = TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
 
     TTL_event_t sb_e_in_out[2] = { TTL_get_event(), TTL_get_event() };
 
     // The first data data from host->device starts here.
-    TTL_duplex_buffering_t duplex_scheme = TTL_start_duplex_buffering(
+    TTL_DUPLEX_BUFFERING_TYPE duplex_scheme = TTL_start_duplex_buffering(
         ext_input_tensor, l_in, ext_output_tensor, l_out, &sb_e_in_out, TTL_get_tile(0, input_tiler));
 
     for (int i = 0; i < TTL_number_of_tiles(input_tiler); ++i) {
@@ -60,7 +67,7 @@ __kernel void TTL_duplex_buffering(__global uchar *restrict ext_base_in, int ext
         TTL_tile_t tile_current_export = TTL_get_tile(i, output_tiler);
 
         // This waits for the current transfers to complete, and begins the next
-        TTL_io_tensors_t tensors = TTL_step_buffering(&duplex_scheme, tile_next_import, tile_current_export);
+        TTL_IO_TENSORS_TYPE tensors = TTL_step_buffering(&duplex_scheme, tile_next_import, tile_current_export);
 
         // Compute whilst the transfers are taking place (on separate buffers)
         compute(tensors.imported_to, tensors.to_export_from);

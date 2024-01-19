@@ -1,5 +1,5 @@
 /*
- * TTL_ext_tensors.h
+ * TTL_create_types.h
  *
  * Copyright (c) 2023 Mobileye
  *
@@ -16,20 +16,6 @@
  * limitations under the License.
  */
 
-#pragma once
-
-#define TENSOR_LOCATION ext_
-#define TENSOR_ADDRESS TTL_global
-// EXT TENSORS START
-#define TYPES_INCLUDE_FILE "tensors/TTL_int_ext_typed_tensors.h"
-#include "../TTL_create_types.h"
-// EXT TENSORS END
-#undef TYPES_INCLUDE_FILE
-#undef TENSOR_LOCATION
-#undef TENSOR_ADDRESS
-
-/* Make void the default unnamed type */
-typedef TTL_ext_void_tensor_t TTL_ext_tensor_t;
-typedef TTL_const_ext_void_tensor_t TTL_const_ext_tensor_t;
-typedef TTL_ext_void_sub_tensor_t TTL_ext_sub_tensor_t;
-typedef TTL_const_ext_void_sub_tensor_t TTL_const_ext_sub_tensor_t;
+// Simplly designed to prevent multiple #undef TTL_TENSOR_TYPE
+#include TYPES_INCLUDE_FILE
+#undef TTL_TENSOR_TYPE

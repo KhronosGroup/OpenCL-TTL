@@ -23,9 +23,10 @@
 #define TILE_OVERLAP_TOP 0
 #define TILE_OVERLAP_BOTTOM 0
 
-void compute(TTL_int_sub_tensor_t tensor_in, TTL_int_sub_tensor_t tensor_out) {
-    __local const unsigned char* const l_in = tensor_in.tensor.base;
-    __local unsigned char* const l_out = tensor_out.tensor.base;
+void compute(__TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_in,
+             __TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_out) {
+    __local const TEST_TENSOR_TYPE* const l_in = tensor_in.tensor.base;
+    __local TEST_TENSOR_TYPE* const l_out = tensor_out.tensor.base;
     const int width = tensor_out.tensor.shape.width;
     const int height = tensor_out.tensor.shape.height;
     const int stride_in = tensor_in.tensor.layout.row_spacing;

@@ -26,5 +26,9 @@ typedef unsigned char uchar;    ///< opencl and so TTL supports a type called uc
 #define __global                ///< The opencl __global namespace is not supported in C
 #define __local                 ///< The opencl __local namespace is not supported in C
 typedef unsigned char event_t;  ///< event_t is not supported, so provide a harmless placeholder
+typedef unsigned char uchar;    ///< OpenCL supports uchar so provide the same in c
+typedef unsigned int uint;      ///< OpenCL supports uint so provide the same in c
+typedef unsigned short ushort;  ///< OpenCL supports ushort so provide the same in c
+typedef unsigned long ulong;    ///< OpenCL supports ulong so provide the same in c
 
 #include "../opencl/TTL_types.h"

@@ -27,9 +27,16 @@
 #define TILE_WIDTH 10
 #define TILE_HEIGHT 10
 
-__kernel void TTL_sample_overlap(__global void *unused_ptr_1, const TTL_ext_tensor_t ext_input_tensor,
-                                 const TTL_ext_tensor_t ext_output_tensor) {
-    __local uchar l_in[TILE_SIZE], l_out[TILE_SIZE];
+#undef TTL_IO_TENSORS_TYPE
+#define TTL_IO_TENSORS_TYPE __TTL_tensor_name(TTL_io_, , , TEST_TENSOR_TYPE, , _t)
+#undef TTL_DUPLEX_BUFFERING_TYPE
+#define TTL_DUPLEX_BUFFERING_TYPE __TTL_tensor_name(TTL_duplex_, const_, , TEST_TENSOR_TYPE, , _buffering_t)
+#undef TTL_EXT_TENSOR_TYPE
+#define TTL_EXT_TENSOR_TYPE __TTL_tensor_name(TTL_, , ext_, TEST_TENSOR_TYPE, , _t)
+
+__kernel void TTL_sample_overlap(__global TEST_TENSOR_TYPE *unused_ptr_1, const TTL_EXT_TENSOR_TYPE ext_input_tensor,
+                                 const TTL_EXT_TENSOR_TYPE ext_output_tensor) {
+    __local TEST_TENSOR_TYPE l_in[TILE_SIZE], l_out[TILE_SIZE];
 
     // Logical input tiling.
     const TTL_shape_t tile_shape_in = TTL_create_shape(TILE_WIDTH + (TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT),
@@ -49,7 +56,7 @@ __kernel void TTL_sample_overlap(__global void *unused_ptr_1, const TTL_ext_tens
     // tile written to in previous iteration.
     TTL_event_t sb_e_in_out[2] = { TTL_get_event(), TTL_get_event() };
 
-    TTL_duplex_buffering_t duplex_scheme = TTL_start_duplex_buffering(
+    TTL_DUPLEX_BUFFERING_TYPE duplex_scheme = TTL_start_duplex_buffering(
         ext_input_tensor, l_in, ext_output_tensor, l_out, &sb_e_in_out, TTL_get_tile(0, input_tiler));
 
     for (int i = 0; i < TTL_number_of_tiles(input_tiler); ++i) {
@@ -57,7 +64,7 @@ __kernel void TTL_sample_overlap(__global void *unused_ptr_1, const TTL_ext_tens
         TTL_tile_t tile_current_export = TTL_get_tile(i, output_tiler);
 
         // Import current tile, export previous tile and wait for both transactions.
-        TTL_io_tensors_t tensors = TTL_step_buffering(&duplex_scheme, tile_next_import, tile_current_export);
+        TTL_IO_TENSORS_TYPE tensors = TTL_step_buffering(&duplex_scheme, tile_next_import, tile_current_export);
 
         compute(tensors.imported_to, tensors.to_export_from);
     }
