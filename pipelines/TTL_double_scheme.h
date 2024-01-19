@@ -109,13 +109,13 @@ static inline TTL_int_sub_tensor_t __attribute__((overloadable)) __TTL_TRACE_FN(
     return result;
 }
 
-static inline void __TTL_TRACE_FN(TTL_finish_import_double_buffering,
+static inline void __attribute__((overloadable)) __TTL_TRACE_FN(TTL_finish_buffering,
                                   TTL_import_double_buffering_t *import_double_buffering) {
     (void)import_double_buffering;
     // Nothing to do.
 }
 
-static inline void __TTL_TRACE_FN(TTL_finish_export_double_buffering,
+static inline void __attribute__((overloadable)) __TTL_TRACE_FN(TTL_finish_buffering,
                                   TTL_export_double_buffering_t *export_double_buffering) {
     TTL_step_buffering(export_double_buffering, TTL_create_empty_tile() __TTL_TRACE_LINE);
     TTL_step_buffering(export_double_buffering, TTL_create_empty_tile() __TTL_TRACE_LINE);

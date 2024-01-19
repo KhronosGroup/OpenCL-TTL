@@ -70,5 +70,5 @@ __kernel void TTL_simplex_buffering(__global uchar *restrict ext_base_in, int ex
         compute(tensors.imported_to, tensors.to_export_from);
     }
 
-    TTL_finish_simplex_buffering(&simplex_scheme);
+    TTL_finish_buffering(&simplex_scheme);
 }

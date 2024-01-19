@@ -53,6 +53,7 @@ void result_check(unsigned char* const ext_base_in, unsigned char* const ext_bas
                   const int height, const int tile_width, const int tile_height) {
     uint8_t(*const input_buffer)[height][width] = (uint8_t(*)[height][width])ext_base_in;
     uint8_t(*const output_buffer)[height][width] = (uint8_t(*)[height][width])ext_base_out;
+    bool result = true;
 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
@@ -76,7 +77,12 @@ void result_check(unsigned char* const ext_base_in, unsigned char* const ext_bas
                        height,
                        tile_width,
                        tile_height);
+                result = false;
             }
         }
+    }
+
+    if (result == true) {
+        printf("Compute checked and successful\n");
     }
 }

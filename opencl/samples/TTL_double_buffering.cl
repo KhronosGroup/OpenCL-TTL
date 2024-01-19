@@ -73,6 +73,6 @@ __kernel void TTL_double_buffering(__global uchar *restrict ext_base_in, int ext
         compute(imported_to, exported_from);
     }
 
-    TTL_finish_import_double_buffering(&import_db);
-    TTL_finish_export_double_buffering(&export_db);
+    TTL_finish_buffering(&import_db);
+    TTL_finish_buffering(&export_db);
 }
