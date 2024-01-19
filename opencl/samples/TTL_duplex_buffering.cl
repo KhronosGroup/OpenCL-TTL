@@ -66,7 +66,5 @@ __kernel void TTL_duplex_buffering(__global uchar *restrict ext_base_in, int ext
         compute(tensors.imported_to, tensors.to_export_from);
     }
 
-    // This waits for the last transfers to complete.
-    TTL_finish_duplex_buffering(&duplex_scheme);
-
+    TTL_finish_buffering(&duplex_scheme);
 }

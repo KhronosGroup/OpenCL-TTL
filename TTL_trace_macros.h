@@ -31,6 +31,7 @@
 
 #define TTL_import(...) TTL_import(__VA_ARGS__, __LINE__)
 #define TTL_blocking_import(...) TTL_blocking_import(__VA_ARGS__, __LINE__)
+<<<<<<< HEAD
 
 #define TTL_export(...) TTL_export(__VA_ARGS__, __LINE__)
 #define TTL_blocking_export(...) TTL_blocking_export(__VA_ARGS__, __LINE__)
@@ -43,9 +44,16 @@
 #define TTL_start_import_double_buffering(...) TTL_start_import_double_buffering(__VA_ARGS__, __LINE__)
 #define TTL_finish_import_double_buffering(...) TTL_finish_import_double_buffering(__VA_ARGS__, __LINE__)
 
-#define TTL_start_export_double_buffering(...) TTL_start_export_double_buffering(__VA_ARGS__, __LINE__)
-#define TTL_finish_export_double_buffering(...) TTL_finish_export_double_buffering(__VA_ARGS__, __LINE__)
+=======
+#define TTL_blocking_export(...) TTL_blocking_export(__VA_ARGS__, __LINE__)
 
+#define TTL_step_buffering(...) TTL_step_buffering(__VA_ARGS__, __LINE__)
+#define TTL_finish_buffering(...) TTL_finish_buffering(__VA_ARGS__, __LINE__)
+
+#define TTL_start_simplex_buffering(...) TTL_start_simplex_buffering(__VA_ARGS__, __LINE__)
+#define TTL_start_import_double_buffering(...) TTL_start_import_double_buffering(__VA_ARGS__)
+>>>>>>> ddd73c2... Rationalize finish_{TYPE}_buffering to be finish_buffering.
+#define TTL_start_export_double_buffering(...) TTL_start_export_double_buffering(__VA_ARGS__, __LINE__)
 #define TTL_start_duplex_buffering(...) TTL_start_duplex_buffering(__VA_ARGS__, __LINE__)
-#define TTL_finish_duplex_buffering(...) TTL_finish_duplex_buffering(__VA_ARGS__, __LINE__)
+
 #endif
