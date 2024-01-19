@@ -36,6 +36,12 @@ def TestTTL(program_name):
     else:
         ttl_include_path = ""
 
+    # Allow an environment variable to provide the TTL_INCLUDE_PATH, if not defined regular paths used.
+    if "TTL_EXTRA_DEFINES" in os.environ:
+        ttl_extra_defines =  " " + os.environ["TTL_EXTRA_DEFINES"] + " "
+    else:
+        ttl_extra_defines = ""
+
     # For convenience remove any extension if it included.
     program_name = os.path.splitext(os.path.basename(program_name))[0]
 
@@ -46,6 +52,7 @@ def TestTTL(program_name):
         + ttl_include_path
         + " -DKERNEL_NAME="
         + program_name
+        + ttl_extra_defines
         + " -DTTL_TARGET=c -fPIC -shared -o "
         + program_name
         + ".so "

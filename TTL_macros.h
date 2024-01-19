@@ -75,7 +75,7 @@
  * @def __TTL_TRACE_FN
  *
  * A function defined using __TTL_TRACE_FN will have an additional "unsigned int line" parameter
- * added is __TTL_DEBUG > 0.  This line parameter allows for the output of the line of code originating
+ * added if __TTL_DEBUG > 0.  This line parameter allows for the output of the line of code originating
  * the call.
  *
  * For example:

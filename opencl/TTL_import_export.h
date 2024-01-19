@@ -80,7 +80,7 @@ static inline void __TTL_TRACE_FN(TTL_import, const TTL_int_tensor_t internal_te
 
 #if __TTL_DEBUG > 0
     __TTL_dump_transaction(
-        false, TTL_int_tensor_to_const_int_tensor(&internal_tensor), &external_tensor, 0, event __TTL_TRACE_LINE);
+        false, TTL_to_const_tensor(&internal_tensor), &external_tensor, 0, event __TTL_TRACE_LINE);
 #endif  // __TTL_DEBUG
 }
 
@@ -130,7 +130,7 @@ static inline void __TTL_TRACE_FN(TTL_export, const TTL_const_int_tensor_t inter
 
 #if __TTL_DEBUG > 0
     __TTL_dump_transaction(
-        true, &internal_tensor, TTL_ext_tensor_to_const_ext_tensor(&external_tensor), 0, event __TTL_TRACE_LINE);
+        true, &internal_tensor, TTL_to_const_tensor(&external_tensor), 0, event __TTL_TRACE_LINE);
 #endif  // __TTL_DEBUG
 }
 

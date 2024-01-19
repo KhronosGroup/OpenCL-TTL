@@ -12,15 +12,25 @@ Install the TTL include files as described in [INSTALL](../../INSTALL)
 
 ## Python Wrapper
 
+    export TTL_INCLUDE_PATH=[PATH TO TTL]
+    export TTL_EXTRA_DEFINES=[ANY EXTRA DEFINES]
     ./TTL_sample_runner.py TTL_double_buffering.c
 
 The name can be wildcarded
 
+    export TTL_INCLUDE_PATH=[PATH TO TTL]
+    export TTL_EXTRA_DEFINES=[ANY EXTRA DEFINES]
     ./TTL_sample_runner.py TTL_*.c
+
+TTL_EXTRA_DEFINES can for example define __TTL_DEBUG=1 to provide additional
+debug output. 
+
+    export TTL_EXTRA_DEFINES="__TTL_DEBUG=1"
 
 ## C Wrapper
 
-    clang -Wextra -Wall -DKERNEL_NAME=TTL_duplex_buffering -DTTL_TARGET=c -g -O0 main.c TTL_duplex_buffering.c -o c_test
+    export TTL_INCLUDE_PATH=[PATH TO TTL]
+    clang -Wextra -Wall -DKERNEL_NAME=TTL_duplex_buffering -I $TTL_INCLUDE_PATH -DTTL_TARGET=c -g -O0 main.c TTL_duplex_buffering.c -o c_test
     ./c_test
 
 ## The "Kernel"

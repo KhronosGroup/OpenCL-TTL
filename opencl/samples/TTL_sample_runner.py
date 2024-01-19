@@ -34,13 +34,19 @@ def TestTTL(program_name):
     else:
         ttl_include_path = "-I /usr/local/include/"
 
+    # Allow an environment variable to provide the TTL_INCLUDE_PATH, if not defined regular paths used.
+    if "TTL_EXTRA_DEFINES" in os.environ:
+        ttl_extra_defines =  " " + os.environ["TTL_EXTRA_DEFINES"] + " "
+    else:
+        ttl_extra_defines = ""
+
     context = cl.create_some_context()
     queue = cl.CommandQueue(context)
 
     # For convenience remove the .cl extension if it included.
     program_name = os.path.splitext(program_name)[0]
     program = cl.Program(context, open(program_name + ".cl").read()).build(
-        options=ttl_include_path + " -DTTL_COPY_3D"
+        options=ttl_include_path + ttl_extra_defines + " -DTTL_COPY_3D"
     )
 
     # For variation a number of tensor random sizes are used, then tiled with random tile sizes
