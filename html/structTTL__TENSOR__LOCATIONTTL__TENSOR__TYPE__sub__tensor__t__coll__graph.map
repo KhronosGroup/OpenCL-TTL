@@ -1,0 +1,7 @@
+<map id="TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t" name="TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t">
+<area shape="rect" id="node1" title="const and non&#45;const sub tensors in the appropriate address space" alt="" coords="157,344,364,436"/>
+<area shape="rect" id="node2" href="$structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t.html" title="const and non&#45;const tensors in the appropriate address space" alt="" coords="5,182,212,274"/>
+<area shape="rect" id="node3" href="$structTTL__layout__t.html" title="Description of a Tensor layout in memory." alt="" coords="51,13,167,105"/>
+<area shape="rect" id="node4" href="$structTTL__shape__t.html" title="Description of a Shape." alt="" coords="201,5,299,112"/>
+<area shape="rect" id="node5" href="$structTTL__offset__t.html" title="Description of the 3D offset of an object." alt="" coords="331,175,427,281"/>
+</map>

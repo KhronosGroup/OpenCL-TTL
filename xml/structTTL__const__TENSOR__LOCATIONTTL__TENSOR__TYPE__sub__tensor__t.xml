@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</compoundname>
+    <includes refid="TTL__int__ext__typed__tensors_8h" local="no">TTL_int_ext_typed_tensors.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a753a8572af960f2aae103b55db8005aa" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::tensor</definition>
+        <argsstring></argsstring>
+        <name>tensor</name>
+        <qualifiedname>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::tensor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="78" column="73" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a1e26c97859bb019b7ba8f2823e15cfa1" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+        <definition>TTL_shape_t TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::shape</definition>
+        <argsstring></argsstring>
+        <name>shape</name>
+        <qualifiedname>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::shape</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="78" column="100" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a2a21819871e1014d5f87a3e4eb7b9485" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+        <definition>TTL_offset_t TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::sub_offset</definition>
+        <argsstring></argsstring>
+        <name>sub_offset</name>
+        <qualifiedname>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::sub_offset</qualifiedname>
+        <briefdescription>
+<para>The shape of the origin tensor in 3 dimensions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="78" column="122" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1afd174554144d304e524e367ee39172c4" prot="public" static="no" mutable="no">
+        <type>struct TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::@2</type>
+        <definition>struct TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::@2 TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::origin</definition>
+        <argsstring></argsstring>
+        <name>origin</name>
+        <qualifiedname>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::origin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="78" column="118"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</label>
+        <link refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+tensor</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>+sub_offset</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</label>
+        <link refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+layout</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TTL_layout_t</label>
+        <link refid="structTTL__layout__t"/>
+      </node>
+      <node id="5">
+        <label>TTL_offset_t</label>
+        <link refid="structTTL__offset__t"/>
+      </node>
+      <node id="4">
+        <label>TTL_shape_t</label>
+        <link refid="structTTL__shape__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="tensors/TTL_int_ext_typed_tensors.h" line="78" column="1" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="78" bodyend="78"/>
+    <listofallmembers>
+      <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1afd174554144d304e524e367ee39172c4" prot="public" virt="non-virtual"><scope>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</scope><name>origin</name></member>
+      <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a1e26c97859bb019b7ba8f2823e15cfa1" prot="public" virt="non-virtual"><scope>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</scope><name>shape</name></member>
+      <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a2a21819871e1014d5f87a3e4eb7b9485" prot="public" virt="non-virtual"><scope>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</scope><name>sub_offset</name></member>
+      <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a753a8572af960f2aae103b55db8005aa" prot="public" virt="non-virtual"><scope>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</scope><name>tensor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

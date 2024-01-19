@@ -1,0 +1,665 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="TTL__tensor__rw_8h" kind="file" language="C++">
+    <compoundname>TTL_tensor_rw.h</compoundname>
+    <includes refid="TTL__macros_8h" local="yes">../TTL_macros.h</includes>
+    <includes refid="TTL__types_8h" local="yes">../TTL_types.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>../TTL_macros.h</label>
+        <link refid="TTL__macros_8h"/>
+      </node>
+      <node id="3">
+        <label>../TTL_types.h</label>
+        <link refid="TTL__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_tensor_rw.h</label>
+        <link refid="TTL__tensor__rw_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+        <definition>static TTL_TENSOR_TYPE TTL_read_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_tensor_t tensor, const unsigned int x, const unsigned int y, const unsigned int z)</argsstring>
+        <name>TTL_read_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Read a value from a tensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_[type]_tensor_t describing the internal tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the x dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the y dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the z dimension</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+No bounds checking is performed.</para>
+<para><simplesect kind="return"><para>The value read </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="36" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1ace0d66182bbb790f01c1d2ea2d0ce7fe" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+        <definition>static TTL_TENSOR_TYPE TTL_read_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_tensor_t tensor, const unsigned int x, const unsigned int y)</argsstring>
+        <name>TTL_read_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="42" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="42" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1abdb041e71e91de074f45fdccbcd504d1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+        <definition>static TTL_TENSOR_TYPE TTL_read_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_tensor_t tensor, const unsigned int x)</argsstring>
+        <name>TTL_read_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="48" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="48" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1ad9e083083aba8b3e67fd6c4a72f1659e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+        <definition>static TTL_TENSOR_TYPE TTL_read_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t sub_tensor, const unsigned int x, const unsigned int y, const unsigned int z)</argsstring>
+        <name>TTL_read_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t</type>
+          <declname>sub_tensor</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Read a value from a tensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_[type]_sub_tensor_t describing the internal tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the x dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the y dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the z dimension</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+No bounds checking is performed.</para>
+<para><simplesect kind="return"><para>The value read </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="66" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="66" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1aeaa605f62557b1e989267172d4d98aa6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+        <definition>static TTL_TENSOR_TYPE TTL_read_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t sub_tensor, const unsigned int x, const unsigned int y)</argsstring>
+        <name>TTL_read_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t</type>
+          <declname>sub_tensor</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="72" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1a5a8d3be7790f0c354c9c969ef3cdcb3f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+        <definition>static TTL_TENSOR_TYPE TTL_read_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t sub_tensor, const unsigned int x)</argsstring>
+        <name>TTL_read_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t</type>
+          <declname>sub_tensor</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="78" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="78" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_write_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_tensor_t tensor, const TTL_TENSOR_TYPE value, const unsigned int x, const unsigned int y, const unsigned int z)</argsstring>
+        <name>TTL_write_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Write a value from a tensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_[type]_tensor_t describing the internal tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to right </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the x dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the y dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the z dimension</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>No return value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="95" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="95" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1a54a33cc53ff4be9ca2e22bf55beb024f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_write_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_tensor_t tensor, const TTL_TENSOR_TYPE value, unsigned int x, const unsigned int y)</argsstring>
+        <name>TTL_write_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="101" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="101" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1a1b44ff926ab9182a6aa52aa5337e99a0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_write_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_tensor_t tensor, const TTL_TENSOR_TYPE value, const unsigned int x)</argsstring>
+        <name>TTL_write_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="107" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="107" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1af4d5f202b21e26fa4beee8cdcd71ca01" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_write_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t sub_tensor, const TTL_TENSOR_TYPE value, const unsigned int x, const unsigned int y, const unsigned int z)</argsstring>
+        <name>TTL_write_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t</type>
+          <declname>sub_tensor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Write a value from a tensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_[type]_tensor_t describing the internal tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to right </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the x dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the y dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the z dimension</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>No return value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="124" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="124" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1aef4dc9c7093ad241072e808189e6c7f0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_write_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t sub_tensor, const TTL_TENSOR_TYPE value, unsigned int x, const unsigned int y)</argsstring>
+        <name>TTL_write_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t</type>
+          <declname>sub_tensor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="130" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="130" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tensor__rw_8h_1a6a34cc459bb198559ff5f05a9b325fb2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_write_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t sub_tensor, const TTL_TENSOR_TYPE value, const unsigned int x)</argsstring>
+        <name>TTL_write_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t</type>
+          <declname>sub_tensor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref></type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_tensor_rw.h" line="136" column="2" bodyfile="tensors/TTL_tensor_rw.h" bodystart="136" bodyend="138"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_tensors_common.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../TTL_macros.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../TTL_types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="22"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@brief<sp/><sp/>Read<sp/>a<sp/>value<sp/>from<sp/>a<sp/>tensor</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@param<sp/>tensor<sp/>A<sp/>TTL_int_[type]_tensor_t<sp/>describing<sp/>the<sp/>internal<sp/>tensor.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>x<sp/>dimension</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>y<sp/>dimension</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>z<sp/>dimension</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>No<sp/>bounds<sp/>checking<sp/>is<sp/>performed.</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>value<sp/>read</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kindref="member">TTL_read_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>tensor,</highlight></codeline>
+<codeline lineno="36" refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tensor.base[x<sp/>+<sp/>(tensor.layout.row_spacing<sp/>*<sp/>y)<sp/>+<sp/>(tensor.layout.plane_spacing<sp/>*<sp/>z)];</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kindref="member">TTL_read_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>tensor,</highlight></codeline>
+<codeline lineno="42" refid="TTL__tensor__rw_8h_1ace0d66182bbb790f01c1d2ea2d0ce7fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kindref="member">TTL_read_tensor</ref>(tensor,<sp/>x,<sp/>y,<sp/>0);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kindref="member">TTL_read_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>tensor,</highlight></codeline>
+<codeline lineno="48" refid="TTL__tensor__rw_8h_1abdb041e71e91de074f45fdccbcd504d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kindref="member">TTL_read_tensor</ref>(tensor,<sp/>x,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="52"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@brief<sp/><sp/>Read<sp/>a<sp/>value<sp/>from<sp/>a<sp/>tensor</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>@param<sp/>tensor<sp/>A<sp/>TTL_int_[type]_sub_tensor_t<sp/>describing<sp/>the<sp/>internal<sp/>tensor.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>x<sp/>dimension</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>y<sp/>dimension</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>z<sp/>dimension</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>No<sp/>bounds<sp/>checking<sp/>is<sp/>performed.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>value<sp/>read</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kindref="member">TTL_read_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>sub_,<sp/>_t)<sp/>sub_tensor,</highlight></codeline>
+<codeline lineno="66" refid="TTL__tensor__rw_8h_1ad9e083083aba8b3e67fd6c4a72f1659e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kindref="member">TTL_read_tensor</ref>(sub_tensor.tensor,<sp/>x,<sp/>y,<sp/>z);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kindref="member">TTL_read_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>sub_,<sp/>_t)<sp/>sub_tensor,</highlight></codeline>
+<codeline lineno="72" refid="TTL__tensor__rw_8h_1aeaa605f62557b1e989267172d4d98aa6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kindref="member">TTL_read_tensor</ref>(sub_tensor.tensor,<sp/>x,<sp/>y,<sp/>0);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kindref="member">TTL_read_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>sub_,<sp/>_t)<sp/>sub_tensor,</highlight></codeline>
+<codeline lineno="78" refid="TTL__tensor__rw_8h_1a5a8d3be7790f0c354c9c969ef3cdcb3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kindref="member">TTL_read_tensor</ref>(sub_tensor.tensor,<sp/>x,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="82"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>@brief<sp/><sp/>Write<sp/>a<sp/>value<sp/>from<sp/>a<sp/>tensor</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>@param<sp/>tensor<sp/>A<sp/>TTL_int_[type]_tensor_t<sp/>describing<sp/>the<sp/>internal<sp/>tensor.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>@param<sp/>value<sp/>The<sp/>value<sp/>to<sp/>right</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>x<sp/>dimension</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>y<sp/>dimension</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>z<sp/>dimension</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*<sp/>@return<sp/>No<sp/>return<sp/>value</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kindref="member">TTL_write_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>tensor,</highlight></codeline>
+<codeline lineno="95" refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>tensor.base[x<sp/>+<sp/>(tensor.layout.row_spacing<sp/>*<sp/>y)<sp/>+<sp/>(tensor.layout.plane_spacing<sp/>*<sp/>z)]<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kindref="member">TTL_write_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>tensor,</highlight></codeline>
+<codeline lineno="101" refid="TTL__tensor__rw_8h_1a54a33cc53ff4be9ca2e22bf55beb024f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>value,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kindref="member">TTL_write_tensor</ref>(tensor,<sp/>value,<sp/>x,<sp/>y,<sp/>0);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kindref="member">TTL_write_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>tensor,</highlight></codeline>
+<codeline lineno="107" refid="TTL__tensor__rw_8h_1a1b44ff926ab9182a6aa52aa5337e99a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kindref="member">TTL_write_tensor</ref>(tensor,<sp/>value,<sp/>x,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="111"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*<sp/>@brief<sp/><sp/>Write<sp/>a<sp/>value<sp/>from<sp/>a<sp/>tensor</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*<sp/>@param<sp/>tensor<sp/>A<sp/>TTL_int_[type]_tensor_t<sp/>describing<sp/>the<sp/>internal<sp/>tensor.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*<sp/>@param<sp/>value<sp/>The<sp/>value<sp/>to<sp/>right</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>x<sp/>dimension</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>y<sp/>dimension</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>z<sp/>dimension</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*<sp/>@return<sp/>No<sp/>return<sp/>value</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kindref="member">TTL_write_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>sub_,<sp/>_t)<sp/>sub_tensor,</highlight></codeline>
+<codeline lineno="124" refid="TTL__tensor__rw_8h_1af4d5f202b21e26fa4beee8cdcd71ca01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kindref="member">TTL_write_tensor</ref>(sub_tensor.tensor,<sp/>value,<sp/>x,<sp/>y,<sp/>z);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kindref="member">TTL_write_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>sub_,<sp/>_t)<sp/>sub_tensor,</highlight></codeline>
+<codeline lineno="130" refid="TTL__tensor__rw_8h_1aef4dc9c7093ad241072e808189e6c7f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>value,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kindref="member">TTL_write_tensor</ref>(sub_tensor.tensor,<sp/>value,<sp/>x,<sp/>y,<sp/>0);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kindref="member">TTL_write_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>sub_,<sp/>_t)<sp/>sub_tensor,</highlight></codeline>
+<codeline lineno="136" refid="TTL__tensor__rw_8h_1a6a34cc459bb198559ff5f05a9b325fb2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kindref="member">TTL_write_tensor</ref>(sub_tensor.tensor,<sp/>value,<sp/>x,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="tensors/TTL_tensor_rw.h"/>
+  </compounddef>
+</doxygen>

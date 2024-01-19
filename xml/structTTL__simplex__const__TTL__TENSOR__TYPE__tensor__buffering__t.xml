@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</compoundname>
+    <includes refid="TTL__simplex__scheme_8h" local="no">TTL_simplex_scheme.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1aab2bff664137e2283fc071eaef8f1b77" prot="public" static="no" mutable="no">
+        <type><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref> *</type>
+        <definition>TTL_event_t* TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::event_in</definition>
+        <argsstring></argsstring>
+        <name>event_in</name>
+        <qualifiedname>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::event_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_simplex_scheme.h" line="80" column="17" bodyfile="pipelines/TTL_simplex_scheme.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a61cbb634a53868eb0924ebe6647ba6d8" prot="public" static="no" mutable="no">
+        <type><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref> *</type>
+        <definition>TTL_event_t* TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::event_out</definition>
+        <argsstring></argsstring>
+        <name>event_out</name>
+        <qualifiedname>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::event_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_simplex_scheme.h" line="81" column="17" bodyfile="pipelines/TTL_simplex_scheme.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a05b1f9b8a47144b9b2a54a7f06084e86" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+        <definition>TTL_tile_t TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::next_exported_tile</definition>
+        <argsstring></argsstring>
+        <name>next_exported_tile</name>
+        <qualifiedname>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::next_exported_tile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_simplex_scheme.h" line="83" column="16" bodyfile="pipelines/TTL_simplex_scheme.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1ad9f25f3600369198ceae5871b0ffac0a" prot="public" static="no" mutable="no">
+        <type>TTL_int_TTL_TENSOR_TYPE_sub_tensor_t</type>
+        <definition>TTL_int_TTL_TENSOR_TYPE_sub_tensor_t TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::int_prev_imported</definition>
+        <argsstring></argsstring>
+        <name>int_prev_imported</name>
+        <qualifiedname>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::int_prev_imported</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_simplex_scheme.h" line="84" column="46" bodyfile="pipelines/TTL_simplex_scheme.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a331ec2be6fd6936a000dce21fcb951af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::TTL_common_buffering_t</definition>
+        <argsstring>(TTL_TENSOR_TYPE *, TTL_ext_TTL_TENSOR_TYPE_tensor_t, TTL_ext_TTL_TENSOR_TYPE_tensor_t, 3) common</argsstring>
+        <name>TTL_common_buffering_t</name>
+        <qualifiedname>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::TTL_common_buffering_t</qualifiedname>
+        <param>
+          <type><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *</type>
+        </param>
+        <param>
+          <type>TTL_ext_TTL_TENSOR_TYPE_tensor_t</type>
+        </param>
+        <param>
+          <type>TTL_ext_TTL_TENSOR_TYPE_tensor_t</type>
+        </param>
+        <param>
+          <type>3</type>
+        </param>
+        <briefdescription>
+<para>The information that is common to all pipeline schemes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_simplex_scheme.h" line="77" column="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>TTL_offset_t</label>
+        <link refid="structTTL__offset__t"/>
+      </node>
+      <node id="3">
+        <label>TTL_shape_t</label>
+        <link refid="structTTL__shape__t"/>
+      </node>
+      <node id="1">
+        <label>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</label>
+        <link refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+next_exported_tile</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TTL_tile_t</label>
+        <link refid="structTTL__tile__t"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+offset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="pipelines/TTL_simplex_scheme.h" line="76" column="1" bodyfile="pipelines/TTL_simplex_scheme.h" bodystart="76" bodyend="85"/>
+    <listofallmembers>
+      <member refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1aab2bff664137e2283fc071eaef8f1b77" prot="public" virt="non-virtual"><scope>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</scope><name>event_in</name></member>
+      <member refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a61cbb634a53868eb0924ebe6647ba6d8" prot="public" virt="non-virtual"><scope>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</scope><name>event_out</name></member>
+      <member refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1ad9f25f3600369198ceae5871b0ffac0a" prot="public" virt="non-virtual"><scope>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</scope><name>int_prev_imported</name></member>
+      <member refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a05b1f9b8a47144b9b2a54a7f06084e86" prot="public" virt="non-virtual"><scope>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</scope><name>next_exported_tile</name></member>
+      <member refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a331ec2be6fd6936a000dce21fcb951af" prot="public" virt="non-virtual"><scope>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</scope><name>TTL_common_buffering_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

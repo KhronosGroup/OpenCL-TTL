@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="TTL__create__types_8h" kind="file" language="C++">
+    <compoundname>TTL_create_types.h</compoundname>
+    <includes refid="TTL__create__type_8h" local="yes">TTL_create_type.h</includes>
+    <includedby refid="TTL__ext__tensors_8h" local="yes">TTL_ext_tensors.h</includedby>
+    <includedby refid="TTL__import__export_8h" local="yes">TTL_import_export.h</includedby>
+    <includedby refid="TTL__int__tensors_8h" local="yes">TTL_int_tensors.h</includedby>
+    <includedby refid="TTL__pipeline__schemes_8h" local="yes">TTL_pipeline_schemes.h</includedby>
+    <includedby refid="TTL__schemes__common_8h" local="yes">TTL_schemes_common.h</includedby>
+    <includedby refid="TTL__tensors_8h" local="yes">TTL_tensors.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>TTL_create_type.h</label>
+        <link refid="TTL__create__type_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_create_types.h</label>
+        <link refid="TTL__create__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TTL_TYPES_INCLUDE_FILE</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7">
+        <label>TTL.h</label>
+        <link refid="TTL_8h"/>
+      </node>
+      <node id="4">
+        <label>TTL_core.h</label>
+        <link refid="TTL__core_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_create_types.h</label>
+        <link refid="TTL__create__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>TTL_debug.h</label>
+        <link refid="TTL__debug_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>TTL_import_export.h</label>
+        <link refid="TTL__import__export_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>TTL_pipeline_schemes.h</label>
+        <link refid="TTL__pipeline__schemes_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TTL_tensors.h</label>
+        <link refid="TTL__tensors_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>TTL_double_scheme.h</label>
+        <link refid="TTL__double__scheme_8h"/>
+      </node>
+      <node id="12">
+        <label>TTL_double_scheme_template.h</label>
+        <link refid="TTL__double__scheme__template_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>TTL_duplex_scheme.h</label>
+        <link refid="TTL__duplex__scheme_8h"/>
+      </node>
+      <node id="10">
+        <label>TTL_schemes_common.h</label>
+        <link refid="TTL__schemes__common_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>TTL_simplex_scheme.h</label>
+        <link refid="TTL__simplex__scheme_8h"/>
+      </node>
+      <node id="2">
+        <label>TTL_ext_tensors.h</label>
+        <link refid="TTL__ext__tensors_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>TTL_int_tensors.h</label>
+        <link refid="TTL__int__tensors_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" prot="public" static="no">
+        <name>TTL_TENSOR_TYPE</name>
+        <initializer>void</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="26" column="9" bodyfile="TTL_create_types.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a0d3a58b4c06e2a870e8da416ddc95985" prot="public" static="no">
+        <name>sizeof_void</name>
+        <initializer>sizeof(char)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="27" column="9" bodyfile="TTL_create_types.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" prot="public" static="no">
+        <name>TTL_TENSOR_TYPE</name>
+        <initializer>char</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="32" column="9" bodyfile="TTL_create_types.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a046ba288d96e10726b861120b5816481" prot="public" static="no">
+        <name>sizeof_char</name>
+        <initializer>sizeof(char)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="33" column="9" bodyfile="TTL_create_types.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" prot="public" static="no">
+        <name>TTL_TENSOR_TYPE</name>
+        <initializer><ref refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kindref="member">uchar</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="36" column="9" bodyfile="TTL_create_types.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a316009b7d082325e51aee3870a2606d7" prot="public" static="no">
+        <name>sizeof_uchar</name>
+        <initializer>sizeof(<ref refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kindref="member">uchar</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="37" column="9" bodyfile="TTL_create_types.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" prot="public" static="no">
+        <name>TTL_TENSOR_TYPE</name>
+        <initializer>int</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="40" column="9" bodyfile="TTL_create_types.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a8abef5054d874709f3dfe6261824fa83" prot="public" static="no">
+        <name>sizeof_int</name>
+        <initializer>sizeof(int)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="41" column="9" bodyfile="TTL_create_types.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" prot="public" static="no">
+        <name>TTL_TENSOR_TYPE</name>
+        <initializer><ref refid="c_2TTL__types_8h_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="44" column="9" bodyfile="TTL_create_types.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a2fa0f9d36856a56363c5cc330372153d" prot="public" static="no">
+        <name>sizeof_uint</name>
+        <initializer>sizeof(<ref refid="c_2TTL__types_8h_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="45" column="9" bodyfile="TTL_create_types.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" prot="public" static="no">
+        <name>TTL_TENSOR_TYPE</name>
+        <initializer>short</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="48" column="9" bodyfile="TTL_create_types.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a9682dcf18b92fc88381f72b1d3c7d323" prot="public" static="no">
+        <name>sizeof_short</name>
+        <initializer>sizeof(short)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="49" column="9" bodyfile="TTL_create_types.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" prot="public" static="no">
+        <name>TTL_TENSOR_TYPE</name>
+        <initializer><ref refid="c_2TTL__types_8h_1ab95f123a6c9bcfee6a343170ef8c5f69" kindref="member">ushort</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="52" column="9" bodyfile="TTL_create_types.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1aa959f6d592a3a141dc8e3d9d36656292" prot="public" static="no">
+        <name>sizeof_ushort</name>
+        <initializer>sizeof(<ref refid="c_2TTL__types_8h_1ab95f123a6c9bcfee6a343170ef8c5f69" kindref="member">ushort</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="53" column="9" bodyfile="TTL_create_types.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" prot="public" static="no">
+        <name>TTL_TENSOR_TYPE</name>
+        <initializer>long</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="56" column="9" bodyfile="TTL_create_types.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1ad5a6a8b77a7f31b98131b0bf51ba498a" prot="public" static="no">
+        <name>sizeof_long</name>
+        <initializer>sizeof(long)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="57" column="9" bodyfile="TTL_create_types.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" prot="public" static="no">
+        <name>TTL_TENSOR_TYPE</name>
+        <initializer><ref refid="c_2TTL__types_8h_1a718b4eb2652c286f4d42dc18a8e71a1a" kindref="member">ulong</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="60" column="9" bodyfile="TTL_create_types.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__create__types_8h_1aac7689265a92c8ffdc2950ed7f518125" prot="public" static="no">
+        <name>sizeof_ulong</name>
+        <initializer>sizeof(<ref refid="c_2TTL__types_8h_1a718b4eb2652c286f4d42dc18a8e71a1a" kindref="member">ulong</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="TTL_create_types.h" line="61" column="9" bodyfile="TTL_create_types.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_create_types.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/************************************************************************************************************</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>We<sp/>genrate<sp/>sizeof_TYPE<sp/>to<sp/>allow<sp/>for<sp/>sizeof<sp/>anything<sp/>-<sp/>deals<sp/>with<sp/>sizeof(void)</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>************************************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>push_macro(&quot;TTL_TENSOR_TYPE&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TTL_TYPES_NO_VOID</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_TENSOR_TYPE<sp/>void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="TTL__create__types_8h_1a0d3a58b4c06e2a870e8da416ddc95985" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>sizeof_void<sp/>sizeof(char)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__create__type_8h" kindref="compound">TTL_create_type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TTL_TYPES_NO_VOID</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_TENSOR_TYPE<sp/>char</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="TTL__create__types_8h_1a046ba288d96e10726b861120b5816481" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>sizeof_char<sp/>sizeof(char)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__create__type_8h" kindref="compound">TTL_create_type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_TENSOR_TYPE<sp/>uchar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="TTL__create__types_8h_1a316009b7d082325e51aee3870a2606d7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>sizeof_uchar<sp/>sizeof(uchar)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__create__type_8h" kindref="compound">TTL_create_type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_TENSOR_TYPE<sp/>int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="TTL__create__types_8h_1a8abef5054d874709f3dfe6261824fa83" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>sizeof_int<sp/>sizeof(int)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__create__type_8h" kindref="compound">TTL_create_type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_TENSOR_TYPE<sp/>uint</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="TTL__create__types_8h_1a2fa0f9d36856a56363c5cc330372153d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>sizeof_uint<sp/>sizeof(uint)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__create__type_8h" kindref="compound">TTL_create_type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_TENSOR_TYPE<sp/>short</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="TTL__create__types_8h_1a9682dcf18b92fc88381f72b1d3c7d323" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>sizeof_short<sp/>sizeof(short)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__create__type_8h" kindref="compound">TTL_create_type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_TENSOR_TYPE<sp/>ushort</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="TTL__create__types_8h_1aa959f6d592a3a141dc8e3d9d36656292" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>sizeof_ushort<sp/>sizeof(ushort)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__create__type_8h" kindref="compound">TTL_create_type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_TENSOR_TYPE<sp/>long</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="TTL__create__types_8h_1ad5a6a8b77a7f31b98131b0bf51ba498a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>sizeof_long<sp/>sizeof(long)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__create__type_8h" kindref="compound">TTL_create_type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_TENSOR_TYPE<sp/>ulong</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="TTL__create__types_8h_1aac7689265a92c8ffdc2950ed7f518125" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>sizeof_ulong<sp/>sizeof(ulong)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__create__type_8h" kindref="compound">TTL_create_type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TTL_TYPES_INCLUDE_FILE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>pop_macro(&quot;TTL_TENSOR_TYPE&quot;</highlight><highlight class="normal">)</highlight></codeline>
+    </programlisting>
+    <location file="TTL_create_types.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,377 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.4" xml:lang="en-US">
+  <compound refid="structTTL__augmentation__t" kind="struct"><name>TTL_augmentation_t</name>
+    <member refid="structTTL__augmentation__t_1aa4865c0b863d4a85ad0aff9d57c97485" kind="variable"><name>left</name></member>
+    <member refid="structTTL__augmentation__t_1a14b6707c96da50f066053ad2cc5f543a" kind="variable"><name>right</name></member>
+    <member refid="structTTL__augmentation__t_1a95dd77223f0d5616a8b7105c1957c559" kind="variable"><name>top</name></member>
+    <member refid="structTTL__augmentation__t_1a438ab3342248b88791815fb12dd9df3b" kind="variable"><name>bottom</name></member>
+    <member refid="structTTL__augmentation__t_1ae8bcfe2fcd93b71fb9cf9b001211bb7f" kind="variable"><name>front</name></member>
+    <member refid="structTTL__augmentation__t_1a2daf4dc74791c6c7a7c01751044254e4" kind="variable"><name>back</name></member>
+  </compound>
+  <compound refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kind="struct"><name>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</name>
+    <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a753a8572af960f2aae103b55db8005aa" kind="variable"><name>tensor</name></member>
+    <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a1e26c97859bb019b7ba8f2823e15cfa1" kind="variable"><name>shape</name></member>
+    <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a2a21819871e1014d5f87a3e4eb7b9485" kind="variable"><name>sub_offset</name></member>
+    <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1afd174554144d304e524e367ee39172c4" kind="variable"><name>origin</name></member>
+  </compound>
+  <compound refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kind="struct"><name>TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</name>
+    <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t_1a1d55aab561e1c2c06cb1647142c8f8eb" kind="variable"><name>elem_size</name></member>
+    <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t_1a115a90efccd764b0a2dc64d6a3a2b7b9" kind="variable"><name>layout</name></member>
+    <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t_1a3c64c4c20419bafd8c230d5c61522c13" kind="variable"><name>shape</name></member>
+    <member refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t_1a664b76214f2b8cdb7540c0aa50690034" kind="function"><name>TENSOR_ADDRESS</name></member>
+  </compound>
+  <compound refid="structTTL__DOUBLE__BUFFERING__TYPE" kind="struct"><name>TTL_DOUBLE_BUFFERING_TYPE</name>
+    <member refid="structTTL__DOUBLE__BUFFERING__TYPE_1aaa70f4c834ae197b62989737eb0aedee" kind="variable"><name>event</name></member>
+    <member refid="structTTL__DOUBLE__BUFFERING__TYPE_1a6e09155ceaae67d1fe9a7fe4ccb69dca" kind="variable"><name>prev_tile</name></member>
+    <member refid="structTTL__DOUBLE__BUFFERING__TYPE_1ad90a8ed430c61e865a802160d338031d" kind="function"><name>TTL_common_buffering_t</name></member>
+  </compound>
+  <compound refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t" kind="struct"><name>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</name>
+    <member refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a9fbb4aa1c915b7ebac9eb5cbd7b5ff81" kind="variable"><name>events</name></member>
+    <member refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a1ad14085d9868dcd710f5736a8a21fc9" kind="variable"><name>to_export_to</name></member>
+    <member refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a3ce6e02cfd84e723f6d69254a4bf472b" kind="variable"><name>to_export_from</name></member>
+    <member refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1acc5220e537c04fd8a2561cd23480904c" kind="variable"><name>prev_out_tensors</name></member>
+    <member refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1aaeb97887b55c3859fd457a0f9a484cf7" kind="function"><name>TTL_common_buffering_t</name></member>
+  </compound>
+  <compound refid="structTTL__layout__t" kind="struct"><name>TTL_layout_t</name>
+    <member refid="structTTL__layout__t_1a3cc6d96665a9c516f3e8ec3bb68124f8" kind="variable"><name>row_spacing</name></member>
+    <member refid="structTTL__layout__t_1ab76e2e1fcb6e0416f9e234686c07584c" kind="variable"><name>plane_spacing</name></member>
+  </compound>
+  <compound refid="structTTL__offset__t" kind="struct"><name>TTL_offset_t</name>
+    <member refid="structTTL__offset__t_1abe9df04b12aa2c98c76241d6b74dbc22" kind="variable"><name>x</name></member>
+    <member refid="structTTL__offset__t_1aae0c2bbb96222eb5e580367dc2f2b12c" kind="variable"><name>y</name></member>
+    <member refid="structTTL__offset__t_1a9966699158adc499f07c4499c972cc75" kind="variable"><name>z</name></member>
+  </compound>
+  <compound refid="structTTL__overlap__t" kind="struct"><name>TTL_overlap_t</name>
+    <member refid="structTTL__overlap__t_1ae4469319b7409cd74289b3b9031a460e" kind="variable"><name>width</name></member>
+    <member refid="structTTL__overlap__t_1aa7a279104c7ef1676d8e2528cb6bcccc" kind="variable"><name>height</name></member>
+    <member refid="structTTL__overlap__t_1a6e9810c5c0a2c94854533807b5e93e53" kind="variable"><name>depth</name></member>
+  </compound>
+  <compound refid="structTTL__shape__t" kind="struct"><name>TTL_shape_t</name>
+    <member refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kind="variable"><name>width</name></member>
+    <member refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kind="variable"><name>height</name></member>
+    <member refid="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" kind="variable"><name>depth</name></member>
+  </compound>
+  <compound refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t" kind="struct"><name>TTL_simplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</name>
+    <member refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1aab2bff664137e2283fc071eaef8f1b77" kind="variable"><name>event_in</name></member>
+    <member refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a61cbb634a53868eb0924ebe6647ba6d8" kind="variable"><name>event_out</name></member>
+    <member refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a05b1f9b8a47144b9b2a54a7f06084e86" kind="variable"><name>next_exported_tile</name></member>
+    <member refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1ad9f25f3600369198ceae5871b0ffac0a" kind="variable"><name>int_prev_imported</name></member>
+    <member refid="structTTL__simplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a331ec2be6fd6936a000dce21fcb951af" kind="function"><name>TTL_common_buffering_t</name></member>
+  </compound>
+  <compound refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kind="struct"><name>TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</name>
+    <member refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a79a20a87bb51fe0740f2b15eb23d06a0" kind="variable"><name>tensor</name></member>
+    <member refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a502b0c33942d6df266070bd7fd306263" kind="variable"><name>shape</name></member>
+    <member refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1a7c70294288e0d4f91a9cedae22873d86" kind="variable"><name>sub_offset</name></member>
+    <member refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1afbe0e6b7f9baee446eb436823ecee4b2" kind="variable"><name>origin</name></member>
+  </compound>
+  <compound refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kind="struct"><name>TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</name>
+    <member refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t_1a4501f482016798660b7844907d7bc64e" kind="variable"><name>elem_size</name></member>
+    <member refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t_1a1b117d982583e82530854ca4720e869a" kind="variable"><name>layout</name></member>
+    <member refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t_1a022426fbd2646db3da8fd2fc4c9c0c67" kind="variable"><name>shape</name></member>
+    <member refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t_1ac345c92b1b1c30f15a8cdbca88686299" kind="function"><name>TENSOR_ADDRESS</name></member>
+  </compound>
+  <compound refid="structTTL__tile__t" kind="struct"><name>TTL_tile_t</name>
+    <member refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kind="variable"><name>shape</name></member>
+    <member refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" kind="variable"><name>offset</name></member>
+  </compound>
+  <compound refid="structTTL__tiler__t" kind="struct"><name>TTL_tiler_t</name>
+    <member refid="structTTL__tiler__t_1ac46505174c37e6f5b4e6993ec411e7c1" kind="variable"><name>space</name></member>
+    <member refid="structTTL__tiler__t_1a322252fe86f426c6f0d2d33e41c3e484" kind="variable"><name>tile</name></member>
+    <member refid="structTTL__tiler__t_1a3a38591bca09c0e4c14403099c1d5eda" kind="variable"><name>overlap</name></member>
+    <member refid="structTTL__tiler__t_1a823b767beb6a8775fd219c5ab307771f" kind="variable"><name>augmentation</name></member>
+    <member refid="structTTL__tiler__t_1ae6e4a2c2147c55412cac7cfb072c018a" kind="variable"><name>number_of_tiles</name></member>
+    <member refid="structTTL__tiler__t_1a0686e98101d3964e22a2b229cdee5bdd" kind="variable"><name>tiles_in_width</name></member>
+    <member refid="structTTL__tiler__t_1ad1632e6b21ee5ad81f2ac6a3a90ba703" kind="variable"><name>tiles_in_height</name></member>
+    <member refid="structTTL__tiler__t_1a3c3f2927d87f212ae77571d8747c4657" kind="variable"><name>tiles_in_depth</name></member>
+    <member refid="structTTL__tiler__t_1a873497b66846b5266bc77ded752030c5" kind="variable"><name>tiles_in_plane</name></member>
+    <member refid="structTTL__tiler__t_1a7765ee1bf54240b6df31fabcc49b91e5" kind="variable"><name>cache</name></member>
+  </compound>
+  <compound refid="TTL__typed__import__export_8h" kind="file"><name>TTL_typed_import_export.h</name>
+    <member refid="TTL__typed__import__export_8h_1a008b83138fca3df1dff9f6f919f85e67" kind="function"><name>TTL_import</name></member>
+    <member refid="TTL__typed__import__export_8h_1a689a69af0756f10a0df8ca69070509f7" kind="function"><name>TTL_blocking_import</name></member>
+    <member refid="TTL__typed__import__export_8h_1a3833a82027c682647a61ba024311b139" kind="function"><name>TTL_import_sub_tensor</name></member>
+    <member refid="TTL__typed__import__export_8h_1a6d22fb1b074849ab35399fa2ddad1c78" kind="function"><name>TTL_export</name></member>
+    <member refid="TTL__typed__import__export_8h_1a013f2843e14e68ac6642348539f8f7a1" kind="function"><name>TTL_blocking_export</name></member>
+  </compound>
+  <compound refid="TTL__async__work__group__copy__3D3D_8h" kind="file"><name>TTL_async_work_group_copy_3D3D.h</name>
+    <member refid="TTL__async__work__group__copy__3D3D_8h_1a789c54616692e2d6d7f16109b39defb9" kind="function"><name>async_work_group_copy_3D3D</name></member>
+    <member refid="TTL__async__work__group__copy__3D3D_8h_1ac993a2e8d27233a95245f355104d95c9" kind="function"><name>async_work_group_copy_3D3D</name></member>
+  </compound>
+  <compound refid="c_2TTL__import__export_8h" kind="file"><name>c/TTL_import_export.h</name>
+    <member refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kind="typedef"><name>TTL_event_t</name></member>
+    <member refid="c_2TTL__import__export_8h_1a2f98883b994307a8265c0068fa28b2a2" kind="function"><name>wait_group_events</name></member>
+    <member refid="c_2TTL__import__export_8h_1a0252e0a5481bd29a10bf1c66081a5501" kind="function"><name>async_work_group_copy_3D3D</name></member>
+  </compound>
+  <compound refid="opencl_2TTL__import__export_8h" kind="file"><name>opencl/TTL_import_export.h</name>
+    <member refid="opencl_2TTL__import__export_8h_1ab52c0b665518000f2c402c5170a58ee2" kind="function"><name>TTL_get_event</name></member>
+    <member refid="opencl_2TTL__import__export_8h_1a9ab49a751ac68ef2faec162bc9d8d70b" kind="function"><name>TTL_wait</name></member>
+    <member refid="opencl_2TTL__import__export_8h_1a2b4efe45abbec1418972b980cc8c8c9b" kind="function"><name>TTL_import_base</name></member>
+    <member refid="opencl_2TTL__import__export_8h_1a964262b8639c48eeb40282f26d74062c" kind="function"><name>TTL_blocking_import_base</name></member>
+    <member refid="opencl_2TTL__import__export_8h_1a5d7737bbf92e5ff98d3e8cfd3f2bda1c" kind="function"><name>TTL_export_base</name></member>
+    <member refid="opencl_2TTL__import__export_8h_1a7a80aace9fee264fc61af6884c3a0112" kind="function"><name>TTL_blocking_export_base</name></member>
+  </compound>
+  <compound refid="TTL__import__export_8h" kind="file"><name>TTL_import_export.h</name>
+    <member refid="TTL__import__export_8h_1a6b22dc0fb2190897fc02d468a1180150" kind="define"><name>TTL_MAX</name></member>
+    <member refid="TTL__import__export_8h_1a9421ee5b320e2fae87a3168b50e77327" kind="define"><name>TTL_TYPES_INCLUDE_FILE</name></member>
+    <member refid="TTL__import__export_8h_1a477d5b52f4ca0de67a70e430e372b0ed" kind="function"><name>TTL_local_memset</name></member>
+    <member refid="TTL__import__export_8h_1ab5b44169a1ad82f55930fb7c32206a36" kind="function"><name>TTL_clear_void_space</name></member>
+    <member refid="TTL__import__export_8h_1a5ddf38fd72f7c298c2e6814f4e87ebc2" kind="function"><name>TTL_import_pre_fill</name></member>
+  </compound>
+  <compound refid="c_2TTL__types_8h" kind="file"><name>c/TTL_types.h</name>
+    <member refid="c_2TTL__types_8h_1a0bcdca9f6e5923ea191d934ec3400d9e" kind="define"><name>__global</name></member>
+    <member refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kind="define"><name>__local</name></member>
+    <member refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kind="typedef"><name>uchar</name></member>
+    <member refid="c_2TTL__types_8h_1af7aafacf1b2d8b553b9b2dcd66925038" kind="typedef"><name>event_t</name></member>
+    <member refid="c_2TTL__types_8h_1a91ad9478d81a7aaf2593e8d9c3d06a14" kind="typedef"><name>uint</name></member>
+    <member refid="c_2TTL__types_8h_1ab95f123a6c9bcfee6a343170ef8c5f69" kind="typedef"><name>ushort</name></member>
+    <member refid="c_2TTL__types_8h_1a718b4eb2652c286f4d42dc18a8e71a1a" kind="typedef"><name>ulong</name></member>
+  </compound>
+  <compound refid="opencl_2TTL__types_8h" kind="file"><name>opencl/TTL_types.h</name>
+    <member refid="opencl_2TTL__types_8h_1a6ab3c3094bd8aa4ddd259edf7d65af8d" kind="define"><name>TTL_global</name></member>
+    <member refid="opencl_2TTL__types_8h_1a7d432e2f8d36369b38141f17e57ce387" kind="define"><name>TTL_global_printf</name></member>
+    <member refid="opencl_2TTL__types_8h_1aeb0ea5125e9674af265edb2d191ff5ab" kind="define"><name>TTL_local</name></member>
+    <member refid="opencl_2TTL__types_8h_1a16454d966a4c382cdde6f03a5446563a" kind="define"><name>TTL_local_printf</name></member>
+    <member refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kind="typedef"><name>TTL_dim_t</name></member>
+    <member refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kind="typedef"><name>TTL_offset_dim_t</name></member>
+    <member refid="opencl_2TTL__types_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kind="typedef"><name>TTL_event_t</name></member>
+  </compound>
+  <compound refid="tensors_2TTL__types_8h" kind="file"><name>tensors/TTL_types.h</name>
+    <member refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kind="typedef"><name>TTL_overlap_dim_t</name></member>
+    <member refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kind="function"><name>TTL_create_shape</name></member>
+    <member refid="tensors_2TTL__types_8h_1a7668c7df3528498df2e4af91eccfdc14" kind="function"><name>TTL_create_shape</name></member>
+    <member refid="tensors_2TTL__types_8h_1a39b5938df0790d05babda78d2fea7de6" kind="function"><name>TTL_create_shape</name></member>
+    <member refid="tensors_2TTL__types_8h_1a7871ed21af1fda46f48e16bc4c68df06" kind="function"><name>TTL_shape_empty</name></member>
+    <member refid="tensors_2TTL__types_8h_1a74c02e5006557e50ccaf1fed19bdf5ec" kind="function"><name>TTL_create_offset</name></member>
+    <member refid="tensors_2TTL__types_8h_1a107723b741e9630eac566b02cb037367" kind="function"><name>TTL_create_offset</name></member>
+    <member refid="tensors_2TTL__types_8h_1aed795de9be2e6dd5c8b3a93e959d2349" kind="function"><name>TTL_create_offset</name></member>
+    <member refid="tensors_2TTL__types_8h_1adf5de0eeb794cf2b6dceab76696edd71" kind="function"><name>TTL_create_offset</name></member>
+    <member refid="tensors_2TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" kind="function"><name>TTL_create_overlap</name></member>
+    <member refid="tensors_2TTL__types_8h_1aecd90af95c5a2fc8c63f191050f9a224" kind="function"><name>TTL_create_overlap</name></member>
+    <member refid="tensors_2TTL__types_8h_1a977fe6015cebed0ccbae44003c85a4f9" kind="function"><name>TTL_create_overlap</name></member>
+  </compound>
+  <compound refid="TTL__types_8h" kind="file"><name>TTL_types.h</name>
+    <member refid="TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kind="typedef"><name>TTL_overlap_dim_t</name></member>
+    <member refid="TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kind="function"><name>TTL_create_shape</name></member>
+    <member refid="TTL__types_8h_1a7668c7df3528498df2e4af91eccfdc14" kind="function"><name>TTL_create_shape</name></member>
+    <member refid="TTL__types_8h_1a39b5938df0790d05babda78d2fea7de6" kind="function"><name>TTL_create_shape</name></member>
+    <member refid="TTL__types_8h_1a7871ed21af1fda46f48e16bc4c68df06" kind="function"><name>TTL_shape_empty</name></member>
+    <member refid="TTL__types_8h_1a74c02e5006557e50ccaf1fed19bdf5ec" kind="function"><name>TTL_create_offset</name></member>
+    <member refid="TTL__types_8h_1a107723b741e9630eac566b02cb037367" kind="function"><name>TTL_create_offset</name></member>
+    <member refid="TTL__types_8h_1aed795de9be2e6dd5c8b3a93e959d2349" kind="function"><name>TTL_create_offset</name></member>
+    <member refid="TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" kind="function"><name>TTL_create_offset</name></member>
+    <member refid="TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" kind="function"><name>TTL_create_overlap</name></member>
+    <member refid="TTL__types_8h_1aecd90af95c5a2fc8c63f191050f9a224" kind="function"><name>TTL_create_overlap</name></member>
+    <member refid="TTL__types_8h_1a977fe6015cebed0ccbae44003c85a4f9" kind="function"><name>TTL_create_overlap</name></member>
+  </compound>
+  <compound refid="TTL__double__scheme_8h" kind="file"><name>TTL_double_scheme.h</name>
+    <member refid="TTL__double__scheme_8h_1add7bb34be32a2a36cf6beff21005e120" kind="define"><name>TTL_IMPORT_DOUBLE</name></member>
+    <member refid="TTL__double__scheme_8h_1ac022c0c3e4792379c0689a7251480ac3" kind="define"><name>TTL_EXPORT_DOUBLE</name></member>
+    <member refid="TTL__double__scheme_8h_1a748725523d20f2f1a0ead1681c2f959b" kind="function"><name>TTL_step_buffering</name></member>
+    <member refid="TTL__double__scheme_8h_1a33e1374cf7728c60527b9d3dd5fdcb9f" kind="function"><name>TTL_step_buffering</name></member>
+    <member refid="TTL__double__scheme_8h_1a5f958129f8af5e1c5fced04559ff002a" kind="function"><name>TTL_finish_buffering</name></member>
+    <member refid="TTL__double__scheme_8h_1a74ddb0a7c40c150cbbbeea40a4d873a5" kind="function"><name>TTL_finish_buffering</name></member>
+  </compound>
+  <compound refid="TTL__double__scheme__template_8h" kind="file"><name>TTL_double_scheme_template.h</name>
+    <member refid="TTL__double__scheme__template_8h_1aa726390be0a7bc731c23cb361f0409a8" kind="define"><name>TTL_IO_TENSOR_TYPE</name></member>
+    <member refid="TTL__double__scheme__template_8h_1a02dee7073641a4f9b5b813e02318a018" kind="define"><name>TTL_INT_SUB_TENSOR_TYPE</name></member>
+    <member refid="TTL__double__scheme__template_8h_1a1b1bd3ee0c542356bfa00baabe4bfa1c" kind="define"><name>TTL_CONST_INT_SUB_TENSOR_TYPE</name></member>
+    <member refid="TTL__double__scheme__template_8h_1ac04f0e620237fe986519d3e6504a54c9" kind="define"><name>TTL_INT_TENSOR_TYPE</name></member>
+    <member refid="TTL__double__scheme__template_8h_1aab8924f33a928b25435ad601d37ef7b4" kind="define"><name>TTL_CONST_INT_TENSOR_TYPE</name></member>
+    <member refid="TTL__double__scheme__template_8h_1a86f724d1f49937ec9fb751cced1499f7" kind="define"><name>TTL_CONST_EXT_TENSOR_TYPE</name></member>
+    <member refid="TTL__double__scheme__template_8h_1ae3e912f31245c64622ea4bcb036a2406" kind="define"><name>TTL_JOIN</name></member>
+    <member refid="TTL__double__scheme__template_8h_1af9b08b682007a92056044cca94ea15a3" kind="variable"><name>ext_tensor</name></member>
+    <member refid="TTL__double__scheme__template_8h_1ade6d6d18a46c8aa95eed5e179d003e45" kind="variable"><name>result</name></member>
+    <member refid="TTL__double__scheme__template_8h_1a35b83a32792193a727d66677ee338fab" kind="variable"><name>int_base</name></member>
+    <member refid="TTL__double__scheme__template_8h_1a6ab0301338a8ca810e32fcdb3cbde8a2" kind="variable"><name>ext_tensor_in</name></member>
+    <member refid="TTL__double__scheme__template_8h_1a661982ea3f5ce8c1e584bac6215180cc" kind="variable"><name>event</name></member>
+    <member refid="TTL__double__scheme__template_8h_1a0c4e2c8b1c80a39418bf30f9f3b4b845" kind="variable"><name>index</name></member>
+    <member refid="TTL__double__scheme__template_8h_1ae52608110e8278e020d79aa8839a9e39" kind="variable"><name>prev_tile</name></member>
+    <member refid="TTL__double__scheme__template_8h_1a909cef44f3747d566f165d384dcf3abf" kind="function"><name>TTL_step_buffering</name></member>
+    <member refid="TTL__double__scheme__template_8h_1a3e9af778c4347f1d2997148c5a97b965" kind="function"><name>TTL_IMPORT_EXPORT_NAME</name></member>
+    <member refid="TTL__double__scheme__template_8h_1accd8b26d0718d9b97c5de259dfe3f1e6" kind="function"><name>TTL_local</name></member>
+  </compound>
+  <compound refid="TTL__duplex__scheme_8h" kind="file"><name>TTL_duplex_scheme.h</name>
+    <member refid="TTL__duplex__scheme_8h_1a4923da2143867bcd0e9719965d5421ed" kind="define"><name>TTL_DUPLEX_BUFFERING_TYPE</name></member>
+    <member refid="TTL__duplex__scheme_8h_1a02dee7073641a4f9b5b813e02318a018" kind="define"><name>TTL_INT_SUB_TENSOR_TYPE</name></member>
+    <member refid="TTL__duplex__scheme_8h_1aab8924f33a928b25435ad601d37ef7b4" kind="define"><name>TTL_CONST_INT_TENSOR_TYPE</name></member>
+    <member refid="TTL__duplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kind="define"><name>TTL_EXT_TENSOR_TYPE</name></member>
+    <member refid="TTL__duplex__scheme_8h_1a86f724d1f49937ec9fb751cced1499f7" kind="define"><name>TTL_CONST_EXT_TENSOR_TYPE</name></member>
+    <member refid="TTL__duplex__scheme_8h_1aa726390be0a7bc731c23cb361f0409a8" kind="define"><name>TTL_IO_TENSOR_TYPE</name></member>
+    <member refid="TTL__duplex__scheme_8h_1a58b65302b7e671eb5d031ec2d9fea022" kind="function"><name>TTL_step_buffering</name></member>
+    <member refid="TTL__duplex__scheme_8h_1ad12513a54d4693e0cf3d48bcb4f1c5e2" kind="function"><name>TTL_start_duplex_buffering</name></member>
+    <member refid="TTL__duplex__scheme_8h_1a00ab05f5e6ff89ec4a633bf0c9dabf58" kind="function"><name>TTL_finish_buffering</name></member>
+  </compound>
+  <compound refid="TTL__schemes__common_8h" kind="file"><name>TTL_schemes_common.h</name>
+    <member refid="TTL__schemes__common_8h_1a9421ee5b320e2fae87a3168b50e77327" kind="define"><name>TTL_TYPES_INCLUDE_FILE</name></member>
+    <member refid="TTL__schemes__common_8h_1a6e7c568c4ef47ac362b8a6e70c6eed5a" kind="define"><name>DEFINING_TTL_SCHEMES_COMMON</name></member>
+  </compound>
+  <compound refid="TTL__simplex__scheme_8h" kind="file"><name>TTL_simplex_scheme.h</name>
+    <member refid="TTL__simplex__scheme_8h_1aa726390be0a7bc731c23cb361f0409a8" kind="define"><name>TTL_IO_TENSOR_TYPE</name></member>
+    <member refid="TTL__simplex__scheme_8h_1a0fdb69679ba25d85164e4d08889e74bc" kind="define"><name>TTL_SIMPLEX_BUFFERING_TYPE</name></member>
+    <member refid="TTL__simplex__scheme_8h_1a02dee7073641a4f9b5b813e02318a018" kind="define"><name>TTL_INT_SUB_TENSOR_TYPE</name></member>
+    <member refid="TTL__simplex__scheme_8h_1ac04f0e620237fe986519d3e6504a54c9" kind="define"><name>TTL_INT_TENSOR_TYPE</name></member>
+    <member refid="TTL__simplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kind="define"><name>TTL_EXT_TENSOR_TYPE</name></member>
+    <member refid="TTL__simplex__scheme_8h_1a86f724d1f49937ec9fb751cced1499f7" kind="define"><name>TTL_CONST_EXT_TENSOR_TYPE</name></member>
+    <member refid="TTL__simplex__scheme_8h_1a53557934b47a80c416d60d372525fa6a" kind="function"><name>TTL_step_buffering</name></member>
+    <member refid="TTL__simplex__scheme_8h_1a5c23cb9737ae6acb2b4078d50f4b3d49" kind="function"><name>TTL_start_simplex_buffering</name></member>
+    <member refid="TTL__simplex__scheme_8h_1a241bb503e2bc2471b914ebdac9c5843d" kind="function"><name>TTL_finish_buffering</name></member>
+  </compound>
+  <compound refid="TTL__ext__tensors_8h" kind="file"><name>TTL_ext_tensors.h</name>
+    <member refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kind="define"><name>TENSOR_LOCATION</name></member>
+    <member refid="TTL__ext__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kind="define"><name>TENSOR_ADDRESS</name></member>
+    <member refid="TTL__ext__tensors_8h_1a9421ee5b320e2fae87a3168b50e77327" kind="define"><name>TTL_TYPES_INCLUDE_FILE</name></member>
+    <member refid="TTL__ext__tensors_8h_1ad75b1c0da822652819d4b8d0323db60d" kind="typedef"><name>TTL_ext_tensor_t</name></member>
+    <member refid="TTL__ext__tensors_8h_1a06baf9e44b059bf3571a491b880830fa" kind="typedef"><name>TTL_const_ext_tensor_t</name></member>
+    <member refid="TTL__ext__tensors_8h_1ab3d938ce68e12eafc7f9141554fdd33f" kind="typedef"><name>TTL_ext_sub_tensor_t</name></member>
+    <member refid="TTL__ext__tensors_8h_1a75688487ac2fdea7db309150d44414bf" kind="typedef"><name>TTL_const_ext_sub_tensor_t</name></member>
+  </compound>
+  <compound refid="TTL__int__ext__typed__tensors_8h" kind="file"><name>TTL_int_ext_typed_tensors.h</name>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a2cd6250a726510fede6a9314e0c3838b" kind="function"><name>TTL_create_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a240217dbd3626120ec0b055ed0bf9f17" kind="function"><name>TTL_to_const_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kind="function"><name>TTL_to_void_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1ad3f3005c854b4b97553339f200b180a2" kind="function"><name>TTL_TENSOR_LOCATIONtensor_empty</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a0a49cb5556876657a12f08bb2cbb6a96" kind="function"><name>TTL_create_empty_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1ac9ab7105688847f118af85f0a96af09d" kind="function"><name>TTL_create_empty_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1ac63d84340dcdcaee20e041c0432c3db7" kind="function"><name>TTL_create_const_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1af18ee0bfb861cd97606ac49088bd0e92" kind="function"><name>TTL_to_const_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a0907227f13234fb72c62776a91b8f800" kind="function"><name>TTL_to_void_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1aab1eac9f2dd776ee24150069bebd1303" kind="function"><name>TTL_const_TENSOR_LOCATIONtensor_empty</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a1ae316f5f4fa66e8df456162b55ee035" kind="function"><name>TTL_create_empty_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a3890453c5d188acca4eeb55c7b1f7644" kind="function"><name>TTL_create_empty_const_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1ad6da5d7e340afe80d2f6f97dd0dfd97d" kind="function"><name>TTL_create_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a262d4f7cc0f8fb749d33d26c347e9117" kind="function"><name>TTL_create_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1ac1cb4bd07b999533acbdb1ce48174a1b" kind="function"><name>TTL_create_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a838a3c1d512d7fc0e40edc54bb0e69f8" kind="function"><name>TTL_create_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1aa1c81566fd609359faf41e069e7c5aa0" kind="function"><name>TTL_create_const_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1af8433984032ff9a814341145fa855e7c" kind="function"><name>TTL_create_const_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a30f596f3dbc891e1654e3967a771e3e8" kind="function"><name>TTL_create_const_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1af69089088845bc7ca9a8ae9c5ee76a92" kind="function"><name>TTL_create_const_TENSOR_LOCATIONtensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a249d5317b42407747b0c1e5215d4da91" kind="function"><name>TTL_create_TENSOR_LOCATIONsub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a301ef1f5eedcd928f8e43c84e49936b9" kind="function"><name>TTL_to_const_sub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1ab0612ee3991277788e35f6774396f027" kind="function"><name>TTL_to_void_sub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a7731b79c216fe4e506c22565b303ffca" kind="function"><name>TTL_TENSOR_LOCATIONsub_tensor_empty</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1ae5f7324eae31b478224a4e8573660ab6" kind="function"><name>TTL_create_empty_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1ada2dbd7cf2ba6ae6297309904d933b40" kind="function"><name>TTL_create_empty_TENSOR_LOCATIONsub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a7fae557fe5a65271f6026df89f356194" kind="function"><name>TTL_create_const_TENSOR_LOCATIONsub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a70791e83ceb937e0a4cc9f927d47625f" kind="function"><name>TTL_to_const_sub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a7925c330c4c721ad4de02cd670b2f70f" kind="function"><name>TTL_to_void_sub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a9824c28c7b691d9d1ef0404875b9b9ec" kind="function"><name>TTL_const_TENSOR_LOCATIONsub_tensor_empty</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a473d2d3b56006d9389ce4569e84b3854" kind="function"><name>TTL_create_empty_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a7b7d52fe2dafd3666be07150d37fa570" kind="function"><name>TTL_create_empty_const_TENSOR_LOCATIONsub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a8e98435eb5581a6caa2044f255d7bf88" kind="function"><name>TTL_create_TENSOR_LOCATIONsub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a371573afc281fea84102c880be20e312" kind="function"><name>TTL_create_TENSOR_LOCATIONsub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a102d5aba1cd16e0c11f2b40d6f706c04" kind="function"><name>TTL_create_TENSOR_LOCATIONsub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a72e7f564503173329d857ccbed39da5d" kind="function"><name>TTL_create_const_TENSOR_LOCATIONsub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a8eec642f2e8fad67698865c45791b2bf" kind="function"><name>TTL_create_const_TENSOR_LOCATIONsub_tensor</name></member>
+    <member refid="TTL__int__ext__typed__tensors_8h_1a76c3bdb7c10edae4759598b34c9f4c2d" kind="function"><name>TTL_create_const_TENSOR_LOCATIONsub_tensor</name></member>
+  </compound>
+  <compound refid="TTL__int__tensors_8h" kind="file"><name>TTL_int_tensors.h</name>
+    <member refid="TTL__int__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kind="define"><name>TENSOR_LOCATION</name></member>
+    <member refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kind="define"><name>TENSOR_ADDRESS</name></member>
+    <member refid="TTL__int__tensors_8h_1a9421ee5b320e2fae87a3168b50e77327" kind="define"><name>TTL_TYPES_INCLUDE_FILE</name></member>
+    <member refid="TTL__int__tensors_8h_1af55285c5c289c327379be3725265949a" kind="typedef"><name>TTL_int_tensor_t</name></member>
+    <member refid="TTL__int__tensors_8h_1a6f8d3bc7ab2c427d51a3addc5417bce0" kind="typedef"><name>TTL_const_int_tensor_t</name></member>
+    <member refid="TTL__int__tensors_8h_1a3b85de43f4885c4f5934a91c264b94cf" kind="typedef"><name>TTL_int_sub_tensor_t</name></member>
+    <member refid="TTL__int__tensors_8h_1afd5c161f2c63ba32b06df58efe26ecb7" kind="typedef"><name>TTL_const_int_sub_tensor_t</name></member>
+  </compound>
+  <compound refid="TTL__tensor__rw_8h" kind="file"><name>TTL_tensor_rw.h</name>
+    <member refid="TTL__tensor__rw_8h_1afbae01f8917d2352dc979f3ff3076cb5" kind="function"><name>TTL_read_tensor</name></member>
+    <member refid="TTL__tensor__rw_8h_1ace0d66182bbb790f01c1d2ea2d0ce7fe" kind="function"><name>TTL_read_tensor</name></member>
+    <member refid="TTL__tensor__rw_8h_1abdb041e71e91de074f45fdccbcd504d1" kind="function"><name>TTL_read_tensor</name></member>
+    <member refid="TTL__tensor__rw_8h_1ad9e083083aba8b3e67fd6c4a72f1659e" kind="function"><name>TTL_read_tensor</name></member>
+    <member refid="TTL__tensor__rw_8h_1aeaa605f62557b1e989267172d4d98aa6" kind="function"><name>TTL_read_tensor</name></member>
+    <member refid="TTL__tensor__rw_8h_1a5a8d3be7790f0c354c9c969ef3cdcb3f" kind="function"><name>TTL_read_tensor</name></member>
+    <member refid="TTL__tensor__rw_8h_1a5211fa961bf7514f5527d1e378d27be3" kind="function"><name>TTL_write_tensor</name></member>
+    <member refid="TTL__tensor__rw_8h_1a54a33cc53ff4be9ca2e22bf55beb024f" kind="function"><name>TTL_write_tensor</name></member>
+    <member refid="TTL__tensor__rw_8h_1a1b44ff926ab9182a6aa52aa5337e99a0" kind="function"><name>TTL_write_tensor</name></member>
+    <member refid="TTL__tensor__rw_8h_1af4d5f202b21e26fa4beee8cdcd71ca01" kind="function"><name>TTL_write_tensor</name></member>
+    <member refid="TTL__tensor__rw_8h_1aef4dc9c7093ad241072e808189e6c7f0" kind="function"><name>TTL_write_tensor</name></member>
+    <member refid="TTL__tensor__rw_8h_1a6a34cc459bb198559ff5f05a9b325fb2" kind="function"><name>TTL_write_tensor</name></member>
+  </compound>
+  <compound refid="TTL__tensors__common_8h" kind="file"><name>TTL_tensors_common.h</name>
+    <member refid="TTL__tensors__common_8h_1a21c2e0b38c8a044e08a1f01f5bd120d3" kind="define"><name>TTL_SIZEOF</name></member>
+    <member refid="TTL__tensors__common_8h_1a631ec76c3a069194d724aae98337fbe5" kind="function"><name>TTL_create_layout</name></member>
+    <member refid="TTL__tensors__common_8h_1a9889e5e72c5aa9934508163103fd13be" kind="function"><name>TTL_create_layout</name></member>
+    <member refid="TTL__tensors__common_8h_1a7c5069ff7b3532a098b78635c5d574ee" kind="function"><name>TTL_create_layout</name></member>
+    <member refid="TTL__tensors__common_8h_1ab2c1c1870130aa7c22a0c05f60b5107c" kind="function"><name>TTL_linearize</name></member>
+  </compound>
+  <compound refid="TTL_8h" kind="file"><name>TTL.h</name>
+    <member refid="TTL_8h_1a3b5794e9c64db771e1268b602a102cee" kind="define"><name>TTL_TARGET</name></member>
+    <member refid="TTL_8h_1aaed4afcacec6116447d0741bfa103876" kind="define"><name>TTL_TYPES_INCLUDE_H</name></member>
+    <member refid="TTL_8h_1a14ef28d436360352967960611952c28b" kind="define"><name>TTL_IMPORT_EXPORT_INCLUDE_H</name></member>
+  </compound>
+  <compound refid="TTL__core_8h" kind="file"><name>TTL_core.h</name>
+  </compound>
+  <compound refid="TTL__create__type_8h" kind="file"><name>TTL_create_type.h</name>
+  </compound>
+  <compound refid="TTL__create__types_8h" kind="file"><name>TTL_create_types.h</name>
+    <member refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kind="define"><name>TTL_TENSOR_TYPE</name></member>
+    <member refid="TTL__create__types_8h_1a0d3a58b4c06e2a870e8da416ddc95985" kind="define"><name>sizeof_void</name></member>
+    <member refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kind="define"><name>TTL_TENSOR_TYPE</name></member>
+    <member refid="TTL__create__types_8h_1a046ba288d96e10726b861120b5816481" kind="define"><name>sizeof_char</name></member>
+    <member refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kind="define"><name>TTL_TENSOR_TYPE</name></member>
+    <member refid="TTL__create__types_8h_1a316009b7d082325e51aee3870a2606d7" kind="define"><name>sizeof_uchar</name></member>
+    <member refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kind="define"><name>TTL_TENSOR_TYPE</name></member>
+    <member refid="TTL__create__types_8h_1a8abef5054d874709f3dfe6261824fa83" kind="define"><name>sizeof_int</name></member>
+    <member refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kind="define"><name>TTL_TENSOR_TYPE</name></member>
+    <member refid="TTL__create__types_8h_1a2fa0f9d36856a56363c5cc330372153d" kind="define"><name>sizeof_uint</name></member>
+    <member refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kind="define"><name>TTL_TENSOR_TYPE</name></member>
+    <member refid="TTL__create__types_8h_1a9682dcf18b92fc88381f72b1d3c7d323" kind="define"><name>sizeof_short</name></member>
+    <member refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kind="define"><name>TTL_TENSOR_TYPE</name></member>
+    <member refid="TTL__create__types_8h_1aa959f6d592a3a141dc8e3d9d36656292" kind="define"><name>sizeof_ushort</name></member>
+    <member refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kind="define"><name>TTL_TENSOR_TYPE</name></member>
+    <member refid="TTL__create__types_8h_1ad5a6a8b77a7f31b98131b0bf51ba498a" kind="define"><name>sizeof_long</name></member>
+    <member refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kind="define"><name>TTL_TENSOR_TYPE</name></member>
+    <member refid="TTL__create__types_8h_1aac7689265a92c8ffdc2950ed7f518125" kind="define"><name>sizeof_ulong</name></member>
+  </compound>
+  <compound refid="TTL__debug_8h" kind="file"><name>TTL_debug.h</name>
+  </compound>
+  <compound refid="TTL__macros_8h" kind="file"><name>TTL_macros.h</name>
+    <member refid="TTL__macros_8h_1a527cb8a0c7d6c3ea1e55e53c497dd946" kind="define"><name>TTL_ARRAYSIZE</name></member>
+  </compound>
+  <compound refid="TTL__pipeline__schemes_8h" kind="file"><name>TTL_pipeline_schemes.h</name>
+    <member refid="TTL__pipeline__schemes_8h_1a9421ee5b320e2fae87a3168b50e77327" kind="define"><name>TTL_TYPES_INCLUDE_FILE</name></member>
+    <member refid="TTL__pipeline__schemes_8h_1a9421ee5b320e2fae87a3168b50e77327" kind="define"><name>TTL_TYPES_INCLUDE_FILE</name></member>
+    <member refid="TTL__pipeline__schemes_8h_1a9421ee5b320e2fae87a3168b50e77327" kind="define"><name>TTL_TYPES_INCLUDE_FILE</name></member>
+  </compound>
+  <compound refid="TTL__tensors_8h" kind="file"><name>TTL_tensors.h</name>
+    <member refid="TTL__tensors_8h_1a9421ee5b320e2fae87a3168b50e77327" kind="define"><name>TTL_TYPES_INCLUDE_FILE</name></member>
+    <member refid="TTL__tensors_8h_1a110d32e0089121ef2ae6c7415eb15e24" kind="define"><name>TTL_TYPES_NO_VOID</name></member>
+  </compound>
+  <compound refid="TTL__tiles_8h" kind="file"><name>TTL_tiles.h</name>
+    <member refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kind="typedef"><name>TTL_augmented_dim_t</name></member>
+    <member refid="TTL__tiles_8h_1ab0bb98ca3c62d4eb49ea99809311bc9c" kind="function"><name>TTL_create_augmentation</name></member>
+    <member refid="TTL__tiles_8h_1ae71e816100107ad10f69dd5496e8b846" kind="function"><name>TTL_create_augmentation</name></member>
+    <member refid="TTL__tiles_8h_1a4603690b03c762ae182ea8dbfd736160" kind="function"><name>TTL_create_augmentation</name></member>
+    <member refid="TTL__tiles_8h_1a8eda704b864c0eba5c2709ec70e10fbd" kind="function"><name>TTL_number_of_tiles</name></member>
+    <member refid="TTL__tiles_8h_1afa41e4b1125fdd725a5b891cde2ae66c" kind="function"><name>TTL_ceil_of_a_div_b</name></member>
+    <member refid="TTL__tiles_8h_1ab7e52be36254de06eceaf15b8b77f788" kind="function"><name>TTL_create_overlap_tiler</name></member>
+    <member refid="TTL__tiles_8h_1adb0c677811fc72b45456af0b7a84a6da" kind="function"><name>TTL_create_tiler</name></member>
+    <member refid="TTL__tiles_8h_1a9f40042454b3c5862a448b8f0be150e6" kind="function"><name>TTL_tiles_in_width</name></member>
+    <member refid="TTL__tiles_8h_1a24732adc2b592bdb741131642e7dab08" kind="function"><name>TTL_tiles_in_height</name></member>
+    <member refid="TTL__tiles_8h_1afb4b1db47f093416aacfb8cc15ff0a67" kind="function"><name>TTL_tiles_in_depth</name></member>
+    <member refid="TTL__tiles_8h_1a5892a886773f7a902560d0a699838796" kind="function"><name>TTL_tile_empty</name></member>
+    <member refid="TTL__tiles_8h_1aab47a72ad748d70bfd9892500106d755" kind="function"><name>TTL_create_empty_tile</name></member>
+    <member refid="TTL__tiles_8h_1aab1ebf60b340a05f50081fc16f6f1bc4" kind="function"><name>TTL_create_tile</name></member>
+    <member refid="TTL__tiles_8h_1a6be82c657988ed29b07515e6d951042c" kind="function"><name>TTL_get_tile</name></member>
+    <member refid="TTL__tiles_8h_1a45b9364e6b7883b5529aae90e79905b9" kind="function"><name>TTL_get_tile_column_major</name></member>
+  </compound>
+  <compound refid="TTL__trace__macros_8h" kind="file"><name>TTL_trace_macros.h</name>
+  </compound>
+  <compound refid="dir_1784a01aa976a8c78ef5dfc3737bcac8" kind="dir"><name>c</name>
+  </compound>
+  <compound refid="dir_0802e3012b25a36ad182b43f92b17f4b" kind="dir"><name>import_export</name>
+  </compound>
+  <compound refid="dir_3c69c44e2a3422d47d59ead424f1f0d0" kind="dir"><name>opencl</name>
+  </compound>
+  <compound refid="dir_ef160e478cc6ce73572fb6dc994b7be1" kind="dir"><name>pipelines</name>
+  </compound>
+  <compound refid="dir_13be83ee55fa4ec491d00a3974976af8" kind="dir"><name>tensors</name>
+  </compound>
+  <compound refid="TTL_double_buffering_8cl-example" kind="example"><name>TTL_double_buffering.cl</name>
+  </compound>
+  <compound refid="TTL_duplex_buffering_8cl-example" kind="example"><name>TTL_duplex_buffering.cl</name>
+  </compound>
+  <compound refid="TTL_simplex_buffering_8cl-example" kind="example"><name>TTL_simplex_buffering.cl</name>
+  </compound>
+</doxygenindex>

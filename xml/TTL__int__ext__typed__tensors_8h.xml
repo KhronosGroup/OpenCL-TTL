@@ -1,0 +1,1914 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="TTL__int__ext__typed__tensors_8h" kind="file" language="C++">
+    <compoundname>TTL_int_ext_typed_tensors.h</compoundname>
+    <includes refid="TTL__types_8h" local="yes">../TTL_types.h</includes>
+    <includes refid="TTL__tensors__common_8h" local="yes">TTL_tensors_common.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>TTL_macros.h</label>
+        <link refid="TTL__macros_8h"/>
+      </node>
+      <node id="2">
+        <label>../TTL_types.h</label>
+        <link refid="TTL__types_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_int_ext_typed_tensors.h</label>
+        <link refid="TTL__int__ext__typed__tensors_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>TTL_tensors_common.h</label>
+        <link refid="TTL__tensors__common_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" prot="public">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</innerclass>
+    <innerclass refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" prot="public">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</innerclass>
+    <innerclass refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" prot="public">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</innerclass>
+    <innerclass refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" prot="public">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a2cd6250a726510fede6a9314e0c3838b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) base, const TTL_shape_t shape, const TTL_layout_t layout, const TTL_offset_t offset, const TTL_dim_t elem_size)</argsstring>
+        <name>TTL_create_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *)</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>const <ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>elem_size</declname>
+        </param>
+        <briefdescription>
+<para>const and non-const tensor creation functions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para>__TTL_create_tensor_impl</para>
+</simplesect>
+Use of macros to ensure that functions are EXACTLY the same, along for the compiler to remove duplication and potentially a TTL_int_tensor_t to be safely case to a TTL_const_int_tensor_t.<itemizedlist>
+<listitem><para>__TTL_tensor_name(TTL_create_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub, _5_params) * *<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TheTENSOR_ADDRESSbase address of the tensor inTENSOR_LOCATIONmemory *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of theTENSOR_LOCATIONtensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the tensor from the base. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref> *</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>elem_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of a single element in the * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub, _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="57" column="68" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a240217dbd3626120ec0b055ed0bf9f17" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref> *</type>
+        <definition>static const TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t * TTL_to_const_tensor</definition>
+        <argsstring>(const TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t *const tensor)</argsstring>
+        <name>TTL_to_const_tensor</name>
+        <param>
+          <type>const <ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref> *const</type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>Cast a __TTL_tensor_overloaded_name(_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , ) to a __TTL_tensor_name(TTL_,         *   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , _t) * * This is a safe cast, and implimented as a function with helper macro for TTL_TENSOR_TYPE safety * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The __TTL_tensor_name(TTL_, ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , &lt;em&gt;t) to be cast to a * __TTL_tensor_name(TTL, , TENSOR_LOCATION , TTL_TENSOR_TYPE , , _t) * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , _t) version of the input tensor <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="57" column="571" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const TTL_TENSOR_LOCATIONvoid_tensor_t *</type>
+        <definition>static const TTL_TENSOR_LOCATIONvoid_tensor_t * TTL_to_void_tensor</definition>
+        <argsstring>(const TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t *tensor)</argsstring>
+        <name>TTL_to_void_tensor</name>
+        <param>
+          <type>const <ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref> *</type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>Cast a __TTL_tensor_name(TTL_, const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , &lt;em&gt;t) *to a __TTL_tensor_name(TTL, const_, * TENSOR_LOCATION , void, , _t) * * * Lower level function take a void * tensor, this cast allows any tensor to be easily cast to a void * * * This cast does remove information althought is nominally safe. It should be used sparingly. * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The __TTL_tensor_name(TTL_, ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , &lt;em&gt;t) to be cast to a * __TTL_tensor_name(TTL, , TENSOR_LOCATION , TTL_TENSOR_TYPE , , _t) * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , _t) version of the input tensor <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="57" column="783" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1ad3f3005c854b4b97553339f200b180a2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool TTL_TENSOR_LOCATIONtensor_empty</definition>
+        <argsstring>(TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t tensor)</argsstring>
+        <name>TTL_TENSOR_LOCATIONtensor_empty</name>
+        <param>
+          <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>A Tensor is empty if its shape is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para><simplesect kind="see"><para><ref refid="TTL__types_8h_1a7871ed21af1fda46f48e16bc4c68df06" kindref="member">TTL_shape_empty</ref> * *</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor to test for emptiness * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true is the tensor is empty * </para>
+</simplesect>
+<simplesect kind="return"><para>false is the tensor is not empty <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="57" column="900" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a0a49cb5556876657a12f08bb2cbb6a96" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_empty_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor</definition>
+        <argsstring>()</argsstring>
+        <name>TTL_create_empty_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor</name>
+        <briefdescription>
+<para>Create an empty TENSOR_LOCATION tensor. Empty means it has all dimensions set * to zero * * Most operations on an empty tensor should turn into no-ops and so an empty * tensor is the safest default state. <linebreak/>
+ </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem></listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="57" column="1050" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1ac9ab7105688847f118af85f0a96af09d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_empty_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) unused)</argsstring>
+        <name>TTL_create_empty_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *)</type>
+          <declname>unused</declname>
+        </param>
+        <briefdescription>
+<para>Create an empty TENSOR_LOCATION tensor. Empty means it has all dimensions set * to zero * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unused</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Simply defined to allow selection of the functon to call. * * As above but a dummy parameter is used to select the version to all <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="57" column="1308" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1ac63d84340dcdcaee20e041c0432c3db7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_const_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(const TTL_TENSOR_TYPE *) base, const TTL_shape_t shape, const TTL_layout_t layout, const TTL_offset_t offset, const TTL_dim_t elem_size)</argsstring>
+        <name>TTL_create_const_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *)</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>const <ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>elem_size</declname>
+        </param>
+        <briefdescription>
+<para>create TTL_create_int_tensor_impl </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>__TTL_tensor_name(TTL_create_,  const ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub, _5_params) * *<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TheTENSOR_ADDRESSbase address of the tensor inTENSOR_LOCATIONmemory *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of theTENSOR_LOCATIONtensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the tensor from the base. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref> *</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>elem_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of a single element in the * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub, _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="58" column="74" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1af18ee0bfb861cd97606ac49088bd0e92" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref> *</type>
+        <definition>static const TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t * TTL_to_const_tensor</definition>
+        <argsstring>(const TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t *const tensor)</argsstring>
+        <name>TTL_to_const_tensor</name>
+        <param>
+          <type>const <ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref> *const</type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>Cast a __TTL_tensor_overloaded_name(_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , ) to a __TTL_tensor_name(TTL_,         *  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , _t) * * This is a safe cast, and implimented as a function with helper macro for TTL_TENSOR_TYPE safety * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The __TTL_tensor_name(TTL_, ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , &lt;em&gt;t) to be cast to a * __TTL_tensor_name(TTL, const_ , TENSOR_LOCATION , TTL_TENSOR_TYPE , , _t) * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , _t) version of the input tensor <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="58" column="599" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a0907227f13234fb72c62776a91b8f800" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const TTL_const_TENSOR_LOCATIONvoid_tensor_t *</type>
+        <definition>static const TTL_const_TENSOR_LOCATIONvoid_tensor_t * TTL_to_void_tensor</definition>
+        <argsstring>(const TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t *tensor)</argsstring>
+        <name>TTL_to_void_tensor</name>
+        <param>
+          <type>const <ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref> *</type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>Cast a __TTL_tensor_name(TTL_, const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , &lt;em&gt;t) *to a __TTL_tensor_name(TTL, const_, * TENSOR_LOCATION , void, , _t) * * * Lower level function take a void * tensor, this cast allows any tensor to be easily cast to a void * * * This cast does remove information althought is nominally safe. It should be used sparingly. * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The __TTL_tensor_name(TTL_, ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , &lt;em&gt;t) to be cast to a * __TTL_tensor_name(TTL, const_ , TENSOR_LOCATION , TTL_TENSOR_TYPE , , _t) * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , _t) version of the input tensor <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="58" column="817" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1aab1eac9f2dd776ee24150069bebd1303" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool TTL_const_TENSOR_LOCATIONtensor_empty</definition>
+        <argsstring>(TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t tensor)</argsstring>
+        <name>TTL_const_TENSOR_LOCATIONtensor_empty</name>
+        <param>
+          <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>A Tensor is empty if its shape is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para><simplesect kind="see"><para><ref refid="TTL__types_8h_1a7871ed21af1fda46f48e16bc4c68df06" kindref="member">TTL_shape_empty</ref> * *</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor to test for emptiness * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true is the tensor is empty * </para>
+</simplesect>
+<simplesect kind="return"><para>false is the tensor is not empty <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="58" column="940" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a1ae316f5f4fa66e8df456162b55ee035" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_empty_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor</definition>
+        <argsstring>()</argsstring>
+        <name>TTL_create_empty_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor</name>
+        <briefdescription>
+<para>Create an empty TENSOR_LOCATION tensor. Empty means it has all dimensions set * to zero * * Most operations on an empty tensor should turn into no-ops and so an empty * tensor is the safest default state. <linebreak/>
+ </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem></listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="58" column="1102" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a3890453c5d188acca4eeb55c7b1f7644" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_empty_const_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) unused)</argsstring>
+        <name>TTL_create_empty_const_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *)</type>
+          <declname>unused</declname>
+        </param>
+        <briefdescription>
+<para>Create an empty TENSOR_LOCATION tensor. Empty means it has all dimensions set * to zero * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unused</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Simply defined to allow selection of the functon to call. * * As above but a dummy parameter is used to select the version to all <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="58" column="1378" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1ad6da5d7e340afe80d2f6f97dd0dfd97d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) const base, const TTL_shape_t shape, const TTL_layout_t layout, const TTL_dim_t elem_size)</argsstring>
+        <name>TTL_create_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const <ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>elem_size</declname>
+        </param>
+        <briefdescription>
+<para>create TTL_create_const_int_tensor_impl </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>__TTL_tensor_overloaded_name(TTL_create_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , ) * *<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TheTENSOR_ADDRESSbase address of the tensor inTENSOR_LOCATIONmemory *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of theTENSOR_LOCATIONtensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elem_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of a single element in the tensor * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>The layout of the created tensor will have an offset of (0, 0, 0) * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="60" column="68" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a262d4f7cc0f8fb749d33d26c347e9117" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) const base, const TTL_shape_t shape, const TTL_layout_t layout)</argsstring>
+        <name>TTL_create_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+          <declname>layout</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_overloaded_name(TTL_create_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , ) * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a global address *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of theTENSOR_LOCATIONtensor * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>The layout of the created tensor will have an offset of (0, 0, 0)<linebreak/>
+ * The element size is inferred from the base_address pointer TTL_TENSOR_TYPE .<linebreak/>
+ * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="60" column="297" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1ac1cb4bd07b999533acbdb1ce48174a1b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) const base, const TTL_shape_t shape, const TTL_dim_t elem_size)</argsstring>
+        <name>TTL_create_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>elem_size</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_overloaded_name(TTL_create_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , ) * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a global address *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points to *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elem_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of a single element in the tensor * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>Layout is inferred from the shape. * Offset is taken to be zero. * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="60" column="533" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a838a3c1d512d7fc0e40edc54bb0e69f8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) const base, const TTL_shape_t shape)</argsstring>
+        <name>TTL_create_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_overloaded_name(TTL_create_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , ) * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a global address *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points to * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>Element size is inferred from the base_address pointer TTL_TENSOR_TYPE . * Layout is inferred from the shape. * Offset is taken to be zero. * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="60" column="790" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1aa1c81566fd609359faf41e069e7c5aa0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_const_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(const TTL_TENSOR_TYPE *) const base, const TTL_shape_t shape, const TTL_layout_t layout, const TTL_dim_t elem_size)</argsstring>
+        <name>TTL_create_const_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const <ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>elem_size</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_overloaded_name(TTL_create_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , ) * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TheTENSOR_ADDRESSbase address of the tensor inTENSOR_LOCATIONmemory *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of theTENSOR_LOCATIONtensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elem_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of a single element in the tensor * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>The layout of the created tensor will have an offset of (0, 0, 0) * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="61" column="74" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1af8433984032ff9a814341145fa855e7c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_const_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(const TTL_TENSOR_TYPE *) const base, const TTL_shape_t shape, const TTL_layout_t layout)</argsstring>
+        <name>TTL_create_const_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+          <declname>layout</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_overloaded_name(TTL_create_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , ) * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a global address *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of theTENSOR_LOCATIONtensor * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>The layout of the created tensor will have an offset of (0, 0, 0)<linebreak/>
+ * The element size is inferred from the base_address pointer TTL_TENSOR_TYPE .<linebreak/>
+ * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="61" column="321" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a30f596f3dbc891e1654e3967a771e3e8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_const_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(const TTL_TENSOR_TYPE *) const base, const TTL_shape_t shape, const TTL_dim_t elem_size)</argsstring>
+        <name>TTL_create_const_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>elem_size</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_overloaded_name(TTL_create_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , ) * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a global address *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points to *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elem_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of a single element in the tensor * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>Layout is inferred from the shape. * Offset is taken to be zero. * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="61" column="575" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1af69089088845bc7ca9a8ae9c5ee76a92" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t TTL_create_const_TENSOR_LOCATIONtensor</definition>
+        <argsstring>(TENSOR_ADDRESS(const TTL_TENSOR_TYPE *) const base, const TTL_shape_t shape)</argsstring>
+        <name>TTL_create_const_TENSOR_LOCATIONtensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_overloaded_name(TTL_create_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , ) * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a global address *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points to * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>Element size is inferred from the base_address pointer TTL_TENSOR_TYPE . * Layout is inferred from the shape. * Offset is taken to be zero. * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,   , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="61" column="850" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a249d5317b42407747b0c1e5215d4da91" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_TENSOR_LOCATIONsub_tensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) base, const TTL_shape_t shape, const TTL_layout_t layout, const TTL_dim_t elem_size, const TTL_offset_t offset, const TTL_shape_t origin_shape, TTL_offset_t origin_offset)</argsstring>
+        <name>TTL_create_TENSOR_LOCATIONsub_tensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *)</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const <ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>elem_size</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>origin_shape</declname>
+        </param>
+        <param>
+          <type><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+          <declname>origin_offset</declname>
+        </param>
+        <briefdescription>
+<para>const and non-const sub tensor creation functions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para>__TTL_create_sub_tensor_impl</para>
+</simplesect>
+Use of macros to ensure that functions are EXACTLY the same, along for the compiler to remove duplication and potentially a TTL_int_tensor_t to be safely case to a TTL_const_int_tensor_t.<itemizedlist>
+<listitem><para>__TTL_tensor_name(TTL_create_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub, _7_params) * *<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TheTENSOR_ADDRESSbase address of the tensor inTENSOR_LOCATIONmemory *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of theTENSOR_LOCATIONtensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elem_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of a single element in the *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the tensor from the base. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref> *</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>origin_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The shape of the tensor that originated the sub tensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the tensor from the souce tensor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref> * * </para>
+</simplesect>
+<simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub, _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="88" column="72" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a301ef1f5eedcd928f8e43c84e49936b9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref> *</type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t * TTL_to_const_sub_tensor</definition>
+        <argsstring>(const TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t *const tensor)</argsstring>
+        <name>TTL_to_const_sub_tensor</name>
+        <param>
+          <type>const <ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref> *const</type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>Cast a __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub_, &lt;em&gt;t) *const tensor) to a * __TTL_tensor_name(TTL, const_, TENSOR_LOCATION , TTL_TENSOR_TYPE , sub_, _t) * * This is a safe cast, and implimented as a function with helper macro for TTL_TENSOR_TYPE safety * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub_, &lt;em&gt;t) to be cast to a * __TTL_tensor_name(TTL, const, TENSOR_LOCATION , TTL_TENSOR_TYPE , sub_, _t) * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A __TTL_tensor_name(TTL_, const_,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub_, _t) version of the input tensor <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="88" column="487" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1ab0612ee3991277788e35f6774396f027" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const TTL_TENSOR_LOCATIONvoid_sub_tensor_t *</type>
+        <definition>static const TTL_TENSOR_LOCATIONvoid_sub_tensor_t * TTL_to_void_sub_tensor</definition>
+        <argsstring>(const TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t *tensor)</argsstring>
+        <name>TTL_to_void_sub_tensor</name>
+        <param>
+          <type>const <ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref> *</type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>Cast a __TTL_tensor_name(TTL_, const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub_, &lt;em&gt;t) *to a __TTL_tensor_name(TTL, const_, * TENSOR_LOCATION , void, sub_, _t) * * * Lower level function take a void * tensor, this cast allows any tensor to be easily cast to a void * * * This cast does remove information althought is nominally safe. It should be used sparingly. * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The __TTL_tensor_name(TTL_, ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , &lt;em&gt;t) to be cast to a * __TTL_tensor_name(TTL, , TENSOR_LOCATION , TTL_TENSOR_TYPE , , _t) * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , _t) version of the input tensor <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="88" column="705" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a7731b79c216fe4e506c22565b303ffca" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool TTL_TENSOR_LOCATIONsub_tensor_empty</definition>
+        <argsstring>(TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t tensor)</argsstring>
+        <name>TTL_TENSOR_LOCATIONsub_tensor_empty</name>
+        <param>
+          <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>A Tensor is empty if its shape is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para><simplesect kind="see"><para><ref refid="TTL__types_8h_1a7871ed21af1fda46f48e16bc4c68df06" kindref="member">TTL_shape_empty</ref> * *</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor to test for emptiness * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true is the tensor is empty * </para>
+</simplesect>
+<simplesect kind="return"><para>false is the tensor is not empty <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="88" column="832" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1ae5f7324eae31b478224a4e8573660ab6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_empty_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor</definition>
+        <argsstring>()</argsstring>
+        <name>TTL_create_empty_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor</name>
+        <briefdescription>
+<para>Create an empty tiled internal tensor. Empty means it has all dimensions set * to zero * * Most operations on an empty tensor should turn into no-ops and so an empty * tensor is the safest default state. <linebreak/>
+ </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem></listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="88" column="1000" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1ada2dbd7cf2ba6ae6297309904d933b40" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_empty_TENSOR_LOCATIONsub_tensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) unused)</argsstring>
+        <name>TTL_create_empty_TENSOR_LOCATIONsub_tensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *)</type>
+          <declname>unused</declname>
+        </param>
+        <briefdescription>
+<para>Create an empty TENSOR_LOCATION sub tensor. Empty means it has all dimensions set * to zero * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unused</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Simply defined to allow selection of the functon to call. * * As above but a dummy parameter is used to select the version to all <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="88" column="1391" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a7fae557fe5a65271f6026df89f356194" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_const_TENSOR_LOCATIONsub_tensor</definition>
+        <argsstring>(TENSOR_ADDRESS(const TTL_TENSOR_TYPE *) base, const TTL_shape_t shape, const TTL_layout_t layout, const TTL_dim_t elem_size, const TTL_offset_t offset, const TTL_shape_t origin_shape, TTL_offset_t origin_offset)</argsstring>
+        <name>TTL_create_const_TENSOR_LOCATIONsub_tensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *)</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const <ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>elem_size</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>origin_shape</declname>
+        </param>
+        <param>
+          <type><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+          <declname>origin_offset</declname>
+        </param>
+        <briefdescription>
+<para>create TTL_create_int_sub_tensor_impl </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>__TTL_tensor_name(TTL_create_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub, _7_params) * *<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TheTENSOR_ADDRESSbase address of the tensor inTENSOR_LOCATIONmemory *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of theTENSOR_LOCATIONtensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elem_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of a single element in the *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the tensor from the base. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref> *</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>origin_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The shape of the tensor that originated the sub tensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the tensor from the souce tensor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref> * * </para>
+</simplesect>
+<simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub, _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="90" column="78" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a70791e83ceb937e0a4cc9f927d47625f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref> *</type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t * TTL_to_const_sub_tensor</definition>
+        <argsstring>(const TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t *const tensor)</argsstring>
+        <name>TTL_to_const_sub_tensor</name>
+        <param>
+          <type>const <ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref> *const</type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>Cast a __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub_, &lt;em&gt;t) *const tensor) to a * __TTL_tensor_name(TTL, const_, TENSOR_LOCATION , TTL_TENSOR_TYPE , sub_, _t) * * This is a safe cast, and implimented as a function with helper macro for TTL_TENSOR_TYPE safety * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub_, &lt;em&gt;t) to be cast to a * __TTL_tensor_name(TTL, const, TENSOR_LOCATION , TTL_TENSOR_TYPE , sub_, _t) * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A __TTL_tensor_name(TTL_, const_,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub_, _t) version of the input tensor <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="90" column="511" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a7925c330c4c721ad4de02cd670b2f70f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const TTL_const_TENSOR_LOCATIONvoid_sub_tensor_t *</type>
+        <definition>static const TTL_const_TENSOR_LOCATIONvoid_sub_tensor_t * TTL_to_void_sub_tensor</definition>
+        <argsstring>(const TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t *tensor)</argsstring>
+        <name>TTL_to_void_sub_tensor</name>
+        <param>
+          <type>const <ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref> *</type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>Cast a __TTL_tensor_name(TTL_, const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , sub_, &lt;em&gt;t) *to a __TTL_tensor_name(TTL, const_, * TENSOR_LOCATION , void, sub_, _t) * * * Lower level function take a void * tensor, this cast allows any tensor to be easily cast to a void * * * This cast does remove information althought is nominally safe. It should be used sparingly. * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The __TTL_tensor_name(TTL_, ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , &lt;em&gt;t) to be cast to a * __TTL_tensor_name(TTL, const_ , TENSOR_LOCATION , TTL_TENSOR_TYPE , , _t) * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE , , _t) version of the input tensor <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="90" column="735" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a9824c28c7b691d9d1ef0404875b9b9ec" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool TTL_const_TENSOR_LOCATIONsub_tensor_empty</definition>
+        <argsstring>(TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t tensor)</argsstring>
+        <name>TTL_const_TENSOR_LOCATIONsub_tensor_empty</name>
+        <param>
+          <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+          <declname>tensor</declname>
+        </param>
+        <briefdescription>
+<para>A Tensor is empty if its shape is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para><simplesect kind="see"><para><ref refid="TTL__types_8h_1a7871ed21af1fda46f48e16bc4c68df06" kindref="member">TTL_shape_empty</ref> * *</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor to test for emptiness * * </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true is the tensor is empty * </para>
+</simplesect>
+<simplesect kind="return"><para>false is the tensor is not empty <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="90" column="868" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a473d2d3b56006d9389ce4569e84b3854" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_empty_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor</definition>
+        <argsstring>()</argsstring>
+        <name>TTL_create_empty_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor</name>
+        <briefdescription>
+<para>Create an empty tiled internal tensor. Empty means it has all dimensions set * to zero * * Most operations on an empty tensor should turn into no-ops and so an empty * tensor is the safest default state. <linebreak/>
+ </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem></listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="90" column="1048" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a7b7d52fe2dafd3666be07150d37fa570" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_empty_const_TENSOR_LOCATIONsub_tensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) unused)</argsstring>
+        <name>TTL_create_empty_const_TENSOR_LOCATIONsub_tensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *)</type>
+          <declname>unused</declname>
+        </param>
+        <briefdescription>
+<para>Create an empty TENSOR_LOCATION sub tensor. Empty means it has all dimensions set * to zero * *. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unused</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Simply defined to allow selection of the functon to call. * * As above but a dummy parameter is used to select the version to all <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="90" column="1463" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a8e98435eb5581a6caa2044f255d7bf88" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_TENSOR_LOCATIONsub_tensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) const base, const TTL_shape_t shape, const TTL_layout_t layout, const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t origin_tensor, const TTL_offset_t sub_offset)</argsstring>
+        <name>TTL_create_TENSOR_LOCATIONsub_tensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>origin_tensor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+          <declname>sub_offset</declname>
+        </param>
+        <briefdescription>
+<para>create TTL_create_int_sub_tensor_impl </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>__TTL_tensor_name(TTL_create_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _5_params) * *<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TheTENSOR_ADDRESSbase address of the tensor inTENSOR_LOCATIONmemory *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of theTENSOR_LOCATIONtensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor that originated the sub_ tensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sub_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the tensor from the souce tensor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref> * *</para>
+</simplesect>
+<itemizedlist>
+<listitem><para>The element size of the tensor is taken from the origin tensor * The offset of the sub_ tensor is taken to be (0, 0, 0) * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="92" column="72" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a371573afc281fea84102c880be20e312" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_TENSOR_LOCATIONsub_tensor</definition>
+        <argsstring>(TENSOR_ADDRESS(TTL_TENSOR_TYPE *) const base, const TTL_ext_TTL_TENSOR_TYPE_tensor_t origin_tensor)</argsstring>
+        <name>TTL_create_TENSOR_LOCATIONsub_tensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const TTL_ext_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>origin_tensor</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_name(TTL_create_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _2_params) * * Simply create a sub_tensor from an origin tensor * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TheTENSOR_ADDRESSbase address of the tensor inTENSOR_LOCATIONmemory *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor that originated the sub_ tensor * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>The element size of the tensor is taken from the origin tensor * The offset of the sub_ tensor is taken to be (0, 0, 0) * The offset of the sub_ tensor relative to the source tensor is taken to be (0, 0, 0) * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="92" column="368" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a102d5aba1cd16e0c11f2b40d6f706c04" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_TENSOR_LOCATIONsub_tensor</definition>
+        <argsstring>(const TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t origin_tensor)</argsstring>
+        <name>TTL_create_TENSOR_LOCATIONsub_tensor</name>
+        <param>
+          <type>const <ref refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+          <declname>origin_tensor</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_name(TTL_create_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _1_param) * * Simply create a sub_tensor from an origin tensor * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>origin_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor that originated the sub_ tensor * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>Effective creates a sub_ -tensor that is a tensor covering 100% of the source tensor * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,   ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="92" column="695" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a72e7f564503173329d857ccbed39da5d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_const_TENSOR_LOCATIONsub_tensor</definition>
+        <argsstring>(TENSOR_ADDRESS(const TTL_TENSOR_TYPE *) const base, const TTL_shape_t shape, const TTL_layout_t layout, const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t origin_tensor, const TTL_offset_t sub_offset)</argsstring>
+        <name>TTL_create_const_TENSOR_LOCATIONsub_tensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>origin_tensor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+          <declname>sub_offset</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_name(TTL_create_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _5_params) * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TheTENSOR_ADDRESSbase address of the tensor inTENSOR_LOCATIONmemory *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of theTENSOR_LOCATIONtensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor that originated the sub_ tensor *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sub_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the tensor from the souce tensor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref> * *</para>
+</simplesect>
+<itemizedlist>
+<listitem><para>The element size of the tensor is taken from the origin tensor * The offset of the sub_ tensor is taken to be (0, 0, 0) * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="93" column="78" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a8eec642f2e8fad67698865c45791b2bf" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_const_TENSOR_LOCATIONsub_tensor</definition>
+        <argsstring>(TENSOR_ADDRESS(const TTL_TENSOR_TYPE *) const base, const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t origin_tensor)</argsstring>
+        <name>TTL_create_const_TENSOR_LOCATIONsub_tensor</name>
+        <param>
+          <type><ref refid="TTL__int__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>(const <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *) const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>origin_tensor</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_name(TTL_create_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _2_params) * * Simply create a sub_tensor from an origin tensor * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TheTENSOR_ADDRESSbase address of the tensor inTENSOR_LOCATIONmemory *</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor that originated the sub_ tensor * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>The element size of the tensor is taken from the origin tensor * The offset of the sub_ tensor is taken to be (0, 0, 0) * The offset of the sub_ tensor relative to the source tensor is taken to be (0, 0, 0) * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="93" column="392" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__int__ext__typed__tensors_8h_1a76c3bdb7c10edae4759598b34c9f4c2d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t</ref></type>
+        <definition>static TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t TTL_create_const_TENSOR_LOCATIONsub_tensor</definition>
+        <argsstring>(const TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t origin_tensor)</argsstring>
+        <name>TTL_create_const_TENSOR_LOCATIONsub_tensor</name>
+        <param>
+          <type>const <ref refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t" kindref="compound">TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t</ref></type>
+          <declname>origin_tensor</declname>
+        </param>
+        <briefdescription>
+<para>__TTL_tensor_name(TTL_create_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _1_param) * * Simply create a sub_tensor from an origin tensor * * </para>
+        </briefdescription>
+        <detaileddescription>
+<para>*<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>origin_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor that originated the sub_ tensor * *</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>Effective creates a sub_ -tensor that is a tensor covering 100% of the source tensor * * <simplesect kind="return"><para>return a __TTL_tensor_name(TTL_,  const_ ,  TENSOR_LOCATION ,  TTL_TENSOR_TYPE ,  sub_ , _t) <linebreak/>
+ </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tensors/TTL_int_ext_typed_tensors.h" line="93" column="737" bodyfile="tensors/TTL_int_ext_typed_tensors.h" bodystart="93" bodyend="93"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>When including this file the follow must be defined</para>
+<para>TENSOR_LOCATION ext_ or TENSOR_LOCATION TENSOR_ADDRESS TENSOR_ADDRESS or TTL_global TTL_TENSOR_TYPE void, uchar, uchar2 etc etc. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_int_tensors.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../TTL_types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__tensors__common_8h" kindref="compound">TTL_tensors_common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="22"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@file</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>When<sp/>including<sp/>this<sp/>file<sp/>the<sp/>follow<sp/>must<sp/>be<sp/>defined</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>TENSOR_LOCATION<sp/>ext_<sp/>or<sp/>TENSOR_LOCATION</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>TENSOR_ADDRESS<sp/>TENSOR_ADDRESS<sp/>or<sp/>TTL_global</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>TTL_TENSOR_TYPE<sp/>void,<sp/>uchar,<sp/>uchar2<sp/>etc<sp/>etc.</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">/******************************************************</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>Tensors<sp/>const<sp/>and<sp/>non-const</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*****************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="36"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@brief<sp/>const<sp/>and<sp/>non-const<sp/>tensors<sp/>in<sp/>the<sp/>appropriate<sp/>address<sp/>space</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@see<sp/>__TTL_typedef_tensor_t</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>Use<sp/>of<sp/>macros<sp/>to<sp/>ensure<sp/>that<sp/>structs<sp/>are<sp/>EXACTLY<sp/>the<sp/>same,<sp/>along<sp/>for<sp/>the<sp/>compiler<sp/>to<sp/>remove<sp/>duplication</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>and<sp/>potentially<sp/>a<sp/>TTL_int_tensor_t<sp/>to<sp/>be<sp/>safely<sp/>case<sp/>to<sp/>a<sp/>TTL_const_int_tensor_t.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>Do<sp/>not<sp/>add<sp/>a<sp/>cast<sp/>for<sp/>TTL_const_int_tensor_t<sp/>to<sp/>TTL_int_tensor_t<sp/>because<sp/>that<sp/>is<sp/>not<sp/>safe.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t_1a4501f482016798660b7844907d7bc64e" refkind="member"><highlight class="normal">__TTL_typedef_tensor_t(<ref refid="TTL__ext__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>,<sp/>,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@brief<sp/>create<sp/>TTL_int_tensor_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t_1a1d55aab561e1c2c06cb1647142c8f8eb" refkind="member"><highlight class="normal">__TTL_typedef_tensor_t(<ref refid="TTL__ext__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>,<sp/>const_,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@brief<sp/>create<sp/>TTL_const_int_tensor_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="49"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@brief<sp/>const<sp/>and<sp/>non-const<sp/>tensor<sp/>creation<sp/>functions.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@see<sp/>__TTL_create_tensor_impl</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>Use<sp/>of<sp/>macros<sp/>to<sp/>ensure<sp/>that<sp/>functions<sp/>are<sp/>EXACTLY<sp/>the<sp/>same,<sp/>along<sp/>for<sp/>the<sp/>compiler<sp/>to<sp/>remove<sp/>duplication</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>and<sp/>potentially<sp/>a<sp/>TTL_int_tensor_t<sp/>to<sp/>be<sp/>safely<sp/>case<sp/>to<sp/>a<sp/>TTL_const_int_tensor_t.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="TTL__int__ext__typed__tensors_8h_1ac9ab7105688847f118af85f0a96af09d" refkind="member"><highlight class="normal">__TTL_create_tensor_impl(<ref refid="TTL__ext__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>,<sp/>,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@brief<sp/>create<sp/>TTL_create_int_tensor_impl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="TTL__int__ext__typed__tensors_8h_1aab1eac9f2dd776ee24150069bebd1303" refkind="member"><highlight class="normal">__TTL_create_tensor_impl(<ref refid="TTL__ext__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>,<sp/>const_,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@brief<sp/>create<sp/>TTL_create_const_int_tensor_impl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="TTL__int__ext__typed__tensors_8h_1ad6da5d7e340afe80d2f6f97dd0dfd97d" refkind="member"><highlight class="normal">__TTL_create_create_tensor_functions(<ref refid="TTL__ext__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>,<sp/>,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>);</highlight></codeline>
+<codeline lineno="61" refid="TTL__int__ext__typed__tensors_8h_1aa1c81566fd609359faf41e069e7c5aa0" refkind="member"><highlight class="normal">__TTL_create_create_tensor_functions(<ref refid="TTL__ext__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>,<sp/>const_,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">/******************************************************</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>Sub<sp/>Tensors<sp/>const<sp/>and<sp/>non-const</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*****************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="66"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>@brief<sp/>const<sp/>and<sp/>non-const<sp/>sub<sp/>tensors<sp/>in<sp/>the<sp/>appropriate<sp/>address<sp/>space</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>@see<sp/>__TTL_typedef_sub_tensor_t</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*<sp/>Use<sp/>of<sp/>macros<sp/>to<sp/>ensure<sp/>that<sp/>structs<sp/>are<sp/>EXACTLY<sp/>the<sp/>same,<sp/>along<sp/>for<sp/>the<sp/>compiler<sp/>to<sp/>remove<sp/>duplication</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>and<sp/>potentially<sp/>a<sp/>TTL_int_tensor_t<sp/>to<sp/>be<sp/>safely<sp/>case<sp/>to<sp/>a<sp/>TTL_const_int_tensor_t.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>Do<sp/>not<sp/>add<sp/>a<sp/>cast<sp/>for<sp/>TTL_const_int_tensor_t<sp/>to<sp/>TTL_int_tensor_t<sp/>because<sp/>that<sp/>is<sp/>not<sp/>safe.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1afbe0e6b7f9baee446eb436823ecee4b2" refkind="member"><highlight class="normal">__TTL_typedef_sub_tensor_t(TTL_gobal,<sp/>,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>);<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@brief<sp/>create<sp/>TTL_int_sub<sp/>tensor_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal">__TTL_typedef_sub_tensor_t(TTL_gobal,<sp/>const_,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,</highlight></codeline>
+<codeline lineno="78" refid="structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t_1afd174554144d304e524e367ee39172c4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@brief<sp/>create<sp/>TTL_const_int_sub<sp/>tensor_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="80"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/>@brief<sp/>const<sp/>and<sp/>non-const<sp/>sub<sp/>tensor<sp/>creation<sp/>functions.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>@see<sp/>__TTL_create_sub_tensor_impl</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>Use<sp/>of<sp/>macros<sp/>to<sp/>ensure<sp/>that<sp/>functions<sp/>are<sp/>EXACTLY<sp/>the<sp/>same,<sp/>along<sp/>for<sp/>the<sp/>compiler<sp/>to<sp/>remove<sp/>duplication</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>and<sp/>potentially<sp/>a<sp/>TTL_int_tensor_t<sp/>to<sp/>be<sp/>safely<sp/>case<sp/>to<sp/>a<sp/>TTL_const_int_tensor_t.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="TTL__int__ext__typed__tensors_8h_1ada2dbd7cf2ba6ae6297309904d933b40" refkind="member"><highlight class="normal">__TTL_create_sub_tensor_impl(<ref refid="TTL__ext__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>,<sp/>,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>);<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@brief<sp/>create<sp/>TTL_create_int_sub_tensor_impl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">__TTL_create_sub_tensor_impl(<ref refid="TTL__ext__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>,<sp/>const_,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,</highlight></codeline>
+<codeline lineno="90" refid="TTL__int__ext__typed__tensors_8h_1a9824c28c7b691d9d1ef0404875b9b9ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@brief<sp/>create<sp/>TTL_create_int_sub_tensor_impl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="TTL__int__ext__typed__tensors_8h_1a8e98435eb5581a6caa2044f255d7bf88" refkind="member"><highlight class="normal">__TTL_create_create_sub_tensor_functions(<ref refid="TTL__ext__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>,<sp/>,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>sub_,<sp/>);</highlight></codeline>
+<codeline lineno="93" refid="TTL__int__ext__typed__tensors_8h_1a72e7f564503173329d857ccbed39da5d" refkind="member"><highlight class="normal">__TTL_create_create_sub_tensor_functions(<ref refid="TTL__ext__tensors_8h_1a6af6c64b168d7b914682c9ce62448b08" kindref="member">TENSOR_ADDRESS</ref>,<sp/>const_,<sp/><ref refid="TTL__ext__tensors_8h_1add667a20ba49b4cf03816e9cffd0d0c4" kindref="member">TENSOR_LOCATION</ref>,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>sub_,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">);</highlight></codeline>
+    </programlisting>
+    <location file="tensors/TTL_int_ext_typed_tensors.h"/>
+  </compounddef>
+</doxygen>

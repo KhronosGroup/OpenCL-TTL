@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['shape_0',['shape',['../structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t.html#a022426fbd2646db3da8fd2fc4c9c0c67',1,'TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t::shape()'],['../structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__tensor__t.html#a3c64c4c20419bafd8c230d5c61522c13',1,'TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_tensor_t::shape()'],['../structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t.html#a502b0c33942d6df266070bd7fd306263',1,'TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::shape()'],['../structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t.html#a1e26c97859bb019b7ba8f2823e15cfa1',1,'TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::shape()'],['../structTTL__tile__t.html#a9e41cf99d7bf61cdf162941fd477e26f',1,'TTL_tile_t::shape()']]],
+  ['space_1',['space',['../structTTL__tiler__t.html#ac46505174c37e6f5b4e6993ec411e7c1',1,'TTL_tiler_t']]],
+  ['sub_5foffset_2',['sub_offset',['../structTTL__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t.html#a7c70294288e0d4f91a9cedae22873d86',1,'TTL_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::sub_offset()'],['../structTTL__const__TENSOR__LOCATIONTTL__TENSOR__TYPE__sub__tensor__t.html#a2a21819871e1014d5f87a3e4eb7b9485',1,'TTL_const_TENSOR_LOCATIONTTL_TENSOR_TYPE_sub_tensor_t::sub_offset()']]]
+];

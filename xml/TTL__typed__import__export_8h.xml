@@ -1,0 +1,375 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="TTL__typed__import__export_8h" kind="file" language="C++">
+    <compoundname>TTL_typed_import_export.h</compoundname>
+    <includes refid="TTL__macros_8h" local="yes">../TTL_macros.h</includes>
+    <includes refid="TTL__types_8h" local="yes">../TTL_types.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>../TTL_macros.h</label>
+        <link refid="TTL__macros_8h"/>
+      </node>
+      <node id="3">
+        <label>../TTL_types.h</label>
+        <link refid="TTL__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_typed_import_export.h</label>
+        <link refid="TTL__typed__import__export_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="TTL__typed__import__export_8h_1a008b83138fca3df1dff9f6f919f85e67" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_import</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_tensor_t internal_tensor, const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t external_tensor, TTL_event_t *event)</argsstring>
+        <name>TTL_import</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>internal_tensor</declname>
+        </param>
+        <param>
+          <type>const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>external_tensor</declname>
+        </param>
+        <param>
+          <type><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref> *</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Import the external tensor to the internal tensor returning when complete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>internal_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_tensor_t describing the internal tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>external_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_tensor_t describing the external tensor. Complete description of what not how here.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>No return value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="import_export/TTL_typed_import_export.h" line="33" column="2" bodyfile="import_export/TTL_typed_import_export.h" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__typed__import__export_8h_1a689a69af0756f10a0df8ca69070509f7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_blocking_import</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_tensor_t internal_tensor, const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t external_tensor)</argsstring>
+        <name>TTL_blocking_import</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>internal_tensor</declname>
+        </param>
+        <param>
+          <type>const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>external_tensor</declname>
+        </param>
+        <briefdescription>
+<para>Import the external tensor to the internal tensor returning when complete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>internal_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_tensor_t describing the internal tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>external_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_tensor_t describing the external tensor. Complete description of what not how here.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>No return value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="import_export/TTL_typed_import_export.h" line="49" column="2" bodyfile="import_export/TTL_typed_import_export.h" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__typed__import__export_8h_1a3833a82027c682647a61ba024311b139" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_import_sub_tensor</definition>
+        <argsstring>(const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t internal_sub_tensor, const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t const_external_tensor, TTL_event_t *event)</argsstring>
+        <name>TTL_import_sub_tensor</name>
+        <param>
+          <type>const TTL_int_TTL_TENSOR_TYPE_sub_tensor_t</type>
+          <declname>internal_sub_tensor</declname>
+        </param>
+        <param>
+          <type>const TTL_const_ext_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>const_external_tensor</declname>
+        </param>
+        <param>
+          <type><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref> *</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Implementation of TTL_import_sub_tensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>internal_sub_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_tensor_t describing the internal tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>const_external_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_const_ext_tensor_t describing the external tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_event_t type to allow detection of import completion.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="TTL__typed__import__export_8h_1a008b83138fca3df1dff9f6f919f85e67" kindref="member">TTL_import</ref> for full API and parameter information </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="import_export/TTL_typed_import_export.h" line="64" column="2" bodyfile="import_export/TTL_typed_import_export.h" bodystart="64" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__typed__import__export_8h_1a6d22fb1b074849ab35399fa2ddad1c78" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_export</definition>
+        <argsstring>(const TTL_const_int_TTL_TENSOR_TYPE_tensor_t internal_tensor, const TTL_ext_TTL_TENSOR_TYPE_tensor_t external_tensor, TTL_event_t *event)</argsstring>
+        <name>TTL_export</name>
+        <param>
+          <type>const TTL_const_int_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>internal_tensor</declname>
+        </param>
+        <param>
+          <type>const TTL_ext_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>external_tensor</declname>
+        </param>
+        <param>
+          <type><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref> *</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Export the external tensor to the internal tensor returning when complete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>internal_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_tensor_t describing the internal tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>external_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_tensor_t describing the external tensor. Complete description of what not how here.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>No return value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="import_export/TTL_typed_import_export.h" line="90" column="2" bodyfile="import_export/TTL_typed_import_export.h" bodystart="90" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__typed__import__export_8h_1a013f2843e14e68ac6642348539f8f7a1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_blocking_export</definition>
+        <argsstring>(const TTL_const_int_TTL_TENSOR_TYPE_tensor_t internal_tensor, const TTL_ext_TTL_TENSOR_TYPE_tensor_t external_tensor)</argsstring>
+        <name>TTL_blocking_export</name>
+        <param>
+          <type>const TTL_const_int_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>internal_tensor</declname>
+        </param>
+        <param>
+          <type>const TTL_ext_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>external_tensor</declname>
+        </param>
+        <briefdescription>
+<para>Export the external tensor to the internal tensor returning when complete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>internal_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_tensor_t describing the internal tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>external_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TTL_int_tensor_t describing the external tensor. Complete description of what not how here.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>No return value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="import_export/TTL_typed_import_export.h" line="106" column="2" bodyfile="import_export/TTL_typed_import_export.h" bodystart="106" bodyend="108"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_tensors_common.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../TTL_macros.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../TTL_types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="22"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@brief<sp/><sp/>Import<sp/>the<sp/>external<sp/>tensor<sp/>to<sp/>the<sp/>internal<sp/>tensor<sp/>returning<sp/>when<sp/>complete</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@param<sp/>internal_tensor<sp/>A<sp/>TTL_int_tensor_t<sp/>describing<sp/>the<sp/>internal<sp/>tensor.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@param<sp/>external_tensor<sp/>A<sp/>TTL_int_tensor_t<sp/>describing<sp/>the<sp/>external<sp/>tensor.</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>Complete<sp/>description<sp/>of<sp/>what<sp/>not<sp/>how<sp/>here.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>@return<sp/>No<sp/>return<sp/>value</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__typed__import__export_8h_1a008b83138fca3df1dff9f6f919f85e67" kindref="member">TTL_import</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>internal_tensor,</highlight></codeline>
+<codeline lineno="33" refid="TTL__typed__import__export_8h_1a008b83138fca3df1dff9f6f919f85e67" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>const_,<sp/>ext_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>external_tensor,<sp/><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref><sp/>*<ref refid="TTL__double__scheme__template_8h_1a661982ea3f5ce8c1e584bac6215180cc" kindref="member">event</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__import__export_8h_1a2b4efe45abbec1418972b980cc8c8c9b" kindref="member">TTL_import_base</ref>(</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;internal_tensor),<sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;external_tensor),<sp/><ref refid="TTL__double__scheme__template_8h_1a661982ea3f5ce8c1e584bac6215180cc" kindref="member">event</ref><sp/>__TTL_TRACE_LINE);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="38"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@brief<sp/><sp/>Import<sp/>the<sp/>external<sp/>tensor<sp/>to<sp/>the<sp/>internal<sp/>tensor<sp/>returning<sp/>when<sp/>complete</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@param<sp/>internal_tensor<sp/>A<sp/>TTL_int_tensor_t<sp/>describing<sp/>the<sp/>internal<sp/>tensor.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@param<sp/>external_tensor<sp/>A<sp/>TTL_int_tensor_t<sp/>describing<sp/>the<sp/>external<sp/>tensor.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>Complete<sp/>description<sp/>of<sp/>what<sp/>not<sp/>how<sp/>here.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@return<sp/>No<sp/>return<sp/>value</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__typed__import__export_8h_1a689a69af0756f10a0df8ca69070509f7" kindref="member">TTL_blocking_import</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>internal_tensor,</highlight></codeline>
+<codeline lineno="49" refid="TTL__typed__import__export_8h_1a689a69af0756f10a0df8ca69070509f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>const_,<sp/>ext_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>external_tensor)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__import__export_8h_1a964262b8639c48eeb40282f26d74062c" kindref="member">TTL_blocking_import_base</ref>(*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;internal_tensor),<sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;external_tensor)<sp/>__TTL_TRACE_LINE);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="53"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implementation<sp/>of<sp/>TTL_import_sub_tensor</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>@param<sp/>internal_sub_tensor<sp/>A<sp/>TTL_int_tensor_t<sp/>describing<sp/>the<sp/>internal<sp/>tensor.</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>@param<sp/>const_external_tensor<sp/>A<sp/>TTL_const_ext_tensor_t<sp/>describing<sp/>the<sp/>external<sp/>tensor.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/>@param<sp/>event<sp/>A<sp/>TTL_event_t<sp/>type<sp/>to<sp/>allow<sp/>detection<sp/>of<sp/>import<sp/>completion.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@see<sp/>TTL_import<sp/>for<sp/>full<sp/>API<sp/>and<sp/>parameter<sp/>information</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))<sp/>__TTL_TRACE_FN(</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__typed__import__export_8h_1a3833a82027c682647a61ba024311b139" kindref="member">TTL_import_sub_tensor</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>sub_,<sp/>_t)<sp/>internal_sub_tensor,</highlight></codeline>
+<codeline lineno="64" refid="TTL__typed__import__export_8h_1a3833a82027c682647a61ba024311b139" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>const_,<sp/>ext_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>const_external_tensor,<sp/><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref><sp/>*<ref refid="TTL__double__scheme__template_8h_1a661982ea3f5ce8c1e584bac6215180cc" kindref="member">event</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme__template_8h_1accd8b26d0718d9b97c5de259dfe3f1e6" kindref="member">TTL_local</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)<sp/>dst_address;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1a6ab3c3094bd8aa4ddd259edf7d65af8d" kindref="member">TTL_global</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)<sp/>src_address;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>import_shape<sp/>=<sp/><ref refid="TTL__import__export_8h_1a5ddf38fd72f7c298c2e6814f4e87ebc2" kindref="member">TTL_import_pre_fill</ref>(*<ref refid="TTL__int__ext__typed__tensors_8h_1ab0612ee3991277788e35f6774396f027" kindref="member">TTL_to_void_sub_tensor</ref>(&amp;internal_sub_tensor),<sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;const_external_tensor),<sp/>&amp;dst_address,<sp/>&amp;src_address);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__int__tensors_8h_1af55285c5c289c327379be3725265949a" kindref="member">TTL_int_tensor_t</ref><sp/>import_int_tensor<sp/>=<sp/>TTL_create_int_tensor(</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dst_address,<sp/>import_shape,<sp/>internal_sub_tensor.tensor.layout,<sp/>internal_sub_tensor.tensor.elem_size);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__ext__tensors_8h_1a06baf9e44b059bf3571a491b880830fa" kindref="member">TTL_const_ext_tensor_t</ref><sp/>import_ext_tensor<sp/>=<sp/>TTL_create_const_ext_tensor(</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>src_address,<sp/>import_shape,<sp/>const_external_tensor.layout,<sp/><ref refid="tensors_2TTL__types_8h_1a74c02e5006557e50ccaf1fed19bdf5ec" kindref="member">TTL_create_offset</ref>(),<sp/>const_external_tensor.elem_size);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__typed__import__export_8h_1a008b83138fca3df1dff9f6f919f85e67" kindref="member">TTL_import</ref>(import_int_tensor,<sp/>import_ext_tensor,<sp/><ref refid="TTL__double__scheme__template_8h_1a661982ea3f5ce8c1e584bac6215180cc" kindref="member">event</ref><sp/>__TTL_TRACE_LINE);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="79"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>@brief<sp/><sp/>Export<sp/>the<sp/>external<sp/>tensor<sp/>to<sp/>the<sp/>internal<sp/>tensor<sp/>returning<sp/>when<sp/>complete</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>@param<sp/>internal_tensor<sp/>A<sp/>TTL_int_tensor_t<sp/>describing<sp/>the<sp/>internal<sp/>tensor.</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>@param<sp/>external_tensor<sp/>A<sp/>TTL_int_tensor_t<sp/>describing<sp/>the<sp/>external<sp/>tensor.</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*<sp/>Complete<sp/>description<sp/>of<sp/>what<sp/>not<sp/>how<sp/>here.</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>@return<sp/>No<sp/>return<sp/>value</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__typed__import__export_8h_1a6d22fb1b074849ab35399fa2ddad1c78" kindref="member">TTL_export</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>const_,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>internal_tensor,</highlight></codeline>
+<codeline lineno="90" refid="TTL__typed__import__export_8h_1a6d22fb1b074849ab35399fa2ddad1c78" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>ext_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>external_tensor,<sp/><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref><sp/>*<ref refid="TTL__double__scheme__template_8h_1a661982ea3f5ce8c1e584bac6215180cc" kindref="member">event</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__import__export_8h_1a5d7737bbf92e5ff98d3e8cfd3f2bda1c" kindref="member">TTL_export_base</ref>(</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;internal_tensor),<sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;external_tensor),<sp/><ref refid="TTL__double__scheme__template_8h_1a661982ea3f5ce8c1e584bac6215180cc" kindref="member">event</ref><sp/>__TTL_TRACE_LINE);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="95"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>@brief<sp/><sp/>Export<sp/>the<sp/>external<sp/>tensor<sp/>to<sp/>the<sp/>internal<sp/>tensor<sp/>returning<sp/>when<sp/>complete</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>@param<sp/>internal_tensor<sp/>A<sp/>TTL_int_tensor_t<sp/>describing<sp/>the<sp/>internal<sp/>tensor.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*<sp/>@param<sp/>external_tensor<sp/>A<sp/>TTL_int_tensor_t<sp/>describing<sp/>the<sp/>external<sp/>tensor.</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*<sp/>Complete<sp/>description<sp/>of<sp/>what<sp/>not<sp/>how<sp/>here.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/>*<sp/>@return<sp/>No<sp/>return<sp/>value</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__typed__import__export_8h_1a013f2843e14e68ac6642348539f8f7a1" kindref="member">TTL_blocking_export</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>const_,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>internal_tensor,</highlight></codeline>
+<codeline lineno="106" refid="TTL__typed__import__export_8h_1a013f2843e14e68ac6642348539f8f7a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>ext_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>external_tensor)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__import__export_8h_1a7a80aace9fee264fc61af6884c3a0112" kindref="member">TTL_blocking_export_base</ref>(*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;internal_tensor),<sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;external_tensor)<sp/>__TTL_TRACE_LINE);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="import_export/TTL_typed_import_export.h"/>
+  </compounddef>
+</doxygen>

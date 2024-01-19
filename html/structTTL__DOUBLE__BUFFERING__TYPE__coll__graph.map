@@ -1,0 +1,6 @@
+<map id="TTL_DOUBLE_BUFFERING_TYPE" name="TTL_DOUBLE_BUFFERING_TYPE">
+<area shape="rect" id="node1" title="Data required to perform double buffer pipelining." alt="" coords="5,315,236,392"/>
+<area shape="rect" id="node2" href="$structTTL__tile__t.html" title=" " alt="" coords="80,175,161,252"/>
+<area shape="rect" id="node3" href="$structTTL__shape__t.html" title="Description of a Shape." alt="" coords="11,5,110,112"/>
+<area shape="rect" id="node4" href="$structTTL__offset__t.html" title="Description of the 3D offset of an object." alt="" coords="134,5,230,112"/>
+</map>

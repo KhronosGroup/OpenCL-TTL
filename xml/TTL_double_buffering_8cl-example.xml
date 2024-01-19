@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="TTL_double_buffering_8cl-example" kind="example">
+    <compoundname>TTL_double_buffering.cl</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><programlisting filename="TTL_double_buffering.cl"><codeline><highlight class="comment">/*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>ttl_double_buffering.cl</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TTL/TTL.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;compute_cross.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TTL_INT_SUB_TENSOR_TYPE</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_INT_SUB_TENSOR_TYPE<sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/>TEST_TENSOR_TYPE,<sp/>sub_,<sp/>_t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TTL_IMPORT_DOUBLE_BUFFERING_TYPE</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_IMPORT_DOUBLE_BUFFERING_TYPE<sp/>\</highlight></codeline>
+<codeline><highlight class="preprocessor"><sp/><sp/><sp/><sp/>__TTL_tensor_name(TTL_import_double_,<sp/>const_,<sp/>,<sp/>TEST_TENSOR_TYPE,<sp/>,<sp/>_buffering_t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TTL_EXPORT_DOUBLE_BUFFERING_TYPE</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_EXPORT_DOUBLE_BUFFERING_TYPE<sp/>\</highlight></codeline>
+<codeline><highlight class="preprocessor"><sp/><sp/><sp/><sp/>__TTL_tensor_name(TTL_export_double_,<sp/>const_,<sp/>,<sp/>TEST_TENSOR_TYPE,<sp/>,<sp/>_buffering_t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TTL_EXT_TENSOR_TYPE</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_EXT_TENSOR_TYPE<sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>ext_,<sp/>TEST_TENSOR_TYPE,<sp/>,<sp/>_t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TTL_CONST_EXT_TENSOR_TYPE</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_CONST_EXT_TENSOR_TYPE<sp/>__TTL_tensor_name(TTL_,<sp/>const_,<sp/>ext_,<sp/>TEST_TENSOR_TYPE,<sp/>,<sp/>_t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUFFER_SIZE<sp/>0x80000</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">__kernel<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>TTL_double_buffering(<ref refid="c_2TTL__types_8h_1a0bcdca9f6e5923ea191d934ec3400d9e" kindref="member">__global</ref><sp/>TEST_TENSOR_TYPE<sp/>*restrict<sp/>ext_base_in,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="c_2TTL__types_8h_1a0bcdca9f6e5923ea191d934ec3400d9e" kindref="member">__global</ref><sp/>TEST_TENSOR_TYPE<sp/>*restrict<sp/>ext_base_out,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>external_stride_out,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tile_width,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tile_height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>local<sp/>TEST_TENSOR_TYPE<sp/>input_buffer_1[BUFFER_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>local<sp/>TEST_TENSOR_TYPE<sp/>input_buffer_2[BUFFER_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>local<sp/>TEST_TENSOR_TYPE<sp/>output_buffer_1[BUFFER_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>local<sp/>TEST_TENSOR_TYPE<sp/>output_buffer_2[BUFFER_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(((TILE_OVERLAP_LEFT<sp/>+<sp/>TILE_OVERLAP_RIGHT<sp/>+<sp/>tile_width)<sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(TILE_OVERLAP_TOP<sp/>+<sp/>TILE_OVERLAP_BOTTOM<sp/>+<sp/>tile_height))<sp/>&gt;<sp/>BUFFER_SIZE)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Tile<sp/>too<sp/>large<sp/>%d<sp/>&gt;<sp/>%d\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((TILE_OVERLAP_LEFT<sp/>+<sp/>TILE_OVERLAP_RIGHT<sp/>+<sp/>tile_width)<sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(TILE_OVERLAP_TOP<sp/>+<sp/>TILE_OVERLAP_BOTTOM<sp/>+<sp/>tile_height)),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BUFFER_SIZE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Logical<sp/>input<sp/>tiling.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>tensor_shape_in<sp/>=<sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>tile_shape_in<sp/>=<sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(tile_width<sp/>+<sp/>(TILE_OVERLAP_LEFT<sp/>+<sp/>TILE_OVERLAP_RIGHT),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_height<sp/>+<sp/>(TILE_OVERLAP_TOP<sp/>+<sp/>TILE_OVERLAP_BOTTOM));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref><sp/>overlap_in<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensors_2TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" kindref="member">TTL_create_overlap</ref>(TILE_OVERLAP_LEFT<sp/>+<sp/>TILE_OVERLAP_RIGHT,<sp/>TILE_OVERLAP_TOP<sp/>+<sp/>TILE_OVERLAP_BOTTOM);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref><sp/>augmentation_in<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1ab0bb98ca3c62d4eb49ea99809311bc9c" kindref="member">TTL_create_augmentation</ref>(TILE_OVERLAP_LEFT,<sp/>TILE_OVERLAP_RIGHT,<sp/>TILE_OVERLAP_TOP,<sp/>TILE_OVERLAP_BOTTOM);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>input_tiler<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1ab7e52be36254de06eceaf15b8b77f788" kindref="member">TTL_create_overlap_tiler</ref>(tensor_shape_in,<sp/>tile_shape_in,<sp/>overlap_in,<sp/>augmentation_in);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Logical<sp/>output<sp/>tiling.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>tensor_shape_out<sp/>=<sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>output_tiler<sp/>=<sp/><ref refid="TTL__tiles_8h_1adb0c677811fc72b45456af0b7a84a6da" kindref="member">TTL_create_tiler</ref>(tensor_shape_out,<sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(tile_width,<sp/>tile_height));</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>External<sp/>layouts.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref><sp/>ext_layout_in<sp/>=<sp/><ref refid="TTL__tensors__common_8h_1a631ec76c3a069194d724aae98337fbe5" kindref="member">TTL_create_layout</ref>(external_stride_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref><sp/>ext_layout_out<sp/>=<sp/><ref refid="TTL__tensors__common_8h_1a631ec76c3a069194d724aae98337fbe5" kindref="member">TTL_create_layout</ref>(external_stride_out);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__double__scheme__template_8h_1a86f724d1f49937ec9fb751cced1499f7" kindref="member">TTL_CONST_EXT_TENSOR_TYPE</ref><sp/>ext_input_tensor<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_const_ext_tensor(ext_base_in,<sp/>tensor_shape_in,<sp/>ext_layout_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__duplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kindref="member">TTL_EXT_TENSOR_TYPE</ref><sp/>ext_output_tensor<sp/>=<sp/>TTL_create_ext_tensor(ext_base_out,<sp/>tensor_shape_out,<sp/>ext_layout_out);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>import_db<sp/>and<sp/>export_db<sp/>need<sp/>to<sp/>be<sp/>defined<sp/>outside,<sp/>before<sp/>the<sp/>loop,<sp/>as</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>they<sp/>record<sp/>the<sp/>event<sp/>to<sp/>wait<sp/>on</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref><sp/>import_DB_e<sp/>=<sp/><ref refid="opencl_2TTL__import__export_8h_1ab52c0b665518000f2c402c5170a58ee2" kindref="member">TTL_get_event</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_IMPORT_DOUBLE_BUFFERING_TYPE<sp/>import_db<sp/>=<sp/>TTL_start_import_double_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>input_buffer_1,<sp/>input_buffer_2,<sp/>ext_input_tensor,<sp/>&amp;import_DB_e,<sp/><ref refid="TTL__tiles_8h_1a6be82c657988ed29b07515e6d951042c" kindref="member">TTL_get_tile</ref>(0,<sp/>input_tiler));</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref><sp/>export_DB_e<sp/>=<sp/><ref refid="opencl_2TTL__import__export_8h_1ab52c0b665518000f2c402c5170a58ee2" kindref="member">TTL_get_event</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_EXPORT_DOUBLE_BUFFERING_TYPE<sp/>export_db<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_start_export_double_buffering(output_buffer_1,<sp/>output_buffer_2,<sp/>ext_output_tensor,<sp/>&amp;export_DB_e);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="TTL__tiles_8h_1a8eda704b864c0eba5c2709ec70e10fbd" kindref="member">TTL_number_of_tiles</ref>(input_tiler);<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>tile_next_import<sp/>=<sp/><ref refid="TTL__tiles_8h_1a6be82c657988ed29b07515e6d951042c" kindref="member">TTL_get_tile</ref>(i<sp/>+<sp/>1,<sp/>input_tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>tile_current_export<sp/>=<sp/><ref refid="TTL__tiles_8h_1a6be82c657988ed29b07515e6d951042c" kindref="member">TTL_get_tile</ref>(i,<sp/>output_tiler);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme__template_8h_1a02dee7073641a4f9b5b813e02318a018" kindref="member">TTL_INT_SUB_TENSOR_TYPE</ref><sp/>imported_to<sp/>=<sp/><ref refid="TTL__double__scheme_8h_1a748725523d20f2f1a0ead1681c2f959b" kindref="member">TTL_step_buffering</ref>(&amp;import_db,<sp/>tile_next_import);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme__template_8h_1a02dee7073641a4f9b5b813e02318a018" kindref="member">TTL_INT_SUB_TENSOR_TYPE</ref><sp/>exported_from<sp/>=<sp/><ref refid="TTL__double__scheme_8h_1a748725523d20f2f1a0ead1681c2f959b" kindref="member">TTL_step_buffering</ref>(&amp;export_db,<sp/>tile_current_export);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compute(imported_to,<sp/>exported_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme_8h_1a5f958129f8af5e1c5fced04559ff002a" kindref="member">TTL_finish_buffering</ref>(&amp;import_db);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme_8h_1a5f958129f8af5e1c5fced04559ff002a" kindref="member">TTL_finish_buffering</ref>(&amp;export_db);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+    <location file="pipelines/TTL_double_scheme_template.h"/>
+  </compounddef>
+</doxygen>

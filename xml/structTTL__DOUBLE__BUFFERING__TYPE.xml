@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structTTL__DOUBLE__BUFFERING__TYPE" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_DOUBLE_BUFFERING_TYPE</compoundname>
+    <includes refid="TTL__double__scheme__template_8h" local="no">TTL_double_scheme_template.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__DOUBLE__BUFFERING__TYPE_1aaa70f4c834ae197b62989737eb0aedee" prot="public" static="no" mutable="no">
+        <type><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref> *</type>
+        <definition>TTL_event_t* TTL_DOUBLE_BUFFERING_TYPE::event</definition>
+        <argsstring></argsstring>
+        <name>event</name>
+        <qualifiedname>TTL_DOUBLE_BUFFERING_TYPE::event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_double_scheme_template.h" line="103" column="17" bodyfile="pipelines/TTL_double_scheme_template.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__DOUBLE__BUFFERING__TYPE_1a6e09155ceaae67d1fe9a7fe4ccb69dca" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+        <definition>TTL_tile_t TTL_DOUBLE_BUFFERING_TYPE::prev_tile</definition>
+        <argsstring></argsstring>
+        <name>prev_tile</name>
+        <qualifiedname>TTL_DOUBLE_BUFFERING_TYPE::prev_tile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_double_scheme_template.h" line="105" column="16" bodyfile="pipelines/TTL_double_scheme_template.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__DOUBLE__BUFFERING__TYPE_1ad90a8ed430c61e865a802160d338031d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TTL_DOUBLE_BUFFERING_TYPE::TTL_common_buffering_t</definition>
+        <argsstring>(TTL_TENSOR_TYPE *, TTL_EXT_TENSOR_TYPE, TTL_EXT_TENSOR_TYPE, 2) common</argsstring>
+        <name>TTL_common_buffering_t</name>
+        <qualifiedname>TTL_DOUBLE_BUFFERING_TYPE::TTL_common_buffering_t</qualifiedname>
+        <param>
+          <type><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *</type>
+        </param>
+        <param>
+          <type><ref refid="TTL__simplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kindref="member">TTL_EXT_TENSOR_TYPE</ref></type>
+        </param>
+        <param>
+          <type><ref refid="TTL__simplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kindref="member">TTL_EXT_TENSOR_TYPE</ref></type>
+        </param>
+        <param>
+          <type>2</type>
+        </param>
+        <briefdescription>
+<para>The information that is common to all pipeline schemes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_double_scheme_template.h" line="100" column="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Data required to perform double buffer pipelining. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para>TTL_start_import_double_buffering and TTL_start_export_double_buffering for a description of double buffer pipelining. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_DOUBLE_BUFFERING_TYPE</label>
+        <link refid="structTTL__DOUBLE__BUFFERING__TYPE"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+prev_tile</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>TTL_offset_t</label>
+        <link refid="structTTL__offset__t"/>
+      </node>
+      <node id="3">
+        <label>TTL_shape_t</label>
+        <link refid="structTTL__shape__t"/>
+      </node>
+      <node id="2">
+        <label>TTL_tile_t</label>
+        <link refid="structTTL__tile__t"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+offset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="pipelines/TTL_double_scheme_template.h" line="99" column="1" bodyfile="pipelines/TTL_double_scheme_template.h" bodystart="99" bodyend="106"/>
+    <listofallmembers>
+      <member refid="structTTL__DOUBLE__BUFFERING__TYPE_1aaa70f4c834ae197b62989737eb0aedee" prot="public" virt="non-virtual"><scope>TTL_DOUBLE_BUFFERING_TYPE</scope><name>event</name></member>
+      <member refid="structTTL__DOUBLE__BUFFERING__TYPE_1a6e09155ceaae67d1fe9a7fe4ccb69dca" prot="public" virt="non-virtual"><scope>TTL_DOUBLE_BUFFERING_TYPE</scope><name>prev_tile</name></member>
+      <member refid="structTTL__DOUBLE__BUFFERING__TYPE_1ad90a8ed430c61e865a802160d338031d" prot="public" virt="non-virtual"><scope>TTL_DOUBLE_BUFFERING_TYPE</scope><name>TTL_common_buffering_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</compoundname>
+    <includes refid="TTL__duplex__scheme_8h" local="no">TTL_duplex_scheme.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a9fbb4aa1c915b7ebac9eb5cbd7b5ff81" prot="public" static="no" mutable="no">
+        <type><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref>(*</type>
+        <definition>TTL_event_t(* TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::events)[2]</definition>
+        <argsstring>)[2]</argsstring>
+        <name>events</name>
+        <qualifiedname>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::events</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>2 Events are required, 1 first is used for external to internal transfers, the second for internal to external transfers </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="81" column="5" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a1ad14085d9868dcd710f5736a8a21fc9" prot="public" static="no" mutable="no">
+        <type>TTL_ext_TTL_TENSOR_TYPE_tensor_t</type>
+        <definition>TTL_ext_TTL_TENSOR_TYPE_tensor_t TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::to_export_to</definition>
+        <argsstring></argsstring>
+        <name>to_export_to</name>
+        <qualifiedname>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::to_export_to</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="90" column="46" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a3ce6e02cfd84e723f6d69254a4bf472b" prot="public" static="no" mutable="no">
+        <type>TTL_const_int_TTL_TENSOR_TYPE_tensor_t</type>
+        <definition>TTL_const_int_TTL_TENSOR_TYPE_tensor_t TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::to_export_from</definition>
+        <argsstring></argsstring>
+        <name>to_export_from</name>
+        <qualifiedname>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::to_export_from</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="91" column="50" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1acc5220e537c04fd8a2561cd23480904c" prot="public" static="no" mutable="no">
+        <type>struct TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::@0</type>
+        <definition>struct TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::@0 TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::prev_out_tensors</definition>
+        <argsstring></argsstring>
+        <name>prev_out_tensors</name>
+        <qualifiedname>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::prev_out_tensors</qualifiedname>
+        <briefdescription>
+<para>Store of the buffers used for the previous import/export cycles. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="92" column="22"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1aaeb97887b55c3859fd457a0f9a484cf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::TTL_common_buffering_t</definition>
+        <argsstring>(TTL_TENSOR_TYPE *, TTL_ext_TTL_TENSOR_TYPE_tensor_t, TTL_ext_TTL_TENSOR_TYPE_tensor_t, 2) common</argsstring>
+        <name>TTL_common_buffering_t</name>
+        <qualifiedname>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t::TTL_common_buffering_t</qualifiedname>
+        <param>
+          <type><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *</type>
+        </param>
+        <param>
+          <type>TTL_ext_TTL_TENSOR_TYPE_tensor_t</type>
+        </param>
+        <param>
+          <type>TTL_ext_TTL_TENSOR_TYPE_tensor_t</type>
+        </param>
+        <param>
+          <type>2</type>
+        </param>
+        <briefdescription>
+<para>The information that is common to all pipeline schemes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="78" column="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Data required to perform duplex buffer pipelining. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="TTL__duplex__scheme_8h_1ad12513a54d4693e0cf3d48bcb4f1c5e2" kindref="member">TTL_start_duplex_buffering</ref> for a description of duplex buffer pipelining. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</label>
+        <link refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="pipelines/TTL_duplex_scheme.h" line="77" column="1" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="77" bodyend="93"/>
+    <listofallmembers>
+      <member refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a9fbb4aa1c915b7ebac9eb5cbd7b5ff81" prot="public" virt="non-virtual"><scope>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</scope><name>events</name></member>
+      <member refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1acc5220e537c04fd8a2561cd23480904c" prot="public" virt="non-virtual"><scope>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</scope><name>prev_out_tensors</name></member>
+      <member refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a3ce6e02cfd84e723f6d69254a4bf472b" prot="public" virt="non-virtual"><scope>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</scope><name>to_export_from</name></member>
+      <member refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a1ad14085d9868dcd710f5736a8a21fc9" prot="public" virt="non-virtual"><scope>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</scope><name>to_export_to</name></member>
+      <member refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1aaeb97887b55c3859fd457a0f9a484cf7" prot="public" virt="non-virtual"><scope>TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</scope><name>TTL_common_buffering_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,5 @@
+<map id="TTL_tile_t" name="TTL_tile_t">
+<area shape="rect" id="node1" title=" " alt="" coords="74,175,155,252"/>
+<area shape="rect" id="node2" href="$structTTL__shape__t.html" title="Description of a Shape." alt="" coords="5,5,104,112"/>
+<area shape="rect" id="node3" href="$structTTL__offset__t.html" title="Description of the 3D offset of an object." alt="" coords="128,5,224,112"/>
+</map>

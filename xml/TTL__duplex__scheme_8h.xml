@@ -1,0 +1,620 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="TTL__duplex__scheme_8h" kind="file" language="C++">
+    <compoundname>TTL_duplex_scheme.h</compoundname>
+    <includes refid="TTL__macros_8h" local="yes">../TTL_macros.h</includes>
+    <includes refid="TTL__schemes__common_8h" local="yes">TTL_schemes_common.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>TTL_create_type.h</label>
+        <link refid="TTL__create__type_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>../TTL_create_types.h</label>
+        <link refid="TTL__create__types_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>../TTL_macros.h</label>
+        <link refid="TTL__macros_8h"/>
+      </node>
+      <node id="1">
+        <label>TTL_duplex_scheme.h</label>
+        <link refid="TTL__duplex__scheme_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TTL_schemes_common.h</label>
+        <link refid="TTL__schemes__common_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>TTL_TYPES_INCLUDE_FILE</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t" prot="public">TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="TTL__duplex__scheme_8h_1a4923da2143867bcd0e9719965d5421ed" prot="public" static="no">
+        <name>TTL_DUPLEX_BUFFERING_TYPE</name>
+        <initializer>__TTL_tensor_name(TTL_duplex_, const_, , <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>, , _buffering_t)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="64" column="9" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__duplex__scheme_8h_1a02dee7073641a4f9b5b813e02318a018" prot="public" static="no">
+        <name>TTL_INT_SUB_TENSOR_TYPE</name>
+        <initializer>__TTL_tensor_name(TTL_, , int_, <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>, sub_, _t)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="65" column="9" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__duplex__scheme_8h_1aab8924f33a928b25435ad601d37ef7b4" prot="public" static="no">
+        <name>TTL_CONST_INT_TENSOR_TYPE</name>
+        <initializer>__TTL_tensor_name(TTL_, const_, int_, <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>, , _t)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="66" column="9" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__duplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" prot="public" static="no">
+        <name>TTL_EXT_TENSOR_TYPE</name>
+        <initializer>__TTL_tensor_name(TTL_, , ext_, <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>, , _t)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="67" column="9" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__duplex__scheme_8h_1a86f724d1f49937ec9fb751cced1499f7" prot="public" static="no">
+        <name>TTL_CONST_EXT_TENSOR_TYPE</name>
+        <initializer>__TTL_tensor_name(TTL_, const_, ext_, <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>, , _t)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="68" column="9" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="TTL__duplex__scheme_8h_1aa726390be0a7bc731c23cb361f0409a8" prot="public" static="no">
+        <name>TTL_IO_TENSOR_TYPE</name>
+        <initializer>__TTL_tensor_name(TTL_io_, , , <ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>, , _t)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="69" column="9" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="TTL__duplex__scheme_8h_1a58b65302b7e671eb5d031ec2d9fea022" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TTL_io_TTL_TENSOR_TYPE_tensor_t</type>
+        <definition>static TTL_io_TTL_TENSOR_TYPE_tensor_t TTL_step_buffering</definition>
+        <argsstring>(TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t *duplex_buffering, TTL_tile_t tile_next_import, TTL_tile_t tile_current_export)</argsstring>
+        <name>TTL_step_buffering</name>
+        <param>
+          <type><ref refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t" kindref="compound">TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</ref> *</type>
+          <declname>duplex_buffering</declname>
+        </param>
+        <param>
+          <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+          <declname>tile_next_import</declname>
+        </param>
+        <param>
+          <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+          <declname>tile_current_export</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="208" column="2" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="208" bodyend="258" declfile="pipelines/TTL_duplex_scheme.h" declline="100" declcolumn="2"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__duplex__scheme_8h_1ad12513a54d4693e0cf3d48bcb4f1c5e2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t" kindref="compound">TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</ref></type>
+        <definition>static TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t TTL_start_duplex_buffering</definition>
+        <argsstring>(TTL_ext_TTL_TENSOR_TYPE_tensor_t ext_tensor_in, TTL_local(TTL_TENSOR_TYPE *) int_base_in, TTL_ext_TTL_TENSOR_TYPE_tensor_t ext_tensor_out, TTL_local(TTL_TENSOR_TYPE *) int_base_out, TTL_event_t(*events)[2], TTL_tile_t first_tile)</argsstring>
+        <name>TTL_start_duplex_buffering</name>
+        <param>
+          <type>TTL_ext_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>ext_tensor_in</declname>
+        </param>
+        <param>
+          <type><ref refid="TTL__double__scheme__template_8h_1accd8b26d0718d9b97c5de259dfe3f1e6" kindref="member">TTL_local</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *)</type>
+          <declname>int_base_in</declname>
+        </param>
+        <param>
+          <type>TTL_ext_TTL_TENSOR_TYPE_tensor_t</type>
+          <declname>ext_tensor_out</declname>
+        </param>
+        <param>
+          <type><ref refid="TTL__double__scheme__template_8h_1accd8b26d0718d9b97c5de259dfe3f1e6" kindref="member">TTL_local</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref> *)</type>
+          <declname>int_base_out</declname>
+        </param>
+        <param>
+          <type><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref>(*)</type>
+          <declname>events</declname>
+          <array>[2]</array>
+        </param>
+        <param>
+          <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+          <declname>first_tile</declname>
+        </param>
+        <briefdescription>
+<para>Create a TTL_DUPLEX_BUFFERING_TYPE and begin the buffering process. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ext_tensor_in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A tensor describing the input in global memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>int_base_in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address of the local import buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ext_tensor_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A tensor describing the output in global memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>int_base_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address of the local export buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>events</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a list of 2 events. The first event in the list will be used for imports, the second event in the list will be used for exports. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>first_tile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first tile to fetch for the scheme</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The TTL_DUPLEX_BUFFERING_TYPE created from the input parameters.</para>
+</simplesect>
+The first event in the list will be used for imports, the second event in the list will be used for exports. <linebreak/>
+<linebreak/>
+ Example: <programlisting><codeline><highlight class="normal">TTL_event_t<sp/>events[2]<sp/>=<sp/>{<sp/>TTL_get_event(),<sp/>TTL_get_event()};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_duplex_buffering_t<sp/>buffering_scheme<sp/>=<sp/>TTL_start_duplex_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ext_base_in,<sp/>ext_layout_in,<sp/>l_buffers[0],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ext_base_out,<sp/>ext_layout_out,<sp/>l_buffers[1],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&amp;events);</highlight></codeline>
+</programlisting> <linebreak/>
+ <simplesect kind="return"><para>The TTL_duplex_buffering_t created from the input parameters.</para>
+</simplesect>
+Solid description of duplex buffering here.</para>
+<para>The simplest form of duplex buffering takes the following flow.</para>
+<para><plantuml engine="uml">start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers
+1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Import The Next Tile into the input buffer;
+
+  :Process the Tile from the input buffer to the output buffer;
+
+  :ExportThe Process Tile from into the output buffer;
+
+endwhile
+
+stop</plantuml>
+</para>
+<para>This can be optimized and standardized using the TTL_step_buffering call.</para>
+<para><plantuml engine="uml">start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers
+1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+for each tile:
+
+  :Call TTL_step_buffering for the current tile
+
+   This will import the current new tile and export the last tile
+   in parallel;
+
+  if (Does the input buffer contain a valid tile? **TTL_tile_empty(...)**) then (yes)
+     :Process the Tile from the input buffer to the output buffer;
+  endif
+
+endwhile
+
+stop</plantuml>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="190" column="2" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="190" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__duplex__scheme_8h_1a00ab05f5e6ff89ec4a633bf0c9dabf58" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_finish_buffering</definition>
+        <argsstring>(TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t *duplex_buffering)</argsstring>
+        <name>TTL_finish_buffering</name>
+        <param>
+          <type><ref refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t" kindref="compound">TTL_duplex_const_TTL_TENSOR_TYPE_tensor_buffering_t</ref> *</type>
+          <declname>duplex_buffering</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pipelines/TTL_duplex_scheme.h" line="261" column="2" bodyfile="pipelines/TTL_duplex_scheme.h" bodystart="261" bodyend="263"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Given pair of blocking import and export that can execute concurrently, TTL_duplex_buffering issues them together and then waits on both to complete, hopefully executing them in parallel to each other. This scheme uses two internal buffers, one for the import and one for the export. Note that the export is pipelined to pair the import of the current tile with the export of previous tile.</para>
+<para>The following table draws the pipelined actions performed in duplex buffering. It specifies which tile is processed in each iteration:</para>
+<para><table rows="6" cols="5"><row>
+<entry thead="yes"><para>Action\Iteration   </para>
+</entry><entry thead="yes"><para>#0   </para>
+</entry><entry thead="yes"><para>#1   </para>
+</entry><entry thead="yes"><para>#i (2:NumOfTiles-1)   </para>
+</entry><entry thead="yes"><para>#NumOfTiles-    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Import</bold>   </para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>i   </para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Wait Import</bold>   </para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>i   </para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Compute</bold>   </para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>i   </para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Export</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>i-1   </para>
+</entry><entry thead="no"><para>NumOfTiles-1    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>WaitExport</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>i-1   </para>
+</entry><entry thead="no"><para>NumOfTiles-1   </para>
+</entry></row>
+</table>
+</para>
+<para>Notice the epilog (#NumOfTiles) which is an extra iteration.</para>
+<para>When including this file the following must be defined</para>
+<para>#define TTL_TENSOR_TYPE void #define TTL_TENSOR_TYPE uchar etc </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_duplex_scheme.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>clang-format<sp/>off</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>@file</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>Given<sp/>pair<sp/>of<sp/>blocking<sp/>import<sp/>and<sp/>export<sp/>that<sp/>can<sp/>execute<sp/>concurrently,</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>TTL_duplex_buffering<sp/>issues<sp/>them<sp/>together<sp/>and<sp/>then<sp/>waits<sp/>on<sp/>both<sp/>to<sp/>complete,</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>hopefully<sp/>executing<sp/>them<sp/>in<sp/>parallel<sp/>to<sp/>each<sp/>other.<sp/>This<sp/>scheme<sp/>uses<sp/>two</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>internal<sp/>buffers,<sp/>one<sp/>for<sp/>the<sp/>import<sp/>and<sp/>one<sp/>for<sp/>the<sp/>export.<sp/>Note<sp/>that<sp/>the</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>export<sp/>is<sp/>pipelined<sp/>to<sp/>pair<sp/>the<sp/>import<sp/>of<sp/>the<sp/>current<sp/>tile<sp/>with<sp/>the<sp/>export<sp/>of</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>previous<sp/>tile.</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"></highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>The<sp/>following<sp/>table<sp/>draws<sp/>the<sp/>pipelined<sp/>actions<sp/>performed<sp/>in<sp/>duplex<sp/>buffering.</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>It<sp/>specifies<sp/>which<sp/>tile<sp/>is<sp/>processed<sp/>in<sp/>each<sp/>iteration:</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>|<sp/>Action\\Iteration<sp/>|<sp/>\#0<sp/>|<sp/>\#1<sp/>|<sp/>\#i<sp/>(2:NumOfTiles-1)<sp/>|<sp/>\#NumOfTiles-<sp/>|</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>|-------------------|-----|-----|----------------------|---------------|</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>|<sp/>**Import**<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>i<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>|<sp/>**Wait<sp/>Import**<sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>i<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>|<sp/>**Compute**<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>i<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>|<sp/>**Export**<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>i-1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-1<sp/><sp/>|</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>|<sp/>**WaitExport**<sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>i-1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-1<sp/><sp/>|</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>Notice<sp/>the<sp/>epilog<sp/>(\#NumOfTiles)<sp/>which<sp/>is<sp/>an<sp/>extra<sp/>iteration.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>When<sp/>including<sp/>this<sp/>file<sp/>the<sp/>following<sp/>must<sp/>be<sp/>defined</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>#define<sp/>TTL_TENSOR_TYPE<sp/>void</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>#define<sp/>TTL_TENSOR_TYPE<sp/>uchar</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>etc</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@example<sp/>TTL_duplex_buffering.cl</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>clang-format<sp/>on</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>file<sp/>presumes<sp/>that<sp/>the<sp/>following<sp/>have<sp/>been<sp/>pre<sp/>included.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>this<sp/>is<sp/>not<sp/>done<sp/>here<sp/>for<sp/>path<sp/>reasons.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#include<sp/>&quot;TTL_core.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#include<sp/>&quot;TTL_import_export.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#include<sp/>TTL_IMPORT_EXPORT_INCLUDE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../TTL_macros.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__schemes__common_8h" kindref="compound">TTL_schemes_common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@def<sp/>The<sp/>structs<sp/>used<sp/>for<sp/>this<sp/>buffering<sp/>type</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="TTL__duplex__scheme_8h_1a4923da2143867bcd0e9719965d5421ed" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_DUPLEX_BUFFERING_TYPE<sp/>__TTL_tensor_name(TTL_duplex_,<sp/>const_,<sp/>,<sp/>TTL_TENSOR_TYPE,<sp/>,<sp/>_buffering_t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="TTL__duplex__scheme_8h_1a02dee7073641a4f9b5b813e02318a018" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_INT_SUB_TENSOR_TYPE<sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>int_,<sp/>TTL_TENSOR_TYPE,<sp/>sub_,<sp/>_t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="TTL__duplex__scheme_8h_1aab8924f33a928b25435ad601d37ef7b4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_CONST_INT_TENSOR_TYPE<sp/>__TTL_tensor_name(TTL_,<sp/>const_,<sp/>int_,<sp/>TTL_TENSOR_TYPE,<sp/>,<sp/>_t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="TTL__duplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_EXT_TENSOR_TYPE<sp/>__TTL_tensor_name(TTL_,<sp/>,<sp/>ext_,<sp/>TTL_TENSOR_TYPE,<sp/>,<sp/>_t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="TTL__duplex__scheme_8h_1a86f724d1f49937ec9fb751cced1499f7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_CONST_EXT_TENSOR_TYPE<sp/>__TTL_tensor_name(TTL_,<sp/>const_,<sp/>ext_,<sp/>TTL_TENSOR_TYPE,<sp/>,<sp/>_t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="TTL__duplex__scheme_8h_1aa726390be0a7bc731c23cb361f0409a8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_IO_TENSOR_TYPE<sp/>__TTL_tensor_name(TTL_io_,<sp/>,<sp/>,<sp/>TTL_TENSOR_TYPE,<sp/>,<sp/>_t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Data<sp/>required<sp/>to<sp/>perform<sp/>duplex<sp/>buffer<sp/>pipelining.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>@see<sp/>TTL_start_duplex_buffering<sp/>for<sp/>a<sp/>description<sp/>of<sp/>duplex<sp/>buffer</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*<sp/>pipelining.</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78" refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1aaeb97887b55c3859fd457a0f9a484cf7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1aaeb97887b55c3859fd457a0f9a484cf7" kindref="member">TTL_common_buffering_t</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>*,<sp/><ref refid="TTL__duplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kindref="member">TTL_EXT_TENSOR_TYPE</ref>,<sp/><ref refid="TTL__duplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kindref="member">TTL_EXT_TENSOR_TYPE</ref>,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2)<sp/>common;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>The<sp/>information<sp/>that<sp/>is<sp/>common<sp/>to<sp/>all<sp/>pipeline<sp/>schemes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a9fbb4aa1c915b7ebac9eb5cbd7b5ff81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref><sp/>(*events)[2];<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>2<sp/>Events<sp/>are<sp/>required,<sp/>1<sp/>first<sp/>is<sp/>used<sp/>for</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>external<sp/>to<sp/>internal<sp/>transfers,<sp/>the<sp/>second<sp/>for</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>internal<sp/>to<sp/>external<sp/>transfers</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Store<sp/>of<sp/>the<sp/>buffers<sp/>used<sp/>for<sp/>the<sp/>previous<sp/>import/export<sp/>cycles.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>struct<sp/>{</highlight></codeline>
+<codeline lineno="90" refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a1ad14085d9868dcd710f5736a8a21fc9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__duplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kindref="member">TTL_EXT_TENSOR_TYPE</ref><sp/><ref refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a1ad14085d9868dcd710f5736a8a21fc9" kindref="member">to_export_to</ref>;</highlight></codeline>
+<codeline lineno="91" refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1a3ce6e02cfd84e723f6d69254a4bf472b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__TTL_tensor_name(TTL_,<sp/>const_,<sp/>int_,<sp/><ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref>,<sp/>,<sp/>_t)<sp/>to_export_from;</highlight></codeline>
+<codeline lineno="92" refid="structTTL__duplex__const__TTL__TENSOR__TYPE__tensor__buffering__t_1acc5220e537c04fd8a2561cd23480904c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>prev_out_tensors;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}<sp/><ref refid="TTL__duplex__scheme_8h_1a4923da2143867bcd0e9719965d5421ed" kindref="member">TTL_DUPLEX_BUFFERING_TYPE</ref>;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>Predeclare<sp/>TTL_step_buffering.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="TTL__duplex__scheme_8h_1aa726390be0a7bc731c23cb361f0409a8" kindref="member">TTL_IO_TENSOR_TYPE</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__duplex__scheme_8h_1a58b65302b7e671eb5d031ec2d9fea022" kindref="member">TTL_step_buffering</ref>,<sp/><ref refid="TTL__duplex__scheme_8h_1a4923da2143867bcd0e9719965d5421ed" kindref="member">TTL_DUPLEX_BUFFERING_TYPE</ref><sp/>*duplex_buffering,<sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>tile_next_import,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>tile_current_export);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="102"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>TTL_DUPLEX_BUFFERING_TYPE<sp/>and<sp/>begin<sp/>the<sp/>buffering<sp/>process</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/>*<sp/>@param<sp/>ext_tensor_in<sp/>A<sp/>tensor<sp/>describing<sp/>the<sp/>input<sp/>in<sp/>global<sp/>memory</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*<sp/>@param<sp/>int_base_in<sp/>The<sp/>address<sp/>of<sp/>the<sp/>local<sp/>import<sp/>buffer.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*<sp/>@param<sp/>ext_tensor_out<sp/>A<sp/>tensor<sp/>describing<sp/>the<sp/>output<sp/>in<sp/>global<sp/>memory</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*<sp/>@param<sp/>int_base_out<sp/>The<sp/>address<sp/>of<sp/>the<sp/>local<sp/>export<sp/>buffer.</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*<sp/>@param<sp/>events<sp/>A<sp/>pointer<sp/>to<sp/>a<sp/>list<sp/>of<sp/>2<sp/>events.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*<sp/>The<sp/>first<sp/>event<sp/>in<sp/>the<sp/>list<sp/>will<sp/>be<sp/>used<sp/>for<sp/>imports,<sp/>the<sp/>second<sp/>event<sp/>in</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*<sp/>the<sp/>list<sp/>will<sp/>be<sp/>used<sp/>for<sp/>exports.</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*<sp/>@param<sp/>first_tile<sp/>The<sp/>first<sp/>tile<sp/>to<sp/>fetch<sp/>for<sp/>the<sp/>scheme</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>TTL_DUPLEX_BUFFERING_TYPE<sp/>created<sp/>from<sp/>the<sp/>input<sp/>parameters.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*<sp/>The<sp/>first<sp/>event<sp/>in<sp/>the<sp/>list<sp/>will<sp/>be<sp/>used<sp/>for<sp/>imports,</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*<sp/>the<sp/>second<sp/>event<sp/>in<sp/>the<sp/>list<sp/>will<sp/>be<sp/>used<sp/>for<sp/>exports.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*<sp/>\n\n<sp/>Example:</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*<sp/>@code</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*<sp/>TTL_event_t<sp/>events[2]<sp/>=<sp/>{<sp/>TTL_get_event(),<sp/>TTL_get_event()};</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*<sp/>TTL_duplex_buffering_t<sp/>buffering_scheme<sp/>=<sp/>TTL_start_duplex_buffering(</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>ext_base_in,<sp/>ext_layout_in,<sp/>l_buffers[0],</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>ext_base_out,<sp/>ext_layout_out,<sp/>l_buffers[1],</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>&amp;events);</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*<sp/>@endcode</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*<sp/>\n</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>TTL_duplex_buffering_t<sp/>created<sp/>from<sp/>the<sp/>input<sp/>parameters.</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*<sp/>Solid<sp/>description<sp/>of<sp/>duplex<sp/>buffering<sp/>here.</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*<sp/>The<sp/>simplest<sp/>form<sp/>of<sp/>duplex<sp/>buffering<sp/>takes<sp/>the<sp/>following<sp/>flow.</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/>*<sp/>@startuml</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/>*<sp/>start</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*<sp/>:Create<sp/>a<sp/>TTL_tiler_t<sp/>with<sp/>TTL_create_tiler;</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*<sp/>:Create<sp/>a<sp/>TTL_duplex_buffering_t<sp/>Structure<sp/>with<sp/>2<sp/>Buffers</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/>*<sp/>1<sp/>input<sp/>buffer,<sp/>1<sp/>output<sp/>buffer;</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*<sp/>:NumberOfTiles<sp/>=<sp/>TTL_number_of_tiles(tiler);</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/>*<sp/>while<sp/>(for<sp/>each<sp/>tile)</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/>*<sp/><sp/><sp/>:Import<sp/>The<sp/>Next<sp/>Tile<sp/>into<sp/>the<sp/>input<sp/>buffer;</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/>*<sp/><sp/><sp/>:Process<sp/>the<sp/>Tile<sp/>from<sp/>the<sp/>input<sp/>buffer<sp/>to<sp/>the<sp/>output<sp/>buffer;</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*<sp/><sp/><sp/>:ExportThe<sp/>Process<sp/>Tile<sp/>from<sp/>into<sp/>the<sp/>output<sp/>buffer;</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*<sp/>endwhile</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/>*<sp/>stop</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/>*<sp/>@enduml</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/>*<sp/>This<sp/>can<sp/>be<sp/>optimized<sp/>and<sp/>standardized<sp/>using<sp/>the<sp/>TTL_step_buffering</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/>*<sp/>call.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/>*<sp/>@startuml</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/>*<sp/>start</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/>*<sp/>:Create<sp/>a<sp/>TTL_tiler_t<sp/>with<sp/>TTL_create_tiler;</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/>*<sp/>:Create<sp/>a<sp/>TTL_duplex_buffering_t<sp/>Structure<sp/>with<sp/>2<sp/>Buffers</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/>*<sp/>1<sp/>input<sp/>buffer,<sp/>1<sp/>output<sp/>buffer;</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/>*<sp/>:NumberOfTiles<sp/>=<sp/>TTL_number_of_tiles(tiler);</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/>*<sp/>for<sp/>each<sp/>tile:</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*<sp/><sp/><sp/>:Call<sp/>TTL_step_buffering<sp/>for<sp/>the<sp/>current<sp/>tile</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>This<sp/>will<sp/>import<sp/>the<sp/>current<sp/>new<sp/>tile<sp/>and<sp/>export<sp/>the<sp/>last<sp/>tile</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>in<sp/>parallel;</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/>*<sp/><sp/><sp/>if<sp/>(Does<sp/>the<sp/>input<sp/>buffer<sp/>contain<sp/>a<sp/>valid<sp/>tile?<sp/>**TTL_tile_empty(...)**)<sp/>then<sp/>(yes)</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>:Process<sp/>the<sp/>Tile<sp/>from<sp/>the<sp/>input<sp/>buffer<sp/>to<sp/>the<sp/>output<sp/>buffer;</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/>*<sp/><sp/><sp/>endif</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/>*<sp/>endwhile</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/>*<sp/>stop</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/>*<sp/>@enduml</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="TTL__duplex__scheme_8h_1a4923da2143867bcd0e9719965d5421ed" kindref="member">TTL_DUPLEX_BUFFERING_TYPE</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__duplex__scheme_8h_1ad12513a54d4693e0cf3d48bcb4f1c5e2" kindref="member">TTL_start_duplex_buffering</ref>,<sp/><ref refid="TTL__duplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kindref="member">TTL_EXT_TENSOR_TYPE</ref><sp/><ref refid="TTL__double__scheme__template_8h_1a6ab0301338a8ca810e32fcdb3cbde8a2" kindref="member">ext_tensor_in</ref>,<sp/><ref refid="TTL__double__scheme__template_8h_1accd8b26d0718d9b97c5de259dfe3f1e6" kindref="member">TTL_local</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>*)<sp/>int_base_in,</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__duplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kindref="member">TTL_EXT_TENSOR_TYPE</ref><sp/>ext_tensor_out,<sp/><ref refid="TTL__double__scheme__template_8h_1accd8b26d0718d9b97c5de259dfe3f1e6" kindref="member">TTL_local</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>*)<sp/>int_base_out,<sp/><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref><sp/>(*events)[2],</highlight></codeline>
+<codeline lineno="190" refid="TTL__duplex__scheme_8h_1ad12513a54d4693e0cf3d48bcb4f1c5e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>first_tile)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__duplex__scheme_8h_1a4923da2143867bcd0e9719965d5421ed" kindref="member">TTL_DUPLEX_BUFFERING_TYPE</ref><sp/><ref refid="TTL__double__scheme__template_8h_1ade6d6d18a46c8aa95eed5e179d003e45" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme__template_8h_1ade6d6d18a46c8aa95eed5e179d003e45" kindref="member">result</ref>.common.int_base[0]<sp/>=<sp/>int_base_in;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme__template_8h_1ade6d6d18a46c8aa95eed5e179d003e45" kindref="member">result</ref>.common.int_base[1]<sp/>=<sp/>int_base_out;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme__template_8h_1ade6d6d18a46c8aa95eed5e179d003e45" kindref="member">result</ref>.common.ext_tensor_in<sp/>=<sp/><ref refid="TTL__double__scheme__template_8h_1a6ab0301338a8ca810e32fcdb3cbde8a2" kindref="member">ext_tensor_in</ref>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme__template_8h_1ade6d6d18a46c8aa95eed5e179d003e45" kindref="member">result</ref>.common.ext_tensor_out<sp/>=<sp/>ext_tensor_out;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme__template_8h_1ade6d6d18a46c8aa95eed5e179d003e45" kindref="member">result</ref>.events<sp/>=<sp/>events;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme__template_8h_1ade6d6d18a46c8aa95eed5e179d003e45" kindref="member">result</ref>.prev_out_tensors.to_export_to<sp/>=<sp/>TTL_create_empty_ext_tensor((<ref refid="opencl_2TTL__types_8h_1a6ab3c3094bd8aa4ddd259edf7d65af8d" kindref="member">TTL_global</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>*))0);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme__template_8h_1ade6d6d18a46c8aa95eed5e179d003e45" kindref="member">result</ref>.prev_out_tensors.to_export_from<sp/>=<sp/>TTL_create_empty_const_int_tensor((<ref refid="TTL__double__scheme__template_8h_1accd8b26d0718d9b97c5de259dfe3f1e6" kindref="member">TTL_local</ref>(<ref refid="TTL__create__types_8h_1a6b354915328ea4a34eef87e73879b57c" kindref="member">TTL_TENSOR_TYPE</ref><sp/>*))0);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__duplex__scheme_8h_1a58b65302b7e671eb5d031ec2d9fea022" kindref="member">TTL_step_buffering</ref>(&amp;<ref refid="TTL__double__scheme__template_8h_1ade6d6d18a46c8aa95eed5e179d003e45" kindref="member">result</ref>,<sp/>first_tile,<sp/><ref refid="TTL__tiles_8h_1aab47a72ad748d70bfd9892500106d755" kindref="member">TTL_create_empty_tile</ref>()<sp/>__TTL_TRACE_LINE);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="TTL__double__scheme__template_8h_1ade6d6d18a46c8aa95eed5e179d003e45" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="TTL__duplex__scheme_8h_1aa726390be0a7bc731c23cb361f0409a8" kindref="member">TTL_IO_TENSOR_TYPE</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__duplex__scheme_8h_1a58b65302b7e671eb5d031ec2d9fea022" kindref="member">TTL_step_buffering</ref>,<sp/><ref refid="TTL__duplex__scheme_8h_1a4923da2143867bcd0e9719965d5421ed" kindref="member">TTL_DUPLEX_BUFFERING_TYPE</ref><sp/>*duplex_buffering,<sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>tile_current_import,</highlight></codeline>
+<codeline lineno="208" refid="TTL__duplex__scheme_8h_1a58b65302b7e671eb5d031ec2d9fea022" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>tile_current_export)<sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref><sp/>next_import_layout<sp/>=</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__tensors__common_8h_1a631ec76c3a069194d724aae98337fbe5" kindref="member">TTL_create_layout</ref>(tile_current_import.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref>,<sp/>tile_current_import.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref>);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__duplex__scheme_8h_1a86f724d1f49937ec9fb751cced1499f7" kindref="member">TTL_CONST_EXT_TENSOR_TYPE</ref><sp/>next_import_ext_tensor<sp/>=</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_const_ext_tensor(duplex_buffering-&gt;common.ext_tensor_in.base,</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_current_import.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>,</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>duplex_buffering-&gt;common.ext_tensor_in.layout,</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_current_import.<ref refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" kindref="member">offset</ref>,</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>duplex_buffering-&gt;common.ext_tensor_in.elem_size);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__duplex__scheme_8h_1a02dee7073641a4f9b5b813e02318a018" kindref="member">TTL_INT_SUB_TENSOR_TYPE</ref><sp/>next_import_int_sub_tensor<sp/>=</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_int_sub_tensor(duplex_buffering-&gt;common.int_base[0],</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_current_import.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>,</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>next_import_layout,</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1a240217dbd3626120ec0b055ed0bf9f17" kindref="member">TTL_to_const_tensor</ref>(&amp;duplex_buffering-&gt;common.ext_tensor_in),</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_current_import.<ref refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" kindref="member">offset</ref>);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__duplex__scheme_8h_1aab8924f33a928b25435ad601d37ef7b4" kindref="member">TTL_CONST_INT_TENSOR_TYPE</ref><sp/><sp/>next_export_int_tensor<sp/>=</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>duplex_buffering-&gt;prev_out_tensors.to_export_from;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__duplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kindref="member">TTL_EXT_TENSOR_TYPE</ref><sp/>next_export_ext_tensor<sp/>=<sp/>duplex_buffering-&gt;prev_out_tensors.to_export_to;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="TTL__tiles_8h_1a5892a886773f7a902560d0a699838796" kindref="member">TTL_tile_empty</ref>(tile_current_import)<sp/>==<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__typed__import__export_8h_1a3833a82027c682647a61ba024311b139" kindref="member">TTL_import_sub_tensor</ref>(*<ref refid="TTL__int__ext__typed__tensors_8h_1ab0612ee3991277788e35f6774396f027" kindref="member">TTL_to_void_sub_tensor</ref>(&amp;next_import_int_sub_tensor),</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;next_import_ext_tensor),</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(*duplex_buffering-&gt;events)[0]<sp/>__TTL_TRACE_LINE);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(TTL_const_int_tensor_empty(duplex_buffering-&gt;prev_out_tensors.to_export_from)<sp/>==<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__typed__import__export_8h_1a6d22fb1b074849ab35399fa2ddad1c78" kindref="member">TTL_export</ref>(*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;next_export_int_tensor),</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1afdeb6a8b21942f0d45711dfdbf7ad384" kindref="member">TTL_to_void_tensor</ref>(&amp;next_export_ext_tensor),</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(*duplex_buffering-&gt;events)[1]<sp/>__TTL_TRACE_LINE);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref><sp/>int_export_layout<sp/>=</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__tensors__common_8h_1a631ec76c3a069194d724aae98337fbe5" kindref="member">TTL_create_layout</ref>(tile_current_export.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref>,<sp/>tile_current_export.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref>);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__duplex__scheme_8h_1a615db4284b4ac6ce297c5e602bdaef08" kindref="member">TTL_EXT_TENSOR_TYPE</ref><sp/>to_export_to<sp/>=<sp/>TTL_create_ext_tensor(duplex_buffering-&gt;common.ext_tensor_out.base,</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_current_export.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>,</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>duplex_buffering-&gt;common.ext_tensor_out.layout,</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_current_export.<ref refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" kindref="member">offset</ref>,</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>duplex_buffering-&gt;common.ext_tensor_out.elem_size);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__duplex__scheme_8h_1a02dee7073641a4f9b5b813e02318a018" kindref="member">TTL_INT_SUB_TENSOR_TYPE</ref><sp/>to_export_from<sp/>=</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_int_sub_tensor(duplex_buffering-&gt;common.int_base[1],</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_current_export.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>,</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_export_layout,</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1a240217dbd3626120ec0b055ed0bf9f17" kindref="member">TTL_to_const_tensor</ref>(&amp;duplex_buffering-&gt;common.ext_tensor_in),</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_current_export.<ref refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" kindref="member">offset</ref>);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>duplex_buffering-&gt;prev_out_tensors.to_export_to<sp/>=<sp/>to_export_to;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>duplex_buffering-&gt;prev_out_tensors.to_export_from<sp/>=<sp/>*<ref refid="TTL__int__ext__typed__tensors_8h_1a240217dbd3626120ec0b055ed0bf9f17" kindref="member">TTL_to_const_tensor</ref>(&amp;to_export_from.tensor);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__import__export_8h_1a9ab49a751ac68ef2faec162bc9d8d70b" kindref="member">TTL_wait</ref>(2,<sp/>*duplex_buffering-&gt;events);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>TTL_create_io_tensors(next_import_int_sub_tensor,<sp/>to_export_from);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="261" refid="TTL__duplex__scheme_8h_1a00ab05f5e6ff89ec4a633bf0c9dabf58" refkind="member"><highlight class="normal">__TTL_TRACE_FN(<ref refid="TTL__duplex__scheme_8h_1a00ab05f5e6ff89ec4a633bf0c9dabf58" kindref="member">TTL_finish_buffering</ref>,<sp/><ref refid="TTL__duplex__scheme_8h_1a4923da2143867bcd0e9719965d5421ed" kindref="member">TTL_DUPLEX_BUFFERING_TYPE</ref><sp/>*duplex_buffering)<sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__duplex__scheme_8h_1a58b65302b7e671eb5d031ec2d9fea022" kindref="member">TTL_step_buffering</ref>(duplex_buffering,<sp/><ref refid="TTL__tiles_8h_1aab47a72ad748d70bfd9892500106d755" kindref="member">TTL_create_empty_tile</ref>(),<sp/><ref refid="TTL__tiles_8h_1aab47a72ad748d70bfd9892500106d755" kindref="member">TTL_create_empty_tile</ref>()<sp/>__TTL_TRACE_LINE);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="pipelines/TTL_duplex_scheme.h"/>
+  </compounddef>
+</doxygen>
