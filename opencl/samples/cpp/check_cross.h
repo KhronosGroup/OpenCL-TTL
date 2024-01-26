@@ -32,7 +32,7 @@ bool result_check(TEST_TENSOR_TYPE* const ext_base_in, TEST_TENSOR_TYPE* const e
             if (y < (height - 1)) expected += input_buffer[0][y + 1][x];
 
             if (output_buffer[0][y][x] != expected) {
-                printf("Mismatch at [%d, %d] %d != %d Tensor size [%d, %d]\n",
+                printf("Mismatch at [%d, %d] " TEST_TENSOR_TYPE_SPECIFIER " != " TEST_TENSOR_TYPE_SPECIFIER " Tensor size [%d, %d]\n",
                        x,
                        y,
                        output_buffer[0][y][x],
