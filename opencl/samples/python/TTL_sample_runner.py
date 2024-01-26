@@ -32,7 +32,6 @@ def Read(byte_array, i, j, tensor_width, element_size):
 
 def TestTTL(program_name):
     os.environ['PYOPENCL_COMPILER_OUTPUT'] = '1'
-    os.environ['PYOPENCL_CTX'] = '0'
     os.environ["PYOPENCL_NO_CACHE"] = "1"
 
     # Allow an environment variable to provide the TTL_INCLUDE_PATH, if not defined regular paths used.
@@ -48,12 +47,22 @@ def TestTTL(program_name):
         ttl_extra_defines = ""
 
     for test_tensor_type, test_tensor_size in list([('char', 1), ('uchar', 1), ('short', 2), ('ushort', 2), ('int',4), ('uint',4), ('long',8), ('ulong',8)]):
-        context = cl.create_some_context()
+        platforms = cl.get_platforms()
+        context = cl.Context(dev_type=cl.device_type.ALL,
+                             properties=[(cl.context_properties.PLATFORM, platforms[0])])
         queue = cl.CommandQueue(context)
+
+        ttl_local_memory_size = 0xfffffffff
+
+        # Provide the local memory size.
+        for device in context.get_info(cl.context_info.DEVICES):
+            ttl_local_memory_size = min(device.get_info(cl.device_info.LOCAL_MEM_SIZE), ttl_local_memory_size)
 
         # For convenience remove the .cl extension if it included.
         program_name = os.path.splitext(program_name)[0]
-        program = cl.Program(context, open(program_name+'.cl').read()).build(options=ttl_include_path + ttl_extra_defines + " -DTTL_COPY_3D -DTEST_TENSOR_TYPE=" + test_tensor_type)
+        program = cl.Program(context, open(program_name+'.cl').read()).build(options=ttl_include_path + ttl_extra_defines +
+                                                                             " -DTTL_COPY_3D -DTEST_TENSOR_TYPE=" + test_tensor_type +
+                                                                             " -DLOCAL_MEMORY_SIZE=" + str(ttl_local_memory_size))
 
         print("Testing %s with %s Tensors" % (program_name, test_tensor_type))
 

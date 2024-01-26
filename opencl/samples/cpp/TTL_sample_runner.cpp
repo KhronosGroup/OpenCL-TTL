@@ -19,7 +19,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ********************************************************************/
 // For clarity,error checking has been omitted.
 
-#include <OpenCL/cl.h>
+#include <CL/cl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -100,18 +100,18 @@ int convertToString(const char *filename, std::string &s) {
  *
  * @param platform_id Id of the platform_id to search
  * @param device_id Location to place the id of the first GPU or CPU found
+ * @param local_memory_size The size of the local memory of the device.
  *
  * @return OpenCl error code
  */
-cl_int GetFirstDevice(const cl_platform_id platform_id, cl_device_id *const device_id) {
+cl_int GetFirstDevice(const cl_platform_id platform_id, cl_device_id *const device_id, cl_ulong*const local_memory_size) {
     cl_uint num_device_ids = 0;
 
     clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_GPU, 0, nullptr, &num_device_ids);
 
     if (num_device_ids == 0)  // no GPU available.
     {
-        std::cout << "No GPU device available." << std::endl;
-        std::cout << "Choose CPU as default device." << std::endl;
+        std::cout << "No GPU device available, using CPU as default device." << std::endl;
         RETURN_STATUS_ON_ERROR(clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_CPU, 0, nullptr, &num_device_ids));
     }
 
@@ -120,6 +120,8 @@ cl_int GetFirstDevice(const cl_platform_id platform_id, cl_device_id *const devi
     *device_id = device_ids[0];
 
     delete[] device_ids;
+
+    RETURN_STATUS_ON_ERROR(clGetDeviceInfo(*device_id,CL_DEVICE_LOCAL_MEM_SIZE , sizeof(*local_memory_size),local_memory_size,nullptr));
 
     return 0;
 }
@@ -140,7 +142,8 @@ int main(int argc, char *argv[]) {
 
     /* Step 2:Query the platform_id and choose the first GPU device if has one.Otherwise use the CPU as device.*/
     cl_device_id device_id;
-    CHECK_STATUS(GetFirstDevice(platform_id, &device_id));
+    cl_ulong  local_memory_size;
+    CHECK_STATUS(GetFirstDevice(platform_id, &device_id, &local_memory_size));
 
     /* Step 3: Create context.*/
     cl_context context = clCreateContext(nullptr, 1, &device_id, nullptr, nullptr, nullptr);
@@ -159,9 +162,9 @@ int main(int argc, char *argv[]) {
     char command_line_options[256];
 
     sprintf(command_line_options,
-            "-I %s -D TTL_COPY_3D -cl-std=CL3.0 -D CL_TARGET_OPENCL_VERSION=300 -D COMPUTE_NAME=%s -D TEST_TENSOR_TYPE=%s",
+            "-I %s -D TTL_COPY_3D  -D CL_TARGET_OPENCL_VERSION=300 -D COMPUTE_NAME=%s -D TEST_TENSOR_TYPE=%s -D LOCAL_MEMORY_SIZE=%ld",
             (ttl_include_library != nullptr)?ttl_include_library:".",
-            COMPUTE_NAME_STR, xstr(TEST_TENSOR_TYPE));
+            COMPUTE_NAME_STR, xstr(TEST_TENSOR_TYPE), local_memory_size);
 
     /* Step 6: Build program. */
     if (clBuildProgram(program, 1, &device_id, command_line_options, nullptr, nullptr) != 0) {

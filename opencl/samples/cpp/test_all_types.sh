@@ -18,11 +18,24 @@
 
 set -e
 
-for type in char uchar short ushort int uint long ulong; do
-  for compute in cross square copy; do
+if [ -z "${OPEN_CL_INCLUDE_PATH}" ]; then
+    TTL_OPEN_CL_INCLUDE_PATH=""
+else
+    TTL_OPEN_CL_INCLUDE_PATH="-I $OPEN_CL_INCLUDE_PATH"
+fi
 
-    echo Compute $compute with Tensor of type $type
-    clang -O0 -g -D TTL_TARGET=c -D TEST_TENSOR_TYPE=$type -D COMPUTE=$compute.h -D CL_TARGET_OPENCL_VERSION=300 -I $TTL_INCLUDE_PATH -I $OPEN_CL_INCLUDE_PATH -o TTL_sample_overlap TTL_sample_runner.cpp -lOpenCL -lstdc++
+# Output:
+# VAR is set to some string
+
+
+for types in char,%c uchar,%c short,%d ushort,%u int,%d uint,%u long,%ld ulong,%lu; do
+  IFS=","; set -- $types
+  type=$1
+  type_specifier=$2
+
+  for compute in cross square copy; do
+    echo Compute $compute with tensor of type $type compute of $compute
+    clang -O0 -g -D TTL_TARGET=c -D TEST_TENSOR_TYPE=$type -D TEST_TENSOR_TYPE_SPECIFIER="\"$type_specifier\"" -D COMPUTE=$compute.h -D CL_TARGET_OPENCL_VERSION=300 -I $TTL_INCLUDE_PATH $TTL_OPEN_CL_INCLUDE_PATH -o TTL_sample_overlap TTL_sample_runner.cpp -lOpenCL -lstdc++
     ./TTL_sample_overlap
 
   done

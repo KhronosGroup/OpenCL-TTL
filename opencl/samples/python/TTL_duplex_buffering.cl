@@ -1,20 +1,20 @@
 /*
-* ttl_duplex_buffering.cl
-*
-* Copyright (c) 2023 Mobileye
-*
-* Licensed under the Apache License, Version 2.0 (the License);
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an AS IS BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * ttl_duplex_buffering.cl
+ *
+ * Copyright (c) 2023 Mobileye
+ *
+ * Licensed under the Apache License, Version 2.0 (the License);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an AS IS BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 #include "TTL/TTL.h"
 #include "compute_cross.h"
@@ -26,18 +26,27 @@
 #undef TTL_EXT_TENSOR_TYPE
 #define TTL_EXT_TENSOR_TYPE __TTL_tensor_name(TTL_, , ext_, TEST_TENSOR_TYPE, , _t)
 
-#define MEMSZ 0x8000
+#define LOCAL_TILE_SIZE (LOCAL_MEMORY_SIZE / sizeof(TEST_TENSOR_TYPE) / 2)
 
 __kernel void TTL_duplex_buffering(__global TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
                                    __global TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, int width,
                                    int height, int tile_width, int tile_height) {
-    __local TEST_TENSOR_TYPE l_in[MEMSZ];
-    __local TEST_TENSOR_TYPE l_out[MEMSZ];
+    __local TEST_TENSOR_TYPE l_in[LOCAL_TILE_SIZE];
+    __local TEST_TENSOR_TYPE l_out[LOCAL_TILE_SIZE];
+
+    if (((TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT + tile_width) *
+         (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM + tile_height)) > LOCAL_TILE_SIZE) {
+        printf("Tile too large %d > %lu\n",
+               ((TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT + tile_width) *
+                (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM + tile_height)),
+               LOCAL_TILE_SIZE);
+        return;
+    }
 
     // Logical input tiling.
     const TTL_shape_t tensor_shape_in = TTL_create_shape(width, height);
     const TTL_shape_t tile_shape_in = TTL_create_shape(tile_width + (TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT),
-                                                          tile_height + (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM));
+                                                       tile_height + (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM));
     const TTL_overlap_t overlap_in =
         TTL_create_overlap(TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT, TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM);
     const TTL_augmentation_t augmentation_in =

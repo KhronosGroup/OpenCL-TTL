@@ -32,22 +32,22 @@
 #undef TTL_CONST_EXT_TENSOR_TYPE
 #define TTL_CONST_EXT_TENSOR_TYPE __TTL_tensor_name(TTL_, const_, ext_, TEST_TENSOR_TYPE, , _t)
 
-#define BUFFER_SIZE 0x80000
+#define LOCAL_TILE_SIZE (LOCAL_MEMORY_SIZE / sizeof(TEST_TENSOR_TYPE) / 4)
 
 __kernel void TTL_double_buffering(__global TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
                                    __global TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, int width,
                                    int height, int tile_width, int tile_height) {
-    local TEST_TENSOR_TYPE input_buffer_1[BUFFER_SIZE];
-    local TEST_TENSOR_TYPE input_buffer_2[BUFFER_SIZE];
-    local TEST_TENSOR_TYPE output_buffer_1[BUFFER_SIZE];
-    local TEST_TENSOR_TYPE output_buffer_2[BUFFER_SIZE];
+    local TEST_TENSOR_TYPE input_buffer_1[LOCAL_TILE_SIZE];
+    local TEST_TENSOR_TYPE input_buffer_2[LOCAL_TILE_SIZE];
+    local TEST_TENSOR_TYPE output_buffer_1[LOCAL_TILE_SIZE];
+    local TEST_TENSOR_TYPE output_buffer_2[LOCAL_TILE_SIZE];
 
     if (((TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT + tile_width) *
-         (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM + tile_height)) > BUFFER_SIZE) {
-        printf("Tile too large %d > %d\n",
+         (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM + tile_height)) > LOCAL_TILE_SIZE) {
+        printf("Tile too large %d > %lu\n",
                ((TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT + tile_width) *
                 (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM + tile_height)),
-               BUFFER_SIZE);
+               LOCAL_TILE_SIZE);
         return;
     }
 
