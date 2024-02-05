@@ -84,7 +84,8 @@ static inline void TTL_clear_void_space(TTL_local(void *) const dst, const size_
 static inline TTL_shape_t TTL_import_pre_fill(const TTL_int_sub_tensor_t internal_sub_tensor,
                                               const TTL_const_ext_tensor_t const_external_tensor,
                                               TTL_local(void *) *const dst_address,
-                                              TTL_global(void *) *const src_address) {
+                                              TTL_global(void *) *const src_address,
+                                              TTL_offset_t *const destination_offset) {
     size_t x_offset;
     size_t x_cut;
     size_t y_offset;
@@ -130,11 +131,12 @@ static inline TTL_shape_t TTL_import_pre_fill(const TTL_int_sub_tensor_t interna
                          internal_sub_tensor.tensor.shape.height,
                          internal_sub_tensor.tensor.shape.depth);
 
+    *destination_offset = TTL_create_offset(x_offset, y_offset, z_offset);
+
     return TTL_create_shape(internal_sub_tensor.tensor.shape.width - x_offset - x_cut,
                             internal_sub_tensor.tensor.shape.height - y_offset - y_cut,
                             internal_sub_tensor.tensor.shape.depth - z_offset - z_cut);
 }
-
 
 #define TTL_TYPES_INCLUDE_FILE "import_export/TTL_typed_import_export.h"
 #include "TTL_create_types.h"

@@ -16,8 +16,11 @@
  * limitations under the License.
  */
 
+#include <stdlib.h>
+
 #include "TTL/TTL.h"
 #include "compute_cross.h"
+#include "kernel.h"
 
 /**
  * @brief Scope globally because it makes debugging easier
@@ -40,11 +43,23 @@ static TEST_TENSOR_TYPE output_buffer_2[1024 * 512];
 #undef TTL_CONST_EXT_TENSOR_TYPE
 #define TTL_CONST_EXT_TENSOR_TYPE __TTL_tensor_name(TTL_, const_, ext_, TEST_TENSOR_TYPE, , _t)
 
-bool TTL_double_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
-                          TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, int width, int height,
+#define NUMBER_OF_COPY_NODES 500
+
+bool TTL_double_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int input_tensor_height, int input_tensor_width, int input_external_stride,
+                          TEST_TENSOR_TYPE *restrict ext_base_out, int output_tensor_height,int output_tensor_width ,int output_external_stride,
                           int tile_width, int tile_height) {
+    TTL_async_node_data async_node_data[NUMBER_OF_COPY_NODES];
+
+    TTL_row_gather_map_element row_gather_map_elements[NUMBER_OF_COPY_NODES];
+    TTL_row_gather_map row_gather_map = { .ptr_elements = (intptr_t)row_gather_map_elements, .index_offset = 0};
+
+    // Create a gather map random map of the input tensor.
+    for (int i = 0; i < output_tensor_height; i++) {
+        TTL_get_elements(row_gather_map)[i].row_offset = rand() % input_tensor_height;
+    }
+
     // Logical input tiling.
-    const TTL_shape_t tensor_shape_in = TTL_create_shape(width, height);
+    const TTL_shape_t tensor_shape_in = TTL_create_shape(input_tensor_width, output_tensor_height);
     const TTL_shape_t tile_shape_in = TTL_create_shape(tile_width + (TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT),
                                                        tile_height + (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM));
     const TTL_overlap_t overlap_in =
@@ -55,15 +70,15 @@ bool TTL_double_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_s
         TTL_create_overlap_tiler(tensor_shape_in, tile_shape_in, overlap_in, augmentation_in);
 
     // Logical output tiling.
-    const TTL_shape_t tensor_shape_out = TTL_create_shape(width, height);
+    const TTL_shape_t tensor_shape_out = TTL_create_shape(output_tensor_width, output_tensor_height);
     const TTL_tiler_t output_tiler = TTL_create_tiler(tensor_shape_out, TTL_create_shape(tile_width, tile_height));
 
     // External layouts.
-    const TTL_layout_t ext_layout_in = TTL_create_layout(external_stride_in);
-    const TTL_layout_t ext_layout_out = TTL_create_layout(external_stride_out);
+    const TTL_layout_t ext_layout_in = TTL_create_layout(input_external_stride);
+    const TTL_layout_t ext_layout_out = TTL_create_layout(output_external_stride);
 
     const TTL_CONST_EXT_TENSOR_TYPE ext_input_tensor =
-        TTL_create_const_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
+        TTL_create_const_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in, row_gather_map);
     const TTL_EXT_TENSOR_TYPE ext_output_tensor = TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
 
     // import_db and export_db need to be defined outside, before the loop, as
@@ -76,7 +91,7 @@ bool TTL_double_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_s
     TTL_EXPORT_DOUBLE_BUFFERING_TYPE export_db =
         TTL_start_export_double_buffering(output_buffer_1, output_buffer_2, ext_output_tensor, &export_DB_e);
 
-    for (int i = 0; i < TTL_number_of_tiles(input_tiler); ++i) {
+    for (int i = 0; i < TTL_number_of_tiles(output_tiler); ++i) {
         TTL_tile_t tile_next_import = TTL_get_tile(i + 1, input_tiler);
         TTL_tile_t tile_current_export = TTL_get_tile(i, output_tiler);
 
@@ -89,5 +104,5 @@ bool TTL_double_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_s
     TTL_finish_buffering(&import_db);
     TTL_finish_buffering(&export_db);
 
-    return result_check(ext_base_in, ext_base_out, width, height, tile_width, tile_height);
+    return result_check(ext_base_in, ext_base_out, row_gather_map, output_tensor_width, output_tensor_height, tile_width, tile_height);
 }

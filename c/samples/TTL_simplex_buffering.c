@@ -16,8 +16,11 @@
  * limitations under the License.
  */
 
+#include <stdlib.h>
+
 #include "TTL/TTL.h"
 #include "compute_cross.h"
+#include "kernel.h"
 
 /**
  * @brief Scope globally because it makes debugging easier
@@ -33,11 +36,12 @@ static TEST_TENSOR_TYPE l_buff3[1024 * 512];
 #undef TTL_EXT_TENSOR_TYPE
 #define TTL_EXT_TENSOR_TYPE __TTL_tensor_name(TTL_, , ext_, TEST_TENSOR_TYPE, , _t)
 
-bool TTL_simplex_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
-                           TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, int width, int height,
-                           int tile_width, int tile_height) {
-    // Logical input tiling.
-    const TTL_shape_t tensor_shape_in = TTL_create_shape(width, height);
+bool TTL_simplex_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int input_tensor_height, int input_tensor_width,
+                           int input_external_stride, TEST_TENSOR_TYPE *restrict ext_base_out, int output_tensor_height,
+                           int output_tensor_width, int output_external_stride, int tile_width, int tile_height) {
+    TTL_row_gather_map row_gather_map = { .elements = 0, .index_offset = 0 };
+
+    const TTL_shape_t tensor_shape_in = TTL_create_shape(input_tensor_width, output_tensor_height);
     const TTL_shape_t tile_shape_in = TTL_create_shape(tile_width + (TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT),
                                                        tile_height + (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM));
     const TTL_overlap_t overlap_in =
@@ -48,12 +52,12 @@ bool TTL_simplex_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_
         TTL_create_overlap_tiler(tensor_shape_in, tile_shape_in, overlap_in, augmentation_in);
 
     // Logical output tiling.
-    const TTL_shape_t tensor_shape_out = TTL_create_shape(width, height);
+    const TTL_shape_t tensor_shape_out = TTL_create_shape(output_tensor_width, output_tensor_height);
     const TTL_tiler_t output_tiler = TTL_create_tiler(tensor_shape_out, TTL_create_shape(tile_width, tile_height));
 
     // External layouts.
-    const TTL_layout_t ext_layout_in = TTL_create_layout(external_stride_in);
-    const TTL_layout_t ext_layout_out = TTL_create_layout(external_stride_out);
+    const TTL_layout_t ext_layout_in = TTL_create_layout(input_external_stride);
+    const TTL_layout_t ext_layout_out = TTL_create_layout(output_external_stride);
 
     const TTL_EXT_TENSOR_TYPE ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
     const TTL_EXT_TENSOR_TYPE ext_output_tensor = TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);
@@ -61,15 +65,15 @@ bool TTL_simplex_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_
     TTL_event_t tb_e_in = TTL_get_event();
     TTL_event_t tb_e_out = TTL_get_event();
     TTL_SIMPLEX_BUFFERING_TYPE simplex_scheme = TTL_start_simplex_buffering(l_buff1,
-                                                                         l_buff2,
-                                                                         l_buff3,
-                                                                         ext_input_tensor,
-                                                                         ext_output_tensor,
-                                                                         &tb_e_in,
-                                                                         &tb_e_out,
-                                                                         TTL_get_tile(0, input_tiler));
+                                                                            l_buff2,
+                                                                            l_buff3,
+                                                                            ext_input_tensor,
+                                                                            ext_output_tensor,
+                                                                            &tb_e_in,
+                                                                            &tb_e_out,
+                                                                            TTL_get_tile(0, input_tiler));
 
-    for (int i = 0; i < TTL_number_of_tiles(input_tiler); ++i) {
+    for (int i = 0; i < TTL_number_of_tiles(output_tiler); ++i) {
         TTL_tile_t tile_next_import = TTL_get_tile(i + 1, input_tiler);
         TTL_tile_t tile_current_export = TTL_get_tile(i, output_tiler);
 
@@ -80,5 +84,6 @@ bool TTL_simplex_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_
 
     TTL_finish_buffering(&simplex_scheme);
 
-    return result_check(ext_base_in, ext_base_out, width, height, tile_width, tile_height);
+    return result_check(
+        ext_base_in, ext_base_out, row_gather_map, output_tensor_width, output_tensor_height, tile_width, tile_height);
 }

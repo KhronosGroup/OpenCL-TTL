@@ -64,16 +64,46 @@ static inline void __attribute__((overloadable)) __TTL_TRACE_FN(
     const __TTL_tensor_name(TTL_, const_, ext_, TTL_TENSOR_TYPE, , _t) const_external_tensor, TTL_event_t *event) {
     TTL_local(void *) dst_address;
     TTL_global(void *) src_address;
+    TTL_offset_t destination_offset;
 
-    const TTL_shape_t import_shape = TTL_import_pre_fill(*TTL_to_void_sub_tensor(&internal_sub_tensor), *TTL_to_void_tensor(&const_external_tensor), &dst_address, &src_address);
+    const TTL_shape_t import_shape = TTL_import_pre_fill(*TTL_to_void_sub_tensor(&internal_sub_tensor),
+                                                         *TTL_to_void_tensor(&const_external_tensor),
+                                                         &dst_address,
+                                                         &src_address,
+                                                         &destination_offset);
 
-    const TTL_int_tensor_t import_int_tensor = TTL_create_int_tensor(
-        dst_address, import_shape, internal_sub_tensor.tensor.layout, internal_sub_tensor.tensor.elem_size);
+    if (TTL_get_elements(const_external_tensor.row_gather_map) == 0) {
+        const TTL_int_tensor_t import_int_tensor = TTL_create_int_tensor(
+            dst_address, import_shape, internal_sub_tensor.tensor.layout, internal_sub_tensor.tensor.elem_size);
 
-    const TTL_const_ext_tensor_t import_ext_tensor = TTL_create_const_ext_tensor(
-        src_address, import_shape, const_external_tensor.layout, TTL_create_offset(), const_external_tensor.elem_size);
+        const TTL_const_ext_tensor_t import_ext_tensor = TTL_create_const_ext_tensor(src_address,
+                                                                                     import_shape,
+                                                                                     const_external_tensor.layout,
+                                                                                     TTL_create_offset(),
+                                                                                     const_external_tensor.elem_size);
 
-    TTL_import(import_int_tensor, import_ext_tensor, event __TTL_TRACE_LINE);
+        TTL_import(import_int_tensor, import_ext_tensor, event __TTL_TRACE_LINE);
+    } else {
+        for (TTL_dim_t current_row = 0; current_row < import_shape.height; current_row++) {
+            const TTL_shape_t import_sub_shape = TTL_create_shape(import_shape.width, 1);
+
+            const TTL_int_tensor_t import_int_tensor = TTL_create_int_tensor(
+                dst_address, import_sub_shape, internal_sub_tensor.tensor.layout, TTL_create_offset(0, current_row), internal_sub_tensor.tensor.elem_size);
+
+            const TTL_offset_dim_t import_offset = TTL_get_elements(const_external_tensor.row_gather_map)[current_row + const_external_tensor.row_gather_map.index_offset + destination_offset.y].row_offset - const_external_tensor.row_gather_map.index_offset - destination_offset.y;
+
+            const TTL_const_ext_tensor_t import_ext_tensor =
+                TTL_create_const_ext_tensor(src_address,
+                                            import_shape,
+                                            const_external_tensor.layout,
+                                             TTL_create_offset(0, import_offset),
+                                            const_external_tensor.elem_size);
+
+            TTL_import(import_int_tensor, import_ext_tensor, event __TTL_TRACE_LINE);
+
+            TTL_wait(1, event);
+        }
+    }
 }
 
 /**

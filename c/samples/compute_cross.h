@@ -25,8 +25,8 @@
 
 void compute(__TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_in,
              __TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_out) {
-    for (int y = 0; y < tensor_out.tensor.shape.height; ++y) {
-        for (int x = 0; x < tensor_out.tensor.shape.width; ++x) {
+    for (unsigned int y = 0; y < tensor_out.tensor.shape.height; ++y) {
+        for (unsigned int x = 0; x < tensor_out.tensor.shape.width; ++x) {
             const int x_in = x + TILE_OVERLAP_LEFT;
             const int y_in = y + TILE_OVERLAP_TOP;
             const TEST_TENSOR_TYPE left = TTL_read_tensor(tensor_in, x_in - 1, y_in);
@@ -43,29 +43,39 @@ void compute(__TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_
     }
 }
 
-bool result_check(TEST_TENSOR_TYPE* const ext_base_in, TEST_TENSOR_TYPE* const ext_base_out, const int width,
-                  const int height, const int tile_width, const int tile_height) {
-    TEST_TENSOR_TYPE(*const input_buffer)[height][width] = (TEST_TENSOR_TYPE(*)[height][width])ext_base_in;
+bool result_check(TEST_TENSOR_TYPE* const ext_base_in, TEST_TENSOR_TYPE* const ext_base_out,
+                  const TTL_row_gather_map row_gather_map, const int width, const int height, const int tile_width,
+                  const int tile_height) {
+    TEST_TENSOR_TYPE input_buffer[height][width];
     TEST_TENSOR_TYPE(*const output_buffer)[height][width] = (TEST_TENSOR_TYPE(*)[height][width])ext_base_out;
     bool result = true;
 
+
+
+    // Copy the data as per the row gather map.
+    for (int y = 0; y < height; y++) {
+        void* const dst = input_buffer[y];
+        void* const src = ((TEST_TENSOR_TYPE(*)[height][width])ext_base_in)[0][TTL_get_elements(row_gather_map)?TTL_get_elements(row_gather_map)[y].row_offset:y];
+        memcpy(dst, src, sizeof(TEST_TENSOR_TYPE) * width);
+    }
+
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            TEST_TENSOR_TYPE expected = input_buffer[0][y][x];
+            TEST_TENSOR_TYPE calculated = output_buffer[0][y][x];
+            TEST_TENSOR_TYPE expected = input_buffer[y][x];
 
-            if (true) {
-                if (x > 0) expected += input_buffer[0][y][x - 1];
-                if (y > 0) expected += input_buffer[0][y - 1][x];
-                if (x < (width - 1)) expected += input_buffer[0][y][x + 1];
-                if (y < (height - 1)) expected += input_buffer[0][y + 1][x];
-            }
+            if (x > 0) expected += input_buffer[y][x - 1];
+            if (y > 0) expected += input_buffer[y - 1][x];
+            if (x < (width - 1)) expected += input_buffer[y][x + 1];
+            if (y < (height - 1)) expected += input_buffer[y + 1][x];
 
-            if (output_buffer[0][y][x] != expected) {
-                printf("Mismatch at [%d, %d] " TEST_TENSOR_TYPE_SPECIFIER " != " TEST_TENSOR_TYPE_SPECIFIER
-                       " Tensor size [%d, %d], Tile size [%d, %d]\n",
+            if (calculated != expected) {
+                printf("Mismatch at [%d, %d] (calc) " TEST_TENSOR_TYPE_SPECIFIER
+                       " != (expt) " TEST_TENSOR_TYPE_SPECIFIER " "
+                       "Output Tensor size [%d, %d], Tile size [%d, %d]\n",
                        x,
                        y,
-                       output_buffer[0][y][x],
+                       calculated,
                        expected,
                        width,
                        height,
