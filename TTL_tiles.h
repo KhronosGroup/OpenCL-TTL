@@ -126,8 +126,10 @@ TTL_create_augmentation(TTL_augmented_dim_t left, TTL_augmented_dim_t right) {
  * the beginning of the space
  */
 typedef struct {
-    TTL_shape_t shape;    ///< @see TTL_shape_t
-    TTL_offset_t offset;  ///< @see TTL_offset_t
+    TTL_shape_t shape;                             ///< @see TTL_shape_t
+    TTL_offset_t offset;                           ///< @see TTL_offset_t
+    const TTL_row_gather_map* row_gather_map;      ///< @see TTL_row_gather_map can be null if no map required
+    __local TTL_async_node_data* async_node_data;  ///< @see TTL_async_node_data can be null if no map required
 } TTL_tile_t;
 
 /**
@@ -137,11 +139,13 @@ typedef struct {
  * operational overlap
  */
 typedef struct {
-    TTL_shape_t space;                ///< Represents the space to be tiled such as an image
-    TTL_shape_t tile;                 ///< All tiles will be of this shape, except for clamping at
-                                      ///< the end of the space
-    TTL_overlap_t overlap;            ///< When zeroes represent no overlap
-    TTL_augmentation_t augmentation;  ///< The augmentation that the tile produces.
+    const TTL_shape_t space;                             ///< Represents the space to be tiled such as an image
+    const TTL_shape_t tile;                              ///< All tiles will be of this shape, except for clamping at
+                                                         ///< the end of the space
+    const TTL_overlap_t overlap;                         ///< When zeroes represent no overlap
+    const TTL_augmentation_t augmentation;               ///< The augmentation that the tile produces.
+    const TTL_row_gather_map* const row_gather_map;      ///< @see TTL_row_gather_map can be null is no map required
+    __local TTL_async_node_data* const async_node_data;  ///< @see TTL_async_node_data can be null is no map required
 
     /**
      * @brief Precomputed information to speed up later reuse
@@ -196,7 +200,9 @@ static inline int TTL_ceil_of_a_div_b(const int a, const int b) {
  * @return A tiler that can produce a tile for any given index.
  */
 static TTL_tiler_t TTL_create_overlap_tiler(const TTL_shape_t tensor_shape, const TTL_shape_t tile_shape,
-                                            const TTL_overlap_t overlap, const TTL_augmentation_t augmentation) {
+                                            const TTL_overlap_t overlap, const TTL_augmentation_t augmentation,
+                                            const TTL_row_gather_map* const row_gather_map,
+                                            __local TTL_async_node_data* const async_node_data) {
     const TTL_dim_t tiles_in_width = TTL_ceil_of_a_div_b(
         tensor_shape.width + augmentation.left + augmentation.right - overlap.width, tile_shape.width - overlap.width);
     const TTL_dim_t tiles_in_height =
@@ -212,6 +218,8 @@ static TTL_tiler_t TTL_create_overlap_tiler(const TTL_shape_t tensor_shape, cons
                                  tile_shape,
                                  overlap,
                                  augmentation,
+                                 row_gather_map,
+                                 async_node_data,
                                  { number_of_tiles, tiles_in_width, tiles_in_height, tiles_in_depth, tiles_in_plane } };
 
     return result;
@@ -221,7 +229,7 @@ static TTL_tiler_t TTL_create_overlap_tiler(const TTL_shape_t tensor_shape, cons
 static inline TTL_tiler_t TTL_create_tiler(const TTL_shape_t shape, const TTL_shape_t tile) {
     const TTL_overlap_t overlap = TTL_create_overlap(0);
     const TTL_augmentation_t augmentation = TTL_create_augmentation(0, 0);
-    return TTL_create_overlap_tiler(shape, tile, overlap, augmentation);
+    return TTL_create_overlap_tiler(shape, tile, overlap, augmentation, 0, 0);
 }
 
 static inline TTL_dim_t TTL_tiles_in_width(TTL_tiler_t t) {
@@ -257,7 +265,7 @@ static inline int TTL_tile_empty(TTL_tile_t tile) {
  * is the safest default state.
  */
 static inline TTL_tile_t TTL_create_empty_tile() {
-    TTL_tile_t result = { TTL_create_shape(0), TTL_create_offset(0, 0, 0) };
+    TTL_tile_t result = { TTL_create_shape(0), TTL_create_offset(0, 0, 0), 0, 0};
     return result;
 }
 
@@ -290,6 +298,9 @@ static inline TTL_tile_t TTL_create_tile(TTL_dim_t x, TTL_dim_t y, TTL_dim_t z, 
 
     if (z == tiler.cache.tiles_in_depth - 1)
         result.shape.depth = tiler.space.depth - result.offset.z + tiler.augmentation.back;
+
+    result.row_gather_map = tiler.row_gather_map;
+    result.async_node_data = tiler.async_node_data;
 
     return result;
 }

@@ -19,10 +19,10 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define TENSOR_WIDTH 103
-#define TENSOR_HEIGHT 27
-#define TILE_WIDTH 1
-#define TILE_HEIGHT 1
+#define TENSOR_WIDTH 10
+#define TENSOR_HEIGHT 20
+#define TILE_WIDTH 10
+#define TILE_HEIGHT 10
 
 #include "TTL/TTL.h"
 
@@ -32,13 +32,15 @@ bool KERNEL_NAME(TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
                  TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, int width, int height,
                  int tile_width, int tile_height);
 
-static TEST_TENSOR_TYPE input_buffer[TENSOR_HEIGHT][TENSOR_WIDTH];
+static TEST_TENSOR_TYPE input_buffer[TENSOR_HEIGHT * EVERY_N_LINES][TENSOR_WIDTH];
 static TEST_TENSOR_TYPE output_buffer[TENSOR_HEIGHT][TENSOR_WIDTH];
 
 int main(void) {
-    for (uint32_t y = 0; y < TENSOR_HEIGHT; y++) {
-        for (uint32_t x = 0; x < TENSOR_WIDTH; x++) {
+    for (uint32_t x = 0; x < TENSOR_WIDTH; x++) {
+        for (uint32_t y = 0; y < (TENSOR_HEIGHT * EVERY_N_LINES); y++) {
             input_buffer[y][x] = x;
+        }
+        for (uint32_t y = 0; y < TENSOR_HEIGHT; y++) {
             output_buffer[y][x] = 0;
         }
     }

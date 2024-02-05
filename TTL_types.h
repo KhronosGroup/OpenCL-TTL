@@ -225,3 +225,35 @@ TTL_create_overlap(const TTL_overlap_dim_t width, const TTL_overlap_dim_t height
 static inline TTL_overlap_t __attribute__((overloadable)) TTL_create_overlap(const TTL_overlap_dim_t width) {
     return TTL_create_overlap(width, 0, 0);
 }
+
+// TEMP WILL BE PROVIDED BY THE COMPILER
+#define CLK_ASYNC_LINKED_LIST_NODE_SIZE 20
+
+/**
+ * @brief An async copy list node
+ *
+ * When performing gather type operations on async inputs, each gathered entity is
+ * stored in a TTL_async_node_data
+ *
+ * The contents of the node are target specific, thes structure eases the
+ * manipulation and usage of nodes
+ */
+typedef struct {
+    unsigned char anonymous_data[CLK_ASYNC_LINKED_LIST_NODE_SIZE];
+} TTL_async_node_data;
+
+/**
+ * @brief Map a index on the row to a physical index and height on the source
+ */
+typedef struct {
+    TTL_offset_dim_t row_offset;  ///< The start point of the row
+    TTL_dim_t row_count;       ///< The number of rows in the index
+} TTL_row_gather_map_element;
+
+/**
+ * @brief Map a index on the row to a physical index and height on the source
+ */
+typedef struct {
+    TTL_row_gather_map_element *elements;  ///< The elements in the map
+    unsigned int element_count;       ///< The number of elements in the map
+} TTL_row_gather_map;
