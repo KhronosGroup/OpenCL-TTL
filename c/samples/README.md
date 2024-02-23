@@ -23,14 +23,14 @@ The name can be wildcarded
     ./TTL_sample_runner.py TTL_*.c
 
 TTL_EXTRA_DEFINES can for example define __TTL_DEBUG=1 to provide additional
-debug output. 
+debug output.
 
     export TTL_EXTRA_DEFINES="__TTL_DEBUG=1"
 
 ## C Wrapper
 
     export TTL_INCLUDE_PATH=[PATH TO TTL]
-    clang -Wextra -Wall -DKERNEL_NAME=TTL_duplex_buffering -I $TTL_INCLUDE_PATH -DTTL_TARGET=c -g -O0 main.c TTL_duplex_buffering.c -o c_test
+    clang -Wextra -Wall -DKERNEL_NAME=TTL_duplex_buffering -DEVERY_N_LINES=1 -DTEST_TENSOR_TYPE_SPECIFIER=\"%d\" -DTEST_TENSOR_TYPE=int -I $TTL_INCLUDE_PATH -DTTL_TARGET=c -g -O0 main.c TTL_duplex_buffering.c -o c_test
     ./c_test
 
 ## The "Kernel"
@@ -57,4 +57,4 @@ a fairly broad-based testing.
 
 The compute.h file which contains the calculations also contains a checker function. This checker function and a checker
 function in the ./TTL_sample_runner.py file validate the tiled calculations.
-  
+

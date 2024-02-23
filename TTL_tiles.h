@@ -137,11 +137,11 @@ typedef struct {
  * operational overlap
  */
 typedef struct {
-    TTL_shape_t space;                ///< Represents the space to be tiled such as an image
-    TTL_shape_t tile;                 ///< All tiles will be of this shape, except for clamping at
-                                      ///< the end of the space
-    TTL_overlap_t overlap;            ///< When zeroes represent no overlap
-    TTL_augmentation_t augmentation;  ///< The augmentation that the tile produces.
+    const TTL_shape_t space;                ///< Represents the space to be tiled such as an image
+    const TTL_shape_t tile;                 ///< All tiles will be of this shape, except for clamping at
+                                            ///< the end of the space
+    const TTL_overlap_t overlap;            ///< When zeroes represent no overlap
+    const TTL_augmentation_t augmentation;  ///< The augmentation that the tile produces.
 
     /**
      * @brief Precomputed information to speed up later reuse

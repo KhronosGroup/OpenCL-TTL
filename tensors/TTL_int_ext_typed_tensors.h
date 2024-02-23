@@ -21,9 +21,9 @@
 
 /**
  * @file
- * 
+ *
  * When including this file the follow must be defined
- * 
+ *
  * TENSOR_LOCATION ext_ or TENSOR_LOCATION
  * TENSOR_ADDRESS TENSOR_ADDRESS or TTL_global
  * TTL_TENSOR_TYPE void, uchar, uchar2 etc etc.

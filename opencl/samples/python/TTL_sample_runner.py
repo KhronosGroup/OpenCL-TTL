@@ -74,7 +74,7 @@ def TestTTL(program_name):
 
                 for i in range(0, tensor_height):
                     for j in range(0, tensor_width):
-                        input_data[i * tensor_width + j] = j
+                        input_data[i * tensor_width + j] = j + i
 
                 input_buffer = cl.Buffer(context, cl.mem_flags.READ_ONLY  | cl.mem_flags.COPY_HOST_PTR , hostbuf=input_data)
                 output_buffer = cl.Buffer(context, cl.mem_flags.READ_WRITE, len(output_data))
@@ -88,11 +88,13 @@ def TestTTL(program_name):
                             (1,),
                             None,
                             input_buffer,
+                            numpy.int32(tensor_height),
+                            numpy.int32(tensor_width),
                             numpy.int32(tensor_width),
                             output_buffer,
-                            numpy.int32(tensor_width),
-                            numpy.int32(tensor_width),
                             numpy.int32(tensor_height),
+                            numpy.int32(tensor_width),
+                            numpy.int32(tensor_width),
                             numpy.int32(tile_width),
                             numpy.int32(tile_height))
                         print("%s Tested Tensor size [%d, %d] Tile size [%d, %d] Type %s" %(program_name, tensor_width, tensor_height, tile_width, tile_height, test_tensor_type))
@@ -101,17 +103,18 @@ def TestTTL(program_name):
 
                         for i in range(0, tensor_height):
                             for j in range(0, tensor_width):
-                                expected = Read(input_data, i, j, tensor_width, test_tensor_size)
+                                ii = (tensor_height - 1 - i)
+                                expected = Read(input_data, ii, j, tensor_width, test_tensor_size)
 
                                 if True:
                                     if j > 0:
-                                        expected += Read(input_data, i, j - 1, tensor_width, test_tensor_size)
-                                    if i  > 0:
-                                        expected += Read(input_data, i - 1, j, tensor_width, test_tensor_size)
+                                        expected += Read(input_data, ii, j - 1, tensor_width, test_tensor_size)
+                                    if ii  > 0:
+                                        expected += Read(input_data, ii - 1, j, tensor_width, test_tensor_size)
                                     if j < (tensor_width - 1):
-                                        expected += Read(input_data, i, j + 1, tensor_width, test_tensor_size)
-                                    if i < (tensor_height - 1):
-                                        expected += Read(input_data, i + 1, j, tensor_width, test_tensor_size)
+                                        expected += Read(input_data, ii, j + 1, tensor_width, test_tensor_size)
+                                    if ii < (tensor_height - 1):
+                                        expected += Read(input_data, ii + 1, j, tensor_width, test_tensor_size)
 
                                 expected &= pow(256, test_tensor_size) - 1
                                 actual = Read(output_data, i, j, tensor_width, test_tensor_size)

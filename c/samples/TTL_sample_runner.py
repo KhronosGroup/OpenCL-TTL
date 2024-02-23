@@ -33,10 +33,6 @@ def Read(byte_array, i, j, tensor_width, element_size):
     return result
 
 def TestTTL(program_name):
-    os.environ["PYOPENCL_COMPILER_OUTPUT"] = "1"
-    os.environ["PYOPENCL_CTX"] = "0"
-    os.environ["PYOPENCL_NO_CACHE"] = "1"
-
     # Allow an environment variable to provide the TTL_INCLUDE_PATH, if not defined regular paths used.
     if "TTL_INCLUDE_PATH" in os.environ:
         ttl_include_path = "-I" + os.environ["TTL_INCLUDE_PATH"]
@@ -98,11 +94,13 @@ def TestTTL(program_name):
 
                         getattr(c_lib, program_name)(
                             input_buffer,
+                            tensor_height,
+                            tensor_width,
                             tensor_width,
                             output_buffer,
-                            tensor_width,
-                            tensor_width,
                             tensor_height,
+                            tensor_width,
+                            tensor_width,
                             tile_width,
                             tile_height,
                         )

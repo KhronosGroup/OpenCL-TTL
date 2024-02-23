@@ -127,7 +127,7 @@
  * __TTL_tensor_name(TTL_, ,int, void, , _t) will give TTL_int_void_tensor_t
  *
  * The 'double' call is some 'magic' to allow the caller itself to contain a macro.
- * 
+ *
  * @return The generated name
  */
 #define __TTL_tensor_name_1(prefix, const_1, location, type, sub, suffix) \
@@ -156,10 +156,15 @@
  * __TTL_tensor_no_type_name(TTL_, ,int, , _t) will give TTL_int_tensor_t
  *
  * The 'double' call is some 'magic' to allow the caller itself to contain a macro.
- * 
+ *
  * @return The generated name
  */
 #define __TTL_tensor_no_type_name_1(prefix, const_1, location, sub, suffix) \
     prefix##const_1##location##sub##tensor##suffix
 #define __TTL_tensor_no_type_name(prefix, const_1, location, sub, suffix) \
     __TTL_tensor_no_type_name_1(prefix, const_1, location, sub, suffix)
+
+
+#ifndef min
+#define min(X, Y) (((X) < (Y)) ? (X) : (Y))
+#endif

@@ -49,6 +49,7 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_IMPORT_DOUBLE_BUFFERING_TYPE *const db, c
     const TTL_CONST_EXT_TENSOR_TYPE import_from = TTL_create_const_ext_tensor(db->common.ext_tensor_in.base,
                                                                               next_tile.shape,
                                                                               db->common.ext_tensor_in.layout,
+                                                                              db->common.ext_tensor_in.row_gather_map,
                                                                               next_tile.offset,
                                                                               db->common.ext_tensor_in.elem_size);
 
