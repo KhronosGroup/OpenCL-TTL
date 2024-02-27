@@ -16,6 +16,8 @@
  * limitations under the License.
  */
 
+#include <stdbool.h>
+
 #include "TTL/TTL.h"
 
 #define TILE_OVERLAP_LEFT 1

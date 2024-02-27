@@ -18,6 +18,7 @@
 
 #include <stdint.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 #define TENSOR_WIDTH 103
 #define TENSOR_HEIGHT 27
@@ -25,12 +26,8 @@
 #define TILE_HEIGHT 1
 
 #include "TTL/TTL.h"
-
+#include "kernel.h"
 typedef unsigned int unsigned_int;
-
-bool KERNEL_NAME(TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
-                 TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, int width, int height,
-                 int tile_width, int tile_height);
 
 static TEST_TENSOR_TYPE input_buffer[TENSOR_HEIGHT][TENSOR_WIDTH];
 static TEST_TENSOR_TYPE output_buffer[TENSOR_HEIGHT][TENSOR_WIDTH];

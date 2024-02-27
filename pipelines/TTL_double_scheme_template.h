@@ -19,13 +19,13 @@
 // clang-format off
 /**
  * @file
- * 
+ *
  * TTL_double_buffering pipelines a duplex import or export transaction using two
  * internal buffers.
- * 
+ *
  * The following table draws the pipelined actions performed in double buffering.
  * It specifies which tile is processed in each iteration:
- * 
+ *
  * | Action\\Iteration | \#-1 | \#0 | \#1 | \#2 | \#i (2:NumOfTiles-2) | \#NumOfTiles-1 | \#NumOfTiles | \#NumOfTiles+1 |
  * |-------------------|------|-----|-----|-----|----------------------|----------------|--------------|----------------|
  * | **Wait Import**   |      | 0   | 1   | 2   | i                    | NumOfTiles-1   |              |                |
@@ -33,7 +33,7 @@
  * | **WaitExport**    |      |     |     | 0   | i-2                  | NumOfTiles-3   | NumOfTiles-2 | NumOfTiles-1   |
  * | **Export**        |      |     | 0   | 1   | i-1                  | NumOfTiles-2   | NumOfTiles-1 |                |
  * | **Compute**       |      | 0   | 1   | 2   | i                    | NumOfTiles-1   |              |                |
- * 
+ *
  * Notice the prolog (at iteration number -1) and the 2 epilogs (at iterations
  * number NumOfTiles and NumOfTiles+1) which add in total 3 extra iterations.
  *
