@@ -49,7 +49,7 @@ static inline void wait_group_events(int num_events, event_t *event_list) {
     // Nothing to do in C we have no events.
 }
 
-static event_t async_work_group_copy_3D3D(void *dst, size_t dst_offset, const void *src, size_t src_offset,
+static event_t async_work_group_copy_3D3D(void *const dst, size_t dst_offset, const void *const src, size_t src_offset,
                                    size_t num_bytes_per_element, size_t num_elements_per_line, size_t num_lines,
                                    size_t num_planes, size_t src_total_line_length, size_t src_total_plane_spacing,
                                    size_t dst_total_line_length, size_t dst_total_plane_spacing, event_t event) {

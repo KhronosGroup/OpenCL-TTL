@@ -19,6 +19,7 @@
 #include "TTL/TTL.h"
 
 #include "compute_cross.h"
+#include "kernel.h"
 
 /**
  * @brief Scope globally because it makes debugging easier
