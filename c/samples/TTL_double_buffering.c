@@ -40,9 +40,23 @@ static TEST_TENSOR_TYPE output_buffer_2[1024 * 512];
 #undef TTL_CONST_EXT_TENSOR_TYPE
 #define TTL_CONST_EXT_TENSOR_TYPE __TTL_tensor_name(TTL_, const_, ext_, TEST_TENSOR_TYPE, , _t)
 
+#define NUMBER_OF_COPY_NODES 500
+
 bool TTL_double_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
                           TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, int width, int height,
                           int tile_width, int tile_height) {
+    TTL_async_node_data async_node_data[NUMBER_OF_COPY_NODES];
+
+    TTL_row_gather_map_element row_gather_map_elements[NUMBER_OF_COPY_NODES];
+    TTL_row_gather_map row_gather_map = { .elements = row_gather_map_elements, .element_count = NUMBER_OF_COPY_NODES };
+
+    // We are going to fetch every EVERY_N_LINES input line.
+    for (int i = 0; i <= height; i++) {
+        row_gather_map.elements[i].row_offset = i * EVERY_N_LINES;
+        row_gather_map.elements[i].row_count = 1;
+        row_gather_map.element_count = i + 1;
+    }
+
     // Logical input tiling.
     const TTL_shape_t tensor_shape_in = TTL_create_shape(width, height);
     const TTL_shape_t tile_shape_in = TTL_create_shape(tile_width + (TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT),
@@ -51,11 +65,11 @@ bool TTL_double_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_s
         TTL_create_overlap(TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT, TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM);
     const TTL_augmentation_t augmentation_in =
         TTL_create_augmentation(TILE_OVERLAP_LEFT, TILE_OVERLAP_RIGHT, TILE_OVERLAP_TOP, TILE_OVERLAP_BOTTOM);
-    const TTL_tiler_t input_tiler =
-        TTL_create_overlap_tiler(tensor_shape_in, tile_shape_in, overlap_in, augmentation_in);
+    const TTL_tiler_t input_tiler = TTL_create_overlap_tiler(
+        tensor_shape_in, tile_shape_in, overlap_in, augmentation_in, &row_gather_map, async_node_data);
 
     // Logical output tiling.
-    const TTL_shape_t tensor_shape_out = TTL_create_shape(width, height);
+    const TTL_shape_t tensor_shape_out = TTL_create_shape(width, height / EVERY_N_LINES);
     const TTL_tiler_t output_tiler = TTL_create_tiler(tensor_shape_out, TTL_create_shape(tile_width, tile_height));
 
     // External layouts.
@@ -89,5 +103,5 @@ bool TTL_double_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_s
     TTL_finish_buffering(&import_db);
     TTL_finish_buffering(&export_db);
 
-    return result_check(ext_base_in, ext_base_out, width, height, tile_width, tile_height);
+    return result_check(ext_base_in, ext_base_out, width, height / EVERY_N_LINES, tile_width, tile_height);
 }

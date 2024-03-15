@@ -292,7 +292,7 @@ static inline TTL_offset_dim_t TTL_linearize(const TTL_offset_t offset, const TT
      * As above but a dummy parameter is used to select the version to all                                        \
      */                                                                                                           \
     static inline __TTL_tensor_name(TTL_, const_1, location, type, , _t) __attribute__((overloadable))            \
-        __TTL_tensor_no_type_name(TTL_create_empty_, const_1, location, , )(TTL_scope(type *) unused) {                            \
+        __TTL_tensor_no_type_name(TTL_create_empty_, const_1, location, , )(TTL_scope(type *) unused) {           \
         (void)unused;                                                                                             \
         return __TTL_tensor_name(TTL_create_empty_, const_1, location, type, , )();                               \
     }
@@ -403,20 +403,19 @@ static inline TTL_offset_dim_t TTL_linearize(const TTL_offset_t offset, const TT
         return result;                                                                                                \
     }                                                                                                                 \
                                                                                                                       \
-    /**                                                                                                                \
-     * @brief Create an empty location sub tensor. Empty means it has all dimensions set                                   \
-     * to zero                                                                                                         \
-     *                                                                                                                 \
-     * @param unused Simply defined to allow selection of the functon to call.                                         \
-     *                                                                                                                 \
-     * As above but a dummy parameter is used to select the version to all                                             \
-     */                                                                                                                \
-    static inline __TTL_tensor_name(TTL_, const_1, location, type, sub_, _t) __attribute__((overloadable))                 \
-        __TTL_tensor_no_type_name(TTL_create_empty_, const_1, location, sub_, )(TTL_scope(type *) unused) {                                 \
-        (void)unused;                                                                                                  \
-        return __TTL_tensor_name(TTL_create_empty_, const_1, location, type, sub_, )();                                    \
+    /**                                                                                                               \
+     * @brief Create an empty location sub tensor. Empty means it has all dimensions set                              \
+     * to zero                                                                                                        \
+     *                                                                                                                \
+     * @param unused Simply defined to allow selection of the functon to call.                                        \
+     *                                                                                                                \
+     * As above but a dummy parameter is used to select the version to all                                            \
+     */                                                                                                               \
+    static inline __TTL_tensor_name(TTL_, const_1, location, type, sub_, _t) __attribute__((overloadable))            \
+        __TTL_tensor_no_type_name(TTL_create_empty_, const_1, location, sub_, )(TTL_scope(type *) unused) {           \
+        (void)unused;                                                                                                 \
+        return __TTL_tensor_name(TTL_create_empty_, const_1, location, type, sub_, )();                               \
     }
-
 
 /************************************************************************************************************
  * Create the create tensor functions for different overloads
@@ -511,6 +510,33 @@ static inline TTL_offset_dim_t TTL_linearize(const TTL_offset_t offset, const TT
      * @param base The ## TTL_scope ## base address of the tensor in ## location ## memory                        \
      * @param shape Description of the shape of the tensor that base points                                       \
      * @param layout The layout of the ## location ## tensor                                                      \
+     * @param offset The offset from the base to place the tensor                                                 \
+     * @param origin_tensor The tensor that originated the sub tensor                                             \
+     * @param sub_offset The offset of the tensor from the souce tensor. @see TTL_offset_t                        \
+     *                                                                                                            \
+     * @details                                                                                                   \
+     * The element size of the tensor is taken from the origin tensor                                             \
+     * The offset of the sub tensor is taken to be (0, 0, 0)                                                      \
+     *                                                                                                            \
+     * @return return a __TTL_tensor_name(TTL_, const_1, location, type, sub, _t)                                 \
+     */                                                                                                           \
+    static inline __TTL_tensor_name(TTL_, const_1, location, type, sub, _t) __attribute__((overloadable))         \
+        __TTL_tensor_overloaded_name(TTL_create_, const_1, location, type, sub, )(                                \
+            TTL_scope(const_2 type *) const base,                                                                 \
+            const TTL_shape_t shape,                                                                              \
+            const TTL_layout_t layout,                                                                            \
+            const TTL_offset_t offset,                                                                            \
+            const __TTL_tensor_name(TTL_, const_, ext_, type, , _t) origin_tensor,                                \
+            const TTL_offset_t sub_offset) {                                                                      \
+        return __TTL_tensor_overloaded_name(TTL_create_, const_1, location, type, sub, )(                         \
+            base, shape, layout, origin_tensor.elem_size, offset, origin_tensor.shape, sub_offset);               \
+    }                                                                                                             \
+    /**                                                                                                           \
+     * @brief  __TTL_tensor_name(TTL_create_, const_1, location, type, sub, _5_params)                            \
+     *                                                                                                            \
+     * @param base The ## TTL_scope ## base address of the tensor in ## location ## memory                        \
+     * @param shape Description of the shape of the tensor that base points                                       \
+     * @param layout The layout of the ## location ## tensor                                                      \
      * @param origin_tensor The tensor that originated the sub tensor                                             \
      * @param sub_offset The offset of the tensor from the souce tensor. @see TTL_offset_t                        \
      *                                                                                                            \
@@ -582,4 +608,3 @@ static inline TTL_offset_dim_t TTL_linearize(const TTL_offset_t offset, const TT
                                                                                          origin_tensor.shape,     \
                                                                                          TTL_create_offset());    \
     }
-    

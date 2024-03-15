@@ -34,6 +34,8 @@
 
 #define LOCAL_TILE_SIZE (LOCAL_MEMORY_SIZE / sizeof(TEST_TENSOR_TYPE) / 4)
 
+#define NUMBER_OF_COPY_NODES 500
+
 __kernel void TTL_double_buffering(__global TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
                                    __global TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, int width,
                                    int height, int tile_width, int tile_height) {
@@ -41,15 +43,29 @@ __kernel void TTL_double_buffering(__global TEST_TENSOR_TYPE *restrict ext_base_
     local TEST_TENSOR_TYPE input_buffer_2[LOCAL_TILE_SIZE];
     local TEST_TENSOR_TYPE output_buffer_1[LOCAL_TILE_SIZE];
     local TEST_TENSOR_TYPE output_buffer_2[LOCAL_TILE_SIZE];
+    local TTL_async_node_data async_node_data[NUMBER_OF_COPY_NODES];
 
-    if (((TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT + tile_width) *
-         (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM + tile_height)) > LOCAL_TILE_SIZE) {
-        printf("Tile too large %d > %lu\n",
+    TTL_row_gather_map_element row_gather_map_elements[NUMBER_OF_COPY_NODES];
+    TTL_row_gather_map row_gather_map = { .elements = row_gather_map_elements, .element_count = NUMBER_OF_COPY_NODES };
+
+    if ((((TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT + tile_width) *
+          (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM + tile_height)) > LOCAL_TILE_SIZE) ||
+        ((tile_height / EVERY_N_LINES) > NUMBER_OF_COPY_NODES)) {
+        printf("Tile too large %d > %lu or %d > %d\n",
                ((TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT + tile_width) *
                 (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM + tile_height)),
-               LOCAL_TILE_SIZE);
+               LOCAL_TILE_SIZE,
+               (tile_height / EVERY_N_LINES),
+               NUMBER_OF_COPY_NODES);
         return;
     }
+
+    // We are going to fetch every EVERY_N_LINES input line.
+    for (int i = 0; i <= height / EVERY_N_LINES; i++) {
+        row_gather_map.elements[i].row_offset = i * EVERY_N_LINES;
+        row_gather_map.elements[i].row_count = 10000;
+        row_gather_map.element_count = i + 1;
+     }
 
     // Logical input tiling.
     const TTL_shape_t tensor_shape_in = TTL_create_shape(width, height);
@@ -59,11 +75,11 @@ __kernel void TTL_double_buffering(__global TEST_TENSOR_TYPE *restrict ext_base_
         TTL_create_overlap(TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT, TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM);
     const TTL_augmentation_t augmentation_in =
         TTL_create_augmentation(TILE_OVERLAP_LEFT, TILE_OVERLAP_RIGHT, TILE_OVERLAP_TOP, TILE_OVERLAP_BOTTOM);
-    const TTL_tiler_t input_tiler =
-        TTL_create_overlap_tiler(tensor_shape_in, tile_shape_in, overlap_in, augmentation_in);
+    const TTL_tiler_t input_tiler = TTL_create_overlap_tiler(
+        tensor_shape_in, tile_shape_in, overlap_in, augmentation_in, &row_gather_map, async_node_data);
 
     // Logical output tiling.
-    const TTL_shape_t tensor_shape_out = TTL_create_shape(width, height);
+    const TTL_shape_t tensor_shape_out = TTL_create_shape(width, height / EVERY_N_LINES);
     const TTL_tiler_t output_tiler = TTL_create_tiler(tensor_shape_out, TTL_create_shape(tile_width, tile_height));
 
     // External layouts.

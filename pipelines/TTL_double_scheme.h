@@ -30,6 +30,8 @@
 #define TTL_EXPORT_DOUBLE
 #include "TTL_double_scheme_template.h"
 
+#pragma GCC diagnostic ignored  "-Wincompatible-pointer-types"
+
 /**
  * @brief Wait for the previous import operation to complete before beginning an
  * import of the next tile.
@@ -44,18 +46,72 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_IMPORT_DOUBLE_BUFFERING_TYPE *const db, c
     // For performance, compute everything possible before waiting for the
     // previous operations to finish.
     const TTL_layout_t int_layout = TTL_create_layout(next_tile.shape.width, next_tile.shape.height);
-    const TTL_INT_SUB_TENSOR_TYPE import_to = TTL_create_int_sub_tensor(
-        db->common.int_base[db->common.index], next_tile.shape, int_layout, db->common.ext_tensor_in, next_tile.offset);
-    const TTL_CONST_EXT_TENSOR_TYPE import_from = TTL_create_const_ext_tensor(db->common.ext_tensor_in.base,
-                                                                              next_tile.shape,
-                                                                              db->common.ext_tensor_in.layout,
-                                                                              next_tile.offset,
-                                                                              db->common.ext_tensor_in.elem_size);
 
     TTL_wait(1, db->event);
 
     if (TTL_tile_empty(next_tile) == false) {
-        TTL_import_sub_tensor(import_to, import_from, db->event __TTL_TRACE_LINE);
+        // I'll try and push this down the stack - but it gives the idea.
+        if (next_tile.row_gather_map == 0) {
+            const TTL_INT_SUB_TENSOR_TYPE import_to = TTL_create_int_sub_tensor(db->common.int_base[db->common.index],
+                                                                                next_tile.shape,
+                                                                                int_layout,
+                                                                                db->common.ext_tensor_in,
+                                                                                next_tile.offset);
+
+            const TTL_CONST_EXT_TENSOR_TYPE import_from =
+                TTL_create_const_ext_tensor(db->common.ext_tensor_in.base,
+                                            next_tile.shape,
+                                            db->common.ext_tensor_in.layout,
+                                            next_tile.offset,
+                                            db->common.ext_tensor_in.elem_size);
+
+            TTL_import_sub_tensor(import_to, import_from, db->event __TTL_TRACE_LINE);
+        } else {
+            TTL_dim_t height_remaining = next_tile.shape.height;
+            TTL_offset_t local_offset = {0, 0, 0};
+
+            for (TTL_offset_dim_t current_row_offset = next_tile.offset.y;
+                 height_remaining >0 ;
+                 /* Increment in loop */) {
+                const TTL_dim_t tile_height =
+                    (current_row_offset < 0)
+                        ? -current_row_offset
+                        : min(height_remaining, next_tile.row_gather_map->elements[current_row_offset].row_count);
+                const TTL_offset_dim_t y_offset =
+                    (current_row_offset < 0) ? current_row_offset
+                                             : next_tile.row_gather_map->elements[current_row_offset].row_offset;
+
+                const TTL_shape_t sub_shape = {
+                    .width = next_tile.shape.width, .height = tile_height, .depth = next_tile.shape.depth
+                };
+                const TTL_offset_t int_sub_offset = {
+                    .x = next_tile.offset.x, .y = y_offset, .z = next_tile.offset.z
+                };
+
+                const TTL_INT_SUB_TENSOR_TYPE import_to =
+                    TTL_create_int_sub_tensor(db->common.int_base[db->common.index],
+                                              sub_shape,
+                                              int_layout,
+                                              local_offset,
+                                              db->common.ext_tensor_in,
+                                              int_sub_offset);
+
+                const TTL_offset_t sub_offset = { .x = next_tile.offset.x, .y = y_offset, .z = next_tile.offset.z };
+                height_remaining = height_remaining - tile_height;
+                current_row_offset = current_row_offset + tile_height;
+                local_offset.y = local_offset.y + tile_height;
+
+                const TTL_CONST_EXT_TENSOR_TYPE import_from =
+                    TTL_create_const_ext_tensor(db->common.ext_tensor_in.base,
+                                                sub_shape,
+                                                db->common.ext_tensor_in.layout,
+                                                sub_offset,
+                                                db->common.ext_tensor_in.elem_size);
+
+                TTL_import_sub_tensor(import_to, import_from, db->event __TTL_TRACE_LINE);
+                TTL_wait(1, db->event);
+            }
+        }
     }
 
     db->common.index = (db->common.index + 1) % 2;  // TTL_ARRAYSIZE(db->common.int_base);
