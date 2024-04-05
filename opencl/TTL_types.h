@@ -104,8 +104,13 @@ typedef event_t TTL_event_t;
  * @todo Add file name information if/once PHDL supports %s in format strings
  */
 
-static inline void __TTL_dump_event(const TTL_event_t *const event) {
+static inline void __TTL_dump_event(const TTL_event_t* const ttl_event) {
     // In OpenCL compiler an event_t is a pointer to a mask of channels
-    unsigned char *e = *(unsigned char **)event;
-    if (!e) printf("event=NULL");
+    const unsigned char* const event = *(const unsigned char**)ttl_event;
+
+    // if (!event) {
+    //     printf("event=NULL");
+    // } else {
+    //     printf("event=%p (channels mask=0x%x)", event, *event);
+    // }
 }

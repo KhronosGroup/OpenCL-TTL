@@ -167,6 +167,18 @@ static inline int TTL_number_of_tiles(TTL_tiler_t tiler) {
 }
 
 /**
+ * @brief Given a tile ID return true or false to indicate if the id is valid
+ *
+ * @param tile_id The ID to validate.
+ * @param tiler The tiler in question.
+ *
+ * @return int The number of tiles produced by the tiler.
+ */
+static inline int TTL_valid_tile_id(int tile_id, TTL_tiler_t tiler) {
+    return ((tile_id >= 0) && (tile_id < (int)tiler.cache.number_of_tiles));
+}
+
+/**
  * @brief Return the ceil value of a/b i.e. ceil(a/b)
  *
  * Implementation of ceil(a/b) without requiring a library or floating-point.
@@ -195,8 +207,8 @@ static inline int TTL_ceil_of_a_div_b(const int a, const int b) {
  *
  * @return A tiler that can produce a tile for any given index.
  */
-static TTL_tiler_t TTL_create_overlap_tiler(const TTL_shape_t tensor_shape, const TTL_shape_t tile_shape,
-                                            const TTL_overlap_t overlap, const TTL_augmentation_t augmentation) {
+static inline TTL_tiler_t TTL_create_overlap_tiler(const TTL_shape_t tensor_shape, const TTL_shape_t tile_shape,
+                                                   const TTL_overlap_t overlap, const TTL_augmentation_t augmentation) {
     const TTL_dim_t tiles_in_width = TTL_ceil_of_a_div_b(
         tensor_shape.width + augmentation.left + augmentation.right - overlap.width, tile_shape.width - overlap.width);
     const TTL_dim_t tiles_in_height =
@@ -309,6 +321,11 @@ static inline TTL_tile_t TTL_create_tile(TTL_dim_t x, TTL_dim_t y, TTL_dim_t z, 
  order.
  */
 static inline TTL_tile_t TTL_get_tile(const int tile_id, const TTL_tiler_t tiler) {
+    if (!TTL_valid_tile_id(tile_id, tiler)) {
+        TTL_tile_t invalid = { 0 };
+        return invalid;
+    }
+
     // Compute the 3D coordinates of the tile in order to compute its offset
     const TTL_dim_t z = tile_id / tiler.cache.tiles_in_plane;
     const TTL_dim_t tid_in_plane = tile_id % tiler.cache.tiles_in_plane;

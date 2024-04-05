@@ -252,7 +252,7 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_DUPLEX_BUFFERING_TYPE *const duplex_buffe
     duplex_buffering->prev_out_tensors.to_export_to = to_export_to;
     duplex_buffering->prev_out_tensors.to_export_from = *TTL_to_const_tensor(&to_export_from.tensor);
 
-    TTL_wait(2, *duplex_buffering->events);
+    TTL_wait(2, *duplex_buffering->events __TTL_TRACE_LINE);
 
     return TTL_create_io_tensors(next_import_int_sub_tensor, to_export_from);
 }

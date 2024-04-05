@@ -191,8 +191,8 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_SIMPLEX_BUFFERING_TYPE *const simplex_buf
                                                                 simplex_buffer->common.ext_tensor_out.elem_size);
 
     // Wait for the previous (import/export)s to complete before starting the next.
-    TTL_wait(1, simplex_buffer->event_out);
-    TTL_wait(1, simplex_buffer->event_in);
+    TTL_wait(1, simplex_buffer->event_out __TTL_TRACE_LINE);
+    TTL_wait(1, simplex_buffer->event_in __TTL_TRACE_LINE);
 
     if (TTL_tile_empty(simplex_buffer->next_exported_tile) == false)
         TTL_export(*TTL_to_const_tensor(TTL_to_void_tensor(&int_export_tensor)),
