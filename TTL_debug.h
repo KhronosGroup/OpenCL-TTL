@@ -133,7 +133,7 @@ static inline void __TTL_dump_const_int_tensor_t(const TTL_const_int_tensor_t *c
     __TTL_dump_shape_t(&ttl_int_tensor->shape);
 }
 
-static void __TTL_dump_int_tensor_t(const TTL_int_tensor_t *const ttl_int_tensor) {
+static inline void __TTL_dump_int_tensor_t(const TTL_int_tensor_t *const ttl_int_tensor) {
     __TTL_dump_const_int_tensor_t(TTL_to_const_tensor(ttl_int_tensor));
 }
 
@@ -162,7 +162,7 @@ __TTL_create_dumper(int_sub_tensor);
  *
  * @param ttl_ext_tensor The external tensor to print debug info for.
  */
-static void __TTL_dump_const_ext_tensor_t(const TTL_const_ext_tensor_t *const ttl_const_ext_tensor) {
+static inline void __TTL_dump_const_ext_tensor_t(const TTL_const_ext_tensor_t *const ttl_const_ext_tensor) {
     printf("TTL_ext_tensor_t: " TTL_global_printf ",%d ",
            (TTL_global(void *))ttl_const_ext_tensor->base,
            ttl_const_ext_tensor->elem_size);
@@ -170,7 +170,7 @@ static void __TTL_dump_const_ext_tensor_t(const TTL_const_ext_tensor_t *const tt
     __TTL_dump_shape_t(&ttl_const_ext_tensor->shape);
 }
 
-static void __TTL_dump_ext_tensor_t(const TTL_ext_tensor_t *const ttl_ext_tensor) {
+static inline void __TTL_dump_ext_tensor_t(const TTL_ext_tensor_t *const ttl_ext_tensor) {
     __TTL_dump_const_ext_tensor_t(TTL_to_const_tensor(ttl_ext_tensor));
 }
 
@@ -183,7 +183,7 @@ __TTL_create_dumper(ext_tensor);
  *
  * @param ttl_tiler The tiler to print debug info for.
  */
-static void __TTL_dump_tiler_t(const TTL_tiler_t *const ttl_tiler) {
+static inline void __TTL_dump_tiler_t(const TTL_tiler_t *const ttl_tiler) {
     printf("TTL_tiler_t: ");
     __TTL_dump_shape_t(&ttl_tiler->space);
     __TTL_dump_shape_t(&ttl_tiler->tile);
@@ -215,16 +215,17 @@ static inline void __TTL_dump_transaction(const bool is_export, const TTL_const_
     printf(is_export ? "Export " : "Import ");
     __TTL_dump_shape_t(&internal_tensor->shape);
     __TTL_dump_event(event);
-    printf("AccessType: %d\n       ", access_type);
+    printf(" AccessType: %d\n       ", access_type);
     __TTL_dump_const_ext_tensor_t(external_tensor);
     printf("\n       ");
     __TTL_dump_const_int_tensor_t(internal_tensor);
     printf("\n       line: %d\n", line);
 }
 
-static inline void __TTL_dump_wait(int num_events, TTL_event_t *events) {
+static inline void __TTL_dump_wait(int num_events, TTL_event_t *events, const unsigned int line) {
     printf("TTL_WAIT: ");
     for (int i = 0; i < num_events; i++) {
         __TTL_dump_event(&events[i]);
     }
+    printf("\n       line: %d\n", line);
 }

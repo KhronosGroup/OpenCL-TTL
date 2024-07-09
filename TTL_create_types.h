@@ -29,6 +29,7 @@
 #endif
 #undef TTL_TYPES_NO_VOID
 
+#ifndef TTL_TYPES_ONLY_VOID
 #define TTL_TENSOR_TYPE char
 #define sizeof_char sizeof(char)
 #include "TTL_create_type.h"
@@ -60,6 +61,8 @@
 #define TTL_TENSOR_TYPE ulong
 #define sizeof_ulong sizeof(ulong)
 #include "TTL_create_type.h"
+
+#endif // TT_TYPES_ONLY_VOID
 
 #undef TTL_TYPES_INCLUDE_FILE
 
