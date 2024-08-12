@@ -21,6 +21,26 @@
 #include "../TTL_macros.h"
 #include "../TTL_types.h"
 
+/**
+ * @brief Set the default internal alignment for rows and planes
+ *
+ * By default rows and plans are aligned to single bytes, by predefining TTL_DEFAULT_ALIGNMENT
+ * this can be changed.
+ */
+#ifndef TTL_DEFAULT_INTERNAL_ALIGNMENT
+#define TTL_DEFAULT_INTERNAL_ALIGNMENT 1
+#endif
+
+/**
+ * @brief Set the default internal alignment for rows and planes
+ *
+ * By default rows and plans are aligned to single bytes, by predefining TTL_DEFAULT_ALIGNMENT
+ * this can be changed.
+ */
+#ifndef TTL_DEFAULT_EXTERNAL_ALIGNMENT
+#define TTL_DEFAULT_EXTERNAL_ALIGNMENT 1
+#endif
+
 /************************************************************************************************************
  * Allow for sizeof anything - deals with sizeof(void)
  ************************************************************************************************************/
@@ -63,45 +83,97 @@ typedef struct {
  *
  * @see TTL_layout_t for more information.
  *
- * @param row_spacing;   The distance between the start of consequtive rows in units of elements.
+ * @param row_spacing      The distance between the start of consequtive rows in units of elements.
+ * @param row_alignment    The alignment required for the start of each row - must be power of 2.
  * @param plane_spacing;   The distance between the start of consequtive planes in units of elements.
+ * @param plane_alignment  The alignment required for the start of each plane - must be power of 2.
  *
  * @return A TTL_layout_t describing in 3D the layout requested.
  */
-static inline TTL_layout_t __attribute__((overloadable))
-TTL_create_layout(const TTL_dim_t row_spacing, const TTL_dim_t plane_spacing) {
-    const TTL_layout_t res = { row_spacing, plane_spacing };
+static inline TTL_layout_t TTL_create_layout_base(const TTL_dim_t row_spacing, const TTL_dim_t row_alignment,
+                                                  const TTL_dim_t plane_spacing, const TTL_dim_t plane_alignment) {
+    const TTL_layout_t res = {
+        (row_spacing + (row_alignment - 1)) & ~(row_alignment - 1),
+        (plane_spacing + (plane_alignment - 1)) & ~(plane_alignment - 1),
+    };
     return res;
 }
 
-/**
- * @brief Create a 2D Description of a Tensor layout in memory
- *
- * @see TTL_layout_t for more information.
- *
- * @param row_spacing The distance between the start of consequtive rows in units of elements.
- *
- * The plane spacing is set to 0 - as no planes exist to be spaced.
- *
- * @return A TTL_layout_t describing in 3D the layout requested.
- */
-static inline TTL_layout_t __attribute__((overloadable)) TTL_create_layout(const TTL_dim_t row_spacing) {
-    return TTL_create_layout(row_spacing, 0);
-}
+#define __TTL_create_layout_impl(TTL_scope, TTL_default_alignment)                                                \
+    /**                                                                                                           \
+     * @brief Create a 2D Description of a Tensor layout in memory                                                \
+     *                                                                                                            \
+     * @see TTL_layout_t for more information.                                                                    \
+     *                                                                                                            \
+     * @param row_spacing     The distance between the start of consequtive rows in units of elements.            \
+     * @param row_alignment   The alignment required for the start of each row - must be power of 2.              \
+     * @param plane_spacing   The distance between the start of consequtive planes in units of elements.          \
+     * @param plane_alignment The alignment required for the start of each plane - must be power of 2.            \
+     *                                                                                                            \
+     * The plane spacing is set to 0 - as no planes exist to be spaced.                                           \
+     *                                                                                                            \
+     * @return A TTL_layout_t describing in 3D the layout requested.                                              \
+     */                                                                                                           \
+    static inline TTL_layout_t __attribute__((overloadable))                                                      \
+        TTL_create##TTL_scope##layout(const TTL_dim_t row_spacing,                                                \
+                                      const TTL_dim_t row_alignment,                                              \
+                                      const TTL_dim_t plane_spacing,                                              \
+                                      const TTL_dim_t plane_alignment) {                                          \
+        return TTL_create_layout_base(row_spacing, row_alignment, plane_spacing, plane_alignment);                \
+    }                                                                                                             \
+                                                                                                                  \
+    /**                                                                                                           \
+     * @brief Create a 2D Description of a Tensor layout in memory                                                \
+     *                                                                                                            \
+     * @see TTL_layout_t for more information.                                                                    \
+     *                                                                                                            \
+     * @param row_spacing   The distance between the start of consequtive rows in units of elements.              \
+     * @param plane_spacing   The distance between the start of consequtive planes in units of elements.          \
+     *                                                                                                            \
+     * @return A TTL_layout_t describing in 3D the layout requested.                                              \
+     */                                                                                                           \
+    static inline TTL_layout_t __attribute__((overloadable))                                                      \
+        TTL_create##TTL_scope##layout(const TTL_dim_t row_spacing, const TTL_dim_t plane_spacing) {               \
+        return TTL_create_layout_base(row_spacing, TTL_default_alignment, plane_spacing, TTL_default_alignment);  \
+    }                                                                                                             \
+                                                                                                                  \
+    /**                                                                                                           \
+     * @brief Create a 2D Description of a Tensor layout in memory                                                \
+     *                                                                                                            \
+     * @see TTL_layout_t for more information.                                                                    \
+     *                                                                                                            \
+     * @param row_spacing   The distance between the start of consequtive rows in units of elements.              \
+     *                                                                                                            \
+     * The plane spacing is set to 0 - as no planes exist to be spaced.                                           \
+     * Alignment is presumed to be the TTL_default_alignment                                                      \
+     *                                                                                                            \
+     * @return A TTL_layout_t describing in 3D the layout requested.                                              \
+     */                                                                                                           \
+    static inline TTL_layout_t __attribute__((overloadable))                                                      \
+        TTL_create##TTL_scope##layout(const TTL_dim_t row_spacing) {                                              \
+        return TTL_create_layout_base(row_spacing, TTL_default_alignment, 0, TTL_default_alignment);              \
+    }                                                                                                             \
+                                                                                                                  \
+    /**                                                                                                           \
+     * @brief Create a 1D Description of a Tensor layout in memory                                                \
+     *                                                                                                            \
+     * @see TTL_layout_t for more information.                                                                    \
+     *                                                                                                            \
+     * The row spacing is set to 0 - as no rows exist to be spaced.                                               \
+     * The plane spacing is set to 0 - as no planes exist to be spaced.                                           \
+     **                                                                                                           \
+     * @return A TTL_layout_t describing in 3D the layout requested.                                              \
+     */                                                                                                           \
+    static inline TTL_layout_t __attribute__((overloadable)) TTL_create##TTL_scope##layout(__TTL_NO_PARAMETERS) { \
+        return TTL_create_layout_base(0, TTL_default_alignment, 0, TTL_default_alignment);                        \
+    }
 
 /**
- * @brief Create a 1D Description of a Tensor layout in memory
- *
- * @see TTL_layout_t for more information.
- *
- * The row spacing is set to 0 - as no rows exist to be spaced.
- * The plane spacing is set to 0 - as no planes exist to be spaced.
- **
- * @return A TTL_layout_t describing in 3D the layout requested.
+ * @brief Create the layouts for use in the tensors
  */
-static inline TTL_layout_t __attribute__((overloadable)) TTL_create_layout(__TTL_NO_PARAMETERS) {
-    return TTL_create_layout(0, 0);
-}
+__TTL_create_layout_impl(_ext_, TTL_DEFAULT_EXTERNAL_ALIGNMENT);  //   TTL_create_ext_layout
+__TTL_create_layout_impl(_int_, TTL_DEFAULT_INTERNAL_ALIGNMENT);  //   TTL_create_int_layout
+__TTL_create_layout_impl(_, 1);                                   // For backwards compability.  TTL_create_layout
 
 /**
  * @brief Calculate the absolute linear offset in elements, based on a given
