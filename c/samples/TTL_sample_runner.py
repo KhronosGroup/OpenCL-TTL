@@ -29,7 +29,7 @@ def Read(byte_array, i, j, tensor_width, element_size):
 
     for byte_index in range(0, element_size):
         result = result + (pow(256, byte_index) * byte_array[(((i * tensor_width) + j) * element_size) + byte_index])
-    
+
     return result
 
 def TestTTL(program_name):
@@ -53,7 +53,10 @@ def TestTTL(program_name):
     program_name = os.path.splitext(os.path.basename(program_name))[0]
 
     # For variation a number of tensor random sizes are used, then tiled with random tile sizes
-    for test_tensor_type, test_tensor_size in list([('char', 1), ('uchar', 1), ('short', 2), ('ushort', 2), ('int',4), ('uint',4), ('long',8), ('ulong',8)]):
+    for test_tensor_type, test_tensor_size, test_tensor_specifier in list([('char', 1, '%c'), ('uchar', 1, '%c'),
+                                                                           ('short', 2, '%d'), ('ushort', 2, '%u'),
+                                                                           ('int',4, '%d'), ('uint',4, '%u'),
+                                                                           ('long',8, '%ld'), ('ulong',8, '%lu')]):
         program_name_type = program_name + "_" + test_tensor_type + ".so"
         compile_string = (
             "rm -f "
@@ -64,13 +67,15 @@ def TestTTL(program_name):
             + test_tensor_type
             + " -DKERNEL_NAME="
             + program_name
+            + " -DTEST_TENSOR_TYPE_SPECIFIER="
+            + "\"\\\"" + test_tensor_specifier + "\\\"\""
             + " -DTTL_TARGET=c -fPIC -shared -o "
             + program_name_type
             + " "
             + program_name
             + ".c")
         os.system(compile_string)
-        
+
         print("Testing %s with %s Tensors" % (program_name, test_tensor_type))
 
         for tensor_width in random.sample(range(1, 125), 5):
@@ -119,7 +124,7 @@ def TestTTL(program_name):
                                         expected += Read(input_data, i, j + 1, tensor_width, test_tensor_size)
                                     if i < (tensor_height - 1):
                                         expected += Read(input_data, i + 1, j, tensor_width, test_tensor_size)
-                                    
+
                                 expected &= pow(256, test_tensor_size) - 1
                                 actual = Read(return_buffer, i, j, tensor_width, test_tensor_size)
 

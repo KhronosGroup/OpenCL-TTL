@@ -23,9 +23,9 @@
 #define COMPUTE_NAME_1 xstr(COMPUTE_NAME)
 #include COMPUTE_NAME_1
 
-#define TILE_SIZE 0x8000
 #define TILE_WIDTH 10
 #define TILE_HEIGHT 10
+#define LOCAL_TILE_SIZE (LOCAL_MEMORY_SIZE / sizeof(TEST_TENSOR_TYPE) / 2)
 
 #undef TTL_IO_TENSORS_TYPE
 #define TTL_IO_TENSORS_TYPE __TTL_tensor_name(TTL_io_, , , TEST_TENSOR_TYPE, , _t)
@@ -36,8 +36,16 @@
 
 __kernel void TTL_sample_overlap(__global TEST_TENSOR_TYPE *unused_ptr_1, const TTL_EXT_TENSOR_TYPE ext_input_tensor,
                                  const TTL_EXT_TENSOR_TYPE ext_output_tensor) {
-    __local TEST_TENSOR_TYPE l_in[TILE_SIZE], l_out[TILE_SIZE];
+    __local TEST_TENSOR_TYPE l_in[LOCAL_TILE_SIZE], l_out[LOCAL_TILE_SIZE];
 
+    if (((TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT + TILE_WIDTH) *
+         (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM + TILE_HEIGHT)) > LOCAL_TILE_SIZE) {
+        printf("Tile too large %d > %lu\n",
+               ((TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT + TILE_WIDTH) *
+                (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM + TILE_HEIGHT)),
+               LOCAL_TILE_SIZE);
+        return;
+    }
     // Logical input tiling.
     const TTL_shape_t tile_shape_in = TTL_create_shape(TILE_WIDTH + (TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT),
                                                        TILE_HEIGHT + (TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM));
