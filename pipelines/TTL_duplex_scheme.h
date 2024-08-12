@@ -39,13 +39,13 @@
  * | **WaitExport**    |     | 0   | i-1                  | NumOfTiles-1  |
  *
  * Notice the epilog (\#NumOfTiles) which is an extra iteration.
- * 
+ *
  * When including this file the following must be defined
- * 
+ *
  * #define TTL_TENSOR_TYPE void
  * #define TTL_TENSOR_TYPE uchar
  * etc
- * 
+ *
  * @example TTL_duplex_buffering.cl
  */
 // clang-format on
@@ -96,7 +96,7 @@ typedef struct {
  * Predeclare TTL_step_buffering.
  */
 static inline TTL_IO_TENSOR_TYPE __attribute__((overloadable))
-__TTL_TRACE_FN(TTL_step_buffering, TTL_DUPLEX_BUFFERING_TYPE *duplex_buffering, TTL_tile_t tile_next_import,
+__TTL_TRACE_FN(TTL_step_buffering, TTL_DUPLEX_BUFFERING_TYPE *const duplex_buffering, TTL_tile_t tile_next_import,
                TTL_tile_t tile_current_export);
 
 /**
@@ -204,7 +204,7 @@ __TTL_TRACE_FN(TTL_start_duplex_buffering, TTL_EXT_TENSOR_TYPE ext_tensor_in, TT
 }
 
 static inline TTL_IO_TENSOR_TYPE __attribute__((overloadable))
-__TTL_TRACE_FN(TTL_step_buffering, TTL_DUPLEX_BUFFERING_TYPE *duplex_buffering, TTL_tile_t tile_current_import,
+__TTL_TRACE_FN(TTL_step_buffering, TTL_DUPLEX_BUFFERING_TYPE *const duplex_buffering, TTL_tile_t tile_current_import,
                TTL_tile_t tile_current_export) {
     const TTL_layout_t next_import_layout =
         TTL_create_layout(tile_current_import.shape.width, tile_current_import.shape.height);
@@ -258,6 +258,6 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_DUPLEX_BUFFERING_TYPE *duplex_buffering, 
 }
 
 static inline void __attribute__((overloadable))
-__TTL_TRACE_FN(TTL_finish_buffering, TTL_DUPLEX_BUFFERING_TYPE *duplex_buffering) {
+__TTL_TRACE_FN(TTL_finish_buffering, TTL_DUPLEX_BUFFERING_TYPE *const duplex_buffering) {
     TTL_step_buffering(duplex_buffering, TTL_create_empty_tile(), TTL_create_empty_tile() __TTL_TRACE_LINE);
 }

@@ -82,7 +82,7 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_IMPORT_DOUBLE_BUFFERING_TYPE *const db, c
  *
  */
 static inline TTL_INT_SUB_TENSOR_TYPE __attribute__((overloadable))
-__TTL_TRACE_FN(TTL_step_buffering, TTL_EXPORT_DOUBLE_BUFFERING_TYPE *db, TTL_tile_t tile_current) {
+__TTL_TRACE_FN(TTL_step_buffering, TTL_EXPORT_DOUBLE_BUFFERING_TYPE *const db, TTL_tile_t tile_current) {
     const TTL_layout_t int_layout = TTL_create_layout(db->prev_tile.shape.width, db->prev_tile.shape.height);
     const TTL_CONST_INT_TENSOR_TYPE export_from = TTL_create_const_int_tensor(
         db->common.int_base[db->common.index], db->prev_tile.shape, int_layout, db->common.ext_tensor_in.elem_size);
