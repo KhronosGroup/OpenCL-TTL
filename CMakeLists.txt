@@ -13,7 +13,7 @@
  # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  # See the License for the specific language governing permissions and
  # limitations under the License.
- 
+
 cmake_minimum_required (VERSION 3.3)
 
 project(TemplateTilingLibrary)
@@ -22,13 +22,17 @@ include(GNUInstallDirs)
 
 if(DEFINED TTL_PRE_GENERATE)
 set(TTL_COMMON_FILES
-    TTL.h
+	TTL.h
+    TTL_macros.h
 )
+
 set(TTL_HEADER_C_FILES
-    ${TTL_COMMON_FILES}
+	TTL_c.h
+	${TTL_COMMON_FILES}
 )
 set(TTL_HEADER_OPENCL_FILES
-    ${TTL_COMMON_FILES}
+	TTL_opencl.h
+	${TTL_COMMON_FILES}
 )
 set(TTL_SOURCE_DIRECTORY
     ${CMAKE_BINARY_DIR}
@@ -135,6 +139,16 @@ macro(InstallTTL type source_directory install_directory ttl_header_files)
         install(FILES ${source_directory}/${file} DESTINATION ${install_directory}/${dir})
     endforeach()
 endmacro()
+
+if(DEFINED TTL_PRE_GENERATE)
+	add_custom_target(PrecompiledHeaders ALL
+		COMMENT "Generating precompiled file before installation"
+		COMMAND ${CMAKE_SOURCE_DIR}/scripts/preprocess.sh -o TTL_opencl.h
+		COMMAND ${CMAKE_SOURCE_DIR}/scripts/preprocess.sh -o TTL_c.h -t c
+		COMMAND cp ${CMAKE_SOURCE_DIR}/scripts/preprocess_ttl.h TTL.h
+		COMMAND cp ${CMAKE_SOURCE_DIR}/TTL_macros.h TTL_macros.h
+	)
+endif()
 
 InstallTTL("c" ${TTL_SOURCE_DIRECTORY} ${TTL_C_INSTALL_PATH} "${TTL_HEADER_C_FILES}")
 InstallTTL("opencl" ${TTL_SOURCE_DIRECTORY} ${TTL_OPENCL_INSTALL_PATH} "${TTL_HEADER_OPENCL_FILES}")

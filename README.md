@@ -19,18 +19,18 @@ This document outlines the purpose of this sample implementation and provides bu
 
 ## Contents <!-- omit in toc -->
 
-- [Tensor Tiling Library](#tensor-tiling-library)
-  - [Purpose](#purpose)
-  - [Example](#example)
-  - [Doxygen](#doxygen)
-  - [Building And Executing](#building-and-executing)
-    - [CMake](#cmake)
-      - [Tested Supported Systems](#tested-supported-systems)
-      - [Requirements](#requirements)
-      - [Building the Samples](#building-the-samples)
-      - [Installation](#installation)
-  - [Included Unit Tests](#included-unit-tests)
-  - [Bug Reporting](#bug-reporting)
+- [Purpose](#purpose)
+- [Example](#example)
+- [Doxygen](#doxygen)
+- [Building And Executing](#building-and-executing)
+	- [CMake](#cmake)
+		- [Tested Supported Systems](#tested-supported-systems)
+		- [Requirements](#requirements)
+		- [Building the Samples](#building-the-samples)
+		- [Installation](#installation)
+- [Preprocessed Header](#preprocessed-header)
+- [Included Unit Tests](#included-unit-tests)
+- [Bug Reporting](#bug-reporting)
 
 ## Purpose
 
@@ -139,6 +139,21 @@ $ ./TTL_sample_runner.py *.c
 #### Installation
 
 See [INSTALL](./INSTALL).
+
+## Preprocessed Header
+
+TTL it very type strong and uses a lot of macros to create many variants of each method. Whilst powerful this can make debugging tricker. For these reason the ability of preprocess TTL to stdout or the file provided.
+
+```sh
+$ scripts/preprocess.sh [-f TTL_opencl.h] [-t opencl]
+$ scripts/preprocess.sh [-f TTL_c.h] [-t c]
+```
+
+-f defaults to /dev/stdout
+-t defaults to opencl
+
+
+Will output a processed, clang-formatted file to stdout of the given file. Replacing TTL.h with this file, can make life easier.  See also the TTL_PRE_GENERATE option in [INSTALL](./INSTALL).
 
 ## Included Unit Tests
 
