@@ -30,7 +30,7 @@ CMake Options
 -------------
 *TTL_PRE_GENERATE* if defined the TTL library is used to pregenerate a single TTL.h file, this make debug easier.
 *TTL_INSTALL_PATH* changes the default locations all installs, see cmake -LAH for the default locations on a platform.
-*TTL_OPENCL_INSTALL_PATH* if defined overrides TTL_INSTALL_PATH  as the location to place file generate for c
+*TTL_OPENCL_INSTALL_PATH* if defined overrides TTL_INSTALL_PATH  as the location to place file generate for opecl
 *TTL_C_INSTALL_PATH* if defined overrides TTL_INSTALL_PATH as the location to place file generate for c
 *TTL_COPY_3D* if defined pregenerated TTL.h will contain an implementation of async_work_group_copy_3D3D
 *TTL_DEBUG* if defined  TTL.h will contain and output debug information

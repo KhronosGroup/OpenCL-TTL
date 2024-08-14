@@ -1,0 +1,23 @@
+name: Check Install
+run-name: ${{ github.actor }} is checking install of preprocessed TTL
+on: [push]
+jobs:
+  Sanity-Check-Install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Info
+        run: |
+          echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+          echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+          echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - name: Check Install
+        run: |
+          mkdir build
+          cd build
+          cmake -D TTL_PRE_GENERATE=y  -D TTL_COPY_3D=y -D TTL_INSTALL_PATH=$PWD/install-dir ..
+          make install
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
