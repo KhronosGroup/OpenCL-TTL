@@ -1,0 +1,15 @@
+name: 'Generate Doxygen Action'
+description: 'Generate Documentation Using Doxygen Script'
+branding:
+  icon: 'book-open'
+  color: 'gray-dark'
+inputs:
+  working-directory:
+    description: 'Working directory'
+    required: true
+    default: '.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.working-directory }}

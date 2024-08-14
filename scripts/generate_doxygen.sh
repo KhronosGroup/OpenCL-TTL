@@ -33,7 +33,6 @@ rm -rf gh-pages/html
 rm -rf gh-pages/xml
 rm -rf gh-pages/*.pu
 
-
 RECREATION_DIRECTORY=`mktemp -d XXXXXXX_TTL`
 cd ${RECREATION_DIRECTORY}
 

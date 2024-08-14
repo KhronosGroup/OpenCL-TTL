@@ -22,7 +22,7 @@
 
 #ifdef TTL_COPY_3D
 /*
- * async_work_group_copy_3D3D if not supported by all OpenCL drivers
+ * async_work_group_copy_3D3D is not supported by all OpenCL drivers
  * including some V3.0 drivers. To resolve this define TTL_COPY_3D
  */
 #include "TTL_async_work_group_copy_3D3D.h"
@@ -105,7 +105,7 @@ static inline void __TTL_TRACE_FN(TTL_blocking_import_base, const TTL_int_tensor
  * @param external_tensor external_tensor A TTL_int_sub_tensor_t describing the external tile.
  * @param event event_ptr A pointer to the event which describe the transfer.
  *
- * @note async_work_group_copy_3D3D if not supported by all OpenCL drivers
+ * @note async_work_group_copy_3D3D is not supported by all OpenCL drivers
  * including some V3.0 drivers. To resolve this define TTL_COPY_3D
  */
 static inline void __TTL_TRACE_FN(TTL_export_base, const TTL_const_int_tensor_t internal_tensor,
