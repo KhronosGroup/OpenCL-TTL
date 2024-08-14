@@ -52,7 +52,7 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_IMPORT_DOUBLE_BUFFERING_TYPE *const db, c
                                                                               next_tile.offset,
                                                                               db->common.ext_tensor_in.elem_size);
 
-    TTL_wait(1, db->event);
+    TTL_wait(1, db->event __TTL_TRACE_LINE);
 
     if (TTL_tile_empty(next_tile) == false) {
         TTL_import_sub_tensor(import_to, import_from, db->event __TTL_TRACE_LINE);
@@ -92,7 +92,7 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_EXPORT_DOUBLE_BUFFERING_TYPE *const db, T
                                                                 db->prev_tile.offset,
                                                                 db->common.ext_tensor_in.elem_size);
 
-    TTL_wait(1, db->event);
+    TTL_wait(1, db->event __TTL_TRACE_LINE);
 
     if (TTL_tile_empty(db->prev_tile) == false)
         TTL_export(*TTL_to_void_tensor(TTL_to_const_tensor(&export_from)),

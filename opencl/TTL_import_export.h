@@ -47,7 +47,11 @@ static inline TTL_event_t TTL_get_event() {
  *
  * @return No return value
  */
-static inline void TTL_wait(const int num_events, TTL_event_t *const events) {
+static inline void __TTL_TRACE_FN(TTL_wait, const int num_events, TTL_event_t *const events) {
+#if __TTL_DEBUG > 0
+    __TTL_dump_wait(num_events, events __TTL_TRACE_LINE);
+#endif  // __TTL_DEBUG
+
     wait_group_events(num_events, events);
 }
 
@@ -97,7 +101,7 @@ static inline void  __TTL_TRACE_FN(TTL_blocking_import_base, const TTL_int_tenso
                                   const TTL_const_ext_tensor_t external_tensor) {
     TTL_event_t event = TTL_get_event();
     TTL_import_base(internal_tensor, external_tensor, &event __TTL_TRACE_LINE);
-    TTL_wait(1, &event);
+    TTL_wait(1, &event __TTL_TRACE_LINE);
 }
 
 /**
@@ -148,5 +152,5 @@ static inline void __TTL_TRACE_FN(TTL_blocking_export_base, const TTL_const_int_
                                   const TTL_ext_tensor_t external_tensor) {
     TTL_event_t event = TTL_get_event();
     TTL_export_base(internal_tensor, external_tensor, &event __TTL_TRACE_LINE);
-    TTL_wait(1, &event);
+    TTL_wait(1, &event __TTL_TRACE_LINE);
 }
