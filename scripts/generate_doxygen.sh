@@ -17,6 +17,7 @@
 # limitations under the License.
 
 set -e
+set -x
 
 # always run from WORKSPACE
 SCRIPTS_DIR=$(dirname "$0")
@@ -32,7 +33,6 @@ pushd $WORKSPACE
 rm -rf gh-pages/html
 rm -rf gh-pages/xml
 rm -rf gh-pages/*.pu
-
 
 RECREATION_DIRECTORY=`mktemp -d XXXXXXX_TTL`
 cd ${RECREATION_DIRECTORY}
