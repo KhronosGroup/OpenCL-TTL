@@ -1,5 +1,5 @@
 name: Check C Sample
-run-name: ${{ github.actor }} is checking samples
+run-name: ${{ github.actor }} is checking c samples
 on: [push]
 jobs:
   Sanity-Check-C-Sample:

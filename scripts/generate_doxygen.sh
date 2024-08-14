@@ -19,8 +19,8 @@
 set -e
 
 # always run from WORKSPACE
-THIS_DIR=$(dirname "$0")
-WORKSPACE="${WORKSPACE:-$(realpath $THIS_DIR/..)}"
+SCRIPTS_DIR=$(dirname "$0")
+WORKSPACE="${WORKSPACE:-$(realpath $SCRIPTS_DIR/..)}"
 
 if [[ "${!#}" == "-h" ]]; then
 	echo "Usage: $0"
@@ -28,12 +28,34 @@ if [[ "${!#}" == "-h" ]]; then
 fi
 
 pushd $WORKSPACE
-rm -rf html
-rm -rf xml
+
+rm -rf gh-pages/html
+rm -rf gh-pages/xml
+rm -rf gh-pages/*.pu
+
+
+RECREATION_DIRECTORY=`mktemp -d XXXXXXX_TTL`
+cd ${RECREATION_DIRECTORY}
+
+# One we create a single preprocessed for opencl
+$WORKSPACE/scripts/preprocess.sh -r -o TTL_doxygen.h
+
+# Two copy everything into the RECRECTION directory.
+# using rsync to exclude the RECREATION_DIRECTORY or it becomes recursive.
+rsync -av --progress $WORKSPACE/ $WORKSPACE/${RECREATION_DIRECTORY} --exclude ${RECREATION_DIRECTORY}
+
+# Three recreate the original files from the pre-processed directory
+# this will overwrite the file copy in step 2 when applicable
+$WORKSPACE/scripts/split_doxgen.py TTL_doxygen.h
+rm TTL_doxygen.h
+
+cd $WORKSPACE
 
 # Seems to be a bug that plantuml leaves inline_umlgraph_cache_all.pu behind
-rm -f inline_umlgraph_cache_all.pu
 
-doxygen $WORKSPACE/scripts/doxyfile.in
+# Run doxygen on the reconstituted doxygen
+(cat $WORKSPACE/scripts/doxyfile.in; echo "INPUT=${RECREATION_DIRECTORY}") | doxygen -
+
+rm -rf ${RECREATION_DIRECTORY}
 
 popd

@@ -71,7 +71,8 @@
 #undef TTL_DOUBLE_BUFFERING_TYPE
 #define TTL_DOUBLE_BUFFERING_TYPE __TTL_tensor_name(TTL_import_double_, const_, , TTL_TENSOR_TYPE, , _buffering_t)
 #undef TTL_IMPORT_DOUBLE_BUFFERING_TYPE
-#define TTL_IMPORT_DOUBLE_BUFFERING_TYPE __TTL_tensor_name(TTL_import_double_, const_, , TTL_TENSOR_TYPE, , _buffering_t)
+#define TTL_IMPORT_DOUBLE_BUFFERING_TYPE \
+    __TTL_tensor_name(TTL_import_double_, const_, , TTL_TENSOR_TYPE, , _buffering_t)
 #undef TTL_EXT_TENSOR_TYPE
 #define TTL_EXT_TENSOR_TYPE __TTL_tensor_name(TTL_, const_, ext_, TTL_TENSOR_TYPE, , _t)
 #undef TTL_IMPORT_EXPORT_NAME
@@ -82,7 +83,8 @@
 #undef TTL_DOUBLE_BUFFERING_TYPE
 #define TTL_DOUBLE_BUFFERING_TYPE __TTL_tensor_name(TTL_export_double_, const_, , TTL_TENSOR_TYPE, , _buffering_t)
 #undef TTL_EXPORT_DOUBLE_BUFFERING_TYPE
-#define TTL_EXPORT_DOUBLE_BUFFERING_TYPE __TTL_tensor_name(TTL_export_double_, const_, , TTL_TENSOR_TYPE, , _buffering_t)
+#define TTL_EXPORT_DOUBLE_BUFFERING_TYPE \
+    __TTL_tensor_name(TTL_export_double_, const_, , TTL_TENSOR_TYPE, , _buffering_t)
 #undef TTL_EXT_TENSOR_TYPE
 #define TTL_EXT_TENSOR_TYPE __TTL_tensor_name(TTL_, , ext_, TTL_TENSOR_TYPE, , _t)
 #undef TTL_IMPORT_EXPORT_NAME
@@ -98,11 +100,9 @@
  */
 typedef struct {
     TTL_common_buffering_t(TTL_TENSOR_TYPE *, TTL_EXT_TENSOR_TYPE, TTL_EXT_TENSOR_TYPE,
-                           2) common;  ///< @brief The information that is common to all pipeline schemes
-
-    TTL_event_t *event;
-
-    TTL_tile_t prev_tile; /** @brief Store of the previous imported/exported tile */
+                           2) common;  ///< The information that is common to all pipeline schemes
+    TTL_event_t *event;                ///< A pointer to the event that is used to track the progress of the transfer
+    TTL_tile_t prev_tile;              ///< Store of the previous imported/exported tile */
 } TTL_DOUBLE_BUFFERING_TYPE;
 
 #ifdef TTL_IMPORT_DOUBLE
@@ -111,7 +111,7 @@ typedef struct {
  *
  * @param int_base1 A pointer to the 1st local buffer
  * @param int_base2 A pointer to the 2nd local buffer
- * @param ext_tensor_in A tensor describing the input in global memory
+ * @param ext_tensor A tensor describing the input in global memory
  * @param event A pointer to the event to use for the inward (external to
  * internal) transfer completion
  * @param first_tile The first tile to fetch for the scheme
@@ -138,10 +138,9 @@ typedef struct {
  *
  * @enduml
  */
-static inline TTL_DOUBLE_BUFFERING_TYPE __attribute__((overloadable)) TTL_start_import_double_buffering(TTL_local(TTL_TENSOR_TYPE *) int_base1,
-                                                                          TTL_local(TTL_TENSOR_TYPE *) int_base2,
-                                                                          TTL_EXT_TENSOR_TYPE ext_tensor,
-                                                                          TTL_event_t *event, TTL_tile_t first_tile);
+static inline TTL_DOUBLE_BUFFERING_TYPE __attribute__((overloadable))
+TTL_start_import_double_buffering(TTL_local(TTL_TENSOR_TYPE *) int_base1, TTL_local(TTL_TENSOR_TYPE *) int_base2,
+                                  TTL_EXT_TENSOR_TYPE ext_tensor, TTL_event_t *event, TTL_tile_t first_tile);
 #endif
 
 #ifdef TTL_EXPORT_DOUBLE
@@ -150,7 +149,7 @@ static inline TTL_DOUBLE_BUFFERING_TYPE __attribute__((overloadable)) TTL_start_
  *
  * @param int_base1 A pointer to the 1st local buffer
  * @param int_base2 A pointer to the 2nd local buffer
- * @param ext_tensor_out  A tensor describing the output in global memory
+ * @param ext_tensor  A tensor describing the output in global memory
  * @param event A pointer to the event to use for the inward and outward
  * transfer completion
  *
@@ -178,22 +177,20 @@ static inline TTL_DOUBLE_BUFFERING_TYPE __attribute__((overloadable)) TTL_start_
  *
  * @enduml
  */
-static inline TTL_DOUBLE_BUFFERING_TYPE __attribute__((overloadable)) __TTL_TRACE_FN(TTL_start_export_double_buffering, TTL_local(TTL_TENSOR_TYPE *) int_base1,
-                                                                          TTL_local(TTL_TENSOR_TYPE *) int_base2,
-                                                                          TTL_EXT_TENSOR_TYPE ext_tensor,
-                                                                          TTL_event_t *event);
+static inline TTL_DOUBLE_BUFFERING_TYPE __attribute__((overloadable))
+__TTL_TRACE_FN(TTL_start_export_double_buffering, TTL_local(TTL_TENSOR_TYPE *) int_base1,
+               TTL_local(TTL_TENSOR_TYPE *) int_base2, TTL_EXT_TENSOR_TYPE ext_tensor, TTL_event_t *event);
 #endif
 
 static inline TTL_INT_SUB_TENSOR_TYPE __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_step_buffering, TTL_DOUBLE_BUFFERING_TYPE *const db, const TTL_tile_t next_tile);
 
-static inline TTL_DOUBLE_BUFFERING_TYPE __attribute__((overloadable)) __TTL_TRACE_FN(TTL_IMPORT_EXPORT_NAME(TTL_start, double_buffering),
-                                                       TTL_local(TTL_TENSOR_TYPE *) int_base1,
-                                                       TTL_local(TTL_TENSOR_TYPE *) int_base2, TTL_EXT_TENSOR_TYPE ext_tensor,
-                                                       TTL_event_t *event
+static inline TTL_DOUBLE_BUFFERING_TYPE __attribute__((overloadable))
+__TTL_TRACE_FN(TTL_IMPORT_EXPORT_NAME(TTL_start, double_buffering), TTL_local(TTL_TENSOR_TYPE *) int_base1,
+               TTL_local(TTL_TENSOR_TYPE *) int_base2, TTL_EXT_TENSOR_TYPE ext_tensor, TTL_event_t *event
 #ifdef TTL_IMPORT_DOUBLE
-                                                       ,
-                                                       TTL_tile_t first_tile
+               ,
+               TTL_tile_t first_tile
 #endif
 ) {
     TTL_DOUBLE_BUFFERING_TYPE result;

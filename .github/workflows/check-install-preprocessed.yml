@@ -1,4 +1,4 @@
-name: Check Install
+name: Check Preprocessed Install
 run-name: ${{ github.actor }} is checking install of preprocessed TTL
 on: [push]
 jobs:

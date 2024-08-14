@@ -52,7 +52,7 @@ __TTL_TRACE_FN(TTL_read_tensor, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR
 /**
  * @brief  Read a value from a tensor
  *
- * @param tensor A TTL_int_[type]_sub_tensor_t describing the internal tensor.
+ * @param sub_tensor A TTL_int_[type]_sub_tensor_t describing the internal tensor.
  * @param x The offset in the x dimension
  * @param y The offset in the y dimension
  * @param z The offset in the z dimension
@@ -87,8 +87,6 @@ __TTL_TRACE_FN(TTL_read_tensor, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR
  * @param x The offset in the x dimension
  * @param y The offset in the y dimension
  * @param z The offset in the z dimension
- *
- * @return No return value
  */
 static inline void __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_write_tensor, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE, , _t) tensor,
@@ -111,13 +109,11 @@ __TTL_TRACE_FN(TTL_write_tensor, const __TTL_tensor_name(TTL_, , int_, TTL_TENSO
 /**
  * @brief  Write a value from a tensor
  *
- * @param tensor A TTL_int_[type]_tensor_t describing the internal tensor.
+ * @param sub_tensor A TTL_int_[type]_tensor_t describing the internal tensor.
  * @param value The value to right
  * @param x The offset in the x dimension
  * @param y The offset in the y dimension
  * @param z The offset in the z dimension
- *
- * @return No return value
  */
 static inline void __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_write_tensor, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE, sub_, _t) sub_tensor,

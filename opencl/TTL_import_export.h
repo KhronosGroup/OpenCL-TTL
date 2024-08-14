@@ -44,8 +44,6 @@ static inline TTL_event_t TTL_get_event() {
  * @def TTL_wait
  *
  * Wait for the array of events passed to enter the complete state.
- *
- * @return No return value
  */
 static inline void __TTL_TRACE_FN(TTL_wait, const int num_events, TTL_event_t *const events) {
 #if __TTL_DEBUG > 0
@@ -63,11 +61,10 @@ static inline void __TTL_TRACE_FN(TTL_wait, const int num_events, TTL_event_t *c
  * @param internal_tensor internal_tensor A TTL_int_tensor_t describing the internal tensor.
  * @param external_tensor external_tensor A TTL_int_tensor_t describing the external tensor.
  * @param event event_ptr A pointer to the event which describe the transfer.
- *
- * @return No return value
  */
-static inline void __attribute__((overloadable)) __TTL_TRACE_FN(TTL_import_base, const TTL_int_tensor_t internal_tensor,
-                                  const TTL_const_ext_tensor_t external_tensor, TTL_event_t *event) {
+static inline void __attribute__((overloadable))
+__TTL_TRACE_FN(TTL_import_base, const TTL_int_tensor_t internal_tensor, const TTL_const_ext_tensor_t external_tensor,
+               TTL_event_t *event) {
     *event = async_work_group_copy_3D3D((__local void *)internal_tensor.base,
                                         0,
                                         (__global void *)external_tensor.base,
@@ -83,8 +80,7 @@ static inline void __attribute__((overloadable)) __TTL_TRACE_FN(TTL_import_base,
                                         *event);
 
 #if __TTL_DEBUG > 0
-    __TTL_dump_transaction(
-        false, TTL_to_const_tensor(&internal_tensor), &external_tensor, 0, event __TTL_TRACE_LINE);
+    __TTL_dump_transaction(false, TTL_to_const_tensor(&internal_tensor), &external_tensor, 0, event __TTL_TRACE_LINE);
 #endif  // __TTL_DEBUG
 }
 
@@ -94,10 +90,8 @@ static inline void __attribute__((overloadable)) __TTL_TRACE_FN(TTL_import_base,
  * @param internal_tensor A TTL_int_tensor_t describing the internal tensor.
  * @param external_tensor A TTL_int_tensor_t describing the external tensor.
  * Complete description of what not how here.
- *
- * @return No return value
  */
-static inline void  __TTL_TRACE_FN(TTL_blocking_import_base, const TTL_int_tensor_t internal_tensor,
+static inline void __TTL_TRACE_FN(TTL_blocking_import_base, const TTL_int_tensor_t internal_tensor,
                                   const TTL_const_ext_tensor_t external_tensor) {
     TTL_event_t event = TTL_get_event();
     TTL_import_base(internal_tensor, external_tensor, &event __TTL_TRACE_LINE);
@@ -113,8 +107,6 @@ static inline void  __TTL_TRACE_FN(TTL_blocking_import_base, const TTL_int_tenso
  *
  * @note async_work_group_copy_3D3D if not supported by all OpenCL drivers
  * including some V3.0 drivers. To resolve this define TTL_COPY_3D
- *
- * @return No return value
  */
 static inline void __TTL_TRACE_FN(TTL_export_base, const TTL_const_int_tensor_t internal_tensor,
                                   const TTL_ext_tensor_t external_tensor, TTL_event_t *const event) {
@@ -133,8 +125,7 @@ static inline void __TTL_TRACE_FN(TTL_export_base, const TTL_const_int_tensor_t 
                                         *event);
 
 #if __TTL_DEBUG > 0
-    __TTL_dump_transaction(
-        true, &internal_tensor, TTL_to_const_tensor(&external_tensor), 0, event __TTL_TRACE_LINE);
+    __TTL_dump_transaction(true, &internal_tensor, TTL_to_const_tensor(&external_tensor), 0, event __TTL_TRACE_LINE);
 #endif  // __TTL_DEBUG
 }
 
@@ -145,8 +136,6 @@ static inline void __TTL_TRACE_FN(TTL_export_base, const TTL_const_int_tensor_t 
  * @param external_tensor A TTL_int_sub_tensor_t describing the external tile.
  *
  * Complete description of what not how here.
- *
- * @return No return value
  */
 static inline void __TTL_TRACE_FN(TTL_blocking_export_base, const TTL_const_int_tensor_t internal_tensor,
                                   const TTL_ext_tensor_t external_tensor) {
