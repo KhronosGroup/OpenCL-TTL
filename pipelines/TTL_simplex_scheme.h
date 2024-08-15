@@ -199,6 +199,11 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_SIMPLEX_BUFFERING_TYPE *const simplex_buf
                    *TTL_to_void_tensor(&export_to),
                    simplex_buffer->event_out __TTL_TRACE_LINE);
 
+	// Ideally, use async_work_group_copy_fence_iab, requires compilers update
+	// The fence is required because ...
+  	async_work_group_copy_fence(CLK_LOCAL_MEM_FENCE);
+
+
     if (TTL_tile_empty(tile_next_import) == false)
         TTL_import_sub_tensor(*TTL_to_void_sub_tensor(&next_import_int_sub_tensor),
                               *TTL_to_void_tensor(TTL_to_const_tensor(&next_import_ext_tensor)),

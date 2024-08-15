@@ -41,7 +41,7 @@ $WORKSPACE/scripts/preprocess.sh -r -o TTL_doxygen.h
 
 # Two copy everything into the RECRECTION directory.
 # using rsync to exclude the RECREATION_DIRECTORY or it becomes recursive.
-rsync -av --progress $WORKSPACE/ $WORKSPACE/${RECREATION_DIRECTORY} --exclude ${RECREATION_DIRECTORY}
+rsync -qav $WORKSPACE/ $WORKSPACE/${RECREATION_DIRECTORY} --exclude ${RECREATION_DIRECTORY}
 
 # Three recreate the original files from the pre-processed directory
 # this will overwrite the file copy in step 2 when applicable
@@ -53,7 +53,7 @@ cd $WORKSPACE
 # Seems to be a bug that plantuml leaves inline_umlgraph_cache_all.pu behind
 
 # Run doxygen on the reconstituted doxygen
-(cat $WORKSPACE/scripts/doxyfile.in; echo "INPUT=${RECREATION_DIRECTORY}") | doxygen -
+(cat $WORKSPACE/scripts/doxyfile.in; echo "INPUT=${RECREATION_DIRECTORY}"; echo "STRIP_FROM_PATH=${RECREATION_DIRECTORY}/") | doxygen -
 
 rm -rf ${RECREATION_DIRECTORY}
 

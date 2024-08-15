@@ -24,7 +24,6 @@ def ProcessFile(input_filename):
                     output_file_stream = None
 
                 output_file_name = os.path.relpath(os.path.abspath(regex.group(1)))
-                print(output_file_name)
 
                 if output_file_name in output_file_names:
                     output_file_stream = open(output_file_name, "r+")
