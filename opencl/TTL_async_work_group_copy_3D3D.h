@@ -22,7 +22,7 @@
 */
 
 /**
- * @brief async_work_group_copy_3D3D if not supported by all OpenCL drivers
+ * @brief async_work_group_copy_3D3D is not supported by all OpenCL drivers
  *
  * This is an implementation that can be included by defining TTL_COPY_3D
  */
@@ -47,7 +47,7 @@ __attribute__((overloadable)) event_t async_work_group_copy_3D3D(
 }
 
 /**
- * @brief async_work_group_copy_3D3D if not supported by all OpenCL drivers
+ * @brief async_work_group_copy_3D3D is not supported by all OpenCL drivers
  *
  * This is an implementation that can be included by defining TTL_COPY_3D
  */
