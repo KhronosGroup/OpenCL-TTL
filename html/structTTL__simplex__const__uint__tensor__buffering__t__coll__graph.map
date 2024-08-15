@@ -1,0 +1,22 @@
+<map id="TTL_simplex_const_uint_tensor_buffering_t" name="TTL_simplex_const_uint_tensor_buffering_t">
+<area shape="rect" id="Node000001" title=" " alt="" coords="283,470,438,630"/>
+<area shape="rect" id="Node000002" href="$structTTL__ext__uint__tensor__t.html" title="const and non&#45;const tensors in the appropriate address space" alt="" coords="5,184,148,269"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,268,127,336,149,372,174,406,220,451,271,491,268,495,217,455,170,409,144,375,122,338,90,270"/>
+<area shape="rect" id="Node000003" href="$structTTL__layout__t.html" title="Description of a Tensor layout in memory." alt="" coords="98,15,205,101"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="100,96,82,114,69,136,64,151,64,167,58,167,59,150,64,134,78,111,96,92"/>
+<area shape="rect" id="Node000008" href="$structTTL__int__uint__tensor__t.html" title="const and non&#45;const tensors in the appropriate address space" alt="" coords="172,184,312,269"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="176,99,214,168,209,170,171,102"/>
+<area shape="rect" id="Node000004" href="$structTTL__shape__t.html" title="Description of a Shape." alt="" coords="283,5,372,111"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="284,84,218,113,178,122,161,126,143,137,125,153,110,172,106,168,121,149,140,132,160,122,177,117,216,108,282,79"/>
+<area shape="rect" id="Node000005" href="$structTTL__tile__t.html" title=" " alt="" coords="470,342,542,407"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="373,68,413,83,457,104,500,134,534,172,553,210,559,243,556,278,545,319,541,328,536,326,539,317,550,277,554,243,548,211,529,175,496,138,455,109,411,88,371,73"/>
+<area shape="rect" id="Node000007" href="$structTTL__int__uint__sub__tensor__t.html" title="const and non&#45;const sub tensors in the appropriate address space" alt="" coords="277,342,445,407"/>
+<area shape="poly" id="edge11_Node000007_Node000004" title=" " alt="" coords="338,110,341,134,359,325,354,325,335,135,332,111"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="303,112,273,170,269,167,299,109"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="499,408,479,448,451,480,447,477,474,445,494,406"/>
+<area shape="rect" id="Node000006" href="$structTTL__offset__t.html" title="Description of the 3D offset of an object." alt="" coords="432,174,519,279"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="489,278,499,325,493,326,483,279"/>
+<area shape="poly" id="edge12_Node000007_Node000006" title=" " alt="" coords="436,280,417,305,397,330,393,327,413,301,432,277"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="363,407,363,453,358,453,358,407"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="264,267,297,316,309,329,305,332,293,320,260,270"/>
+</map>

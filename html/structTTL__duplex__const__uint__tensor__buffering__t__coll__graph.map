@@ -1,0 +1,13 @@
+<map id="TTL_duplex_const_uint_tensor_buffering_t" name="TTL_duplex_const_uint_tensor_buffering_t">
+<area shape="rect" id="Node000001" title="Data required to perform duplex buffer pipelining." alt="" coords="81,367,229,527"/>
+<area shape="rect" id="Node000002" href="$structTTL__ext__uint__tensor__t.html" title="const and non&#45;const tensors in the appropriate address space" alt="" coords="5,181,148,266"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,265,106,342,109,350,104,352,101,343,81,267"/>
+<area shape="rect" id="Node000003" href="$structTTL__layout__t.html" title="Description of a Tensor layout in memory." alt="" coords="34,15,141,101"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="61,102,46,135,45,150,47,165,42,165,39,150,41,134,56,100"/>
+<area shape="rect" id="Node000005" href="$structTTL__const__int__uint__tensor__t.html" title=" " alt="" coords="173,174,298,274"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="95,100,103,125,116,148,134,161,159,171,157,176,131,166,112,151,98,127,90,101"/>
+<area shape="rect" id="Node000004" href="$structTTL__shape__t.html" title="Description of a Shape." alt="" coords="180,5,269,111"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="197,112,167,151,146,172,143,168,163,148,192,109"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="241,110,245,134,246,157,240,157,239,135,235,111"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="223,274,199,344,196,352,191,350,194,342,218,272"/>
+</map>

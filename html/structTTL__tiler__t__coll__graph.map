@@ -1,0 +1,9 @@
+<map id="TTL_tiler_t" name="TTL_tiler_t">
+<area shape="rect" id="Node000001" title="TTL_tiler_t is the basic unit that describes how a tile is subdivided." alt="" coords="109,249,225,414"/>
+<area shape="rect" id="Node000002" href="$structTTL__shape__t.html" title="Description of a Shape." alt="" coords="5,35,95,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,139,123,232,118,235,72,142"/>
+<area shape="rect" id="Node000003" href="$structTTL__overlap__t.html" title="Description of the overlap in 3D space of adjacent tiles." alt="" coords="119,35,216,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,140,170,232,165,232,165,140"/>
+<area shape="rect" id="Node000004" href="$structTTL__augmentation__t.html" title="3D description of the augmented margins" alt="" coords="241,5,374,171"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="262,172,225,236,221,233,258,169"/>
+</map>

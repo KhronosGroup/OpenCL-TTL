@@ -1,0 +1,540 @@
+@startuml inline_umlgraph_1.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_2.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_3.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_4.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_5.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_6.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_7.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_8.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_9.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_10.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_11.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_12.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_13.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_14.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_15.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_16.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_17.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_18.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_19.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers
+1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Import The Next Tile into the input buffer;
+
+  :Process the Tile from the input buffer to the output buffer;
+
+  :ExportThe Process Tile from into the output buffer;
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_20.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers 1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Call TTL_step_buffering for the current tile
+
+   This will import the current new tile and export the last tile
+   in parallel;
+
+  if (Does the input buffer contain a valid tile? **TTL_tile_empty(...)**) then (yes)
+     :Process the Tile from the input buffer to the output buffer;
+  endif
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_21.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers
+1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Import The Next Tile into the input buffer;
+
+  :Process the Tile from the input buffer to the output buffer;
+
+  :ExportThe Process Tile from into the output buffer;
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_22.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers 1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Call TTL_step_buffering for the current tile
+
+   This will import the current new tile and export the last tile
+   in parallel;
+
+  if (Does the input buffer contain a valid tile? **TTL_tile_empty(...)**) then (yes)
+     :Process the Tile from the input buffer to the output buffer;
+  endif
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_23.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers
+1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Import The Next Tile into the input buffer;
+
+  :Process the Tile from the input buffer to the output buffer;
+
+  :ExportThe Process Tile from into the output buffer;
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_24.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers 1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Call TTL_step_buffering for the current tile
+
+   This will import the current new tile and export the last tile
+   in parallel;
+
+  if (Does the input buffer contain a valid tile? **TTL_tile_empty(...)**) then (yes)
+     :Process the Tile from the input buffer to the output buffer;
+  endif
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_25.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers
+1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Import The Next Tile into the input buffer;
+
+  :Process the Tile from the input buffer to the output buffer;
+
+  :ExportThe Process Tile from into the output buffer;
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_26.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers 1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Call TTL_step_buffering for the current tile
+
+   This will import the current new tile and export the last tile
+   in parallel;
+
+  if (Does the input buffer contain a valid tile? **TTL_tile_empty(...)**) then (yes)
+     :Process the Tile from the input buffer to the output buffer;
+  endif
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_27.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers
+1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Import The Next Tile into the input buffer;
+
+  :Process the Tile from the input buffer to the output buffer;
+
+  :ExportThe Process Tile from into the output buffer;
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_28.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers 1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Call TTL_step_buffering for the current tile
+
+   This will import the current new tile and export the last tile
+   in parallel;
+
+  if (Does the input buffer contain a valid tile? **TTL_tile_empty(...)**) then (yes)
+     :Process the Tile from the input buffer to the output buffer;
+  endif
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_29.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers
+1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Import The Next Tile into the input buffer;
+
+  :Process the Tile from the input buffer to the output buffer;
+
+  :ExportThe Process Tile from into the output buffer;
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_30.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers 1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Call TTL_step_buffering for the current tile
+
+   This will import the current new tile and export the last tile
+   in parallel;
+
+  if (Does the input buffer contain a valid tile? **TTL_tile_empty(...)**) then (yes)
+     :Process the Tile from the input buffer to the output buffer;
+  endif
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_31.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers
+1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Import The Next Tile into the input buffer;
+
+  :Process the Tile from the input buffer to the output buffer;
+
+  :ExportThe Process Tile from into the output buffer;
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_32.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers 1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Call TTL_step_buffering for the current tile
+
+   This will import the current new tile and export the last tile
+   in parallel;
+
+  if (Does the input buffer contain a valid tile? **TTL_tile_empty(...)**) then (yes)
+     :Process the Tile from the input buffer to the output buffer;
+  endif
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_33.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers
+1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Import The Next Tile into the input buffer;
+
+  :Process the Tile from the input buffer to the output buffer;
+
+  :ExportThe Process Tile from into the output buffer;
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_34.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers 1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Call TTL_step_buffering for the current tile
+
+   This will import the current new tile and export the last tile
+   in parallel;
+
+  if (Does the input buffer contain a valid tile? **TTL_tile_empty(...)**) then (yes)
+     :Process the Tile from the input buffer to the output buffer;
+  endif
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_35.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers
+1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Import The Next Tile into the input buffer;
+
+  :Process the Tile from the input buffer to the output buffer;
+
+  :ExportThe Process Tile from into the output buffer;
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_36.svg
+start
+
+:Create a TTL_tiler_t with TTL_create_tiler;
+:Create a TTL_duplex_buffering_t Structure with 2 Buffers 1 input buffer, 1 output buffer;
+:NumberOfTiles = TTL_number_of_tiles(tiler);
+
+while (for each tile)
+
+  :Call TTL_step_buffering for the current tile
+
+   This will import the current new tile and export the last tile
+   in parallel;
+
+  if (Does the input buffer contain a valid tile? **TTL_tile_empty(...)**) then (yes)
+     :Process the Tile from the input buffer to the output buffer;
+  endif
+
+endwhile
+
+stop
+@enduml
+@startuml inline_umlgraph_37.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_38.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_39.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_40.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_41.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_42.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_43.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_44.svg
+start
+
+
+stop
+@enduml
+@startuml inline_umlgraph_45.svg
+start
+
+
+stop
+@enduml

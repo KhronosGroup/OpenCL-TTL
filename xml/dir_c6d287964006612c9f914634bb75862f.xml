@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="dir_c6d287964006612c9f914634bb75862f" kind="dir">
+    <compoundname>scripts</compoundname>
+    <innerfile refid="preprocess_8c">preprocess.c</innerfile>
+    <innerfile refid="preprocess__ttl_8h">preprocess_ttl.h</innerfile>
+    <innerfile refid="split__doxgen_8py">split_doxgen.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="DOqdCBc_TTL/scripts/"/>
+  </compounddef>
+</doxygen>
