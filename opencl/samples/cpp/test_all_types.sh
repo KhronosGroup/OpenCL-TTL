@@ -34,8 +34,10 @@ for types in char,%c uchar,%c short,%d ushort,%u int,%d uint,%u long,%ld ulong,%
   type_specifier=$2
 
   for compute in cross square copy; do
-    echo Compute $compute with tensor of type $type compute of $compute
-    clang -O0 -g -D TTL_TARGET=c -D TEST_TENSOR_TYPE=$type -D TEST_TENSOR_TYPE_SPECIFIER="\"$type_specifier\"" -D COMPUTE=$compute.h -D CL_TARGET_OPENCL_VERSION=300 -I $TTL_INCLUDE_PATH $TTL_OPEN_CL_INCLUDE_PATH -o TTL_sample_overlap TTL_sample_runner.cpp -lOpenCL -lstdc++
+    external_alignment=$((2 ** ($RANDOM / 4096)))
+    internal_alignment=$((2 ** ($RANDOM / 4096)))
+    echo Compute $compute with tensor of type $type compute of $compute and alignment $external_alignment and $internal_alignment
+    clang -O0 -g -D TTL_TARGET=c -D TEST_TENSOR_TYPE=$type -D TEST_TENSOR_TYPE_SPECIFIER="\"$type_specifier\"" -D COMPUTE=$compute.h -D CL_TARGET_OPENCL_VERSION=300 -D TTL_DEFAULT_EXTERNAL_ALIGNMENT=$external_alignment -D TTL_DEFAULT_INTERNAL_ALIGNMENT=$internal_alignment -I $TTL_INCLUDE_PATH $TTL_OPEN_CL_INCLUDE_PATH -o TTL_sample_overlap TTL_sample_runner.cpp -lOpenCL -lstdc++
     ./TTL_sample_overlap
 
   done

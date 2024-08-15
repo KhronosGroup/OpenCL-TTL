@@ -186,12 +186,15 @@ int main(int argc, char *argv[]) {
     /* Step 7: Initial input,output for the host and create memory objects for the kernel*/
     constexpr uint32_t tensor_width = 500;
     constexpr uint32_t tensor_height = 500;
-    TEST_TENSOR_TYPE *const input = new TEST_TENSOR_TYPE[tensor_width * tensor_height];
-    TEST_TENSOR_TYPE *const output = new TEST_TENSOR_TYPE[tensor_width * tensor_height];
+	constexpr uint32_t aligned_width = (tensor_width + (TTL_DEFAULT_EXTERNAL_ALIGNMENT - 1)) & ~(TTL_DEFAULT_EXTERNAL_ALIGNMENT - 1);
+    TEST_TENSOR_TYPE (& input)[tensor_height][aligned_width] = *(TEST_TENSOR_TYPE (*)[tensor_height][aligned_width])new TEST_TENSOR_TYPE[tensor_height * aligned_width];
+    TEST_TENSOR_TYPE (& output)[tensor_height][aligned_width] = *(TEST_TENSOR_TYPE (*)[tensor_height][aligned_width])new TEST_TENSOR_TYPE[tensor_height * aligned_width];
 
-    for (int x = 0; x < (tensor_width * tensor_height); x++) {
-        input[x] = rand();
-        output[x] = rand();
+    for (int y = 0; y < tensor_height; y++) {
+   		for (int x = 0; x < tensor_width ; x++) {
+	        input[y][x] = rand();
+    	    output[y][x] = rand();
+		}
     }
 
     constexpr uint32_t cout_len = 2048;
@@ -201,10 +204,10 @@ int main(int argc, char *argv[]) {
 
     const TTL_shape_t tensor_shape_in = TTL_create_shape(tensor_width, tensor_height);
     const TTL_shape_t tensor_shape_out = TTL_create_shape(tensor_width, tensor_height);
-    const TTL_layout_t ext_layout_in = TTL_create_layout(tensor_width);
-    const TTL_layout_t ext_layout_out = TTL_create_layout(tensor_width);
-    const TTL_EXT_TENSOR_TYPE ext_input_tensor = TTL_create_ext_tensor(input, tensor_shape_in, ext_layout_in);
-    const TTL_EXT_TENSOR_TYPE ext_output_tensor = TTL_create_ext_tensor(output, tensor_shape_out, ext_layout_out);
+    const TTL_layout_t ext_layout_in = TTL_create_ext_layout(tensor_width);
+    const TTL_layout_t ext_layout_out = TTL_create_ext_layout(tensor_width);
+    const TTL_EXT_TENSOR_TYPE ext_input_tensor = TTL_create_ext_tensor(&input[0][0], tensor_shape_in, ext_layout_in);
+    const TTL_EXT_TENSOR_TYPE ext_output_tensor = TTL_create_ext_tensor(&output[0][0], tensor_shape_out, ext_layout_out);
     void *const v = nullptr;
 
     /* Step 8: Create kernel object */
@@ -236,13 +239,8 @@ int main(int argc, char *argv[]) {
     CHECK_STATUS(clReleaseCommandQueue(command_queue));  // Release  Command queue.
     CHECK_STATUS(clReleaseContext(context));             // Release context.
 
-    if (input != nullptr) {
-        delete[] input;
-    }
-
-    if (output != nullptr) {
-        delete[] output;
-    }
+	delete[] &input;
+	delete[] &output;
 
     return SUCCESS;
 }

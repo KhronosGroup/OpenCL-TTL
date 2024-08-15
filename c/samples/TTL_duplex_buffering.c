@@ -55,8 +55,8 @@ bool TTL_duplex_buffering(TEST_TENSOR_TYPE *restrict ext_base_in, int external_s
     const TTL_tiler_t output_tiler = TTL_create_tiler(tensor_shape_out, TTL_create_shape(tile_width, tile_height));
 
     // External layouts.
-    const TTL_layout_t ext_layout_in = TTL_create_layout(external_stride_in);
-    const TTL_layout_t ext_layout_out = TTL_create_layout(external_stride_out);
+    const TTL_layout_t ext_layout_in = TTL_create_ext_layout(external_stride_in);
+    const TTL_layout_t ext_layout_out = TTL_create_ext_layout(external_stride_out);
 
     const TTL_EXT_TENSOR_TYPE ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
     const TTL_EXT_TENSOR_TYPE ext_output_tensor = TTL_create_ext_tensor(ext_base_out, tensor_shape_out, ext_layout_out);

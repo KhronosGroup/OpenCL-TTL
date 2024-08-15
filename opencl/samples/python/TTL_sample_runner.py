@@ -46,6 +46,9 @@ def TestTTL(program_name):
     else:
         ttl_extra_defines = ""
 
+    # For convenience remove the .cl extension if it included.
+    program_name = os.path.splitext(program_name)[0]
+
     for test_tensor_type, test_tensor_size in list([('char', 1), ('uchar', 1), ('short', 2), ('ushort', 2), ('int',4), ('uint',4), ('long',8), ('ulong',8)]):
         platforms = cl.get_platforms()
         context = cl.Context(dev_type=cl.device_type.ALL,
@@ -58,23 +61,28 @@ def TestTTL(program_name):
         for device in context.get_info(cl.context_info.DEVICES):
             ttl_local_memory_size = min(device.get_info(cl.device_info.LOCAL_MEM_SIZE), ttl_local_memory_size)
 
-        # For convenience remove the .cl extension if it included.
-        program_name = os.path.splitext(program_name)[0]
+        external_alignment = 1#pow(2, random.randint(0, 5))
+        internal_alignment = 1#pow(2, random.randint(0, 5))
+
         program = cl.Program(context, open(program_name+'.cl').read()).build(options=ttl_include_path + ttl_extra_defines +
                                                                              " -DTTL_COPY_3D -DTEST_TENSOR_TYPE=" + test_tensor_type +
-                                                                             " -DLOCAL_MEMORY_SIZE=" + str(ttl_local_memory_size))
+                                                                             " -DLOCAL_MEMORY_SIZE=" + str(ttl_local_memory_size) +
+                                                                             " -DTTL_DEFAULT_EXTERNAL_ALIGNMENT=" + str(external_alignment) +
+                                                                             " -DTTL_DEFAULT_INTERNAL_ALIGNMENT=" + str(internal_alignment))
 
         print("Testing %s with %s Tensors" % (program_name, test_tensor_type))
 
         # For variation a number of tensor random sizes are used, then tiled with random tile sizes
         for tensor_width in random.sample(range(1, 125), 3):
             for tensor_height in random.sample(range(1, 125), 3):
-                output_data = bytearray(os.urandom(tensor_width * tensor_height * test_tensor_size))
-                input_data = bytearray(os.urandom(tensor_width * tensor_height * test_tensor_size))
+                tensor_aligned_width = (tensor_width + (external_alignment - 1)) & ~(external_alignment - 1)
+
+                output_data = bytearray(os.urandom(tensor_aligned_width * tensor_height * test_tensor_size))
+                input_data = bytearray(os.urandom(tensor_aligned_width * tensor_height * test_tensor_size))
 
                 for i in range(0, tensor_height):
                     for j in range(0, tensor_width):
-                        input_data[i * tensor_width + j] = j
+                        input_data[i * tensor_aligned_width + j] = j
 
                 input_buffer = cl.Buffer(context, cl.mem_flags.READ_ONLY  | cl.mem_flags.COPY_HOST_PTR , hostbuf=input_data)
                 output_buffer = cl.Buffer(context, cl.mem_flags.READ_WRITE, len(output_data))
@@ -95,30 +103,31 @@ def TestTTL(program_name):
                             numpy.int32(tensor_height),
                             numpy.int32(tile_width),
                             numpy.int32(tile_height))
-                        print("%s Tested Tensor size [%d, %d] Tile size [%d, %d] Type %s" %(program_name, tensor_width, tensor_height, tile_width, tile_height, test_tensor_type))
+                        print("%s Tested Tensor size [%d, %d], Tile size [%d, %d], Alignment %d, %d, Type %s" %
+                              (program_name, tensor_width, tensor_height, tile_width, tile_height, external_alignment, internal_alignment, test_tensor_type))
 
                         cl.enqueue_copy(queue, output_data, output_buffer)
 
                         for i in range(0, tensor_height):
                             for j in range(0, tensor_width):
-                                expected = Read(input_data, i, j, tensor_width, test_tensor_size)
+                                expected = Read(input_data, i, j, tensor_aligned_width, test_tensor_size)
 
                                 if True:
                                     if j > 0:
-                                        expected += Read(input_data, i, j - 1, tensor_width, test_tensor_size)
+                                        expected += Read(input_data, i, j - 1, tensor_aligned_width, test_tensor_size)
                                     if i  > 0:
-                                        expected += Read(input_data, i - 1, j, tensor_width, test_tensor_size)
+                                        expected += Read(input_data, i - 1, j, tensor_aligned_width, test_tensor_size)
                                     if j < (tensor_width - 1):
-                                        expected += Read(input_data, i, j + 1, tensor_width, test_tensor_size)
+                                        expected += Read(input_data, i, j + 1, tensor_aligned_width, test_tensor_size)
                                     if i < (tensor_height - 1):
-                                        expected += Read(input_data, i + 1, j, tensor_width, test_tensor_size)
+                                        expected += Read(input_data, i + 1, j, tensor_aligned_width, test_tensor_size)
 
                                 expected &= pow(256, test_tensor_size) - 1
-                                actual = Read(output_data, i, j, tensor_width, test_tensor_size)
+                                actual = Read(output_data, i, j, tensor_aligned_width, test_tensor_size)
 
                                 if actual != expected:
                                     print(
-                                        "%s Failed at [%d, %d] %s != %s Tensor size [%d, %d], Tile size [%d, %d], Tensor type %s"
+                                        "%s Failed at [%d, %d] %s != %s Tensor size [%d (%d), %d], Tile size [%d, %d], Alignment %d, %d, Tensor type %s"
                                         % (
                                             program_name,
                                             j,
@@ -126,9 +135,12 @@ def TestTTL(program_name):
                                             hex(actual),
                                             hex(expected),
                                             tensor_width,
+                                            tensor_aligned_width,
                                             tensor_height,
                                             tile_width,
                                             tile_height,
+                                            external_alignment,
+                                            internal_alignment,
                                             test_tensor_type,
                                         )
                                     )
@@ -138,7 +150,8 @@ def TestTTL(program_name):
                         if error:
                             exit(-1)
 
-                    print("%s Passed Tensor size [%d, %d] Tile size [%d, %d] Type %s" %(program_name, tensor_width, tensor_height, tile_width, tile_height, test_tensor_type))
+                    print("%s Passed Tensor size [%d, %d], Tile size [%d, %d], Alignment %d, %d, Type %s" %
+                          (program_name, tensor_width, tensor_height, tile_width, tile_height, external_alignment, internal_alignment, test_tensor_type))
 
 if __name__ == '__main__':
     for program_name in sys.argv[1:]:
