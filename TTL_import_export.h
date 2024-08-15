@@ -108,7 +108,7 @@ static inline TTL_shape_t TTL_import_pre_fill(const TTL_int_sub_tensor_t interna
 
     z_offset = 0;  // TTL_MAX(-internal_sub_tensor.origin.sub_offset.z, 0);
     z_cut = 0;     // TTL_MAX((internal_sub_tensor.origin.sub_offset.z + internal_sub_tensor.tensor.shape.depth) -
-                   //     1 /*internal_sub_tensor.origin.shape.depth*/,
+                   //     1 /* Internal_sub_tensor.origin.shape.depth */
                    // 0);
 
     *dst_address = (TTL_local(char *))internal_sub_tensor.tensor.base +

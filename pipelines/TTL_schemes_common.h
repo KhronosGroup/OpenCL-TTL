@@ -44,13 +44,13 @@
  */
 #define TTL_common_buffering_t(ext_base_type, ext_tensor_in_type, ext_tensor_out_type, int_bases)                 \
     struct {                                                                                                      \
-        int index; /** @brief Describes the current buffer index when pipelining. For single 0->1->0, for double  \
+        int index; /*!< Describes the current buffer index when pipelining. For single 0->1->0, for double  \
                       0->1->0->1... etc */                                                                        \
         TTL_local(                                                                                                \
-            ext_base_type) int_base[int_bases]; /** @brief The internal base addresses of the pipelined tiles. */ \
+            ext_base_type) int_base[int_bases]; /*!< The internal base addresses of the pipelined tiles. */ \
                                                                                                                   \
-        ext_tensor_in_type ext_tensor_in;   /** @brief  The external tensor being input*/                         \
-        ext_tensor_out_type ext_tensor_out; /** @brief  The external tensor being output*/                        \
+        ext_tensor_in_type ext_tensor_in;   /*!< The external tensor being input */                         \
+        ext_tensor_out_type ext_tensor_out; /*!< The external tensor being output */                        \
     }
 
 #undef TTL_INT_SUB_TENSOR_TYPE

@@ -17,7 +17,7 @@
  */
 
 /************************************************************************************************************
- * We genrate sizeof_TYPE to allow for sizeof anything - deals with sizeof(void)
+ * We generate sizeof_TYPE to allow for sizeof anything - deals with sizeof(void)
  ************************************************************************************************************/
 
 #pragma push_macro("TTL_TENSOR_TYPE")
@@ -62,7 +62,7 @@
 #define sizeof_ulong sizeof(ulong)
 #include "TTL_create_type.h"
 
-#endif // TT_TYPES_ONLY_VOID
+#endif  // TT_TYPES_ONLY_VOID
 
 #undef TTL_TYPES_INCLUDE_FILE
 

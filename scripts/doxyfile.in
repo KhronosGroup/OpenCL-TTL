@@ -68,7 +68,7 @@ OUTPUT_DIRECTORY       = gh-pages
 # performance problems for the file system.
 # The default value is: NO.
 
-CREATE_SUBDIRS         = 
+CREATE_SUBDIRS         =
 
 # If the ALLOW_UNICODE_NAMES tag is set to YES, doxygen will allow non-ASCII
 # characters to appear in the names of generated files. If set to NO, non-ASCII
@@ -239,12 +239,6 @@ TAB_SIZE               = 4
 # newlines.
 
 ALIASES                =
-
-# This tag can be used to specify a number of word-keyword mappings (TCL only).
-# A mapping has the form "name=value". For example adding "class=itcl::class"
-# will allow you to use the command class in the itcl::class meaning.
-
-TCL_SUBST              =
 
 # Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C sources
 # only. Doxygen will then generate output that is more tailored for C. For
@@ -703,7 +697,7 @@ FILE_VERSION_FILTER    =
 # DoxygenLayout.xml, doxygen will parse it automatically even if the LAYOUT_FILE
 # tag is left empty.
 
-LAYOUT_FILE            =  
+LAYOUT_FILE            =
 
 # The CITE_BIB_FILES tag can be used to specify one or more bib files containing
 # the reference definitions. This must be a list of .bib files. The .bib
@@ -821,6 +815,7 @@ FILE_PATTERNS          = *.c \
                          *.h \
                          *.d \
                          *.dox \
+                         *.md \
                          *.py
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
@@ -1066,13 +1061,6 @@ CLANG_OPTIONS          =
 # The default value is: YES.
 
 ALPHABETICAL_INDEX     = YES
-
-# The COLS_IN_ALPHA_INDEX tag can be used to specify the number of columns in
-# which the alphabetical index list will be split.
-# Minimum value: 1, maximum value: 20, default value: 5.
-# This tag requires that the tag ALPHABETICAL_INDEX is set to YES.
-
-COLS_IN_ALPHA_INDEX    = 5
 
 # In case all classes in a project start with a common prefix, all classes will
 # be put under the same header in the alphabetical index. The IGNORE_PREFIX tag

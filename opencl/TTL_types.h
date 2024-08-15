@@ -52,7 +52,7 @@ typedef int TTL_offset_dim_t;    ///< The type used to hold offsets and origins.
  * printf("Ptr to my struct " TTL_global_printf "\n", ptr_my_struct)
  * @endcode
  */
-#define TTL_global_printf "%p"  ///< Printf specifier for printing global pointers.
+#define TTL_global_printf "%p"
 
 /**
  * @def TTL_local
@@ -72,7 +72,7 @@ typedef int TTL_offset_dim_t;    ///< The type used to hold offsets and origins.
  * TTL_local(unsigned int *)
  * @endcode
  */
-#define TTL_local(type) __local type  ///< Address in the global address space
+#define TTL_local(type) __local type
 
 /**
  * @def TTL_local_printf
@@ -85,7 +85,7 @@ typedef int TTL_offset_dim_t;    ///< The type used to hold offsets and origins.
  * printf("Ptr to my struct " TTL_local_printf "\n", ptr_my_struct)
  * @endcode
  */
-#define TTL_local_printf "%p"  ///< Printf specifier for printing global pointers.
+#define TTL_local_printf "%p"
 
 /**
  * @brief TTL_event_t is a pseudonym for OpenCL event_t

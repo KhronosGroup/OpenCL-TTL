@@ -24,9 +24,9 @@
  *
  * @param internal_tensor A TTL_int_tensor_t describing the internal tensor.
  * @param external_tensor A TTL_int_tensor_t describing the const external tensor.
- * Complete description of what not how here.
+ * @param event A TTL_event_t type to allow detection of import completion.
  *
- * @return No return value
+ * Complete description of what not how here.
  */
 static inline void __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_import, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE, , _t) internal_tensor,
@@ -40,15 +40,16 @@ __TTL_TRACE_FN(TTL_import, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE
  *
  * @param internal_tensor A TTL_int_tensor_t describing the internal tensor.
  * @param external_tensor A TTL_int_tensor_t describing the external tensor.
- * Complete description of what not how here.
+ * @param event A TTL_event_t type to allow detection of import completion.
  *
- * @return No return value
+ * Complete description of what not how here.
  */
 static inline void __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_import, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE, , _t) internal_tensor,
                const __TTL_tensor_name(TTL_, , ext_, TTL_TENSOR_TYPE, , _t) external_tensor, TTL_event_t *event) {
-    return TTL_import_base(
-        *TTL_to_void_tensor(&internal_tensor), *TTL_to_void_tensor(TTL_to_const_tensor(&external_tensor)), event __TTL_TRACE_LINE);
+    return TTL_import_base(*TTL_to_void_tensor(&internal_tensor),
+                           *TTL_to_void_tensor(TTL_to_const_tensor(&external_tensor)),
+                           event __TTL_TRACE_LINE);
 }
 
 /**
@@ -56,14 +57,14 @@ __TTL_TRACE_FN(TTL_import, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE
  *
  * @param internal_tensor A TTL_int_tensor_t describing the internal tensor.
  * @param external_tensor A TTL_int_tensor_t describing the external tensor.
- * Complete description of what not how here.
  *
- * @return No return value
+ * Complete description of what not how here.
  */
 static inline void __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_blocking_import, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE, , _t) internal_tensor,
                const __TTL_tensor_name(TTL_, const_, ext_, TTL_TENSOR_TYPE, , _t) external_tensor) {
-    TTL_blocking_import_base(*TTL_to_void_tensor(&internal_tensor), *TTL_to_void_tensor(&external_tensor) __TTL_TRACE_LINE);
+    TTL_blocking_import_base(*TTL_to_void_tensor(&internal_tensor),
+                             *TTL_to_void_tensor(&external_tensor) __TTL_TRACE_LINE);
 }
 
 /**
@@ -72,15 +73,15 @@ __TTL_TRACE_FN(TTL_blocking_import, const __TTL_tensor_name(TTL_, , int_, TTL_TE
  * @param internal_tensor A TTL_int_tensor_t describing the internal tensor.
  * @param external_tensor A TTL_int_tensor_t describing the external tensor.
  * Complete description of what not how here.
- *
- * @return No return value
  */
 static inline void __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_blocking_import, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE, , _t) internal_tensor,
                const __TTL_tensor_name(TTL_, , ext_, TTL_TENSOR_TYPE, , _t) external_tensor) {
-    const __TTL_tensor_name(TTL_, const_, ext_, TTL_TENSOR_TYPE, , _t) * const cons_external_tensor = TTL_to_const_tensor(&external_tensor);
+    const __TTL_tensor_name(TTL_, const_, ext_, TTL_TENSOR_TYPE, , _t) *const cons_external_tensor =
+        TTL_to_const_tensor(&external_tensor);
 
-    TTL_blocking_import_base(*TTL_to_void_tensor(&internal_tensor), *TTL_to_void_tensor(cons_external_tensor) __TTL_TRACE_LINE);
+    TTL_blocking_import_base(*TTL_to_void_tensor(&internal_tensor),
+                             *TTL_to_void_tensor(cons_external_tensor) __TTL_TRACE_LINE);
 }
 
 /**
@@ -92,13 +93,18 @@ __TTL_TRACE_FN(TTL_blocking_import, const __TTL_tensor_name(TTL_, , int_, TTL_TE
  *
  * @see TTL_import for full API and parameter information
  */
-static inline void __attribute__((overloadable)) __TTL_TRACE_FN(
-    TTL_import_sub_tensor, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE, sub_, _t) internal_sub_tensor,
-    const __TTL_tensor_name(TTL_, const_, ext_, TTL_TENSOR_TYPE, , _t) const_external_tensor, TTL_event_t *event) {
+static inline void __attribute__((overloadable))
+__TTL_TRACE_FN(TTL_import_sub_tensor,
+               const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE, sub_, _t) internal_sub_tensor,
+               const __TTL_tensor_name(TTL_, const_, ext_, TTL_TENSOR_TYPE, , _t) const_external_tensor,
+               TTL_event_t *event) {
     TTL_local(void *) dst_address;
     TTL_global(void *) src_address;
 
-    const TTL_shape_t import_shape = TTL_import_pre_fill(*TTL_to_void_sub_tensor(&internal_sub_tensor), *TTL_to_void_tensor(&const_external_tensor), &dst_address, &src_address);
+    const TTL_shape_t import_shape = TTL_import_pre_fill(*TTL_to_void_sub_tensor(&internal_sub_tensor),
+                                                         *TTL_to_void_tensor(&const_external_tensor),
+                                                         &dst_address,
+                                                         &src_address);
 
     const TTL_int_tensor_t import_int_tensor = TTL_create_int_tensor(
         dst_address, import_shape, internal_sub_tensor.tensor.layout, internal_sub_tensor.tensor.elem_size);
@@ -114,9 +120,9 @@ static inline void __attribute__((overloadable)) __TTL_TRACE_FN(
  *
  * @param internal_tensor A TTL_int_tensor_t describing the internal tensor.
  * @param external_tensor A TTL_int_tensor_t describing the const external tensor.
- * Complete description of what not how here.
+ * @param event A TTL_event_t type to allow detection of import completion.
  *
- * @return No return value
+ * Complete description of what not how here.
  */
 static inline void __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_export, const __TTL_tensor_name(TTL_, const_, int_, TTL_TENSOR_TYPE, , _t) internal_tensor,
@@ -130,15 +136,16 @@ __TTL_TRACE_FN(TTL_export, const __TTL_tensor_name(TTL_, const_, int_, TTL_TENSO
  *
  * @param internal_tensor A TTL_int_tensor_t describing the internal tensor.
  * @param external_tensor A TTL_int_tensor_t describing the external tensor.
- * Complete description of what not how here.
+ * @param event A TTL_event_t type to allow detection of import completion.
  *
- * @return No return value
+ * Complete description of what not how here.
  */
 static inline void __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_export, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE, , _t) internal_tensor,
                const __TTL_tensor_name(TTL_, , ext_, TTL_TENSOR_TYPE, , _t) external_tensor, TTL_event_t *event) {
-    return TTL_export_base(
-        *TTL_to_void_tensor(TTL_to_const_tensor(&internal_tensor)), *TTL_to_void_tensor(&external_tensor), event __TTL_TRACE_LINE);
+    return TTL_export_base(*TTL_to_void_tensor(TTL_to_const_tensor(&internal_tensor)),
+                           *TTL_to_void_tensor(&external_tensor),
+                           event __TTL_TRACE_LINE);
 }
 
 /**
@@ -146,14 +153,14 @@ __TTL_TRACE_FN(TTL_export, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE
  *
  * @param internal_tensor A TTL_int_tensor_t describing the internal tensor.
  * @param external_tensor A TTL_int_tensor_t describing the const external tensor.
- * Complete description of what not how here.
  *
- * @return No return value
+ * Complete description of what not how here.
  */
 static inline void __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_blocking_export, const __TTL_tensor_name(TTL_, const_, int_, TTL_TENSOR_TYPE, , _t) internal_tensor,
                const __TTL_tensor_name(TTL_, , ext_, TTL_TENSOR_TYPE, , _t) external_tensor) {
-    TTL_blocking_export_base(*TTL_to_void_tensor(&internal_tensor), *TTL_to_void_tensor(&external_tensor) __TTL_TRACE_LINE);
+    TTL_blocking_export_base(*TTL_to_void_tensor(&internal_tensor),
+                             *TTL_to_void_tensor(&external_tensor) __TTL_TRACE_LINE);
 }
 
 /**
@@ -161,12 +168,12 @@ __TTL_TRACE_FN(TTL_blocking_export, const __TTL_tensor_name(TTL_, const_, int_, 
  *
  * @param internal_tensor A TTL_int_tensor_t describing the internal tensor.
  * @param external_tensor A TTL_int_tensor_t describing the external tensor.
- * Complete description of what not how here.
  *
- * @return No return value
+ * Complete description of what not how here.
  */
 static inline void __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_blocking_export, const __TTL_tensor_name(TTL_, , int_, TTL_TENSOR_TYPE, , _t) internal_tensor,
                const __TTL_tensor_name(TTL_, , ext_, TTL_TENSOR_TYPE, , _t) external_tensor) {
-    TTL_blocking_export_base(*TTL_to_void_tensor(TTL_to_const_tensor(&internal_tensor)), *TTL_to_void_tensor(&external_tensor) __TTL_TRACE_LINE);
+    TTL_blocking_export_base(*TTL_to_void_tensor(TTL_to_const_tensor(&internal_tensor)),
+                             *TTL_to_void_tensor(&external_tensor) __TTL_TRACE_LINE);
 }

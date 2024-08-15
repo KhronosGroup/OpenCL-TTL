@@ -163,11 +163,10 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_DUPLEX_BUFFERING_TYPE *const duplex_buffe
  * start
  *
  * :Create a TTL_tiler_t with TTL_create_tiler;
- * :Create a TTL_duplex_buffering_t Structure with 2 Buffers
- * 1 input buffer, 1 output buffer;
+ * :Create a TTL_duplex_buffering_t Structure with 2 Buffers 1 input buffer, 1 output buffer;
  * :NumberOfTiles = TTL_number_of_tiles(tiler);
  *
- * for each tile:
+ * while (for each tile)
  *
  *   :Call TTL_step_buffering for the current tile
  *
@@ -221,8 +220,7 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_DUPLEX_BUFFERING_TYPE *const duplex_buffe
                                   *TTL_to_const_tensor(&duplex_buffering->common.ext_tensor_in),
                                   tile_current_import.offset);
 
-    const TTL_CONST_INT_TENSOR_TYPE  next_export_int_tensor =
-        duplex_buffering->prev_out_tensors.to_export_from;
+    const TTL_CONST_INT_TENSOR_TYPE next_export_int_tensor = duplex_buffering->prev_out_tensors.to_export_from;
     const TTL_EXT_TENSOR_TYPE next_export_ext_tensor = duplex_buffering->prev_out_tensors.to_export_to;
 
     if (TTL_tile_empty(tile_current_import) == false)
