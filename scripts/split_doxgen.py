@@ -12,39 +12,59 @@ import os
 import re
 
 def ProcessFile(input_filename):
-    output_file_names = set()
-    output_file_stream = None
+	exclude_files = []
+	output_filenames = dict()
+	output_file_stream = None
+	output_filename = None
 
-    with open(input_filename, "r") as input_file_stream:
-        for line in input_file_stream.readlines():
-            regex = re.search("# [0-9]* \"([A-Za-z_0-9-\./]*h)\"", line)
-            if regex:
-                if output_file_stream:
-                    output_file_stream.close()
-                    output_file_stream = None
+	with open(input_filename, "r") as input_file_stream:
+		for line in input_file_stream.readlines():
+			regex = re.search("# [0-9]* \"([A-Za-z_0-9-\./]*h)\"", line)
+			if regex:
+				last_output_filename = output_filename
 
-                output_file_name = os.path.relpath(os.path.abspath(regex.group(1)))
+				if output_file_stream:
+					output_file_stream.close()
+					output_file_stream = None
 
-                if output_file_name in output_file_names:
-                    output_file_stream = open(output_file_name, "r+")
-                else:
-                    output_path = os.path.dirname(output_file_name)
+				output_filename = os.path.relpath(os.path.abspath(regex.group(1)))
 
-                    if (output_path != "") and (not os.path.exists(output_path)):
-                        os.makedirs(output_path)
-                    output_file_stream = open(output_file_name, "w+")
-                    output_file_names.add(output_file_name)
+				if output_filename not in exclude_files:
+					if output_filename in output_filenames:
+						output_file_stream = open(output_filename, "r+")
+					else:
+						output_path = os.path.dirname(output_filename)
 
-                output_file_stream.seek(0, 2)
-            else:
-                if output_file_stream is not None:
-                    output_file_stream.write(line)
+						if (output_path != "") and (not os.path.exists(output_path)):
+							os.makedirs(output_path)
+						output_file_stream = open(output_filename, "w+")
+						output_file_stream.write(" " * 2000) # Space to insert #pragma etc later.
+						output_filenames[output_filename] = set()
 
-    output_file_stream.close()
-    output_file_stream = None
+					if last_output_filename is not None:
+						output_filenames[last_output_filename].add(output_filename)
 
-    for output_file_name in output_file_names:
-        os.system("clang-format -i " + output_file_name)
+					output_file_stream.seek(0, 2)
+			else:
+				if output_file_stream is not None:
+					output_file_stream.write(line)
+
+	output_file_stream.close()
+	output_file_stream = None
+
+	for output_filename in output_filenames:
+		with open(output_filename, "r+") as output_file_stream:
+			output_file_stream.seek(0, 0)
+			output_file_stream.write("#pragma once\n\n")
+
+			for include_filename in output_filenames[output_filename]:
+				output_file_stream.write("#include \"" + include_filename + "\"\n")
+
+		os.system("clang-format -i " + output_filename)
+
+	for output_filename in exclude_files:
+		os.remove(output_filename)
+
 
 if __name__ == "__main__":
-    ProcessFile(sys.argv[1])
+	ProcessFile(sys.argv[1])

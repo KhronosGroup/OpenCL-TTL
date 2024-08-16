@@ -55,6 +55,6 @@ cd $WORKSPACE
 # Run doxygen on the reconstituted doxygen
 (cat $WORKSPACE/scripts/doxyfile.in; echo "INPUT=${RECREATION_DIRECTORY}"; echo "STRIP_FROM_PATH=${RECREATION_DIRECTORY}/") | doxygen -
 
-rm -rf ${RECREATION_DIRECTORY}
+#rm -rf ${RECREATION_DIRECTORY}
 
 popd
