@@ -113,12 +113,13 @@ struct TTL_tile {
 };
 
 /**
- * @brief TTL_tiler is the basic unit that describes how a tile is subdivided.
+ * @brief TTL_tiler_base is the basic unit that describes how a tile is subdivided.
  *
  * The TTL_tiler type represents the tiling of a 3D space into 3D tiles with
  * operational overlap
  */
-struct TTL_tiler {
+template <typename Overlapper, typename Augmenter>
+struct TTL_tiler_base {
     /**
      * @brief Return a TTL_tiler based on a shape, a tile, and an overlap
      *
@@ -128,12 +129,10 @@ struct TTL_tiler {
      * @param augmentation The augomentation to apply at the edges durring import.
      *
      * Complete description of what not how here.
-     *
-     * @return A tiler that can produce a tile for any given index.
      */
-    TTL_tiler(const TTL_shape tensor_shape, const TTL_shape tile_shape, const TTL_overlap overlap,
-              const TTL_augmentation augmentation)
-        : space(tensor_shape), tile(tile_shape), overlap(overlap), augmentation(augmentation) {
+    TTL_tiler_base(const TTL_shape tensor_shape, const TTL_shape tile_shape, const TTL_overlap overlap,
+                   const TTL_augmentation augmentation)
+        : space(tensor_shape), tile(tile_shape), overlapper(overlap), augmenter(augmentation) {
         const TTL_dim_t tiles_in_width =
             TTL_ceil_of_a_div_b(tensor_shape.width + augmentation.left + augmentation.right - overlap.width,
                                 tile_shape.width - overlap.width);
@@ -150,15 +149,15 @@ struct TTL_tiler {
         cache = { number_of_tiles, tiles_in_width, tiles_in_height, tiles_in_depth, tiles_in_plane };
     }
 
-    // Simplify creation of non-overlap tiler
-    TTL_tiler(const TTL_shape shape, const TTL_shape tile)
-        : TTL_tiler(shape, tile, TTL_overlap(), TTL_augmentation()) {}
+    TTL_tiler_base(const TTL_shape tensor_shape, const TTL_shape tile_shape)
+        : TTL_tiler_base(tensor_shape, tile_shape, TTL_overlap(), TTL_augmentation()){};
 
-    TTL_shape space;                ///< Represents the space to be tiled such as an image
-    TTL_shape tile;                 ///< All tiles will be of this shape, except for clamping at
-                                    ///< the end of the space
-    TTL_overlap overlap;            ///< When zeroes represent no overlap
-    TTL_augmentation augmentation;  ///< The augmentation that the tile produces.
+    TTL_shape space;  ///< Represents the space to be tiled such as an image
+    TTL_shape tile;   ///< All tiles will be of this shape, except for clamping at
+                      ///< the end of the space
+
+    Overlapper overlapper;
+    Augmenter augmenter;
 
     /**
      * @brief Precomputed information to speed up later reuse
@@ -231,6 +230,8 @@ struct TTL_tiler {
      * @return The created TTL_tile type
      */
     TTL_tile create_tile(TTL_dim_t x, TTL_dim_t y, TTL_dim_t z) const {
+        const TTL_overlap &overlap = overlapper.GetOverlap();
+        const TTL_augmentation &augmentation = augmenter.GetAugmentation();
         TTL_tile result;
 
         // Calculate the offset in 3D
@@ -266,8 +267,7 @@ struct TTL_tiler {
      */
     TTL_tile get_tile(const int tile_id) const {
         if (valid_tile_id(tile_id) == false) {
-            TTL_tile invalid;
-            return invalid;
+            return TTL_tile();
         }
 
         // Compute the 3D coordinates of the tile in order to compute its offset
@@ -302,4 +302,88 @@ struct TTL_tiler {
 
         return create_tile(x, y, z);
     }
+};
+
+/**
+ * Defining the parts of a Tensor with no augmentation and no overlap.
+ */
+struct NoOverlap {
+    NoOverlap(const TTL_overlap &) {};
+
+    const TTL_overlap GetOverlap() const {
+        return TTL_overlap();
+    }
+};
+
+struct NoAugmentation {
+    NoAugmentation(const TTL_augmentation &){};
+
+    const TTL_augmentation GetAugmentation() const {
+        return TTL_augmentation();
+    }
+};
+
+/**
+ * @brief TTL_tiler is the basic unit that describes how a tile is subdivided.
+ *
+ * The TTL_tiler type represents the tiling of a 3D space into 3D tiles with
+ * operational overlap
+ */
+struct TTL_tiler : public TTL_tiler_base<NoOverlap, NoAugmentation> {
+    /**
+     * @brief Return a TTL_tiler based on a shape, a tile, and an overlap
+     *
+     * @param tensor_shape The shape to be tiled
+     * @param tile_shape The description of the tile that the shape will be sub-divided to.
+     *
+     * Complete description of what not how here.
+     */
+
+    using TTL_tiler_base<NoOverlap, NoAugmentation>::TTL_tiler_base;
+};
+
+/**
+ * Defining the parts of a Tensor with augmentation and overlap.
+ */
+struct Overlap {
+    Overlap(const TTL_overlap &overlap) : overlap(overlap){};
+
+    const TTL_overlap &GetOverlap() const {
+        return overlap;
+    }
+
+    const TTL_overlap overlap;  ///< When zeroes represent no overlap
+};
+
+struct Augmentation {
+    Augmentation(const TTL_augmentation &augmentation) : augmentation(augmentation){};
+
+    const TTL_augmentation &GetAugmentation() const {
+        return augmentation;
+    }
+
+    const TTL_augmentation augmentation;  ///< The augmentation that the tile produces.};
+};
+
+
+/**
+ * @brief TTL_overlap_tiler is the basic unit that describes how a tile is subdivided.
+ *
+ * The TTL_overlap_tiler type represents the tiling of a 3D space into 3D tiles with
+ * operational overlap
+ */
+struct TTL_overlap_tiler : public TTL_tiler_base<Overlap, Augmentation> {
+/**
+ * @brief Return a TTL_tiler based on a shape, a tile, and an overlap
+ *
+ * @param tensor_shape The shape to be tiled
+ * @param tile_shape The description of the tile that the shape will be sub-divided to.
+ * @param overlap The overlap between tiles
+ * @param augmentation The augomentation to apply at the edges durring import.
+ *
+ * Complete description of what not how here.
+ *
+ * @return A tiler that can produce a tile for any given index.
+ */
+    using TTL_tiler_base<Overlap, Augmentation>::TTL_tiler_base;
 };
