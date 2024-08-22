@@ -1,5 +1,5 @@
 /*
- * main.c
+ * TTL_core.h
  *
  * Copyright (c) 2025 Mobileye
  *
@@ -16,9 +16,11 @@
  * limitations under the License.
  */
 
-#include <stdint.h>
-#include <stdio.h>
+#pragma once
 
-extern void *ttl_start_marker;
+#include TTL_TYPES_INCLUDE_H
 
-#include "TTL/TTL.h"
+#include "TTL_debug.h"
+#include "TTL_tensors.h"
+#include "TTL_tiles.h"
+#include "TTL_types.h"

@@ -1,5 +1,5 @@
 /*
- * main.c
+ * TTL_create_types.h
  *
  * Copyright (c) 2025 Mobileye
  *
@@ -16,9 +16,6 @@
  * limitations under the License.
  */
 
-#include <stdint.h>
-#include <stdio.h>
-
-extern void *ttl_start_marker;
-
-#include "TTL/TTL.h"
+// Simplly designed to prevent multiple #undef TTL_TENSOR_TYPE
+#include TTL_TYPES_INCLUDE_FILE
+#undef TTL_TENSOR_TYPE

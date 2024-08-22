@@ -1,7 +1,7 @@
 /*
  * TTL.h
  *
- * Copyright (c) 2023 Mobileye
+ * Copyright (c) 2025 Mobileye
  *
  * Licensed under the Apache License, Version 2.0 (the License);
  * you may not use this file except in compliance with the License.
@@ -18,60 +18,8 @@
 
 #pragma once
 
-#include "TTL_macros.h"
-
-/**
- * @def __TTL_DEBUG
- *
- * @brief Turn on printf outputs from TTL, can be very noisy
- *
- * 0 = no noise
- * bigger numbers mean more noise.
- */
-#ifndef __TTL_DEBUG
-#define __TTL_DEBUG 0
+#ifdef __cplusplus
+#include "TTL_cpp/TTL.h"
+#else
+#include "TTL_c/TTL.h"
 #endif
-
-/**
- * @def TTL_TARGET
- *
- * @brief Define the target for TTL
- *
- * TTL can be built for multible targets - native support is
- *   - opencl - default if TTL_TARGET not predefined.
- *   - c
- *
- * Other platforms can be provided.
- */
-#ifndef TTL_TARGET
-#define TTL_TARGET opencl
-#endif
-
-/**
- * @def TTL_TYPES_INCLUDE_H
- *
- * @brief TTL_types will include this file prior to its definitions
- *
- * Values in the base distribution include
- *   - opencl/TTL_types.h
- *   - c/TTL_types.h
- */
-// clang-format off
-#define TTL_TYPES_INCLUDE_H __TTL_STRINGFY2(TTL_TARGET/TTL_types.h)
-// clang-format on
-
-/**
- * @def TTL_IMPORT_EXPORT_INCLUDE_H
- *
- * @brief Allow override of the standard OpenCL import export rules
- *
- *  * Values in the base distribution include
- *   - opencl/TTL_import_export.h
- *   - c/TTL_import_export.h
- */
-// clang-format off
-#define TTL_IMPORT_EXPORT_INCLUDE_H __TTL_STRINGFY2(TTL_TARGET/TTL_import_export.h)
-// clang-format on
-
-#include "TTL_pipeline_schemes.h"
-#include "TTL_trace_macros.h"

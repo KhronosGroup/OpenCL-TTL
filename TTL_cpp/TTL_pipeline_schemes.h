@@ -1,5 +1,5 @@
 /*
- * main.c
+ * TTL_pipeline_schemes.h
  *
  * Copyright (c) 2025 Mobileye
  *
@@ -16,9 +16,10 @@
  * limitations under the License.
  */
 
-#include <stdint.h>
-#include <stdio.h>
+#pragma once
 
-extern void *ttl_start_marker;
-
-#include "TTL/TTL.h"
+#include "TTL_core.h"
+#include "TTL_import_export.h"
+#include "pipelines/TTL_double_scheme.h"
+#include "pipelines/TTL_duplex_scheme.h"
+#include "pipelines/TTL_simplex_scheme.h"

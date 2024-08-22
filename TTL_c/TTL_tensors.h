@@ -1,5 +1,5 @@
 /*
- * main.c
+ * TTL_tensors.h
  *
  * Copyright (c) 2025 Mobileye
  *
@@ -16,9 +16,12 @@
  * limitations under the License.
  */
 
-#include <stdint.h>
-#include <stdio.h>
+#pragma once
 
-extern void *ttl_start_marker;
+#include "tensors/TTL_ext_tensors.h"
+#include "tensors/TTL_int_tensors.h"
+#include "tensors/TTL_tensors_common.h"
 
-#include "TTL/TTL.h"
+#define TTL_TYPES_INCLUDE_FILE "tensors/TTL_tensor_rw.h"
+#define TTL_TYPES_NO_VOID
+#include "TTL_create_types.h"

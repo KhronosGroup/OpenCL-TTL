@@ -21,18 +21,18 @@ project(TemplateTilingLibrary)
 include(GNUInstallDirs)
 
 if(DEFINED TTL_PRE_GENERATE)
-set(TTL_COMMON_FILES
+set(TTL_C_COMMON_FILES
 	TTL.h
-    TTL_macros.h
+    TTL_c/TTL_macros.h
 )
 
 set(TTL_HEADER_C_FILES
 	TTL_c.h
-	${TTL_COMMON_FILES}
+	${TTL_C_COMMON_FILES}
 )
 set(TTL_HEADER_OPENCL_FILES
 	TTL_opencl.h
-	${TTL_COMMON_FILES}
+	${TTL_C_COMMON_FILES}
 )
 set(TTL_SOURCE_DIRECTORY
     ${CMAKE_BINARY_DIR}
@@ -53,36 +53,27 @@ set(TTL_PRE_GENERATE "${TTL_PRE_GENERATE}" CACHE STRING "The pre-generation opti
 else()
 set(TTL_COMMON_FILES
     TTL.h
-    TTL_trace_macros.h
-    TTL_import_export.h
-    TTL_macros.h
-    TTL_types.h
-    TTL_pipeline_schemes.h
-    TTL_debug.h
-    tensors/TTL_ext_tensors.h
-    tensors/TTL_int_tensors.h
-    tensors/TTL_tensors_common.h
-    TTL_core.h
-    TTL_tensors.h
-    TTL_tiles.h
-    pipelines/TTL_double_scheme.h
-    pipelines/TTL_schemes_common.h
-    pipelines/TTL_simplex_scheme.h
-    pipelines/TTL_double_scheme_template.h
-    pipelines/TTL_duplex_scheme.h
 )
+
+FILE(GLOB TTL_C_COMMON_FILES RELATIVE ${CMAKE_CURRENT_LIST_DIR} TTL_c/*.h)
+
+FILE(GLOB TTL_CPP_COMMON_FILES RELATIVE ${CMAKE_CURRENT_LIST_DIR} TTL_c00/*.h)
 
 set(TTL_HEADER_C_FILES
     ${TTL_COMMON_FILES}
-    c/TTL_import_export.h
-    c/TTL_types.h
+    ${TTL_C_COMMON_FILES}
+    ${TTL_CPP_COMMON_FILES}
+    TTL_c/c/TTL_import_export.h
+    TTL_c/c/TTL_types.h
 )
 
 set(TTL_HEADER_OPENCL_FILES
     ${TTL_COMMON_FILES}
-    opencl/TTL_import_export.h
-    opencl/TTL_types.h
-    opencl/TTL_async_work_group_copy_3D3D.h
+    ${TTL_C_COMMON_FILES}
+    ${TTL_CPP_COMMON_FILES}
+    TTL_c/opencl/TTL_import_export.h
+    TTL_c/opencl/TTL_types.h
+    TTL_c/opencl/TTL_async_work_group_copy_3D3D.h
 )
 
 set(TTL_SOURCE_DIRECTORY
@@ -146,7 +137,8 @@ if(DEFINED TTL_PRE_GENERATE)
 		COMMAND ${CMAKE_SOURCE_DIR}/scripts/preprocess.sh -o TTL_opencl.h
 		COMMAND ${CMAKE_SOURCE_DIR}/scripts/preprocess.sh -o TTL_c.h -t c
 		COMMAND cp ${CMAKE_SOURCE_DIR}/scripts/preprocess_ttl.h TTL.h
-		COMMAND cp ${CMAKE_SOURCE_DIR}/TTL_macros.h TTL_macros.h
+		COMMAND mkdir -p TTL_c
+		COMMAND cp ${CMAKE_SOURCE_DIR}/TTL_c/TTL_macros.h TTL_c/TTL_macros.h
 	)
 endif()
 

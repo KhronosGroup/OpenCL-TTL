@@ -1,7 +1,7 @@
 /*
  * compute_cross.h
  *
- * Copyright (c) 2023 Mobileye
+ * Copyright (c) 2025 Mobileye
  *
  * Licensed under the Apache License, Version 2.0 (the License);
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,8 @@
 
 void compute(__TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_in,
              __TTL_tensor_name(TTL_, , int_, TEST_TENSOR_TYPE, sub_, _t) tensor_out) {
-    for (int y = 0; y < tensor_out.tensor.shape.height; ++y) {
-        for (int x = 0; x < tensor_out.tensor.shape.width; ++x) {
+    for (TTL_dim_t y = 0; y < tensor_out.tensor.shape.height; ++y) {
+        for (TTL_dim_t x = 0; x < tensor_out.tensor.shape.width; ++x) {
             const int x_in = x + TILE_OVERLAP_LEFT;
             const int y_in = y + TILE_OVERLAP_TOP;
             const TEST_TENSOR_TYPE left = TTL_read_tensor(tensor_in, x_in - 1, y_in);

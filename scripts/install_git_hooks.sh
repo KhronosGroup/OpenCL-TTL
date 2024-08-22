@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/bash -e
 
-# clang-format.sh
+# git_check.sh
 #
-# Copyright (c) 2023 Mobileye
+# Copyright (c) 2025 Mobileye
 #
 # Licensed under the Apache License, Version 2.0 (the License);
 # you may not use this file except in compliance with the License.
@@ -16,23 +16,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-format_file() {
-  file="${1}"
-  if [ -f $file ]; then
-    clang-format-16 -i ${1}
-  fi
-}
+# Always run from WORKSPACE
+THIS_SCRIPT=$(readlink -f "$0")
+THIS_DIR=$(dirname "$THIS_SCRIPT")
+WORKSPACE="${WORKSPACE:-$(realpath $THIS_DIR/..)}"
 
-PARAM1=${1:-HEAD}
+cd $WORKSPACE
 
-case "${PARAM1}" in
-  --about )
-    echo "Runs clang-format on source files"
-    ;;
-  * )
-    for file in `git diff-index --cached --name-only ${PARAM1} | egrep '\.cl$|\.cpp$|\.c$|\.h$'` ; do
-      format_file "${file}"
-    done
-    ;;
-esac
+# Remove any existing git hooks
+rm -rf .git/hooks/
 
+# Create a new git hooks symbolic link
+ln -s ../scripts/git-hooks .git/hooks
+
+echo "Git hooks installed in $WORKSPACE/.git/hooks"

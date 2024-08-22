@@ -1,5 +1,5 @@
 /*
- * main.c
+ * TTL_ext_tensors.h
  *
  * Copyright (c) 2025 Mobileye
  *
@@ -16,9 +16,20 @@
  * limitations under the License.
  */
 
-#include <stdint.h>
-#include <stdio.h>
+#pragma once
 
-extern void *ttl_start_marker;
+#define TENSOR_LOCATION ext_
+#define TENSOR_ADDRESS TTL_global
+// EXT TENSORS START
+#define TTL_TYPES_INCLUDE_FILE "tensors/TTL_int_ext_typed_tensors.h"
+#include "../TTL_create_types.h"
+// EXT TENSORS END
+#undef TTL_TYPES_INCLUDE_FILE
+#undef TENSOR_LOCATION
+#undef TENSOR_ADDRESS
 
-#include "TTL/TTL.h"
+/* Make void the default unnamed type */
+typedef TTL_ext_void_tensor_t TTL_ext_tensor_t;
+typedef TTL_const_ext_void_tensor_t TTL_const_ext_tensor_t;
+typedef TTL_ext_void_sub_tensor_t TTL_ext_sub_tensor_t;
+typedef TTL_const_ext_void_sub_tensor_t TTL_const_ext_sub_tensor_t;

@@ -1,5 +1,5 @@
 /*
- * main.c
+ * kernel.h
  *
  * Copyright (c) 2025 Mobileye
  *
@@ -17,8 +17,13 @@
  */
 
 #include <stdint.h>
-#include <stdio.h>
 
-extern void *ttl_start_marker;
+/**
+ * @brief Add a Lux type to show TTL_StrongType being used
+ */
+enum class TTL_StLux : uint32_t;  // This just needs to be a unique.
+using Lux = TTL_StrongType<uint32_t, TTL_StLux>;
 
-#include "TTL/TTL.h"
+extern "C" bool KERNEL_NAME(TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
+                            TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, TTL_dim width,
+                            TTL_dim height, TTL_dim tile_width, TTL_dim tile_height);

@@ -10,30 +10,34 @@ The samples can be built and testing using either a C wrapper of a Python wrappe
 
 Install the TTL include files as described in [INSTALL](../../INSTALL)
 
+## TTL_INCLUDE_PATH
+
+Because TTL includes are prefixed with TTL a method to make the code work is to checkout to TTL directory or use a symbolic link somewhere to the checked out directory.
+
 ## Python Wrapper
 
     export TTL_INCLUDE_PATH=[PATH TO TTL]
     export TTL_EXTRA_DEFINES=[ANY EXTRA DEFINES]
-    ./TTL_sample_runner.py TTL_double_buffering.c
+    ./TTL_sample_runner.py TTL_double_buffering.cpp
 
 The name can be wildcarded
 
     export TTL_INCLUDE_PATH=[PATH TO TTL]
     export TTL_EXTRA_DEFINES=[ANY EXTRA DEFINES]
-    ./TTL_sample_runner.py TTL_*.c
+    ./TTL_sample_runner.py TTL_*.cpp
 
 TTL_EXTRA_DEFINES can for example define __TTL_DEBUG=1 to provide additional
 debug output. 
 
     export TTL_EXTRA_DEFINES="__TTL_DEBUG=1"
 
-## C Wrapper
+## CPP Wrapper
 
     export TTL_INCLUDE_PATH=[PATH TO TTL]
-	export TEST_TENSOR_TYPE=uint             # All C types possible, uchar, uint, ushort, ulong are typedefed to give a 1 word representation
-	export TEST_TENSOR_TYPE_SPECIFIER=\"%u\" # The printf representation of the above
-    clear; clang -Wextra -Wall -DKERNEL_NAME=TTL_duplex_buffering -I $TTL_INCLUDE_PATH -DTTL_TARGET=c -DTEST_TENSOR_TYPE=$TEST_TENSOR_TYPE -DTEST_TENSOR_TYPE_SPECIFIER=$TEST_TENSOR_TYPE_SPECIFIER -g -O0 main.c TTL_duplex_buffering.c -o c_test
-    ./c_test
+    export TEST_COMPUTE_TYPE=CROSS
+    export TEST_TENSOR_TYPE=Lux
+    clang++ -Wextra -Wall -DKERNEL_NAME=TTL_duplex_buffering_kernel -DTEST_COMPUTE_TYPE=$TEST_COMPUTE_TYPE -DTEST_TENSOR_TYPE=$TEST_TENSOR_TYPE -I $TTL_INCLUDE_PATH -DTTL_TARGET=c -g -O0 main.cpp TTL_duplex_buffering.cpp -o cpp_test
+    ./cpp_test
 
 ## The "Kernel"
 

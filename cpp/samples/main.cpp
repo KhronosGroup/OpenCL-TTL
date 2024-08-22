@@ -16,14 +16,15 @@
  * limitations under the License.
  */
 
-#include <stdbool.h>
 #include <stdint.h>
-#include <stdio.h>
+
+#include <iostream>
 
 #define TENSOR_WIDTH 103
 #define TENSOR_HEIGHT 27
-#define TILE_WIDTH 1
-#define TILE_HEIGHT 1
+#define TILE_WIDTH 10
+#define TILE_HEIGHT 10
+#define restrict
 
 #include "TTL/TTL.h"
 #include "kernel.h"
@@ -47,6 +48,6 @@ int main(void) {
                     TENSOR_HEIGHT,
                     TILE_WIDTH,
                     TILE_HEIGHT) == true) {
-        printf("Compute checked and successful\n");
+        std::cout << "Compute checked and successful" << std::endl;
     }
 }
