@@ -40,30 +40,25 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "TTL/TTL.h"
 #include CHECKER_NAME_STR
 
-#define xstr(s) str(s)
-#define str(s) #s
+constexpr int SUCCESS = 0;
+constexpr int FAILURE = 1;
 
-#undef TTL_EXT_TENSOR_TYPE
-#define TTL_EXT_TENSOR_TYPE __TTL_tensor_name(TTL_, , ext_, TEST_TENSOR_TYPE, , _t)
-
-#define SUCCESS 0
-#define FAILURE 1
-#define RETURN_STATUS_ON_ERROR(x)                                            \
-    {                                                                        \
-        cl_int status = (x);                                                 \
-        if (status != 0) {                                                   \
+#define RETURN_STATUS_ON_ERROR(x)                                                      \
+    {                                                                                  \
+        cl_int status = (x);                                                           \
+        if (status != 0) {                                                             \
             std::cout << "Status: " << status << " at line " << __LINE__ << std::endl; \
-            return status;                                                   \
-        }                                                                    \
+            return status;                                                             \
+        }                                                                              \
     }
 
-#define CHECK_STATUS(x)                                                      \
-    {                                                                        \
-        cl_int status = (x);                                                 \
-        if (status != 0) {                                                   \
+#define CHECK_STATUS(x)                                                                \
+    {                                                                                  \
+        cl_int status = (x);                                                           \
+        if (status != 0) {                                                             \
             std::cout << "Status: " << status << " at line " << __LINE__ << std::endl; \
-            return FAILURE;                                                  \
-        }                                                                    \
+            return FAILURE;                                                            \
+        }                                                                              \
     }
 
 /* convert the kernel file into a string */
@@ -104,7 +99,8 @@ int convertToString(const char *filename, std::string &s) {
  *
  * @return OpenCl error code
  */
-cl_int GetFirstDevice(const cl_platform_id platform_id, cl_device_id *const device_id, cl_ulong*const local_memory_size) {
+cl_int GetFirstDevice(const cl_platform_id platform_id, cl_device_id *const device_id,
+                      cl_ulong *const local_memory_size) {
     cl_uint num_device_ids = 0;
 
     clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_GPU, 0, nullptr, &num_device_ids);
@@ -121,7 +117,8 @@ cl_int GetFirstDevice(const cl_platform_id platform_id, cl_device_id *const devi
 
     delete[] device_ids;
 
-    RETURN_STATUS_ON_ERROR(clGetDeviceInfo(*device_id,CL_DEVICE_LOCAL_MEM_SIZE , sizeof(*local_memory_size),local_memory_size,nullptr));
+    RETURN_STATUS_ON_ERROR(
+        clGetDeviceInfo(*device_id, CL_DEVICE_LOCAL_MEM_SIZE, sizeof(*local_memory_size), local_memory_size, nullptr));
 
     return 0;
 }
@@ -142,7 +139,7 @@ int main(int argc, char *argv[]) {
 
     /* Step 2:Query the platform_id and choose the first GPU device if has one.Otherwise use the CPU as device.*/
     cl_device_id device_id;
-    cl_ulong  local_memory_size;
+    cl_ulong local_memory_size;
     CHECK_STATUS(GetFirstDevice(platform_id, &device_id, &local_memory_size));
 
     /* Step 3: Create context.*/
@@ -162,9 +159,12 @@ int main(int argc, char *argv[]) {
     char command_line_options[256];
 
     sprintf(command_line_options,
-            "-I %s -D TTL_COPY_3D  -D CL_TARGET_OPENCL_VERSION=300 -D COMPUTE_NAME=%s -D TEST_TENSOR_TYPE=%s -D LOCAL_MEMORY_SIZE=%ld",
-            (ttl_include_library != nullptr)?ttl_include_library:".",
-            COMPUTE_NAME_STR, xstr(TEST_TENSOR_TYPE), local_memory_size);
+            "-I %s -D TTL_COPY_3D  -D CL_TARGET_OPENCL_VERSION=300 -D COMPUTE_NAME=%s -D TEST_TENSOR_TYPE=%s -D "
+            "LOCAL_MEMORY_SIZE=%ld",
+            (ttl_include_library != nullptr) ? ttl_include_library : ".",
+            COMPUTE_NAME_STR,
+            xstr(TEST_TENSOR_TYPE),
+            local_memory_size);
 
     /* Step 6: Build program. */
     if (clBuildProgram(program, 1, &device_id, command_line_options, nullptr, nullptr) != 0) {
@@ -199,12 +199,12 @@ int main(int argc, char *argv[]) {
 
     cl_mem std_out_buffer = clCreateBuffer(context, CL_MEM_WRITE_ONLY, cout_len, (void *)nullptr, nullptr);
 
-    const TTL_shape_t tensor_shape_in = TTL_create_shape(tensor_width, tensor_height);
-    const TTL_shape_t tensor_shape_out = TTL_create_shape(tensor_width, tensor_height);
-    const TTL_layout_t ext_layout_in = TTL_create_layout(tensor_width);
-    const TTL_layout_t ext_layout_out = TTL_create_layout(tensor_width);
-    const TTL_EXT_TENSOR_TYPE ext_input_tensor = TTL_create_ext_tensor(input, tensor_shape_in, ext_layout_in);
-    const TTL_EXT_TENSOR_TYPE ext_output_tensor = TTL_create_ext_tensor(output, tensor_shape_out, ext_layout_out);
+    const TTL_shape tensor_shape_in(tensor_width, tensor_height);
+    const TTL_shape tensor_shape_out(tensor_width, tensor_height);
+    const TTL_layout ext_layout_in(tensor_width);
+    const TTL_layout ext_layout_out(tensor_width);
+    const TTL_tensor ext_input_tensor(input, tensor_shape_in, ext_layout_in);
+    const TTL_tensor ext_output_tensor(output, tensor_shape_out, ext_layout_out);
     void *const v = nullptr;
 
     /* Step 8: Create kernel object */

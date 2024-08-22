@@ -1,8 +1,8 @@
-name: Check C Samples
-run-name: ${{ github.actor }} is checking c samples
+name: Check CPP Samples
+run-name: ${{ github.actor }} is checking samples
 on: [push]
 jobs:
-  Sanity-Check-C-Sample:
+  Sanity-Check-CPP-OpenCL-Sample:
     runs-on: ubuntu-latest
     steps:
       - name: Build Info
@@ -13,12 +13,12 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - name: Check C Samples
+      - name: Check Cpp Samples
         run: |
           pip install numpy
           ln -s $PWD TTL
           export TTL_INCLUDE_PATH=$PWD
-          cd c/samples
-          ./TTL_sample_runner.py TTL*.c
+          cd cpp/samples
+          ./TTL_sample_runner.py TTL*.cpp
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
