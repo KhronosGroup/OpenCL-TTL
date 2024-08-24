@@ -36,7 +36,7 @@ bool TTL_duplex_buffering_kernel(TEST_TENSOR_TYPE *restrict ext_base_in, int ext
     const TTL_overlap overlap_in(TILE_OVERLAP_LEFT + TILE_OVERLAP_RIGHT, TILE_OVERLAP_TOP + TILE_OVERLAP_BOTTOM);
     const TTL_augmentation augmentation_in(
         TILE_OVERLAP_LEFT, TILE_OVERLAP_RIGHT, TILE_OVERLAP_TOP, TILE_OVERLAP_BOTTOM);
-    const TTL_tiler input_tiler(tensor_shape_in, tile_shape_in, overlap_in, augmentation_in);
+    const TTL_overlap_tiler input_tiler(tensor_shape_in, tile_shape_in, overlap_in, augmentation_in);
 
     // Logical output tiling.
     const TTL_shape tensor_shape_out(width, height);
