@@ -70,6 +70,43 @@ struct TTL_layout {
 };
 
 /**
+ * @brief Description of a Tensor layout in memory
+ *
+ * Each logical tensor is embedded in both global and local memories within some
+ * enclosing physical tensors.
+ *
+ * This embedding is referred to as 'layout', which specifies the actual distance in elements
+ * between the start of consecutive data elements in each dimension.
+ *
+ * For the first axis the distance is always 1 element and and so this value is not stored.
+ *
+ * line_length and plane_area in memory, in units of an element.
+ *
+ * @tparam ROW_SPACING;   The distance between the start of consequtive rows in units of elements.
+ * @tparam PLANE_SPACING;   The distance between the start of consequtive planes in units of elements.
+ */
+template <TTL_dim ROW_SPACING = 0, TTL_dim PLANE_SPACING = 0>
+struct TTL_layout_const {
+    /**
+     * @brief Create a 3D Description of a Tensor layout in memory
+     *
+     * @see TTL_layout for more information.
+     *
+     * @param row_spacing;   The distance between the start of consequtive rows in units of elements.
+     * @param plane_spacing;   The distance between the start of consequtive planes in units of elements.
+     *
+     * This constructor is required, because reciever of a TTL_shape_const (as a templated type) will not know - to not
+     * give it 3 parameters. The compiler will just turn it into a nop.
+     */
+    TTL_layout_const(const TTL_dim /*row_spacing*/ = 0, const TTL_dim /*plane_spacing*/ = 0) {}
+
+    static constexpr TTL_dim row_spacing =
+        ROW_SPACING;  ///< The distance between the start of consequtive rows in units of elements.
+    static constexpr TTL_dim plane_spacing =
+        PLANE_SPACING;  ///< The distance between the start of consequtive planes in units of elements.
+};
+
+/**
  * @brief Calculate the absolute linear offset in elements, based on a given
  * tensor offset and layout
  *
@@ -78,7 +115,8 @@ struct TTL_layout {
  *
  * @return The offset in linear address space of the 3D offset
  */
-static inline TTL_offset_dim TTL_linearize(const TTL_offset &offset, const TTL_layout &layout) {
+template <typename LAYOUTTYPE>
+static inline TTL_offset_dim TTL_linearize(const TTL_offset &offset, const LAYOUTTYPE &layout) {
     return ((offset.z * layout.plane_spacing) + (offset.y * layout.row_spacing) + offset.x);
 }
 
@@ -98,7 +136,7 @@ static inline TTL_offset_dim TTL_linearize(const TTL_offset &offset, const TTL_l
  * @param type The type of the tensor - should be any valid c type
  * @param const_2 The const type to create - should be empty or const
  */
-template <typename TENSORTYPE>
+template <typename TENSORTYPE, typename SHAPETYPE, typename LAYOUTTYPE>
 struct TTL_tensor {
     /**
      * @brief TTL_tensor(TTL_create_, const_2, location, type, sub, _5_params)
@@ -111,7 +149,7 @@ struct TTL_tensor {
      *
      * @return return a TTL_tensor(TTL_, const_1, location, type, sub, _t)
      */
-    TTL_tensor(TENSORTYPE *base, const TTL_shape &shape, const TTL_layout &layout, const TTL_offset &offset,
+    TTL_tensor(TENSORTYPE *base, const SHAPETYPE &shape, const LAYOUTTYPE &layout, const TTL_offset &offset,
                const TTL_dim elem_size)
         : base(base + TTL_linearize(offset, layout)), elem_size(elem_size), layout(layout), shape(shape) {}
 
@@ -147,7 +185,7 @@ struct TTL_tensor {
      *
      * @return return a TTL_tensor(TTL_, const_1, location, type, sub, _t)
      */
-    TTL_tensor(TENSORTYPE *const base, const TTL_shape &shape, const TTL_layout &layout, const TTL_dim elem_size)
+    TTL_tensor(TENSORTYPE *const base, const SHAPETYPE &shape, const LAYOUTTYPE &layout, const TTL_dim elem_size)
         : TTL_tensor(base, shape, layout, TTL_offset(), elem_size) {}
 
     /**
@@ -163,7 +201,7 @@ struct TTL_tensor {
      *
      * @return return a TTL_tensor(TTL_, const_1, location, type, sub, _t)
      */
-    TTL_tensor(TENSORTYPE *const base, const TTL_shape &shape, const TTL_layout &layout)
+    TTL_tensor(TENSORTYPE *const base, const SHAPETYPE &shape, const LAYOUTTYPE &layout)
         : TTL_tensor(base, shape, layout, TTL_offset(), TTL_SIZEOF(*base)) {}
 
     /**
@@ -179,8 +217,8 @@ struct TTL_tensor {
      *
      * @return return a TTL_tensor(TTL_, const_1, location, type, sub, _t)
      */
-    TTL_tensor(TENSORTYPE *const base, const TTL_shape &shape, const TTL_dim elem_size)
-        : TTL_tensor(base, shape, TTL_layout(shape.width, shape.height), TTL_offset(), elem_size) {}
+    TTL_tensor(TENSORTYPE *const base, const SHAPETYPE &shape, const TTL_dim elem_size)
+        : TTL_tensor(base, shape, LAYOUTTYPE(shape.width, shape.height), TTL_offset(), elem_size) {}
 
     /**
      * @brief TTL_tensor(TTL_create_, const_1, location, type, sub, )
@@ -195,8 +233,8 @@ struct TTL_tensor {
      *
      * @return return a TTL_tensor(TTL_, const_1, location, type, sub, _t)
      */
-    TTL_tensor(TENSORTYPE *const base, const TTL_shape &shape)
-        : TTL_tensor(base, shape, TTL_layout(shape.width, shape.height), TTL_offset(), TTL_SIZEOF(*base)) {}
+    TTL_tensor(TENSORTYPE *const base, const SHAPETYPE &shape)
+        : TTL_tensor(base, shape, LAYOUTTYPE(shape.width, shape.height), TTL_offset(), TTL_SIZEOF(*base)) {}
 
     /**
      * @brief Cast a TTL_tensor(_, const_1, location, type, , ) to a TTL_tensor(TTL_,
@@ -209,8 +247,8 @@ struct TTL_tensor {
      *
      * @return A TTL_tensor(TTL_, const_1, location, type, , _t) version of the input tensor
      */
-    operator TTL_tensor<const TENSORTYPE>() const {
-        return TTL_tensor<const TENSORTYPE>(base, shape, layout, TTL_offset(), elem_size);
+    operator TTL_tensor<TENSORTYPE, SHAPETYPE, LAYOUTTYPE>() const {
+        return TTL_tensor<TENSORTYPE, SHAPETYPE, LAYOUTTYPE>(base, shape, layout, TTL_offset(), elem_size);
     }
 
     /**
@@ -255,8 +293,8 @@ struct TTL_tensor {
 
     TENSORTYPE *base;  /*!< The base address of the tensor in the local address space */
     TTL_dim elem_size; /*!< The sizeof the elements in the tensor */
-    TTL_layout layout; /*!< The layout of the tensor, @see TTL_layout */
-    TTL_shape shape;   /*!< The shape of the tensor in 3 dimensions */
+    LAYOUTTYPE layout; /*!< The layout of the tensor, @see TTL_layout */
+    SHAPETYPE shape;   /*!< The shape of the tensor in 3 dimensions */
 };
 
 /**
@@ -271,7 +309,7 @@ struct TTL_tensor {
  * @param type The type of the tensor - should be any valid c type
  * @param const_2 The const type to create - should be empty or const
  */
-template <typename TENSORTYPE>
+template <typename TENSORTYPE, typename SUBTENSORSHAPETYPE, typename ORIGINALTENSORSHAPETYPE, typename LAYOUTTYPE>
 struct TTL_sub_tensor {
     /**
      * @brief TTL_sub_tensor(TTL_create_, const_1, location, type, sub, _7_params)
@@ -286,8 +324,8 @@ struct TTL_sub_tensor {
      *
      * @return return a TTL_sub_tensor(TTL_, const_1, location, type, sub, _t)
      */
-    TTL_sub_tensor(TENSORTYPE *base, const TTL_shape &shape, const TTL_layout &layout, const TTL_dim elem_size,
-                   const TTL_offset offset, const TTL_shape origin_shape, TTL_offset origin_offset)
+    TTL_sub_tensor(TENSORTYPE *base, const SUBTENSORSHAPETYPE &shape, const LAYOUTTYPE &layout, const TTL_dim elem_size,
+                   const TTL_offset offset, const ORIGINALTENSORSHAPETYPE origin_shape, TTL_offset origin_offset)
         : tensor(base, shape, layout, offset, elem_size), origin(origin_shape, origin_offset) {}
 
     /**
@@ -305,8 +343,9 @@ struct TTL_sub_tensor {
      *
      * @return return a TTL_sub_tensor(TTL_, const_1, location, type, sub, _t)
      */
-    TTL_sub_tensor(TENSORTYPE *const base, const TTL_shape &shape, const TTL_layout &layout,
-                   const TTL_tensor<TENSORTYPE> &origin_tensor, const TTL_offset &sub_offset)
+    TTL_sub_tensor(TENSORTYPE *const base, const SUBTENSORSHAPETYPE &shape, const LAYOUTTYPE &layout,
+                   const TTL_tensor<TENSORTYPE, ORIGINALTENSORSHAPETYPE, LAYOUTTYPE> &origin_tensor,
+                   const TTL_offset &sub_offset)
         : TTL_sub_tensor(base, shape, layout, origin_tensor.elem_size, TTL_offset(), origin_tensor.shape, sub_offset) {}
 
     /**
@@ -324,7 +363,8 @@ struct TTL_sub_tensor {
      *
      * @return return a TTL_sub_tensor(TTL_, const_1, location, type, sub, _t)
      */
-    TTL_sub_tensor(TENSORTYPE const base, const TTL_tensor<TENSORTYPE> &origin_tensor)
+    TTL_sub_tensor(TENSORTYPE const base,
+                   const TTL_tensor<TENSORTYPE, ORIGINALTENSORSHAPETYPE, LAYOUTTYPE> &origin_tensor)
         : TTL_sub_tensor(base, origin_tensor.shape, origin_tensor.layout, origin_tensor.elem_size, TTL_offset(),
                          origin_tensor.shape, TTL_offset()) {}
 
@@ -340,7 +380,7 @@ struct TTL_sub_tensor {
      *
      * @return return a TTL_sub_tensor(TTL_, const_1, location, type, sub, _t)
      */
-    TTL_sub_tensor(const TTL_tensor<TENSORTYPE> &origin_tensor)
+    TTL_sub_tensor(const TTL_tensor<TENSORTYPE, ORIGINALTENSORSHAPETYPE, LAYOUTTYPE> &origin_tensor)
         : TTL_sub_tensor(origin_tensor.base, origin_tensor.shape, origin_tensor.layout, origin_tensor.elem_size,
                          TTL_offset(), origin_tensor.shape, TTL_offset()) {}
 
@@ -351,7 +391,9 @@ struct TTL_sub_tensor {
      * Most operations on an empty tensor should turn into no-ops and so an empty
      * tensor is the safest default state.
      */
-    TTL_sub_tensor() : TTL_sub_tensor(nullptr, TTL_shape(), TTL_layout(), 0, TTL_offset(), TTL_shape(), TTL_offset()) {}
+    TTL_sub_tensor()
+        : TTL_sub_tensor(nullptr, SUBTENSORSHAPETYPE(), LAYOUTTYPE(), 0, TTL_offset(), ORIGINALTENSORSHAPETYPE(),
+                         TTL_offset()) {}
 
     /**
      * @brief  Read a value from a sub_tensor
@@ -398,12 +440,12 @@ struct TTL_sub_tensor {
          * @param shape The shape of the origin tensor in 3 dimensions
          * @param sub_offset The offset of the sub tensor from the origin sensor
          */
-        Origin(TTL_shape shape, TTL_offset sub_offset) : shape(shape), sub_offset(sub_offset) {}
+        Origin(ORIGINALTENSORSHAPETYPE shape, TTL_offset sub_offset) : shape(shape), sub_offset(sub_offset) {}
 
-        TTL_shape shape;        ///< The shape of the origin tensor in 3 dimensions
-        TTL_offset sub_offset;  ///< The offset of the sub tensor from the origin sensor
+        ORIGINALTENSORSHAPETYPE shape;  ///< The shape of the origin tensor in 3 dimensions
+        TTL_offset sub_offset;          ///< The offset of the sub tensor from the origin sensor
     };
 
-    TTL_tensor<TENSORTYPE> tensor;
+    TTL_tensor<TENSORTYPE, SUBTENSORSHAPETYPE, LAYOUTTYPE> tensor;
     Origin origin;
 };

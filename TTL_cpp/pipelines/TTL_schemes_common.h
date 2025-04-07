@@ -19,7 +19,7 @@
 #pragma once
 
 /**
- * @def TTL_common_buffering_t
+ * @def TTL_common_buffering
  * @brief Common data for description of TTL pipelining.
  *
  * @param ext_base_type Is the type of the pointer that is the internal base. Generall const 'void *' or 'void *'
@@ -31,14 +31,14 @@
  * information that can be made common the more opportunity exists for future
  * optimizations and development.
  */
-template <typename TENSORTYPE, unsigned int BASES_COUNT>
+template <typename TENSORTYPE, typename SHAPETYPE,typename LAYOUTTYPEIN, typename LAYOUTTYPEOUT, unsigned int BASES_COUNT>
 struct TTL_common_buffering {
     int index; /*!< Describes the current buffer index when pipelining. For single 0->1->0, for double
                   0->1->0->1... etc */
     TTL_local(TENSORTYPE *) int_base[BASES_COUNT]; /*!< The internal base addresses of the pipelined tiles. */
 
-    TTL_tensor<TENSORTYPE> ext_tensor_in;  /*!< The external tensor being input */
-    TTL_tensor<TENSORTYPE> ext_tensor_out; /*!< The external tensor being output */
+    TTL_tensor<TENSORTYPE,SHAPETYPE,LAYOUTTYPEIN> ext_tensor_in;  /*!< The external tensor being input */
+    TTL_tensor<TENSORTYPE,SHAPETYPE,LAYOUTTYPEOUT> ext_tensor_out; /*!< The external tensor being output */
 };
 
 /**
@@ -49,7 +49,7 @@ struct TTL_common_buffering {
  * TTL_sub_tensor.
  *
  */
-template <typename TENSORTYPE>
+template <typename TENSORTYPE, typename INTERNALSHAPETYPE, typename EXTERNALSHAPETYPE, typename LAYOUTTYPETILE>
 struct TTL_io_tensors {
     /**
      * @brief Create a TTL_io_tensors from a pair of tensors
@@ -59,13 +59,13 @@ struct TTL_io_tensors {
      *
      * @return A TTL_io_tensors structure
      */
-    TTL_io_tensors(TTL_sub_tensor<TENSORTYPE> imported_to, TTL_sub_tensor<TENSORTYPE> to_export_from)
+    TTL_io_tensors(TTL_sub_tensor<TENSORTYPE, INTERNALSHAPETYPE, EXTERNALSHAPETYPE,LAYOUTTYPETILE> imported_to, TTL_sub_tensor<TENSORTYPE, INTERNALSHAPETYPE, EXTERNALSHAPETYPE,LAYOUTTYPETILE> to_export_from)
         : imported_to(imported_to), to_export_from(to_export_from) {}
 
     bool empty() const {
         return imported_to.tensor.empty();
     }
 
-    TTL_sub_tensor<TENSORTYPE> imported_to;     ///< The TTL_sub_tensor that was most recently imported
-    TTL_sub_tensor<TENSORTYPE> to_export_from;  ///< The TTL_sub_tensor that will be exported next
+    TTL_sub_tensor<TENSORTYPE, INTERNALSHAPETYPE, EXTERNALSHAPETYPE,LAYOUTTYPETILE> imported_to;     ///< The TTL_sub_tensor that was most recently imported
+    TTL_sub_tensor<TENSORTYPE, INTERNALSHAPETYPE, EXTERNALSHAPETYPE,LAYOUTTYPETILE> to_export_from;  ///< The TTL_sub_tensor that will be exported next
 };

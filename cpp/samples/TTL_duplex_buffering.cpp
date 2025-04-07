@@ -19,6 +19,7 @@
 #include "TTL/TTL.h"
 #include "compute_cross.h"
 #include "kernel.h"
+#include "fixed_tensor_sizes.h"
 
 /**
  * @brief Scope globally because it makes debugging easier
@@ -68,5 +69,8 @@ bool TTL_duplex_buffering_kernel(TEST_TENSOR_TYPE *restrict ext_base_in, int ext
 
     duplex_scheme.finish_buffering();
 
-    return result_check(ComputeType::TEST_COMPUTE_TYPE, ext_base_in, ext_base_out, width, height, tile_width, tile_height);
+    return result_check(ComputeType::TEST_COMPUTE_TYPE,                         ext_base_in,
+						EXTERNAL_STRIDE_IN,
+                        ext_base_out,EXTERNAL_STRIDE_OUT,
+ width, height, tile_width, tile_height);
 }

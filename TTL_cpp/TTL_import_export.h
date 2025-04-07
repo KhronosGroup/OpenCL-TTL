@@ -32,9 +32,8 @@
  *
  * Complete description of what not how here.
  */
-template <typename TENSORTYPE>
-void TTL_import(const TTL_tensor<TENSORTYPE> internal_tensor, const TTL_tensor<TENSORTYPE> external_tensor,
-                TTL_event *event) {
+template <typename INT_TENSORTYPE, typename EXT_TENSORTYPE>
+void TTL_import(const INT_TENSORTYPE internal_tensor, const EXT_TENSORTYPE external_tensor, TTL_event *event) {
     return TTL_import_base(internal_tensor, external_tensor, event);
 }
 
@@ -46,10 +45,16 @@ void TTL_import(const TTL_tensor<TENSORTYPE> internal_tensor, const TTL_tensor<T
  *
  * Complete description of what not how here.
  */
-template <typename TENSORTYPE>
-void TTL_blocking_import(const TTL_tensor<TENSORTYPE> &internal_tensor, const TTL_tensor<TENSORTYPE> &external_tensor) {
+template <typename INT_TENSORTYPE, typename EXT_TENSORTYPE>
+void TTL_blocking_import(const INT_TENSORTYPE &internal_tensor, const EXT_TENSORTYPE &external_tensor) {
     TTL_blocking_import_base(internal_tensor, external_tensor);
 }
+
+template <typename TENSORTYPE, typename SUBTENSORSHAPETYPE, typename ORIGINALTENSORSHAPETYPE,typename LAYOUTTYPE>
+static inline SUBTENSORSHAPETYPE TTL_import_pre_fill(
+    const TTL_sub_tensor<TENSORTYPE, SUBTENSORSHAPETYPE, ORIGINALTENSORSHAPETYPE,LAYOUTTYPE> internal_sub_tensor,
+    const TTL_tensor<TENSORTYPE, SUBTENSORSHAPETYPE,LAYOUTTYPE> const_external_tensor,
+    TTL_local(TENSORTYPE *) *const dst_address, TTL_global(TENSORTYPE *) *const src_address);
 
 /**
  * @brief Implementation of TTL_import_sub_tensor
@@ -60,19 +65,20 @@ void TTL_blocking_import(const TTL_tensor<TENSORTYPE> &internal_tensor, const TT
  *
  * @see TTL_import for full API and parameter information
  */
-template <typename TENSORTYPE>
-void TTL_import_sub_tensor(const TTL_sub_tensor<TENSORTYPE> &internal_sub_tensor,
-                           const TTL_tensor<TENSORTYPE> const_external_tensor, TTL_event *event) {
+template <typename TENSORTYPE, typename SUBTENSORSHAPETYPE, typename ORIGINALTENSORSHAPETYPE,typename LAYOUTTYPE>
+void TTL_import_sub_tensor(
+    const TTL_sub_tensor<TENSORTYPE, SUBTENSORSHAPETYPE, ORIGINALTENSORSHAPETYPE,LAYOUTTYPE> &internal_sub_tensor,
+    const TTL_tensor<TENSORTYPE, SUBTENSORSHAPETYPE,LAYOUTTYPE> const_external_tensor, TTL_event *event) {
     TTL_local(TENSORTYPE *) dst_address;
     TTL_global(TENSORTYPE *) src_address;
 
-    const TTL_shape import_shape =
-        TTL_import_pre_fill(internal_sub_tensor, const_external_tensor, &dst_address, &src_address);
+    const SUBTENSORSHAPETYPE import_shape = TTL_import_pre_fill<TENSORTYPE, SUBTENSORSHAPETYPE, ORIGINALTENSORSHAPETYPE>(
+        internal_sub_tensor, const_external_tensor, &dst_address, &src_address);
 
-    const TTL_tensor<TENSORTYPE> import_int_tensor(
+    const TTL_tensor<TENSORTYPE, SUBTENSORSHAPETYPE,LAYOUTTYPE> import_int_tensor(
         dst_address, import_shape, internal_sub_tensor.tensor.layout, internal_sub_tensor.tensor.elem_size);
 
-    const TTL_tensor<TENSORTYPE> import_ext_tensor(
+    const TTL_tensor<TENSORTYPE, SUBTENSORSHAPETYPE,LAYOUTTYPE> import_ext_tensor(
         src_address, import_shape, const_external_tensor.layout, TTL_offset(), const_external_tensor.elem_size);
 
     TTL_import(import_int_tensor, import_ext_tensor, event);
@@ -87,9 +93,8 @@ void TTL_import_sub_tensor(const TTL_sub_tensor<TENSORTYPE> &internal_sub_tensor
  *
  * Complete description of what not how here.
  */
-template <typename TENSORTYPE>
-void TTL_export(const TTL_tensor<TENSORTYPE> &internal_tensor, const TTL_tensor<TENSORTYPE> &external_tensor,
-                TTL_event *event) {
+template <typename INT_TENSORTYPE, typename EXT_TENSORTYPE>
+void TTL_export(const INT_TENSORTYPE &internal_tensor, const EXT_TENSORTYPE &external_tensor, TTL_event *event) {
     return TTL_export_base(internal_tensor, external_tensor, event);
 }
 
@@ -101,8 +106,8 @@ void TTL_export(const TTL_tensor<TENSORTYPE> &internal_tensor, const TTL_tensor<
  *
  * Complete description of what not how here.
  */
-template <typename TENSORTYPE>
-void TTL_blocking_export(const TTL_tensor<TENSORTYPE> &internal_tensor, const TTL_tensor<TENSORTYPE> &external_tensor) {
+template <typename INT_TENSORTYPE, typename EXT_TENSORTYPE>
+void TTL_blocking_export(const INT_TENSORTYPE &internal_tensor, const EXT_TENSORTYPE &external_tensor) {
     TTL_blocking_export_base(internal_tensor, external_tensor);
 }
 
@@ -164,11 +169,11 @@ static inline void TTL_clear_void_space(TTL_local(void *) const dst, const size_
     }
 }
 
-template <typename INT_TENSORTYPE, typename EXT_TENSORTYPE>
-static inline TTL_shape TTL_import_pre_fill(const TTL_sub_tensor<INT_TENSORTYPE> internal_sub_tensor,
-                                            const TTL_tensor<EXT_TENSORTYPE> const_external_tensor,
-                                            TTL_local(INT_TENSORTYPE *) *const dst_address,
-                                            TTL_global(EXT_TENSORTYPE *) *const src_address) {
+template <typename TENSORTYPE, typename INT_SHAPETYPE, typename EXT_SHAPETYPE,typename LAYOUTTYPE>
+static inline INT_SHAPETYPE TTL_import_pre_fill(
+    const TTL_sub_tensor<TENSORTYPE, INT_SHAPETYPE, EXT_SHAPETYPE,LAYOUTTYPE> internal_sub_tensor,
+    const TTL_tensor<TENSORTYPE, INT_SHAPETYPE,LAYOUTTYPE> const_external_tensor,
+    TTL_local(TENSORTYPE *) *const dst_address, TTL_global(TENSORTYPE *) *const src_address) {
     size_t x_offset;
     size_t x_cut;
     size_t y_offset;
@@ -212,7 +217,7 @@ static inline TTL_shape TTL_import_pre_fill(const TTL_sub_tensor<INT_TENSORTYPE>
                          internal_sub_tensor.tensor.shape.height,
                          internal_sub_tensor.tensor.shape.depth);
 
-    return TTL_shape(internal_sub_tensor.tensor.shape.width - x_offset - x_cut,
-                     internal_sub_tensor.tensor.shape.height - y_offset - y_cut,
-                     internal_sub_tensor.tensor.shape.depth - z_offset - z_cut);
+    return INT_SHAPETYPE(internal_sub_tensor.tensor.shape.width - x_offset - x_cut,
+                         internal_sub_tensor.tensor.shape.height - y_offset - y_cut,
+                         internal_sub_tensor.tensor.shape.depth - z_offset - z_cut);
 }

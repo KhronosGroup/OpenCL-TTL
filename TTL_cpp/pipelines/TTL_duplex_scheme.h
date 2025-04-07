@@ -58,7 +58,7 @@
  * @see TTL_start_duplex_buffering for a description of duplex buffer
  * pipelining.
  */
-template <typename TENSORTYPE>
+template <typename TENSORTYPE, typename TENSORSHAPETYPE, typename TILESHAPETYPE,typename LAYOUTTYPEIN, typename LAYOUTTYPEOUT >
 struct TTL_duplex_buffering {
     /**
      * @brief Create a TTL_DUPLEX_BUFFERING_TYPE and begin the buffering process
@@ -144,36 +144,40 @@ struct TTL_duplex_buffering {
      *
      * @enduml
      */
-    TTL_duplex_buffering(TTL_tensor<TENSORTYPE> ext_tensor_in, TTL_local(TENSORTYPE *) int_base_in,
-                         TTL_tensor<TENSORTYPE> ext_tensor_out, TTL_local(TENSORTYPE *) int_base_out,
-                         TTL_event (*input_events)[2], TTL_tile first_tile) {
+    TTL_duplex_buffering(TTL_tensor<TENSORTYPE, TENSORSHAPETYPE,LAYOUTTYPEIN> ext_tensor_in, TTL_local(TENSORTYPE *) int_base_in,
+                         TTL_tensor<TENSORTYPE, TENSORSHAPETYPE, LAYOUTTYPEOUT> ext_tensor_out, TTL_local(TENSORTYPE *) int_base_out,
+                         TTL_event (*input_events)[2], TTL_tile<TILESHAPETYPE> first_tile) {
         m_common.int_base [IMPORT_BUFFER] = int_base_in;
         m_common.int_base [EXPORT_BUFFER] = int_base_out;
 
         m_common.ext_tensor_in = ext_tensor_in;
         m_common.ext_tensor_out = ext_tensor_out;
         m_events = input_events;
-        m_prev_out_tensors.to_export_to = TTL_tensor<TENSORTYPE>();
-        m_prev_out_tensors.to_export_from = TTL_tensor<TENSORTYPE>();
+        m_prev_out_tensors.to_export_to = TTL_tensor<TENSORTYPE, TENSORSHAPETYPE,LAYOUTTYPEOUT>();
+        m_prev_out_tensors.to_export_from = TTL_tensor<TENSORTYPE, TENSORSHAPETYPE,LAYOUTTYPEIN>();
 
-        step_buffering(first_tile, TTL_tile());
+        step_buffering(first_tile, TTL_tile<TILESHAPETYPE>());
     }
 
-    TTL_io_tensors<TENSORTYPE> step_buffering(TTL_tile tile_current_import, TTL_tile tile_current_export) {
-        const TTL_layout next_import_layout(tile_current_import.shape.width, tile_current_import.shape.height);
-        const TTL_tensor<TENSORTYPE> next_import_ext_tensor(m_common.ext_tensor_in.base,
+    TTL_io_tensors<TENSORTYPE, TILESHAPETYPE, TENSORSHAPETYPE, LAYOUTTYPEIN> 
+	step_buffering(const TTL_tile<TENSORSHAPETYPE> &tile_current_import, const TTL_tile<TENSORSHAPETYPE> &tile_current_export) {
+        // For performance, compute everything possible before waiting for the previous operations to finish. The
+        // current index contains the tile that is to be exported, so prepare the structures before beginning the export
+        // and export.
+  		const LAYOUTTYPEIN next_import_layout(tile_current_import.shape.width, tile_current_import.shape.height);
+        const TTL_tensor<TENSORTYPE,TENSORSHAPETYPE,LAYOUTTYPEIN> next_import_ext_tensor(m_common.ext_tensor_in.base,
                                                             tile_current_import.shape,
                                                             m_common.ext_tensor_in.layout,
                                                             tile_current_import.offset,
                                                             m_common.ext_tensor_in.elem_size);
-        const TTL_sub_tensor<TENSORTYPE> next_import_int_sub_tensor(m_common.int_base [IMPORT_BUFFER],
+        const TTL_sub_tensor<TENSORTYPE,TILESHAPETYPE, TENSORSHAPETYPE,LAYOUTTYPEIN> next_import_int_sub_tensor(m_common.int_base [IMPORT_BUFFER],
                                                                 tile_current_import.shape,
                                                                 next_import_layout,
                                                                 m_common.ext_tensor_in,
                                                                 tile_current_import.offset);
 
-        const TTL_tensor<TENSORTYPE> next_export_int_tensor = m_prev_out_tensors.to_export_from;
-        const TTL_tensor<TENSORTYPE> next_export_ext_tensor = m_prev_out_tensors.to_export_to;
+        const TTL_tensor<TENSORTYPE,TENSORSHAPETYPE,LAYOUTTYPEIN> next_export_int_tensor = m_prev_out_tensors.to_export_from;
+        const TTL_tensor<TENSORTYPE,TENSORSHAPETYPE,LAYOUTTYPEIN> next_export_ext_tensor = m_prev_out_tensors.to_export_to;
 
         if (tile_current_import.empty() == false)
             TTL_import_sub_tensor(next_import_int_sub_tensor,
@@ -185,13 +189,13 @@ struct TTL_duplex_buffering {
                        next_export_ext_tensor,
                        &(*m_events) [EXPORT_BUFFER]);
 
-        const TTL_layout int_export_layout(tile_current_export.shape.width, tile_current_export.shape.height);
-        const TTL_tensor<TENSORTYPE> to_export_to(m_common.ext_tensor_out.base,
+        const LAYOUTTYPEOUT int_export_layout(tile_current_export.shape.width, tile_current_export.shape.height);
+        const TTL_tensor<TENSORTYPE,TENSORSHAPETYPE,LAYOUTTYPEOUT> to_export_to(m_common.ext_tensor_out.base,
                                                   tile_current_export.shape,
                                                   m_common.ext_tensor_out.layout,
                                                   tile_current_export.offset,
                                                   m_common.ext_tensor_out.elem_size);
-        const TTL_sub_tensor<TENSORTYPE> to_export_from(m_common.int_base [EXPORT_BUFFER],
+        const TTL_sub_tensor<TENSORTYPE,TILESHAPETYPE, TENSORSHAPETYPE,LAYOUTTYPEIN> to_export_from(m_common.int_base [EXPORT_BUFFER],
                                       tile_current_export.shape,
                                       int_export_layout,
                                       m_common.ext_tensor_in,
@@ -205,23 +209,23 @@ struct TTL_duplex_buffering {
         return TTL_io_tensors(next_import_int_sub_tensor, to_export_from);
     }
 
-    	/**
+ 	/**
 	 * @brief Complete any transfers required to finish the buffering process.
 	 * 
 	 * Any transfers that are still in progress will be completed and any transfers
 	 * that need to be started and completed before finish_buffering returns
 	*/
-void finish_buffering() {
-        step_buffering(TTL_tile(), TTL_tile());
+    void finish_buffering() {
+        step_buffering(TTL_tile<TILESHAPETYPE>(), TTL_tile<TILESHAPETYPE>());
     }
 
-    TTL_common_buffering<TENSORTYPE, 2> m_common;  ///< The information that is m_common to all pipeline schemes
+    TTL_common_buffering<TENSORTYPE, TENSORSHAPETYPE,LAYOUTTYPEIN, LAYOUTTYPEOUT, 2> m_common;  ///< The information that is common to all pipeline schemes
 
 	/**
 	 * @brief Indexes to use for importing and exporting of data.
 	*/
-	static constexpr unsigned int IMPORT_BUFFER = 0;
-	static constexpr unsigned int EXPORT_BUFFER = 1;
+	static constexpr uint32_t IMPORT_BUFFER = 0;
+	static constexpr uint32_t EXPORT_BUFFER = 1;
 
     TTL_event (*  m_events)[2];  ///< 2 m_events are required, 1 first is used for
                                ///< external to internal transfers, the second for
@@ -232,7 +236,7 @@ void finish_buffering() {
      *
      */
     struct {
-        TTL_tensor<TENSORTYPE> to_export_to;
-        TTL_tensor<TENSORTYPE> to_export_from;
+        TTL_tensor<TENSORTYPE, TENSORSHAPETYPE,LAYOUTTYPEOUT> to_export_to;
+        TTL_tensor<TENSORTYPE, TENSORSHAPETYPE,LAYOUTTYPEIN> to_export_from;
     } m_prev_out_tensors;
 };

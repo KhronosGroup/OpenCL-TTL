@@ -24,6 +24,68 @@ import os
 import sys
 import random
 
+
+def CompileIfChanged(program_name,
+                     ttl_include_path,
+                     test_compute_type,
+                     test_tensor_type,
+                     kernel_name,
+                     tensor_width,
+                     tensor_height,
+                     test_tensor_specifier):
+    try:
+        CompileIfChanged.last_program_name_type
+    except AttributeError:
+        CompileIfChanged.last_program_name_type = ""
+
+    program_name_type = (
+        program_name
+        + "_" + test_compute_type
+        + "_" + test_tensor_type
+        + "_" + kernel_name
+        + "_" + str(tensor_width)
+        + "_" + str(tensor_height)
+        + "_" + test_tensor_specifier
+    )
+
+    if program_name_type != CompileIfChanged.last_program_name_type:
+        CompileIfChanged.last_program_name_type = program_name_type
+
+        compile_string = (
+            "rm -f "
+            + program_name_type
+            + "; clang "
+            + ttl_include_path
+            + " -DTEST_COMPUTE_TYPE="
+            + test_compute_type
+            + " -DTEST_TENSOR_TYPE="
+            + test_tensor_type
+            + " -DKERNEL_NAME="
+            + kernel_name
+            + " -DTENSOR_WIDTH="
+            + str(tensor_width)
+            + " -DTENSOR_HEIGHT="
+            + str(tensor_height)
+            + " -DEXTERNAL_STRIDE_IN="
+            + str(tensor_width)
+            + " -DEXTERNAL_STRIDE_OUT="
+            + str(tensor_width)
+            + " -DTEST_TENSOR_TYPE_SPECIFIER="
+            + '"\\"'
+            + test_tensor_specifier
+            + '\\""'
+            + " -DTTL_TARGET=c -fPIC -shared -o "
+            + program_name_type
+            + " "
+            + program_name
+            + ".cpp"
+        )
+        os.system(compile_string)
+        print(compile_string)
+
+    return program_name_type
+                    
+
 def Read(byte_array, i, j, tensor_width, element_size):
     result = 0
 
@@ -63,32 +125,20 @@ def TestTTL(program_name):
             if kernel_name == "TTL_duplex_simple_buffering_kernel" and test_compute_type == "CROSS":
                 continue
             
-            program_name_type = program_name + "_" + test_compute_type + "_" + test_tensor_type + ".so"
-            compile_string = (
-                "rm -f "
-                + program_name_type
-                + "; clang "
-                + ttl_include_path
-                + " -DTEST_COMPUTE_TYPE="
-                + test_compute_type
-                + " -DTEST_TENSOR_TYPE="
-                + test_tensor_type
-                + " -DKERNEL_NAME="
-                + kernel_name
-                + " -DTEST_TENSOR_TYPE_SPECIFIER="
-                + "\"\\\"" + test_tensor_specifier + "\\\"\""
-                + " -DTTL_TARGET=c -fPIC -shared -o "
-                + program_name_type
-                + " "
-                + program_name
-                + ".cpp")
-            os.system(compile_string)
-            print(compile_string)
-
-            print("Testing %s with %s Tensors" % (program_name, test_tensor_type))
-
             for tensor_width in random.sample(range(1, 125), 3):
                 for tensor_height in random.sample(range(1, 125), 3):
+
+                    program_name_type = CompileIfChanged(program_name,
+                                                         ttl_include_path,
+                                                         test_compute_type, 
+                                                         test_tensor_type, 
+                                                         kernel_name, 
+                                                         tensor_width, 
+                                                         tensor_height, 
+                                                         test_tensor_specifier)
+
+                    print("Testing %s with %s Tensors" % (program_name, test_tensor_type))
+
                     for tile_width in [1, tensor_width] + random.sample(range(1, tensor_width + 30), 3):
                         for tile_height in [1, tensor_height] + random.sample(range(1, tensor_height + 30), 3):
                             error = False
@@ -160,7 +210,7 @@ def TestTTL(program_name):
                             if error:
                                 exit(-1)
 
-                        print("%s Passed Tensor size [%d, %d] Tile size [%d, %d] Type %s Compute %s" %(program_name, tensor_width, tensor_height, tile_width, tile_height, test_tensor_type, test_compute_type))
+                            print("%s Passed Tensor size [%d, %d] Tile size [%d, %d] Type %s Compute %s" %(program_name, tensor_width, tensor_height, tile_width, tile_height, test_tensor_type, test_compute_type))
 
 
 if __name__ == "__main__":

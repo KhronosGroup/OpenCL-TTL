@@ -1,7 +1,7 @@
 /*
- * kernel.h
+ * main.c
  *
- * Copyright (c) 2025 Mobileye
+ * Copyright (c) 2023 Mobileye
  *
  * Licensed under the Apache License, Version 2.0 (the License);
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-extern "C"
 
-bool KERNEL_NAME(TEST_TENSOR_TYPE *restrict ext_base_in, int external_stride_in,
-                 TEST_TENSOR_TYPE *restrict ext_base_out, int external_stride_out, TTL_dim width, TTL_dim height,
-                 TTL_dim tile_width, TTL_dim tile_height);
+#pragma once
+#include <stdint.h>
+
+#ifndef TENSOR_WIDTH
+constexpr uint32_t TENSOR_WIDTH = 103;
+constexpr uint32_t TENSOR_HEIGHT = 27;
+constexpr uint32_t EXTERNAL_STRIDE_IN = 150;
+constexpr uint32_t EXTERNAL_STRIDE_OUT = 103;
+#endif
+constexpr uint32_t TILE_WIDTH = 44;
+constexpr uint32_t TILE_HEIGHT = 33;

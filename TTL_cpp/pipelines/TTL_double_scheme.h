@@ -33,7 +33,7 @@
  * @param next_tile A description of the tile to begin importing.
  *
  */
-template <typename TENSORTYPE>
+template <typename TENSORTYPE, typename TENSORSHAPETYPE, typename TILESHAPETYPE, typename LAYOUTTYPEIN>
 struct TTL_import_double_buffering {
     /**
      * @brief Create a TTL_import_double_buffering and begin the buffering process
@@ -67,7 +67,8 @@ struct TTL_import_double_buffering {
      * @enduml
      */
     TTL_import_double_buffering(TTL_local(TENSORTYPE *) int_base1, TTL_local(TENSORTYPE *) int_base2,
-                                TTL_tensor<TENSORTYPE> ext_tensor, TTL_event *event, TTL_tile first_tile) {
+                                TTL_tensor<TENSORTYPE, TENSORSHAPETYPE, LAYOUTTYPEIN> ext_tensor, TTL_event *event,
+                                TTL_tile<TILESHAPETYPE> first_tile) {
         m_common.int_base[0] = int_base1;
         m_common.int_base[1] = int_base2;
 
@@ -75,23 +76,24 @@ struct TTL_import_double_buffering {
         m_event = event;
         m_common.index = 0;
 
-        m_prev_tile = TTL_tile();
+        m_prev_tile = TTL_tile<TILESHAPETYPE>();
 
         step_buffering(first_tile);
     }
 
-    TTL_sub_tensor<TENSORTYPE> step_buffering(const TTL_tile next_tile) {
+    TTL_sub_tensor<TENSORTYPE, TILESHAPETYPE, TENSORSHAPETYPE, LAYOUTTYPEIN> step_buffering(
+        const TTL_tile<TILESHAPETYPE> &next_tile) {
         // For performance, compute everything possible before waiting for the
         // previous operations to finish.
         const TTL_layout int_layout(next_tile.shape.width, next_tile.shape.height);
-        const TTL_sub_tensor<TENSORTYPE> import_to(
+        const TTL_sub_tensor<TENSORTYPE, TILESHAPETYPE, TENSORSHAPETYPE, LAYOUTTYPEIN> import_to(
             m_common.int_base[m_common.index], next_tile.shape, int_layout, m_common.ext_tensor_in, next_tile.offset);
 
-        const TTL_tensor<TENSORTYPE> import_from(m_common.ext_tensor_in.base,
-                                                 next_tile.shape,
-                                                 m_common.ext_tensor_in.layout,
-                                                 next_tile.offset,
-                                                 m_common.ext_tensor_in.elem_size);
+        const TTL_tensor<TENSORTYPE, TENSORSHAPETYPE, LAYOUTTYPEIN> import_from(m_common.ext_tensor_in.base,
+                                                                                next_tile.shape,
+                                                                                m_common.ext_tensor_in.layout,
+                                                                                next_tile.offset,
+                                                                                m_common.ext_tensor_in.elem_size);
 
         TTL_wait(1, m_event);
 
@@ -102,11 +104,12 @@ struct TTL_import_double_buffering {
         m_common.index = (m_common.index + 1) % 2;
 
         const TTL_layout prev_int_layout(m_prev_tile.shape.width, m_prev_tile.shape.height);
-        const TTL_sub_tensor<TENSORTYPE> result(m_common.int_base[m_common.index],
-                                                m_prev_tile.shape,
-                                                prev_int_layout,
-                                                m_common.ext_tensor_in,
-                                                m_prev_tile.offset);
+        const TTL_sub_tensor<TENSORTYPE, TILESHAPETYPE, TENSORSHAPETYPE, LAYOUTTYPEIN> result(
+            m_common.int_base[m_common.index],
+            m_prev_tile.shape,
+            prev_int_layout,
+            m_common.ext_tensor_in,
+            m_prev_tile.offset);
 
         m_prev_tile = next_tile;
 
@@ -123,14 +126,15 @@ struct TTL_import_double_buffering {
         // Nothing to do.
     }
 
-    TTL_event *m_event;    ///< A pointer to the event that is used to
-                           ///< track the progress of the transfer
-    TTL_tile m_prev_tile;  ///< Store of the previous imported tile */
+    TTL_event *m_event;                   ///< A pointer to the event that is used to
+                                          ///< track the progress of the transfer
+    TTL_tile<TILESHAPETYPE> m_prev_tile;  ///< Store of the previous imported tile */
 
-    TTL_common_buffering<TENSORTYPE, 2> m_common;  ///< The information that is m_common to all pipeline schemes
+    TTL_common_buffering<TENSORTYPE, TENSORSHAPETYPE, LAYOUTTYPEIN, LAYOUTTYPEIN, 2>
+        m_common;  ///< The information that is common to all pipeline schemes
 };
 
-template <typename TENSORTYPE>
+template <typename TENSORTYPE, typename TENSORSHAPETYPE, typename TILESHAPETYPE, typename LAYOUTTYPEOUT>
 struct TTL_export_double_buffering {
     /**
      * @brief Create a TTL_import_double_buffering and begin the buffering process
@@ -164,7 +168,8 @@ struct TTL_export_double_buffering {
      * @enduml
      */
     TTL_export_double_buffering(TTL_local(TENSORTYPE *) int_base1, TTL_local(TENSORTYPE *) int_base2,
-                                TTL_tensor<TENSORTYPE> ext_tensor, TTL_event *event) {
+                                TTL_tensor<TENSORTYPE, TENSORSHAPETYPE, LAYOUTTYPEOUT> ext_tensor, TTL_event *event,
+								TTL_tiler<TTL_shape, TILESHAPETYPE> /*Just to allow TILESHAPETYPE deduction*/) {
         m_common.int_base[0] = int_base1;
         m_common.int_base[1] = int_base2;
 
@@ -172,7 +177,7 @@ struct TTL_export_double_buffering {
         m_event = event;
         m_common.index = 0;
 
-        m_prev_tile = TTL_tile();
+        m_prev_tile = TTL_tile<TILESHAPETYPE>();
     }
 
     /**
@@ -180,9 +185,9 @@ struct TTL_export_double_buffering {
      * export of next tile.
      *
      * @param tile_current A description of the tile to begin exporting.
-     *
      */
-    TTL_sub_tensor<TENSORTYPE> step_buffering(TTL_tile tile_current) {
+    TTL_sub_tensor<TENSORTYPE, TILESHAPETYPE, TENSORSHAPETYPE, LAYOUTTYPEOUT> step_buffering(
+        const TTL_tile<TILESHAPETYPE> &tile_current) {
         const TTL_layout int_layout(m_prev_tile.shape.width, m_prev_tile.shape.height);
         const TTL_tensor export_from(
             m_common.int_base[m_common.index], m_prev_tile.shape, int_layout, m_common.ext_tensor_in.elem_size);
@@ -215,13 +220,14 @@ struct TTL_export_double_buffering {
      * that need to be started and completed before finish_buffering returns
      */
     void finish_buffering() {
-        step_buffering(TTL_tile());
-        step_buffering(TTL_tile());
+        step_buffering(TTL_tile<TILESHAPETYPE>());
+        step_buffering(TTL_tile<TILESHAPETYPE>());
     }
 
-    TTL_event *m_event;    ///< A pointer to the event that is used to
-                           ///< track the progress of the transfer
-    TTL_tile m_prev_tile;  ///< Store of the previous imported tile */
+    TTL_event *m_event;                   ///< A pointer to the event that is used to
+                                          ///< track the progress of the transfer
+    TTL_tile<TILESHAPETYPE> m_prev_tile;  ///< Store of the previous imported tile */
 
-    TTL_common_buffering<TENSORTYPE, 2> m_common;  ///< The information that is m_common to all pipeline schemes
+    TTL_common_buffering<TENSORTYPE, TENSORSHAPETYPE, LAYOUTTYPEOUT, LAYOUTTYPEOUT, 2>
+        m_common;  ///< The information that is common to all pipeline schemes
 };

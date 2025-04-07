@@ -85,6 +85,7 @@ struct TTL_augmentation {
  * The type used to hold a tile of a space having a given shape and offset from
  * the beginning of the space
  */
+template <typename SHAPETYPE>
 struct TTL_tile {
     /**
      * @brief Create an empty tile. Empty means it has all dimensions set to zero
@@ -108,7 +109,7 @@ struct TTL_tile {
         return shape.empty();
     }
 
-    TTL_shape shape;    ///< @see TTL_shape
+    SHAPETYPE shape;    ///< @see TTL_shape
     TTL_offset offset;  ///< @see TTL_offset
 };
 
@@ -118,6 +119,7 @@ struct TTL_tile {
  * The TTL_tiler type represents the tiling of a 3D space into 3D tiles with
  * operational overlap
  */
+template <typename TENSORSHAPETYPE, typename TILESHAPETYPE>
 struct TTL_tiler {
     /**
      * @brief Return a TTL_tiler based on a shape, a tile, and an overlap
@@ -131,7 +133,7 @@ struct TTL_tiler {
      *
      * @return A tiler that can produce a tile for any given index.
      */
-    TTL_tiler(const TTL_shape tensor_shape, const TTL_shape tile_shape, const TTL_overlap overlap,
+    TTL_tiler(const TENSORSHAPETYPE tensor_shape, const TILESHAPETYPE tile_shape, const TTL_overlap overlap,
               const TTL_augmentation augmentation)
         : space(tensor_shape), tile(tile_shape), overlap(overlap), augmentation(augmentation) {
         const TTL_dim tiles_in_width =
@@ -151,11 +153,11 @@ struct TTL_tiler {
     }
 
     // Simplify creation of non-overlap tiler
-    TTL_tiler(const TTL_shape shape, const TTL_shape tile)
+    TTL_tiler(const TENSORSHAPETYPE shape, const TILESHAPETYPE tile)
         : TTL_tiler(shape, tile, TTL_overlap(), TTL_augmentation()) {}
 
-    TTL_shape space;                ///< Represents the space to be tiled such as an image
-    TTL_shape tile;                 ///< All tiles will be of this shape, except for clamping at
+    TENSORSHAPETYPE space;                ///< Represents the space to be tiled such as an image
+    TILESHAPETYPE tile;                 ///< All tiles will be of this shape, except for clamping at
                                     ///< the end of the space
     TTL_overlap overlap;            ///< When zeroes represent no overlap
     TTL_augmentation augmentation;  ///< The augmentation that the tile produces.
@@ -230,8 +232,8 @@ struct TTL_tiler {
      *
      * @return The created TTL_tile type
      */
-    TTL_tile create_tile(TTL_dim x, TTL_dim y, TTL_dim z) const {
-        TTL_tile result;
+    TTL_tile<TILESHAPETYPE> create_tile(TTL_dim x, TTL_dim y, TTL_dim z) const {
+        TTL_tile<TILESHAPETYPE> result;
 
         // Calculate the offset in 3D
         result.offset = TTL_offset((x * (tile.width - overlap.width)) - augmentation.left,
@@ -264,9 +266,9 @@ struct TTL_tiler {
      * @return The tile that is represented by tile_id when interpreted in row-major
      order.
      */
-    TTL_tile get_tile(const int tile_id) const {
+    TTL_tile<TILESHAPETYPE> get_tile(const int tile_id) const {
         if (valid_tile_id(tile_id) == false) {
-            TTL_tile invalid;
+            TTL_tile<TILESHAPETYPE> invalid;
             return invalid;
         }
 
@@ -293,7 +295,7 @@ struct TTL_tiler {
      * @return The tile that is represented by tile_id when interpreted in
      column-major order.
      */
-    TTL_tile get_tile_column_major(const int tile_id) const {
+    TTL_tile<TILESHAPETYPE> get_tile_column_major(const int tile_id) const {
         // Compute the 3D coordinates of the tile in order to compute its offset
         const TTL_dim z = tile_id / cache.tiles_in_plane;
         const TTL_dim tid_in_plane = tile_id % cache.tiles_in_plane;

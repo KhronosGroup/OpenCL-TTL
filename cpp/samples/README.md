@@ -30,8 +30,8 @@ debug output.
 ## C Wrapper
 
     export TTL_INCLUDE_PATH=[PATH TO TTL]
-    clang -Wextra -Wall -DKERNEL_NAME=TTL_duplex_buffering -I $TTL_INCLUDE_PATH -DTTL_TARGET=c -g -O0 main.c TTL_duplex_buffering.c -o c_test
-    ./c_test
+    clear; clang -Wextra -Wall -DKERNEL_NAME=TTL_simplex_buffering_fixed_kernel -I $TTL_INCLUDE_PATH -DTTL_TARGET=c -g -O0 main.cpp TTL_simplex_buffering_fixed.cpp -o cpp_test
+    ./cpp_test
 
 ## The "Kernel"
 

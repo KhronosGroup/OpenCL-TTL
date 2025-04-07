@@ -61,8 +61,8 @@ static inline void TTL_wait(const int num_events, TTL_event *const events) {
  * @param event event_ptr A pointer to the event which describe the transfer.
  */
 template <typename INT_TENSORTYPE, typename EXT_TENSORTYPE>
-void TTL_import_base(const TTL_tensor<INT_TENSORTYPE> &internal_tensor,
-                     const TTL_tensor<EXT_TENSORTYPE> &external_tensor, TTL_event *const event) {
+void TTL_import_base(const INT_TENSORTYPE &internal_tensor,
+                     const EXT_TENSORTYPE &external_tensor, TTL_event *const event) {
     *event = async_work_group_copy_3D3D((__local void *)internal_tensor.base,
                                         0,
                                         (__global void *)external_tensor.base,
@@ -88,8 +88,8 @@ void TTL_import_base(const TTL_tensor<INT_TENSORTYPE> &internal_tensor,
  * Complete description of what not how here.
  */
 template <typename INT_TENSORTYPE, typename EXT_TENSORTYPE>
-void TTL_blocking_import_base(const TTL_tensor<INT_TENSORTYPE> &internal_tensor,
-                              const TTL_tensor<EXT_TENSORTYPE> &external_tensor) {
+void TTL_blocking_import_base(const INT_TENSORTYPE &internal_tensor,
+                              const EXT_TENSORTYPE &external_tensor) {
     TTL_event event = TTL_get_event();
     TTL_import_base(internal_tensor, external_tensor, &event);
     TTL_wait(1, &event);
@@ -106,8 +106,8 @@ void TTL_blocking_import_base(const TTL_tensor<INT_TENSORTYPE> &internal_tensor,
  * including some V3.0 drivers. To resolve this define TTL_COPY_3D
  */
 template <typename INT_TENSORTYPE, typename EXT_TENSORTYPE>
-static inline void TTL_export_base(const TTL_tensor<INT_TENSORTYPE> internal_tensor,
-                                   const TTL_tensor<EXT_TENSORTYPE> external_tensor, TTL_event *const event) {
+static inline void TTL_export_base(const INT_TENSORTYPE internal_tensor,
+                                   const EXT_TENSORTYPE external_tensor, TTL_event *const event) {
     *event = async_work_group_copy_3D3D((__global void *)external_tensor.base,
                                         0,
                                         (__local void *)internal_tensor.base,
@@ -134,8 +134,8 @@ static inline void TTL_export_base(const TTL_tensor<INT_TENSORTYPE> internal_ten
  * Complete description of what not how here.
  */
 template <typename INT_TENSORTYPE, typename EXT_TENSORTYPE>
-static inline void TTL_blocking_export_base(const TTL_tensor<INT_TENSORTYPE> internal_tensor,
-                                            const TTL_tensor<EXT_TENSORTYPE> external_tensor) {
+static inline void TTL_blocking_export_base(const INT_TENSORTYPE internal_tensor,
+                                            const EXT_TENSORTYPE external_tensor) {
     TTL_event event = TTL_get_event();
     TTL_export_base(internal_tensor, external_tensor, &event);
     TTL_wait(1, &event);
