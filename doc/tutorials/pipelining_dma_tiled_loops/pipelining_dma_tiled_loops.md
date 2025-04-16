@@ -5,7 +5,6 @@
 - [Pipelining DMA Tiled Loops](#pipelining-dma-tiled-loops)
   - [Introduction](#introduction)
   - [Maximizing performance](#maximizing-performance)
-  - [Proposal: automatic pipelining of manually Tiled and Expanded loops](#proposal-automatic-pipelining-of-manually-tiled-and-expanded-loops)
   - [Appendix: full pipeline description](#appendix-full-pipeline-description)
 
 ## Introduction
@@ -285,39 +284,6 @@ Note: if Compute can be partitioned, the loop can be rotated to produce a
  Epilog Stage 1:          CompuB2 
                           Export2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-## Proposal: automatic pipelining of manually Tiled and Expanded loops
-
-Manual expansion, i.e., allocating multiple rotating buffers to each import and
-export, could look like this:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- // Non-pipelined expanded=Double-Buffered tiled loop
- Ibuf[2] = …;
- Obuf[2] = …;
- for tile in [0, number_of_tiles)
-   Import tile to Ibuf[tile%2];
-   WaitImport tile;
-   Compute tile from Ibuf[tile%2] to Obuf[tile%2];
-   Export tile from Obuf[tile%2];
-   WaitExport tile;
-
- // Non-pipelined expanded=Triple-Buffered tiled loop
- Buf[3] = {…};
- for tile in [0, number_of_tiles)
-   Import tile to Buf[tile%3];
-   WaitImport tile;
-   Compute tile from Buf[tile%3] to Buf[(tile+2)%3];
-   Export tile from Buf[(tile+2)%3];
-   WaitExport tile;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Automatic pipelining: based on identifying Write-After-Read dependences
-Compute--\>Import and WaitExport--\>Compute, with distances set to 1 according
-to the number of buffers allocated to import and export, respectively: compute
-must finish reading from a buffer before the ‘next’ import starts to (re)fill
-it, and export must finish to drain a buffer before the ‘next’ compute starts to
-(re)fill it. (MemorySSA?)
 
 ## Appendix: full pipeline description
 

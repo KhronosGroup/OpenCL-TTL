@@ -26,7 +26,6 @@ CONTENTS:
     - [Duplex Buffering](#duplex-buffering)
     - [Double Buffering](#double-buffering)
     - [Simplex Buffering](#simplex-buffering)
-  - [TTL Tiling Loop Parallelization](#ttl-tiling-loop-parallelization)
   - [Debugging](#debugging)
   - [Tiling Code Examples](#tiling-code-examples)
     - [Duplex Buffering Scheme](#duplex-buffering-scheme)
@@ -64,7 +63,6 @@ As a preliminary example, Tensor Tiling Library can be used as follows to tile a
 trivial a[i][j]=b[i][j]+1 kernel:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define __TTL_VERSION__ 03 // Specify latest TTL version
 #include "TTL.h"
 
 #define TILE_WIDTH 100
@@ -642,7 +640,6 @@ turn on debugging:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define TTL_DEBUG
-#define __TTL_VERSION__ 03
 #include "TTL.h"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -665,11 +662,8 @@ of various TTL features.
 This example demonstrates how to use duplex buffering pipelining scheme.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define __TTL_VERSION__ 03
 #include "TTL.h"
 
-#define MEM0
-#define MEM1
 #define MEMORY_SIZE (1 << 14)
 
 void compute(TTL_int_tensor_t tensor_in, TTL_int_tensor_t tensor_out) {
@@ -741,27 +735,13 @@ __kernel void tile2tileCompute(__global uchar *restrict ext_base_in,
   }
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-A look at a performance trace shows how exports and imports are executed
-simultaneously, and after waiting for both transactions the accelerator starts
-running:
-
-![](duplex_buffering.png)
-
-You can see that the import (DMA-R) of tile *i* starts and then the export
-(DMA-W) of tile *i-1.* We wait for both to complete (SSC-brown period) before
-starting the compute (A/B/C).
-
 ### Double Buffering Scheme
 
 This example demonstrates how to use double buffering pipelining scheme.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define __TTL_VERSION__ 03
 #include "TTL.h"
 
-#define MEM0
-#define MEM1
 #define MEMORY_SIZE (1 << 14)
 
 void compute(TTL_int_tensor_t tensor_in, TTL_int_tensor_t tensor_out) {
@@ -838,28 +818,13 @@ __kernel void tile2tileCompute(__global uchar *restrict ext_base_in,
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A look at a performance trace shows how exports, imports and compute are
-executed simultaneously:
-
-![](double_buffering.png)
-
-You can see that in the steady state an import (DMA-R) of tile *i+1* runs while
-the vector units (A/B/C) perform compute of tile *i*. You can also see how the
-export (DMW-W) of tile *i-1* is done in parallel to the compute of tile *i*.
-This scheme utilizes pipelining to minimize wait/idle time, represented by small
-brown rectangles in SSC. It is the fastest pipelining scheme, assuming 4 buffers
-are available: 2 for import and 2 for export.
-
 ### Simplex Buffering Scheme
 
 This example demonstrates how to use double buffering pipelining scheme.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define __TTL_VERSION__ 03
 #include "TTL.h"
 
-#define MEM0
-#define MEM1
 #define MEMORY_SIZE (1 << 14)
 
 void compute(TTL_int_tensor_t tensor_in, TTL_int_tensor_t tensor_out) {
@@ -930,26 +895,11 @@ __kernel void tile2tileCompute(__global uchar *restrict ext_base_in,
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A look at a performance trace shows how exports, imports and compute are
-executed simultaneously:
-
-![](simplex_buffering.png)
-
-You can see that while vector units A and B compute, one of the DMA operations
-is done in parallel - in this example it is the import marked as DMA-R. So, in
-the steady state the export (DMA-W) of tile *i-1* is done before the compute,
-while the import (DMA-R) of tile *i+1* is performed in parallel to the compute
-(A/B) of tile *i*.
-
 ### Overlapped Tiler
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define __TTL_VERSION__ 03
 #include "TTL.h"
 
-#define MEM0
-#define MEM1
-#define MEM2
 #define MEMORY_SIZE (1 << 14)
 #define OVERLAP_WIDTH 7
 #define OVERLAP_HEIGHT 9
@@ -1032,11 +982,8 @@ __kernel void TTL_overlap(__global uchar *restrict inp,
 ### Parallelizing Tiling Loop
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define __TTL_VERSION__ 03
 #include "TTL.h"
 
-#define MEM0
-#define MEM1
 #define MEMORY_SIZE (1 << 14)
 
 void compute(TTL_int_tensor_t tensor_in, TTL_int_tensor_t tensor_out) {
@@ -1107,7 +1054,6 @@ This example shows how double buffering can be coded manually, i.e., w/o using
 TTL's scheme.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define __TTL_VERSION__ 03
 #include "TTL.h"
 
 __attribute__((noinline)) void
