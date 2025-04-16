@@ -20,18 +20,13 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define TENSOR_WIDTH 103
-#define TENSOR_HEIGHT 27
-#define TILE_WIDTH 10
-#define TILE_HEIGHT 10
-#define restrict
-
+#include "fixed_tensor_sizes.h"
 #include "TTL/TTL.h"
 #include "kernel.h"
 typedef unsigned int unsigned_int;
 
-static TEST_TENSOR_TYPE input_buffer[TENSOR_HEIGHT][TENSOR_WIDTH];
-static TEST_TENSOR_TYPE output_buffer[TENSOR_HEIGHT][TENSOR_WIDTH];
+static TEST_TENSOR_TYPE input_buffer[TENSOR_HEIGHT][EXTERNAL_STRIDE_IN];
+static TEST_TENSOR_TYPE output_buffer[TENSOR_HEIGHT][EXTERNAL_STRIDE_OUT];
 
 int main(void) {
     for (uint32_t y = 0; y < TENSOR_HEIGHT; y++) {

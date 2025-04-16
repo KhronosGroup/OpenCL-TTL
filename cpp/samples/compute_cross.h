@@ -28,9 +28,9 @@ constexpr TTL_dim TILE_OVERLAP_RIGHT = ComputeType::TEST_COMPUTE_TYPE == Compute
 constexpr TTL_dim TILE_OVERLAP_TOP = ComputeType::TEST_COMPUTE_TYPE == ComputeType::CROSS ? 1 : 0;
 constexpr TTL_dim TILE_OVERLAP_BOTTOM = ComputeType::TEST_COMPUTE_TYPE == ComputeType::CROSS ? 1 : 0;
 
-template <typename TENSORTYPE>
-void compute(const ComputeType compute_type, TTL_sub_tensor<TENSORTYPE> tensor_in,
-             TTL_sub_tensor<TENSORTYPE> tensor_out) {
+template <typename TENSORTYPE,typename SUBTENSORSHAPETYPE, typename ORIGINALTENSORSHAPETYPE, typename LAYOUTTYPE>
+void compute(const ComputeType compute_type, TTL_sub_tensor<TENSORTYPE, SUBTENSORSHAPETYPE, ORIGINALTENSORSHAPETYPE, LAYOUTTYPE> tensor_in,
+             TTL_sub_tensor<TENSORTYPE, SUBTENSORSHAPETYPE, ORIGINALTENSORSHAPETYPE, LAYOUTTYPE> tensor_out) {
     for (TTL_dim y = 0; y < tensor_out.tensor.shape.height; ++y) {
         for (TTL_dim x = 0; x < tensor_out.tensor.shape.width; ++x) {
             const int x_in = x + TILE_OVERLAP_LEFT;
@@ -60,10 +60,10 @@ void compute(const ComputeType compute_type, TTL_sub_tensor<TENSORTYPE> tensor_i
 }
 
 template <typename TENSORTYPE>
-bool result_check(const ComputeType compute_type, TENSORTYPE* const ext_base_in, TENSORTYPE* const ext_base_out,
-                  const int width, const int height, const int tile_width, const int tile_height) {
-#define input_buffer ((TENSORTYPE(*)[height][width])ext_base_in)
-#define output_buffer ((TENSORTYPE(*)[height][width])ext_base_out)
+bool result_check(const ComputeType compute_type, TENSORTYPE* const ext_base_in, const uint32_t external_stide_in, TENSORTYPE* const ext_base_out, const uint32_t external_stide_out, const int width, const int height,
+                  const int tile_width, const int tile_height) {
+#define input_buffer ((TENSORTYPE(*)[height][external_stide_in])ext_base_in)
+#define output_buffer ((TENSORTYPE(*)[height][external_stide_out])ext_base_out)
 
     // TENSORTYPE(* input_buffer)[height][width] = (TENSORTYPE(*)[height][width])ext_base_in;
     // TENSORTYPE(* output_buffer)[height][width] = (TENSORTYPE(*)[height][width])ext_base_out;

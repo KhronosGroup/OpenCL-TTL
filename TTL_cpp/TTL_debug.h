@@ -105,8 +105,8 @@ static inline void __TTL_dump_tile_t(const TTL_tile *const ttl_tile) {
  *
  * @param ttl_int_tensor The internal tensor to print debug info for.
  */
-template <typename TENSORTYPE>
-static inline void __TTL_dump_tensor(const TTL_tensor<TENSORTYPE> *const ttl_int_tensor) {
+template <typename TENSORTYPE, typename SHAPETYPE>
+static inline void __TTL_dump_tensor(const TTL_tensor<TENSORTYPE, SHAPETYPE> *const ttl_int_tensor) {
     printf("TTL_int_tensor_t: %p,%d ", ttl_int_tensor->base, ttl_int_tensor->elem_size);
     __TTL_dump_layout_t(&ttl_int_tensor->layout);
     __TTL_dump_shape_t(&ttl_int_tensor->shape);
@@ -119,8 +119,8 @@ static inline void __TTL_dump_tensor(const TTL_tensor<TENSORTYPE> *const ttl_int
  *
  * @param ttl_int_sub_tensor The internal tensor to print debug info for.
  */
-template <typename TENSORTYPE>
-static inline void __TTL_dump_sub_tensor(const TTL_sub_tensor<TENSORTYPE> *const ttl_int_sub_tensor) {
+template <typename TENSORTYPE, typename SHAPETYPE>
+static inline void __TTL_dump_sub_tensor(const TTL_sub_tensor<TENSORTYPE, SHAPETYPE> *const ttl_int_sub_tensor) {
     printf("TTL_int_sub_tensor_t: ");
     __TTL_dump_int_tensor_t(&ttl_int_sub_tensor->tensor);
     __TTL_dump_shape(&ttl_int_sub_tensor->origin.shape);
@@ -184,10 +184,10 @@ static inline void __TTL_dump_wait(int num_events, TTL_event *events, const unsi
 
 static inline void __TTL_dump_wait(int /*num_events*/, TTL_event * /*events*/, const unsigned int /*line*/) {}
 
-template <typename INT_TENSORTYPE, typename EXT_TENSORTYPE>
+template <typename INT_TENSORTYPE, typename EXT_TENSORTYPE, typename TENSORSHAPETYPE, typename LAYOUTTYPEIN, typename LAYOUTTYPEOUT>
 static inline void __TTL_dump_transaction(const bool /*is_export*/,
-                                          const TTL_tensor<INT_TENSORTYPE> & /*internal_tensor*/,
-                                          const TTL_tensor<EXT_TENSORTYPE> & /*external_tensor*/,
+                                          const TTL_tensor<INT_TENSORTYPE,TENSORSHAPETYPE,LAYOUTTYPEIN> & /*internal_tensor*/,
+                                          const TTL_tensor<EXT_TENSORTYPE,TENSORSHAPETYPE,LAYOUTTYPEOUT> & /*external_tensor*/,
                                           const int /*access_type*/, const TTL_event *const /*event*/,
                                           const unsigned int /*line*/){};
 

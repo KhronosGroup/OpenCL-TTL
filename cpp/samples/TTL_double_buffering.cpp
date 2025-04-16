@@ -19,6 +19,7 @@
 #include "TTL/TTL.h"
 #include "compute_cross.h"
 #include "kernel.h"
+#include "fixed_tensor_sizes.h"
 
 /**
  * @brief Scope globally because it makes debugging easier
@@ -58,7 +59,7 @@ bool TTL_double_buffering_kernel(TEST_TENSOR_TYPE *restrict ext_base_in, int ext
         input_buffer_1, input_buffer_2, ext_input_tensor, &import_DB_e, input_tiler.get_tile(0));
 
     TTL_event export_DB_e = TTL_get_event();
-    TTL_export_double_buffering export_db(output_buffer_1, output_buffer_2, ext_output_tensor, &export_DB_e);
+    TTL_export_double_buffering export_db(output_buffer_1, output_buffer_2, ext_output_tensor, &export_DB_e, output_tiler);
 
     for (int i = 0; i < input_tiler.number_of_tiles(); ++i) {
         TTL_tile tile_next_import = input_tiler.get_tile(i + 1);
@@ -73,5 +74,8 @@ bool TTL_double_buffering_kernel(TEST_TENSOR_TYPE *restrict ext_base_in, int ext
     import_db.finish_buffering();
     export_db.finish_buffering();
 
-    return result_check(ComputeType::TEST_COMPUTE_TYPE, ext_base_in, ext_base_out, width, height, tile_width, tile_height);
+    return result_check(ComputeType::TEST_COMPUTE_TYPE,                         ext_base_in,
+						EXTERNAL_STRIDE_IN,
+                        ext_base_out,EXTERNAL_STRIDE_OUT,
+width, height, tile_width, tile_height);
 }
