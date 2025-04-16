@@ -18,9 +18,8 @@
 
 #pragma once
 
-#if __cplusplus
-#include "TTL_cpp/TTL.h"
-#else
+#define restrict
+
 #include "TTL_macros.h"
 
 /**
@@ -76,7 +75,4 @@
 #define TTL_IMPORT_EXPORT_INCLUDE_H __TTL_STRINGFY2(TTL_TARGET/TTL_import_export.h)
 // clang-format on
 
-#include "TTL_import_export.h"
 #include "TTL_pipeline_schemes.h"
-#include "TTL_trace_macros.h"
-#endif
