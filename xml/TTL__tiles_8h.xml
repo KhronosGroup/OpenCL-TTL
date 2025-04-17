@@ -1,0 +1,1052 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="TTL__tiles_8h" kind="file" language="C++">
+    <compoundname>TTL_tiles.h</compoundname>
+    <innerclass refid="structTTL__augmentation__t" prot="public">TTL_augmentation_t</innerclass>
+    <innerclass refid="structTTL__tile__t" prot="public">TTL_tile_t</innerclass>
+    <innerclass refid="structTTL__tiler__t" prot="public">TTL_tiler_t</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" prot="public" static="no">
+        <type>unsigned char</type>
+        <definition>typedef unsigned char TTL_augmented_dim_t</definition>
+        <argsstring></argsstring>
+        <name>TTL_augmented_dim_t</name>
+        <briefdescription>
+<para>Augment an input tensor with logical padding. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>When an input tensor is imported using a tiler the resulting tensors may have elements beyond the space of the original tensor. In terms of the origin tensor the subtensor may for example start at offset(-1, -1, -1) in this case the elements at (-1, -1, -1), (-1, 0, 0) etc. needed to be created from a process of augmentation.</para>
+<para>Currently the only dynamic part of the augmentation is the size of the augmentation the augmented values are simply hardcode.</para>
+<para>A <ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref> is the number of elements to augment. A number of a &quot;augmented&quot; elements in the unit of elements </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="38" column="23" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="TTL__tiles_8h_1ab0bb98ca3c62d4eb49ea99809311bc9c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref></type>
+        <definition>static TTL_augmentation_t TTL_create_augmentation</definition>
+        <argsstring>(const TTL_augmented_dim_t left, const TTL_augmented_dim_t right, const TTL_augmented_dim_t top, const TTL_augmented_dim_t bottom, const TTL_augmented_dim_t front, const TTL_augmented_dim_t back)</argsstring>
+        <name>TTL_create_augmentation</name>
+        <param>
+          <type>const <ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>left</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>right</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>top</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>bottom</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>front</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>back</declname>
+        </param>
+        <briefdescription>
+<para>Create a 3D Description of a Tile augmentation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref> for more information.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>left</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Left hand augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>right</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Right hand augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Top augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bottom</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Bottom augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>front</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Front augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>back</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Back augmentation in elements</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref> describing in 3D the overlap requested. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="72" column="36" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="72" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1ae71e816100107ad10f69dd5496e8b846" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref></type>
+        <definition>static TTL_augmentation_t TTL_create_augmentation</definition>
+        <argsstring>(TTL_augmented_dim_t left, TTL_augmented_dim_t right, TTL_augmented_dim_t top, TTL_augmented_dim_t bottom)</argsstring>
+        <name>TTL_create_augmentation</name>
+        <param>
+          <type><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>left</declname>
+        </param>
+        <param>
+          <type><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>right</declname>
+        </param>
+        <param>
+          <type><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>top</declname>
+        </param>
+        <param>
+          <type><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>bottom</declname>
+        </param>
+        <briefdescription>
+<para>Create a 2D Description of a Tile augmentation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref> for more information.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>left</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Left hand augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>right</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Right hand augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Top augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bottom</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Bottom augmentation in elements</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+front and back default to 0</para>
+<para><simplesect kind="return"><para>A <ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref> describing in 3D the overlap requested. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="93" column="36" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="93" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1a4603690b03c762ae182ea8dbfd736160" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref></type>
+        <definition>static TTL_augmentation_t TTL_create_augmentation</definition>
+        <argsstring>(TTL_augmented_dim_t left, TTL_augmented_dim_t right)</argsstring>
+        <name>TTL_create_augmentation</name>
+        <param>
+          <type><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>left</declname>
+        </param>
+        <param>
+          <type><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref></type>
+          <declname>right</declname>
+        </param>
+        <briefdescription>
+<para>Create a 1D Description of a Tile augmentation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref> for more information.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>left</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Left hand augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>right</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Right hand augmentation in elements</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+top, bottom, front and back default to 0</para>
+<para><simplesect kind="return"><para>A <ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref> describing in 3D the overlap requested. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="112" column="36" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="112" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1a8eda704b864c0eba5c2709ec70e10fbd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int TTL_number_of_tiles</definition>
+        <argsstring>(TTL_tiler_t tiler)</argsstring>
+        <name>TTL_number_of_tiles</name>
+        <param>
+          <type><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></type>
+          <declname>tiler</declname>
+        </param>
+        <briefdescription>
+<para>Return the number of tiles that this tile can produce. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tiler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tiler in question.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int The number of tiles produced by the tiler. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="161" column="19" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="161" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1a3a80d99a0d539eff9374e1a413b34d6f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int TTL_valid_tile_id</definition>
+        <argsstring>(int tile_id, TTL_tiler_t tiler)</argsstring>
+        <name>TTL_valid_tile_id</name>
+        <param>
+          <type>int</type>
+          <declname>tile_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></type>
+          <declname>tiler</declname>
+        </param>
+        <briefdescription>
+<para>Given a tile ID return true or false to indicate if the id is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tile_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID to validate. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tiler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tiler in question.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int The number of tiles produced by the tiler. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="173" column="19" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="173" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1afa41e4b1125fdd725a5b891cde2ae66c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int TTL_ceil_of_a_div_b</definition>
+        <argsstring>(const int a, const int b)</argsstring>
+        <name>TTL_ceil_of_a_div_b</name>
+        <param>
+          <type>const int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Return the ceil value of a/b i.e. ceil(a/b) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implementation of ceil(a/b) without requiring a library or floating-point.</para>
+<para>Internal TTL function not part of the API.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dividend to use in the calculation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The divisor to use in the calculation</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="190" column="19" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="190" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1ab7e52be36254de06eceaf15b8b77f788" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></type>
+        <definition>static TTL_tiler_t TTL_create_overlap_tiler</definition>
+        <argsstring>(const TTL_shape_t tensor_shape, const TTL_shape_t tile_shape, const TTL_overlap_t overlap, const TTL_augmentation_t augmentation)</argsstring>
+        <name>TTL_create_overlap_tiler</name>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>tensor_shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>tile_shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref></type>
+          <declname>overlap</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref></type>
+          <declname>augmentation</declname>
+        </param>
+        <briefdescription>
+<para>Return a <ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref> based on a shape, a tile, and an overlap. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The shape to be tiled </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tile_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The description of the tile that the shape will be sub-divided to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>overlap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The overlap between tiles </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>augmentation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The augomentation to apply at the edges durring import.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Complete description of what not how here.</para>
+<para><simplesect kind="return"><para>A tiler that can produce a tile for any given index. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="206" column="27" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="206" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1adb0c677811fc72b45456af0b7a84a6da" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></type>
+        <definition>static TTL_tiler_t TTL_create_tiler</definition>
+        <argsstring>(const TTL_shape_t shape, const TTL_shape_t tile)</argsstring>
+        <name>TTL_create_tiler</name>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>tile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="229" column="27" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="229" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1a9f40042454b3c5862a448b8f0be150e6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>static TTL_dim_t TTL_tiles_in_width</definition>
+        <argsstring>(TTL_tiler_t t)</argsstring>
+        <name>TTL_tiles_in_width</name>
+        <param>
+          <type><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="235" column="25" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="235" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1a24732adc2b592bdb741131642e7dab08" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>static TTL_dim_t TTL_tiles_in_height</definition>
+        <argsstring>(TTL_tiler_t t)</argsstring>
+        <name>TTL_tiles_in_height</name>
+        <param>
+          <type><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="239" column="25" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="239" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1afb4b1db47f093416aacfb8cc15ff0a67" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>static TTL_dim_t TTL_tiles_in_depth</definition>
+        <argsstring>(TTL_tiler_t t)</argsstring>
+        <name>TTL_tiles_in_depth</name>
+        <param>
+          <type><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="243" column="25" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="243" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1a5892a886773f7a902560d0a699838796" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int TTL_tile_empty</definition>
+        <argsstring>(TTL_tile_t tile)</argsstring>
+        <name>TTL_tile_empty</name>
+        <param>
+          <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+          <declname>tile</declname>
+        </param>
+        <briefdescription>
+<para>Check if the tile passed is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Empty is defined as width of the shape being equal to 0.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tile to check the emptiness of.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if shape is empty </para>
+</simplesect>
+<simplesect kind="return"><para>false if shape is not empty </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="257" column="19" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="257" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1aab47a72ad748d70bfd9892500106d755" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+        <definition>static TTL_tile_t TTL_create_empty_tile</definition>
+        <argsstring>()</argsstring>
+        <name>TTL_create_empty_tile</name>
+        <briefdescription>
+<para>Create an empty tile. Empty means it has all dimensions set to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Most operations on an empty tile should turn into no-ops and so an empty tile is the safest default state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="267" column="26" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="267" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1aab1ebf60b340a05f50081fc16f6f1bc4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+        <definition>static TTL_tile_t TTL_create_tile</definition>
+        <argsstring>(TTL_dim_t x, TTL_dim_t y, TTL_dim_t z, TTL_tiler_t tiler)</argsstring>
+        <name>TTL_create_tile</name>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></type>
+          <declname>tiler</declname>
+        </param>
+        <briefdescription>
+<para>Returns a tile at a position from a tiler and respective coordinates. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x position of the tile being created </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y position of the tile being created </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The z position of the tile being created </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tiler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tiler from which the tiler can be calculated.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The created <ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref> type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="282" column="26" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="282" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1a6be82c657988ed29b07515e6d951042c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+        <definition>static TTL_tile_t TTL_get_tile</definition>
+        <argsstring>(const int tile_id, const TTL_tiler_t tiler)</argsstring>
+        <name>TTL_get_tile</name>
+        <param>
+          <type>const int</type>
+          <declname>tile_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></type>
+          <declname>tiler</declname>
+        </param>
+        <briefdescription>
+<para>Return the tile_id&apos;th tile of a tile array in row-major order. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the tile_id&apos;th tile, starting from tile_id=0, in row-major order. Returns an invalid tile if tile_id is not valid (not from [0, number_of_tiles))</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tile_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tile id to return - if out of bounds then an invalid tile is returned </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tiler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The containing with the shape and tiling information</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The tile that is represented by tile_id when interpreted in row-major order. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="319" column="26" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="319" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__tiles_8h_1a45b9364e6b7883b5529aae90e79905b9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+        <definition>static TTL_tile_t TTL_get_tile_column_major</definition>
+        <argsstring>(const int tile_id, const TTL_tiler_t tiler)</argsstring>
+        <name>TTL_get_tile_column_major</name>
+        <param>
+          <type>const int</type>
+          <declname>tile_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></type>
+          <declname>tiler</declname>
+        </param>
+        <briefdescription>
+<para>Return the tile_id&apos;th tile of a tile array in column-major order. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the tile_id&apos;th tile, starting from tile_id=0, in column-major order. Returns an invalid tile if tile_id is not valid (not from [0, number_of_tiles))</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tile_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tile id to return - if out of bounds then an invalid tile is returned </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tiler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tiler containing the shape and tiling information</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The tile that is represented by tile_id when interpreted in column-major order. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="348" column="26" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="348" bodyend="356"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_tiles.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/******************************************************</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>AUGMENTATION</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*****************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="23"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Augment<sp/>an<sp/>input<sp/>tensor<sp/>with<sp/>logical<sp/>padding</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>When<sp/>an<sp/>input<sp/>tensor<sp/>is<sp/>imported<sp/>using<sp/>a<sp/>tiler<sp/>the<sp/>resulting<sp/>tensors</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>may<sp/>have<sp/>elements<sp/>beyond<sp/>the<sp/>space<sp/>of<sp/>the<sp/>original<sp/>tensor.<sp/>In<sp/>terms<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>origin<sp/>tensor<sp/>the<sp/>subtensor<sp/>may<sp/>for<sp/>example<sp/>start<sp/>at<sp/>offset(-1,<sp/>-1,<sp/>-1)<sp/>in</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>this<sp/>case<sp/>the<sp/>elements<sp/>at<sp/>(-1,<sp/>-1,<sp/>-1),<sp/>(-1,<sp/>0,<sp/>0)<sp/>etc.<sp/>needed<sp/>to<sp/>be<sp/>created</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>from<sp/>a<sp/>process<sp/>of<sp/>augmentation.</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>Currently<sp/>the<sp/>only<sp/>dynamic<sp/>part<sp/>of<sp/>the<sp/>augmentation<sp/>is<sp/>the<sp/>size<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>augmentation<sp/>the<sp/>augmented<sp/>values<sp/>are<sp/>simply<sp/>hardcode.</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>A<sp/>TTL_augmented_dim_t<sp/>is<sp/>the<sp/>number<sp/>of<sp/>elements<sp/>to<sp/>augment.</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>A<sp/>number<sp/>of<sp/>a<sp/>&quot;augmented&quot;<sp/>elements<sp/>in<sp/>the<sp/>unit<sp/>of<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="40"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@brief<sp/>3D<sp/>description<sp/>of<sp/>the<sp/>augmented<sp/>margins</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>TTL_augmentation_t<sp/>represents<sp/>the<sp/>number<sp/>of<sp/>elements<sp/>that<sp/>a<sp/>tensor<sp/>will<sp/>be<sp/>expanded<sp/>in<sp/>each<sp/>dimension.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>For<sp/>example<sp/>if<sp/>left<sp/>=<sp/>1<sp/>then<sp/>one<sp/>column<sp/>of<sp/>elements<sp/>will<sp/>be<sp/>added<sp/>to<sp/>a<sp/>tensor<sp/>thereby<sp/>increasing<sp/>its<sp/>width<sp/>by<sp/>1.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>The<sp/>type<sp/>used<sp/>to<sp/>hold<sp/>the<sp/>augmentation<sp/>of<sp/>tiles<sp/>along<sp/>all<sp/>dimensions</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="structTTL__augmentation__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50" refid="structTTL__augmentation__t_1aa4865c0b863d4a85ad0aff9d57c97485" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/><ref refid="structTTL__augmentation__t_1aa4865c0b863d4a85ad0aff9d57c97485" kindref="member">left</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Left<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="structTTL__augmentation__t_1a14b6707c96da50f066053ad2cc5f543a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/><ref refid="structTTL__augmentation__t_1a14b6707c96da50f066053ad2cc5f543a" kindref="member">right</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Right<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="structTTL__augmentation__t_1a95dd77223f0d5616a8b7105c1957c559" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/><ref refid="structTTL__augmentation__t_1a95dd77223f0d5616a8b7105c1957c559" kindref="member">top</ref>;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Top<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="structTTL__augmentation__t_1a438ab3342248b88791815fb12dd9df3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/><ref refid="structTTL__augmentation__t_1a438ab3342248b88791815fb12dd9df3b" kindref="member">bottom</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Bottom<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="structTTL__augmentation__t_1ae8bcfe2fcd93b71fb9cf9b001211bb7f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/><ref refid="structTTL__augmentation__t_1ae8bcfe2fcd93b71fb9cf9b001211bb7f" kindref="member">front</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Front<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="structTTL__augmentation__t_1a2daf4dc74791c6c7a7c01751044254e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/><ref refid="structTTL__augmentation__t_1a2daf4dc74791c6c7a7c01751044254e4" kindref="member">back</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Back<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}<sp/><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="58"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>3D<sp/>Description<sp/>of<sp/>a<sp/>Tile<sp/>augmentation</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@see<sp/>TTL_overlap_t<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@param<sp/>left<sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Left<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>@param<sp/>right<sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Right<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@param<sp/>top<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Top<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>@param<sp/>bottom<sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Bottom<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>@param<sp/>front<sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Front<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>@param<sp/>back<sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Back<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>@return<sp/>A<sp/>TTL_augmentation_t<sp/>describing<sp/>in<sp/>3D<sp/>the<sp/>overlap<sp/>requested.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="TTL__tiles_8h_1ab0bb98ca3c62d4eb49ea99809311bc9c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref><sp/>__attribute__((overloadable))<sp/><ref refid="TTL__tiles_8h_1ab0bb98ca3c62d4eb49ea99809311bc9c" kindref="member">TTL_create_augmentation</ref>(</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>left,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>right,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>top,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>bottom,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>front,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>back)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref><sp/>res<sp/>=<sp/>{<sp/>left,<sp/>right,<sp/>top,<sp/>bottom,<sp/>front,<sp/>back<sp/>};</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="79"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>2D<sp/>Description<sp/>of<sp/>a<sp/>Tile<sp/>augmentation</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>@see<sp/>TTL_overlap_t<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*<sp/>@param<sp/>left<sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Left<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>@param<sp/>right<sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Right<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>@param<sp/>top<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Top<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>@param<sp/>bottom<sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Bottom<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*<sp/>front<sp/>and<sp/>back<sp/>default<sp/>to<sp/>0</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*<sp/>@return<sp/>A<sp/>TTL_augmentation_t<sp/>describing<sp/>in<sp/>3D<sp/>the<sp/>overlap<sp/>requested.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="TTL__tiles_8h_1ae71e816100107ad10f69dd5496e8b846" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref><sp/>__attribute__((overloadable))<sp/><ref refid="TTL__tiles_8h_1ab0bb98ca3c62d4eb49ea99809311bc9c" kindref="member">TTL_create_augmentation</ref>(<ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>left,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>right,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>top,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>bottom)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1ab0bb98ca3c62d4eb49ea99809311bc9c" kindref="member">TTL_create_augmentation</ref>(left,<sp/>right,<sp/>top,<sp/>bottom,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="100"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>1D<sp/>Description<sp/>of<sp/>a<sp/>Tile<sp/>augmentation</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/>*<sp/>@see<sp/>TTL_overlap_t<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/>*<sp/>@param<sp/>left<sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Left<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*<sp/>@param<sp/>right<sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Right<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*<sp/>top,<sp/>bottom,<sp/>front<sp/>and<sp/>back<sp/>default<sp/>to<sp/>0</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*<sp/>@return<sp/>A<sp/>TTL_augmentation_t<sp/>describing<sp/>in<sp/>3D<sp/>the<sp/>overlap<sp/>requested.</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="TTL__tiles_8h_1a4603690b03c762ae182ea8dbfd736160" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref><sp/>__attribute__((overloadable))<sp/><ref refid="TTL__tiles_8h_1ab0bb98ca3c62d4eb49ea99809311bc9c" kindref="member">TTL_create_augmentation</ref>(<ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>left,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1a591d0ad7d112a0a5617ec7d8a7a57e44" kindref="member">TTL_augmented_dim_t</ref><sp/>right)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1ab0bb98ca3c62d4eb49ea99809311bc9c" kindref="member">TTL_create_augmentation</ref>(left,<sp/>right,<sp/>0,<sp/>0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">/***</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*<sp/>@brief<sp/>A<sp/>Tile<sp/>is<sp/>described<sp/>by<sp/>its<sp/>Shape<sp/>and<sp/>the<sp/>offset<sp/>from<sp/>the<sp/>beginning<sp/>of</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*<sp/>the<sp/>Space</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*<sp/>The<sp/>type<sp/>used<sp/>to<sp/>hold<sp/>a<sp/>tile<sp/>of<sp/>a<sp/>space<sp/>having<sp/>a<sp/>given<sp/>shape<sp/>and<sp/>offset<sp/>from</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>space</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="structTTL__tile__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="125" refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/><ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@see<sp/>TTL_shape_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref><sp/><ref refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" kindref="member">offset</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@see<sp/>TTL_offset_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}<sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="129"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*<sp/>@brief<sp/>TTL_tiler_t<sp/>is<sp/>the<sp/>basic<sp/>unit<sp/>that<sp/>describes<sp/>how<sp/>a<sp/>tile<sp/>is<sp/>subdivided.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*<sp/>The<sp/>TTL_tiler_t<sp/>type<sp/>represents<sp/>the<sp/>tiling<sp/>of<sp/>a<sp/>3D<sp/>space<sp/>into<sp/>3D<sp/>tiles<sp/>with</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*<sp/>operational<sp/>overlap</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="structTTL__tiler__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="136" refid="structTTL__tiler__t_1ac46505174c37e6f5b4e6993ec411e7c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/><ref refid="structTTL__tiler__t_1ac46505174c37e6f5b4e6993ec411e7c1" kindref="member">space</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Represents<sp/>the<sp/>space<sp/>to<sp/>be<sp/>tiled<sp/>such<sp/>as<sp/>an<sp/>image</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="structTTL__tiler__t_1a322252fe86f426c6f0d2d33e41c3e484" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/><ref refid="structTTL__tiler__t_1a322252fe86f426c6f0d2d33e41c3e484" kindref="member">tile</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>All<sp/>tiles<sp/>will<sp/>be<sp/>of<sp/>this<sp/>shape,<sp/>except<sp/>for<sp/>clamping<sp/>at</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>the<sp/>end<sp/>of<sp/>the<sp/>space</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="structTTL__tiler__t_1a3a38591bca09c0e4c14403099c1d5eda" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref><sp/><ref refid="structTTL__tiler__t_1a3a38591bca09c0e4c14403099c1d5eda" kindref="member">overlap</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>When<sp/>zeroes<sp/>represent<sp/>no<sp/>overlap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="structTTL__tiler__t_1a823b767beb6a8775fd219c5ab307771f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref><sp/><ref refid="structTTL__tiler__t_1a823b767beb6a8775fd219c5ab307771f" kindref="member">augmentation</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>The<sp/>augmentation<sp/>that<sp/>the<sp/>tile<sp/>produces.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Precomputed<sp/>information<sp/>to<sp/>speed<sp/>up<sp/>later<sp/>reuse</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146" refid="structTTL__tiler__t_1ae6e4a2c2147c55412cac7cfb072c018a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/><ref refid="structTTL__tiler__t_1ae6e4a2c2147c55412cac7cfb072c018a" kindref="member">number_of_tiles</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="structTTL__tiler__t_1a0686e98101d3964e22a2b229cdee5bdd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/><ref refid="structTTL__tiler__t_1a0686e98101d3964e22a2b229cdee5bdd" kindref="member">tiles_in_width</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="structTTL__tiler__t_1ad1632e6b21ee5ad81f2ac6a3a90ba703" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/><ref refid="structTTL__tiler__t_1ad1632e6b21ee5ad81f2ac6a3a90ba703" kindref="member">tiles_in_height</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="structTTL__tiler__t_1a3c3f2927d87f212ae77571d8747c4657" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/><ref refid="structTTL__tiler__t_1a3c3f2927d87f212ae77571d8747c4657" kindref="member">tiles_in_depth</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="structTTL__tiler__t_1a873497b66846b5266bc77ded752030c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/><ref refid="structTTL__tiler__t_1a873497b66846b5266bc77ded752030c5" kindref="member">tiles_in_plane</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>cache;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">}<sp/><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref>;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="154"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Return<sp/>the<sp/>number<sp/>of<sp/>tiles<sp/>that<sp/>this<sp/>tile<sp/>can<sp/>produce.</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*<sp/>@param<sp/>tiler<sp/>The<sp/>tiler<sp/>in<sp/>question.</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/>*<sp/>@return<sp/>int<sp/>The<sp/>number<sp/>of<sp/>tiles<sp/>produced<sp/>by<sp/>the<sp/>tiler.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="TTL__tiles_8h_1a8eda704b864c0eba5c2709ec70e10fbd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1a8eda704b864c0eba5c2709ec70e10fbd" kindref="member">TTL_number_of_tiles</ref>(<ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>tiler)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1ae6e4a2c2147c55412cac7cfb072c018a" kindref="member">number_of_tiles</ref>;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="165"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Given<sp/>a<sp/>tile<sp/>ID<sp/>return<sp/>true<sp/>or<sp/>false<sp/>to<sp/>indicate<sp/>if<sp/>the<sp/>id<sp/>is<sp/>valid</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/>*<sp/>@param<sp/>tile_id<sp/>The<sp/>ID<sp/>to<sp/>validate.</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/>*<sp/>@param<sp/>tiler<sp/>The<sp/>tiler<sp/>in<sp/>question.</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/>*<sp/>@return<sp/>int<sp/>The<sp/>number<sp/>of<sp/>tiles<sp/>produced<sp/>by<sp/>the<sp/>tiler.</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="TTL__tiles_8h_1a3a80d99a0d539eff9374e1a413b34d6f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1a3a80d99a0d539eff9374e1a413b34d6f" kindref="member">TTL_valid_tile_id</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tile_id,<sp/><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>tiler)<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((tile_id<sp/>&gt;=<sp/>0)<sp/>&amp;&amp;<sp/>(tile_id<sp/>&lt;<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1ae6e4a2c2147c55412cac7cfb072c018a" kindref="member">number_of_tiles</ref>));</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="177"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Return<sp/>the<sp/>ceil<sp/>value<sp/>of<sp/>a/b<sp/>i.e.<sp/>ceil(a/b)</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/>*<sp/>Implementation<sp/>of<sp/>ceil(a/b)<sp/>without<sp/>requiring<sp/>a<sp/>library<sp/>or<sp/>floating-point.</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/>*<sp/>Internal<sp/>TTL<sp/>function<sp/>not<sp/>part<sp/>of<sp/>the<sp/>API.</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/>*<sp/>@param<sp/>a<sp/>The<sp/>dividend<sp/>to<sp/>use<sp/>in<sp/>the<sp/>calculation</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/>*<sp/>@param<sp/>b<sp/>The<sp/>divisor<sp/>to<sp/>use<sp/>in<sp/>the<sp/>calculation</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/>*<sp/>@todo<sp/>b<sp/>is<sp/>a<sp/>shape<sp/>dimension<sp/>of<sp/>a<sp/>tensor,<sp/>so<sp/>it<sp/>is<sp/>not<sp/>zero.<sp/>Remove<sp/>dynamic</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/>*<sp/>check<sp/>for<sp/>zero<sp/>b,<sp/>w/o<sp/>crashing<sp/>the<sp/>compiler.</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="TTL__tiles_8h_1afa41e4b1125fdd725a5b891cde2ae66c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1afa41e4b1125fdd725a5b891cde2ae66c" kindref="member">TTL_ceil_of_a_div_b</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>b<sp/>?<sp/>((a<sp/>+<sp/>b<sp/>-<sp/>1)<sp/>/<sp/>b)<sp/>:<sp/>0;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="194"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Return<sp/>a<sp/>TTL_tiler_t<sp/>based<sp/>on<sp/>a<sp/>shape,<sp/>a<sp/>tile,<sp/>and<sp/>an<sp/>overlap</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/>*<sp/>@param<sp/>tensor_shape<sp/>The<sp/>shape<sp/>to<sp/>be<sp/>tiled</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/>*<sp/>@param<sp/>tile_shape<sp/>The<sp/>description<sp/>of<sp/>the<sp/>tile<sp/>that<sp/>the<sp/>shape<sp/>will<sp/>be<sp/>sub-divided<sp/>to.</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/>*<sp/>@param<sp/>overlap<sp/>The<sp/>overlap<sp/>between<sp/>tiles</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/>*<sp/>@param<sp/>augmentation<sp/>The<sp/>augomentation<sp/>to<sp/>apply<sp/>at<sp/>the<sp/>edges<sp/>durring<sp/>import.</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/>*<sp/>Complete<sp/>description<sp/>of<sp/>what<sp/>not<sp/>how<sp/>here.</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/>*<sp/>@return<sp/>A<sp/>tiler<sp/>that<sp/>can<sp/>produce<sp/>a<sp/>tile<sp/>for<sp/>any<sp/>given<sp/>index.</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="TTL__tiles_8h_1ab7e52be36254de06eceaf15b8b77f788" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/><ref refid="TTL__tiles_8h_1ab7e52be36254de06eceaf15b8b77f788" kindref="member">TTL_create_overlap_tiler</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>tensor_shape,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>tile_shape,</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref><sp/>overlap,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref><sp/>augmentation)<sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>tiles_in_width<sp/>=<sp/><ref refid="TTL__tiles_8h_1afa41e4b1125fdd725a5b891cde2ae66c" kindref="member">TTL_ceil_of_a_div_b</ref>(</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tensor_shape.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref><sp/>+<sp/>augmentation.<ref refid="structTTL__augmentation__t_1aa4865c0b863d4a85ad0aff9d57c97485" kindref="member">left</ref><sp/>+<sp/>augmentation.<ref refid="structTTL__augmentation__t_1a14b6707c96da50f066053ad2cc5f543a" kindref="member">right</ref><sp/>-<sp/>overlap.<ref refid="structTTL__overlap__t_1ae4469319b7409cd74289b3b9031a460e" kindref="member">width</ref>,<sp/>tile_shape.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref><sp/>-<sp/>overlap.<ref refid="structTTL__overlap__t_1ae4469319b7409cd74289b3b9031a460e" kindref="member">width</ref>);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>tiles_in_height<sp/>=</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__tiles_8h_1afa41e4b1125fdd725a5b891cde2ae66c" kindref="member">TTL_ceil_of_a_div_b</ref>(tensor_shape.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref><sp/>+<sp/>augmentation.<ref refid="structTTL__augmentation__t_1a95dd77223f0d5616a8b7105c1957c559" kindref="member">top</ref><sp/>+<sp/>augmentation.<ref refid="structTTL__augmentation__t_1a438ab3342248b88791815fb12dd9df3b" kindref="member">bottom</ref><sp/>-<sp/>overlap.<ref refid="structTTL__overlap__t_1aa7a279104c7ef1676d8e2528cb6bcccc" kindref="member">height</ref>,</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_shape.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref><sp/>-<sp/>overlap.<ref refid="structTTL__overlap__t_1aa7a279104c7ef1676d8e2528cb6bcccc" kindref="member">height</ref>);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>tiles_in_depth<sp/>=<sp/><ref refid="TTL__tiles_8h_1afa41e4b1125fdd725a5b891cde2ae66c" kindref="member">TTL_ceil_of_a_div_b</ref>(</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tensor_shape.<ref refid="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" kindref="member">depth</ref><sp/>+<sp/>augmentation.<ref refid="structTTL__augmentation__t_1ae8bcfe2fcd93b71fb9cf9b001211bb7f" kindref="member">front</ref><sp/>+<sp/>augmentation.<ref refid="structTTL__augmentation__t_1a2daf4dc74791c6c7a7c01751044254e4" kindref="member">back</ref><sp/>-<sp/>overlap.<ref refid="structTTL__overlap__t_1a6e9810c5c0a2c94854533807b5e93e53" kindref="member">depth</ref>,<sp/>tile_shape.<ref refid="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" kindref="member">depth</ref><sp/>-<sp/>overlap.<ref refid="structTTL__overlap__t_1a6e9810c5c0a2c94854533807b5e93e53" kindref="member">depth</ref>);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>tiles_in_plane<sp/>=<sp/>tiles_in_width<sp/>*<sp/>tiles_in_height;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>number_of_tiles<sp/>=<sp/>tiles_in_plane<sp/>*<sp/>tiles_in_depth;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>result<sp/>=<sp/>{<sp/>tensor_shape,</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_shape,</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>overlap,</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>augmentation,</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>number_of_tiles,<sp/>tiles_in_width,<sp/>tiles_in_height,<sp/>tiles_in_depth,<sp/>tiles_in_plane<sp/>}<sp/>};</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Simplify<sp/>creation<sp/>of<sp/>non-overlap<sp/>tiler</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229" refid="TTL__tiles_8h_1adb0c677811fc72b45456af0b7a84a6da" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/><ref refid="TTL__tiles_8h_1adb0c677811fc72b45456af0b7a84a6da" kindref="member">TTL_create_tiler</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>shape,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>tile)<sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref><sp/>overlap<sp/>=<sp/><ref refid="tensors_2TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" kindref="member">TTL_create_overlap</ref>(0);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref><sp/>augmentation<sp/>=<sp/><ref refid="TTL__tiles_8h_1ab0bb98ca3c62d4eb49ea99809311bc9c" kindref="member">TTL_create_augmentation</ref>(0,<sp/>0);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1ab7e52be36254de06eceaf15b8b77f788" kindref="member">TTL_create_overlap_tiler</ref>(shape,<sp/>tile,<sp/>overlap,<sp/>augmentation);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235" refid="TTL__tiles_8h_1a9f40042454b3c5862a448b8f0be150e6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/><ref refid="TTL__tiles_8h_1a9f40042454b3c5862a448b8f0be150e6" kindref="member">TTL_tiles_in_width</ref>(<ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1a0686e98101d3964e22a2b229cdee5bdd" kindref="member">tiles_in_width</ref>;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239" refid="TTL__tiles_8h_1a24732adc2b592bdb741131642e7dab08" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/><ref refid="TTL__tiles_8h_1a24732adc2b592bdb741131642e7dab08" kindref="member">TTL_tiles_in_height</ref>(<ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1ad1632e6b21ee5ad81f2ac6a3a90ba703" kindref="member">tiles_in_height</ref>;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243" refid="TTL__tiles_8h_1afb4b1db47f093416aacfb8cc15ff0a67" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/><ref refid="TTL__tiles_8h_1afb4b1db47f093416aacfb8cc15ff0a67" kindref="member">TTL_tiles_in_depth</ref>(<ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1a3c3f2927d87f212ae77571d8747c4657" kindref="member">tiles_in_depth</ref>;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="247"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="248"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Check<sp/>if<sp/>the<sp/>tile<sp/>passed<sp/>is<sp/>empty.</highlight></codeline>
+<codeline lineno="249"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"><sp/>*<sp/>Empty<sp/>is<sp/>defined<sp/>as<sp/>width<sp/>of<sp/>the<sp/>shape<sp/>being<sp/>equal<sp/>to<sp/>0.</highlight></codeline>
+<codeline lineno="251"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="252"><highlight class="comment"><sp/>*<sp/>@param<sp/>tile<sp/>The<sp/>tile<sp/>to<sp/>check<sp/>the<sp/>emptiness<sp/>of.</highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/>*<sp/>@return<sp/>true<sp/>if<sp/>shape<sp/>is<sp/>empty</highlight></codeline>
+<codeline lineno="255"><highlight class="comment"><sp/>*<sp/>@return<sp/>false<sp/>if<sp/>shape<sp/>is<sp/>not<sp/>empty</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="TTL__tiles_8h_1a5892a886773f7a902560d0a699838796" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1a5892a886773f7a902560d0a699838796" kindref="member">TTL_tile_empty</ref>(<ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>tile)<sp/>{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1a7871ed21af1fda46f48e16bc4c68df06" kindref="member">TTL_shape_empty</ref>(tile.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="261"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="262"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>an<sp/>empty<sp/>tile.<sp/>Empty<sp/>means<sp/>it<sp/>has<sp/>all<sp/>dimensions<sp/>set<sp/>to<sp/>zero</highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="264"><highlight class="comment"><sp/>*<sp/>Most<sp/>operations<sp/>on<sp/>an<sp/>empty<sp/>tile<sp/>should<sp/>turn<sp/>into<sp/>no-ops<sp/>and<sp/>so<sp/>an<sp/>empty<sp/>tile</highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/>*<sp/>is<sp/>the<sp/>safest<sp/>default<sp/>state.</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267" refid="TTL__tiles_8h_1aab47a72ad748d70bfd9892500106d755" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/><ref refid="TTL__tiles_8h_1aab47a72ad748d70bfd9892500106d755" kindref="member">TTL_create_empty_tile</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>result<sp/>=<sp/>{<sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(0),<sp/><ref refid="tensors_2TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" kindref="member">TTL_create_offset</ref>(0,<sp/>0,<sp/>0)<sp/>};</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="272"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>a<sp/>tile<sp/>at<sp/>a<sp/>position<sp/>from<sp/>a<sp/>tiler<sp/>and<sp/>respective<sp/>coordinates.</highlight></codeline>
+<codeline lineno="274"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="275"><highlight class="comment"><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>x<sp/>position<sp/>of<sp/>the<sp/>tile<sp/>being<sp/>created</highlight></codeline>
+<codeline lineno="276"><highlight class="comment"><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>y<sp/>position<sp/>of<sp/>the<sp/>tile<sp/>being<sp/>created</highlight></codeline>
+<codeline lineno="277"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>z<sp/>position<sp/>of<sp/>the<sp/>tile<sp/>being<sp/>created</highlight></codeline>
+<codeline lineno="278"><highlight class="comment"><sp/>*<sp/>@param<sp/>tiler<sp/>The<sp/>tiler<sp/>from<sp/>which<sp/>the<sp/>tiler<sp/>can<sp/>be<sp/>calculated.</highlight></codeline>
+<codeline lineno="279"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="280"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>created<sp/>TTL_tile_t<sp/>type</highlight></codeline>
+<codeline lineno="281"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="TTL__tiles_8h_1aab1ebf60b340a05f50081fc16f6f1bc4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/><ref refid="TTL__tiles_8h_1aab1ebf60b340a05f50081fc16f6f1bc4" kindref="member">TTL_create_tile</ref>(<ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>x,<sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>y,<sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>z,<sp/><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>tiler)<sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>result;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>the<sp/>offset<sp/>in<sp/>3D</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/>result.<ref refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" kindref="member">offset</ref><sp/>=<sp/><ref refid="tensors_2TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" kindref="member">TTL_create_offset</ref>((x<sp/>*<sp/>(tiler.<ref refid="structTTL__tiler__t_1a322252fe86f426c6f0d2d33e41c3e484" kindref="member">tile</ref>.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref><sp/>-<sp/>tiler.<ref refid="structTTL__tiler__t_1a3a38591bca09c0e4c14403099c1d5eda" kindref="member">overlap</ref>.<ref refid="structTTL__overlap__t_1ae4469319b7409cd74289b3b9031a460e" kindref="member">width</ref>))<sp/>-<sp/>tiler.<ref refid="structTTL__tiler__t_1a823b767beb6a8775fd219c5ab307771f" kindref="member">augmentation</ref>.<ref refid="structTTL__augmentation__t_1aa4865c0b863d4a85ad0aff9d57c97485" kindref="member">left</ref>,</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(y<sp/>*<sp/>(tiler.<ref refid="structTTL__tiler__t_1a322252fe86f426c6f0d2d33e41c3e484" kindref="member">tile</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref><sp/>-<sp/>tiler.<ref refid="structTTL__tiler__t_1a3a38591bca09c0e4c14403099c1d5eda" kindref="member">overlap</ref>.<ref refid="structTTL__overlap__t_1aa7a279104c7ef1676d8e2528cb6bcccc" kindref="member">height</ref>))<sp/>-<sp/>tiler.<ref refid="structTTL__tiler__t_1a823b767beb6a8775fd219c5ab307771f" kindref="member">augmentation</ref>.<ref refid="structTTL__augmentation__t_1a95dd77223f0d5616a8b7105c1957c559" kindref="member">top</ref>,</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(z<sp/>*<sp/>(tiler.<ref refid="structTTL__tiler__t_1a322252fe86f426c6f0d2d33e41c3e484" kindref="member">tile</ref>.<ref refid="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" kindref="member">depth</ref><sp/>-<sp/>tiler.<ref refid="structTTL__tiler__t_1a3a38591bca09c0e4c14403099c1d5eda" kindref="member">overlap</ref>.<ref refid="structTTL__overlap__t_1a6e9810c5c0a2c94854533807b5e93e53" kindref="member">depth</ref>))<sp/>-<sp/>tiler.<ref refid="structTTL__tiler__t_1a823b767beb6a8775fd219c5ab307771f" kindref="member">augmentation</ref>.<ref refid="structTTL__augmentation__t_1ae8bcfe2fcd93b71fb9cf9b001211bb7f" kindref="member">front</ref>);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>the<sp/>tile<sp/>shape,<sp/>clamping<sp/>at<sp/>the<sp/>end<sp/>of<sp/>each<sp/>dimension</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>result.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref><sp/>=<sp/>tiler.<ref refid="structTTL__tiler__t_1a322252fe86f426c6f0d2d33e41c3e484" kindref="member">tile</ref>;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(x<sp/>==<sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1a0686e98101d3964e22a2b229cdee5bdd" kindref="member">tiles_in_width</ref><sp/>-<sp/>1)</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref><sp/>=<sp/>tiler.<ref refid="structTTL__tiler__t_1ac46505174c37e6f5b4e6993ec411e7c1" kindref="member">space</ref>.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref><sp/>-<sp/>result.<ref refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" kindref="member">offset</ref>.<ref refid="structTTL__offset__t_1abe9df04b12aa2c98c76241d6b74dbc22" kindref="member">x</ref><sp/>+<sp/>tiler.<ref refid="structTTL__tiler__t_1a823b767beb6a8775fd219c5ab307771f" kindref="member">augmentation</ref>.<ref refid="structTTL__augmentation__t_1a14b6707c96da50f066053ad2cc5f543a" kindref="member">right</ref>;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(y<sp/>==<sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1ad1632e6b21ee5ad81f2ac6a3a90ba703" kindref="member">tiles_in_height</ref><sp/>-<sp/>1)</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref><sp/>=<sp/>tiler.<ref refid="structTTL__tiler__t_1ac46505174c37e6f5b4e6993ec411e7c1" kindref="member">space</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref><sp/>-<sp/>result.<ref refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" kindref="member">offset</ref>.<ref refid="structTTL__offset__t_1aae0c2bbb96222eb5e580367dc2f2b12c" kindref="member">y</ref><sp/>+<sp/>tiler.<ref refid="structTTL__tiler__t_1a823b767beb6a8775fd219c5ab307771f" kindref="member">augmentation</ref>.<ref refid="structTTL__augmentation__t_1a438ab3342248b88791815fb12dd9df3b" kindref="member">bottom</ref>;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(z<sp/>==<sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1a3c3f2927d87f212ae77571d8747c4657" kindref="member">tiles_in_depth</ref><sp/>-<sp/>1)</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" kindref="member">depth</ref><sp/>=<sp/>tiler.<ref refid="structTTL__tiler__t_1ac46505174c37e6f5b4e6993ec411e7c1" kindref="member">space</ref>.<ref refid="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" kindref="member">depth</ref><sp/>-<sp/>result.<ref refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" kindref="member">offset</ref>.<ref refid="structTTL__offset__t_1a9966699158adc499f07c4499c972cc75" kindref="member">z</ref><sp/>+<sp/>tiler.<ref refid="structTTL__tiler__t_1a823b767beb6a8775fd219c5ab307771f" kindref="member">augmentation</ref>.<ref refid="structTTL__augmentation__t_1a2daf4dc74791c6c7a7c01751044254e4" kindref="member">back</ref>;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="305"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="306"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Return<sp/>the<sp/>tile_id&apos;th<sp/>tile<sp/>of<sp/>a<sp/>tile<sp/>array<sp/>in<sp/>row-major<sp/>order.</highlight></codeline>
+<codeline lineno="307"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="308"><highlight class="comment"><sp/>*<sp/>Return<sp/>the<sp/>tile_id&apos;th<sp/>tile,<sp/>starting<sp/>from<sp/>tile_id=0,<sp/>in<sp/>row-major<sp/>order.</highlight></codeline>
+<codeline lineno="309"><highlight class="comment"><sp/>*<sp/>Returns<sp/>an<sp/>invalid<sp/>tile<sp/>if<sp/>tile_id<sp/>is<sp/>not<sp/>valid<sp/>(not<sp/>from<sp/>[0,</highlight></codeline>
+<codeline lineno="310"><highlight class="comment"><sp/>number_of_tiles))</highlight></codeline>
+<codeline lineno="311"><highlight class="comment"></highlight></codeline>
+<codeline lineno="312"><highlight class="comment"><sp/>*<sp/>@param<sp/>tile_id<sp/>The<sp/>tile<sp/>id<sp/>to<sp/>return<sp/>-<sp/>if<sp/>out<sp/>of<sp/>bounds<sp/>then<sp/>an<sp/>invalid<sp/>tile</highlight></codeline>
+<codeline lineno="313"><highlight class="comment"><sp/>is<sp/>returned</highlight></codeline>
+<codeline lineno="314"><highlight class="comment"><sp/>*<sp/>@param<sp/>tiler<sp/>The<sp/>containing<sp/>with<sp/>the<sp/>shape<sp/>and<sp/>tiling<sp/>information</highlight></codeline>
+<codeline lineno="315"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="316"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>tile<sp/>that<sp/>is<sp/>represented<sp/>by<sp/>tile_id<sp/>when<sp/>interpreted<sp/>in<sp/>row-major</highlight></codeline>
+<codeline lineno="317"><highlight class="comment"><sp/>order.</highlight></codeline>
+<codeline lineno="318"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319" refid="TTL__tiles_8h_1a6be82c657988ed29b07515e6d951042c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/><ref refid="TTL__tiles_8h_1a6be82c657988ed29b07515e6d951042c" kindref="member">TTL_get_tile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tile_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>tiler)<sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="TTL__tiles_8h_1a3a80d99a0d539eff9374e1a413b34d6f" kindref="member">TTL_valid_tile_id</ref>(tile_id,<sp/>tiler))<sp/>{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>invalid<sp/>=<sp/>{<sp/>0<sp/>};</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>invalid;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>the<sp/>3D<sp/>coordinates<sp/>of<sp/>the<sp/>tile<sp/>in<sp/>order<sp/>to<sp/>compute<sp/>its<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>z<sp/>=<sp/>tile_id<sp/>/<sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1a873497b66846b5266bc77ded752030c5" kindref="member">tiles_in_plane</ref>;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>tid_in_plane<sp/>=<sp/>tile_id<sp/>%<sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1a873497b66846b5266bc77ded752030c5" kindref="member">tiles_in_plane</ref>;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>y<sp/>=<sp/>tid_in_plane<sp/>/<sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1a0686e98101d3964e22a2b229cdee5bdd" kindref="member">tiles_in_width</ref>;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>x<sp/>=<sp/>tid_in_plane<sp/>%<sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1a0686e98101d3964e22a2b229cdee5bdd" kindref="member">tiles_in_width</ref>;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1aab1ebf60b340a05f50081fc16f6f1bc4" kindref="member">TTL_create_tile</ref>(x,<sp/>y,<sp/>z,<sp/>tiler);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="334"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="335"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Return<sp/>the<sp/>tile_id&apos;th<sp/>tile<sp/>of<sp/>a<sp/>tile<sp/>array<sp/>in<sp/>column-major<sp/>order.</highlight></codeline>
+<codeline lineno="336"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="337"><highlight class="comment"><sp/>*<sp/>Return<sp/>the<sp/>tile_id&apos;th<sp/>tile,<sp/>starting<sp/>from<sp/>tile_id=0,<sp/>in<sp/>column-major<sp/>order.</highlight></codeline>
+<codeline lineno="338"><highlight class="comment"><sp/>*<sp/>Returns<sp/>an<sp/>invalid<sp/>tile<sp/>if<sp/>tile_id<sp/>is<sp/>not<sp/>valid<sp/>(not<sp/>from<sp/>[0,</highlight></codeline>
+<codeline lineno="339"><highlight class="comment"><sp/>number_of_tiles))</highlight></codeline>
+<codeline lineno="340"><highlight class="comment"></highlight></codeline>
+<codeline lineno="341"><highlight class="comment"><sp/>*<sp/>@param<sp/>tile_id<sp/>The<sp/>tile<sp/>id<sp/>to<sp/>return<sp/>-<sp/>if<sp/>out<sp/>of<sp/>bounds<sp/>then<sp/>an<sp/>invalid<sp/>tile</highlight></codeline>
+<codeline lineno="342"><highlight class="comment"><sp/>is<sp/>returned</highlight></codeline>
+<codeline lineno="343"><highlight class="comment"><sp/>*<sp/>@param<sp/>tiler<sp/>The<sp/>tiler<sp/>containing<sp/>the<sp/>shape<sp/>and<sp/>tiling<sp/>information</highlight></codeline>
+<codeline lineno="344"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="345"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>tile<sp/>that<sp/>is<sp/>represented<sp/>by<sp/>tile_id<sp/>when<sp/>interpreted<sp/>in</highlight></codeline>
+<codeline lineno="346"><highlight class="comment"><sp/>column-major<sp/>order.</highlight></codeline>
+<codeline lineno="347"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348" refid="TTL__tiles_8h_1a45b9364e6b7883b5529aae90e79905b9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/><ref refid="TTL__tiles_8h_1a45b9364e6b7883b5529aae90e79905b9" kindref="member">TTL_get_tile_column_major</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tile_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>tiler)<sp/>{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>the<sp/>3D<sp/>coordinates<sp/>of<sp/>the<sp/>tile<sp/>in<sp/>order<sp/>to<sp/>compute<sp/>its<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>z<sp/>=<sp/>tile_id<sp/>/<sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1a873497b66846b5266bc77ded752030c5" kindref="member">tiles_in_plane</ref>;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>tid_in_plane<sp/>=<sp/>tile_id<sp/>%<sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1a873497b66846b5266bc77ded752030c5" kindref="member">tiles_in_plane</ref>;</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>y<sp/>=<sp/>tid_in_plane<sp/>%<sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1ad1632e6b21ee5ad81f2ac6a3a90ba703" kindref="member">tiles_in_height</ref>;</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>x<sp/>=<sp/>tid_in_plane<sp/>/<sp/>tiler.<ref refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" kindref="member">cache</ref>.<ref refid="structTTL__tiler__t_1ad1632e6b21ee5ad81f2ac6a3a90ba703" kindref="member">tiles_in_height</ref>;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="TTL__tiles_8h_1aab1ebf60b340a05f50081fc16f6f1bc4" kindref="member">TTL_create_tile</ref>(x,<sp/>y,<sp/>z,<sp/>tiler);</highlight></codeline>
+<codeline lineno="356"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="v7F17Om_TTL/TTL_tiles.h"/>
+  </compounddef>
+</doxygen>

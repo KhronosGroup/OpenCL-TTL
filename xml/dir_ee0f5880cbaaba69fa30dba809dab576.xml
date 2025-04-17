@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_ee0f5880cbaaba69fa30dba809dab576" kind="dir">
+    <compoundname>tensors</compoundname>
+    <innerfile refid="TTL__ext__tensors_8h">TTL_ext_tensors.h</innerfile>
+    <innerfile refid="TTL__int__ext__typed__tensors_8h">TTL_int_ext_typed_tensors.h</innerfile>
+    <innerfile refid="TTL__int__tensors_8h">TTL_int_tensors.h</innerfile>
+    <innerfile refid="TTL__tensor__rw_8h">TTL_tensor_rw.h</innerfile>
+    <innerfile refid="TTL__tensors__common_8h">TTL_tensors_common.h</innerfile>
+    <innerfile refid="tensors_2TTL__types_8h">tensors/TTL_types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="v7F17Om_TTL/tensors/"/>
+  </compounddef>
+</doxygen>

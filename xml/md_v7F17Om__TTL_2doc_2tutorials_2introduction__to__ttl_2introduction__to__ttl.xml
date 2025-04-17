@@ -1,0 +1,1040 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="md_v7F17Om__TTL_2doc_2tutorials_2introduction__to__ttl_2introduction__to__ttl" kind="page">
+    <compoundname>md_v7F17Om__TTL_2doc_2tutorials_2introduction__to__ttl_2introduction__to__ttl</compoundname>
+    <title>Introduction to the Tensor &amp; Tiling Library (TTL)</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><heading level="1">CONTENTS: </heading>
+</para>
+<para><itemizedlist>
+<listitem><para>Introduction to the Tensor &amp; Tiling Library (TTL)<itemizedlist>
+<listitem><para>CONTENTS:</para>
+</listitem><listitem><para>Introduction<itemizedlist>
+<listitem><para>Example</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Background<itemizedlist>
+<listitem><para>Tiling</para>
+</listitem><listitem><para>Design Principles</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>TTL Logical Tiling<itemizedlist>
+<listitem><para>TTL\_create\_shape</para>
+</listitem><listitem><para>TTL\_create\_overlap</para>
+</listitem><listitem><para>TTL\_tile\_t</para>
+</listitem><listitem><para>TTL\_tiler\_t</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>TTL Physical Tensors<itemizedlist>
+<listitem><para>TTL\_create\_layout</para>
+</listitem><listitem><para>TTL\_\[const\]\_\[int,ext\]\_\[sub\]\_tensor\_t</para>
+</listitem><listitem><para>TTL\_io\_tensors</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>TTL Import and Export Transactions</para>
+</listitem><listitem><para>TTL Pipelining Schemes<itemizedlist>
+<listitem><para>Pipelining Iterations</para>
+</listitem><listitem><para>Duplex Buffering</para>
+</listitem><listitem><para>Double Buffering</para>
+</listitem><listitem><para>Simplex Buffering</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Debugging</para>
+</listitem><listitem><para>Tiling Code Examples<itemizedlist>
+<listitem><para>Duplex Buffering Scheme</para>
+</listitem><listitem><para>Double Buffering Scheme</para>
+</listitem><listitem><para>Simplex Buffering Scheme</para>
+</listitem><listitem><para>Overlapped Tiler</para>
+</listitem><listitem><para>Parallelizing Tiling Loop</para>
+</listitem><listitem><para>Manual Double Buffering: dxDMA</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para><heading level="1">Introduction </heading>
+</para>
+<para>Code developed for devices that process data exceeding the capacity of their local memory must be partitioned into a series of stages, each of which processes data that fits in the available local memory. Even if local memory is large enough to accommodate all data in one single stage, it may be beneficial to partition code into multiple stages to better cope with the latency of copying data into and out of local memory. Such copying can be done asynchronously in OpenCL via <computeroutput>async_copy()</computeroutput> builtin functions, which we refer to as <computeroutput>import</computeroutput> and <computeroutput>export</computeroutput>.</para>
+<para>Code for accelerators is often partitioned manually, resulting in code that is in general difficult and cumbersome to write, hard to read, share, optimize, and maintain.</para>
+<para>The Tensor &amp; Tiling Library is designed to provide **transparent,<bold> **modular</bold>, and **extensible** **building-blocks** in **C**, to support developing code for local memory based accelerators, and in general where multi-dimensional tensors appear and are potentially tiled and pipelined.</para>
+<para><heading level="2">Example</heading>
+</para>
+<para>As a preliminary example, Tensor Tiling Library can be used as follows to tile a trivial a[i][j]=b[i][j]+1 kernel:</para>
+<para><programlisting><codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_WIDTH<sp/>100</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_HEIGHT<sp/>100</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_SIZE<sp/>(TILE_WIDTH<sp/>*<sp/>TILE_HEIGHT)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>compute(TTL_int_tensor_t<sp/>t_in,<sp/>TTL_int_tensor_t<sp/>t_out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>__local<sp/>uchar<sp/>*l_in<sp/>=<sp/>t_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>__local<sp/>uchar<sp/>*l_out<sp/>=<sp/>t_out.base;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>for<sp/>(unsigned<sp/>int<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>t_in.shape.height;<sp/>y++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>t_in.shape.width;<sp/>x++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>idx_out<sp/>=<sp/>y<sp/>*<sp/>t_out.layout.total_row_length<sp/>+<sp/>x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>idx_in<sp/>=<sp/>y<sp/>*<sp/>t_in.layout.total_row_length<sp/>+<sp/>x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_out[idx_out]<sp/>=<sp/>l_in[idx_in]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>add_one(__global<sp/>char<sp/>*restrict<sp/>input_image,<sp/>__global<sp/>char<sp/>*restrict<sp/>output_image,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>image_width,<sp/>int<sp/>image_height,<sp/>int<sp/>image_stride)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>__local<sp/>uchar<sp/>l_in[TILE_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/>__local<sp/>uchar<sp/>l_out[TILE_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>//<sp/>Regular<sp/>tiling<sp/>depends<sp/>only<sp/>on<sp/>geometry<sp/>aka<sp/>logical<sp/>tensors:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>TTL_shape_t<sp/>image_shape<sp/>=<sp/>TTL_create_shape(image_width,<sp/>image_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>TTL_shape_t<sp/>tile_shape<sp/>=<sp/>TTL_create_shape(TILE_WIDTH,<sp/>TILE_HEIGHT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(image_shape,<sp/>tile_shape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>//<sp/>Accessing<sp/>memory<sp/>depends<sp/>on<sp/>layout<sp/>aka<sp/>physical<sp/>tensors,<sp/>where<sp/>strides<sp/>are<sp/>absolute:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>TTL_layout_t<sp/>external_layout<sp/>=<sp/>TTL_create_layout(image_stride);</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>for<sp/>(int<sp/>tile_id<sp/>=<sp/>0;<sp/>tile_id<sp/>&lt;<sp/>TTL_number_of_tiles(tiler);<sp/>++tile_id)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_tile_t<sp/>tile<sp/>=<sp/>TTL_get_tile(tile_id,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_int_tensor_t<sp/>import_to<sp/>=<sp/>TTL_create_int_tensor(l_in,<sp/>tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_int_tensor_t<sp/>export_from<sp/>=<sp/>TTL_create_int_tensor(l_out,<sp/>tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>import_from<sp/>=<sp/>TTL_create_ext_tensor(input_image,<sp/>tile,<sp/>external_layout);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>export_to<sp/>=<sp/>TTL_create_ext_tensor(output_image,<sp/>tile,<sp/>external_layout);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_blocking_import(import_to,<sp/>import_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>compute(import_to,<sp/>export_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_blocking_export(export_from,<sp/>export_to);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><heading level="1">Background </heading>
+</para>
+<para><heading level="2">Tiling</heading>
+</para>
+<para>The **data** accessed by a function can be made to fit in local memory by **partitioning its control-flow** into stages, such that the data accessed by each stage fits in local memory. In all cases considered, this partitioning takes the form *Loop Tiling*, where an initial unfitting loop nest such as:</para>
+<para><programlisting><codeline><highlight class="normal">for<sp/>(int<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>TooManyRows;<sp/>++y)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>TooManyColumns;<sp/>++x)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>A[y<sp/>*<sp/>StrideA<sp/>+<sp/>x]<sp/>=<sp/>B[y<sp/>*<sp/>StrideB<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+</programlisting></para>
+<para>is strip-mined/blocked/tiled in (either or) both loops to produce:</para>
+<para><programlisting><codeline><highlight class="normal">for<sp/>(int<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>TooManyRows;<sp/>y<sp/>+=<sp/>TileY)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>TooManyColumns;<sp/>x<sp/>+=<sp/>TileX)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Start<sp/>of<sp/>stage.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>yy<sp/>=<sp/>y;<sp/>yy<sp/>&lt;<sp/>min(y<sp/>+<sp/>TileY<sp/>,<sp/>TooManyRows);<sp/>++yy)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>xx<sp/>=<sp/>x;<sp/>xx<sp/>&lt;<sp/>min(x<sp/>+<sp/>TileX,<sp/>TooManyColumns);<sp/>++xx)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A[yy<sp/>*<sp/>StrideA<sp/>+<sp/>xx]<sp/>=<sp/>B[yy<sp/>*<sp/>StrideB<sp/>+<sp/>xx]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>End<sp/>of<sp/>stage.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+</programlisting></para>
+<para>Loop tiling produces an outer-loop, in the above case a doubly-nested outer-loop, that iterates over stages or tiles. These outer loops could be represented as:</para>
+<para><programlisting><codeline><highlight class="normal">for<sp/>(int<sp/>tile_id<sp/>=<sp/>0;<sp/>tile_id<sp/>&lt;<sp/>number_of_tiles;<sp/>++tile_id)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Derive<sp/>y,<sp/>x,<sp/>and<sp/>tile<sp/>parameters<sp/>from<sp/>tile_id.</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para>Notice that both arrays A and B in the above example are tiled together. Arrays with multiple accesses of distinct offsets, such as in stencil access patterns, result in tiles that overlap. Arrays that are accessed with non-unit strides should be allocated increased memory accordingly along the x dimension - as if their element size has increased.</para>
+<para>This transformation partitions or tiles the *Iteration Space* of a nested loop, thereby also partitioning or tiling the *Memory Space* of each array accessed in the loop. Tiling traditionally involves a single (usually 2D) tile size which applies to the outer-loop of a loop-nest in terms of iterations, and thereby to all tiled arrays of the loop in terms of elements. It can be extended to multiple loops by conceptually fusing them together. Each array however may require a distinct tile size due to its unique access pattern, and to be bumped by a unique stride along a distinct loop dimension.</para>
+<para>Once a loop and the arrays it accesses have been tiled, the operations involved with copying the data of each tile can be double buffered and pipelined across loop iterations, thereby overlapping data communication with computation, and overlapping asynchronous imports and exports.</para>
+<para><heading level="2">Design Principles</heading>
+</para>
+<para>The Tensor Tiling Library is designed to be</para>
+<para><itemizedlist>
+<listitem><para><bold>Transparent</bold>: the types and functions of the library are all exposed and visible to the user; there are no hidden components. This helps clarify exactly what the library supports, and how.</para>
+</listitem><listitem><para><bold>Modular</bold>: the library provides several constructs that can be used separately or in combination. This includes a construct for tensors, for regular tiling, a construct for importing and exporting single tiles, and a construct for pipelining a single or pairs of import/export transactions.</para>
+</listitem><listitem><para><bold>Extensible</bold>: any part of the library can be copied and modified locally; new parts can be added locally to the library. Modification and additions regarded as generally useful should be considered for inclusion in the library.</para>
+</listitem><listitem><para><bold>Easy to use</bold>: provides simple and easy to use patterns, all included in header-files only.</para>
+</listitem></itemizedlist>
+</para>
+<para>A *tile* is considered to be a memory region that can be copied asynchronously. Therefore, a tile is in general a 3-dimensional *tensor* of elements, embedded within an enclosing memory layout.</para>
+<para>In TTL tiles are defined with optional overlap in every dimension (see next section). For example, the following figure shows the tiling along x-dimension produced by a tiler with 2D space shape of (5, 250), 2D tile shape of (5, 5), and **overlap.width**=1, so that every pair of horizontally-adjacent tiles has one column of elements in common:</para>
+<para><image type="html" name="overlap.jpg"></image>
+ <image type="latex" name="overlap.jpg"></image>
+ <image type="rtf" name="overlap.jpg"></image>
+ <image type="docbook" name="overlap.jpg"></image>
+ <image type="xml" name="overlap.jpg"></image>
+</para>
+<para>The following figure shows all 15 tiles produced by a non-overlapping tiler with 2D space shape of {900, 800} and 2D tile shape of {200, 300}.</para>
+<para>Note that tiles appearing last in each dimension are of smaller size - the remainder of dividing 900 by 200 and 800 by 300. Each tile has a unique ID from zero to **number_of_tiles**-1, following row-major or column-major order:</para>
+<para><image type="html" name="tiling_ttl.png"></image>
+ <image type="latex" name="tiling_ttl.png"></image>
+ <image type="rtf" name="tiling_ttl.png"></image>
+ <image type="docbook" name="tiling_ttl.png"></image>
+ <image type="xml" name="tiling_ttl.png"></image>
+</para>
+<para>The following sections describe the layers of API provided by TTL.</para>
+<para><heading level="1">TTL Logical Tiling </heading>
+</para>
+<para>The first layer of TTL deals with logical tiling of 3D shapes. The basic unit of these shapes - an &quot;element&quot; - is independent of its actual size or location in memory, hence the term &quot;logical&quot;. The associated &quot;physical&quot; aspects of size and location in memory are dealt with separately.</para>
+<para><heading level="2">TTL_create_shape</heading>
+</para>
+<para><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref> defines the number of elements along each dimension in a 3D box:</para>
+<para><programlisting><codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_dim_t<sp/>width;<sp/><sp/>//<sp/>Number<sp/>of<sp/>elements<sp/>along<sp/>dimension<sp/>x.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_dim_t<sp/>height;<sp/>//<sp/>Number<sp/>of<sp/>rows<sp/>along<sp/>dimension<sp/>y</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_dim_t<sp/>depth;<sp/><sp/>//<sp/>Number<sp/>of<sp/>planes<sp/>along<sp/>dimension<sp/>z</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_shape_t;</highlight></codeline>
+</programlisting></para>
+<para><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape()</ref> APIs define shapes of desired dimensions, complementing remaining dimensions with &apos;1&apos;s:</para>
+<para><programlisting><codeline><highlight class="normal">TTL_shape_t<sp/>TTL_create_shape(TTL_dim_t<sp/>width);</highlight></codeline>
+<codeline><highlight class="normal">TTL_shape_t<sp/>TTL_create_shape(TTL_dim_t<sp/>width,<sp/>TTL_dim_t<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal">TTL_shape_t<sp/>TTL_create_shape(TTL_dim_t<sp/>width,<sp/>TTL_dim_t<sp/>height,<sp/>TTL_dim_t<sp/>depth);</highlight></codeline>
+</programlisting></para>
+<para>A &quot;Big&quot; 3D box can be partitioned into pairwise disjointed &quot;Small&quot; 3D boxes, simply by defining the two boxes as <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref>&apos;s and using them to construct a <ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref>:</para>
+<para><programlisting><codeline><highlight class="normal">TTL_tiler_t<sp/>TTL_create_tiler(TTL_shape_t<sp/>Big,<sp/>TTL_shape_t<sp/>Small);</highlight></codeline>
+</programlisting></para>
+<para>This <ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref> can then be used to traverse all the parts of Big&apos;s partition (referred to as &quot;tiles&quot;) each of size Small (or smaller), as explained below.</para>
+<para>A Big 3D box can be partitioned into overlapping Small 3D boxes - where every pair of adjacent parts share a fixed number of elements along each dimension, using the following constructs:</para>
+<para><heading level="2">TTL_create_overlap</heading>
+</para>
+<para><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref> defines the number of elements shared between two adjacent tiles along each dimension of a 3D box:</para>
+<para><programlisting><codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_overlap_dim_t<sp/>width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_overlap_dim_t<sp/>height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_overlap_dim_t<sp/>depth;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_overlap_t;</highlight></codeline>
+</programlisting></para>
+<para><ref refid="tensors_2TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" kindref="member">TTL_create_overlap()</ref> APIs define the overlaps along the desired dimensions, complementing remaining dimensions with &apos;0&apos;s:</para>
+<para><programlisting><codeline><highlight class="normal">TTL_overlap_t<sp/>TTL_create_overlap(TTL_overlap_dim_t<sp/>width);</highlight></codeline>
+<codeline><highlight class="normal">TTL_overlap_t<sp/>TTL_create_overlap(TTL_overlap_dim_t<sp/>width,<sp/>TTL_overlap_dim_t<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal">TTL_overlap_t<sp/>TTL_create_overlap(TTL_overlap_dim_t<sp/>width,<sp/>TTL_overlap_dim_t<sp/>height,<sp/>TTL_overlap_dim_t<sp/>depth);</highlight></codeline>
+</programlisting></para>
+<para>An overlap can then be used together with Big and Small to create the desired overlapping tiler:</para>
+<para><programlisting><codeline><highlight class="normal">TTL_tiler_t<sp/>TTL_create_overlap_tiler(TTL_shape_t<sp/>Big,<sp/>TTL_shape_t<sp/>Small,<sp/>TTL_overlap_t<sp/>Overlap);</highlight></codeline>
+</programlisting></para>
+<para><heading level="2"><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></heading>
+</para>
+<para><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref> defines the shape and position of each part in a partitioning produced by <ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref>:</para>
+<para><programlisting><codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>shape;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>offset;<sp/>//<sp/>In<sp/>terms<sp/>of<sp/>number<sp/>of<sp/>elements</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_tile_t;</highlight></codeline>
+</programlisting></para>
+<para>The offset defines where each tile &quot;starts&quot; and is therefore distinct across the tiles of a tiler, with a first tile typically starting at offset zero. The shapes are typically equal to the Small shape provided to the tiler, except for last tiles along each dimension which may be smaller. A tile having zero shape represents an empty or out-of-range tile.</para>
+<para><heading level="2"><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></heading>
+</para>
+<para><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref> provides the following APIs:</para>
+<para><programlisting><codeline><highlight class="normal">int<sp/>TTL_number_of_tiles(TTL_tiler_t<sp/>t);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Total<sp/>number<sp/>of<sp/>tiles</highlight></codeline>
+<codeline><highlight class="normal">TTL_dim_t<sp/>TTL_tiles_in_width(TTL_tiler_t<sp/>t);<sp/><sp/>//<sp/>Number<sp/>of<sp/>tiles<sp/>in<sp/>width</highlight></codeline>
+<codeline><highlight class="normal">TTL_dim_t<sp/>TTL_tiles_in_height(TTL_tiler_t<sp/>t);<sp/>//<sp/>Number<sp/>of<sp/>tiles<sp/>in<sp/>height</highlight></codeline>
+<codeline><highlight class="normal">TTL_dim_t<sp/>TTL_tiles_in_depth(TTL_tiler_t<sp/>t);<sp/><sp/>//<sp/>Number<sp/>of<sp/>tiles<sp/>in<sp/>depth</highlight></codeline>
+<codeline><highlight class="normal">TTL_tile_t<sp/>TTL_get_tile(int<sp/>tile_id,<sp/>TTL_tiler_t<sp/>*t);<sp/>//<sp/>Return<sp/>tile<sp/>number<sp/>tile_id,<sp/>empty<sp/>if<sp/>tile_id<sp/>is<sp/>out<sp/>of<sp/>range</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>TTL_valid_tile_id(int<sp/>tile_id,<sp/>TTL_tiler_t<sp/>t);<sp/><sp/><sp/><sp/>//<sp/>Check<sp/>if<sp/>tile_id<sp/>is<sp/>in<sp/>range</highlight></codeline>
+</programlisting></para>
+<para><heading level="1">TTL Physical Tensors </heading>
+</para>
+<para>The second layer of TTL deals with projecting or laying out logical tiles onto physical memory spaces.</para>
+<para>Note that separating logical tiling from memory considerations facilitates reusing the same <ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref> to tile distinct images (located in different memory addresses) with potentially distinct element sizes and memory alignments, provided they contain the same number and shape of elements to be tiled the same way.</para>
+<para><heading level="2">TTL_create_layout</heading>
+</para>
+<para>Each tile is embedded in global and local memories within some enclosing shape, e.g., to account for possible alignment padding. This embedding is referred to as *layout*, which specifies the spacing between the start of consecutive rows in units of elements, and spacing of the between start of consecutive planes in units of elements.</para>
+<para><programlisting><codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_dim_t<sp/>row_spacing;<sp/><sp/><sp/><sp/>///&lt;<sp/>The<sp/>distance<sp/>between<sp/>the<sp/>start<sp/>of<sp/>consequtive<sp/>rows<sp/>in<sp/>units<sp/>of<sp/>elements.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_dim_t<sp/>plane_spacing;<sp/><sp/>///&lt;<sp/>The<sp/>distance<sp/>between<sp/>the<sp/>start<sp/>of<sp/>consequtive<sp/>planes<sp/>in<sp/>units<sp/>of<sp/>elements.</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_layout_t;</highlight></codeline>
+</programlisting></para>
+<para><ref refid="TTL__tensors__common_8h_1a7c5069ff7b3532a098b78635c5d574ee" kindref="member">TTL_create_layout()</ref> APIs define the layouts along the desired dimensions:</para>
+<para><programlisting><codeline><highlight class="normal">TTL_layout_t<sp/>TTL_create_layout();</highlight></codeline>
+<codeline><highlight class="normal">TTL_layout_t<sp/>TTL_create_layout(TTL_dim_t<sp/>total_row_length);</highlight></codeline>
+<codeline><highlight class="normal">TTL_layout_t<sp/>TTL_create_layout(TTL_dim_t<sp/>total_row_length,<sp/>TTL_dim_t<sp/>total_number_of_rows);</highlight></codeline>
+</programlisting></para>
+<para><heading level="2">TTL_ type family tensor_t</heading>
+</para>
+<para>TTL_[const]_[int/ext]_[sub]_tensor_t combine the logical dimensions of a tile along with its physical mapping to memory. The two constructs allow the creation of local [int] and global [ext] versions with a const attribute. The TTL_tensor_t structs contain all the information needed for issuing an import or export transaction, and for reading and writing to the tensor.</para>
+<para>As well as usage for tiling the tensors should also be passed to compute functions. The type contains all the data needed to read from a tile that was imported and write to a tile before it is exported, except for the element type. An external tensor can also be passed to the kernel as it contains all data needed for tiling, importing and exporting.</para>
+<para><programlisting><codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>[const]<sp/>__[local/global]<sp/>void<sp/>*base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_dim_t<sp/>elem_size;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>layout;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>shape;</highlight></codeline>
+<codeline><highlight class="normal">#if<sp/>sub</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_shape_t<sp/>shape;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_offset_t<sp/>sub_offset;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>origin;</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_[const]_[ext/int]_[sub]_tensor_t<sp/>;</highlight></codeline>
+</programlisting></para>
+<para>Tensors of the following types exit.</para>
+<para><ref refid="TTL__int__tensors_8h_1af55285c5c289c327379be3725265949a" kindref="member">TTL_int_tensor_t</ref>; <linebreak/>
+ <ref refid="TTL__int__tensors_8h_1a6f8d3bc7ab2c427d51a3addc5417bce0" kindref="member">TTL_const_int_tensor_t</ref>; <linebreak/>
+ <ref refid="TTL__int__tensors_8h_1a3b85de43f4885c4f5934a91c264b94cf" kindref="member">TTL_int_sub_tensor_t</ref>; <linebreak/>
+ <ref refid="TTL__int__tensors_8h_1afd5c161f2c63ba32b06df58efe26ecb7" kindref="member">TTL_const_int_sub_tensor_t</ref>; <linebreak/>
+ <ref refid="TTL__ext__tensors_8h_1ad75b1c0da822652819d4b8d0323db60d" kindref="member">TTL_ext_tensor_t</ref>; <linebreak/>
+ <ref refid="TTL__ext__tensors_8h_1a06baf9e44b059bf3571a491b880830fa" kindref="member">TTL_const_ext_tensor_t</ref>; <linebreak/>
+ <ref refid="TTL__ext__tensors_8h_1ab3d938ce68e12eafc7f9141554fdd33f" kindref="member">TTL_ext_sub_tensor_t</ref>; <linebreak/>
+ <ref refid="TTL__ext__tensors_8h_1a75688487ac2fdea7db309150d44414bf" kindref="member">TTL_const_ext_sub_tensor_t</ref>;</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>Construct<sp/>a<sp/>buffer<sp/>with<sp/>default,<sp/>packed<sp/>layout,<sp/>whose<sp/>strides<sp/>match<sp/>the<sp/>provided<sp/>shape<sp/>and<sp/>element<sp/>size<sp/>w/o<sp/>padding.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Element<sp/>size<sp/>is<sp/>implicitly<sp/>set<sp/>to<sp/>gentype<sp/>size,<sp/>where<sp/>gentype<sp/>represents<sp/>any<sp/>type<sp/>amenable<sp/>to<sp/>sizeof,<sp/>including<sp/>but<sp/>not<sp/>restricted<sp/>to<sp/>OpenCL<sp/>vector<sp/>types,<sp/>structs,<sp/>but<sp/>excluding<sp/>void.</highlight></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t<sp/>TTL_create_int_tensor(__local<sp/>gentype<sp/>*base,<sp/>TTL_tile_t<sp/>tile);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Element<sp/>size<sp/>is<sp/>implicitly<sp/>set<sp/>to<sp/>gentype<sp/>size,<sp/>where<sp/>gentype<sp/>represents<sp/>any<sp/>type<sp/>amenable<sp/>to<sp/>sizeof,<sp/>including<sp/>but<sp/>not<sp/>restricted<sp/>to<sp/>OpenCL<sp/>vector<sp/>types,<sp/>structs,<sp/>but<sp/>excluding<sp/>void.</highlight></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t<sp/>TTL_create_int_tensor(__local<sp/>gentype<sp/>*base,<sp/>TTL_tile_t<sp/>tile,<sp/>TTL_layout_t<sp/>int_layout);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Explicit<sp/>layout<sp/>and<sp/>element<sp/>size</highlight></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t<sp/>TTL_create_int_tensor(__local<sp/>gentype<sp/>*base,<sp/>TTL_tile_t<sp/>tile,<sp/>TTL_layout_t<sp/>int_layout,<sp/>int<sp/>elem_size);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Element<sp/>size<sp/>is<sp/>implicitly<sp/>set<sp/>to<sp/>gentype<sp/>size,<sp/>where<sp/>gentype<sp/>represents<sp/>any<sp/>type<sp/>amenable<sp/>to<sp/>sizeof,<sp/>including<sp/>but<sp/>not<sp/>restricted<sp/>to<sp/>OpenCL<sp/>vector<sp/>types,<sp/>structs,<sp/>but<sp/>excluding<sp/>void.</highlight></codeline>
+<codeline><highlight class="normal">TTL_ext_tensor_t<sp/>TTL_create_ext_tensor(__global<sp/>gentype<sp/>*base,<sp/>TTL_tile_t<sp/>tile,<sp/>TTL_layout_t<sp/>ext_layout);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Explicit<sp/>layout<sp/>and<sp/>element<sp/>size</highlight></codeline>
+<codeline><highlight class="normal">TTL_ext_tensor_t<sp/>TTL_create_ext_tensor(__global<sp/>gentype<sp/>*base,<sp/>TTL_tile_t<sp/>tile,<sp/>TTL_layout_t<sp/>ext_layout,<sp/>int<sp/>elem_size);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>1<sp/>if<sp/>an<sp/>internal<sp/>tensor<sp/>&apos;tensor&apos;<sp/>is<sp/>valid,<sp/>i.e.<sp/>has<sp/>a<sp/>non-empty<sp/>shape.<sp/>Otherwise,<sp/>returns<sp/>0.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Useful<sp/>when<sp/>prolog/epilogs<sp/>creates<sp/>non-valid<sp/>tensors.</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>TTL_valid_int_tensor(TTL_int_tensor_t<sp/>tensor);</highlight></codeline>
+</programlisting></para>
+<para>Explicit layouts and/or element size can be provided by overriding the default values. The API can also be extended with constructors for explicit sizes, if needed.</para>
+<para><heading level="2">TTL_io_tensors</heading>
+</para>
+<para>TTL_io_tensors_t holds two internal tensors ready for processing: imported_to as input tensor and to_export_from as output tensor:</para>
+<para><programlisting><codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_int_tensor_t<sp/>imported_to;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_int_tensor_t<sp/>to_export_from;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_io_tensors_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>true<sp/>if<sp/>tensors<sp/>are<sp/>valid.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Useful<sp/>when<sp/>prolog/epilogs<sp/>creates<sp/>non-valid<sp/>tensors.</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>TTL_valid_tensors(TTL_io_tensors_t<sp/>tensors);</highlight></codeline>
+</programlisting></para>
+<para><heading level="1">TTL Import and Export Transactions </heading>
+</para>
+<para>The third layer of TTL deals with transactions that copy tensors from global to local memory and back, referred to as import and export, respectively. These transactions are asynchronous and correspond to async_work_group_copy() builtin functions of OpenCL and their use of &quot;event_t&quot;. Similar to OpenCL, in TTL one <ref refid="c_2TTL__types_8h_1af7aafacf1b2d8b553b9b2dcd66925038" kindref="member">event_t</ref> can serve multiple transactions, and it is possible to wait on multiple events. Unlike OpenCL, every import and export in TTL must be provided a non-null <ref refid="c_2TTL__types_8h_1af7aafacf1b2d8b553b9b2dcd66925038" kindref="member">event_t</ref>, which can be produced by <ref refid="opencl_2TTL__import__export_8h_1ab52c0b665518000f2c402c5170a58ee2" kindref="member">TTL_get_event()</ref>.</para>
+<para><programlisting><codeline><highlight class="normal">TTL_event_t<sp/>TTL_get_event();<sp/>//<sp/>Initialize<sp/>an<sp/>event.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Import<sp/>the<sp/>data<sp/>in<sp/>external_tensor<sp/>to<sp/>internal_tensor.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>The<sp/>transaction<sp/>is<sp/>added<sp/>to<sp/>the<sp/>event<sp/>e.</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>TTL_import(TTL_int_tensor_t<sp/>internal_tensor,<sp/>TTL_ext_tensor_t<sp/>external_tensor,<sp/>TTL_event_t<sp/>*e);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Export<sp/>the<sp/>data<sp/>in<sp/>internal_tensor<sp/>to<sp/>external_tensor.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>The<sp/>transaction<sp/>is<sp/>added<sp/>to<sp/>the<sp/>event<sp/>e.</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>TTL_export(TTL_int_tensor_t<sp/>internal_tensor,<sp/>TTL_ext_tensor_t<sp/>external_tensor,<sp/>TTL_event_t<sp/>*e);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>TTL_wait(int<sp/>num_events,<sp/>TTL_event_t<sp/>*events);<sp/>//<sp/>Wait<sp/>for<sp/>first<sp/>num_events<sp/>in<sp/>events<sp/>array</highlight></codeline>
+</programlisting></para>
+<para>TTL_blocking_import/export can be used to issue a blocking transaction, i.e., get an event, issue a transaction and immediately wait for its completion:</para>
+<para><programlisting><codeline><highlight class="normal">void<sp/>TTL_blocking_import(TTL_int_tensor_t<sp/>internal_tensor,<sp/>TTL_ext_tensor_t<sp/>external_tensor);</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>TTL_blocking_export(TTL_int_tensor_t<sp/>internal_tensor,<sp/>TTL_ext_tensor_t<sp/>external_tensor);</highlight></codeline>
+</programlisting></para>
+<para><heading level="1">TTL Pipelining Schemes </heading>
+</para>
+<para>The fourth layer of TTL deals with overlapping pairs of asynchronous import and export transactions and buffering pairs of internal tensors to facilitate pipelining of imports and exports.</para>
+<para>TTL provides several schemes to help pipeline import and/or export transactions of tiles across a loop-over-tiles to overlap the transactions with computations and/or with themselves. Each scheme contains a struct, a defining function and a bumping function. The defining function initializes the struct and is placed before the loop to store data across loop iterations. The bumping function initializes and finalizes the transactions, returning TTL_tensor_t(s) to be used by their associated computation, and is placed inside the loop before the computations.</para>
+<para>A <ref refid="TTL__int__tensors_8h_1af55285c5c289c327379be3725265949a" kindref="member">TTL_int_tensor_t</ref> returned by a bumping function that is associated with an import represents a tensor ready to be read-from, while a returned <ref refid="TTL__int__tensors_8h_1af55285c5c289c327379be3725265949a" kindref="member">TTL_int_tensor_t</ref> associated with an export is ready to be written-to and exported in the next invocation of the bumping function. The bumping functions receive a single tile, which may be the current or next tile, and record past tiles as needed.</para>
+<para>Each scheme indicates how may prolog and/or epilog iterations it requires in order for its bumping function to be invoked sufficiently many times before and/or after their computation.</para>
+<para><heading level="2">Pipelining Iterations</heading>
+</para>
+<para>A scheme may require additional prolog and/or epilog iterations, which are represented and manipulated as follows:</para>
+<para><programlisting><codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>prolog;<sp/>//<sp/>Represents<sp/>number<sp/>of<sp/>extra<sp/>iterations<sp/>which<sp/>should<sp/>be</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>subtracted<sp/>from<sp/>the<sp/>start<sp/>of<sp/>the<sp/>loop-over-tiles.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>epilog;<sp/>//<sp/>Represents<sp/>number<sp/>of<sp/>extra<sp/>iterations<sp/>which<sp/>should<sp/>be<sp/>added<sp/>to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>the<sp/>end<sp/>of<sp/>the<sp/>loop-over-tiles.</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_pipeline_iterations_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>the<sp/>number<sp/>of<sp/>prologs<sp/>and<sp/>epilogs<sp/>required<sp/>by<sp/>a<sp/>pipelining<sp/>scheme.</highlight></codeline>
+<codeline><highlight class="normal">TTL_pipeline_iterations_t<sp/>TTL_create_pipeline_iterations(void<sp/>*scheme_base);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Given<sp/>existing<sp/>pipeline_iterations<sp/>struct<sp/>and<sp/>a<sp/>pointer<sp/>to<sp/>a<sp/>scheme,<sp/>returns<sp/>the<sp/>required<sp/>number<sp/>of<sp/>prologs<sp/>and<sp/>epilogs<sp/>(performs<sp/>maximum<sp/>operation).</highlight></codeline>
+<codeline><highlight class="normal">TTL_pipeline_iterations_t<sp/>TTL_join_pipeline_iterations(void<sp/>*scheme_base,<sp/>TTL_pipeline_iterations_t<sp/>pipeline_iters);</highlight></codeline>
+</programlisting></para>
+<para><heading level="2">Duplex Buffering</heading>
+</para>
+<para>Given pair of blocking import and export that can execute concurrently, TTL_duplex_buffering issues them together and then waits on both to complete, hopefully executing them in parallel to each other. This scheme uses two internal buffers, one for the import and one for the export. Note that the export is pipelined to pair the import of the current tile with the export of previous tile.</para>
+<para>The following table draws the pipelined actions performed in duplex buffering. It specifies which tile is processed in each iteration:</para>
+<para><table rows="6" cols="5"><row>
+<entry thead="yes"><para>Action\Iteration   </para>
+</entry><entry thead="yes"><para>#0   </para>
+</entry><entry thead="yes"><para>#1   </para>
+</entry><entry thead="yes"><para>#i (2:NumOfTiles-1)   </para>
+</entry><entry thead="yes"><para>#NumOfTiles-    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Import</bold>   </para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>i   </para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Wait Import</bold>   </para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>i   </para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Compute</bold>   </para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>i   </para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Export</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>i-1   </para>
+</entry><entry thead="no"><para>NumOfTiles-1    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>WaitExport</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>i-1   </para>
+</entry><entry thead="no"><para>NumOfTiles-1   </para>
+</entry></row>
+</table>
+</para>
+<para>Notice the epilog (#NumOfTiles) which is an extra iteration.</para>
+<para>Here are the interfaces to create and use the duplex buffering scheme:</para>
+<para><programlisting><codeline><highlight class="normal">TTL_duplex_buffering_t<sp/>TTL_create_duplex_buffering(__global<sp/>void<sp/>*ext_base_in,<sp/>TTL_layout_t<sp/>ext_layout_in,<sp/>__local<sp/>void<sp/>*int_base_in,<sp/>__global<sp/>void<sp/>*ext_base_out,<sp/>TTL_layout_t<sp/>ext_layout_out,<sp/>__local<sp/>void<sp/>*int_base_out,<sp/>TTL_event_t<sp/>*event_in,<sp/>TTL_event_t<sp/>*event_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Import<sp/>current<sp/>tile,<sp/>export<sp/>previous<sp/>tile<sp/>and<sp/>wait<sp/>for<sp/>both<sp/>transactions</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Using<sp/>the<sp/>same<sp/>tile<sp/>dimensions<sp/>for<sp/>both<sp/>importing<sp/>and<sp/>exporting,<sp/>can<sp/>also<sp/>provide<sp/>two<sp/>distinct<sp/>tiles.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>two<sp/>internal<sp/>buffers:<sp/>one<sp/>for<sp/>input<sp/>and<sp/>one<sp/>for<sp/>output</highlight></codeline>
+<codeline><highlight class="normal">TTL_io_tensors_t<sp/>TTL_step_buffering(TTL_duplex_buffering_t<sp/>*scheme,<sp/>TTL_tile_t<sp/>tile);</highlight></codeline>
+</programlisting></para>
+<para>For more infotmation see duplex buffering example.</para>
+<para><heading level="2">Double Buffering</heading>
+</para>
+<para>TTL_double_buffering pipelines a duplex import or export transaction using two internal buffers.</para>
+<para>The following table draws the pipelined actions performed in double buffering. It specifies which tile is processed in each iteration:</para>
+<para><table rows="6" cols="9"><row>
+<entry thead="yes"><para>Action\Iteration   </para>
+</entry><entry thead="yes"><para>#-1   </para>
+</entry><entry thead="yes"><para>#0   </para>
+</entry><entry thead="yes"><para>#1   </para>
+</entry><entry thead="yes"><para>#2   </para>
+</entry><entry thead="yes"><para>#i (2:NumOfTiles-2)   </para>
+</entry><entry thead="yes"><para>#NumOfTiles-1   </para>
+</entry><entry thead="yes"><para>#NumOfTiles   </para>
+</entry><entry thead="yes"><para>#NumOfTiles+1    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Wait Import</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>2   </para>
+</entry><entry thead="no"><para>i   </para>
+</entry><entry thead="no"><para>NumOfTiles-1   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Import</bold>   </para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>2   </para>
+</entry><entry thead="no"><para>3   </para>
+</entry><entry thead="no"><para>i+1   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>WaitExport</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>i-2   </para>
+</entry><entry thead="no"><para>NumOfTiles-3   </para>
+</entry><entry thead="no"><para>NumOfTiles-2   </para>
+</entry><entry thead="no"><para>NumOfTiles-1    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Export</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>i-1   </para>
+</entry><entry thead="no"><para>NumOfTiles-2   </para>
+</entry><entry thead="no"><para>NumOfTiles-1   </para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Compute</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>2   </para>
+</entry><entry thead="no"><para>i   </para>
+</entry><entry thead="no"><para>NumOfTiles-1   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+</table>
+</para>
+<para>Notice the prolog (at iteration number -1) and the 2 epilogs (at iterations number NumOfTiles and NumOfTiles+1) which add in total 3 extra iterations.</para>
+<para>Here are the interfaces to create and use the double buffering scheme:</para>
+<para><programlisting><codeline><highlight class="normal">TTL_double_buffering_t<sp/>TTL_create_import_double_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__local<sp/>void<sp/>*buff1,<sp/>__local<sp/>void<sp/>*buff2,<sp/>__global<sp/>void<sp/>*ext_base_in,<sp/>TTL_layout_t<sp/>ext_layout_in,<sp/>TTL_event_t<sp/>*event);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_double_buffering_t<sp/>TTL_create_export_double_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__local<sp/>void<sp/>*buff1,<sp/>__local<sp/>void<sp/>*buff2,<sp/>__global<sp/>void<sp/>*ext_base_out,<sp/>TTL_layout_t<sp/>ext_layout_out,<sp/>TTL_event_t<sp/>*event);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Wait<sp/>for<sp/>last<sp/>import<sp/>and<sp/>issue<sp/>next<sp/>import</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>the<sp/>waited<sp/>tensor.</highlight></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t<sp/>TTL_step_buffering(TTL_double_buffering_t<sp/>*scheme,<sp/>TTL_tile_t<sp/>tile);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Wait<sp/>for<sp/>last<sp/>export<sp/>and<sp/>issue<sp/>next<sp/>export</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>the<sp/>waited<sp/>tensor.</highlight></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t<sp/>TTL_step_buffering(TTL_double_buffering_t<sp/>*scheme,<sp/>TTL_tile_t<sp/>tile);</highlight></codeline>
+</programlisting></para>
+<para>For more information see double buffering example</para>
+<para><heading level="2">Simplex Buffering</heading>
+</para>
+<para>TTL_simplex_buffering pipelines a pair of import and export transactions using three internal buffers, in rotation: each buffer interchangeably serves as input buffer and output buffer, such that in each iteration one buffer is used both to export then import and two buffers are used by compute for reading and writing.</para>
+<para>With simplex buffering we&apos;re only waiting for previous iterations, so DMA transactions run mostly in parallel to computation, but serially with each other. Using the same buffer both for import and export is possible allowing us to overlap exporting from and importing to the same buffer.</para>
+<para>The following table draws the pipelined actions performed in simplex buffering. It specifies which tile is processed in each iteration:</para>
+<para><table rows="6" cols="9"><row>
+<entry thead="yes"><para>Action\Iteration   </para>
+</entry><entry thead="yes"><para>#-1   </para>
+</entry><entry thead="yes"><para>#0   </para>
+</entry><entry thead="yes"><para>#1   </para>
+</entry><entry thead="yes"><para>#2   </para>
+</entry><entry thead="yes"><para>#i (2:NumOfTiles-2)   </para>
+</entry><entry thead="yes"><para>#NumOfTiles-1   </para>
+</entry><entry thead="yes"><para>#NumOfTiles   </para>
+</entry><entry thead="yes"><para>#NumOfTiles+1    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>WaitExport</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>i-2   </para>
+</entry><entry thead="no"><para>NumOfTiles-3   </para>
+</entry><entry thead="no"><para>NumOfTiles-2   </para>
+</entry><entry thead="no"><para>NumOfTiles-1    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Export</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>i-1   </para>
+</entry><entry thead="no"><para>NumOfTiles-2   </para>
+</entry><entry thead="no"><para>NumOfTiles-1   </para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Wait Import</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>2   </para>
+</entry><entry thead="no"><para>i   </para>
+</entry><entry thead="no"><para>NumOfTiles-1   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Import</bold>   </para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>2   </para>
+</entry><entry thead="no"><para>3   </para>
+</entry><entry thead="no"><para>i+1   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Compute</bold>   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para>0   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>2   </para>
+</entry><entry thead="no"><para>i   </para>
+</entry><entry thead="no"><para>NumOfTiles-1   </para>
+</entry><entry thead="no"><para></para>
+</entry><entry thead="no"><para></para>
+</entry></row>
+</table>
+</para>
+<para>Notice the prolog (at iteration number -1) and the 2 epilogs (at iterations number NumOfTiles and NumOfTiles+1) which add in total 3 extra iterations.</para>
+<para>Here are the interfaces to create and use the simplex buffering scheme:</para>
+<para><programlisting><codeline><highlight class="normal">TTL_simplex_buffering_t<sp/>TTL_create_simplex_buffering(__global<sp/>void<sp/>*ext_base_in,<sp/>__global<sp/>void<sp/>*ext_base_out,<sp/>__local<sp/>void<sp/>*buff1,<sp/>__local<sp/>void<sp/>*buff2,<sp/>__local<sp/>void<sp/>*buff3,<sp/>TTL_layout_t<sp/>ext_layout_in,<sp/>TTL_layout_t<sp/>ext_layout_out,<sp/>TTL_event_t<sp/>*event_in,<sp/>TTL_event_t<sp/>*event_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>Wait<sp/>for<sp/>previous<sp/>import<sp/>#i<sp/>and<sp/>export<sp/>#i-2</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Trigger<sp/>export<sp/>#i-1,<sp/>a<sp/>local<sp/>async<sp/>fence<sp/>or<sp/>iab,<sp/>and<sp/>import<sp/>#i+1</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Both<sp/>export<sp/>#i-2<sp/>and<sp/>import<sp/>#i<sp/>happen<sp/>asynchronously<sp/>back-to-back,<sp/>effectively<sp/>waiting<sp/>for<sp/>the<sp/>latter<sp/>import<sp/>only.</highlight></codeline>
+<codeline><highlight class="normal">*/</highlight></codeline>
+<codeline><highlight class="normal">TTL_io_tensors_t<sp/>TTL_step_buffering(TTL_simplex_buffering_t<sp/>*scheme,<sp/>TTL_tile_t<sp/>tile);</highlight></codeline>
+</programlisting></para>
+<para>For more information see simplex buffering example</para>
+<para>See the Group Loop Bounds example for more information.</para>
+<para><heading level="1">Debugging </heading>
+</para>
+<para>TTL provides debugging information associated with tiling. Define TTL_DEBUG to turn on debugging:</para>
+<para><programlisting><codeline><highlight class="normal">#define<sp/>TTL_DEBUG</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+</programlisting></para>
+<para>Following is an example of what may be printed by TTL&apos;s debug mode:</para>
+<para><programlisting><codeline><highlight class="normal">TTL_IMPORT:<sp/>event=0x4088(channels<sp/>mask=0x1)<sp/>int_addr=0x108000<sp/>ext_base=0x4002f6580<sp/>ext_offset=(6144,<sp/>0,<sp/>0)<sp/>shape=(512,<sp/>1,<sp/>1)<sp/>ext_stride=(0,<sp/>0)<sp/>int_stride=(0,<sp/>0)<sp/>//<sp/>line:62</highlight></codeline>
+<codeline><highlight class="normal">TTL_EXPORT:<sp/>event=0x4089(channels<sp/>mask=0x2)<sp/>int_addr=0x118000<sp/>ext_base=0x400300b80<sp/>ext_offset=(5120,<sp/>0,<sp/>0)<sp/>shape=(512,<sp/>1,<sp/>1)<sp/>ext_stride=(0,<sp/>0)<sp/>int_stride=(0,<sp/>0)<sp/>//<sp/>line:67</highlight></codeline>
+<codeline><highlight class="normal">TTL_WAIT:<sp/>event=0x408a(channels<sp/>mask=0x4)<sp/>event=0x408b(channels<sp/>mask=0x8)<sp/>//<sp/>line:69</highlight></codeline>
+</programlisting></para>
+<para><heading level="1">Tiling Code Examples </heading>
+</para>
+<para>This section provide code examples of kernels and tests that demonstrate the use of various TTL features.</para>
+<para><heading level="2">Duplex Buffering Scheme</heading>
+</para>
+<para>This example demonstrates how to use duplex buffering pipelining scheme.</para>
+<para><programlisting><codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MEMORY_SIZE<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>compute(TTL_int_tensor_t<sp/>tensor_in,<sp/>TTL_int_tensor_t<sp/>tensor_out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>const<sp/>uchar<sp/>*restrict<sp/>MEM0<sp/>l_in<sp/>=<sp/>tensor_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>*restrict<sp/>MEM1<sp/>l_out<sp/>=<sp/>tensor_out.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>width<sp/>=<sp/>tensor_in.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>height<sp/>=<sp/>tensor_in.shape.height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_in<sp/>=<sp/>tensor_in.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_out<sp/>=<sp/>tensor_out.layout.total_row_length;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for<sp/>(y,<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for<sp/>(x,<sp/>width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out[y<sp/>*<sp/>stride_out<sp/>+<sp/>x]<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_in[y<sp/>*<sp/>stride_in<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">static<sp/>inline<sp/>void<sp/>tile2tile_ref(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(unsigned<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>height;<sp/>++y)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>width;<sp/>++x)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ext_base_out[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>=<sp/>ext_base_in[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>tile2tileCompute(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,<sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_in[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_out[MEMORY_SIZE];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_width<sp/>=<sp/>40;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_height<sp/>=<sp/>48;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Logical<sp/>tiling.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>image_shape<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape<sp/>=<sp/>TTL_create_shape(tile_width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(image_shape,<sp/>tile_shape);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>External<sp/>layouts.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_in<sp/>=<sp/>TTL_create_layout(external_stride_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_out<sp/>=<sp/>TTL_create_layout(external_stride_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>/*<sp/>sb_scheme<sp/>must<sp/>be<sp/>defined<sp/>outside,<sp/>before<sp/>the<sp/>loop<sp/>-<sp/>because<sp/>we</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>&quot;time-shift&quot;<sp/>the<sp/>export<sp/>to<sp/>work<sp/>on<sp/>a<sp/>recorded<sp/>tile<sp/>written<sp/>to<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>previous<sp/>iteration,<sp/>instead<sp/>of<sp/>projecting<sp/>it<sp/>again<sp/>using<sp/>tile-1<sp/>-<sp/>to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>optimize<sp/>and<sp/>avoid<sp/>relying<sp/>on<sp/>previous<sp/>tile<sp/>being<sp/>tile-1.<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>sb_e_in<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>sb_e_out<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_duplex_buffering_t<sp/>sb_scheme<sp/>=<sp/>TTL_create_duplex_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ext_base_in,<sp/>ext_layout_in,<sp/>l_in,<sp/>ext_base_out,<sp/>ext_layout_out,<sp/>l_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&amp;sb_e_in,<sp/>&amp;sb_e_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_pipeline_iterations_t<sp/>pipeline_iters<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_pipeline_iterations(&amp;sb_scheme);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>-pipeline_iters.prolog;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>&lt;<sp/>TTL_number_of_tiles(tiler)<sp/>+<sp/>pipeline_iters.epilog;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>t<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Import<sp/>current<sp/>tile,<sp/>export<sp/>previous<sp/>tile<sp/>and<sp/>wait<sp/>for<sp/>both</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>transactions<sp/>Using<sp/>the<sp/>same<sp/>tile<sp/>dimensions<sp/>for<sp/>both<sp/>importing<sp/>and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>exporting,<sp/>can<sp/>also<sp/>provide<sp/>two<sp/>distinct<sp/>tiles.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_io_tensors_t<sp/>tensors<sp/>=<sp/>TTL_step_buffering(&amp;sb_scheme,<sp/>t);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_tensors(tensors))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>compute(tensors.imported_to,<sp/>tensors.to_export_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> <heading level="2">Double Buffering Scheme</heading>
+</para>
+<para>This example demonstrates how to use double buffering pipelining scheme.</para>
+<para><programlisting><codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MEMORY_SIZE<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>compute(TTL_int_tensor_t<sp/>tensor_in,<sp/>TTL_int_tensor_t<sp/>tensor_out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>const<sp/>uchar<sp/>*restrict<sp/>MEM0<sp/>l_in<sp/>=<sp/>tensor_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>*restrict<sp/>MEM1<sp/>l_out<sp/>=<sp/>tensor_out.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>width<sp/>=<sp/>tensor_in.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>height<sp/>=<sp/>tensor_in.shape.height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_in<sp/>=<sp/>tensor_in.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_out<sp/>=<sp/>tensor_out.layout.total_row_length;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for<sp/>(y,<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for<sp/>(x,<sp/>width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out[y<sp/>*<sp/>stride_out<sp/>+<sp/>x]<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_in[y<sp/>*<sp/>stride_in<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">static<sp/>inline<sp/>void<sp/>tile2tile_ref(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(unsigned<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>height;<sp/>++y)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>width;<sp/>++x)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ext_base_out[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>=<sp/>ext_base_in[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>tile2tileCompute(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,<sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_in1[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_in2[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_out1[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_out2[MEMORY_SIZE];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_width<sp/>=<sp/>128;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_height<sp/>=<sp/>88;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Logical<sp/>tiling.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>image_shape<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape<sp/>=<sp/>TTL_create_shape(tile_width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(image_shape,<sp/>tile_shape);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>External<sp/>layouts.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_in<sp/>=<sp/>TTL_create_layout(external_stride_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_out<sp/>=<sp/>TTL_create_layout(external_stride_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>import_DB<sp/>and<sp/>export_DB<sp/>need<sp/>to<sp/>be<sp/>defined<sp/>outside,<sp/>before<sp/>the<sp/>loop,<sp/>as<sp/>they<sp/>record<sp/>the<sp/>event<sp/>to<sp/>wait<sp/>on</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>import_DB_e<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>export_DB_e<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_double_buffering_t<sp/>import_DB<sp/>=<sp/>TTL_create_import_double_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_in1,<sp/>l_in2,<sp/>ext_base_in,<sp/>ext_layout_in,<sp/>&amp;import_DB_e);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_double_buffering_t<sp/>export_DB<sp/>=<sp/>TTL_create_export_double_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out1,<sp/>l_out2,<sp/>ext_base_out,<sp/>ext_layout_out,<sp/>&amp;export_DB_e);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_pipeline_iterations_t<sp/>pipeline_iters<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_pipeline_iterations(&amp;import_DB);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pipeline_iters<sp/>=<sp/>TTL_join_pipeline_iterations(&amp;export_DB,<sp/>pipeline_iters);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>-pipeline_iters.prolog;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>&lt;<sp/>TTL_number_of_tiles(tiler)<sp/>+<sp/>pipeline_iters.epilog;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>t_next<sp/>=<sp/>TTL_get_tile(i+1,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Wait<sp/>for<sp/>import<sp/>#i<sp/>and<sp/>issue<sp/>import<sp/>#i+1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>imported_to<sp/>=<sp/>TTL_step_buffering(&amp;import_DB,<sp/>t_next);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>t_curr<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Wait<sp/>for<sp/>export<sp/>#i-2<sp/>and<sp/>issue<sp/>export<sp/>#i-1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>exported_from<sp/>=<sp/>TTL_step_buffering(&amp;export_DB,<sp/>t_curr);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_int_tensor(imported_to))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>compute(imported_to,<sp/>exported_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><heading level="2">Simplex Buffering Scheme</heading>
+</para>
+<para>This example demonstrates how to use double buffering pipelining scheme.</para>
+<para><programlisting><codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MEMORY_SIZE<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>compute(TTL_int_tensor_t<sp/>tensor_in,<sp/>TTL_int_tensor_t<sp/>tensor_out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>const<sp/>uchar<sp/>*restrict<sp/>MEM0<sp/>l_in<sp/>=<sp/>tensor_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>*restrict<sp/>MEM1<sp/>l_out<sp/>=<sp/>tensor_out.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>width<sp/>=<sp/>tensor_in.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>height<sp/>=<sp/>tensor_in.shape.height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_in<sp/>=<sp/>tensor_in.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_out<sp/>=<sp/>tensor_out.layout.total_row_length;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for<sp/>(y,<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for<sp/>(x,<sp/>width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out[y<sp/>*<sp/>stride_out<sp/>+<sp/>x]<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_in[y<sp/>*<sp/>stride_in<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">static<sp/>inline<sp/>void<sp/>tile2tile_ref(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(unsigned<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>height;<sp/>++y)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>width;<sp/>++x)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ext_base_out[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>=<sp/>ext_base_in[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>tile2tileCompute(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,<sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_buff1[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_buff2[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_buff3[MEMORY_SIZE];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_width<sp/>=<sp/>128;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_height<sp/>=<sp/>88;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Logical<sp/>tiling.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>image_shape<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape<sp/>=<sp/>TTL_create_shape(tile_width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(image_shape,<sp/>tile_shape);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>External<sp/>layouts.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_in<sp/>=<sp/>TTL_create_layout(external_stride_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_out<sp/>=<sp/>TTL_create_layout(external_stride_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>tb_e_in<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>tb_e_out<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_simplex_buffering_t<sp/>tb_scheme<sp/>=<sp/>TTL_create_simplex_buffering(ext_base_in,<sp/>ext_base_out,<sp/>l_buff1,<sp/>l_buff2,<sp/>l_buff3,<sp/>ext_layout_in,<sp/>ext_layout_out,<sp/>&amp;tb_e_in,<sp/>&amp;tb_e_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_pipeline_iterations_t<sp/>pipeline_iters<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_pipeline_iterations(&amp;tb_scheme);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>-pipeline_iters.prolog;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>&lt;<sp/>TTL_number_of_tiles(tiler)<sp/>+<sp/>pipeline_iters.epilog;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>next_tile<sp/>=<sp/>TTL_get_tile(i+1,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>1.<sp/>Wait<sp/>for<sp/>previous<sp/>import<sp/>#i<sp/>and<sp/>export<sp/>#i-2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>2.<sp/>Trigger<sp/>export<sp/>#i-1,<sp/>a<sp/>local<sp/>async<sp/>fence<sp/>or<sp/>iab,<sp/>and<sp/>import<sp/>#i+1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>Both<sp/>export<sp/>#i-2<sp/>and<sp/>import<sp/>#i<sp/>happen<sp/>asynchronously<sp/>back-to-back,<sp/>effectively<sp/>waiting<sp/>for<sp/>the<sp/>latter<sp/>import<sp/>only.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Using<sp/>the<sp/>same<sp/>tile<sp/>dimensions<sp/>for<sp/>both<sp/>importing<sp/>and<sp/>exporting,<sp/>can<sp/>also<sp/>provide<sp/>two<sp/>distinct<sp/>tiles.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_io_tensors_t<sp/>tensors<sp/>=<sp/>TTL_step_buffering(&amp;tb_scheme,<sp/>next_tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_tensors(tensors))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>compute(tensors.imported_to,<sp/>tensors.to_export_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><heading level="2">Overlapped Tiler</heading>
+</para>
+<para><programlisting><codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MEMORY_SIZE<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OVERLAP_WIDTH<sp/>7</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OVERLAP_HEIGHT<sp/>9</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_WIDTH<sp/>40</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_HEIGHT<sp/>30</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>calc(TTL_int_tensor_t<sp/>tensor_in,<sp/>TTL_int_tensor_t<sp/>tensor_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__local<sp/>int<sp/>*restrict<sp/>avg)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>*restrict<sp/>MEM1<sp/>l_out<sp/>=<sp/>tensor_out.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>const<sp/>uchar<sp/>*restrict<sp/>MEM0<sp/>l_in<sp/>=<sp/>tensor_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>int<sp/>*restrict<sp/>MEM2<sp/>l_avg<sp/>=<sp/>avg;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>in_stride<sp/>=<sp/>tensor_in.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>in_width<sp/>=<sp/>tensor_in.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>in_height<sp/>=<sp/>tensor_in.shape.height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>out_stride<sp/>=<sp/>tensor_out.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>out_width<sp/>=<sp/>tensor_out.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>out_height<sp/>=<sp/>tensor_out.shape.height;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>l_avg[0]<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for(y,<sp/>in_height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for(x,<sp/>in_width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>offset<sp/>=<sp/>y<sp/>*<sp/>in_stride<sp/>+<sp/>x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_avg[0]<sp/>+=<sp/>(int)l_in[offset];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>l_avg[0]<sp/>/=<sp/>(in_width<sp/>*<sp/>in_height);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for(y,<sp/>out_height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for(x,<sp/>out_width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>offset<sp/>=<sp/>y<sp/>*<sp/>out_stride+<sp/>x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out[offset]<sp/>=<sp/>l_avg[0];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>TTL_overlap(__global<sp/>uchar<sp/>*restrict<sp/>inp,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>out,<sp/>int<sp/>width,<sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>l_in[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>l_out[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>int<sp/>avg[1];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>TTL<sp/>setup</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>space_in<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape_in<sp/>=<sp/>TTL_create_shape(TILE_WIDTH,<sp/>TILE_HEIGHT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_overlap_t<sp/>overlap<sp/>=<sp/>TTL_create_overlap(OVERLAP_WIDTH,<sp/>OVERLAP_HEIGHT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler_in<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_overlap_tiler(space_in,<sp/>tile_shape_in,<sp/>overlap);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>layout_ext_in<sp/>=<sp/>TTL_create_layout(space_in.width);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>space_out<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_shape(width<sp/>-<sp/>overlap.width,<sp/>height<sp/>-<sp/>overlap.height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape_out<sp/>=<sp/>TTL_create_shape(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TILE_WIDTH<sp/>-<sp/>overlap.width,<sp/>TILE_HEIGHT<sp/>-<sp/>overlap.height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler_out<sp/>=<sp/>TTL_create_tiler(space_out,<sp/>tile_shape_out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>layout_ext_out<sp/>=<sp/>TTL_create_layout(space_out.width);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>num_tiles<sp/>=<sp/>TTL_number_of_tiles(tiler_in);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>num_tiles;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>tile_in<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>int_tensor_in<sp/>=<sp/>TTL_create_int_tensor(l_in,<sp/>tile_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>ext_tensor_in<sp/>=<sp/>TTL_create_ext_tensor(inp,<sp/>tile_in,<sp/>layout_ext_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_blocking_import(int_tensor_in,<sp/>ext_tensor_in);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>tile_out<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler_out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>int_tensor_out<sp/>=<sp/>TTL_create_int_tensor(l_out,<sp/>tile_out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>ext_tensor_out<sp/>=<sp/>TTL_create_ext_tensor(out,<sp/>tile_out,<sp/>layout_ext_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_tile_id(i,<sp/>tiler_in))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>calc(int_tensor_in,<sp/>int_tensor_out,<sp/>avg);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_blocking_export(int_tensor_out,<sp/>ext_tensor_out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><heading level="2">Parallelizing Tiling Loop</heading>
+</para>
+<para><programlisting><codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MEMORY_SIZE<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>compute(TTL_int_tensor_t<sp/>tensor_in,<sp/>TTL_int_tensor_t<sp/>tensor_out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>const<sp/>uchar<sp/>*restrict<sp/>MEM0<sp/>l_in<sp/>=<sp/>tensor_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>*restrict<sp/>MEM1<sp/>l_out<sp/>=<sp/>tensor_out.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>width<sp/>=<sp/>tensor_in.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>height<sp/>=<sp/>tensor_in.shape.height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_in<sp/>=<sp/>tensor_in.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_out<sp/>=<sp/>tensor_out.layout.total_row_length;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for(y,<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for(x,<sp/>width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out[y<sp/>*<sp/>stride_out<sp/>+<sp/>x]<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_in[y<sp/>*<sp/>stride_in<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>tile2tileCompute(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,<sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_in[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_out[MEMORY_SIZE];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_width<sp/>=<sp/>48;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_height<sp/>=<sp/>40;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Logical<sp/>tiling.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>image_shape<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape<sp/>=<sp/>TTL_create_shape(tile_width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(image_shape,<sp/>tile_shape);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>External<sp/>layouts.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_in<sp/>=<sp/>TTL_create_layout(external_stride_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_out<sp/>=<sp/>TTL_create_layout(external_stride_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>/*<sp/>sb_scheme<sp/>must<sp/>be<sp/>defined<sp/>outside,<sp/>before<sp/>the<sp/>loop<sp/>-<sp/>because<sp/>we</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>&quot;time-shift&quot;<sp/>the<sp/>export<sp/>to<sp/>work<sp/>on<sp/>a<sp/>recorded<sp/>tile<sp/>written<sp/>to<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>previous<sp/>iteration,<sp/>instead<sp/>of<sp/>projecting<sp/>it<sp/>again<sp/>using<sp/>tile-1<sp/>-<sp/>to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>optimize<sp/>and<sp/>avoid<sp/>relying<sp/>on<sp/>previous<sp/>tile<sp/>being<sp/>tile-1.<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>sb_e_in<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>sb_e_out<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_single_buffering_t<sp/>sb_scheme<sp/>=<sp/>TTL_create_single_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ext_base_in,<sp/>ext_layout_in,<sp/>l_in,<sp/>ext_base_out,<sp/>ext_layout_out,<sp/>l_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&amp;sb_e_in,<sp/>&amp;sb_e_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_pipeline_iterations_t<sp/>pipeline_iters<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_pipeline_iterations(&amp;sb_scheme);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_loop_bounds_t<sp/>bounds<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_set_group_loop_bounds(&amp;tiler,<sp/>pipeline_iters);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>bounds.lower;<sp/>i<sp/>&lt;<sp/>bounds.upper;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//printf(&quot;Iteration<sp/>#%d,<sp/>numoftiles:<sp/>%d\n&quot;,i,<sp/>TTL_number_of_tiles(tiler));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>t<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Import<sp/>current<sp/>tile,<sp/>export<sp/>previous<sp/>tile<sp/>and<sp/>wait<sp/>for<sp/>both</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>transactions<sp/>Using<sp/>the<sp/>same<sp/>tile<sp/>dimensions<sp/>for<sp/>both<sp/>importing<sp/>and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>exporting,<sp/>can<sp/>also<sp/>provide<sp/>two<sp/>distinct<sp/>tiles.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_io_tensors_t<sp/>tensors<sp/>=<sp/>TTL_step_buffering(&amp;sb_scheme,<sp/>t);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_tensors(tensors))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>compute(tensors.imported_to,<sp/>tensors.to_export_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><heading level="2">Manual Double Buffering: dxDMA</heading>
+</para>
+<para>This example shows how double buffering can be coded manually, i.e., w/o using TTL&apos;s scheme.</para>
+<para><programlisting><codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__attribute__((noinline))<sp/>void</highlight></codeline>
+<codeline><highlight class="normal">calc_dx(__local<sp/>char<sp/>*restrict<sp/>out_image,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__local<sp/>const<sp/>unsigned<sp/>char<sp/>*restrict<sp/>input_image,<sp/>int<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for(y,<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for(xx,<sp/>width<sp/>-<sp/>2)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>x<sp/>=<sp/>x<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>left<sp/>=<sp/>input_image[y<sp/>*<sp/>width<sp/>+<sp/>x<sp/>-<sp/>1];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>right<sp/>=<sp/>input_image[y<sp/>*<sp/>width<sp/>+<sp/>x<sp/>+<sp/>1];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>out_image[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>=<sp/>(right<sp/>-<sp/>left)<sp/>&gt;&gt;<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_SZ<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>TTL_dx(__global<sp/>char<sp/>*restrict<sp/>dx_image,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>unsigned<sp/>char<sp/>*restrict<sp/>input_image,<sp/>int<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>unsigned<sp/>char<sp/>l_in1[TILE_SZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>unsigned<sp/>char<sp/>l_in2[TILE_SZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>char<sp/>l_out1[TILE_SZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>char<sp/>l_out2[TILE_SZ];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_height<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>14)<sp/>/<sp/>width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>unsigned<sp/>char<sp/>*buffs_in[]<sp/>=<sp/>{l_in1,<sp/>l_in2};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>char<sp/>*buffs_out[]<sp/>=<sp/>{l_out1,<sp/>l_out2};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>TTL<sp/>setup</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tensor<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile<sp/>=<sp/>TTL_create_shape(width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(tensor,<sp/>tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>external_layout<sp/>=<sp/>TTL_create_layout(width);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>wait_in[2];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>wait_out[2];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>buff_no<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>num_tiles<sp/>=<sp/>TTL_number_of_tiles(tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>-1;<sp/>i<sp/>&lt;=<sp/>num_tiles;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>next_tile<sp/>=<sp/>TTL_get_tile(i<sp/>+<sp/>1,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>int_tensor_in<sp/>=<sp/>TTL_create_int_tensor(buffs_in[1<sp/>-<sp/>buff_no],<sp/>next_tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>ext_tensor_in<sp/>=<sp/>TTL_create_ext_tensor(input_image,<sp/>next_tile,<sp/>external_layout,<sp/>sizeof(char));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>wait_in[1<sp/>-<sp/>buff_no]<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_import(int_tensor_in,<sp/>ext_tensor_in,<sp/>&amp;wait_in[1<sp/>-<sp/>buff_no]);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>prev_tile<sp/>=<sp/>TTL_get_tile(i<sp/>-<sp/>1,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>int_tensor_out<sp/>=<sp/>TTL_create_int_tensor(buffs_out[1<sp/>-<sp/>buff_no],<sp/>prev_tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>ext_tensor_out<sp/>=<sp/>TTL_create_ext_tensor(dx_image,<sp/>prev_tile,<sp/>external_layout);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>wait_out[1<sp/>-<sp/>buff_no]<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_export(int_tensor_out,<sp/>ext_tensor_out,<sp/>&amp;wait_out[1<sp/>-<sp/>buff_no]);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_wait(1,<sp/>&amp;wait_in[buff_no]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_wait(1,<sp/>&amp;wait_out[buff_no]);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_tile_id(i,<sp/>tiler))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>curr_tile<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>calc_dx(buffs_out[buff_no],<sp/>buffs_in[buff_no],<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>curr_tile.shape.height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>buff_no<sp/>=<sp/>1<sp/>-<sp/>buff_no;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_wait(1,<sp/>&amp;wait_out[buff_no]);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+    <location file="v7F17Om_TTL/doc/tutorials/introduction_to_ttl/introduction_to_ttl.md"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_470cc1b0417bb08dd7281f10a1395163" kind="dir">
+    <compoundname>import_export</compoundname>
+    <innerfile refid="TTL__typed__import__export_8h">TTL_typed_import_export.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="v7F17Om_TTL/import_export/"/>
+  </compounddef>
+</doxygen>

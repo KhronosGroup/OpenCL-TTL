@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="opencl_2TTL__types_8h" kind="file" language="C++">
+    <compoundname>opencl/TTL_types.h</compoundname>
+    <includedby refid="c_2TTL__types_8h" local="yes">TTL_types.h</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>TTL_types.h</label>
+        <link refid="c_2TTL__types_8h"/>
+      </node>
+      <node id="1">
+        <label>TTL_types.h</label>
+        <link refid="opencl_2TTL__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" prot="public" static="no">
+        <type>unsigned int</type>
+        <definition>typedef unsigned int TTL_dim_t</definition>
+        <argsstring></argsstring>
+        <name>TTL_dim_t</name>
+        <briefdescription>
+<para>The type used to hold the size of an object along any dimension. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/opencl/TTL_types.h" line="19" column="22" bodyfile="v7F17Om_TTL/opencl/TTL_types.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" prot="public" static="no">
+        <type>int</type>
+        <definition>typedef int TTL_offset_dim_t</definition>
+        <argsstring></argsstring>
+        <name>TTL_offset_dim_t</name>
+        <briefdescription>
+<para>The type used to hold offsets and origins. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/opencl/TTL_types.h" line="20" column="13" bodyfile="v7F17Om_TTL/opencl/TTL_types.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_types.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>The<sp/>type<sp/>used<sp/>to<sp/>hold<sp/>the<sp/>size<sp/>of<sp/>an<sp/>object<sp/>along<sp/>any<sp/>dimension</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>The<sp/>type<sp/>used<sp/>to<sp/>hold<sp/>offsets<sp/>and<sp/>origins.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="22"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@def<sp/>TTL_global</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>typed<sp/>reference<sp/>in<sp/>the<sp/>__global<sp/>address<sp/>space.</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>Using<sp/>this<sp/>macro<sp/>allows<sp/>a<sp/>global<sp/>reference<sp/>to<sp/>be<sp/>created<sp/>in<sp/>an<sp/>implmentation<sp/>indepedent<sp/>way.</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>For<sp/>example<sp/>a<sp/>pointer<sp/>to<sp/>a<sp/>struct<sp/>MyStruct<sp/>in<sp/>the<sp/>global<sp/>namespace.</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>@code<sp/>{.c}</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>TTL_global(MyStruct<sp/>*)</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@endcode</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>for<sp/>an<sp/>unsigned<sp/>int</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@code<sp/>{.c}</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>TTL_global(unsigned<sp/>int<sp/>*)</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@endcode</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@def<sp/>TTL_global_printf</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>Different<sp/>implementations<sp/>use<sp/>different<sp/>types<sp/>for<sp/>global<sp/>pointers,<sp/>using<sp/>TTL_global_printf</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>allows<sp/>for<sp/>agnostic<sp/>implementations.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@code<sp/>{.c}</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>TTL_global(MyStruct<sp/>*)<sp/>ptr_my_struct;</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>printf(&quot;Ptr<sp/>to<sp/>my<sp/>struct<sp/>&quot;<sp/>TTL_global_printf<sp/>&quot;\n&quot;,<sp/>ptr_my_struct)</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@endcode</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="53"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@def<sp/>TTL_local</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>typed<sp/>reference<sp/>in<sp/>the<sp/>__local<sp/>address<sp/>space.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>Using<sp/>this<sp/>macro<sp/>allows<sp/>a<sp/>local<sp/>reference<sp/>to<sp/>be<sp/>created<sp/>in<sp/>an<sp/>implmentation<sp/>indepedent<sp/>way.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>For<sp/>example<sp/>a<sp/>pointer<sp/>to<sp/>a<sp/>struct<sp/>MyStruct<sp/>in<sp/>the<sp/>local<sp/>namespace.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@code<sp/>{.c}</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>TTL_local(MyStruct<sp/>*)</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@endcode</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>for<sp/>an<sp/>unsigned<sp/>int</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>@code<sp/>{.c}</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>TTL_local(unsigned<sp/>int<sp/>*)</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>@endcode</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="72"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/>@def<sp/>TTL_local_printf</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*<sp/>Different<sp/>implementations<sp/>use<sp/>different<sp/>types<sp/>for<sp/>local<sp/>pointers,<sp/>using<sp/>TTL_local_printf</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>allows<sp/>for<sp/>agnostic<sp/>implementations.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>@code<sp/>{.c}</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>TTL_local(MyStruct<sp/>*)<sp/>ptr_my_struct;</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>printf(&quot;Ptr<sp/>to<sp/>my<sp/>struct<sp/>&quot;<sp/>TTL_local_printf<sp/>&quot;\n&quot;,<sp/>ptr_my_struct)</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/>@endcode</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="84"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>@brief<sp/>TTL_event_t<sp/>is<sp/>a<sp/>pseudonym<sp/>for<sp/>OpenCL<sp/>event_t</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>To<sp/>allow<sp/>full<sp/>compatibility<sp/>with<sp/>OpenCL<sp/>but<sp/>allow<sp/>other<sp/>implementations<sp/>to</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*<sp/>use<sp/>TTL_event_t<sp/>in<sp/>a<sp/>way<sp/>that<sp/>is<sp/>more<sp/>applicable<sp/>to<sp/>their<sp/>platforms<sp/>we</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*<sp/>used<sp/>TTL_event_t.<sp/><sp/>For<sp/>OpenCL<sp/>TTL_event_t<sp/>is<sp/>event_t.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="c_2TTL__types_8h_1af7aafacf1b2d8b553b9b2dcd66925038" kindref="member">event_t</ref><sp/><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="93"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Internal<sp/>non-API<sp/>helper<sp/>function<sp/>to<sp/>allow<sp/>debugging<sp/>of<sp/>events</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>@param<sp/>event</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>@todo<sp/>Add<sp/>file<sp/>name<sp/>information<sp/>if/once<sp/>PHDL<sp/>supports<sp/>%s<sp/>in<sp/>format<sp/>strings</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__TTL_dump_event(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref><sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ttl_event)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>In<sp/>OpenCL<sp/>compiler<sp/>an<sp/>event_t<sp/>is<sp/>a<sp/>pointer<sp/>to<sp/>a<sp/>mask<sp/>of<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal"><sp/>=<sp/>*(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**)ttl_event;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!event)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;event=NULL&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;event=%p<sp/>(channels<sp/>mask=0x%x)&quot;</highlight><highlight class="normal">,<sp/>event,<sp/>*event);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="v7F17Om_TTL/opencl/TTL_types.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_efd9e86757b3bd5f887d318858fcf15e" kind="dir">
+    <compoundname>v7F17Om_TTL</compoundname>
+    <innerdir refid="dir_ed06cd266b1665503465ed3492c3e461">c</innerdir>
+    <innerdir refid="dir_88ea1baf8d655665c6bace522450903d">doc</innerdir>
+    <innerdir refid="dir_470cc1b0417bb08dd7281f10a1395163">import_export</innerdir>
+    <innerdir refid="dir_3f765fbc6e5549e64e5b04db522cb1c3">opencl</innerdir>
+    <innerdir refid="dir_1f3f5074656d946f31d672e5e6980211">pipelines</innerdir>
+    <innerdir refid="dir_a6a16f1dd216ec83dc3d221412af3175">scripts</innerdir>
+    <innerdir refid="dir_ee0f5880cbaaba69fa30dba809dab576">tensors</innerdir>
+    <innerfile refid="TTL_8h">TTL.h</innerfile>
+    <innerfile refid="TTL__core_8h">TTL_core.h</innerfile>
+    <innerfile refid="TTL__create__type_8h">TTL_create_type.h</innerfile>
+    <innerfile refid="TTL__create__types_8h">TTL_create_types.h</innerfile>
+    <innerfile refid="TTL__debug_8h">TTL_debug.h</innerfile>
+    <innerfile refid="TTL__import__export_8h">TTL_import_export.h</innerfile>
+    <innerfile refid="TTL__macros_8h">TTL_macros.h</innerfile>
+    <innerfile refid="TTL__pipeline__schemes_8h">TTL_pipeline_schemes.h</innerfile>
+    <innerfile refid="TTL__tensors_8h">TTL_tensors.h</innerfile>
+    <innerfile refid="TTL__tiles_8h">TTL_tiles.h</innerfile>
+    <innerfile refid="TTL__trace__macros_8h">TTL_trace_macros.h</innerfile>
+    <innerfile refid="TTL__types_8h">TTL_types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><heading level="1">Tensor Tiling Library</heading>
+</para>
+<para></para>
+<para><image type="html" name="doc/tensor_tiling_library.png" inline="yes"></image>
+ </para>
+<para></para>
+<para><ulink url="https://opensource.org/licenses/Apache-2.0"><image type="html" name="https://img.shields.io/badge/license-Apache%20-blue.svg" alt="License" inline="yes"></image>
+ </ulink> <ulink url="https://github.com/KhronosGroup/OpenCL-TTL/issues"><image type="html" name="https://img.shields.io/github/issues/KhronosGroup/OpenCL-TTL" alt="Issues" inline="yes"></image>
+ </ulink> </para>
+<para>Tensor &amp; Tiling Library is an open-source library to enable the efficient tiling and compute with tensors.</para>
+<para>Please reach out to <ulink url="mailto:chris.gearing@mobileye.com">chris.gearing@mobileye.com</ulink> or <ulink url="mailto:ayal.zaks@mobileye.com">ayal.zaks@mobileye.com</ulink> for more information.</para>
+<para>This document outlines the purpose of this sample implementation and provides build and execution instructions.</para>
+<para><heading level="2">Contents </heading>
+</para>
+<para><itemizedlist>
+<listitem><para>Purpose</para>
+</listitem><listitem><para>Example</para>
+</listitem><listitem><para>Doxygen</para>
+</listitem><listitem><para>Building And Executing<itemizedlist>
+<listitem><para>CMake<itemizedlist>
+<listitem><para>Tested Supported Systems</para>
+</listitem><listitem><para>Requirements</para>
+</listitem><listitem><para>Building the Samples</para>
+</listitem><listitem><para>Installation</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Preprocessed Header</para>
+</listitem><listitem><para>Included Unit Tests</para>
+</listitem><listitem><para>Bug Reporting</para>
+</listitem></itemizedlist>
+</para>
+<para><heading level="2">Purpose</heading>
+</para>
+<para>The purpose of this software package is to provide a simple to use standardized way of tiling tensors to allow performance optimization in heterogenous machines. Tiling is one of the pillars of performance and the Tensor Tiling Library is intended to provide a standardized approach.</para>
+<para>The library is intended to be general purpose and usable on all architectures.</para>
+<para>Currently the Tensor Tiling Library:</para>
+<para><itemizedlist>
+<listitem><para>passes its own unit tests</para>
+</listitem><listitem><para>contains reference implementations</para>
+</listitem><listitem><para>is optimized</para>
+</listitem></itemizedlist>
+</para>
+<para><heading level="2">Example</heading>
+</para>
+<para>This is a double tiling example where the data is simultaneously moved from host&lt;-&gt;device whilst the compute is occurring.</para>
+<para><programlisting filename=".c"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL_8h" kindref="compound">TTL/TTL.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">__kernel<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>TTL_double_buffering(<ref refid="c_2TTL__types_8h_1a0bcdca9f6e5923ea191d934ec3400d9e" kindref="member">__global</ref><sp/><ref refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kindref="member">uchar</ref><sp/>*restrict<sp/>ext_base_in,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="c_2TTL__types_8h_1a0bcdca9f6e5923ea191d934ec3400d9e" kindref="member">__global</ref><sp/><ref refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kindref="member">uchar</ref><sp/>*restrict<sp/>ext_base_out,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>external_stride_out,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tile_width,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tile_height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/><ref refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kindref="member">uchar</ref><sp/>l_in1[MEMSZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/><ref refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kindref="member">uchar</ref><sp/>l_in2[MEMSZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/><ref refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kindref="member">uchar</ref><sp/>l_out1[MEMSZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/><ref refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kindref="member">uchar</ref><sp/>l_out2[MEMSZ];</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Logical<sp/>Tiling</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>global_tensor<sp/>=<sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>tile_shape<sp/>=<sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(tile_width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref><sp/>tiler<sp/>=<sp/><ref refid="TTL__tiles_8h_1adb0c677811fc72b45456af0b7a84a6da" kindref="member">TTL_create_tiler</ref>(global_tensor,<sp/>tile_shape);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>External<sp/>layouts.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref><sp/>ext_layout_in<sp/>=<sp/><ref refid="TTL__tensors__common_8h_1a7c5069ff7b3532a098b78635c5d574ee" kindref="member">TTL_create_layout</ref>(external_stride_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref><sp/>ext_layout_out<sp/>=<sp/><ref refid="TTL__tensors__common_8h_1a7c5069ff7b3532a098b78635c5d574ee" kindref="member">TTL_create_layout</ref>(external_stride_out);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__ext__tensors_8h_1a06baf9e44b059bf3571a491b880830fa" kindref="member">TTL_const_ext_tensor_t</ref><sp/>ext_input_tensor<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__int__ext__typed__tensors_8h_1af1240836fe9f43997d8a5b9f48b65b7b" kindref="member">TTL_create_const_ext_tensor</ref>(ext_base_in,<sp/>global_tensor,<sp/>ext_layout_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__ext__tensors_8h_1ad75b1c0da822652819d4b8d0323db60d" kindref="member">TTL_ext_tensor_t</ref><sp/>ext_output_tensor<sp/>=<sp/><ref refid="TTL__int__ext__typed__tensors_8h_1a213750d83b7819861937180f3c771313" kindref="member">TTL_create_ext_tensor</ref>(ext_base_out,<sp/>global_tensor,<sp/>ext_layout_out);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TTL_start_import_double_buffering<sp/>will<sp/>being<sp/>the<sp/>import<sp/>of<sp/>the<sp/>first<sp/>tile</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref><sp/>import_DB_e<sp/>=<sp/><ref refid="opencl_2TTL__import__export_8h_1ab52c0b665518000f2c402c5170a58ee2" kindref="member">TTL_get_event</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_import_double_buffering_t<sp/>import_db<sp/>=<sp/><ref refid="TTL__double__scheme__template_8h_1af48346308548d7ee4fb27152a025edb3" kindref="member">TTL_start_import_double_buffering</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_in1,<sp/>l_in2,<sp/>ext_input_tensor,<sp/>&amp;import_DB_e,<sp/><ref refid="TTL__tiles_8h_1a6be82c657988ed29b07515e6d951042c" kindref="member">TTL_get_tile</ref>(0,<sp/>tiler));</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref><sp/>export_DB_e<sp/>=<sp/><ref refid="opencl_2TTL__import__export_8h_1ab52c0b665518000f2c402c5170a58ee2" kindref="member">TTL_get_event</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_export_double_buffering_t<sp/>export_db<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme__template_8h_1a4e2b9ab90fb92e2c6e8765ee9474de56" kindref="member">TTL_start_export_double_buffering</ref>(l_out1,<sp/>l_out2,<sp/>ext_output_tensor,<sp/>&amp;export_DB_e);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="TTL__tiles_8h_1a8eda704b864c0eba5c2709ec70e10fbd" kindref="member">TTL_number_of_tiles</ref>(tiler);<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>tile_next_import<sp/>=<sp/><ref refid="TTL__tiles_8h_1a6be82c657988ed29b07515e6d951042c" kindref="member">TTL_get_tile</ref>(i<sp/>+<sp/>1,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref><sp/>tile_current_export<sp/>=<sp/><ref refid="TTL__tiles_8h_1a6be82c657988ed29b07515e6d951042c" kindref="member">TTL_get_tile</ref>(i,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>These<sp/>wait<sp/>for<sp/>the<sp/>current<sp/>transfers<sp/>to<sp/>complete,<sp/>and<sp/>begin<sp/>the<sp/>next</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__int__tensors_8h_1a3b85de43f4885c4f5934a91c264b94cf" kindref="member">TTL_int_sub_tensor_t</ref><sp/>imported_to<sp/>=<sp/><ref refid="TTL__double__scheme_8h_1a20ce9f4cbe6ee89375bd60110506047f" kindref="member">TTL_step_buffering</ref>(&amp;import_db,<sp/>tile_next_import);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__int__tensors_8h_1a3b85de43f4885c4f5934a91c264b94cf" kindref="member">TTL_int_sub_tensor_t</ref><sp/>exported_from<sp/>=<sp/><ref refid="TTL__double__scheme_8h_1a20ce9f4cbe6ee89375bd60110506047f" kindref="member">TTL_step_buffering</ref>(&amp;export_db,<sp/>tile_current_export);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>whilst<sp/>the<sp/>transfers<sp/>are<sp/>taking<sp/>place<sp/>(on<sp/>separate<sp/>buffers)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compute(imported_to,<sp/>exported_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>These<sp/>wait<sp/>for<sp/>the<sp/>last<sp/>transfers<sp/>to<sp/>complete.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme_8h_1a02acd27ac00b0658628f11b44a824474" kindref="member">TTL_finish_buffering</ref>(&amp;import_db);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__double__scheme_8h_1a02acd27ac00b0658628f11b44a824474" kindref="member">TTL_finish_buffering</ref>(&amp;export_db);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><heading level="2">Doxygen</heading>
+</para>
+<para>Doxygen is supported and can be build using the scripts/generate_doxygen.sh script. It is built automatically by github for main and the latest version can be found at <ulink url="https://github.khronos.org/OpenCL-TTL/">https://github.khronos.org/OpenCL-TTL/</ulink></para>
+<para><heading level="2">Building And Executing</heading>
+</para>
+<para>The sample implementation builds under POCL on x86 and demonstrates a number of buffering schemes.</para>
+<para>It builds using CMake and has been tested on Linux.</para>
+<para><heading level="3">CMake</heading>
+</para>
+<para><heading level="4">Tested Supported Systems</heading>
+</para>
+<para><itemizedlist>
+<listitem><para>Linux</para>
+</listitem></itemizedlist>
+</para>
+<para><heading level="4">Requirements</heading>
+</para>
+<para><itemizedlist>
+<listitem><para>Python 2.x (Tested with Python 2.7)</para>
+</listitem><listitem><para>CMake 2.8.12 or higher (should be in PATH)</para>
+</listitem></itemizedlist>
+</para>
+<para><heading level="4">Building the Samples</heading>
+</para>
+<para><itemizedlist>
+<listitem><para>Install <ulink url="http://portablecl.org/docs/html/install.html">PoCL</ulink> or another environment of your choice.</para>
+</listitem><listitem><para>Install <ulink url="https://pypi.org/project/pyopencl/">pyopencl</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para>Execute the following commands:</para>
+<para><programlisting filename=".sh"><codeline><highlight class="normal">$<sp/>cd<sp/>opencl/samples</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>./TTL_sample_runner.py<sp/>*.cl</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>cd<sp/>../c/samples</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>./TTL_sample_runner.py<sp/>*.c</highlight></codeline>
+</programlisting></para>
+<para><heading level="4">Installation</heading>
+</para>
+<para>See <ulink url="./INSTALL">INSTALL</ulink>.</para>
+<para><heading level="2">Preprocessed Header</heading>
+</para>
+<para>TTL it very type strong and uses a lot of macros to create many variants of each method. Whilst powerful this can make debugging tricker. For these reason the ability of preprocess TTL to stdout or the file provided.</para>
+<para><programlisting filename=".sh"><codeline><highlight class="normal">$<sp/>scripts/preprocess.sh<sp/>[-f<sp/>TTL_opencl.h]<sp/>[-t<sp/>opencl]</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>scripts/preprocess.sh<sp/>[-f<sp/>TTL_c.h]<sp/>[-t<sp/>c]</highlight></codeline>
+</programlisting></para>
+<para>-f defaults to /dev/stdout -t defaults to opencl</para>
+<para>Will output a processed, clang-formatted file to stdout of the given file. Replacing <ref refid="TTL_8h" kindref="compound">TTL.h</ref> with this file, can make life easier. See also the TTL_PRE_GENERATE option in <ulink url="./INSTALL">INSTALL</ulink>.</para>
+<para><heading level="2">Included Unit Tests</heading>
+</para>
+<para>See <ulink url="./opencl/test/">the test README</ulink>.</para>
+<para><heading level="2">Bug Reporting</heading>
+</para>
+<para>Bug reports can be reported by filing an <ulink url="https://github.com/KhronosGroup/OpenCL-TTL/issues">issue on GitHub</ulink>. </para>
+    </detaileddescription>
+    <location file="v7F17Om_TTL/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="TTL__import__export_8h" kind="file" language="C++">
+    <compoundname>TTL_import_export.h</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="TTL__import__export_8h_1a7f3ea6353957a7a4d3dcb5ac70c96097" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref> void *</type>
+        <definition>static __local void * TTL_local_memset</definition>
+        <argsstring>(__local void *const ptr, char value, size_t num)</argsstring>
+        <name>TTL_local_memset</name>
+        <param>
+          <type><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref> void *const</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>num</declname>
+        </param>
+        <briefdescription>
+<para>Fill block of local memory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the first num bytes of the block of memory pointed by ptr to the specified value (interpreted as an unsigned char).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the block of memory to fill. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to be set. The value is passed as an int, but the function fills the block of memory using the unsigned char conversion of this value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to be set to the value.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ptr is to the output is returned. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_import_export.h" line="32" column="28" bodyfile="v7F17Om_TTL/TTL_import_export.h" bodystart="32" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__import__export_8h_1a24938e50ccbefcfd7dc919ec78bbf159" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TTL_clear_void_space</definition>
+        <argsstring>(__local void *const dst, const size_t x_offset, const size_t y_offset, size_t num_bytes_per_element, size_t num_elements_per_line, size_t dst_total_line_length, size_t num_lines, size_t total_lines, size_t num_planes)</argsstring>
+        <name>TTL_clear_void_space</name>
+        <param>
+          <type><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref> void *const</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>x_offset</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>y_offset</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>num_bytes_per_element</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>num_elements_per_line</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dst_total_line_length</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>num_lines</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>total_lines</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>num_planes</declname>
+        </param>
+        <briefdescription>
+<para>Clear any unpopulated space in the target area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_bytes_per_element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_elements_per_line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dst_total_line_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_lines</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>total_lines</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_planes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_import_export.h" line="54" column="20" bodyfile="v7F17Om_TTL/TTL_import_export.h" bodystart="54" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="TTL__import__export_8h_1a0e9518a56044d18a2f3f36b6d507abde" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+        <definition>static TTL_shape_t TTL_import_pre_fill</definition>
+        <argsstring>(const TTL_int_sub_tensor_t internal_sub_tensor, const TTL_const_ext_tensor_t const_external_tensor, __local void **const dst_address, __global void **const src_address)</argsstring>
+        <name>TTL_import_pre_fill</name>
+        <param>
+          <type>const <ref refid="TTL__int__tensors_8h_1a3b85de43f4885c4f5934a91c264b94cf" kindref="member">TTL_int_sub_tensor_t</ref></type>
+          <declname>internal_sub_tensor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__ext__tensors_8h_1a06baf9e44b059bf3571a491b880830fa" kindref="member">TTL_const_ext_tensor_t</ref></type>
+          <declname>const_external_tensor</declname>
+        </param>
+        <param>
+          <type><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref> void **const</type>
+          <declname>dst_address</declname>
+        </param>
+        <param>
+          <type><ref refid="c_2TTL__types_8h_1a0bcdca9f6e5923ea191d934ec3400d9e" kindref="member">__global</ref> void **const</type>
+          <declname>src_address</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_import_export.h" line="77" column="27" bodyfile="v7F17Om_TTL/TTL_import_export.h" bodystart="77" bodyend="129"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_import_export.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="19"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Fill<sp/>block<sp/>of<sp/>local<sp/>memory</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>Sets<sp/>the<sp/>first<sp/>num<sp/>bytes<sp/>of<sp/>the<sp/>block<sp/>of<sp/>memory<sp/>pointed<sp/>by<sp/>ptr<sp/>to<sp/>the</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>specified<sp/>value<sp/>(interpreted<sp/>as<sp/>an<sp/>unsigned<sp/>char).</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@param<sp/>ptr<sp/>Pointer<sp/>to<sp/>the<sp/>block<sp/>of<sp/>memory<sp/>to<sp/>fill.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@param<sp/>value<sp/>Value<sp/>to<sp/>be<sp/>set.<sp/>The<sp/>value<sp/>is<sp/>passed<sp/>as<sp/>an<sp/>int,<sp/>but<sp/>the<sp/>function</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>fills<sp/>the<sp/>block<sp/>of<sp/>memory<sp/>using<sp/>the<sp/>unsigned<sp/>char<sp/>conversion<sp/>of<sp/>this<sp/>value.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>@param<sp/>num<sp/>Number<sp/>of<sp/>bytes<sp/>to<sp/>be<sp/>set<sp/>to<sp/>the<sp/>value.</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>@return<sp/>ptr<sp/>is<sp/>to<sp/>the<sp/>output<sp/>is<sp/>returned.</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="TTL__import__export_8h_1a7f3ea6353957a7a4d3dcb5ac70c96097" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="TTL__import__export_8h_1a7f3ea6353957a7a4d3dcb5ac70c96097" kindref="member">TTL_local_memset</ref>(<ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ptr,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>value,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dst<sp/>=<sp/>(<ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)ptr;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>=<sp/>0;<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>&lt;<sp/>num;<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">++)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dst[</highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">]<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Clear<sp/>any<sp/>unpopulated<sp/>space<sp/>in<sp/>the<sp/>target<sp/>area.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@param<sp/>dst</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@param<sp/>x_offset</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@param<sp/>y_offset</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@param<sp/>num_bytes_per_element</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@param<sp/>num_elements_per_line</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@param<sp/>dst_total_line_length</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@param<sp/>num_lines</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@param<sp/>total_lines</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@param<sp/>num_planes</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="TTL__import__export_8h_1a24938e50ccbefcfd7dc919ec78bbf159" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="TTL__import__export_8h_1a24938e50ccbefcfd7dc919ec78bbf159" kindref="member">TTL_clear_void_space</ref>(<ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dst,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>x_offset,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>y_offset,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_bytes_per_element,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_elements_per_line,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>dst_total_line_length,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_lines,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>total_lines,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_planes)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*dst_ptr<sp/>=<sp/>(<ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)dst;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>left_trim_bytes<sp/>=<sp/>x_offset<sp/>*<sp/>num_bytes_per_element;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>right_trim_bytes<sp/>=<sp/>(dst_total_line_length<sp/>-<sp/>num_elements_per_line)<sp/>*<sp/>num_bytes_per_element;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>plane<sp/>=<sp/>0;<sp/>plane<sp/>&lt;<sp/>num_planes;<sp/>plane++)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>line<sp/>=<sp/>0;<sp/>line<sp/>&lt;<sp/>total_lines;<sp/>line++)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((line<sp/>&lt;<sp/>y_offset)<sp/>||<sp/>(line<sp/>&gt;=<sp/>num_lines))<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__import__export_8h_1a7f3ea6353957a7a4d3dcb5ac70c96097" kindref="member">TTL_local_memset</ref>(dst_ptr,<sp/>0,<sp/>dst_total_line_length<sp/>*<sp/>num_bytes_per_element);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>anything<sp/>not<sp/>being<sp/>copied<sp/>to<sp/>zero<sp/>-<sp/>will<sp/>make<sp/>the<sp/>&apos;clear<sp/>value&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>definable<sp/>at<sp/>some<sp/>level.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__import__export_8h_1a7f3ea6353957a7a4d3dcb5ac70c96097" kindref="member">TTL_local_memset</ref>(dst_ptr,<sp/>0,<sp/>left_trim_bytes);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__import__export_8h_1a7f3ea6353957a7a4d3dcb5ac70c96097" kindref="member">TTL_local_memset</ref>(dst_ptr<sp/>+<sp/>(num_elements_per_line<sp/>*<sp/>num_bytes_per_element),<sp/>0,<sp/>right_trim_bytes);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dst_ptr<sp/>+=<sp/>dst_total_line_length<sp/>*<sp/>num_bytes_per_element;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="TTL__import__export_8h_1a0e9518a56044d18a2f3f36b6d507abde" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/><ref refid="TTL__import__export_8h_1a0e9518a56044d18a2f3f36b6d507abde" kindref="member">TTL_import_pre_fill</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__int__tensors_8h_1a3b85de43f4885c4f5934a91c264b94cf" kindref="member">TTL_int_sub_tensor_t</ref><sp/>internal_sub_tensor,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__ext__tensors_8h_1a06baf9e44b059bf3571a491b880830fa" kindref="member">TTL_const_ext_tensor_t</ref><sp/>const_external_tensor,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>**</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dst_address,<sp/><ref refid="c_2TTL__types_8h_1a0bcdca9f6e5923ea191d934ec3400d9e" kindref="member">__global</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>**</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>src_address)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>x_offset;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>x_cut;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>y_offset;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>y_cut;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z_offset;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z_cut;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>x_offset<sp/>=<sp/>(((-internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1a7aadd3beacc59288d06537fd355eca29" kindref="member">sub_offset</ref>.<ref refid="structTTL__offset__t_1abe9df04b12aa2c98c76241d6b74dbc22" kindref="member">x</ref>)<sp/>&gt;<sp/>(0))<sp/>?<sp/>(-internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1a7aadd3beacc59288d06537fd355eca29" kindref="member">sub_offset</ref>.<ref refid="structTTL__offset__t_1abe9df04b12aa2c98c76241d6b74dbc22" kindref="member">x</ref>)<sp/>:<sp/>(0));</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>x_cut<sp/>=<sp/>(internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1a7aadd3beacc59288d06537fd355eca29" kindref="member">sub_offset</ref>.<ref refid="structTTL__offset__t_1abe9df04b12aa2c98c76241d6b74dbc22" kindref="member">x</ref><sp/>+<sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a7d2dadee8e1d513eafcc73d035d2373b" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref>)<sp/>&gt;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1aec08f7d4e5aeb3d22a99984b72899b65" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>(internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1a7aadd3beacc59288d06537fd355eca29" kindref="member">sub_offset</ref>.<ref refid="structTTL__offset__t_1abe9df04b12aa2c98c76241d6b74dbc22" kindref="member">x</ref><sp/>+<sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a7d2dadee8e1d513eafcc73d035d2373b" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref>)<sp/>-</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1aec08f7d4e5aeb3d22a99984b72899b65" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>y_offset<sp/>=<sp/>(((-internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1a7aadd3beacc59288d06537fd355eca29" kindref="member">sub_offset</ref>.<ref refid="structTTL__offset__t_1aae0c2bbb96222eb5e580367dc2f2b12c" kindref="member">y</ref>)<sp/>&gt;<sp/>(0))<sp/>?<sp/>(-internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1a7aadd3beacc59288d06537fd355eca29" kindref="member">sub_offset</ref>.<ref refid="structTTL__offset__t_1aae0c2bbb96222eb5e580367dc2f2b12c" kindref="member">y</ref>)<sp/>:<sp/>(0));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>y_cut<sp/>=<sp/>(internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1a7aadd3beacc59288d06537fd355eca29" kindref="member">sub_offset</ref>.<ref refid="structTTL__offset__t_1aae0c2bbb96222eb5e580367dc2f2b12c" kindref="member">y</ref><sp/>+<sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a7d2dadee8e1d513eafcc73d035d2373b" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref>)<sp/>&gt;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1aec08f7d4e5aeb3d22a99984b72899b65" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>(internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1a7aadd3beacc59288d06537fd355eca29" kindref="member">sub_offset</ref>.<ref refid="structTTL__offset__t_1aae0c2bbb96222eb5e580367dc2f2b12c" kindref="member">y</ref><sp/>+<sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a7d2dadee8e1d513eafcc73d035d2373b" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref>)<sp/>-</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1ae80cebde2ab403e7752f0672bd75096f" kindref="member">origin</ref>.<ref refid="structTTL__int__void__sub__tensor__t_1aec08f7d4e5aeb3d22a99984b72899b65" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>0;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>z_offset<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>TTL_MAX(-internal_sub_tensor.origin.sub_offset.z,<sp/>0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>z_cut<sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TTL_MAX((internal_sub_tensor.origin.sub_offset.z<sp/>+<sp/>internal_sub_tensor.tensor.shape.depth)<sp/>-</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*Internal_sub_tensor.origin.shape.depth<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>*dst_address<sp/>=<sp/>(<ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1aabbd86d1530861c70392d5b6d3567be8" kindref="member">base</ref><sp/>+<sp/>(x_offset<sp/>*<sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a672b87a7525f6641fd27d03b9a01f534" kindref="member">elem_size</ref>)<sp/>+</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(y_offset<sp/>*<sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a064879efe63fa363268ab5b50e9f43f4" kindref="member">layout</ref>.<ref refid="structTTL__layout__t_1a3cc6d96665a9c516f3e8ec3bb68124f8" kindref="member">row_spacing</ref><sp/>*<sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a672b87a7525f6641fd27d03b9a01f534" kindref="member">elem_size</ref>)<sp/>+</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(z_offset<sp/>*<sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a064879efe63fa363268ab5b50e9f43f4" kindref="member">layout</ref>.<ref refid="structTTL__layout__t_1ab76e2e1fcb6e0416f9e234686c07584c" kindref="member">plane_spacing</ref><sp/>*<sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a672b87a7525f6641fd27d03b9a01f534" kindref="member">elem_size</ref>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>*src_address<sp/>=<sp/>(<ref refid="c_2TTL__types_8h_1a0bcdca9f6e5923ea191d934ec3400d9e" kindref="member">__global</ref><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)const_external_tensor.<ref refid="structTTL__const__ext__void__tensor__t_1ab0a01a9f25ac2be91decd4604411ae4f" kindref="member">base</ref><sp/>+<sp/>(x_offset<sp/>*<sp/>const_external_tensor.<ref refid="structTTL__const__ext__void__tensor__t_1a6b6f139086cf0d00f4c4f65c4da5d700" kindref="member">elem_size</ref>)<sp/>+</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(y_offset<sp/>*<sp/>const_external_tensor.<ref refid="structTTL__const__ext__void__tensor__t_1a5210fe38a89c2ad0b38a7004df25b34b" kindref="member">layout</ref>.<ref refid="structTTL__layout__t_1a3cc6d96665a9c516f3e8ec3bb68124f8" kindref="member">row_spacing</ref><sp/>*<sp/>const_external_tensor.<ref refid="structTTL__const__ext__void__tensor__t_1a6b6f139086cf0d00f4c4f65c4da5d700" kindref="member">elem_size</ref>)<sp/>+</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(z_offset<sp/>*<sp/>const_external_tensor.<ref refid="structTTL__const__ext__void__tensor__t_1a5210fe38a89c2ad0b38a7004df25b34b" kindref="member">layout</ref>.<ref refid="structTTL__layout__t_1ab76e2e1fcb6e0416f9e234686c07584c" kindref="member">plane_spacing</ref><sp/>*<sp/>const_external_tensor.<ref refid="structTTL__const__ext__void__tensor__t_1a6b6f139086cf0d00f4c4f65c4da5d700" kindref="member">elem_size</ref>);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__import__export_8h_1a24938e50ccbefcfd7dc919ec78bbf159" kindref="member">TTL_clear_void_space</ref>(internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1aabbd86d1530861c70392d5b6d3567be8" kindref="member">base</ref>,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x_offset,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y_offset,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a672b87a7525f6641fd27d03b9a01f534" kindref="member">elem_size</ref>,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a7d2dadee8e1d513eafcc73d035d2373b" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref><sp/>-<sp/>x_cut,</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a064879efe63fa363268ab5b50e9f43f4" kindref="member">layout</ref>.<ref refid="structTTL__layout__t_1a3cc6d96665a9c516f3e8ec3bb68124f8" kindref="member">row_spacing</ref>,</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a7d2dadee8e1d513eafcc73d035d2373b" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref><sp/>-<sp/>y_cut,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a7d2dadee8e1d513eafcc73d035d2373b" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref>,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a7d2dadee8e1d513eafcc73d035d2373b" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" kindref="member">depth</ref>);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a7d2dadee8e1d513eafcc73d035d2373b" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref><sp/>-<sp/>x_offset<sp/>-<sp/>x_cut,</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a7d2dadee8e1d513eafcc73d035d2373b" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref><sp/>-<sp/>y_offset<sp/>-<sp/>y_cut,</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_sub_tensor.<ref refid="structTTL__int__void__sub__tensor__t_1a6982437fd1ed4c1c2761c53c1f25a35d" kindref="member">tensor</ref>.<ref refid="structTTL__int__void__tensor__t_1a7d2dadee8e1d513eafcc73d035d2373b" kindref="member">shape</ref>.<ref refid="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" kindref="member">depth</ref><sp/>-<sp/>z_offset<sp/>-<sp/>z_cut);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="v7F17Om_TTL/TTL_import_export.h"/>
+  </compounddef>
+</doxygen>

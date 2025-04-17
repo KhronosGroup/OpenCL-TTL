@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="md_v7F17Om__TTL_2CODE__OF__CONDUCT" kind="page">
+    <compoundname>md_v7F17Om__TTL_2CODE__OF__CONDUCT</compoundname>
+    <title>CODE_OF_CONDUCT</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A reminder that this issue tracker is managed by the Khronos Group. Interactions here should follow the Khronos Code of Conduct (<ulink url="https://www.khronos.org/developers/code-of-conduct">https://www.khronos.org/developers/code-of-conduct</ulink>), which prohibits aggressive or derogatory language. Please keep the discussion friendly and civil. </para>
+    </detaileddescription>
+    <location file="v7F17Om_TTL/CODE_OF_CONDUCT.md"/>
+  </compounddef>
+</doxygen>

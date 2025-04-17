@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__ext__ulong__tensor__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_ext_ulong_tensor_t</compoundname>
+    <includes refid="TTL__int__ext__typed__tensors_8h" local="no">TTL_int_ext_typed_tensors.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__ext__ulong__tensor__t_1adabdc5cfd9b9cc815559f2c803dadcf2" prot="public" static="no" mutable="no">
+        <type><ref refid="c_2TTL__types_8h_1a0bcdca9f6e5923ea191d934ec3400d9e" kindref="member">__global</ref> <ref refid="c_2TTL__types_8h_1a718b4eb2652c286f4d42dc18a8e71a1a" kindref="member">ulong</ref> *</type>
+        <definition>__global ulong* TTL_ext_ulong_tensor_t::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <qualifiedname>TTL_ext_ulong_tensor_t::base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The base address of the tensor in the local address space </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" line="6476" column="20" bodyfile="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" bodystart="6476" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__ext__ulong__tensor__t_1a7ffd6d28cfb476266766061472c1c8fb" prot="public" static="no" mutable="no">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_ext_ulong_tensor_t::elem_size</definition>
+        <argsstring></argsstring>
+        <name>elem_size</name>
+        <qualifiedname>TTL_ext_ulong_tensor_t::elem_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The sizeof the elements in the tensor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" line="6477" column="15" bodyfile="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" bodystart="6477" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__ext__ulong__tensor__t_1a09f39c516f12f7cebe058a24504c242d" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+        <definition>TTL_layout_t TTL_ext_ulong_tensor_t::layout</definition>
+        <argsstring></argsstring>
+        <name>layout</name>
+        <qualifiedname>TTL_ext_ulong_tensor_t::layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The layout of the tensor, <simplesect kind="see"><para><ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" line="6478" column="18" bodyfile="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" bodystart="6478" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__ext__ulong__tensor__t_1a0feef45793f3ac6bbda724cb2e18566a" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+        <definition>TTL_shape_t TTL_ext_ulong_tensor_t::shape</definition>
+        <argsstring></argsstring>
+        <name>shape</name>
+        <qualifiedname>TTL_ext_ulong_tensor_t::shape</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The shape of the tensor in 3 dimensions </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" line="6479" column="17" bodyfile="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" bodystart="6479" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>const and non-const tensors in the appropriate address space </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para>__TTL_typedef_tensor_t</para>
+</simplesect>
+Use of macros to ensure that structs are EXACTLY the same, along for the compiler to remove duplication and potentially a <ref refid="TTL__int__tensors_8h_1af55285c5c289c327379be3725265949a" kindref="member">TTL_int_tensor_t</ref> to be safely case to a <ref refid="TTL__int__tensors_8h_1a6f8d3bc7ab2c427d51a3addc5417bce0" kindref="member">TTL_const_int_tensor_t</ref>.</para>
+<para>Do not add a cast for <ref refid="TTL__int__tensors_8h_1a6f8d3bc7ab2c427d51a3addc5417bce0" kindref="member">TTL_const_int_tensor_t</ref> to <ref refid="TTL__int__tensors_8h_1af55285c5c289c327379be3725265949a" kindref="member">TTL_int_tensor_t</ref> because that is not safe. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_ext_ulong_tensor_t</label>
+        <link refid="structTTL__ext__ulong__tensor__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+layout</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TTL_layout_t</label>
+        <link refid="structTTL__layout__t"/>
+      </node>
+      <node id="3">
+        <label>TTL_shape_t</label>
+        <link refid="structTTL__shape__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" line="6475" column="1" bodyfile="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" bodystart="6475" bodyend="6480"/>
+    <listofallmembers>
+      <member refid="structTTL__ext__ulong__tensor__t_1adabdc5cfd9b9cc815559f2c803dadcf2" prot="public" virt="non-virtual"><scope>TTL_ext_ulong_tensor_t</scope><name>base</name></member>
+      <member refid="structTTL__ext__ulong__tensor__t_1a7ffd6d28cfb476266766061472c1c8fb" prot="public" virt="non-virtual"><scope>TTL_ext_ulong_tensor_t</scope><name>elem_size</name></member>
+      <member refid="structTTL__ext__ulong__tensor__t_1a09f39c516f12f7cebe058a24504c242d" prot="public" virt="non-virtual"><scope>TTL_ext_ulong_tensor_t</scope><name>layout</name></member>
+      <member refid="structTTL__ext__ulong__tensor__t_1a0feef45793f3ac6bbda724cb2e18566a" prot="public" virt="non-virtual"><scope>TTL_ext_ulong_tensor_t</scope><name>shape</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

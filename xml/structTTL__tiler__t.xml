@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__tiler__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_tiler_t</compoundname>
+    <includes refid="TTL__tiles_8h" local="no">TTL_tiles.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__tiler__t_1ac46505174c37e6f5b4e6993ec411e7c1" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+        <definition>TTL_shape_t TTL_tiler_t::space</definition>
+        <argsstring></argsstring>
+        <name>space</name>
+        <qualifiedname>TTL_tiler_t::space</qualifiedname>
+        <briefdescription>
+<para>Represents the space to be tiled such as an image. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="136" column="17" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1a322252fe86f426c6f0d2d33e41c3e484" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+        <definition>TTL_shape_t TTL_tiler_t::tile</definition>
+        <argsstring></argsstring>
+        <name>tile</name>
+        <qualifiedname>TTL_tiler_t::tile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>All tiles will be of this shape, except for clamping at the end of the space </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="137" column="17" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1a3a38591bca09c0e4c14403099c1d5eda" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref></type>
+        <definition>TTL_overlap_t TTL_tiler_t::overlap</definition>
+        <argsstring></argsstring>
+        <name>overlap</name>
+        <qualifiedname>TTL_tiler_t::overlap</qualifiedname>
+        <briefdescription>
+<para>When zeroes represent no overlap. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="139" column="19" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1a823b767beb6a8775fd219c5ab307771f" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__augmentation__t" kindref="compound">TTL_augmentation_t</ref></type>
+        <definition>TTL_augmentation_t TTL_tiler_t::augmentation</definition>
+        <argsstring></argsstring>
+        <name>augmentation</name>
+        <qualifiedname>TTL_tiler_t::augmentation</qualifiedname>
+        <briefdescription>
+<para>The augmentation that the tile produces. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="140" column="24" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1ae6e4a2c2147c55412cac7cfb072c018a" prot="public" static="no" mutable="no">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_tiler_t::number_of_tiles</definition>
+        <argsstring></argsstring>
+        <name>number_of_tiles</name>
+        <qualifiedname>TTL_tiler_t::number_of_tiles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="146" column="19" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1a0686e98101d3964e22a2b229cdee5bdd" prot="public" static="no" mutable="no">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_tiler_t::tiles_in_width</definition>
+        <argsstring></argsstring>
+        <name>tiles_in_width</name>
+        <qualifiedname>TTL_tiler_t::tiles_in_width</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="147" column="19" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1ad1632e6b21ee5ad81f2ac6a3a90ba703" prot="public" static="no" mutable="no">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_tiler_t::tiles_in_height</definition>
+        <argsstring></argsstring>
+        <name>tiles_in_height</name>
+        <qualifiedname>TTL_tiler_t::tiles_in_height</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="148" column="19" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1a3c3f2927d87f212ae77571d8747c4657" prot="public" static="no" mutable="no">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_tiler_t::tiles_in_depth</definition>
+        <argsstring></argsstring>
+        <name>tiles_in_depth</name>
+        <qualifiedname>TTL_tiler_t::tiles_in_depth</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="149" column="19" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1a873497b66846b5266bc77ded752030c5" prot="public" static="no" mutable="no">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_tiler_t::tiles_in_plane</definition>
+        <argsstring></argsstring>
+        <name>tiles_in_plane</name>
+        <qualifiedname>TTL_tiler_t::tiles_in_plane</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="150" column="19" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref></type>
+        <definition>struct TTL_tiler_t TTL_tiler_t::cache</definition>
+        <argsstring></argsstring>
+        <name>cache</name>
+        <qualifiedname>TTL_tiler_t::cache</qualifiedname>
+        <briefdescription>
+<para>Precomputed information to speed up later reuse. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="151" column="11"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref> is the basic unit that describes how a tile is subdivided. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="structTTL__tiler__t" kindref="compound">TTL_tiler_t</ref> type represents the tiling of a 3D space into 3D tiles with operational overlap </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>TTL_augmentation_t</label>
+        <link refid="structTTL__augmentation__t"/>
+      </node>
+      <node id="3">
+        <label>TTL_overlap_t</label>
+        <link refid="structTTL__overlap__t"/>
+      </node>
+      <node id="2">
+        <label>TTL_shape_t</label>
+        <link refid="structTTL__shape__t"/>
+      </node>
+      <node id="1">
+        <label>TTL_tiler_t</label>
+        <link refid="structTTL__tiler__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+space</edgelabel>
+          <edgelabel>+tile</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+overlap</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+augmentation</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="v7F17Om_TTL/TTL_tiles.h" line="135" column="1" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="135" bodyend="152"/>
+    <listofallmembers>
+      <member refid="structTTL__tiler__t_1a823b767beb6a8775fd219c5ab307771f" prot="public" virt="non-virtual"><scope>TTL_tiler_t</scope><name>augmentation</name></member>
+      <member refid="structTTL__tiler__t_1a2575ba1287b44ab93bd704bedd037d2c" prot="public" virt="non-virtual"><scope>TTL_tiler_t</scope><name>cache</name></member>
+      <member refid="structTTL__tiler__t_1ae6e4a2c2147c55412cac7cfb072c018a" prot="public" virt="non-virtual"><scope>TTL_tiler_t</scope><name>number_of_tiles</name></member>
+      <member refid="structTTL__tiler__t_1a3a38591bca09c0e4c14403099c1d5eda" prot="public" virt="non-virtual"><scope>TTL_tiler_t</scope><name>overlap</name></member>
+      <member refid="structTTL__tiler__t_1ac46505174c37e6f5b4e6993ec411e7c1" prot="public" virt="non-virtual"><scope>TTL_tiler_t</scope><name>space</name></member>
+      <member refid="structTTL__tiler__t_1a322252fe86f426c6f0d2d33e41c3e484" prot="public" virt="non-virtual"><scope>TTL_tiler_t</scope><name>tile</name></member>
+      <member refid="structTTL__tiler__t_1a3c3f2927d87f212ae77571d8747c4657" prot="public" virt="non-virtual"><scope>TTL_tiler_t</scope><name>tiles_in_depth</name></member>
+      <member refid="structTTL__tiler__t_1ad1632e6b21ee5ad81f2ac6a3a90ba703" prot="public" virt="non-virtual"><scope>TTL_tiler_t</scope><name>tiles_in_height</name></member>
+      <member refid="structTTL__tiler__t_1a873497b66846b5266bc77ded752030c5" prot="public" virt="non-virtual"><scope>TTL_tiler_t</scope><name>tiles_in_plane</name></member>
+      <member refid="structTTL__tiler__t_1a0686e98101d3964e22a2b229cdee5bdd" prot="public" virt="non-virtual"><scope>TTL_tiler_t</scope><name>tiles_in_width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="TTL__int__tensors_8h" kind="file" language="C++">
+    <compoundname>TTL_int_tensors.h</compoundname>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="TTL__int__tensors_8h_1af55285c5c289c327379be3725265949a" prot="public" static="no">
+        <type><ref refid="structTTL__int__void__tensor__t" kindref="compound">TTL_int_void_tensor_t</ref></type>
+        <definition>typedef TTL_int_void_tensor_t TTL_int_tensor_t</definition>
+        <argsstring></argsstring>
+        <name>TTL_int_tensor_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_tensors.h" line="24" column="31" bodyfile="v7F17Om_TTL/tensors/TTL_int_tensors.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="TTL__int__tensors_8h_1a6f8d3bc7ab2c427d51a3addc5417bce0" prot="public" static="no">
+        <type><ref refid="structTTL__const__int__void__tensor__t" kindref="compound">TTL_const_int_void_tensor_t</ref></type>
+        <definition>typedef TTL_const_int_void_tensor_t TTL_const_int_tensor_t</definition>
+        <argsstring></argsstring>
+        <name>TTL_const_int_tensor_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_tensors.h" line="25" column="37" bodyfile="v7F17Om_TTL/tensors/TTL_int_tensors.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="TTL__int__tensors_8h_1a3b85de43f4885c4f5934a91c264b94cf" prot="public" static="no">
+        <type><ref refid="structTTL__int__void__sub__tensor__t" kindref="compound">TTL_int_void_sub_tensor_t</ref></type>
+        <definition>typedef TTL_int_void_sub_tensor_t TTL_int_sub_tensor_t</definition>
+        <argsstring></argsstring>
+        <name>TTL_int_sub_tensor_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_tensors.h" line="26" column="35" bodyfile="v7F17Om_TTL/tensors/TTL_int_tensors.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="TTL__int__tensors_8h_1afd5c161f2c63ba32b06df58efe26ecb7" prot="public" static="no">
+        <type><ref refid="structTTL__const__int__void__sub__tensor__t" kindref="compound">TTL_const_int_void_sub_tensor_t</ref></type>
+        <definition>typedef TTL_const_int_void_sub_tensor_t TTL_const_int_sub_tensor_t</definition>
+        <argsstring></argsstring>
+        <name>TTL_const_int_sub_tensor_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_tensors.h" line="27" column="41" bodyfile="v7F17Om_TTL/tensors/TTL_int_tensors.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_ext_tensors.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>INT<sp/>TENSORS<sp/>START</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>INT<sp/>TENSORS<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">/*Make<sp/>void<sp/>the<sp/>default<sp/>unnamed<sp/>type<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="TTL__int__tensors_8h_1af55285c5c289c327379be3725265949a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="structTTL__int__void__tensor__t" kindref="compound">TTL_int_void_tensor_t</ref><sp/><ref refid="TTL__int__tensors_8h_1af55285c5c289c327379be3725265949a" kindref="member">TTL_int_tensor_t</ref>;</highlight></codeline>
+<codeline lineno="25" refid="TTL__int__tensors_8h_1a6f8d3bc7ab2c427d51a3addc5417bce0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="structTTL__const__int__void__tensor__t" kindref="compound">TTL_const_int_void_tensor_t</ref><sp/><ref refid="TTL__int__tensors_8h_1a6f8d3bc7ab2c427d51a3addc5417bce0" kindref="member">TTL_const_int_tensor_t</ref>;</highlight></codeline>
+<codeline lineno="26" refid="TTL__int__tensors_8h_1a3b85de43f4885c4f5934a91c264b94cf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="structTTL__int__void__sub__tensor__t" kindref="compound">TTL_int_void_sub_tensor_t</ref><sp/><ref refid="TTL__int__tensors_8h_1a3b85de43f4885c4f5934a91c264b94cf" kindref="member">TTL_int_sub_tensor_t</ref>;</highlight></codeline>
+<codeline lineno="27" refid="TTL__int__tensors_8h_1afd5c161f2c63ba32b06df58efe26ecb7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="structTTL__const__int__void__sub__tensor__t" kindref="compound">TTL_const_int_void_sub_tensor_t</ref><sp/><ref refid="TTL__int__tensors_8h_1afd5c161f2c63ba32b06df58efe26ecb7" kindref="member">TTL_const_int_sub_tensor_t</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="v7F17Om_TTL/tensors/TTL_int_tensors.h"/>
+  </compounddef>
+</doxygen>

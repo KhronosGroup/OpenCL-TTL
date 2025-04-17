@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__const__int__char__tensor__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_const_int_char_tensor_t</compoundname>
+    <includes refid="TTL__int__ext__typed__tensors_8h" local="no">TTL_int_ext_typed_tensors.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__const__int__char__tensor__t_1ae8a20475871b8785fee9d53127e6c5b9" prot="public" static="no" mutable="no">
+        <type><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref> const char *</type>
+        <definition>__local const char* TTL_const_int_char_tensor_t::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <qualifiedname>TTL_const_int_char_tensor_t::base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The base address of the tensor in the local address space </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" line="8090" column="24" bodyfile="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" bodystart="8090" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__const__int__char__tensor__t_1a45f6c2586ead6705da0ff07d6504be9e" prot="public" static="no" mutable="no">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_const_int_char_tensor_t::elem_size</definition>
+        <argsstring></argsstring>
+        <name>elem_size</name>
+        <qualifiedname>TTL_const_int_char_tensor_t::elem_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The sizeof the elements in the tensor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" line="8091" column="15" bodyfile="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" bodystart="8091" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__const__int__char__tensor__t_1a3ff14ed19930e18336d09e2503c9b0f3" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref></type>
+        <definition>TTL_layout_t TTL_const_int_char_tensor_t::layout</definition>
+        <argsstring></argsstring>
+        <name>layout</name>
+        <qualifiedname>TTL_const_int_char_tensor_t::layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The layout of the tensor, <simplesect kind="see"><para><ref refid="structTTL__layout__t" kindref="compound">TTL_layout_t</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" line="8092" column="18" bodyfile="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" bodystart="8092" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__const__int__char__tensor__t_1a816563b380123e11313f276209d32ced" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+        <definition>TTL_shape_t TTL_const_int_char_tensor_t::shape</definition>
+        <argsstring></argsstring>
+        <name>shape</name>
+        <qualifiedname>TTL_const_int_char_tensor_t::shape</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The shape of the tensor in 3 dimensions </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" line="8093" column="17" bodyfile="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" bodystart="8093" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_const_int_char_tensor_t</label>
+        <link refid="structTTL__const__int__char__tensor__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+layout</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TTL_layout_t</label>
+        <link refid="structTTL__layout__t"/>
+      </node>
+      <node id="3">
+        <label>TTL_shape_t</label>
+        <link refid="structTTL__shape__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" line="8089" column="1" bodyfile="v7F17Om_TTL/tensors/TTL_int_ext_typed_tensors.h" bodystart="8089" bodyend="8094"/>
+    <listofallmembers>
+      <member refid="structTTL__const__int__char__tensor__t_1ae8a20475871b8785fee9d53127e6c5b9" prot="public" virt="non-virtual"><scope>TTL_const_int_char_tensor_t</scope><name>base</name></member>
+      <member refid="structTTL__const__int__char__tensor__t_1a45f6c2586ead6705da0ff07d6504be9e" prot="public" virt="non-virtual"><scope>TTL_const_int_char_tensor_t</scope><name>elem_size</name></member>
+      <member refid="structTTL__const__int__char__tensor__t_1a3ff14ed19930e18336d09e2503c9b0f3" prot="public" virt="non-virtual"><scope>TTL_const_int_char_tensor_t</scope><name>layout</name></member>
+      <member refid="structTTL__const__int__char__tensor__t_1a816563b380123e11313f276209d32ced" prot="public" virt="non-virtual"><scope>TTL_const_int_char_tensor_t</scope><name>shape</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

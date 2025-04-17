@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="TTL__macros_8h" kind="file" language="C++">
+    <compoundname>TTL_macros.h</compoundname>
+    <includedby refid="tensors_2TTL__types_8h" local="yes">TTL_types.h</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>TTL_macros.h</label>
+        <link refid="TTL__macros_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TTL_types.h</label>
+        <link refid="tensors_2TTL__types_8h"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_macros.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="19"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>@def<sp/>__TTL_STR_CONCAT1</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>Concatenate<sp/>x<sp/>and<sp/>y,<sp/>must<sp/>be<sp/>used<sp/>within<sp/>another<sp/>macro.</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="25"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@def<sp/>__TTL_STR_CONCAT2</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>Concatenate<sp/>x<sp/>and<sp/>y,<sp/>can<sp/>be<sp/>used<sp/>standalone</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@def<sp/>__TTL_STRINGFY1</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>Turn<sp/>s<sp/>into<sp/>a<sp/>&quot;string&quot;,<sp/>must<sp/>be<sp/>used<sp/>within<sp/>another<sp/>macro</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="37"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@def<sp/>__TTL_STRINGFY2</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>Turn<sp/>s<sp/>into<sp/>a<sp/>&quot;string&quot;,<sp/>can<sp/>be<sp/>used<sp/>standalone</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="43"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@def<sp/>TTL_ARRAYSIZE</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Return<sp/>the<sp/>number<sp/>of<sp/>elements<sp/>in<sp/>the<sp/>array<sp/>x</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>array<sp/>to<sp/>return<sp/>the<sp/>size<sp/>of</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="51"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@def<sp/>NO_PARAMETERS</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>Sometimes<sp/>tools<sp/>require<sp/>a<sp/>void<sp/>function<sp/>to<sp/>be<sp/>defined<sp/>as</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>Function()<sp/>not<sp/>Function(void)<sp/>-<sp/>the<sp/>later<sp/>is<sp/>correct<sp/>but<sp/>this</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>macro<sp/>allows<sp/>for<sp/>it<sp/>to<sp/>be<sp/>overridden.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@def<sp/>__TTL_TRACE_FN</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>A<sp/>function<sp/>defined<sp/>using<sp/>__TTL_TRACE_FN<sp/>will<sp/>have<sp/>an<sp/>additional<sp/>&quot;unsigned<sp/>int<sp/>line&quot;<sp/>parameter</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>added<sp/>if<sp/>__TTL_DEBUG<sp/>&gt;<sp/>0.<sp/><sp/>This<sp/>line<sp/>parameter<sp/>allows<sp/>for<sp/>the<sp/>output<sp/>of<sp/>the<sp/>line<sp/>of<sp/>code<sp/>originating</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>the<sp/>call.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>For<sp/>example:</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>static<sp/>inline<sp/>TTL_int_sub_tensor_t<sp/>__TTL_TRACE_FN(TTL_step_buffering,<sp/>TTL_import_double_buffering_t<sp/>*const<sp/>dbi,</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>TTL_tile_t<sp/>next_tile);</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>Will<sp/>produce</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*<sp/><sp/>static<sp/>inline<sp/>TTL_int_sub_tensor_t<sp/>TTL_step_buffering(TTL_import_double_buffering_t<sp/>*const<sp/>dbi,</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>TTL_tile_t<sp/>next_tile);</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/>when<sp/>__TTL_DEBUG<sp/>==<sp/>0</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/><sp/>static<sp/>inline<sp/>TTL_int_sub_tensor_t<sp/>TTL_step_buffering(TTL_import_double_buffering_t<sp/>*const<sp/>dbi,</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>TTL_tile_t<sp/>next_tile,<sp/>unsinged<sp/>int<sp/>line);</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>when<sp/>__TTL_DEBUG<sp/>&gt;<sp/>0</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="79"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>@def<sp/>__TTL_TRACE_LINE</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>Is<sp/>used<sp/>internally<sp/>to<sp/>TLL<sp/>to<sp/>append<sp/>the<sp/>__LINE__<sp/>to<sp/>function<sp/>calls<sp/>when<sp/>__TTL_DEBUG<sp/>&gt;<sp/>0</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*<sp/>TTL_step_buffering(dbi,<sp/>next_tile<sp/>__TTL_TRACE_LINE);</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>The<sp/>file<sp/>TTL_trace_macros<sp/>deals<sp/>with<sp/>this<sp/>for<sp/>calls<sp/>post<sp/>TTL.h</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">/************************************************************************************************************</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*<sp/>Generic<sp/>name<sp/>generator</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>***********************************************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="92"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@def<sp/>__TTL_tensor_name</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Generate<sp/>a<sp/>generic<sp/>&quot;[prefix][const]_[ext,<sp/>int]_[type]_[sub]_tensor[suffix]&quot;<sp/>style<sp/>name<sp/>from<sp/>the<sp/>elements</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>@param<sp/>prefix<sp/>The<sp/>prefixed<sp/>to<sp/>apply<sp/>to<sp/>the<sp/>name</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>@param<sp/>const_2<sp/>The<sp/>const<sp/>name<sp/>to<sp/>place<sp/>after<sp/>the<sp/>prefix<sp/>-<sp/>should<sp/>be<sp/>empty<sp/>or<sp/>const_</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*<sp/>@param<sp/>location<sp/>The<sp/>location<sp/>of<sp/>the<sp/>tensor<sp/>-<sp/>should<sp/>be<sp/>ext<sp/>or<sp/>int</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*<sp/>@param<sp/>type<sp/>The<sp/>type<sp/>of<sp/>the<sp/>tensor<sp/>-<sp/>should<sp/>be<sp/>any<sp/>valid<sp/>c<sp/>type</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*<sp/>@param<sp/>sub<sp/>If<sp/>the<sp/>tensor<sp/>is<sp/>a<sp/>sub<sp/>tensor<sp/>or<sp/>not<sp/>-<sp/>should<sp/>be<sp/>empty<sp/>or<sp/>sub_</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/>*<sp/>@param<sp/>suffix<sp/>The<sp/>suffix<sp/>of<sp/>to<sp/>apply<sp/>to<sp/>the<sp/>name</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/>*<sp/>__TTL_tensor_name(TTL_create,<sp/>const_,<sp/>ext,<sp/>char,<sp/>sub_,<sp/>)<sp/>will<sp/>give<sp/>TTL_create_const_ext_char_sub_tensor</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*<sp/>__TTL_tensor_name(TTL_,<sp/>,int,<sp/>void,<sp/>,<sp/>_t)<sp/>will<sp/>give<sp/>TTL_int_void_tensor_t</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*<sp/>The<sp/>&apos;double&apos;<sp/>call<sp/>is<sp/>some<sp/>&apos;magic&apos;<sp/>to<sp/>allow<sp/>the<sp/>caller<sp/>itself<sp/>to<sp/>contain<sp/>a<sp/>macro.</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>generated<sp/>name</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="112"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*<sp/>@def<sp/>__TTL_tensor_no_type_name</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Generate<sp/>a<sp/>generic<sp/>&quot;[prefix][const]_[ext,<sp/>int]_[sub]_tensor[suffix]&quot;<sp/>style<sp/>name<sp/>from<sp/>the<sp/>elements</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*<sp/>@param<sp/>prefix<sp/>The<sp/>prefixed<sp/>to<sp/>apply<sp/>to<sp/>the<sp/>name</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*<sp/>@param<sp/>const_2<sp/>The<sp/>const<sp/>name<sp/>to<sp/>place<sp/>after<sp/>the<sp/>prefix<sp/>-<sp/>should<sp/>be<sp/>empty<sp/>or<sp/>const_</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*<sp/>@param<sp/>location<sp/>The<sp/>location<sp/>of<sp/>the<sp/>tensor<sp/>-<sp/>should<sp/>be<sp/>ext<sp/>or<sp/>int</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*<sp/>@param<sp/>sub<sp/>If<sp/>the<sp/>tensor<sp/>is<sp/>a<sp/>sub<sp/>tensor<sp/>or<sp/>not<sp/>-<sp/>should<sp/>be<sp/>empty<sp/>or<sp/>sub_</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*<sp/>@param<sp/>suffix<sp/>The<sp/>suffix<sp/>of<sp/>to<sp/>apply<sp/>to<sp/>the<sp/>name</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/>__TTL_tensor_no_type_name(TTL_create,<sp/>const_,<sp/>ext,<sp/>sub_,<sp/>)<sp/>will<sp/>give<sp/>TTL_create_const_ext_sub_tensor</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/>__TTL_tensor_no_type_name(TTL_,<sp/>,int,<sp/>,<sp/>_t)<sp/>will<sp/>give<sp/>TTL_int_tensor_t</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*<sp/>The<sp/>&apos;double&apos;<sp/>call<sp/>is<sp/>some<sp/>&apos;magic&apos;<sp/>to<sp/>allow<sp/>the<sp/>caller<sp/>itself<sp/>to<sp/>contain<sp/>a<sp/>macro.</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>generated<sp/>name</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="v7F17Om_TTL/TTL_macros.h"/>
+  </compounddef>
+</doxygen>

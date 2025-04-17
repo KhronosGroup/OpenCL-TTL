@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__import__double__const__void__tensor__buffering__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_import_double_const_void_tensor_buffering_t</compoundname>
+    <includes refid="TTL__double__scheme__template_8h" local="no">TTL_double_scheme_template.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__import__double__const__void__tensor__buffering__t_1aa77f5f6b70ff7f8ba14c724f10b4d6c9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TTL_import_double_const_void_tensor_buffering_t::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <qualifiedname>TTL_import_double_const_void_tensor_buffering_t::index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describes the current buffer index when pipelining. For single 0-&gt;1-&gt;0, for double 0-&gt;1-&gt;0-&gt;1... etc </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" line="62" column="13" bodyfile="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__import__double__const__void__tensor__buffering__t_1a3ee04ce36dbac0b7d3284af9b465d1c8" prot="public" static="no" mutable="no">
+        <type><ref refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref> void *</type>
+        <definition>__local void* TTL_import_double_const_void_tensor_buffering_t::int_base[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>int_base</name>
+        <qualifiedname>TTL_import_double_const_void_tensor_buffering_t::int_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The internal base addresses of the pipelined tiles. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" line="64" column="22" bodyfile="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__import__double__const__void__tensor__buffering__t_1ab9694dc0d78d2299668c932cc8f9a288" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__const__ext__void__tensor__t" kindref="compound">TTL_const_ext_void_tensor_t</ref></type>
+        <definition>TTL_const_ext_void_tensor_t TTL_import_double_const_void_tensor_buffering_t::ext_tensor_in</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_in</name>
+        <qualifiedname>TTL_import_double_const_void_tensor_buffering_t::ext_tensor_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being input </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" line="65" column="37" bodyfile="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__import__double__const__void__tensor__buffering__t_1a03f573a67614b573afa6a7dbbf18cd85" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__const__ext__void__tensor__t" kindref="compound">TTL_const_ext_void_tensor_t</ref></type>
+        <definition>TTL_const_ext_void_tensor_t TTL_import_double_const_void_tensor_buffering_t::ext_tensor_out</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_out</name>
+        <qualifiedname>TTL_import_double_const_void_tensor_buffering_t::ext_tensor_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being output </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" line="66" column="37" bodyfile="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__import__double__const__void__tensor__buffering__t_1a5291da7d9078014c75c6394eecf47e90" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structTTL__import__double__const__void__tensor__buffering__t" kindref="compound">TTL_import_double_const_void_tensor_buffering_t</ref></type>
+        <definition>struct TTL_import_double_const_void_tensor_buffering_t TTL_import_double_const_void_tensor_buffering_t::common</definition>
+        <argsstring></argsstring>
+        <name>common</name>
+        <qualifiedname>TTL_import_double_const_void_tensor_buffering_t::common</qualifiedname>
+        <briefdescription>
+<para>The information that is common to all pipeline schemes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" line="67" column="56"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__import__double__const__void__tensor__buffering__t_1aa1654cfe54c90dc801982369e237755b" prot="public" static="no" mutable="no">
+        <type><ref refid="c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref> *</type>
+        <definition>TTL_event_t* TTL_import_double_const_void_tensor_buffering_t::event</definition>
+        <argsstring></argsstring>
+        <name>event</name>
+        <qualifiedname>TTL_import_double_const_void_tensor_buffering_t::event</qualifiedname>
+        <briefdescription>
+<para>A pointer to the event that is used to track the progress of the transfer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" line="68" column="17" bodyfile="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__import__double__const__void__tensor__buffering__t_1a64ed557c20ee705fc3cff6739285e8e5" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+        <definition>TTL_tile_t TTL_import_double_const_void_tensor_buffering_t::prev_tile</definition>
+        <argsstring></argsstring>
+        <name>prev_tile</name>
+        <qualifiedname>TTL_import_double_const_void_tensor_buffering_t::prev_tile</qualifiedname>
+        <briefdescription>
+<para>Store of the previous imported/exported tile *<zwj/>/. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" line="69" column="16" bodyfile="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Data required to perform double buffer pipelining. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="TTL__double__scheme__template_8h_1af48346308548d7ee4fb27152a025edb3" kindref="member">TTL_start_import_double_buffering</ref> and <ref refid="TTL__double__scheme__template_8h_1a4e2b9ab90fb92e2c6e8765ee9474de56" kindref="member">TTL_start_export_double_buffering</ref> for a description of double buffer pipelining. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>TTL_const_ext_void_tensor_t</label>
+        <link refid="structTTL__const__ext__void__tensor__t"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+layout</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_import_double_const_void_tensor_buffering_t</label>
+        <link refid="structTTL__import__double__const__void__tensor__buffering__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+ext_tensor_in</edgelabel>
+          <edgelabel>+ext_tensor_out</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>+prev_tile</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TTL_layout_t</label>
+        <link refid="structTTL__layout__t"/>
+      </node>
+      <node id="6">
+        <label>TTL_offset_t</label>
+        <link refid="structTTL__offset__t"/>
+      </node>
+      <node id="4">
+        <label>TTL_shape_t</label>
+        <link refid="structTTL__shape__t"/>
+      </node>
+      <node id="5">
+        <label>TTL_tile_t</label>
+        <link refid="structTTL__tile__t"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>+offset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" line="60" column="1" bodyfile="v7F17Om_TTL/pipelines/TTL_double_scheme_template.h" bodystart="60" bodyend="70"/>
+    <listofallmembers>
+      <member refid="structTTL__import__double__const__void__tensor__buffering__t_1a5291da7d9078014c75c6394eecf47e90" prot="public" virt="non-virtual"><scope>TTL_import_double_const_void_tensor_buffering_t</scope><name>common</name></member>
+      <member refid="structTTL__import__double__const__void__tensor__buffering__t_1aa1654cfe54c90dc801982369e237755b" prot="public" virt="non-virtual"><scope>TTL_import_double_const_void_tensor_buffering_t</scope><name>event</name></member>
+      <member refid="structTTL__import__double__const__void__tensor__buffering__t_1ab9694dc0d78d2299668c932cc8f9a288" prot="public" virt="non-virtual"><scope>TTL_import_double_const_void_tensor_buffering_t</scope><name>ext_tensor_in</name></member>
+      <member refid="structTTL__import__double__const__void__tensor__buffering__t_1a03f573a67614b573afa6a7dbbf18cd85" prot="public" virt="non-virtual"><scope>TTL_import_double_const_void_tensor_buffering_t</scope><name>ext_tensor_out</name></member>
+      <member refid="structTTL__import__double__const__void__tensor__buffering__t_1aa77f5f6b70ff7f8ba14c724f10b4d6c9" prot="public" virt="non-virtual"><scope>TTL_import_double_const_void_tensor_buffering_t</scope><name>index</name></member>
+      <member refid="structTTL__import__double__const__void__tensor__buffering__t_1a3ee04ce36dbac0b7d3284af9b465d1c8" prot="public" virt="non-virtual"><scope>TTL_import_double_const_void_tensor_buffering_t</scope><name>int_base</name></member>
+      <member refid="structTTL__import__double__const__void__tensor__buffering__t_1a64ed557c20ee705fc3cff6739285e8e5" prot="public" virt="non-virtual"><scope>TTL_import_double_const_void_tensor_buffering_t</scope><name>prev_tile</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__shape__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_shape_t</compoundname>
+    <includes refid="tensors_2TTL__types_8h" local="no">TTL_types.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" prot="public" static="no" mutable="no">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_shape_t::width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
+        <qualifiedname>TTL_shape_t::width</qualifiedname>
+        <briefdescription>
+<para>Number of elements along dimension x. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="31" column="15" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" prot="public" static="no" mutable="no">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_shape_t::height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <qualifiedname>TTL_shape_t::height</qualifiedname>
+        <briefdescription>
+<para>Number of rows along dimension y. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="32" column="15" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" prot="public" static="no" mutable="no">
+        <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_shape_t::depth</definition>
+        <argsstring></argsstring>
+        <name>depth</name>
+        <qualifiedname>TTL_shape_t::depth</qualifiedname>
+        <briefdescription>
+<para>Number of planes along dimension z. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="33" column="15" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Description of a Shape. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A Shape is a 3D description of an object.</para>
+<para>The units are elements </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_shape_t</label>
+        <link refid="structTTL__shape__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="v7F17Om_TTL/tensors/TTL_types.h" line="30" column="1" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="30" bodyend="34"/>
+    <listofallmembers>
+      <member refid="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" prot="public" virt="non-virtual"><scope>TTL_shape_t</scope><name>depth</name></member>
+      <member refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" prot="public" virt="non-virtual"><scope>TTL_shape_t</scope><name>height</name></member>
+      <member refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" prot="public" virt="non-virtual"><scope>TTL_shape_t</scope><name>width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

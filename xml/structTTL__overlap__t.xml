@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__overlap__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_overlap_t</compoundname>
+    <includes refid="tensors_2TTL__types_8h" local="no">TTL_types.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__overlap__t_1ae4469319b7409cd74289b3b9031a460e" prot="public" static="no" mutable="no">
+        <type><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref></type>
+        <definition>TTL_overlap_dim_t TTL_overlap_t::width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
+        <qualifiedname>TTL_overlap_t::width</qualifiedname>
+        <briefdescription>
+<para>width overlap in elements </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="175" column="23" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__overlap__t_1aa7a279104c7ef1676d8e2528cb6bcccc" prot="public" static="no" mutable="no">
+        <type><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref></type>
+        <definition>TTL_overlap_dim_t TTL_overlap_t::height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <qualifiedname>TTL_overlap_t::height</qualifiedname>
+        <briefdescription>
+<para>height overlap in elements </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="176" column="23" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__overlap__t_1a6e9810c5c0a2c94854533807b5e93e53" prot="public" static="no" mutable="no">
+        <type><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref></type>
+        <definition>TTL_overlap_dim_t TTL_overlap_t::depth</definition>
+        <argsstring></argsstring>
+        <name>depth</name>
+        <qualifiedname>TTL_overlap_t::depth</qualifiedname>
+        <briefdescription>
+<para>depth overlap in elements </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="177" column="23" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Description of the overlap in 3D space of adjacent tiles. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref> represents the number of overlapped elements between adjacent tiles in each dimension.</para>
+<para>For example, overlap.x=1 means that every horizontally-adjacent tiles share elements on one column.</para>
+<para>The type used to hold the overlap between adjacent tiles along all dimensions </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_overlap_t</label>
+        <link refid="structTTL__overlap__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="v7F17Om_TTL/tensors/TTL_types.h" line="174" column="1" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="174" bodyend="178"/>
+    <listofallmembers>
+      <member refid="structTTL__overlap__t_1a6e9810c5c0a2c94854533807b5e93e53" prot="public" virt="non-virtual"><scope>TTL_overlap_t</scope><name>depth</name></member>
+      <member refid="structTTL__overlap__t_1aa7a279104c7ef1676d8e2528cb6bcccc" prot="public" virt="non-virtual"><scope>TTL_overlap_t</scope><name>height</name></member>
+      <member refid="structTTL__overlap__t_1ae4469319b7409cd74289b3b9031a460e" prot="public" virt="non-virtual"><scope>TTL_overlap_t</scope><name>width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

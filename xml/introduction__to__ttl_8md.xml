@@ -1,0 +1,1137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="introduction__to__ttl_8md" kind="file" language="Markdown">
+    <compoundname>introduction_to_ttl.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">Introduction<sp/>to<sp/>the<sp/>Tensor<sp/>&amp;<sp/>Tiling<sp/>Library<sp/>(TTL)</highlight></codeline>
+<codeline><highlight class="normal">=================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">CONTENTS:</highlight></codeline>
+<codeline><highlight class="normal">---------</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>[Introduction<sp/>to<sp/>the<sp/>Tensor<sp/>\&amp;<sp/>Tiling<sp/>Library<sp/>(TTL)](#introduction-to-the-tensor--tiling-library-ttl)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[CONTENTS:](#contents)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[Introduction](#introduction)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Example](#example)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[Background](#background)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Tiling](#tiling)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Design<sp/>Principles](#design-principles)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[TTL<sp/>Logical<sp/>Tiling](#ttl-logical-tiling)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[TTL\_create\_shape](#ttl_create_shape)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[TTL\_create\_overlap](#ttl_create_overlap)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[TTL\_tile\_t](#ttl_tile_t)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[TTL\_tiler\_t](#ttl_tiler_t)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[TTL<sp/>Physical<sp/>Tensors](#ttl-physical-tensors)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[TTL\_create\_layout](#ttl_create_layout)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[TTL\_\[const\]\_\[int,ext\]\_\[sub\]\_tensor\_t](#ttl_const_intext_sub_tensor_t)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[TTL\_io\_tensors](#ttl_io_tensors)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[TTL<sp/>Import<sp/>and<sp/>Export<sp/>Transactions](#ttl-import-and-export-transactions)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[TTL<sp/>Pipelining<sp/>Schemes](#ttl-pipelining-schemes)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Pipelining<sp/>Iterations](#pipelining-iterations)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Duplex<sp/>Buffering](#duplex-buffering)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Double<sp/>Buffering](#double-buffering)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Simplex<sp/>Buffering](#simplex-buffering)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[Debugging](#debugging)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[Tiling<sp/>Code<sp/>Examples](#tiling-code-examples)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Duplex<sp/>Buffering<sp/>Scheme](#duplex-buffering-scheme)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Double<sp/>Buffering<sp/>Scheme](#double-buffering-scheme)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Simplex<sp/>Buffering<sp/>Scheme](#simplex-buffering-scheme)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Overlapped<sp/>Tiler](#overlapped-tiler)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Parallelizing<sp/>Tiling<sp/>Loop](#parallelizing-tiling-loop)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Manual<sp/>Double<sp/>Buffering:<sp/>dxDMA](#manual-double-buffering-dxdma)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Introduction</highlight></codeline>
+<codeline><highlight class="normal">------------</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Code<sp/>developed<sp/>for<sp/>devices<sp/>that<sp/>process<sp/>data<sp/>exceeding<sp/>the<sp/>capacity<sp/>of</highlight></codeline>
+<codeline><highlight class="normal">their<sp/>local<sp/>memory<sp/>must<sp/>be<sp/>partitioned<sp/>into<sp/>a<sp/>series<sp/>of<sp/>stages,<sp/>each<sp/>of<sp/>which</highlight></codeline>
+<codeline><highlight class="normal">processes<sp/>data<sp/>that<sp/>fits<sp/>in<sp/>the<sp/>available<sp/>local<sp/>memory.<sp/>Even<sp/>if<sp/>local<sp/>memory<sp/>is<sp/>large</highlight></codeline>
+<codeline><highlight class="normal">enough<sp/>to<sp/>accommodate<sp/>all<sp/>data<sp/>in<sp/>one<sp/>single<sp/>stage,<sp/>it<sp/>may<sp/>be<sp/>beneficial<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">partition<sp/>code<sp/>into<sp/>multiple<sp/>stages<sp/>to<sp/>better<sp/>cope<sp/>with<sp/>the<sp/>latency<sp/>of<sp/>copying</highlight></codeline>
+<codeline><highlight class="normal">data<sp/>into<sp/>and<sp/>out<sp/>of<sp/>local<sp/>memory.<sp/>Such<sp/>copying<sp/>can<sp/>be<sp/>done<sp/>asynchronously<sp/>in<sp/>OpenCL</highlight></codeline>
+<codeline><highlight class="normal">via<sp/>`async_copy()`<sp/>builtin<sp/>functions,<sp/>which<sp/>we<sp/>refer<sp/>to<sp/>as<sp/>`import`<sp/>and<sp/>`export`.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Code<sp/>for<sp/>accelerators<sp/>is<sp/>often<sp/>partitioned<sp/>manually,<sp/>resulting<sp/>in<sp/>code<sp/>that<sp/>is</highlight></codeline>
+<codeline><highlight class="normal">in<sp/>general<sp/>difficult<sp/>and<sp/>cumbersome<sp/>to<sp/>write,<sp/>hard<sp/>to<sp/>read,<sp/>share,<sp/>optimize,<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">maintain.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>Tensor<sp/>&amp;<sp/>Tiling<sp/>Library<sp/>is<sp/>designed<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">provide **transparent,** **modular**, and **extensible** **building-blocks** in **C**,</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>support<sp/>developing<sp/>code<sp/>for<sp/>local<sp/>memory<sp/>based<sp/>accelerators,<sp/>and<sp/>in<sp/>general</highlight></codeline>
+<codeline><highlight class="normal">where<sp/>multi-dimensional<sp/>tensors<sp/>appear<sp/>and<sp/>are<sp/>potentially<sp/>tiled<sp/>and<sp/>pipelined.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">As<sp/>a<sp/>preliminary<sp/>example,<sp/>Tensor<sp/>Tiling<sp/>Library<sp/>can<sp/>be<sp/>used<sp/>as<sp/>follows<sp/>to<sp/>tile<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">trivial<sp/>a[i][j]=b[i][j]+1<sp/>kernel:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_WIDTH<sp/>100</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_HEIGHT<sp/>100</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_SIZE<sp/>(TILE_WIDTH<sp/>*<sp/>TILE_HEIGHT)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>compute(TTL_int_tensor_t<sp/>t_in,<sp/>TTL_int_tensor_t<sp/>t_out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>__local<sp/>uchar<sp/>*l_in<sp/>=<sp/>t_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>__local<sp/>uchar<sp/>*l_out<sp/>=<sp/>t_out.base;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>for<sp/>(unsigned<sp/>int<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>t_in.shape.height;<sp/>y++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>t_in.shape.width;<sp/>x++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>idx_out<sp/>=<sp/>y<sp/>*<sp/>t_out.layout.total_row_length<sp/>+<sp/>x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>idx_in<sp/>=<sp/>y<sp/>*<sp/>t_in.layout.total_row_length<sp/>+<sp/>x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_out[idx_out]<sp/>=<sp/>l_in[idx_in]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>add_one(__global<sp/>char<sp/>*restrict<sp/>input_image,<sp/>__global<sp/>char<sp/>*restrict<sp/>output_image,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>image_width,<sp/>int<sp/>image_height,<sp/>int<sp/>image_stride)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>__local<sp/>uchar<sp/>l_in[TILE_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/>__local<sp/>uchar<sp/>l_out[TILE_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>//<sp/>Regular<sp/>tiling<sp/>depends<sp/>only<sp/>on<sp/>geometry<sp/>aka<sp/>logical<sp/>tensors:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>TTL_shape_t<sp/>image_shape<sp/>=<sp/>TTL_create_shape(image_width,<sp/>image_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>TTL_shape_t<sp/>tile_shape<sp/>=<sp/>TTL_create_shape(TILE_WIDTH,<sp/>TILE_HEIGHT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(image_shape,<sp/>tile_shape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>//<sp/>Accessing<sp/>memory<sp/>depends<sp/>on<sp/>layout<sp/>aka<sp/>physical<sp/>tensors,<sp/>where<sp/>strides<sp/>are<sp/>absolute:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>TTL_layout_t<sp/>external_layout<sp/>=<sp/>TTL_create_layout(image_stride);</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>for<sp/>(int<sp/>tile_id<sp/>=<sp/>0;<sp/>tile_id<sp/>&lt;<sp/>TTL_number_of_tiles(tiler);<sp/>++tile_id)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_tile_t<sp/>tile<sp/>=<sp/>TTL_get_tile(tile_id,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_int_tensor_t<sp/>import_to<sp/>=<sp/>TTL_create_int_tensor(l_in,<sp/>tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_int_tensor_t<sp/>export_from<sp/>=<sp/>TTL_create_int_tensor(l_out,<sp/>tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>import_from<sp/>=<sp/>TTL_create_ext_tensor(input_image,<sp/>tile,<sp/>external_layout);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>export_to<sp/>=<sp/>TTL_create_ext_tensor(output_image,<sp/>tile,<sp/>external_layout);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_blocking_import(import_to,<sp/>import_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>compute(import_to,<sp/>export_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TTL_blocking_export(export_from,<sp/>export_to);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Background</highlight></codeline>
+<codeline><highlight class="normal">----------</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Tiling</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The **data** accessed<sp/>by<sp/>a<sp/>function<sp/>can<sp/>be<sp/>made<sp/>to<sp/>fit<sp/>in<sp/>local<sp/>memory</highlight></codeline>
+<codeline><highlight class="normal">by **partitioning<sp/>its<sp/>control-flow** into<sp/>stages,<sp/>such<sp/>that<sp/>the<sp/>data<sp/>accessed<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">each<sp/>stage<sp/>fits<sp/>in<sp/>local<sp/>memory.<sp/>In<sp/>all<sp/>cases<sp/>considered,<sp/>this<sp/>partitioning<sp/>takes</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>form *Loop<sp/>Tiling*,<sp/>where<sp/>an<sp/>initial<sp/>unfitting<sp/>loop<sp/>nest<sp/>such<sp/>as:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal"><sp/>for<sp/>(int<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>TooManyRows;<sp/>++y)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>for<sp/>(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>TooManyColumns;<sp/>++x)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>A[y<sp/>*<sp/>StrideA<sp/>+<sp/>x]<sp/>=<sp/>B[y<sp/>*<sp/>StrideB<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">is<sp/>strip-mined/blocked/tiled<sp/>in<sp/>(either<sp/>or)<sp/>both<sp/>loops<sp/>to<sp/>produce:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal"><sp/>for<sp/>(int<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>TooManyRows;<sp/>y<sp/>+=<sp/>TileY)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>for<sp/>(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>TooManyColumns;<sp/>x<sp/>+=<sp/>TileX)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>//<sp/>Start<sp/>of<sp/>stage.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>yy<sp/>=<sp/>y;<sp/>yy<sp/>&lt;<sp/>min(y<sp/>+<sp/>TileY<sp/>,<sp/>TooManyRows);<sp/>++yy)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>xx<sp/>=<sp/>x;<sp/>xx<sp/>&lt;<sp/>min(x<sp/>+<sp/>TileX,<sp/>TooManyColumns);<sp/>++xx)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A[yy<sp/>*<sp/>StrideA<sp/>+<sp/>xx]<sp/>=<sp/>B[yy<sp/>*<sp/>StrideB<sp/>+<sp/>xx]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>//<sp/>End<sp/>of<sp/>stage.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Loop<sp/>tiling<sp/>produces<sp/>an<sp/>outer-loop,<sp/>in<sp/>the<sp/>above<sp/>case<sp/>a<sp/>doubly-nested</highlight></codeline>
+<codeline><highlight class="normal">outer-loop,<sp/>that<sp/>iterates<sp/>over<sp/>stages<sp/>or<sp/>tiles.<sp/>These<sp/>outer<sp/>loops<sp/>could<sp/>be</highlight></codeline>
+<codeline><highlight class="normal">represented<sp/>as:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal"><sp/>for<sp/>(int<sp/>tile_id<sp/>=<sp/>0;<sp/>tile_id<sp/>&lt;<sp/>number_of_tiles;<sp/>++tile_id)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>//<sp/>Derive<sp/>y,<sp/>x,<sp/>and<sp/>tile<sp/>parameters<sp/>from<sp/>tile_id.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Notice<sp/>that<sp/>both<sp/>arrays<sp/>A<sp/>and<sp/>B<sp/>in<sp/>the<sp/>above<sp/>example<sp/>are<sp/>tiled<sp/>together.<sp/>Arrays</highlight></codeline>
+<codeline><highlight class="normal">with<sp/>multiple<sp/>accesses<sp/>of<sp/>distinct<sp/>offsets,<sp/>such<sp/>as<sp/>in<sp/>stencil<sp/>access<sp/>patterns,</highlight></codeline>
+<codeline><highlight class="normal">result<sp/>in<sp/>tiles<sp/>that<sp/>overlap.<sp/>Arrays<sp/>that<sp/>are<sp/>accessed<sp/>with<sp/>non-unit<sp/>strides</highlight></codeline>
+<codeline><highlight class="normal">should<sp/>be<sp/>allocated<sp/>increased<sp/>memory<sp/>accordingly<sp/>along<sp/>the<sp/>x<sp/>dimension<sp/>-<sp/>as<sp/>if</highlight></codeline>
+<codeline><highlight class="normal">their<sp/>element<sp/>size<sp/>has<sp/>increased.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>transformation<sp/>partitions<sp/>or<sp/>tiles<sp/>the *Iteration<sp/>Space* of<sp/>a<sp/>nested<sp/>loop,</highlight></codeline>
+<codeline><highlight class="normal">thereby<sp/>also<sp/>partitioning<sp/>or<sp/>tiling<sp/>the *Memory<sp/>Space* of<sp/>each<sp/>array<sp/>accessed<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>loop.<sp/>Tiling<sp/>traditionally<sp/>involves<sp/>a<sp/>single<sp/>(usually<sp/>2D)<sp/>tile<sp/>size<sp/>which</highlight></codeline>
+<codeline><highlight class="normal">applies<sp/>to<sp/>the<sp/>outer-loop<sp/>of<sp/>a<sp/>loop-nest<sp/>in<sp/>terms<sp/>of<sp/>iterations,<sp/>and<sp/>thereby<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">all<sp/>tiled<sp/>arrays<sp/>of<sp/>the<sp/>loop<sp/>in<sp/>terms<sp/>of<sp/>elements.<sp/>It<sp/>can<sp/>be<sp/>extended<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">multiple<sp/>loops<sp/>by<sp/>conceptually<sp/>fusing<sp/>them<sp/>together.<sp/>Each<sp/>array<sp/>however<sp/>may</highlight></codeline>
+<codeline><highlight class="normal">require<sp/>a<sp/>distinct<sp/>tile<sp/>size<sp/>due<sp/>to<sp/>its<sp/>unique<sp/>access<sp/>pattern,<sp/>and<sp/>to<sp/>be<sp/>bumped</highlight></codeline>
+<codeline><highlight class="normal">by<sp/>a<sp/>unique<sp/>stride<sp/>along<sp/>a<sp/>distinct<sp/>loop<sp/>dimension.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Once<sp/>a<sp/>loop<sp/>and<sp/>the<sp/>arrays<sp/>it<sp/>accesses<sp/>have<sp/>been<sp/>tiled,<sp/>the<sp/>operations<sp/>involved</highlight></codeline>
+<codeline><highlight class="normal">with<sp/>copying<sp/>the<sp/>data<sp/>of<sp/>each<sp/>tile<sp/>can<sp/>be<sp/>double<sp/>buffered<sp/>and<sp/>pipelined</highlight></codeline>
+<codeline><highlight class="normal">across<sp/>loop<sp/>iterations,<sp/>thereby<sp/>overlapping<sp/>data<sp/>communication<sp/>with<sp/>computation,</highlight></codeline>
+<codeline><highlight class="normal">and<sp/>overlapping<sp/>asynchronous<sp/>imports<sp/>and<sp/>exports.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Design<sp/>Principles</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>Tensor<sp/>Tiling<sp/>Library<sp/>is<sp/>designed<sp/>to<sp/>be</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/><sp/><sp/>**Transparent**:<sp/>the<sp/>types<sp/>and<sp/>functions<sp/>of<sp/>the<sp/>library<sp/>are<sp/>all<sp/>exposed<sp/>and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>visible<sp/>to<sp/>the<sp/>user;<sp/>there<sp/>are<sp/>no<sp/>hidden<sp/>components.<sp/>This<sp/>helps<sp/>clarify</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exactly<sp/>what<sp/>the<sp/>library<sp/>supports,<sp/>and<sp/>how.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/><sp/><sp/>**Modular**:<sp/>the<sp/>library<sp/>provides<sp/>several<sp/>constructs<sp/>that<sp/>can<sp/>be<sp/>used</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>separately<sp/>or<sp/>in<sp/>combination.<sp/>This<sp/>includes<sp/>a<sp/>construct<sp/>for<sp/>tensors,<sp/>for</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>regular<sp/>tiling,<sp/>a<sp/>construct<sp/>for<sp/>importing<sp/>and<sp/>exporting<sp/>single<sp/>tiles,<sp/>and<sp/>a</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>construct<sp/>for<sp/>pipelining<sp/>a<sp/>single<sp/>or<sp/>pairs<sp/>of<sp/>import/export<sp/>transactions.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/><sp/><sp/>**Extensible**:<sp/>any<sp/>part<sp/>of<sp/>the<sp/>library<sp/>can<sp/>be<sp/>copied<sp/>and<sp/>modified<sp/>locally;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>new<sp/>parts<sp/>can<sp/>be<sp/>added<sp/>locally<sp/>to<sp/>the<sp/>library.<sp/>Modification<sp/>and<sp/>additions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>regarded<sp/>as<sp/>generally<sp/>useful<sp/>should<sp/>be<sp/>considered<sp/>for<sp/>inclusion<sp/>in<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>library.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/><sp/><sp/>**Easy<sp/>to<sp/>use**:<sp/>provides<sp/>simple<sp/>and<sp/>easy<sp/>to<sp/>use<sp/>patterns,<sp/>all<sp/>included<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>header-files<sp/>only.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A *tile* is<sp/>considered<sp/>to<sp/>be<sp/>a<sp/>memory<sp/>region<sp/>that<sp/>can<sp/>be<sp/>copied<sp/>asynchronously.</highlight></codeline>
+<codeline><highlight class="normal">Therefore,<sp/>a<sp/>tile<sp/>is<sp/>in<sp/>general<sp/>a<sp/>3-dimensional *tensor* of<sp/>elements,<sp/>embedded</highlight></codeline>
+<codeline><highlight class="normal">within<sp/>an<sp/>enclosing<sp/>memory<sp/>layout.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>TTL<sp/>tiles<sp/>are<sp/>defined<sp/>with<sp/>optional<sp/>overlap<sp/>in<sp/>every<sp/>dimension<sp/>(see<sp/>next</highlight></codeline>
+<codeline><highlight class="normal">section).<sp/>For<sp/>example,<sp/>the<sp/>following<sp/>figure<sp/>shows<sp/>the<sp/>tiling<sp/>along<sp/>x-dimension</highlight></codeline>
+<codeline><highlight class="normal">produced<sp/>by<sp/>a<sp/>tiler<sp/>with<sp/>2D<sp/>space<sp/>shape<sp/>of<sp/>(5,<sp/>250),<sp/>2D<sp/>tile<sp/>shape<sp/>of<sp/>(5,<sp/>5),</highlight></codeline>
+<codeline><highlight class="normal">and **overlap.width**=1,<sp/>so<sp/>that<sp/>every<sp/>pair<sp/>of<sp/>horizontally-adjacent<sp/>tiles<sp/>has</highlight></codeline>
+<codeline><highlight class="normal">one<sp/>column<sp/>of<sp/>elements<sp/>in<sp/>common:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">![](overlap.jpg)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>following<sp/>figure<sp/>shows<sp/>all<sp/>15<sp/>tiles<sp/>produced<sp/>by<sp/>a<sp/>non-overlapping<sp/>tiler<sp/>with</highlight></codeline>
+<codeline><highlight class="normal">2D<sp/>space<sp/>shape<sp/>of<sp/>{900,<sp/>800}<sp/>and<sp/>2D<sp/>tile<sp/>shape<sp/>of<sp/>{200,<sp/>300}.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Note<sp/>that<sp/>tiles<sp/>appearing<sp/>last<sp/>in<sp/>each<sp/>dimension<sp/>are<sp/>of<sp/>smaller<sp/>size<sp/>-<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">remainder<sp/>of<sp/>dividing<sp/>900<sp/>by<sp/>200<sp/>and<sp/>800<sp/>by<sp/>300.<sp/>Each<sp/>tile<sp/>has<sp/>a<sp/>unique<sp/>ID<sp/>from</highlight></codeline>
+<codeline><highlight class="normal">zero<sp/>to **number_of_tiles**-1,<sp/>following<sp/>row-major<sp/>or<sp/>column-major<sp/>order:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">![](tiling_ttl.png)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>following<sp/>sections<sp/>describe<sp/>the<sp/>layers<sp/>of<sp/>API<sp/>provided<sp/>by<sp/>TTL.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL<sp/>Logical<sp/>Tiling</highlight></codeline>
+<codeline><highlight class="normal">------------------</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>first<sp/>layer<sp/>of<sp/>TTL<sp/>deals<sp/>with<sp/>logical<sp/>tiling<sp/>of<sp/>3D<sp/>shapes.<sp/>The<sp/>basic<sp/>unit<sp/>of</highlight></codeline>
+<codeline><highlight class="normal">these<sp/>shapes<sp/>-<sp/>an<sp/>&quot;element&quot;<sp/>-<sp/>is<sp/>independent<sp/>of<sp/>its<sp/>actual<sp/>size<sp/>or<sp/>location<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">memory,<sp/>hence<sp/>the<sp/>term<sp/>&quot;logical&quot;.<sp/>The<sp/>associated<sp/>&quot;physical&quot;<sp/>aspects<sp/>of<sp/>size<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">location<sp/>in<sp/>memory<sp/>are<sp/>dealt<sp/>with<sp/>separately.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>TTL_create_shape</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_shape_t<sp/>defines<sp/>the<sp/>number<sp/>of<sp/>elements<sp/>along<sp/>each<sp/>dimension<sp/>in<sp/>a<sp/>3D<sp/>box:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_dim_t<sp/>width;<sp/><sp/>//<sp/>Number<sp/>of<sp/>elements<sp/>along<sp/>dimension<sp/>x.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_dim_t<sp/>height;<sp/>//<sp/>Number<sp/>of<sp/>rows<sp/>along<sp/>dimension<sp/>y</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_dim_t<sp/>depth;<sp/><sp/>//<sp/>Number<sp/>of<sp/>planes<sp/>along<sp/>dimension<sp/>z</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_shape_t;</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_create_shape()<sp/>APIs<sp/>define<sp/>shapes<sp/>of<sp/>desired<sp/>dimensions,<sp/>complementing</highlight></codeline>
+<codeline><highlight class="normal">remaining<sp/>dimensions<sp/>with<sp/>&apos;1&apos;s:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">TTL_shape_t<sp/>TTL_create_shape(TTL_dim_t<sp/>width);</highlight></codeline>
+<codeline><highlight class="normal">TTL_shape_t<sp/>TTL_create_shape(TTL_dim_t<sp/>width,<sp/>TTL_dim_t<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal">TTL_shape_t<sp/>TTL_create_shape(TTL_dim_t<sp/>width,<sp/>TTL_dim_t<sp/>height,<sp/>TTL_dim_t<sp/>depth);</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>&quot;Big&quot;<sp/>3D<sp/>box<sp/>can<sp/>be<sp/>partitioned<sp/>into<sp/>pairwise<sp/>disjointed<sp/>&quot;Small&quot;<sp/>3D<sp/>boxes,</highlight></codeline>
+<codeline><highlight class="normal">simply<sp/>by<sp/>defining<sp/>the<sp/>two<sp/>boxes<sp/>as<sp/>TTL_shape_t&apos;s<sp/>and<sp/>using<sp/>them<sp/>to<sp/>construct<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">TTL_tiler_t:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">TTL_tiler_t<sp/>TTL_create_tiler(TTL_shape_t<sp/>Big,<sp/>TTL_shape_t<sp/>Small);</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>TTL_tiler_t<sp/>can<sp/>then<sp/>be<sp/>used<sp/>to<sp/>traverse<sp/>all<sp/>the<sp/>parts<sp/>of<sp/>Big&apos;s<sp/>partition</highlight></codeline>
+<codeline><highlight class="normal">(referred<sp/>to<sp/>as<sp/>&quot;tiles&quot;)<sp/>each<sp/>of<sp/>size<sp/>Small<sp/>(or<sp/>smaller),<sp/>as<sp/>explained<sp/>below.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>Big<sp/>3D<sp/>box<sp/>can<sp/>be<sp/>partitioned<sp/>into<sp/>overlapping<sp/>Small<sp/>3D<sp/>boxes<sp/>-<sp/>where<sp/>every</highlight></codeline>
+<codeline><highlight class="normal">pair<sp/>of<sp/>adjacent<sp/>parts<sp/>share<sp/>a<sp/>fixed<sp/>number<sp/>of<sp/>elements<sp/>along<sp/>each<sp/>dimension,</highlight></codeline>
+<codeline><highlight class="normal">using<sp/>the<sp/>following<sp/>constructs:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>TTL_create_overlap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_overlap_t<sp/>defines<sp/>the<sp/>number<sp/>of<sp/>elements<sp/>shared<sp/>between<sp/>two<sp/>adjacent<sp/>tiles</highlight></codeline>
+<codeline><highlight class="normal">along<sp/>each<sp/>dimension<sp/>of<sp/>a<sp/>3D<sp/>box:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_overlap_dim_t<sp/>width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_overlap_dim_t<sp/>height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_overlap_dim_t<sp/>depth;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_overlap_t;</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_create_overlap()<sp/>APIs<sp/>define<sp/>the<sp/>overlaps<sp/>along<sp/>the<sp/>desired<sp/>dimensions,</highlight></codeline>
+<codeline><highlight class="normal">complementing<sp/>remaining<sp/>dimensions<sp/>with<sp/>&apos;0&apos;s:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">TTL_overlap_t<sp/>TTL_create_overlap(TTL_overlap_dim_t<sp/>width);</highlight></codeline>
+<codeline><highlight class="normal">TTL_overlap_t<sp/>TTL_create_overlap(TTL_overlap_dim_t<sp/>width,<sp/>TTL_overlap_dim_t<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal">TTL_overlap_t<sp/>TTL_create_overlap(TTL_overlap_dim_t<sp/>width,<sp/>TTL_overlap_dim_t<sp/>height,<sp/>TTL_overlap_dim_t<sp/>depth);</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">An<sp/>overlap<sp/>can<sp/>then<sp/>be<sp/>used<sp/>together<sp/>with<sp/>Big<sp/>and<sp/>Small<sp/>to<sp/>create<sp/>the<sp/>desired</highlight></codeline>
+<codeline><highlight class="normal">overlapping<sp/>tiler:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">TTL_tiler_t<sp/>TTL_create_overlap_tiler(TTL_shape_t<sp/>Big,<sp/>TTL_shape_t<sp/>Small,<sp/>TTL_overlap_t<sp/>Overlap);</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>TTL_tile_t</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_tile_t<sp/>defines<sp/>the<sp/>shape<sp/>and<sp/>position<sp/>of<sp/>each<sp/>part<sp/>in<sp/>a<sp/>partitioning</highlight></codeline>
+<codeline><highlight class="normal">produced<sp/>by<sp/>TTL_tiler_t:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>shape;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>offset;<sp/>//<sp/>In<sp/>terms<sp/>of<sp/>number<sp/>of<sp/>elements</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_tile_t;</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>offset<sp/>defines<sp/>where<sp/>each<sp/>tile<sp/>&quot;starts&quot;<sp/>and<sp/>is<sp/>therefore<sp/>distinct<sp/>across<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">tiles<sp/>of<sp/>a<sp/>tiler,<sp/>with<sp/>a<sp/>first<sp/>tile<sp/>typically<sp/>starting<sp/>at<sp/>offset<sp/>zero.<sp/>The</highlight></codeline>
+<codeline><highlight class="normal">shapes<sp/>are<sp/>typically<sp/>equal<sp/>to<sp/>the<sp/>Small<sp/>shape<sp/>provided<sp/>to<sp/>the<sp/>tiler,<sp/>except<sp/>for</highlight></codeline>
+<codeline><highlight class="normal">last<sp/>tiles<sp/>along<sp/>each<sp/>dimension<sp/>which<sp/>may<sp/>be<sp/>smaller.<sp/>A<sp/>tile<sp/>having<sp/>zero<sp/>shape</highlight></codeline>
+<codeline><highlight class="normal">represents<sp/>an<sp/>empty<sp/>or<sp/>out-of-range<sp/>tile.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>TTL_tiler_t</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_tiler_t<sp/>provides<sp/>the<sp/>following<sp/>APIs:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>TTL_number_of_tiles(TTL_tiler_t<sp/>t);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Total<sp/>number<sp/>of<sp/>tiles</highlight></codeline>
+<codeline><highlight class="normal">TTL_dim_t<sp/>TTL_tiles_in_width(TTL_tiler_t<sp/>t);<sp/><sp/>//<sp/>Number<sp/>of<sp/>tiles<sp/>in<sp/>width</highlight></codeline>
+<codeline><highlight class="normal">TTL_dim_t<sp/>TTL_tiles_in_height(TTL_tiler_t<sp/>t);<sp/>//<sp/>Number<sp/>of<sp/>tiles<sp/>in<sp/>height</highlight></codeline>
+<codeline><highlight class="normal">TTL_dim_t<sp/>TTL_tiles_in_depth(TTL_tiler_t<sp/>t);<sp/><sp/>//<sp/>Number<sp/>of<sp/>tiles<sp/>in<sp/>depth</highlight></codeline>
+<codeline><highlight class="normal">TTL_tile_t<sp/>TTL_get_tile(int<sp/>tile_id,<sp/>TTL_tiler_t<sp/>*t);<sp/>//<sp/>Return<sp/>tile<sp/>number<sp/>tile_id,<sp/>empty<sp/>if<sp/>tile_id<sp/>is<sp/>out<sp/>of<sp/>range</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>TTL_valid_tile_id(int<sp/>tile_id,<sp/>TTL_tiler_t<sp/>t);<sp/><sp/><sp/><sp/>//<sp/>Check<sp/>if<sp/>tile_id<sp/>is<sp/>in<sp/>range</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL<sp/>Physical<sp/>Tensors</highlight></codeline>
+<codeline><highlight class="normal">--------------------</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>second<sp/>layer<sp/>of<sp/>TTL<sp/>deals<sp/>with<sp/>projecting<sp/>or<sp/>laying<sp/>out<sp/>logical<sp/>tiles<sp/>onto</highlight></codeline>
+<codeline><highlight class="normal">physical<sp/>memory<sp/>spaces.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Note<sp/>that<sp/>separating<sp/>logical<sp/>tiling<sp/>from<sp/>memory<sp/>considerations<sp/>facilitates</highlight></codeline>
+<codeline><highlight class="normal">reusing<sp/>the<sp/>same<sp/>TTL_tiler_t<sp/>to<sp/>tile<sp/>distinct<sp/>images<sp/>(located<sp/>in<sp/>different</highlight></codeline>
+<codeline><highlight class="normal">memory<sp/>addresses)<sp/>with<sp/>potentially<sp/>distinct<sp/>element<sp/>sizes<sp/>and<sp/>memory<sp/>alignments,</highlight></codeline>
+<codeline><highlight class="normal">provided<sp/>they<sp/>contain<sp/>the<sp/>same<sp/>number<sp/>and<sp/>shape<sp/>of<sp/>elements<sp/>to<sp/>be<sp/>tiled<sp/>the<sp/>same</highlight></codeline>
+<codeline><highlight class="normal">way.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>TTL_create_layout</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Each<sp/>tile<sp/>is<sp/>embedded<sp/>in<sp/>global<sp/>and<sp/>local<sp/>memories<sp/>within<sp/>some<sp/>enclosing<sp/>shape,</highlight></codeline>
+<codeline><highlight class="normal">e.g.,<sp/>to<sp/>account<sp/>for<sp/>possible<sp/>alignment<sp/>padding.<sp/>This<sp/>embedding<sp/>is<sp/>referred<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">as *layout*,<sp/>which<sp/>specifies<sp/>the<sp/>spacing<sp/>between<sp/>the<sp/>start<sp/>of<sp/>consecutive<sp/>rows<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">units<sp/>of<sp/>elements,<sp/>and<sp/>spacing<sp/>of<sp/>the<sp/>between<sp/>start<sp/>of<sp/>consecutive<sp/>planes<sp/>in<sp/>units</highlight></codeline>
+<codeline><highlight class="normal">of<sp/>elements.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_dim_t<sp/>row_spacing;<sp/><sp/><sp/><sp/>///&lt;<sp/>The<sp/>distance<sp/>between<sp/>the<sp/>start<sp/>of<sp/>consequtive<sp/>rows<sp/>in<sp/>units<sp/>of<sp/>elements.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_dim_t<sp/>plane_spacing;<sp/><sp/>///&lt;<sp/>The<sp/>distance<sp/>between<sp/>the<sp/>start<sp/>of<sp/>consequtive<sp/>planes<sp/>in<sp/>units<sp/>of<sp/>elements.</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_layout_t;</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_create_layout()<sp/>APIs<sp/>define<sp/>the<sp/>layouts<sp/>along<sp/>the<sp/>desired<sp/>dimensions:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">TTL_layout_t<sp/>TTL_create_layout();</highlight></codeline>
+<codeline><highlight class="normal">TTL_layout_t<sp/>TTL_create_layout(TTL_dim_t<sp/>total_row_length);</highlight></codeline>
+<codeline><highlight class="normal">TTL_layout_t<sp/>TTL_create_layout(TTL_dim_t<sp/>total_row_length,<sp/>TTL_dim_t<sp/>total_number_of_rows);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>TTL_<sp/>type<sp/>family<sp/>tensor_t</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_[const]\_[int/ext]\_[sub]_tensor_t<sp/>combine<sp/>the<sp/>logical<sp/>dimensions<sp/>of<sp/>a<sp/>tile</highlight></codeline>
+<codeline><highlight class="normal">along<sp/>with<sp/>its<sp/>physical<sp/>mapping<sp/>to<sp/>memory.<sp/>The<sp/>two<sp/>constructs<sp/>allow<sp/>the<sp/>creation</highlight></codeline>
+<codeline><highlight class="normal">of<sp/>local<sp/>[int]<sp/>and<sp/>global<sp/>[ext]<sp/>versions<sp/>with<sp/>a<sp/>const<sp/>attribute.<sp/>The</highlight></codeline>
+<codeline><highlight class="normal">TTL_tensor_t<sp/>structs<sp/>contain<sp/>all<sp/>the<sp/>information<sp/>needed<sp/>for<sp/>issuing<sp/>an<sp/>import<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>transaction,<sp/>and<sp/>for<sp/>reading<sp/>and<sp/>writing<sp/>to<sp/>the<sp/>tensor.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">As<sp/>well<sp/>as<sp/>usage<sp/>for<sp/>tiling<sp/>the<sp/>tensors<sp/>should<sp/>also<sp/>be<sp/>passed<sp/>to<sp/>compute</highlight></codeline>
+<codeline><highlight class="normal">functions.<sp/>The<sp/>type<sp/>contains<sp/>all<sp/>the<sp/>data<sp/>needed<sp/>to<sp/>read<sp/>from<sp/>a<sp/>tile<sp/>that<sp/>was</highlight></codeline>
+<codeline><highlight class="normal">imported<sp/>and<sp/>write<sp/>to<sp/>a<sp/>tile<sp/>before<sp/>it<sp/>is<sp/>exported,<sp/>except<sp/>for<sp/>the<sp/>element<sp/>type.</highlight></codeline>
+<codeline><highlight class="normal">An<sp/>external<sp/>tensor<sp/>can<sp/>also<sp/>be<sp/>passed<sp/>to<sp/>the<sp/>kernel<sp/>as<sp/>it<sp/>contains<sp/>all<sp/>data</highlight></codeline>
+<codeline><highlight class="normal">needed<sp/>for<sp/>tiling,<sp/>importing<sp/>and<sp/>exporting.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>[const]<sp/>__[local/global]<sp/>void<sp/>*base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_dim_t<sp/>elem_size;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>layout;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>shape;</highlight></codeline>
+<codeline><highlight class="normal">#if<sp/>sub</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_shape_t<sp/>shape;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_offset_t<sp/>sub_offset;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>origin;</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_[const]_[ext/int]_[sub]_tensor_t<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Tensors<sp/>of<sp/>the<sp/>following<sp/>types<sp/>exit.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t;<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">TTL_const_int_tensor_t;<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">TTL_int_sub_tensor_t;<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">TTL_const_int_sub_tensor_t;<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">TTL_ext_tensor_t;<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">TTL_const_ext_tensor_t;<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">TTL_ext_sub_tensor_t;<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">TTL_const_ext_sub_tensor_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Construct<sp/>a<sp/>buffer<sp/>with<sp/>default,<sp/>packed<sp/>layout,<sp/>whose<sp/>strides<sp/>match<sp/>the<sp/>provided<sp/>shape<sp/>and<sp/>element<sp/>size<sp/>w/o<sp/>padding.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Element<sp/>size<sp/>is<sp/>implicitly<sp/>set<sp/>to<sp/>gentype<sp/>size,<sp/>where<sp/>gentype<sp/>represents<sp/>any<sp/>type<sp/>amenable<sp/>to<sp/>sizeof,<sp/>including<sp/>but<sp/>not<sp/>restricted<sp/>to<sp/>OpenCL<sp/>vector<sp/>types,<sp/>structs,<sp/>but<sp/>excluding<sp/>void.</highlight></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t<sp/>TTL_create_int_tensor(__local<sp/>gentype<sp/>*base,<sp/>TTL_tile_t<sp/>tile);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Element<sp/>size<sp/>is<sp/>implicitly<sp/>set<sp/>to<sp/>gentype<sp/>size,<sp/>where<sp/>gentype<sp/>represents<sp/>any<sp/>type<sp/>amenable<sp/>to<sp/>sizeof,<sp/>including<sp/>but<sp/>not<sp/>restricted<sp/>to<sp/>OpenCL<sp/>vector<sp/>types,<sp/>structs,<sp/>but<sp/>excluding<sp/>void.</highlight></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t<sp/>TTL_create_int_tensor(__local<sp/>gentype<sp/>*base,<sp/>TTL_tile_t<sp/>tile,<sp/>TTL_layout_t<sp/>int_layout);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Explicit<sp/>layout<sp/>and<sp/>element<sp/>size</highlight></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t<sp/>TTL_create_int_tensor(__local<sp/>gentype<sp/>*base,<sp/>TTL_tile_t<sp/>tile,<sp/>TTL_layout_t<sp/>int_layout,<sp/>int<sp/>elem_size);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Element<sp/>size<sp/>is<sp/>implicitly<sp/>set<sp/>to<sp/>gentype<sp/>size,<sp/>where<sp/>gentype<sp/>represents<sp/>any<sp/>type<sp/>amenable<sp/>to<sp/>sizeof,<sp/>including<sp/>but<sp/>not<sp/>restricted<sp/>to<sp/>OpenCL<sp/>vector<sp/>types,<sp/>structs,<sp/>but<sp/>excluding<sp/>void.</highlight></codeline>
+<codeline><highlight class="normal">TTL_ext_tensor_t<sp/>TTL_create_ext_tensor(__global<sp/>gentype<sp/>*base,<sp/>TTL_tile_t<sp/>tile,<sp/>TTL_layout_t<sp/>ext_layout);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Explicit<sp/>layout<sp/>and<sp/>element<sp/>size</highlight></codeline>
+<codeline><highlight class="normal">TTL_ext_tensor_t<sp/>TTL_create_ext_tensor(__global<sp/>gentype<sp/>*base,<sp/>TTL_tile_t<sp/>tile,<sp/>TTL_layout_t<sp/>ext_layout,<sp/>int<sp/>elem_size);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>1<sp/>if<sp/>an<sp/>internal<sp/>tensor<sp/>&apos;tensor&apos;<sp/>is<sp/>valid,<sp/>i.e.<sp/>has<sp/>a<sp/>non-empty<sp/>shape.<sp/>Otherwise,<sp/>returns<sp/>0.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Useful<sp/>when<sp/>prolog/epilogs<sp/>creates<sp/>non-valid<sp/>tensors.</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>TTL_valid_int_tensor(TTL_int_tensor_t<sp/>tensor);</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Explicit<sp/>layouts<sp/>and/or<sp/>element<sp/>size<sp/>can<sp/>be<sp/>provided<sp/>by<sp/>overriding<sp/>the<sp/>default</highlight></codeline>
+<codeline><highlight class="normal">values.<sp/>The<sp/>API<sp/>can<sp/>also<sp/>be<sp/>extended<sp/>with<sp/>constructors<sp/>for<sp/>explicit<sp/>sizes,<sp/>if</highlight></codeline>
+<codeline><highlight class="normal">needed.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>TTL_io_tensors</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_io_tensors_t<sp/>holds<sp/>two<sp/>internal<sp/>tensors<sp/>ready<sp/>for<sp/>processing:<sp/>imported_to<sp/>as</highlight></codeline>
+<codeline><highlight class="normal">input<sp/>tensor<sp/>and<sp/>to_export_from<sp/>as<sp/>output<sp/>tensor:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_int_tensor_t<sp/>imported_to;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_int_tensor_t<sp/>to_export_from;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_io_tensors_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>true<sp/>if<sp/>tensors<sp/>are<sp/>valid.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Useful<sp/>when<sp/>prolog/epilogs<sp/>creates<sp/>non-valid<sp/>tensors.</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>TTL_valid_tensors(TTL_io_tensors_t<sp/>tensors);</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL<sp/>Import<sp/>and<sp/>Export<sp/>Transactions</highlight></codeline>
+<codeline><highlight class="normal">----------------------------------</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>third<sp/>layer<sp/>of<sp/>TTL<sp/>deals<sp/>with<sp/>transactions<sp/>that<sp/>copy<sp/>tensors<sp/>from<sp/>global<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">local<sp/>memory<sp/>and<sp/>back,<sp/>referred<sp/>to<sp/>as<sp/>import<sp/>and<sp/>export,<sp/>respectively.<sp/>These</highlight></codeline>
+<codeline><highlight class="normal">transactions<sp/>are<sp/>asynchronous<sp/>and<sp/>correspond<sp/>to<sp/>async_work_group_copy()<sp/>builtin</highlight></codeline>
+<codeline><highlight class="normal">functions<sp/>of<sp/>OpenCL<sp/>and<sp/>their<sp/>use<sp/>of<sp/>&quot;event_t&quot;.<sp/>Similar<sp/>to<sp/>OpenCL,<sp/>in<sp/>TTL<sp/>one</highlight></codeline>
+<codeline><highlight class="normal">event_t<sp/>can<sp/>serve<sp/>multiple<sp/>transactions,<sp/>and<sp/>it<sp/>is<sp/>possible<sp/>to<sp/>wait<sp/>on<sp/>multiple</highlight></codeline>
+<codeline><highlight class="normal">events.<sp/>Unlike<sp/>OpenCL,<sp/>every<sp/>import<sp/>and<sp/>export<sp/>in<sp/>TTL<sp/>must<sp/>be<sp/>provided<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">non-null<sp/>event_t,<sp/>which<sp/>can<sp/>be<sp/>produced<sp/>by<sp/>TTL_get_event().</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">TTL_event_t<sp/>TTL_get_event();<sp/>//<sp/>Initialize<sp/>an<sp/>event.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Import<sp/>the<sp/>data<sp/>in<sp/>external_tensor<sp/>to<sp/>internal_tensor.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>The<sp/>transaction<sp/>is<sp/>added<sp/>to<sp/>the<sp/>event<sp/>e.</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>TTL_import(TTL_int_tensor_t<sp/>internal_tensor,<sp/>TTL_ext_tensor_t<sp/>external_tensor,<sp/>TTL_event_t<sp/>*e);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Export<sp/>the<sp/>data<sp/>in<sp/>internal_tensor<sp/>to<sp/>external_tensor.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>The<sp/>transaction<sp/>is<sp/>added<sp/>to<sp/>the<sp/>event<sp/>e.</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>TTL_export(TTL_int_tensor_t<sp/>internal_tensor,<sp/>TTL_ext_tensor_t<sp/>external_tensor,<sp/>TTL_event_t<sp/>*e);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>TTL_wait(int<sp/>num_events,<sp/>TTL_event_t<sp/>*events);<sp/>//<sp/>Wait<sp/>for<sp/>first<sp/>num_events<sp/>in<sp/>events<sp/>array</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_blocking_import/export<sp/>can<sp/>be<sp/>used<sp/>to<sp/>issue<sp/>a<sp/>blocking<sp/>transaction,<sp/>i.e.,</highlight></codeline>
+<codeline><highlight class="normal">get<sp/>an<sp/>event,<sp/>issue<sp/>a<sp/>transaction<sp/>and<sp/>immediately<sp/>wait<sp/>for<sp/>its<sp/>completion:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>TTL_blocking_import(TTL_int_tensor_t<sp/>internal_tensor,<sp/>TTL_ext_tensor_t<sp/>external_tensor);</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>TTL_blocking_export(TTL_int_tensor_t<sp/>internal_tensor,<sp/>TTL_ext_tensor_t<sp/>external_tensor);</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL<sp/>Pipelining<sp/>Schemes</highlight></codeline>
+<codeline><highlight class="normal">----------------------</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>fourth<sp/>layer<sp/>of<sp/>TTL<sp/>deals<sp/>with<sp/>overlapping<sp/>pairs<sp/>of<sp/>asynchronous<sp/>import<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>transactions<sp/>and<sp/>buffering<sp/>pairs<sp/>of<sp/>internal<sp/>tensors<sp/>to<sp/>facilitate</highlight></codeline>
+<codeline><highlight class="normal">pipelining<sp/>of<sp/>imports<sp/>and<sp/>exports.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL<sp/>provides<sp/>several<sp/>schemes<sp/>to<sp/>help<sp/>pipeline<sp/>import<sp/>and/or<sp/>export<sp/>transactions</highlight></codeline>
+<codeline><highlight class="normal">of<sp/>tiles<sp/>across<sp/>a<sp/>loop-over-tiles<sp/>to<sp/>overlap<sp/>the<sp/>transactions<sp/>with<sp/>computations</highlight></codeline>
+<codeline><highlight class="normal">and/or<sp/>with<sp/>themselves.<sp/>Each<sp/>scheme<sp/>contains<sp/>a<sp/>struct,<sp/>a<sp/>defining<sp/>function<sp/>and<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">bumping<sp/>function.<sp/>The<sp/>defining<sp/>function<sp/>initializes<sp/>the<sp/>struct<sp/>and<sp/>is<sp/>placed</highlight></codeline>
+<codeline><highlight class="normal">before<sp/>the<sp/>loop<sp/>to<sp/>store<sp/>data<sp/>across<sp/>loop<sp/>iterations.<sp/>The<sp/>bumping<sp/>function</highlight></codeline>
+<codeline><highlight class="normal">initializes<sp/>and<sp/>finalizes<sp/>the<sp/>transactions,<sp/>returning<sp/>TTL_tensor_t(s)<sp/>to<sp/>be<sp/>used</highlight></codeline>
+<codeline><highlight class="normal">by<sp/>their<sp/>associated<sp/>computation,<sp/>and<sp/>is<sp/>placed<sp/>inside<sp/>the<sp/>loop<sp/>before<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">computations.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>TTL_int_tensor_t<sp/>returned<sp/>by<sp/>a<sp/>bumping<sp/>function<sp/>that<sp/>is<sp/>associated<sp/>with<sp/>an</highlight></codeline>
+<codeline><highlight class="normal">import<sp/>represents<sp/>a<sp/>tensor<sp/>ready<sp/>to<sp/>be<sp/>read-from,<sp/>while<sp/>a<sp/>returned</highlight></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t<sp/>associated<sp/>with<sp/>an<sp/>export<sp/>is<sp/>ready<sp/>to<sp/>be<sp/>written-to<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">exported<sp/>in<sp/>the<sp/>next<sp/>invocation<sp/>of<sp/>the<sp/>bumping<sp/>function.<sp/>The<sp/>bumping<sp/>functions</highlight></codeline>
+<codeline><highlight class="normal">receive<sp/>a<sp/>single<sp/>tile,<sp/>which<sp/>may<sp/>be<sp/>the<sp/>current<sp/>or<sp/>next<sp/>tile,<sp/>and<sp/>record<sp/>past</highlight></codeline>
+<codeline><highlight class="normal">tiles<sp/>as<sp/>needed.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Each<sp/>scheme<sp/>indicates<sp/>how<sp/>may<sp/>prolog<sp/>and/or<sp/>epilog<sp/>iterations<sp/>it<sp/>requires<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">order<sp/>for<sp/>its<sp/>bumping<sp/>function<sp/>to<sp/>be<sp/>invoked<sp/>sufficiently<sp/>many<sp/>times<sp/>before</highlight></codeline>
+<codeline><highlight class="normal">and/or<sp/>after<sp/>their<sp/>computation.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Pipelining<sp/>Iterations</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>scheme<sp/>may<sp/>require<sp/>additional<sp/>prolog<sp/>and/or<sp/>epilog<sp/>iterations,<sp/>which<sp/>are</highlight></codeline>
+<codeline><highlight class="normal">represented<sp/>and<sp/>manipulated<sp/>as<sp/>follows:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>prolog;<sp/>//<sp/>Represents<sp/>number<sp/>of<sp/>extra<sp/>iterations<sp/>which<sp/>should<sp/>be</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>subtracted<sp/>from<sp/>the<sp/>start<sp/>of<sp/>the<sp/>loop-over-tiles.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>epilog;<sp/>//<sp/>Represents<sp/>number<sp/>of<sp/>extra<sp/>iterations<sp/>which<sp/>should<sp/>be<sp/>added<sp/>to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>the<sp/>end<sp/>of<sp/>the<sp/>loop-over-tiles.</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>TTL_pipeline_iterations_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>the<sp/>number<sp/>of<sp/>prologs<sp/>and<sp/>epilogs<sp/>required<sp/>by<sp/>a<sp/>pipelining<sp/>scheme.</highlight></codeline>
+<codeline><highlight class="normal">TTL_pipeline_iterations_t<sp/>TTL_create_pipeline_iterations(void<sp/>*scheme_base);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Given<sp/>existing<sp/>pipeline_iterations<sp/>struct<sp/>and<sp/>a<sp/>pointer<sp/>to<sp/>a<sp/>scheme,<sp/>returns<sp/>the<sp/>required<sp/>number<sp/>of<sp/>prologs<sp/>and<sp/>epilogs<sp/>(performs<sp/>maximum<sp/>operation).</highlight></codeline>
+<codeline><highlight class="normal">TTL_pipeline_iterations_t<sp/>TTL_join_pipeline_iterations(void<sp/>*scheme_base,<sp/>TTL_pipeline_iterations_t<sp/>pipeline_iters);</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Duplex<sp/>Buffering</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Given<sp/>pair<sp/>of<sp/>blocking<sp/>import<sp/>and<sp/>export<sp/>that<sp/>can<sp/>execute<sp/>concurrently,</highlight></codeline>
+<codeline><highlight class="normal">TTL_duplex_buffering<sp/>issues<sp/>them<sp/>together<sp/>and<sp/>then<sp/>waits<sp/>on<sp/>both<sp/>to<sp/>complete,</highlight></codeline>
+<codeline><highlight class="normal">hopefully<sp/>executing<sp/>them<sp/>in<sp/>parallel<sp/>to<sp/>each<sp/>other.<sp/>This<sp/>scheme<sp/>uses<sp/>two</highlight></codeline>
+<codeline><highlight class="normal">internal<sp/>buffers,<sp/>one<sp/>for<sp/>the<sp/>import<sp/>and<sp/>one<sp/>for<sp/>the<sp/>export.<sp/>Note<sp/>that<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>is<sp/>pipelined<sp/>to<sp/>pair<sp/>the<sp/>import<sp/>of<sp/>the<sp/>current<sp/>tile<sp/>with<sp/>the<sp/>export<sp/>of</highlight></codeline>
+<codeline><highlight class="normal">previous<sp/>tile.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>following<sp/>table<sp/>draws<sp/>the<sp/>pipelined<sp/>actions<sp/>performed<sp/>in<sp/>duplex<sp/>buffering.</highlight></codeline>
+<codeline><highlight class="normal">It<sp/>specifies<sp/>which<sp/>tile<sp/>is<sp/>processed<sp/>in<sp/>each<sp/>iteration:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Action\\Iteration<sp/>|<sp/>\#0<sp/>|<sp/>\#1<sp/>|<sp/>\#i<sp/>(2:NumOfTiles-1)<sp/>|<sp/>\#NumOfTiles-<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|-------------------|-----|-----|----------------------|---------------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Import**<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>i<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Wait<sp/>Import**<sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>i<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Compute**<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>i<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Export**<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>i-1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-1<sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**WaitExport**<sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>i-1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-1<sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Notice<sp/>the<sp/>epilog<sp/>(\#NumOfTiles)<sp/>which<sp/>is<sp/>an<sp/>extra<sp/>iteration.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here<sp/>are<sp/>the<sp/>interfaces<sp/>to<sp/>create<sp/>and<sp/>use<sp/>the<sp/>duplex<sp/>buffering<sp/>scheme:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">TTL_duplex_buffering_t<sp/>TTL_create_duplex_buffering(__global<sp/>void<sp/>*ext_base_in,<sp/>TTL_layout_t<sp/>ext_layout_in,<sp/>__local<sp/>void<sp/>*int_base_in,<sp/>__global<sp/>void<sp/>*ext_base_out,<sp/>TTL_layout_t<sp/>ext_layout_out,<sp/>__local<sp/>void<sp/>*int_base_out,<sp/>TTL_event_t<sp/>*event_in,<sp/>TTL_event_t<sp/>*event_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Import<sp/>current<sp/>tile,<sp/>export<sp/>previous<sp/>tile<sp/>and<sp/>wait<sp/>for<sp/>both<sp/>transactions</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Using<sp/>the<sp/>same<sp/>tile<sp/>dimensions<sp/>for<sp/>both<sp/>importing<sp/>and<sp/>exporting,<sp/>can<sp/>also<sp/>provide<sp/>two<sp/>distinct<sp/>tiles.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>two<sp/>internal<sp/>buffers:<sp/>one<sp/>for<sp/>input<sp/>and<sp/>one<sp/>for<sp/>output</highlight></codeline>
+<codeline><highlight class="normal">TTL_io_tensors_t<sp/>TTL_step_buffering(TTL_duplex_buffering_t<sp/>*scheme,<sp/>TTL_tile_t<sp/>tile);</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>more<sp/>infotmation<sp/>see duplex<sp/>buffering<sp/>example.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Double<sp/>Buffering</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_double_buffering<sp/>pipelines<sp/>a<sp/>duplex<sp/>import<sp/>or<sp/>export<sp/>transaction<sp/>using<sp/>two</highlight></codeline>
+<codeline><highlight class="normal">internal<sp/>buffers.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>following<sp/>table<sp/>draws<sp/>the<sp/>pipelined<sp/>actions<sp/>performed<sp/>in<sp/>double<sp/>buffering.</highlight></codeline>
+<codeline><highlight class="normal">It<sp/>specifies<sp/>which<sp/>tile<sp/>is<sp/>processed<sp/>in<sp/>each<sp/>iteration:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Action\\Iteration<sp/>|<sp/>\#-1<sp/>|<sp/>\#0<sp/>|<sp/>\#1<sp/>|<sp/>\#2<sp/>|<sp/>\#i<sp/>(2:NumOfTiles-2)<sp/>|<sp/>\#NumOfTiles-1<sp/>|<sp/>\#NumOfTiles<sp/>|<sp/>\#NumOfTiles+1<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|-------------------|------|-----|-----|-----|----------------------|----------------|--------------|----------------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Wait<sp/>Import**<sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>2<sp/><sp/><sp/>|<sp/>i<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-1<sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Import**<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>2<sp/><sp/><sp/>|<sp/>3<sp/><sp/><sp/>|<sp/>i+1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**WaitExport**<sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>i-2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-3<sp/><sp/><sp/>|<sp/>NumOfTiles-2<sp/>|<sp/>NumOfTiles-1<sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Export**<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>i-1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-2<sp/><sp/><sp/>|<sp/>NumOfTiles-1<sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Compute**<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>2<sp/><sp/><sp/>|<sp/>i<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-1<sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Notice<sp/>the<sp/>prolog<sp/>(at<sp/>iteration<sp/>number<sp/>-1)<sp/>and<sp/>the<sp/>2<sp/>epilogs<sp/>(at<sp/>iterations</highlight></codeline>
+<codeline><highlight class="normal">number<sp/>NumOfTiles<sp/>and<sp/>NumOfTiles+1)<sp/>which<sp/>add<sp/>in<sp/>total<sp/>3<sp/>extra<sp/>iterations.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here<sp/>are<sp/>the<sp/>interfaces<sp/>to<sp/>create<sp/>and<sp/>use<sp/>the<sp/>double<sp/>buffering<sp/>scheme:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">TTL_double_buffering_t<sp/>TTL_create_import_double_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__local<sp/>void<sp/>*buff1,<sp/>__local<sp/>void<sp/>*buff2,<sp/>__global<sp/>void<sp/>*ext_base_in,<sp/>TTL_layout_t<sp/>ext_layout_in,<sp/>TTL_event_t<sp/>*event);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_double_buffering_t<sp/>TTL_create_export_double_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__local<sp/>void<sp/>*buff1,<sp/>__local<sp/>void<sp/>*buff2,<sp/>__global<sp/>void<sp/>*ext_base_out,<sp/>TTL_layout_t<sp/>ext_layout_out,<sp/>TTL_event_t<sp/>*event);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Wait<sp/>for<sp/>last<sp/>import<sp/>and<sp/>issue<sp/>next<sp/>import</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>the<sp/>waited<sp/>tensor.</highlight></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t<sp/>TTL_step_buffering(TTL_double_buffering_t<sp/>*scheme,<sp/>TTL_tile_t<sp/>tile);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Wait<sp/>for<sp/>last<sp/>export<sp/>and<sp/>issue<sp/>next<sp/>export</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>the<sp/>waited<sp/>tensor.</highlight></codeline>
+<codeline><highlight class="normal">TTL_int_tensor_t<sp/>TTL_step_buffering(TTL_double_buffering_t<sp/>*scheme,<sp/>TTL_tile_t<sp/>tile);</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>more<sp/>information<sp/>see double<sp/>buffering<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Simplex<sp/>Buffering</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL_simplex_buffering<sp/>pipelines<sp/>a<sp/>pair<sp/>of<sp/>import<sp/>and<sp/>export<sp/>transactions<sp/>using</highlight></codeline>
+<codeline><highlight class="normal">three<sp/>internal<sp/>buffers,<sp/>in<sp/>rotation:<sp/>each<sp/>buffer<sp/>interchangeably<sp/>serves<sp/>as<sp/>input</highlight></codeline>
+<codeline><highlight class="normal">buffer<sp/>and<sp/>output<sp/>buffer,<sp/>such<sp/>that<sp/>in<sp/>each<sp/>iteration<sp/>one<sp/>buffer<sp/>is<sp/>used<sp/>both<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>then<sp/>import<sp/>and<sp/>two<sp/>buffers<sp/>are<sp/>used<sp/>by<sp/>compute<sp/>for<sp/>reading<sp/>and<sp/>writing.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">With<sp/>simplex<sp/>buffering<sp/>we&apos;re<sp/>only<sp/>waiting<sp/>for<sp/>previous<sp/>iterations,<sp/>so<sp/>DMA</highlight></codeline>
+<codeline><highlight class="normal">transactions<sp/>run<sp/>mostly<sp/>in<sp/>parallel<sp/>to<sp/>computation,<sp/>but<sp/>serially<sp/>with<sp/>each</highlight></codeline>
+<codeline><highlight class="normal">other.<sp/>Using<sp/>the<sp/>same<sp/>buffer<sp/>both<sp/>for<sp/>import<sp/>and<sp/>export<sp/>is<sp/>possible<sp/>allowing<sp/>us</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>overlap<sp/>exporting<sp/>from<sp/>and<sp/>importing<sp/>to<sp/>the<sp/>same<sp/>buffer.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>following<sp/>table<sp/>draws<sp/>the<sp/>pipelined<sp/>actions<sp/>performed<sp/>in<sp/>simplex<sp/>buffering.</highlight></codeline>
+<codeline><highlight class="normal">It<sp/>specifies<sp/>which<sp/>tile<sp/>is<sp/>processed<sp/>in<sp/>each<sp/>iteration:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Action\\Iteration<sp/>|<sp/>\#-1<sp/>|<sp/>\#0<sp/>|<sp/>\#1<sp/>|<sp/>\#2<sp/>|<sp/>\#i<sp/>(2:NumOfTiles-2)<sp/>|<sp/>\#NumOfTiles-1<sp/>|<sp/>\#NumOfTiles<sp/>|<sp/>\#NumOfTiles+1<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|-------------------|------|-----|-----|-----|----------------------|----------------|--------------|----------------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**WaitExport**<sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>i-2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-3<sp/><sp/><sp/>|<sp/>NumOfTiles-2<sp/>|<sp/>NumOfTiles-1<sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Export**<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>i-1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-2<sp/><sp/><sp/>|<sp/>NumOfTiles-1<sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Wait<sp/>Import**<sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>2<sp/><sp/><sp/>|<sp/>i<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-1<sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Import**<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>2<sp/><sp/><sp/>|<sp/>3<sp/><sp/><sp/>|<sp/>i+1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Compute**<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>0<sp/><sp/><sp/>|<sp/>1<sp/><sp/><sp/>|<sp/>2<sp/><sp/><sp/>|<sp/>i<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>NumOfTiles-1<sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Notice<sp/>the<sp/>prolog<sp/>(at<sp/>iteration<sp/>number<sp/>-1)<sp/>and<sp/>the<sp/>2<sp/>epilogs<sp/>(at<sp/>iterations</highlight></codeline>
+<codeline><highlight class="normal">number<sp/>NumOfTiles<sp/>and<sp/>NumOfTiles+1)<sp/>which<sp/>add<sp/>in<sp/>total<sp/>3<sp/>extra<sp/>iterations.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here<sp/>are<sp/>the<sp/>interfaces<sp/>to<sp/>create<sp/>and<sp/>use<sp/>the<sp/>simplex<sp/>buffering<sp/>scheme:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">TTL_simplex_buffering_t<sp/>TTL_create_simplex_buffering(__global<sp/>void<sp/>*ext_base_in,<sp/>__global<sp/>void<sp/>*ext_base_out,<sp/>__local<sp/>void<sp/>*buff1,<sp/>__local<sp/>void<sp/>*buff2,<sp/>__local<sp/>void<sp/>*buff3,<sp/>TTL_layout_t<sp/>ext_layout_in,<sp/>TTL_layout_t<sp/>ext_layout_out,<sp/>TTL_event_t<sp/>*event_in,<sp/>TTL_event_t<sp/>*event_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>Wait<sp/>for<sp/>previous<sp/>import<sp/>#i<sp/>and<sp/>export<sp/>#i-2</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Trigger<sp/>export<sp/>#i-1,<sp/>a<sp/>local<sp/>async<sp/>fence<sp/>or<sp/>iab,<sp/>and<sp/>import<sp/>#i+1</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Both<sp/>export<sp/>#i-2<sp/>and<sp/>import<sp/>#i<sp/>happen<sp/>asynchronously<sp/>back-to-back,<sp/>effectively<sp/>waiting<sp/>for<sp/>the<sp/>latter<sp/>import<sp/>only.</highlight></codeline>
+<codeline><highlight class="normal">*/</highlight></codeline>
+<codeline><highlight class="normal">TTL_io_tensors_t<sp/>TTL_step_buffering(TTL_simplex_buffering_t<sp/>*scheme,<sp/>TTL_tile_t<sp/>tile);</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>more<sp/>information<sp/>see simplex<sp/>buffering<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">See the<sp/>Group<sp/>Loop<sp/>Bounds example<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Debugging</highlight></codeline>
+<codeline><highlight class="normal">---------</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL<sp/>provides<sp/>debugging<sp/>information<sp/>associated<sp/>with<sp/>tiling.<sp/>Define<sp/>TTL_DEBUG<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">turn<sp/>on<sp/>debugging:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TTL_DEBUG</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Following<sp/>is<sp/>an<sp/>example<sp/>of<sp/>what<sp/>may<sp/>be<sp/>printed<sp/>by<sp/>TTL&apos;s<sp/>debug<sp/>mode:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">TTL_IMPORT:<sp/>event=0x4088(channels<sp/>mask=0x1)<sp/>int_addr=0x108000<sp/>ext_base=0x4002f6580<sp/>ext_offset=(6144,<sp/>0,<sp/>0)<sp/>shape=(512,<sp/>1,<sp/>1)<sp/>ext_stride=(0,<sp/>0)<sp/>int_stride=(0,<sp/>0)<sp/>//<sp/>line:62</highlight></codeline>
+<codeline><highlight class="normal">TTL_EXPORT:<sp/>event=0x4089(channels<sp/>mask=0x2)<sp/>int_addr=0x118000<sp/>ext_base=0x400300b80<sp/>ext_offset=(5120,<sp/>0,<sp/>0)<sp/>shape=(512,<sp/>1,<sp/>1)<sp/>ext_stride=(0,<sp/>0)<sp/>int_stride=(0,<sp/>0)<sp/>//<sp/>line:67</highlight></codeline>
+<codeline><highlight class="normal">TTL_WAIT:<sp/>event=0x408a(channels<sp/>mask=0x4)<sp/>event=0x408b(channels<sp/>mask=0x8)<sp/>//<sp/>line:69</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Tiling<sp/>Code<sp/>Examples</highlight></codeline>
+<codeline><highlight class="normal">--------------------</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>section<sp/>provide<sp/>code<sp/>examples<sp/>of<sp/>kernels<sp/>and<sp/>tests<sp/>that<sp/>demonstrate<sp/>the<sp/>use</highlight></codeline>
+<codeline><highlight class="normal">of<sp/>various<sp/>TTL<sp/>features.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Duplex<sp/>Buffering<sp/>Scheme</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>example<sp/>demonstrates<sp/>how<sp/>to<sp/>use<sp/>duplex<sp/>buffering<sp/>pipelining<sp/>scheme.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MEMORY_SIZE<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>compute(TTL_int_tensor_t<sp/>tensor_in,<sp/>TTL_int_tensor_t<sp/>tensor_out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>const<sp/>uchar<sp/>*restrict<sp/>MEM0<sp/>l_in<sp/>=<sp/>tensor_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>*restrict<sp/>MEM1<sp/>l_out<sp/>=<sp/>tensor_out.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>width<sp/>=<sp/>tensor_in.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>height<sp/>=<sp/>tensor_in.shape.height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_in<sp/>=<sp/>tensor_in.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_out<sp/>=<sp/>tensor_out.layout.total_row_length;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for<sp/>(y,<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for<sp/>(x,<sp/>width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out[y<sp/>*<sp/>stride_out<sp/>+<sp/>x]<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_in[y<sp/>*<sp/>stride_in<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">static<sp/>inline<sp/>void<sp/>tile2tile_ref(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(unsigned<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>height;<sp/>++y)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>width;<sp/>++x)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ext_base_out[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>=<sp/>ext_base_in[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>tile2tileCompute(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,<sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_in[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_out[MEMORY_SIZE];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_width<sp/>=<sp/>40;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_height<sp/>=<sp/>48;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Logical<sp/>tiling.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>image_shape<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape<sp/>=<sp/>TTL_create_shape(tile_width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(image_shape,<sp/>tile_shape);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>External<sp/>layouts.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_in<sp/>=<sp/>TTL_create_layout(external_stride_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_out<sp/>=<sp/>TTL_create_layout(external_stride_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>/*<sp/>sb_scheme<sp/>must<sp/>be<sp/>defined<sp/>outside,<sp/>before<sp/>the<sp/>loop<sp/>-<sp/>because<sp/>we</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>&quot;time-shift&quot;<sp/>the<sp/>export<sp/>to<sp/>work<sp/>on<sp/>a<sp/>recorded<sp/>tile<sp/>written<sp/>to<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>previous<sp/>iteration,<sp/>instead<sp/>of<sp/>projecting<sp/>it<sp/>again<sp/>using<sp/>tile-1<sp/>-<sp/>to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>optimize<sp/>and<sp/>avoid<sp/>relying<sp/>on<sp/>previous<sp/>tile<sp/>being<sp/>tile-1.<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>sb_e_in<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>sb_e_out<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_duplex_buffering_t<sp/>sb_scheme<sp/>=<sp/>TTL_create_duplex_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ext_base_in,<sp/>ext_layout_in,<sp/>l_in,<sp/>ext_base_out,<sp/>ext_layout_out,<sp/>l_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&amp;sb_e_in,<sp/>&amp;sb_e_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_pipeline_iterations_t<sp/>pipeline_iters<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_pipeline_iterations(&amp;sb_scheme);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>-pipeline_iters.prolog;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>&lt;<sp/>TTL_number_of_tiles(tiler)<sp/>+<sp/>pipeline_iters.epilog;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>t<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Import<sp/>current<sp/>tile,<sp/>export<sp/>previous<sp/>tile<sp/>and<sp/>wait<sp/>for<sp/>both</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>transactions<sp/>Using<sp/>the<sp/>same<sp/>tile<sp/>dimensions<sp/>for<sp/>both<sp/>importing<sp/>and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>exporting,<sp/>can<sp/>also<sp/>provide<sp/>two<sp/>distinct<sp/>tiles.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_io_tensors_t<sp/>tensors<sp/>=<sp/>TTL_step_buffering(&amp;sb_scheme,<sp/>t);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_tensors(tensors))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>compute(tensors.imported_to,<sp/>tensors.to_export_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>Double<sp/>Buffering<sp/>Scheme</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>example<sp/>demonstrates<sp/>how<sp/>to<sp/>use<sp/>double<sp/>buffering<sp/>pipelining<sp/>scheme.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MEMORY_SIZE<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>compute(TTL_int_tensor_t<sp/>tensor_in,<sp/>TTL_int_tensor_t<sp/>tensor_out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>const<sp/>uchar<sp/>*restrict<sp/>MEM0<sp/>l_in<sp/>=<sp/>tensor_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>*restrict<sp/>MEM1<sp/>l_out<sp/>=<sp/>tensor_out.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>width<sp/>=<sp/>tensor_in.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>height<sp/>=<sp/>tensor_in.shape.height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_in<sp/>=<sp/>tensor_in.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_out<sp/>=<sp/>tensor_out.layout.total_row_length;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for<sp/>(y,<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for<sp/>(x,<sp/>width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out[y<sp/>*<sp/>stride_out<sp/>+<sp/>x]<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_in[y<sp/>*<sp/>stride_in<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">static<sp/>inline<sp/>void<sp/>tile2tile_ref(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(unsigned<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>height;<sp/>++y)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>width;<sp/>++x)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ext_base_out[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>=<sp/>ext_base_in[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>tile2tileCompute(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,<sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_in1[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_in2[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_out1[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_out2[MEMORY_SIZE];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_width<sp/>=<sp/>128;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_height<sp/>=<sp/>88;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Logical<sp/>tiling.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>image_shape<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape<sp/>=<sp/>TTL_create_shape(tile_width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(image_shape,<sp/>tile_shape);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>External<sp/>layouts.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_in<sp/>=<sp/>TTL_create_layout(external_stride_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_out<sp/>=<sp/>TTL_create_layout(external_stride_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>import_DB<sp/>and<sp/>export_DB<sp/>need<sp/>to<sp/>be<sp/>defined<sp/>outside,<sp/>before<sp/>the<sp/>loop,<sp/>as<sp/>they<sp/>record<sp/>the<sp/>event<sp/>to<sp/>wait<sp/>on</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>import_DB_e<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>export_DB_e<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_double_buffering_t<sp/>import_DB<sp/>=<sp/>TTL_create_import_double_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_in1,<sp/>l_in2,<sp/>ext_base_in,<sp/>ext_layout_in,<sp/>&amp;import_DB_e);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_double_buffering_t<sp/>export_DB<sp/>=<sp/>TTL_create_export_double_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out1,<sp/>l_out2,<sp/>ext_base_out,<sp/>ext_layout_out,<sp/>&amp;export_DB_e);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_pipeline_iterations_t<sp/>pipeline_iters<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_pipeline_iterations(&amp;import_DB);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pipeline_iters<sp/>=<sp/>TTL_join_pipeline_iterations(&amp;export_DB,<sp/>pipeline_iters);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>-pipeline_iters.prolog;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>&lt;<sp/>TTL_number_of_tiles(tiler)<sp/>+<sp/>pipeline_iters.epilog;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>t_next<sp/>=<sp/>TTL_get_tile(i+1,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Wait<sp/>for<sp/>import<sp/>#i<sp/>and<sp/>issue<sp/>import<sp/>#i+1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>imported_to<sp/>=<sp/>TTL_step_buffering(&amp;import_DB,<sp/>t_next);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>t_curr<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Wait<sp/>for<sp/>export<sp/>#i-2<sp/>and<sp/>issue<sp/>export<sp/>#i-1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>exported_from<sp/>=<sp/>TTL_step_buffering(&amp;export_DB,<sp/>t_curr);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_int_tensor(imported_to))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>compute(imported_to,<sp/>exported_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Simplex<sp/>Buffering<sp/>Scheme</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>example<sp/>demonstrates<sp/>how<sp/>to<sp/>use<sp/>double<sp/>buffering<sp/>pipelining<sp/>scheme.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MEMORY_SIZE<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>compute(TTL_int_tensor_t<sp/>tensor_in,<sp/>TTL_int_tensor_t<sp/>tensor_out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>const<sp/>uchar<sp/>*restrict<sp/>MEM0<sp/>l_in<sp/>=<sp/>tensor_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>*restrict<sp/>MEM1<sp/>l_out<sp/>=<sp/>tensor_out.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>width<sp/>=<sp/>tensor_in.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>height<sp/>=<sp/>tensor_in.shape.height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_in<sp/>=<sp/>tensor_in.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_out<sp/>=<sp/>tensor_out.layout.total_row_length;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for<sp/>(y,<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for<sp/>(x,<sp/>width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out[y<sp/>*<sp/>stride_out<sp/>+<sp/>x]<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_in[y<sp/>*<sp/>stride_in<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">static<sp/>inline<sp/>void<sp/>tile2tile_ref(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(unsigned<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>height;<sp/>++y)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>width;<sp/>++x)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ext_base_out[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>=<sp/>ext_base_in[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>tile2tileCompute(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,<sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_buff1[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_buff2[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_buff3[MEMORY_SIZE];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_width<sp/>=<sp/>128;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_height<sp/>=<sp/>88;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Logical<sp/>tiling.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>image_shape<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape<sp/>=<sp/>TTL_create_shape(tile_width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(image_shape,<sp/>tile_shape);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>External<sp/>layouts.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_in<sp/>=<sp/>TTL_create_layout(external_stride_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_out<sp/>=<sp/>TTL_create_layout(external_stride_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>tb_e_in<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>tb_e_out<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_simplex_buffering_t<sp/>tb_scheme<sp/>=<sp/>TTL_create_simplex_buffering(ext_base_in,<sp/>ext_base_out,<sp/>l_buff1,<sp/>l_buff2,<sp/>l_buff3,<sp/>ext_layout_in,<sp/>ext_layout_out,<sp/>&amp;tb_e_in,<sp/>&amp;tb_e_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_pipeline_iterations_t<sp/>pipeline_iters<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_pipeline_iterations(&amp;tb_scheme);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>-pipeline_iters.prolog;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>&lt;<sp/>TTL_number_of_tiles(tiler)<sp/>+<sp/>pipeline_iters.epilog;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>next_tile<sp/>=<sp/>TTL_get_tile(i+1,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>1.<sp/>Wait<sp/>for<sp/>previous<sp/>import<sp/>#i<sp/>and<sp/>export<sp/>#i-2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>2.<sp/>Trigger<sp/>export<sp/>#i-1,<sp/>a<sp/>local<sp/>async<sp/>fence<sp/>or<sp/>iab,<sp/>and<sp/>import<sp/>#i+1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>Both<sp/>export<sp/>#i-2<sp/>and<sp/>import<sp/>#i<sp/>happen<sp/>asynchronously<sp/>back-to-back,<sp/>effectively<sp/>waiting<sp/>for<sp/>the<sp/>latter<sp/>import<sp/>only.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Using<sp/>the<sp/>same<sp/>tile<sp/>dimensions<sp/>for<sp/>both<sp/>importing<sp/>and<sp/>exporting,<sp/>can<sp/>also<sp/>provide<sp/>two<sp/>distinct<sp/>tiles.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_io_tensors_t<sp/>tensors<sp/>=<sp/>TTL_step_buffering(&amp;tb_scheme,<sp/>next_tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_tensors(tensors))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>compute(tensors.imported_to,<sp/>tensors.to_export_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Overlapped<sp/>Tiler</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MEMORY_SIZE<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OVERLAP_WIDTH<sp/>7</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OVERLAP_HEIGHT<sp/>9</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_WIDTH<sp/>40</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_HEIGHT<sp/>30</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>calc(TTL_int_tensor_t<sp/>tensor_in,<sp/>TTL_int_tensor_t<sp/>tensor_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__local<sp/>int<sp/>*restrict<sp/>avg)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>*restrict<sp/>MEM1<sp/>l_out<sp/>=<sp/>tensor_out.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>const<sp/>uchar<sp/>*restrict<sp/>MEM0<sp/>l_in<sp/>=<sp/>tensor_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>int<sp/>*restrict<sp/>MEM2<sp/>l_avg<sp/>=<sp/>avg;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>in_stride<sp/>=<sp/>tensor_in.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>in_width<sp/>=<sp/>tensor_in.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>in_height<sp/>=<sp/>tensor_in.shape.height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>out_stride<sp/>=<sp/>tensor_out.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>out_width<sp/>=<sp/>tensor_out.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>out_height<sp/>=<sp/>tensor_out.shape.height;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>l_avg[0]<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for(y,<sp/>in_height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for(x,<sp/>in_width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>offset<sp/>=<sp/>y<sp/>*<sp/>in_stride<sp/>+<sp/>x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_avg[0]<sp/>+=<sp/>(int)l_in[offset];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>l_avg[0]<sp/>/=<sp/>(in_width<sp/>*<sp/>in_height);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for(y,<sp/>out_height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for(x,<sp/>out_width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>offset<sp/>=<sp/>y<sp/>*<sp/>out_stride+<sp/>x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out[offset]<sp/>=<sp/>l_avg[0];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>TTL_overlap(__global<sp/>uchar<sp/>*restrict<sp/>inp,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>out,<sp/>int<sp/>width,<sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>l_in[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>l_out[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>int<sp/>avg[1];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>TTL<sp/>setup</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>space_in<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape_in<sp/>=<sp/>TTL_create_shape(TILE_WIDTH,<sp/>TILE_HEIGHT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_overlap_t<sp/>overlap<sp/>=<sp/>TTL_create_overlap(OVERLAP_WIDTH,<sp/>OVERLAP_HEIGHT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler_in<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_overlap_tiler(space_in,<sp/>tile_shape_in,<sp/>overlap);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>layout_ext_in<sp/>=<sp/>TTL_create_layout(space_in.width);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>space_out<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_shape(width<sp/>-<sp/>overlap.width,<sp/>height<sp/>-<sp/>overlap.height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape_out<sp/>=<sp/>TTL_create_shape(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TILE_WIDTH<sp/>-<sp/>overlap.width,<sp/>TILE_HEIGHT<sp/>-<sp/>overlap.height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler_out<sp/>=<sp/>TTL_create_tiler(space_out,<sp/>tile_shape_out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>layout_ext_out<sp/>=<sp/>TTL_create_layout(space_out.width);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>num_tiles<sp/>=<sp/>TTL_number_of_tiles(tiler_in);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>num_tiles;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>tile_in<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>int_tensor_in<sp/>=<sp/>TTL_create_int_tensor(l_in,<sp/>tile_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>ext_tensor_in<sp/>=<sp/>TTL_create_ext_tensor(inp,<sp/>tile_in,<sp/>layout_ext_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_blocking_import(int_tensor_in,<sp/>ext_tensor_in);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>tile_out<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler_out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>int_tensor_out<sp/>=<sp/>TTL_create_int_tensor(l_out,<sp/>tile_out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>ext_tensor_out<sp/>=<sp/>TTL_create_ext_tensor(out,<sp/>tile_out,<sp/>layout_ext_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_tile_id(i,<sp/>tiler_in))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>calc(int_tensor_in,<sp/>int_tensor_out,<sp/>avg);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_blocking_export(int_tensor_out,<sp/>ext_tensor_out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Parallelizing<sp/>Tiling<sp/>Loop</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MEMORY_SIZE<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>compute(TTL_int_tensor_t<sp/>tensor_in,<sp/>TTL_int_tensor_t<sp/>tensor_out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>const<sp/>uchar<sp/>*restrict<sp/>MEM0<sp/>l_in<sp/>=<sp/>tensor_in.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>uchar<sp/>*restrict<sp/>MEM1<sp/>l_out<sp/>=<sp/>tensor_out.base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>width<sp/>=<sp/>tensor_in.shape.width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>height<sp/>=<sp/>tensor_in.shape.height;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_in<sp/>=<sp/>tensor_in.layout.total_row_length;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>stride_out<sp/>=<sp/>tensor_out.layout.total_row_length;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for(y,<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for(x,<sp/>width)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_out[y<sp/>*<sp/>stride_out<sp/>+<sp/>x]<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_in[y<sp/>*<sp/>stride_in<sp/>+<sp/>x]<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>tile2tileCompute(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,<sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_in[MEMORY_SIZE];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>local<sp/>uchar<sp/>l_out[MEMORY_SIZE];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_width<sp/>=<sp/>48;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_height<sp/>=<sp/>40;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Logical<sp/>tiling.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>image_shape<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile_shape<sp/>=<sp/>TTL_create_shape(tile_width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(image_shape,<sp/>tile_shape);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>External<sp/>layouts.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_in<sp/>=<sp/>TTL_create_layout(external_stride_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>ext_layout_out<sp/>=<sp/>TTL_create_layout(external_stride_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>/*<sp/>sb_scheme<sp/>must<sp/>be<sp/>defined<sp/>outside,<sp/>before<sp/>the<sp/>loop<sp/>-<sp/>because<sp/>we</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>&quot;time-shift&quot;<sp/>the<sp/>export<sp/>to<sp/>work<sp/>on<sp/>a<sp/>recorded<sp/>tile<sp/>written<sp/>to<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>previous<sp/>iteration,<sp/>instead<sp/>of<sp/>projecting<sp/>it<sp/>again<sp/>using<sp/>tile-1<sp/>-<sp/>to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*<sp/>optimize<sp/>and<sp/>avoid<sp/>relying<sp/>on<sp/>previous<sp/>tile<sp/>being<sp/>tile-1.<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>sb_e_in<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>sb_e_out<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_single_buffering_t<sp/>sb_scheme<sp/>=<sp/>TTL_create_single_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ext_base_in,<sp/>ext_layout_in,<sp/>l_in,<sp/>ext_base_out,<sp/>ext_layout_out,<sp/>l_out,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&amp;sb_e_in,<sp/>&amp;sb_e_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_pipeline_iterations_t<sp/>pipeline_iters<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_pipeline_iterations(&amp;sb_scheme);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_loop_bounds_t<sp/>bounds<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_set_group_loop_bounds(&amp;tiler,<sp/>pipeline_iters);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>bounds.lower;<sp/>i<sp/>&lt;<sp/>bounds.upper;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//printf(&quot;Iteration<sp/>#%d,<sp/>numoftiles:<sp/>%d\n&quot;,i,<sp/>TTL_number_of_tiles(tiler));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>t<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Import<sp/>current<sp/>tile,<sp/>export<sp/>previous<sp/>tile<sp/>and<sp/>wait<sp/>for<sp/>both</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>transactions<sp/>Using<sp/>the<sp/>same<sp/>tile<sp/>dimensions<sp/>for<sp/>both<sp/>importing<sp/>and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>exporting,<sp/>can<sp/>also<sp/>provide<sp/>two<sp/>distinct<sp/>tiles.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_io_tensors_t<sp/>tensors<sp/>=<sp/>TTL_step_buffering(&amp;sb_scheme,<sp/>t);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_tensors(tensors))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>compute(tensors.imported_to,<sp/>tensors.to_export_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Manual<sp/>Double<sp/>Buffering:<sp/>dxDMA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>example<sp/>shows<sp/>how<sp/>double<sp/>buffering<sp/>can<sp/>be<sp/>coded<sp/>manually,<sp/>i.e.,<sp/>w/o<sp/>using</highlight></codeline>
+<codeline><highlight class="normal">TTL&apos;s<sp/>scheme.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__attribute__((noinline))<sp/>void</highlight></codeline>
+<codeline><highlight class="normal">calc_dx(__local<sp/>char<sp/>*restrict<sp/>out_image,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__local<sp/>const<sp/>unsigned<sp/>char<sp/>*restrict<sp/>input_image,<sp/>int<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>parrallel_for(y,<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parrallel_for(xx,<sp/>width<sp/>-<sp/>2)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>x<sp/>=<sp/>x<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>left<sp/>=<sp/>input_image[y<sp/>*<sp/>width<sp/>+<sp/>x<sp/>-<sp/>1];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>right<sp/>=<sp/>input_image[y<sp/>*<sp/>width<sp/>+<sp/>x<sp/>+<sp/>1];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>out_image[y<sp/>*<sp/>width<sp/>+<sp/>x]<sp/>=<sp/>(right<sp/>-<sp/>left)<sp/>&gt;&gt;<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>TILE_SZ<sp/>(1<sp/>&lt;&lt;<sp/>14)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>TTL_dx(__global<sp/>char<sp/>*restrict<sp/>dx_image,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>unsigned<sp/>char<sp/>*restrict<sp/>input_image,<sp/>int<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>unsigned<sp/>char<sp/>l_in1[TILE_SZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>unsigned<sp/>char<sp/>l_in2[TILE_SZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>char<sp/>l_out1[TILE_SZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>char<sp/>l_out2[TILE_SZ];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>tile_height<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>14)<sp/>/<sp/>width;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>unsigned<sp/>char<sp/>*buffs_in[]<sp/>=<sp/>{l_in1,<sp/>l_in2};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__local<sp/>char<sp/>*buffs_out[]<sp/>=<sp/>{l_out1,<sp/>l_out2};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>TTL<sp/>setup</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tensor<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_shape_t<sp/>tile<sp/>=<sp/>TTL_create_shape(width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(tensor,<sp/>tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_layout_t<sp/>external_layout<sp/>=<sp/>TTL_create_layout(width);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>wait_in[2];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_event_t<sp/>wait_out[2];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>buff_no<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>num_tiles<sp/>=<sp/>TTL_number_of_tiles(tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>-1;<sp/>i<sp/>&lt;=<sp/>num_tiles;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>next_tile<sp/>=<sp/>TTL_get_tile(i<sp/>+<sp/>1,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>int_tensor_in<sp/>=<sp/>TTL_create_int_tensor(buffs_in[1<sp/>-<sp/>buff_no],<sp/>next_tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>ext_tensor_in<sp/>=<sp/>TTL_create_ext_tensor(input_image,<sp/>next_tile,<sp/>external_layout,<sp/>sizeof(char));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>wait_in[1<sp/>-<sp/>buff_no]<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_import(int_tensor_in,<sp/>ext_tensor_in,<sp/>&amp;wait_in[1<sp/>-<sp/>buff_no]);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>prev_tile<sp/>=<sp/>TTL_get_tile(i<sp/>-<sp/>1,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_int_tensor_t<sp/>int_tensor_out<sp/>=<sp/>TTL_create_int_tensor(buffs_out[1<sp/>-<sp/>buff_no],<sp/>prev_tile);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_ext_tensor_t<sp/>ext_tensor_out<sp/>=<sp/>TTL_create_ext_tensor(dx_image,<sp/>prev_tile,<sp/>external_layout);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>wait_out[1<sp/>-<sp/>buff_no]<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_export(int_tensor_out,<sp/>ext_tensor_out,<sp/>&amp;wait_out[1<sp/>-<sp/>buff_no]);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_wait(1,<sp/>&amp;wait_in[buff_no]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_wait(1,<sp/>&amp;wait_out[buff_no]);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(TTL_valid_tile_id(i,<sp/>tiler))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>curr_tile<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>calc_dx(buffs_out[buff_no],<sp/>buffs_in[buff_no],<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>curr_tile.shape.height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>buff_no<sp/>=<sp/>1<sp/>-<sp/>buff_no;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TTL_wait(1,<sp/>&amp;wait_out[buff_no]);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+    </programlisting>
+    <location file="v7F17Om_TTL/doc/tutorials/introduction_to_ttl/introduction_to_ttl.md"/>
+  </compounddef>
+</doxygen>

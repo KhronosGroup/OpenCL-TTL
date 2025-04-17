@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="md_v7F17Om__TTL_2doc_2tutorials_2pipelining__dma__tiled__loops_2pipelining__dma__tiled__loops" kind="page">
+    <compoundname>md_v7F17Om__TTL_2doc_2tutorials_2pipelining__dma__tiled__loops_2pipelining__dma__tiled__loops</compoundname>
+    <title>Pipelining DMA Tiled Loops</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><heading level="1">CONTENTS: </heading>
+</para>
+<para><itemizedlist>
+<listitem><para>Pipelining DMA Tiled Loops<itemizedlist>
+<listitem><para>Introduction</para>
+</listitem><listitem><para>Maximizing performance</para>
+</listitem><listitem><para>Appendix: full pipeline description</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para><heading level="1">Introduction</heading>
+</para>
+<para>As a simple example suppose a single input image is imported, operated on, and exported. Tiling produces a single “outer” loop which conceptually processes one tile per iteration:</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>0.<sp/>Non-pipelined<sp/>tiled<sp/>loop</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>tile<sp/>in<sp/>[0,<sp/>number_of_tiles]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Import<sp/>tile</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>WaitImport<sp/>tile</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Compute<sp/>tile</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Export<sp/>tile</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>WaitExport<sp/>tile</highlight></codeline>
+</programlisting></para>
+<para>Software-Pipelining a tiled loop can overlap independent operations across iterations and execute them concurrently, similar to pipelining the instructions of innermost loop(s) producing parallel instruction bundles for VLIW targets Modulo-Scheduling is an automatic pipelining technique which maximizes parallelism and throughput by minimizing the latency of the steady state, aka Initiation Interval (II), and then applying variable expansion as needed - allocating multiple rotating registers to values whose live-range exceeds II. The concurrency in DMA-Tiled loops stems from the asynchronous and independent nature of DMA operations, rather than the Instruction-Level Parallelism of VLIWs. On many accelerators, a DMA import and/or export can run in parallel to independent non-DMA SSC operations. Buffers allocated on scratchpad memory whose pipelined live-ranges self-intersect, i.e., exceed the initiation interval, require Array Expansion (across distinct memory banks), similar to allocating multiple rotating registers.</para>
+<para>It is also conceivable to combine manual Tiling with automated Pipelining, coupled with manual or automated expansion. One such combination is initially outlined below. Automated steps could be assisted by user directive, as in #pragma disable_loop_pipelining of Intel FPGA SDK for OpenCL.</para>
+<para><heading level="1">Maximizing performance</heading>
+</para>
+<para>The above chain of 5 operations: Import <ndash/>&gt; WaitImport <ndash/>&gt; Compute <ndash/>&gt; Export <ndash/>&gt; WaitExport can be maximally pipeline-parallelized by assigning Import, Export and Compute to three distinct pipeline stages: starting to import the next tile in parallel to computing the current tile, and in parallel to exporting the previously computed tile</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>Conceptual<sp/>3-stage<sp/>Pipeline<sp/></highlight></codeline>
+<codeline><highlight class="normal">//<sp/>II<sp/>=<sp/>max<sp/>{|Import|,<sp/>|Export|,<sp/>|Compute|}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Iteration:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3+</highlight></codeline>
+<codeline><highlight class="normal">---------------+--------+--------+--------</highlight></codeline>
+<codeline><highlight class="normal">Prolog<sp/>Stage<sp/>1:<sp/>Import1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>--------</highlight></codeline>
+<codeline><highlight class="normal">Prolog<sp/>Stage<sp/>2:<sp/>Compute1<sp/>Import2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>--------<sp/>--------</highlight></codeline>
+<codeline><highlight class="normal">Steady<sp/>State:<sp/><sp/><sp/>Export1<sp/><sp/>Compute2<sp/>Import3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>--------<sp/>--------<sp/>--------</highlight></codeline>
+<codeline><highlight class="normal">Epilog<sp/>Stage<sp/>1:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export2<sp/><sp/>Compute3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>--------<sp/>--------</highlight></codeline>
+<codeline><highlight class="normal">Epilog<sp/>Stage<sp/>2:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export3</highlight></codeline>
+</programlisting></para>
+<para>The buffer associated with Import has a live-range spanning two iterations: starting at the Import operation and ending when the associated Compute finishes to consume the buffer. The buffer associated with Export also has a live-range spanning two iterations: starting at the associated Compute operation and ending when Export finishes. Therefore, each requires double-buffering.</para>
+<para>Q: When should WaitImport and WaitExport be scheduled? Their latency is expected to be negligible compared to that of the actual Import and Export.</para>
+<para>A: In general, on non-VLIW targets such as SSC, operations scheduled to run together in parallel bundles need to be ordered in order to achieve the desired concurrency. The parallel bundle in the above example:</para>
+<para><programlisting><codeline><highlight class="normal">[Export-previous-tile<sp/>||<sp/>Computing-current-tile<sp/>||<sp/>Import-next-tile]</highlight></codeline>
+</programlisting></para>
+<para>whose operations conceptually overlap by starting together and finishing together, should be ordered such that Import and Export are issued before Compute, which in turn is issued before WaitImport and WaitExport. Doing so produces</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>1a.<sp/>“Earliest<sp/>Waits”<sp/>double<sp/>double-buffered<sp/>pipeline</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>(tile)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Export<sp/>tile-1;<sp/>Import<sp/>tile+1;<sp/>Compute<sp/>tile;<sp/>WaitImport<sp/>tile+1;<sp/>WaitExport<sp/>tile-1</highlight></codeline>
+</programlisting></para>
+<para>Q0: Should WaitImport and/or WaitExport tile-1 be scheduled later?</para>
+<para>A0: Pipelining optimizes the schedule according to latency estimates, so synchronizing at the end of each “line” is expected to be quick. But it may be advantageous to tolerate potential delays in DMA transactions by postponing their synchronizing waits, provided resources are available to do so - including associated scratchpad buffer (on available memory bank) and DMA channel.</para>
+<para>Rotating WaitImport tile+1 and WaitExport tile-1 forward from being the last operations of the iteration, to being the first operations of the next iteration, produces the equivalent pipeline with one additional stage and iteration:</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>1b.<sp/>Rotated<sp/>“Earliest<sp/>Waits”<sp/>double<sp/>double-buffered<sp/>pipeline</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>(tile)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>WaitImport<sp/>tile;<sp/>WaitExport<sp/>tile-2;<sp/>Export<sp/>tile-1;<sp/>Import<sp/>tile+1;<sp/>Compute<sp/>tile<sp/></highlight></codeline>
+</programlisting></para>
+<para>Postponing WaitImport tile to appear after WaitExport, Export, and right before Import tile+1 produces</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>2.<sp/>“Wait<sp/>before<sp/>next<sp/>Import/Export”<sp/>pipeline</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>(tile)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>WaitExport<sp/>tile-2;<sp/>Export<sp/>tile-1;<sp/>WaitImport<sp/>tile;<sp/>Import<sp/>tile+1;<sp/>Compute<sp/>tile<sp/></highlight></codeline>
+</programlisting></para>
+<para>This is the pipeline produced by dmaiterate, and should be used when analyzing performance comparison between dmaiterate and manual/TTL tiling (see Appendix A in “To Tiler Or Not To Tiler”).</para>
+<para>Postponing WaitImport and WaitExport further/furthest, to appear before the dependent Compute produces</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>3.<sp/>“Latest<sp/>Waits”<sp/>pipeline</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>(tile)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Export<sp/>tile-1;<sp/>Import<sp/>tile+1;<sp/>WaitImport<sp/>tile;<sp/>WaitExport<sp/>tile-2;<sp/>Compute<sp/>tile</highlight></codeline>
+</programlisting></para>
+<para>A full pipeline description is provided in an Appendix below.</para>
+<para>Q1: If WaitImport tile and Import tile+1, are scheduled back-to-back, who should go first?</para>
+<para>A1: placing WaitImport tile first allows both to reuse the same channel. If WaitImport tile stalls - because the import of tile is yet to complete, issuing Import tile+1 early will not gain much (if anything?) given that all imports are DMA’d in-order on any device. Same goes for scheduling WaitExport tile-2 relative to Export tile-1.</para>
+<para>Q2: Should WaitImport tile be scheduled after Export tile-1, or before it?</para>
+<para>A2: When hardware allows it may be advantageous to schedule Export tile-1 first before WaitImport tile which may stall, if there are available channels. Same goes for scheduling WaitExport tile-2 relative to Import tile+1.</para>
+<para>Q3: Should WaitImport tile and WaitExport tile-2 be combined into a single wait on both channels, instead of two separate waits scheduled back to back?</para>
+<para>A3: probably yes, resulting in a single DMA/SSC synchronization point instead of two(?)</para>
+<para>Q3.5: How should the above example be pipelined, if fewer than four buffers/banks are available?</para>
+<para>A3.5: With fewer than four buffers, at most two of {Compute, Import, Export} can overlap, implying that II will be at-least “2”. At-least two distinct buffers are required by Compute, assuming it cannot write destructively to the same buffer it reads from.</para>
+<para>Overlapping Import with Export is possible and requires (only the) two buffers:</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>Conceptual<sp/>2-stage<sp/>Pipeline<sp/>with<sp/>Duplex<sp/>DMA</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>W/o<sp/>any<sp/>double-buffering</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>II<sp/>=<sp/>|Compute|<sp/>+<sp/>max<sp/>{|Import|,<sp/>|Export|}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Iteration:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2+</highlight></codeline>
+<codeline><highlight class="normal">---------------+--------+--------+</highlight></codeline>
+<codeline><highlight class="normal">Prolog<sp/>Stage<sp/>1:<sp/>Import1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Compute1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>--------</highlight></codeline>
+<codeline><highlight class="normal">Steady<sp/>State:<sp/><sp/><sp/>Export1<sp/><sp/>Import2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Compute2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>--------<sp/>--------</highlight></codeline>
+<codeline><highlight class="normal">Epilog<sp/>Stage<sp/>1:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export2</highlight></codeline>
+</programlisting></para>
+<para>If Import is not overlapped with Export, either or both could be overlapped with Compute, requiring a third buffer for double or triple buffering, respectively. Doing so also addresses the following related question:</para>
+<para>Q4: How should the above example be pipelined when duplex DMA is not possible</para>
+<para>A4: There are several pipelining options, depending on the latency of Compute relative to that of Import and Export</para>
+<para>A4.1: Overlap Compute with Import; good when |Compute| &lt;= |Import|</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>Conceptual<sp/>2-stage<sp/>Pipeline<sp/>with<sp/>Simplex<sp/>DMA</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>II<sp/>=<sp/>|Export|<sp/>+<sp/>max<sp/>{|Compute|,<sp/>|Import|}</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Import<sp/>is<sp/>double-buffered<sp/>but<sp/>Export<sp/>is<sp/>not</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Iteration:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2+</highlight></codeline>
+<codeline><highlight class="normal">---------------+--------+--------+</highlight></codeline>
+<codeline><highlight class="normal">Prolog<sp/>Stage<sp/>1:<sp/>Import1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Steady<sp/>State:<sp/><sp/><sp/>Compute1<sp/>Import2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export1</highlight></codeline>
+<codeline><highlight class="normal">Epilog<sp/>Stage<sp/>1:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Compute2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export2<sp/><sp/></highlight></codeline>
+</programlisting></para>
+<para>A4.2: Overlap Compute with Export; good when |Compute| &lt;= |Export|</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>Conceptual<sp/>2-stage<sp/>Pipeline<sp/>with<sp/>Simplex<sp/>DMA</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>II<sp/>=<sp/>|Import|<sp/>+<sp/>max<sp/>{|Compute|,<sp/>|Export|}</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Export<sp/>is<sp/>double-buffered<sp/>but<sp/>Import<sp/>is<sp/>not</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Iteration:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2+</highlight></codeline>
+<codeline><highlight class="normal">---------------+--------+--------+</highlight></codeline>
+<codeline><highlight class="normal">Prolog<sp/>Stage<sp/>1:<sp/>Import1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Compute1</highlight></codeline>
+<codeline><highlight class="normal">Steady<sp/>State:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Import2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export1<sp/><sp/>Compute2</highlight></codeline>
+<codeline><highlight class="normal">Epilog<sp/>Stage<sp/>1:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export2<sp/><sp/></highlight></codeline>
+</programlisting></para>
+<para>Q5: If |Compute| &lt;= min {|Input|, |Export|}, which of A4.1 and A4.2 is better?</para>
+<para>A5: their II’s in this case are equal: |Input|+|Export|; double-buffering the smaller buffer (of Import and Export) would save scratchpad memory space.</para>
+<para>A4.3: Overlap Compute with both Import and Export; good also when |Compute| &gt; max {|Import|, |Export|}</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>Conceptual<sp/>3-stage<sp/>Pipeline<sp/>with<sp/>Simplex<sp/>DMA</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>II<sp/>=<sp/>max<sp/>{|Compute|,<sp/>|Import|+|Export|}</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Import<sp/>and<sp/>Export<sp/>are<sp/>triple-buffered<sp/>together</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Iteration:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2+</highlight></codeline>
+<codeline><highlight class="normal">---------------+--------+--------+</highlight></codeline>
+<codeline><highlight class="normal">Prolog<sp/>Stage<sp/>1:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Import1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">Prolog<sp/>Stage<sp/>2:<sp/>Compute1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-+<sp/>Live-range<sp/>of</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(cont’d)<sp/>Import2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>exported<sp/>buffer</highlight></codeline>
+<codeline><highlight class="normal">Steady<sp/>State:<sp/><sp/><sp/>Export1<sp/><sp/>Compute2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-+<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(cont’d)<sp/>Import3<sp/><sp/>-+<sp/>Live-range<sp/>of</highlight></codeline>
+<codeline><highlight class="normal">Epilog<sp/>Stage<sp/>1:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export2<sp/><sp/>Compute3<sp/><sp/>|<sp/>imported<sp/>buffer</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(cont’d)<sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">Epilog<sp/>Stage<sp/>2:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export3</highlight></codeline>
+</programlisting></para>
+<para>Note: A4.3 can be applied instead of A4.1 and A4.2 when |Compute| &lt;= |Import| and |Compute| &lt;= |Export|, respectively: they have the same II of |Input|+|Export|. The triple-buffering of A4.3 requires three buffers all having the size of the larger buffer (between Import and Export), whereas A4.1 and A4.2 require smaller scratchpad memory space if Import and Export buffers are of distinct sizes.</para>
+<para>Note: triple-buffering advocates the use of duplex DMA which may reduce the II from max {|Compute|, |Input|+|Export|} potentially close to max {|Compute|,|Input|,|Export|}.</para>
+<para>Note: if Compute can be partitioned, the loop can be rotated to produce a 2-staged pipeline</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>Conceptual<sp/>2-stage<sp/>Rotated<sp/>Pipeline<sp/>with<sp/>Simplex<sp/>DMA</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>II<sp/>=<sp/>max<sp/>{|Compute|,<sp/>|Import|+|Export|}</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Import<sp/>and<sp/>Export<sp/>are<sp/>triple-buffered<sp/>together</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Iteration:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2+</highlight></codeline>
+<codeline><highlight class="normal">---------------+--------+--------+</highlight></codeline>
+<codeline><highlight class="normal">Prolog<sp/>Stage<sp/>1:<sp/>Import1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CompuA1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">Steady<sp/>State:<sp/><sp/><sp/>CompuB1<sp/><sp/>Import2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export1<sp/><sp/>CompuA2</highlight></codeline>
+<codeline><highlight class="normal">Epilog<sp/>Stage<sp/>1:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CompuB2<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export2</highlight></codeline>
+</programlisting></para>
+<para><heading level="1">Appendix: full pipeline description</heading>
+</para>
+<para>Including WaitImport tile and WaitExport in the pipeline, having a single column for single-issue targets such as SSC, produces the following for the above example, using an estimate of100 cycles for each DMA transaction and computation:</para>
+<para><programlisting><codeline><highlight class="normal"><sp/><sp/>//<sp/>3a.<sp/>“Latest<sp/>Waits”<sp/>pipeline:<sp/>full<sp/>description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>1<sp/><sp/><sp/><sp/>Import0<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Prolog<sp/>Stage<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">100<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">101<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Import1<sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">102<sp/><sp/><sp/><sp/>WaitImport0<sp/><sp/>|<sp/>Prolog<sp/>Stage<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">103<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">104<sp/><sp/><sp/><sp/>Compute0<sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">200<sp/><sp/><sp/><sp/>Export0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">201<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Import2<sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">202<sp/><sp/><sp/><sp/><sp/><sp/><sp/>WaitImport1<sp/><sp/>|<sp/>Prolog<sp/>Stage<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">203<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">204<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Compute1<sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">300<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">301<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Import3<sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">302<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WaitImport2<sp/><sp/>|<sp/>Steady<sp/>State</highlight></codeline>
+<codeline><highlight class="normal">303<sp/><sp/><sp/><sp/>WaitExport0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">304<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Compute2<sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">400<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">401<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">402<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WaitImport3<sp/><sp/>|<sp/>Epilog<sp/>Stage<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">403<sp/><sp/><sp/><sp/><sp/><sp/><sp/>WaitExport1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">404<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Compute3<sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">500<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Export3<sp/><sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">501<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">502<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Epilog<sp/>Stage<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">503<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WaitExport2<sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">504<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">600<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-+</highlight></codeline>
+<codeline><highlight class="normal">601<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">602<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Epilog<sp/>Stage<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">603<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WaitExport3<sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">604<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-+</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+    <location file="v7F17Om_TTL/doc/tutorials/pipelining_dma_tiled_loops/pipelining_dma_tiled_loops.md"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">&lt;h1<sp/>align=&quot;center&quot;&gt;Tensor<sp/>Tiling<sp/>Library&lt;/h1&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;p<sp/>align=&quot;center&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;img<sp/>width=&quot;30%&quot;<sp/>src=&quot;doc/tensor_tiling_library.png&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/p&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;p<sp/>align=&quot;center&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;a<sp/>href=&quot;https://opensource.org/licenses/Apache-2.0&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;img<sp/>src=&quot;https://img.shields.io/badge/license-Apache%20-blue.svg&quot;<sp/>alt=&quot;License&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;/a&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;a<sp/>href=&quot;https://github.com/KhronosGroup/OpenCL-TTL/issues&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;img<sp/>src=&quot;https://img.shields.io/github/issues/KhronosGroup/OpenCL-TTL&quot;<sp/>alt=&quot;Issues&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;/a&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/p&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Tensor<sp/>&amp;<sp/>Tiling<sp/>Library<sp/>is<sp/>an<sp/>open-source<sp/>library<sp/>to<sp/>enable<sp/>the<sp/>efficient<sp/>tiling<sp/>and<sp/>compute<sp/>with<sp/>tensors.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Please<sp/>reach<sp/>out<sp/>to<sp/>chris.gearing@mobileye.com<sp/>or<sp/>ayal.zaks@mobileye.com<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>document<sp/>outlines<sp/>the<sp/>purpose<sp/>of<sp/>this<sp/>sample<sp/>implementation<sp/>and<sp/>provides<sp/>build<sp/>and<sp/>execution<sp/>instructions.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Contents<sp/>&lt;!--<sp/>omit<sp/>in<sp/>toc<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>[Purpose](#purpose)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Example](#example)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Doxygen](#doxygen)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Building<sp/>And<sp/>Executing](#building-and-executing)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[CMake](#cmake)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>[Tested<sp/>Supported<sp/>Systems](#tested-supported-systems)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>[Requirements](#requirements)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>[Building<sp/>the<sp/>Samples](#building-the-samples)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>[Installation](#installation)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Preprocessed<sp/>Header](#preprocessed-header)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Included<sp/>Unit<sp/>Tests](#included-unit-tests)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Bug<sp/>Reporting](#bug-reporting)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Purpose</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>purpose<sp/>of<sp/>this<sp/>software<sp/>package<sp/>is<sp/>to<sp/>provide<sp/>a<sp/>simple<sp/>to<sp/>use<sp/>standardized<sp/>way<sp/>of<sp/>tiling<sp/>tensors<sp/>to<sp/>allow<sp/>performance<sp/>optimization<sp/>in<sp/>heterogenous<sp/>machines.<sp/>Tiling<sp/>is<sp/>one<sp/>of<sp/>the<sp/>pillars<sp/>of<sp/>performance<sp/>and<sp/>the<sp/>Tensor<sp/>Tiling<sp/>Library<sp/>is<sp/>intended<sp/>to<sp/>provide<sp/>a<sp/>standardized<sp/>approach.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>library<sp/>is<sp/>intended<sp/>to<sp/>be<sp/>general<sp/>purpose<sp/>and<sp/>usable<sp/>on<sp/>all<sp/>architectures.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Currently<sp/>the<sp/>Tensor<sp/>Tiling<sp/>Library:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>passes<sp/>its<sp/>own<sp/>unit<sp/>tests</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>contains<sp/>reference<sp/>implementations</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>is<sp/>optimized</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>is<sp/>a<sp/>double<sp/>tiling<sp/>example<sp/>where<sp/>the<sp/>data<sp/>is<sp/>simultaneously<sp/>moved<sp/>from<sp/>host&lt;-&gt;device<sp/>whilst<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">compute<sp/>is<sp/>occurring.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TTL/TTL.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__kernel<sp/>void<sp/>TTL_double_buffering(__global<sp/>uchar<sp/>*restrict<sp/>ext_base_in,<sp/>int<sp/>external_stride_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__global<sp/>uchar<sp/>*restrict<sp/>ext_base_out,<sp/>int<sp/>external_stride_out,<sp/>int<sp/>width,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>height,<sp/>int<sp/>tile_width,<sp/>int<sp/>tile_height)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__local<sp/>uchar<sp/>l_in1[MEMSZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__local<sp/>uchar<sp/>l_in2[MEMSZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__local<sp/>uchar<sp/>l_out1[MEMSZ];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__local<sp/>uchar<sp/>l_out2[MEMSZ];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Logical<sp/>Tiling</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>TTL_shape_t<sp/>global_tensor<sp/>=<sp/>TTL_create_shape(width,<sp/>height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>TTL_shape_t<sp/>tile_shape<sp/>=<sp/>TTL_create_shape(tile_width,<sp/>tile_height);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>TTL_tiler_t<sp/>tiler<sp/>=<sp/>TTL_create_tiler(global_tensor,<sp/>tile_shape);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>External<sp/>layouts.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>TTL_layout_t<sp/>ext_layout_in<sp/>=<sp/>TTL_create_layout(external_stride_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>TTL_layout_t<sp/>ext_layout_out<sp/>=<sp/>TTL_create_layout(external_stride_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>TTL_const_ext_tensor_t<sp/>ext_input_tensor<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_create_const_ext_tensor(ext_base_in,<sp/>global_tensor,<sp/>ext_layout_in);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>TTL_ext_tensor_t<sp/>ext_output_tensor<sp/>=<sp/>TTL_create_ext_tensor(ext_base_out,<sp/>global_tensor,<sp/>ext_layout_out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>TTL_start_import_double_buffering<sp/>will<sp/>being<sp/>the<sp/>import<sp/>of<sp/>the<sp/>first<sp/>tile</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_event_t<sp/>import_DB_e<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_import_double_buffering_t<sp/>import_db<sp/>=<sp/>TTL_start_import_double_buffering(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l_in1,<sp/>l_in2,<sp/>ext_input_tensor,<sp/>&amp;import_DB_e,<sp/>TTL_get_tile(0,<sp/>tiler));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_event_t<sp/>export_DB_e<sp/>=<sp/>TTL_get_event();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_export_double_buffering_t<sp/>export_db<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_start_export_double_buffering(l_out1,<sp/>l_out2,<sp/>ext_output_tensor,<sp/>&amp;export_DB_e);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>TTL_number_of_tiles(tiler);<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>tile_next_import<sp/>=<sp/>TTL_get_tile(i<sp/>+<sp/>1,<sp/>tiler);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_tile_t<sp/>tile_current_export<sp/>=<sp/>TTL_get_tile(i,<sp/>tiler);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>These<sp/>wait<sp/>for<sp/>the<sp/>current<sp/>transfers<sp/>to<sp/>complete,<sp/>and<sp/>begin<sp/>the<sp/>next</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_int_sub_tensor_t<sp/>imported_to<sp/>=<sp/>TTL_step_buffering(&amp;import_db,<sp/>tile_next_import);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_int_sub_tensor_t<sp/>exported_from<sp/>=<sp/>TTL_step_buffering(&amp;export_db,<sp/>tile_current_export);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Compute<sp/>whilst<sp/>the<sp/>transfers<sp/>are<sp/>taking<sp/>place<sp/>(on<sp/>separate<sp/>buffers)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compute(imported_to,<sp/>exported_from);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>These<sp/>wait<sp/>for<sp/>the<sp/>last<sp/>transfers<sp/>to<sp/>complete.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_finish_buffering(&amp;import_db);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TTL_finish_buffering(&amp;export_db);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Doxygen</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Doxygen<sp/>is<sp/>supported<sp/>and<sp/>can<sp/>be<sp/>build<sp/>using<sp/>the<sp/>scripts/generate_doxygen.sh<sp/>script.<sp/>It<sp/>is</highlight></codeline>
+<codeline><highlight class="normal">built<sp/>automatically<sp/>by<sp/>github<sp/>for<sp/>main<sp/>and<sp/>the<sp/>latest<sp/>version<sp/>can<sp/>be<sp/>found<sp/>at<sp/>https://github.khronos.org/OpenCL-TTL/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Building<sp/>And<sp/>Executing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>sample<sp/>implementation<sp/>builds<sp/>under<sp/>POCL<sp/>on<sp/>x86<sp/>and<sp/>demonstrates<sp/>a<sp/>number<sp/>of<sp/>buffering<sp/>schemes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">It<sp/>builds<sp/>using<sp/>CMake<sp/>and<sp/>has<sp/>been<sp/>tested<sp/>on<sp/>Linux.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>CMake</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Tested<sp/>Supported<sp/>Systems</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Linux</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Requirements</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Python<sp/>2.x<sp/>(Tested<sp/>with<sp/>Python<sp/>2.7)</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>CMake<sp/>2.8.12<sp/>or<sp/>higher<sp/>(should<sp/>be<sp/>in<sp/>PATH)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Building<sp/>the<sp/>Samples</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Install<sp/>[PoCL](http://portablecl.org/docs/html/install.html)<sp/>or<sp/>another<sp/>environment<sp/>of<sp/>your<sp/>choice.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Install<sp/>[pyopencl](https://pypi.org/project/pyopencl/)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Execute<sp/>the<sp/>following<sp/>commands:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```sh</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>cd<sp/>opencl/samples</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>./TTL_sample_runner.py<sp/>*.cl</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>cd<sp/>../c/samples</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>./TTL_sample_runner.py<sp/>*.c</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Installation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">See<sp/>[INSTALL](./INSTALL).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Preprocessed<sp/>Header</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TTL<sp/>it<sp/>very<sp/>type<sp/>strong<sp/>and<sp/>uses<sp/>a<sp/>lot<sp/>of<sp/>macros<sp/>to<sp/>create<sp/>many<sp/>variants<sp/>of<sp/>each<sp/>method.<sp/>Whilst<sp/>powerful<sp/>this<sp/>can<sp/>make<sp/>debugging<sp/>tricker.<sp/>For<sp/>these<sp/>reason<sp/>the<sp/>ability<sp/>of<sp/>preprocess<sp/>TTL<sp/>to<sp/>stdout<sp/>or<sp/>the<sp/>file<sp/>provided.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```sh</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>scripts/preprocess.sh<sp/>[-f<sp/>TTL_opencl.h]<sp/>[-t<sp/>opencl]</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>scripts/preprocess.sh<sp/>[-f<sp/>TTL_c.h]<sp/>[-t<sp/>c]</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-f<sp/>defaults<sp/>to<sp/>/dev/stdout</highlight></codeline>
+<codeline><highlight class="normal">-t<sp/>defaults<sp/>to<sp/>opencl</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Will<sp/>output<sp/>a<sp/>processed,<sp/>clang-formatted<sp/>file<sp/>to<sp/>stdout<sp/>of<sp/>the<sp/>given<sp/>file.<sp/>Replacing<sp/>TTL.h<sp/>with<sp/>this<sp/>file,<sp/>can<sp/>make<sp/>life<sp/>easier.<sp/><sp/>See<sp/>also<sp/>the<sp/>TTL_PRE_GENERATE<sp/>option<sp/>in<sp/>[INSTALL](./INSTALL).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Included<sp/>Unit<sp/>Tests</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">See<sp/>[the<sp/>test<sp/>README](./opencl/test/).</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Bug<sp/>Reporting</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Bug<sp/>reports<sp/>can<sp/>be<sp/>reported<sp/>by<sp/>filing<sp/>an<sp/>[issue<sp/>on<sp/>GitHub](https://github.com/KhronosGroup/OpenCL-TTL/issues).</highlight></codeline>
+    </programlisting>
+    <location file="v7F17Om_TTL/README.md"/>
+  </compounddef>
+</doxygen>

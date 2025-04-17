@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="c_2TTL__types_8h" kind="file" language="C++">
+    <compoundname>c/TTL_types.h</compoundname>
+    <includes local="yes">stdbool.h</includes>
+    <includes local="yes">stddef.h</includes>
+    <includes local="yes">stdio.h</includes>
+    <includes refid="opencl_2TTL__types_8h" local="yes">../opencl/TTL_types.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>TTL_types.h</label>
+        <link refid="c_2TTL__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>../opencl/TTL_types.h</label>
+        <link refid="opencl_2TTL__types_8h"/>
+      </node>
+      <node id="2">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stddef.h</label>
+      </node>
+      <node id="4">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="c_2TTL__types_8h_1a0bcdca9f6e5923ea191d934ec3400d9e" prot="public" static="no">
+        <name>__global</name>
+        <briefdescription>
+<para>The opencl __global namespace is not supported in C. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/c/TTL_types.h" line="26" column="9" bodyfile="v7F17Om_TTL/c/TTL_types.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" prot="public" static="no">
+        <name>__local</name>
+        <briefdescription>
+<para>The opencl __local namespace is not supported in C. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/c/TTL_types.h" line="27" column="9" bodyfile="v7F17Om_TTL/c/TTL_types.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" prot="public" static="no">
+        <type>unsigned char</type>
+        <definition>typedef unsigned char uchar</definition>
+        <argsstring></argsstring>
+        <name>uchar</name>
+        <briefdescription>
+<para>opencl and so TTL supports a type called uchar which is not part of C </para>
+        </briefdescription>
+        <detaileddescription>
+<para>OpenCL supports uchar so provide the same in c. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/c/TTL_types.h" line="25" column="23" bodyfile="v7F17Om_TTL/c/TTL_types.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="c_2TTL__types_8h_1af7aafacf1b2d8b553b9b2dcd66925038" prot="public" static="no">
+        <type>unsigned char</type>
+        <definition>typedef unsigned char event_t</definition>
+        <argsstring></argsstring>
+        <name>event_t</name>
+        <briefdescription>
+<para><ref refid="c_2TTL__types_8h_1af7aafacf1b2d8b553b9b2dcd66925038" kindref="member">event_t</ref> is not supported, so provide a harmless placeholder </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/c/TTL_types.h" line="28" column="23" bodyfile="v7F17Om_TTL/c/TTL_types.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="c_2TTL__types_8h_1a91ad9478d81a7aaf2593e8d9c3d06a14" prot="public" static="no">
+        <type>unsigned int</type>
+        <definition>typedef unsigned int uint</definition>
+        <argsstring></argsstring>
+        <name>uint</name>
+        <briefdescription>
+<para>OpenCL supports uint so provide the same in c. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/c/TTL_types.h" line="30" column="22" bodyfile="v7F17Om_TTL/c/TTL_types.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="c_2TTL__types_8h_1ab95f123a6c9bcfee6a343170ef8c5f69" prot="public" static="no">
+        <type>unsigned short</type>
+        <definition>typedef unsigned short ushort</definition>
+        <argsstring></argsstring>
+        <name>ushort</name>
+        <briefdescription>
+<para>OpenCL supports ushort so provide the same in c. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/c/TTL_types.h" line="31" column="24" bodyfile="v7F17Om_TTL/c/TTL_types.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="c_2TTL__types_8h_1a718b4eb2652c286f4d42dc18a8e71a1a" prot="public" static="no">
+        <type>unsigned long</type>
+        <definition>typedef unsigned long ulong</definition>
+        <argsstring></argsstring>
+        <name>ulong</name>
+        <briefdescription>
+<para>OpenCL supports ulong so provide the same in c. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/c/TTL_types.h" line="32" column="23" bodyfile="v7F17Om_TTL/c/TTL_types.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_types.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stdbool.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Define<sp/>bool,<sp/>false,<sp/>and<sp/>true</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stddef.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stdio.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>to<sp/>make<sp/>printf<sp/>appear<sp/>for<sp/>other<sp/>include<sp/>files</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kindref="member">uchar</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>opencl<sp/>and<sp/>so<sp/>TTL<sp/>supports<sp/>a<sp/>type<sp/>called<sp/>uchar<sp/>which<sp/>is<sp/>not<sp/>part<sp/>of<sp/>C</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="c_2TTL__types_8h_1a0bcdca9f6e5923ea191d934ec3400d9e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__global<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>The<sp/>opencl<sp/>__global<sp/>namespace<sp/>is<sp/>not<sp/>supported<sp/>in<sp/>C</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__local<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>The<sp/>opencl<sp/>__local<sp/>namespace<sp/>is<sp/>not<sp/>supported<sp/>in<sp/>C</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="c_2TTL__types_8h_1af7aafacf1b2d8b553b9b2dcd66925038" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="c_2TTL__types_8h_1af7aafacf1b2d8b553b9b2dcd66925038" kindref="member">event_t</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>event_t<sp/>is<sp/>not<sp/>supported,<sp/>so<sp/>provide<sp/>a<sp/>harmless<sp/>placeholder</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kindref="member">uchar</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>OpenCL<sp/>supports<sp/>uchar<sp/>so<sp/>provide<sp/>the<sp/>same<sp/>in<sp/>c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="c_2TTL__types_8h_1a91ad9478d81a7aaf2593e8d9c3d06a14" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="c_2TTL__types_8h_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>OpenCL<sp/>supports<sp/>uint<sp/>so<sp/>provide<sp/>the<sp/>same<sp/>in<sp/>c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="c_2TTL__types_8h_1ab95f123a6c9bcfee6a343170ef8c5f69" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/><ref refid="c_2TTL__types_8h_1ab95f123a6c9bcfee6a343170ef8c5f69" kindref="member">ushort</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>OpenCL<sp/>supports<sp/>ushort<sp/>so<sp/>provide<sp/>the<sp/>same<sp/>in<sp/>c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="c_2TTL__types_8h_1a718b4eb2652c286f4d42dc18a8e71a1a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="c_2TTL__types_8h_1a718b4eb2652c286f4d42dc18a8e71a1a" kindref="member">ulong</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>OpenCL<sp/>supports<sp/>ulong<sp/>so<sp/>provide<sp/>the<sp/>same<sp/>in<sp/>c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="opencl_2TTL__types_8h" kindref="compound">../opencl/TTL_types.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="v7F17Om_TTL/c/TTL_types.h"/>
+  </compounddef>
+</doxygen>

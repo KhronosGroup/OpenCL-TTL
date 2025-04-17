@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__tile__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_tile_t</compoundname>
+    <includes refid="TTL__tiles_8h" local="no">TTL_tiles.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+        <definition>TTL_shape_t TTL_tile_t::shape</definition>
+        <argsstring></argsstring>
+        <name>shape</name>
+        <qualifiedname>TTL_tile_t::shape</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="125" column="17" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+        <definition>TTL_offset_t TTL_tile_t::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <qualifiedname>TTL_tile_t::offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/TTL_tiles.h" line="126" column="18" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>TTL_offset_t</label>
+        <link refid="structTTL__offset__t"/>
+      </node>
+      <node id="2">
+        <label>TTL_shape_t</label>
+        <link refid="structTTL__shape__t"/>
+      </node>
+      <node id="1">
+        <label>TTL_tile_t</label>
+        <link refid="structTTL__tile__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+offset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="v7F17Om_TTL/TTL_tiles.h" line="124" column="1" bodyfile="v7F17Om_TTL/TTL_tiles.h" bodystart="124" bodyend="127"/>
+    <listofallmembers>
+      <member refid="structTTL__tile__t_1a93512d7fdde7a441111ff766e4968fd0" prot="public" virt="non-virtual"><scope>TTL_tile_t</scope><name>offset</name></member>
+      <member refid="structTTL__tile__t_1a9e41cf99d7bf61cdf162941fd477e26f" prot="public" virt="non-virtual"><scope>TTL_tile_t</scope><name>shape</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

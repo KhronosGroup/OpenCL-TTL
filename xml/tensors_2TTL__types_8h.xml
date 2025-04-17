@@ -1,0 +1,706 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="tensors_2TTL__types_8h" kind="file" language="C++">
+    <compoundname>tensors/TTL_types.h</compoundname>
+    <includes refid="TTL__macros_8h" local="yes">TTL_macros.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>TTL_macros.h</label>
+        <link refid="TTL__macros_8h"/>
+      </node>
+      <node id="1">
+        <label>TTL_types.h</label>
+        <link refid="tensors_2TTL__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structTTL__shape__t" prot="public">TTL_shape_t</innerclass>
+    <innerclass refid="structTTL__offset__t" prot="public">TTL_offset_t</innerclass>
+    <innerclass refid="structTTL__overlap__t" prot="public">TTL_overlap_t</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" prot="public" static="no">
+        <type>unsigned char</type>
+        <definition>typedef unsigned char TTL_overlap_dim_t</definition>
+        <argsstring></argsstring>
+        <name>TTL_overlap_dim_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Overlap of a &quot;adjacent&quot; tiles in the unit of elements </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="161" column="23" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+        <definition>static TTL_shape_t TTL_create_shape</definition>
+        <argsstring>(TTL_dim_t width, TTL_dim_t height, TTL_dim_t depth)</argsstring>
+        <name>TTL_create_shape</name>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>depth</declname>
+        </param>
+        <briefdescription>
+<para>Create a description of a Shape. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref> for more information.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements of the Tile Shape in the x-axis </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements of the Tile Shape in the y-axis </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements of the Tile Shape in the z-axis</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref> describing in Tile Shape requested. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="48" column="1" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="tensors_2TTL__types_8h_1a7668c7df3528498df2e4af91eccfdc14" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+        <definition>static TTL_shape_t TTL_create_shape</definition>
+        <argsstring>(TTL_dim_t width, TTL_dim_t height)</argsstring>
+        <name>TTL_create_shape</name>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+<para>Create a 2D Description of a Tile Shape. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref> for more information.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements of the Tile Shape in the x-axis </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements of the Tile Shape in the y-axis</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+depth defaults to 1</para>
+<para><simplesect kind="return"><para>A <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref> describing in Tile Shape requested. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="65" column="29" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="65" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="tensors_2TTL__types_8h_1a39b5938df0790d05babda78d2fea7de6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+        <definition>static TTL_shape_t TTL_create_shape</definition>
+        <argsstring>(TTL_dim_t width)</argsstring>
+        <name>TTL_create_shape</name>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+          <declname>width</declname>
+        </param>
+        <briefdescription>
+<para>Create a 1D Description of a Tile Shape. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref> for more information.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements of the Tile Shape in the x-axis</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+height and depth default to 1</para>
+<para><simplesect kind="return"><para>A <ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref> describing in Tile Shape requested. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="80" column="29" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="80" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="tensors_2TTL__types_8h_1a7871ed21af1fda46f48e16bc4c68df06" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool TTL_shape_empty</definition>
+        <argsstring>(TTL_shape_t shape)</argsstring>
+        <name>TTL_shape_empty</name>
+        <param>
+          <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+<para>A Shape is empty if its width is 0. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="87" column="20" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="87" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="tensors_2TTL__types_8h_1a74c02e5006557e50ccaf1fed19bdf5ec" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+        <definition>static TTL_offset_t TTL_create_offset</definition>
+        <argsstring>(TTL_offset_dim_t x, TTL_offset_dim_t y, TTL_offset_dim_t z)</argsstring>
+        <name>TTL_create_offset</name>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref></type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref></type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Returns a <ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x offset </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y offset </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The z offset</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>x, y, z expressed as a <ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="117" column="30" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="117" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="tensors_2TTL__types_8h_1a107723b741e9630eac566b02cb037367" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+        <definition>static TTL_offset_t TTL_create_offset</definition>
+        <argsstring>(TTL_offset_dim_t x, TTL_offset_dim_t y)</argsstring>
+        <name>TTL_create_offset</name>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Returns a <ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x offset </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y offset</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>x, y, z = 0 expressed as a <ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="132" column="30" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="132" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="tensors_2TTL__types_8h_1aed795de9be2e6dd5c8b3a93e959d2349" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+        <definition>static TTL_offset_t TTL_create_offset</definition>
+        <argsstring>(TTL_offset_dim_t x)</argsstring>
+        <name>TTL_create_offset</name>
+        <param>
+          <type><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>Returns a <ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x offset</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>x, y = 0, z = 0 expressed as a <ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="143" column="30" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="143" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="tensors_2TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+        <definition>static TTL_offset_t TTL_create_offset</definition>
+        <argsstring>(void)</argsstring>
+        <name>TTL_create_offset</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Returns a <ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>x = 0, y = 0, z = 0 expressed as a <ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="153" column="30" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="153" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="tensors_2TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref></type>
+        <definition>static TTL_overlap_t TTL_create_overlap</definition>
+        <argsstring>(const TTL_overlap_dim_t width, const TTL_overlap_dim_t height, const TTL_overlap_dim_t depth)</argsstring>
+        <name>TTL_create_overlap</name>
+        <param>
+          <type>const <ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref></type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const <ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref></type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>const <ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref></type>
+          <declname>depth</declname>
+        </param>
+        <briefdescription>
+<para>Create a 3D Description of a Tile overlap. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref> for more information.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Overlap width in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Overlap height in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Overlap depth in elements</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref> describing in 3D the overlap requested. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="192" column="1" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="192" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="tensors_2TTL__types_8h_1aecd90af95c5a2fc8c63f191050f9a224" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref></type>
+        <definition>static TTL_overlap_t TTL_create_overlap</definition>
+        <argsstring>(const TTL_overlap_dim_t width, const TTL_overlap_dim_t height)</argsstring>
+        <name>TTL_create_overlap</name>
+        <param>
+          <type>const <ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref></type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const <ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref></type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+<para>Create a 2D Description of a Tile overlap. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref> for more information.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Overlap width in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Overlap height in elements</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+depth defaults to 0</para>
+<para><simplesect kind="return"><para>A <ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref> describing in 3D the overlap requested. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="210" column="1" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="210" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="tensors_2TTL__types_8h_1a977fe6015cebed0ccbae44003c85a4f9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref></type>
+        <definition>static TTL_overlap_t TTL_create_overlap</definition>
+        <argsstring>(const TTL_overlap_dim_t width)</argsstring>
+        <name>TTL_create_overlap</name>
+        <param>
+          <type>const <ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref></type>
+          <declname>width</declname>
+        </param>
+        <briefdescription>
+<para>Create a 1D Description of a Tile overlap. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref> for more information.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Overlap width in elements</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+height and depth default to 0</para>
+<para><simplesect kind="return"><para>A <ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref> describing in 3D the overlap requested. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="v7F17Om_TTL/tensors/TTL_types.h" line="225" column="31" bodyfile="v7F17Om_TTL/tensors/TTL_types.h" bodystart="225" bodyend="227"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_types.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2023<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__macros_8h" kindref="compound">TTL_macros.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="23"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Description<sp/>of<sp/>a<sp/>Shape</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>A<sp/>Shape<sp/>is<sp/>a<sp/>3D<sp/>description<sp/>of<sp/>an<sp/>object.</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>The<sp/>units<sp/>are<sp/>elements</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="structTTL__shape__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31" refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/><ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Number<sp/>of<sp/>elements<sp/>along<sp/>dimension<sp/>x.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/><ref refid="structTTL__shape__t_1ad9137433a4df574d0a470bca21b9dea0" kindref="member">height</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Number<sp/>of<sp/>rows<sp/>along<sp/>dimension<sp/>y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/><ref refid="structTTL__shape__t_1a2c3f2f41aa722076083862ada659fade" kindref="member">depth</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Number<sp/>of<sp/>planes<sp/>along<sp/>dimension<sp/>z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}<sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="36"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>description<sp/>of<sp/>a<sp/>Shape</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@see<sp/>TTL_shape_t<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@param<sp/>width<sp/>The<sp/>number<sp/>of<sp/>elements<sp/>of<sp/>the<sp/>Tile<sp/>Shape<sp/>in<sp/>the<sp/>x-axis</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@param<sp/>height<sp/>The<sp/>number<sp/>of<sp/>elements<sp/>of<sp/>the<sp/>Tile<sp/>Shape<sp/>in<sp/>the<sp/>y-axis</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@param<sp/>depth<sp/>The<sp/>number<sp/>of<sp/>elements<sp/>of<sp/>the<sp/>Tile<sp/>Shape<sp/>in<sp/>the<sp/>z-axis</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@return<sp/>A<sp/>TTL_shape_t<sp/>describing<sp/>in<sp/>Tile<sp/>Shape<sp/>requested.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="48" refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" refkind="member"><highlight class="normal"><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(<ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>width,<sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>height,<sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>depth)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>res<sp/>=<sp/>{<sp/>width,<sp/>height,<sp/>depth<sp/>};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="53"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>2D<sp/>Description<sp/>of<sp/>a<sp/>Tile<sp/>Shape</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>@see<sp/>TTL_shape_t<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/>@param<sp/>width<sp/>The<sp/>number<sp/>of<sp/>elements<sp/>of<sp/>the<sp/>Tile<sp/>Shape<sp/>in<sp/>the<sp/>x-axis</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@param<sp/>height<sp/>The<sp/>number<sp/>of<sp/>elements<sp/>of<sp/>the<sp/>Tile<sp/>Shape<sp/>in<sp/>the<sp/>y-axis</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>depth<sp/>defaults<sp/>to<sp/>1</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@return<sp/>A<sp/>TTL_shape_t<sp/>describing<sp/>in<sp/>Tile<sp/>Shape<sp/>requested.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="tensors_2TTL__types_8h_1a7668c7df3528498df2e4af91eccfdc14" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>__attribute__((overloadable))<sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(<ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>width,<sp/><ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>height)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(width,<sp/>height,<sp/>1);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="69"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>1D<sp/>Description<sp/>of<sp/>a<sp/>Tile<sp/>Shape</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>@see<sp/>TTL_shape_t<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>@param<sp/>width<sp/>The<sp/>number<sp/>of<sp/>elements<sp/>of<sp/>the<sp/>Tile<sp/>Shape<sp/>in<sp/>the<sp/>x-axis</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>height<sp/>and<sp/>depth<sp/>default<sp/>to<sp/>1</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>@return<sp/>A<sp/>TTL_shape_t<sp/>describing<sp/>in<sp/>Tile<sp/>Shape<sp/>requested.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="tensors_2TTL__types_8h_1a39b5938df0790d05babda78d2fea7de6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>__attribute__((overloadable))<sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(<ref refid="opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref><sp/>width)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1a9e6fdff7f83f529e9c4f2b13617eefb9" kindref="member">TTL_create_shape</ref>(width,<sp/>1,<sp/>1);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="84"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>@brief<sp/>A<sp/>Shape<sp/>is<sp/>empty<sp/>if<sp/>its<sp/>width<sp/>is<sp/>0</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="tensors_2TTL__types_8h_1a7871ed21af1fda46f48e16bc4c68df06" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1a7871ed21af1fda46f48e16bc4c68df06" kindref="member">TTL_shape_empty</ref>(<ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref><sp/>shape)<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>shape.<ref refid="structTTL__shape__t_1abedd5079ebde09929a94d58fa4667cca" kindref="member">width</ref><sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">/******************************************************</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>OFFSET</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*****************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="95"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Description<sp/>of<sp/>the<sp/>3D<sp/>offset<sp/>of<sp/>an<sp/>object.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>A<sp/>offset<sp/>of<sp/>an<sp/>object<sp/>from<sp/>some<sp/>other<sp/>reference<sp/>point.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*<sp/>The<sp/>units<sp/>are<sp/>elements</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="structTTL__offset__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103" refid="structTTL__offset__t_1abe9df04b12aa2c98c76241d6b74dbc22" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref><sp/><ref refid="structTTL__offset__t_1abe9df04b12aa2c98c76241d6b74dbc22" kindref="member">x</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Offset<sp/>in<sp/>dimension<sp/>x.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="structTTL__offset__t_1aae0c2bbb96222eb5e580367dc2f2b12c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref><sp/><ref refid="structTTL__offset__t_1aae0c2bbb96222eb5e580367dc2f2b12c" kindref="member">y</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Offset<sp/>in<sp/>dimension<sp/>y.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="structTTL__offset__t_1a9966699158adc499f07c4499c972cc75" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref><sp/><ref refid="structTTL__offset__t_1a9966699158adc499f07c4499c972cc75" kindref="member">z</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Offset<sp/>in<sp/>dimension<sp/>z.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}<sp/><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref>;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="108"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>a<sp/>TTL_offset_t</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>x<sp/>offset</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>y<sp/>offset</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>z<sp/>offset</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*<sp/>@return<sp/>x,<sp/>y,<sp/>z<sp/>expressed<sp/>as<sp/>a<sp/>TTL_offset_dim_t</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="tensors_2TTL__types_8h_1a74c02e5006557e50ccaf1fed19bdf5ec" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>__attribute__((overloadable))<sp/><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref><sp/><ref refid="tensors_2TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" kindref="member">TTL_create_offset</ref>(<ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref><sp/>x,<sp/><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref><sp/>y,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref><sp/>z)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref><sp/>result<sp/>=<sp/>{<sp/>x,<sp/>y,<sp/>z<sp/>};</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="124"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>a<sp/>TTL_offset_t</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>x<sp/>offset</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>y<sp/>offset</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*<sp/>@return<sp/>x,<sp/>y,<sp/>z<sp/>=<sp/>0<sp/>expressed<sp/>as<sp/>a<sp/>TTL_offset_dim_t</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="tensors_2TTL__types_8h_1a107723b741e9630eac566b02cb037367" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>__attribute__((overloadable))<sp/><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref><sp/><ref refid="tensors_2TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" kindref="member">TTL_create_offset</ref>(<ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref><sp/>x,<sp/><ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref><sp/>y)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" kindref="member">TTL_create_offset</ref>(x,<sp/>y,<sp/>0);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="136"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>a<sp/>TTL_offset_t</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>x<sp/>offset</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/>*<sp/>@return<sp/>x,<sp/>y<sp/>=<sp/>0,<sp/>z<sp/>=<sp/>0<sp/>expressed<sp/>as<sp/>a<sp/>TTL_offset_dim_t</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="tensors_2TTL__types_8h_1aed795de9be2e6dd5c8b3a93e959d2349" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>__attribute__((overloadable))<sp/><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref><sp/><ref refid="tensors_2TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" kindref="member">TTL_create_offset</ref>(<ref refid="opencl_2TTL__types_8h_1ae7914fc6449e057de2f5e6716fc6cf93" kindref="member">TTL_offset_dim_t</ref><sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" kindref="member">TTL_create_offset</ref>(x,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="147"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>a<sp/>TTL_offset_t</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/>*<sp/>@return<sp/>x<sp/>=<sp/>0,<sp/>y<sp/>=<sp/>0,<sp/>z<sp/>=<sp/>0<sp/>expressed<sp/>as<sp/>a<sp/>TTL_offset_dim_t</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="tensors_2TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>__attribute__((overloadable))<sp/><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref><sp/><ref refid="tensors_2TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" kindref="member">TTL_create_offset</ref>(__TTL_NO_PARAMETERS)<sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1acf853a928151d1b5dbcadf0cbe915348" kindref="member">TTL_create_offset</ref>(0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment">/******************************************************</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/>*<sp/>OVERLAP</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/>*****************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Overlap<sp/>of<sp/>a<sp/>&quot;adjacent&quot;<sp/>tiles<sp/>in</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>the<sp/>unit<sp/>of<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Description<sp/>of<sp/>the<sp/>overlap<sp/>in<sp/>3D<sp/>space<sp/>of<sp/>adjacent<sp/>tiles.</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/>*<sp/>TTL_overlap_t<sp/>represents<sp/>the<sp/>number<sp/>of<sp/>overlapped<sp/>elements<sp/>between</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/>*<sp/>adjacent<sp/>tiles<sp/>in<sp/>each<sp/>dimension.</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/>*<sp/>For<sp/>example,<sp/>overlap.x=1<sp/>means<sp/>that<sp/>every<sp/>horizontally-adjacent</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/>*<sp/>tiles<sp/>share<sp/>elements<sp/>on<sp/>one<sp/>column.</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*<sp/>The<sp/>type<sp/>used<sp/>to<sp/>hold<sp/>the<sp/>overlap<sp/>between<sp/>adjacent<sp/>tiles<sp/>along<sp/>all<sp/>dimensions</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="structTTL__overlap__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175" refid="structTTL__overlap__t_1ae4469319b7409cd74289b3b9031a460e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref><sp/><ref refid="structTTL__overlap__t_1ae4469319b7409cd74289b3b9031a460e" kindref="member">width</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>width<sp/>overlap<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="structTTL__overlap__t_1aa7a279104c7ef1676d8e2528cb6bcccc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref><sp/><ref refid="structTTL__overlap__t_1aa7a279104c7ef1676d8e2528cb6bcccc" kindref="member">height</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>height<sp/>overlap<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="structTTL__overlap__t_1a6e9810c5c0a2c94854533807b5e93e53" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref><sp/><ref refid="structTTL__overlap__t_1a6e9810c5c0a2c94854533807b5e93e53" kindref="member">depth</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>depth<sp/>overlap<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}<sp/><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="180"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>3D<sp/>Description<sp/>of<sp/>a<sp/>Tile<sp/>overlap</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/>*<sp/>@see<sp/>TTL_overlap_t<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/>*<sp/>@param<sp/>width<sp/><sp/><sp/>///&lt;<sp/>Overlap<sp/>width<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/>*<sp/>@param<sp/>height<sp/><sp/><sp/>///&lt;<sp/>Overlap<sp/>height<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/>*<sp/>@param<sp/>depth<sp/><sp/><sp/>///&lt;<sp/>Overlap<sp/>depth<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/>*<sp/>@return<sp/>A<sp/>TTL_overlap_t<sp/>describing<sp/>in<sp/>3D<sp/>the<sp/>overlap<sp/>requested.</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="192" refid="tensors_2TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" refkind="member"><highlight class="normal"><ref refid="tensors_2TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" kindref="member">TTL_create_overlap</ref>(const<sp/><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref><sp/>width,<sp/>const<sp/><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref><sp/>height,<sp/>const<sp/><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref><sp/>depth)<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref><sp/>res<sp/>=<sp/>{<sp/>width,<sp/>height,<sp/>depth<sp/>};</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="197"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>2D<sp/>Description<sp/>of<sp/>a<sp/>Tile<sp/>overlap</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/>*<sp/>@see<sp/>TTL_overlap_t<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/>*<sp/>@param<sp/>width<sp/><sp/><sp/>///&lt;<sp/>Overlap<sp/>width<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/>*<sp/>@param<sp/>height<sp/><sp/><sp/>///&lt;<sp/>Overlap<sp/>height<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/>*<sp/>depth<sp/>defaults<sp/>to<sp/>0</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/>*<sp/>@return<sp/>A<sp/>TTL_overlap_t<sp/>describing<sp/>in<sp/>3D<sp/>the<sp/>overlap<sp/>requested.</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref><sp/>__attribute__((overloadable))</highlight></codeline>
+<codeline lineno="210" refid="tensors_2TTL__types_8h_1aecd90af95c5a2fc8c63f191050f9a224" refkind="member"><highlight class="normal"><ref refid="tensors_2TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" kindref="member">TTL_create_overlap</ref>(const<sp/><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref><sp/>width,<sp/>const<sp/><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref><sp/>height)<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" kindref="member">TTL_create_overlap</ref>(width,<sp/>height,<sp/>0);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="214"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>1D<sp/>Description<sp/>of<sp/>a<sp/>Tile<sp/>overlap</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/>*<sp/>@see<sp/>TTL_overlap_t<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/>*<sp/>@param<sp/>width<sp/><sp/><sp/>///&lt;<sp/>Overlap<sp/>width<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="221"><highlight class="comment"><sp/>*<sp/>height<sp/>and<sp/>depth<sp/>default<sp/>to<sp/>0</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="223"><highlight class="comment"><sp/>*<sp/>@return<sp/>A<sp/>TTL_overlap_t<sp/>describing<sp/>in<sp/>3D<sp/>the<sp/>overlap<sp/>requested.</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225" refid="tensors_2TTL__types_8h_1a977fe6015cebed0ccbae44003c85a4f9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structTTL__overlap__t" kindref="compound">TTL_overlap_t</ref><sp/>__attribute__((overloadable))<sp/><ref refid="tensors_2TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" kindref="member">TTL_create_overlap</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1ae8fa9f86bace1287ea54f93d749295b8" kindref="member">TTL_overlap_dim_t</ref><sp/>width)<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="tensors_2TTL__types_8h_1a78b3dfd89988803287fede4374a771c8" kindref="member">TTL_create_overlap</ref>(width,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="v7F17Om_TTL/tensors/TTL_types.h"/>
+  </compounddef>
+</doxygen>

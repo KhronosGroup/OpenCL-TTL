@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="TTL_duplex_buffering_8cl-example" kind="example">
+    <compoundname>TTL_duplex_buffering.cl</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><programlisting filename="TTL_duplex_buffering.cl"></programlisting> </para>
+    </detaileddescription>
+    <location file="v7F17Om_TTL/pipelines/TTL_duplex_scheme.h"/>
+  </compounddef>
+</doxygen>
