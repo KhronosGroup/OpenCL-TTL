@@ -163,7 +163,7 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_SIMPLEX_BUFFERING_TYPE *const simplex_buf
     // For performance, compute everything possible before waiting for the previous operations to finish. The current
     // index contains the tile that is to be exported, so prepare the structures before beginning the export and export.
     const TTL_layout_t next_import_layout =
-        TTL_create_layout(tile_next_import.shape.width, tile_next_import.shape.height);
+        TTL_create_int_layout(tile_next_import.shape.width, tile_next_import.shape.height);
     const TTL_INT_SUB_TENSOR_TYPE next_import_int_sub_tensor =
         TTL_create_int_sub_tensor(simplex_buffer->common.int_base[simplex_buffer->common.index],
                                   tile_next_import.shape,
@@ -177,7 +177,7 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_SIMPLEX_BUFFERING_TYPE *const simplex_buf
                                     tile_next_import.offset,
                                     simplex_buffer->common.ext_tensor_in.elem_size);
 
-    const TTL_layout_t int_export_layout = TTL_create_layout(simplex_buffer->next_exported_tile.shape.width,
+    const TTL_layout_t int_export_layout = TTL_create_ext_layout(simplex_buffer->next_exported_tile.shape.width,
                                                              simplex_buffer->next_exported_tile.shape.height);
     const TTL_INT_TENSOR_TYPE int_export_tensor =
         TTL_create_int_tensor(simplex_buffer->common.int_base[simplex_buffer->common.index],
@@ -216,7 +216,7 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_SIMPLEX_BUFFERING_TYPE *const simplex_buf
     // Can write to out buffer according to size of curr_tile, rather than size
     // recently exported.
     const TTL_layout_t curr_int_layout =
-        TTL_create_layout(tile_current_export.shape.width, tile_current_export.shape.width);
+        TTL_create_int_layout(tile_current_export.shape.width, tile_current_export.shape.width);
     const TTL_INT_SUB_TENSOR_TYPE int_curr_buff_out =
         TTL_create_int_sub_tensor(simplex_buffer->common.int_base[simplex_buffer->common.index],
                                   tile_current_export.shape,

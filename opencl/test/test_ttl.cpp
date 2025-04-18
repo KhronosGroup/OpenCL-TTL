@@ -91,8 +91,8 @@ static const char *ttlDoubleBufferingKernel = R"(
     const TTL_tiler_t output_tiler = TTL_create_tiler(tensor_shape_out, TTL_create_shape(tile_width, tile_height));
 
     // External layouts.
-    const TTL_layout_t ext_layout_in = TTL_create_layout(external_stride_in);
-    const TTL_layout_t ext_layout_out = TTL_create_layout(external_stride_out);
+    const TTL_layout_t ext_layout_in = TTL_create_ext_layout(external_stride_in);
+    const TTL_layout_t ext_layout_out = TTL_create_ext_layout(external_stride_out);
 
     const TTL_const_ext_uchar_tensor_t ext_input_tensor =
         TTL_create_const_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
@@ -162,8 +162,8 @@ static const char *ttlSimplexBufferingKernel = R"(
     const TTL_tiler_t output_tiler = TTL_create_tiler(tensor_shape_out, TTL_create_shape(tile_width, tile_height));
 
     // External layouts.
-    const TTL_layout_t ext_layout_in = TTL_create_layout(external_stride_in);
-    const TTL_layout_t ext_layout_out = TTL_create_layout(external_stride_out);
+    const TTL_layout_t ext_layout_in = TTL_create_ext_layout(external_stride_in);
+    const TTL_layout_t ext_layout_out = TTL_create_ext_layout(external_stride_out);
 
     const TTL_ext_uchar_tensor_t ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
     const TTL_ext_uchar_tensor_t ext_output_tensor =
@@ -229,8 +229,8 @@ static const char *ttlDuplexBufferingKernel = R"(
     const TTL_tiler_t output_tiler = TTL_create_tiler(tensor_shape_out, TTL_create_shape(tile_width, tile_height));
 
     // External layouts.
-    const TTL_layout_t ext_layout_in = TTL_create_layout(external_stride_in);
-    const TTL_layout_t ext_layout_out = TTL_create_layout(external_stride_out);
+    const TTL_layout_t ext_layout_in = TTL_create_ext_layout(external_stride_in);
+    const TTL_layout_t ext_layout_out = TTL_create_ext_layout(external_stride_out);
 
     const TTL_ext_uchar_tensor_t ext_input_tensor = TTL_create_ext_tensor(ext_base_in, tensor_shape_in, ext_layout_in);
     const TTL_ext_uchar_tensor_t ext_output_tensor =

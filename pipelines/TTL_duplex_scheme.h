@@ -206,7 +206,7 @@ static inline TTL_IO_TENSOR_TYPE __attribute__((overloadable))
 __TTL_TRACE_FN(TTL_step_buffering, TTL_DUPLEX_BUFFERING_TYPE *const duplex_buffering, TTL_tile_t tile_current_import,
                TTL_tile_t tile_current_export) {
     const TTL_layout_t next_import_layout =
-        TTL_create_layout(tile_current_import.shape.width, tile_current_import.shape.height);
+        TTL_create_int_layout(tile_current_import.shape.width, tile_current_import.shape.height);
     const TTL_CONST_EXT_TENSOR_TYPE next_import_ext_tensor =
         TTL_create_const_ext_tensor(duplex_buffering->common.ext_tensor_in.base,
                                     tile_current_import.shape,
@@ -234,7 +234,7 @@ __TTL_TRACE_FN(TTL_step_buffering, TTL_DUPLEX_BUFFERING_TYPE *const duplex_buffe
                    &(*duplex_buffering->events)[1] __TTL_TRACE_LINE);
 
     const TTL_layout_t int_export_layout =
-        TTL_create_layout(tile_current_export.shape.width, tile_current_export.shape.height);
+        TTL_create_ext_layout(tile_current_export.shape.width, tile_current_export.shape.height);
     const TTL_EXT_TENSOR_TYPE to_export_to = TTL_create_ext_tensor(duplex_buffering->common.ext_tensor_out.base,
                                                                    tile_current_export.shape,
                                                                    duplex_buffering->common.ext_tensor_out.layout,

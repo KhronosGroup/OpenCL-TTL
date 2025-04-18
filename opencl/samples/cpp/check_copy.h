@@ -16,21 +16,20 @@
  * limitations under the License.
  */
 
-bool result_check(TEST_TENSOR_TYPE* const ext_base_in, TEST_TENSOR_TYPE* const ext_base_out, const int width,
+template <typename TestTensor>
+bool result_check(const TestTensor&  ext_base_in, const TestTensor& ext_base_out, const int width,
                   const int height) {
-#define input_buffer ((TEST_TENSOR_TYPE(*)[height][width])ext_base_in)
-#define output_buffer ((TEST_TENSOR_TYPE(*)[height][width])ext_base_out)
     bool result = true;
 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            TEST_TENSOR_TYPE expected = input_buffer[0][y][x];
+            TEST_TENSOR_TYPE expected = ext_base_in[y][x];
 
-            if (output_buffer[0][y][x] != expected) {
+            if (ext_base_out[y][x] != expected) {
                 printf("Mismatch at [%d, %d] " TEST_TENSOR_TYPE_SPECIFIER " != " TEST_TENSOR_TYPE_SPECIFIER " Tensor size [%d, %d]\n",
                        x,
                        y,
-                       output_buffer[0][y][x],
+                       ext_base_out[y][x],
                        expected,
                        width,
                        height);
