@@ -21,13 +21,37 @@
 # Use relative paths below, this requires no symlink an not setup.
 SCRIPTS_DIR=`dirname "$0"`/git-hooks
 
-# Apply clang-format to all changed files
-# the configuration is in the root of the
-# repo in the .clang-format file
-$SCRIPTS_DIR/clang-format HEAD^
+check_format=true
+check_copyright=true
 
-# Check Copyrights are correct
-$SCRIPTS_DIR/copyright-check HEAD^
+while getopts fch flag
+do
+    case "${flag}" in
+		f) check_format=false;;
+		c) check_copyright=false;;
+		h) show_help=true;;
+    esac
+done
+
+if [ "$show_help" = true ]; then
+	echo "Usage: git_check.sh [-f] [-c] [-h]"
+	echo "  -f  Skip clang-format check"
+	echo "  -c  Skip copyright check"
+	echo "  -h  Show this help message"
+	exit 0
+fi
+
+if [ "$check_format" = true ]; then
+	# Apply clang-format to all changed files
+	# the configuration is in the root of the
+	# repo in the .clang-format file
+	$SCRIPTS_DIR/clang-format HEAD^
+fi
+
+if [ "$check_copyright" = true ]; then
+	# Check Copyrights are correct
+	$SCRIPTS_DIR/copyright-check HEAD^
+fi
 
 git diff --exit-code
 
