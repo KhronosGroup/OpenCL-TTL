@@ -1,0 +1,9 @@
+<map id="TTL_sub_tensor&lt; TENSORTYPE &gt;" name="TTL_sub_tensor&lt; TENSORTYPE &gt;">
+<area shape="rect" id="Node000001" title="A tensor plus its reference to its parent tensor." alt="" coords="6,340,222,549"/>
+<area shape="rect" id="Node000002" href="$structTTL__sub__tensor_1_1Origin.html" title=" " alt="" coords="12,196,217,277"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,277,117,323,112,323,112,277"/>
+<area shape="rect" id="Node000003" href="$structTTL__shape.html" title="Description of a Shape." alt="" coords="5,5,103,133"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="80,132,97,179,92,181,75,133"/>
+<area shape="rect" id="Node000004" href="$structTTL__offset.html" title="Description of the 3D offset of an object." alt="" coords="127,16,222,122"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="161,123,144,173,140,181,135,179,138,171,156,121"/>
+</map>

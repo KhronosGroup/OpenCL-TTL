@@ -1,0 +1,412 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="TTL__cpp_2TTL__tiles_8h" kind="file" language="C++">
+    <compoundname>TTL_cpp/TTL_tiles.h</compoundname>
+    <includes refid="TTL__cpp_2TTL__types_8h" local="yes">TTL_types.h</includes>
+    <includedby refid="TTL__cpp_2TTL__core_8h" local="yes">TTL_core.h</includedby>
+    <includedby refid="TTL__cpp_2TTL__debug_8h" local="yes">TTL_debug.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>TTL_macros.h</label>
+        <link refid="TTL__cpp_2TTL__macros_8h"/>
+      </node>
+      <node id="4">
+        <label>TTL_strong_type.h</label>
+        <link refid="TTL__strong__type_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_tiles.h</label>
+        <link refid="TTL__cpp_2TTL__tiles_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TTL_types.h</label>
+        <link refid="TTL__cpp_2TTL__types_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>TTL.h</label>
+        <link refid="TTL__cpp_2TTL_8h"/>
+      </node>
+      <node id="2">
+        <label>TTL_core.h</label>
+        <link refid="TTL__cpp_2TTL__core_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>TTL_debug.h</label>
+        <link refid="TTL__cpp_2TTL__debug_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TTL_import_export.h</label>
+        <link refid="TTL__cpp_2TTL__import__export_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>TTL_pipeline_schemes.h</label>
+        <link refid="TTL__cpp_2TTL__pipeline__schemes_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_tiles.h</label>
+        <link refid="TTL__cpp_2TTL__tiles_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structTTL__augmentation" prot="public">TTL_augmentation</innerclass>
+    <innerclass refid="structTTL__tile" prot="public">TTL_tile</innerclass>
+    <innerclass refid="structTTL__tiler" prot="public">TTL_tiler</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" prot="public" static="no">
+        <type>unsigned char</type>
+        <definition>typedef unsigned char TTL_augmented_dim</definition>
+        <argsstring></argsstring>
+        <name>TTL_augmented_dim</name>
+        <briefdescription>
+<para>Augment an input tensor with logical padding. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>When an input tensor is imported using a tiler the resulting tensors may have elements beyond the space of the original tensor. In terms of the origin tensor the subtensor may for example start at offset(-1, -1, -1) in this case the elements at (-1, -1, -1), (-1, 0, 0) etc. needed to be created from a process of augmentation.</para>
+<para>Currently the only dynamic part of the augmentation is the size of the augmentation the augmented values are simply hardcode.</para>
+<para>A <ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref> is the number of elements to augment. A number of a &quot;augmented&quot; elements in the unit of elements </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="42" column="23" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_tiles.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2025<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__cpp_2TTL__types_8h" kindref="compound">TTL_types.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">/******************************************************</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>AUGMENTATION</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*****************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="27"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Augment<sp/>an<sp/>input<sp/>tensor<sp/>with<sp/>logical<sp/>padding</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>When<sp/>an<sp/>input<sp/>tensor<sp/>is<sp/>imported<sp/>using<sp/>a<sp/>tiler<sp/>the<sp/>resulting<sp/>tensors</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>may<sp/>have<sp/>elements<sp/>beyond<sp/>the<sp/>space<sp/>of<sp/>the<sp/>original<sp/>tensor.<sp/>In<sp/>terms<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>origin<sp/>tensor<sp/>the<sp/>subtensor<sp/>may<sp/>for<sp/>example<sp/>start<sp/>at<sp/>offset(-1,<sp/>-1,<sp/>-1)<sp/>in</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>this<sp/>case<sp/>the<sp/>elements<sp/>at<sp/>(-1,<sp/>-1,<sp/>-1),<sp/>(-1,<sp/>0,<sp/>0)<sp/>etc.<sp/>needed<sp/>to<sp/>be<sp/>created</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>from<sp/>a<sp/>process<sp/>of<sp/>augmentation.</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>Currently<sp/>the<sp/>only<sp/>dynamic<sp/>part<sp/>of<sp/>the<sp/>augmentation<sp/>is<sp/>the<sp/>size<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>augmentation<sp/>the<sp/>augmented<sp/>values<sp/>are<sp/>simply<sp/>hardcode.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>A<sp/>TTL_augmented_dim<sp/>is<sp/>the<sp/>number<sp/>of<sp/>elements<sp/>to<sp/>augment.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>A<sp/>number<sp/>of<sp/>a<sp/>&quot;augmented&quot;<sp/>elements<sp/>in<sp/>the<sp/>unit<sp/>of<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="44"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@brief<sp/>3D<sp/>description<sp/>of<sp/>the<sp/>augmented<sp/>margins</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>TTL_augmentation<sp/>represents<sp/>the<sp/>number<sp/>of<sp/>elements<sp/>that<sp/>a<sp/>tensor<sp/>will<sp/>be<sp/>expanded<sp/>in<sp/>each<sp/>dimension.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>For<sp/>example<sp/>if<sp/>left<sp/>=<sp/>1<sp/>then<sp/>one<sp/>column<sp/>of<sp/>elements<sp/>will<sp/>be<sp/>added<sp/>to<sp/>a<sp/>tensor<sp/>thereby<sp/>increasing<sp/>its<sp/>width<sp/>by<sp/>1.</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>The<sp/>type<sp/>used<sp/>to<sp/>hold<sp/>the<sp/>augmentation<sp/>of<sp/>tiles<sp/>along<sp/>all<sp/>dimensions</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="structTTL__augmentation" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTTL__augmentation_1a997146164f9056d2dc24317f1806aa25" kindref="member">TTL_augmentation</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>3D<sp/>Description<sp/>of<sp/>a<sp/>Tile<sp/>augmentation</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>TTL_overlap<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>left<sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Left<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>right<sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Right<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>top<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Top<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>bottom<sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Bottom<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>front<sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Front<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>back<sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>Back<sp/>augmentation<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>TTL_augmentation<sp/>describing<sp/>in<sp/>3D<sp/>the<sp/>overlap<sp/>requested.</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="structTTL__augmentation_1a997146164f9056d2dc24317f1806aa25" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__augmentation_1a997146164f9056d2dc24317f1806aa25" kindref="member">TTL_augmentation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1af865108b553f8f9c4e05028e6d83262e" kindref="member">left</ref><sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1a03e0281638af54db8ac5d0fab6b01024" kindref="member">right</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1ae130626ebda08797262bf0141eb76897" kindref="member">top</ref><sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1a270ed5c56b54284d8ed43bd0e6c6eedc" kindref="member">bottom</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1ac071c6bc3d90a3d2ea2ed5b45d87a583" kindref="member">front</ref><sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1a28eefe54d58ecb7ad3830679509d5290" kindref="member">back</ref><sp/>=<sp/>0)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__augmentation_1af865108b553f8f9c4e05028e6d83262e" kindref="member">left</ref>(<ref refid="structTTL__augmentation_1af865108b553f8f9c4e05028e6d83262e" kindref="member">left</ref>),<sp/><ref refid="structTTL__augmentation_1a03e0281638af54db8ac5d0fab6b01024" kindref="member">right</ref>(<ref refid="structTTL__augmentation_1a03e0281638af54db8ac5d0fab6b01024" kindref="member">right</ref>),<sp/><ref refid="structTTL__augmentation_1ae130626ebda08797262bf0141eb76897" kindref="member">top</ref>(<ref refid="structTTL__augmentation_1ae130626ebda08797262bf0141eb76897" kindref="member">top</ref>),<sp/><ref refid="structTTL__augmentation_1a270ed5c56b54284d8ed43bd0e6c6eedc" kindref="member">bottom</ref>(<ref refid="structTTL__augmentation_1a270ed5c56b54284d8ed43bd0e6c6eedc" kindref="member">bottom</ref>),<sp/><ref refid="structTTL__augmentation_1ac071c6bc3d90a3d2ea2ed5b45d87a583" kindref="member">front</ref>(<ref refid="structTTL__augmentation_1ac071c6bc3d90a3d2ea2ed5b45d87a583" kindref="member">front</ref>),<sp/><ref refid="structTTL__augmentation_1a28eefe54d58ecb7ad3830679509d5290" kindref="member">back</ref>(<ref refid="structTTL__augmentation_1a28eefe54d58ecb7ad3830679509d5290" kindref="member">back</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="structTTL__augmentation_1af865108b553f8f9c4e05028e6d83262e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1af865108b553f8f9c4e05028e6d83262e" kindref="member">left</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Left<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="structTTL__augmentation_1a03e0281638af54db8ac5d0fab6b01024" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1a03e0281638af54db8ac5d0fab6b01024" kindref="member">right</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Right<sp/>hand<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="structTTL__augmentation_1ae130626ebda08797262bf0141eb76897" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1ae130626ebda08797262bf0141eb76897" kindref="member">top</ref>;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Top<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="structTTL__augmentation_1a270ed5c56b54284d8ed43bd0e6c6eedc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1a270ed5c56b54284d8ed43bd0e6c6eedc" kindref="member">bottom</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Bottom<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="structTTL__augmentation_1ac071c6bc3d90a3d2ea2ed5b45d87a583" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1ac071c6bc3d90a3d2ea2ed5b45d87a583" kindref="member">front</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Front<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="structTTL__augmentation_1a28eefe54d58ecb7ad3830679509d5290" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref><sp/><ref refid="structTTL__augmentation_1a28eefe54d58ecb7ad3830679509d5290" kindref="member">back</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Back<sp/>augmentation<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">/***</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>@brief<sp/>A<sp/>Tile<sp/>is<sp/>described<sp/>by<sp/>its<sp/>Shape<sp/>and<sp/>the<sp/>offset<sp/>from<sp/>the<sp/>beginning<sp/>of</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>the<sp/>Space</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>The<sp/>type<sp/>used<sp/>to<sp/>hold<sp/>a<sp/>tile<sp/>of<sp/>a<sp/>space<sp/>having<sp/>a<sp/>given<sp/>shape<sp/>and<sp/>offset<sp/>from</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>space</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="structTTL__tile" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTTL__tile_1aed8b3ca5943ea7f67c4a8768caceaa5b" kindref="member">TTL_tile</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Create<sp/>an<sp/>empty<sp/>tile.<sp/>Empty<sp/>means<sp/>it<sp/>has<sp/>all<sp/>dimensions<sp/>set<sp/>to<sp/>zero</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Most<sp/>operations<sp/>on<sp/>an<sp/>empty<sp/>tile<sp/>should<sp/>turn<sp/>into<sp/>no-ops<sp/>and<sp/>so<sp/>an<sp/>empty<sp/>tile</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>is<sp/>the<sp/>safest<sp/>default<sp/>state.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="structTTL__tile_1aed8b3ca5943ea7f67c4a8768caceaa5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tile_1aed8b3ca5943ea7f67c4a8768caceaa5b" kindref="member">TTL_tile</ref>()<sp/>:<sp/><ref refid="structTTL__tile_1ae80d7f8fd1135741cd483ee8340ce4f4" kindref="member">shape</ref>(),<sp/><ref refid="structTTL__tile_1a1457913511455bf0b050d5837ad875ad" kindref="member">offset</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Check<sp/>if<sp/>the<sp/>tile<sp/>passed<sp/>is<sp/>empty.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Empty<sp/>is<sp/>defined<sp/>as<sp/>width<sp/>of<sp/>the<sp/>shape<sp/>being<sp/>equal<sp/>to<sp/>0.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tile<sp/>The<sp/>tile<sp/>to<sp/>check<sp/>the<sp/>emptiness<sp/>of.</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>true<sp/>if<sp/>shape<sp/>is<sp/>empty</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>false<sp/>if<sp/>shape<sp/>is<sp/>not<sp/>empty</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="structTTL__tile_1afc24b4f768b24aa4dcb07cb6b5a7cd57" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structTTL__tile_1afc24b4f768b24aa4dcb07cb6b5a7cd57" kindref="member">empty</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__tile_1ae80d7f8fd1135741cd483ee8340ce4f4" kindref="member">shape</ref>.empty();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="structTTL__tile_1ae80d7f8fd1135741cd483ee8340ce4f4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/><ref refid="structTTL__tile_1ae80d7f8fd1135741cd483ee8340ce4f4" kindref="member">shape</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@see<sp/>TTL_shape</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="structTTL__tile_1a1457913511455bf0b050d5837ad875ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref><sp/><ref refid="structTTL__tile_1a1457913511455bf0b050d5837ad875ad" kindref="member">offset</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>@see<sp/>TTL_offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="115"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*<sp/>@brief<sp/>TTL_tiler<sp/>is<sp/>the<sp/>basic<sp/>unit<sp/>that<sp/>describes<sp/>how<sp/>a<sp/>tile<sp/>is<sp/>subdivided.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*<sp/>The<sp/>TTL_tiler<sp/>type<sp/>represents<sp/>the<sp/>tiling<sp/>of<sp/>a<sp/>3D<sp/>space<sp/>into<sp/>3D<sp/>tiles<sp/>with</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*<sp/>operational<sp/>overlap</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="structTTL__tiler" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTTL__tiler_1a10f192d0cb074ee4ca0dc918d2909af5" kindref="member">TTL_tiler</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Return<sp/>a<sp/>TTL_tiler<sp/>based<sp/>on<sp/>a<sp/>shape,<sp/>a<sp/>tile,<sp/>and<sp/>an<sp/>overlap</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tensor_shape<sp/>The<sp/>shape<sp/>to<sp/>be<sp/>tiled</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tile_shape<sp/>The<sp/>description<sp/>of<sp/>the<sp/>tile<sp/>that<sp/>the<sp/>shape<sp/>will<sp/>be<sp/>sub-divided<sp/>to.</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>overlap<sp/>The<sp/>overlap<sp/>between<sp/>tiles</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>augmentation<sp/>The<sp/>augomentation<sp/>to<sp/>apply<sp/>at<sp/>the<sp/>edges<sp/>durring<sp/>import.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Complete<sp/>description<sp/>of<sp/>what<sp/>not<sp/>how<sp/>here.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>tiler<sp/>that<sp/>can<sp/>produce<sp/>a<sp/>tile<sp/>for<sp/>any<sp/>given<sp/>index.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="structTTL__tiler_1a10f192d0cb074ee4ca0dc918d2909af5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tiler_1a10f192d0cb074ee4ca0dc918d2909af5" kindref="member">TTL_tiler</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/>tensor_shape,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/>tile_shape,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__overlap" kindref="compound">TTL_overlap</ref><sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>,</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__augmentation" kindref="compound">TTL_augmentation</ref><sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__tiler_1a1e71e93f3a1dacb535624895b762c649" kindref="member">space</ref>(tensor_shape),<sp/><ref refid="structTTL__tiler_1aa1cb2ce41e352e4bea87d890177e4700" kindref="member">tile</ref>(tile_shape),<sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>(<ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>),<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>(<ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1a502b43c344c3a2ed30080d57b877d6d2" kindref="member">tiles_in_width</ref><sp/>=</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tiler_1a2736e1c27b1b421e59f930816461d4cc" kindref="member">TTL_ceil_of_a_div_b</ref>(tensor_shape.<ref refid="structTTL__shape_1a6bf461258040e8889775fba47de4b3a2" kindref="member">width</ref><sp/>+<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.left<sp/>+<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.right<sp/>-<sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>.width,</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_shape.<ref refid="structTTL__shape_1a6bf461258040e8889775fba47de4b3a2" kindref="member">width</ref><sp/>-<sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>.width);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1a2959900ae0be0315e856f064cd207ef7" kindref="member">tiles_in_height</ref><sp/>=</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tiler_1a2736e1c27b1b421e59f930816461d4cc" kindref="member">TTL_ceil_of_a_div_b</ref>(tensor_shape.<ref refid="structTTL__shape_1a0eb7b91266de3a011bdfd826f770ab19" kindref="member">height</ref><sp/>+<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.top<sp/>+<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.bottom<sp/>-<sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>.height,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_shape.<ref refid="structTTL__shape_1a0eb7b91266de3a011bdfd826f770ab19" kindref="member">height</ref><sp/>-<sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>.height);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1a680d6b8678010eb9c495befbb56f117d" kindref="member">tiles_in_depth</ref><sp/>=</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tiler_1a2736e1c27b1b421e59f930816461d4cc" kindref="member">TTL_ceil_of_a_div_b</ref>(tensor_shape.<ref refid="structTTL__shape_1a4397e51b3e3c0cc5b0220b3d37b5baf1" kindref="member">depth</ref><sp/>+<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.front<sp/>+<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.back<sp/>-<sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>.depth,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile_shape.<ref refid="structTTL__shape_1a4397e51b3e3c0cc5b0220b3d37b5baf1" kindref="member">depth</ref><sp/>-<sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>.depth);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1aa7e5371ee90faaacc58ce2cf8c5add08" kindref="member">tiles_in_plane</ref><sp/>=<sp/><ref refid="structTTL__tiler_1a502b43c344c3a2ed30080d57b877d6d2" kindref="member">tiles_in_width</ref><sp/>*<sp/><ref refid="structTTL__tiler_1a2959900ae0be0315e856f064cd207ef7" kindref="member">tiles_in_height</ref>;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1a937f78ac8514a96a7a60fe82d336a99d" kindref="member">number_of_tiles</ref><sp/>=<sp/><ref refid="structTTL__tiler_1aa7e5371ee90faaacc58ce2cf8c5add08" kindref="member">tiles_in_plane</ref><sp/>*<sp/><ref refid="structTTL__tiler_1a680d6b8678010eb9c495befbb56f117d" kindref="member">tiles_in_depth</ref>;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref><sp/>=<sp/>{<sp/><ref refid="structTTL__tiler_1a937f78ac8514a96a7a60fe82d336a99d" kindref="member">number_of_tiles</ref>,<sp/><ref refid="structTTL__tiler_1a502b43c344c3a2ed30080d57b877d6d2" kindref="member">tiles_in_width</ref>,<sp/><ref refid="structTTL__tiler_1a2959900ae0be0315e856f064cd207ef7" kindref="member">tiles_in_height</ref>,<sp/><ref refid="structTTL__tiler_1a680d6b8678010eb9c495befbb56f117d" kindref="member">tiles_in_depth</ref>,<sp/><ref refid="structTTL__tiler_1aa7e5371ee90faaacc58ce2cf8c5add08" kindref="member">tiles_in_plane</ref><sp/>};</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Simplify<sp/>creation<sp/>of<sp/>non-overlap<sp/>tiler</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="structTTL__tiler_1ad9765b5c8412eadae96f391089983448" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tiler_1ad9765b5c8412eadae96f391089983448" kindref="member">TTL_tiler</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/>shape,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/><ref refid="structTTL__tiler_1aa1cb2ce41e352e4bea87d890177e4700" kindref="member">tile</ref>)</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__tiler_1a10f192d0cb074ee4ca0dc918d2909af5" kindref="member">TTL_tiler</ref>(shape,<sp/><ref refid="structTTL__tiler_1aa1cb2ce41e352e4bea87d890177e4700" kindref="member">tile</ref>,<sp/><ref refid="structTTL__overlap" kindref="compound">TTL_overlap</ref>(),<sp/><ref refid="structTTL__augmentation" kindref="compound">TTL_augmentation</ref>())<sp/>{}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="structTTL__tiler_1a1e71e93f3a1dacb535624895b762c649" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/><ref refid="structTTL__tiler_1a1e71e93f3a1dacb535624895b762c649" kindref="member">space</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Represents<sp/>the<sp/>space<sp/>to<sp/>be<sp/>tiled<sp/>such<sp/>as<sp/>an<sp/>image</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="structTTL__tiler_1aa1cb2ce41e352e4bea87d890177e4700" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/><ref refid="structTTL__tiler_1aa1cb2ce41e352e4bea87d890177e4700" kindref="member">tile</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>All<sp/>tiles<sp/>will<sp/>be<sp/>of<sp/>this<sp/>shape,<sp/>except<sp/>for<sp/>clamping<sp/>at</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>the<sp/>end<sp/>of<sp/>the<sp/>space</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__overlap" kindref="compound">TTL_overlap</ref><sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>When<sp/>zeroes<sp/>represent<sp/>no<sp/>overlap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__augmentation" kindref="compound">TTL_augmentation</ref><sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>The<sp/>augmentation<sp/>that<sp/>the<sp/>tile<sp/>produces.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Precomputed<sp/>information<sp/>to<sp/>speed<sp/>up<sp/>later<sp/>reuse</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="167" refid="structTTL__tiler_1a937f78ac8514a96a7a60fe82d336a99d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1a937f78ac8514a96a7a60fe82d336a99d" kindref="member">number_of_tiles</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="structTTL__tiler_1a502b43c344c3a2ed30080d57b877d6d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1a502b43c344c3a2ed30080d57b877d6d2" kindref="member">tiles_in_width</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="structTTL__tiler_1a2959900ae0be0315e856f064cd207ef7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1a2959900ae0be0315e856f064cd207ef7" kindref="member">tiles_in_height</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="structTTL__tiler_1a680d6b8678010eb9c495befbb56f117d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1a680d6b8678010eb9c495befbb56f117d" kindref="member">tiles_in_depth</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="structTTL__tiler_1aa7e5371ee90faaacc58ce2cf8c5add08" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1aa7e5371ee90faaacc58ce2cf8c5add08" kindref="member">tiles_in_plane</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172" refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Return<sp/>the<sp/>number<sp/>of<sp/>tiles<sp/>that<sp/>this<sp/>tile<sp/>can<sp/>produce.</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>int<sp/>The<sp/>number<sp/>of<sp/>tiles<sp/>produced<sp/>by<sp/>the<sp/>tiler.</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="structTTL__tiler_1ad55f4ee7a1b66077ded977bf150f1418" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler_1ad55f4ee7a1b66077ded977bf150f1418" kindref="member">number_of_tiles</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.number_of_tiles;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Given<sp/>a<sp/>tile<sp/>ID<sp/>return<sp/>true<sp/>or<sp/>false<sp/>to<sp/>indicate<sp/>if<sp/>the<sp/>id<sp/>is<sp/>valid</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tile_id<sp/>The<sp/>ID<sp/>to<sp/>validate.</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>int<sp/>The<sp/>number<sp/>of<sp/>tiles<sp/>produced<sp/>by<sp/>the<sp/>tiler.</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="structTTL__tiler_1a2894595d4c5cc2e105f3da13a69693ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler_1a2894595d4c5cc2e105f3da13a69693ad" kindref="member">valid_tile_id</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tile_id)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((tile_id<sp/>&gt;=<sp/>0)<sp/>&amp;&amp;<sp/>(tile_id<sp/>&lt;<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.number_of_tiles));</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Return<sp/>the<sp/>ceil<sp/>value<sp/>of<sp/>a/b<sp/>i.e.<sp/>ceil(a/b)</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Implementation<sp/>of<sp/>ceil(a/b)<sp/>without<sp/>requiring<sp/>a<sp/>library<sp/>or<sp/>floating-point.</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Internal<sp/>TTL<sp/>function<sp/>not<sp/>part<sp/>of<sp/>the<sp/>API.</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>a<sp/>The<sp/>dividend<sp/>to<sp/>use<sp/>in<sp/>the<sp/>calculation</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>b<sp/>The<sp/>divisor<sp/>to<sp/>use<sp/>in<sp/>the<sp/>calculation</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@todo<sp/>b<sp/>is<sp/>a<sp/>shape<sp/>dimension<sp/>of<sp/>a<sp/>tensor,<sp/>so<sp/>it<sp/>is<sp/>not<sp/>zero.<sp/>Remove<sp/>dynamic</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>check<sp/>for<sp/>zero<sp/>b,<sp/>w/o<sp/>crashing<sp/>the<sp/>compiler.</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="structTTL__tiler_1a2736e1c27b1b421e59f930816461d4cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler_1a2736e1c27b1b421e59f930816461d4cc" kindref="member">TTL_ceil_of_a_div_b</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>b<sp/>?<sp/>((a<sp/>+<sp/>b<sp/>-<sp/>1)<sp/>/<sp/>b)<sp/>:<sp/>0;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211" refid="structTTL__tiler_1ad2241571210ff9a1284d6523d6c80779" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1ad2241571210ff9a1284d6523d6c80779" kindref="member">tiles_in_width</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_width;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="structTTL__tiler_1a66fa10d1c9f93a42a9f190aacaa44057" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1a66fa10d1c9f93a42a9f190aacaa44057" kindref="member">tiles_in_height</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_height;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219" refid="structTTL__tiler_1a5bd0aab0b086b8ebc4de0c467088733b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tiler_1a5bd0aab0b086b8ebc4de0c467088733b" kindref="member">tiles_in_depth</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_depth;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="223"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>a<sp/>tile<sp/>at<sp/>a<sp/>position<sp/>from<sp/>a<sp/>tiler<sp/>and<sp/>respective<sp/>coordinates.</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>x<sp/>position<sp/>of<sp/>the<sp/>tile<sp/>being<sp/>created</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>y<sp/>position<sp/>of<sp/>the<sp/>tile<sp/>being<sp/>created</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>z<sp/>position<sp/>of<sp/>the<sp/>tile<sp/>being<sp/>created</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tiler<sp/>The<sp/>tiler<sp/>from<sp/>which<sp/>the<sp/>tiler<sp/>can<sp/>be<sp/>calculated.</highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>created<sp/>TTL_tile<sp/>type</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="structTTL__tiler_1a7884b8599158ca656fee4cdf9a5e35fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tile" kindref="compound">TTL_tile</ref><sp/><ref refid="structTTL__tiler_1a7884b8599158ca656fee4cdf9a5e35fd" kindref="member">create_tile</ref>(<ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>x,<sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>y,<sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>z)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tile" kindref="compound">TTL_tile</ref><sp/>result;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>the<sp/>offset<sp/>in<sp/>3D</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structTTL__tile_1a1457913511455bf0b050d5837ad875ad" kindref="member">offset</ref><sp/>=<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>((x<sp/>*<sp/>(<ref refid="structTTL__tiler_1aa1cb2ce41e352e4bea87d890177e4700" kindref="member">tile</ref>.width<sp/>-<sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>.width))<sp/>-<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.left,</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(y<sp/>*<sp/>(<ref refid="structTTL__tiler_1aa1cb2ce41e352e4bea87d890177e4700" kindref="member">tile</ref>.height<sp/>-<sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>.height))<sp/>-<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.top,</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(z<sp/>*<sp/>(<ref refid="structTTL__tiler_1aa1cb2ce41e352e4bea87d890177e4700" kindref="member">tile</ref>.depth<sp/>-<sp/><ref refid="structTTL__tiler_1a283dc7363bb8ca86bf7be36c8c861461" kindref="member">overlap</ref>.depth))<sp/>-<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.front);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>the<sp/>tile<sp/>shape,<sp/>clamping<sp/>at<sp/>the<sp/>end<sp/>of<sp/>each<sp/>dimension</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structTTL__tile_1ae80d7f8fd1135741cd483ee8340ce4f4" kindref="member">shape</ref><sp/>=<sp/><ref refid="structTTL__tiler_1aa1cb2ce41e352e4bea87d890177e4700" kindref="member">tile</ref>;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(x<sp/>==<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_width<sp/>-<sp/>1)<sp/>result.<ref refid="structTTL__tile_1ae80d7f8fd1135741cd483ee8340ce4f4" kindref="member">shape</ref>.<ref refid="structTTL__shape_1a6bf461258040e8889775fba47de4b3a2" kindref="member">width</ref><sp/>=<sp/><ref refid="structTTL__tiler_1a1e71e93f3a1dacb535624895b762c649" kindref="member">space</ref>.width<sp/>-<sp/>result.<ref refid="structTTL__tile_1a1457913511455bf0b050d5837ad875ad" kindref="member">offset</ref>.<ref refid="structTTL__offset_1ab94c508c8832f23f7bd033509c0cd260" kindref="member">x</ref><sp/>+<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.right;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(y<sp/>==<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_height<sp/>-<sp/>1)<sp/>result.<ref refid="structTTL__tile_1ae80d7f8fd1135741cd483ee8340ce4f4" kindref="member">shape</ref>.<ref refid="structTTL__shape_1a0eb7b91266de3a011bdfd826f770ab19" kindref="member">height</ref><sp/>=<sp/><ref refid="structTTL__tiler_1a1e71e93f3a1dacb535624895b762c649" kindref="member">space</ref>.height<sp/>-<sp/>result.<ref refid="structTTL__tile_1a1457913511455bf0b050d5837ad875ad" kindref="member">offset</ref>.<ref refid="structTTL__offset_1a12f2cddc72b26b78ff94dac7fc120d86" kindref="member">y</ref><sp/>+<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.bottom;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(z<sp/>==<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_depth<sp/>-<sp/>1)<sp/>result.<ref refid="structTTL__tile_1ae80d7f8fd1135741cd483ee8340ce4f4" kindref="member">shape</ref>.<ref refid="structTTL__shape_1a4397e51b3e3c0cc5b0220b3d37b5baf1" kindref="member">depth</ref><sp/>=<sp/><ref refid="structTTL__tiler_1a1e71e93f3a1dacb535624895b762c649" kindref="member">space</ref>.depth<sp/>-<sp/>result.<ref refid="structTTL__tile_1a1457913511455bf0b050d5837ad875ad" kindref="member">offset</ref>.<ref refid="structTTL__offset_1a11476dfa0a44a26128268071e40ad41f" kindref="member">z</ref><sp/>+<sp/><ref refid="structTTL__tiler_1a6a893249611171e24b441134c99b9f3c" kindref="member">augmentation</ref>.back;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Return<sp/>the<sp/>tile_id&apos;th<sp/>tile<sp/>of<sp/>a<sp/>tile<sp/>array<sp/>in<sp/>row-major<sp/>order.</highlight></codeline>
+<codeline lineno="255"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Return<sp/>the<sp/>tile_id&apos;th<sp/>tile,<sp/>starting<sp/>from<sp/>tile_id=0,<sp/>in<sp/>row-major<sp/>order.</highlight></codeline>
+<codeline lineno="257"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Returns<sp/>an<sp/>invalid<sp/>tile<sp/>if<sp/>tile_id<sp/>is<sp/>not<sp/>valid<sp/>(not<sp/>from<sp/>[0,</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>number_of_tiles))</highlight></codeline>
+<codeline lineno="259"><highlight class="comment"></highlight></codeline>
+<codeline lineno="260"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tile_id<sp/>The<sp/>tile<sp/>id<sp/>to<sp/>return<sp/>-<sp/>if<sp/>out<sp/>of<sp/>bounds<sp/>then<sp/>an<sp/>invalid<sp/>tile</highlight></codeline>
+<codeline lineno="261"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>is<sp/>returned</highlight></codeline>
+<codeline lineno="262"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tiler<sp/>The<sp/>containing<sp/>with<sp/>the<sp/>shape<sp/>and<sp/>tiling<sp/>information</highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="264"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>tile<sp/>that<sp/>is<sp/>represented<sp/>by<sp/>tile_id<sp/>when<sp/>interpreted<sp/>in<sp/>row-major</highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>order.</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267" refid="structTTL__tiler_1abcbd1134679236df735bfffb7cffa13f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tile" kindref="compound">TTL_tile</ref><sp/><ref refid="structTTL__tiler_1abcbd1134679236df735bfffb7cffa13f" kindref="member">get_tile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tile_id)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structTTL__tiler_1a2894595d4c5cc2e105f3da13a69693ad" kindref="member">valid_tile_id</ref>(tile_id)<sp/>==<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tile" kindref="compound">TTL_tile</ref><sp/>invalid;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>invalid;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>the<sp/>3D<sp/>coordinates<sp/>of<sp/>the<sp/>tile<sp/>in<sp/>order<sp/>to<sp/>compute<sp/>its<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>z<sp/>=<sp/>tile_id<sp/>/<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_plane;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>tid_in_plane<sp/>=<sp/>tile_id<sp/>%<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_plane;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>y<sp/>=<sp/>tid_in_plane<sp/>/<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_width;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>x<sp/>=<sp/>tid_in_plane<sp/>%<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_width;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler_1a7884b8599158ca656fee4cdf9a5e35fd" kindref="member">create_tile</ref>(x,<sp/>y,<sp/>z);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="282"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="283"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Return<sp/>the<sp/>tile_id&apos;th<sp/>tile<sp/>of<sp/>a<sp/>tile<sp/>array<sp/>in<sp/>column-major<sp/>order.</highlight></codeline>
+<codeline lineno="284"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="285"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Return<sp/>the<sp/>tile_id&apos;th<sp/>tile,<sp/>starting<sp/>from<sp/>tile_id=0,<sp/>in<sp/>column-major<sp/>order.</highlight></codeline>
+<codeline lineno="286"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Returns<sp/>an<sp/>invalid<sp/>tile<sp/>if<sp/>tile_id<sp/>is<sp/>not<sp/>valid<sp/>(not<sp/>from<sp/>[0,</highlight></codeline>
+<codeline lineno="287"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>number_of_tiles))</highlight></codeline>
+<codeline lineno="288"><highlight class="comment"></highlight></codeline>
+<codeline lineno="289"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tile_id<sp/>The<sp/>tile<sp/>id<sp/>to<sp/>return<sp/>-<sp/>if<sp/>out<sp/>of<sp/>bounds<sp/>then<sp/>an<sp/>invalid<sp/>tile</highlight></codeline>
+<codeline lineno="290"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>is<sp/>returned</highlight></codeline>
+<codeline lineno="291"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tiler<sp/>The<sp/>tiler<sp/>containing<sp/>the<sp/>shape<sp/>and<sp/>tiling<sp/>information</highlight></codeline>
+<codeline lineno="292"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="293"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>tile<sp/>that<sp/>is<sp/>represented<sp/>by<sp/>tile_id<sp/>when<sp/>interpreted<sp/>in</highlight></codeline>
+<codeline lineno="294"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>column-major<sp/>order.</highlight></codeline>
+<codeline lineno="295"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296" refid="structTTL__tiler_1ada189a8dddeda59df57a3a87c5faa4f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tile" kindref="compound">TTL_tile</ref><sp/><ref refid="structTTL__tiler_1ada189a8dddeda59df57a3a87c5faa4f0" kindref="member">get_tile_column_major</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tile_id)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>the<sp/>3D<sp/>coordinates<sp/>of<sp/>the<sp/>tile<sp/>in<sp/>order<sp/>to<sp/>compute<sp/>its<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>z<sp/>=<sp/>tile_id<sp/>/<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_plane;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>tid_in_plane<sp/>=<sp/>tile_id<sp/>%<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_plane;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>y<sp/>=<sp/>tid_in_plane<sp/>%<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_height;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>x<sp/>=<sp/>tid_in_plane<sp/>/<sp/><ref refid="structTTL__tiler_1a73d49363e6ccabb7b25f33770db45e5e" kindref="member">cache</ref>.tiles_in_height;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__tiler_1a7884b8599158ca656fee4cdf9a5e35fd" kindref="member">create_tile</ref>(x,<sp/>y,<sp/>z);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h"/>
+  </compounddef>
+</doxygen>

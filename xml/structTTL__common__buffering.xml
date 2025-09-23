@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__common__buffering" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_common_buffering</compoundname>
+    <includes refid="p_2pipelines_2TTL__schemes__common_8h" local="no">TTL_schemes_common.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TENSORTYPE</type>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>BASES_COUNT</declname>
+        <defname>BASES_COUNT</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__common__buffering_1a873256b398ea0c85ebef2854c9905485" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TTL_common_buffering&lt; TENSORTYPE, BASES_COUNT &gt;::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <qualifiedname>TTL_common_buffering::index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describes the current buffer index when pipelining. For single 0-&gt;1-&gt;0, for double 0-&gt;1-&gt;0-&gt;1... etc </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" line="36" column="9" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__common__buffering_1a4a572b33a019058c82a3eddb8ca63007" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__tensor" kindref="compound">TTL_tensor</ref>&lt; TENSORTYPE &gt;</type>
+        <definition>TTL_tensor&lt;TENSORTYPE&gt; TTL_common_buffering&lt; TENSORTYPE, BASES_COUNT &gt;::ext_tensor_in</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_in</name>
+        <qualifiedname>TTL_common_buffering::ext_tensor_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being input </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" line="40" column="16" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__common__buffering_1a1a1a76f95a26173e2158d84ae263bdb9" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__tensor" kindref="compound">TTL_tensor</ref>&lt; TENSORTYPE &gt;</type>
+        <definition>TTL_tensor&lt;TENSORTYPE&gt; TTL_common_buffering&lt; TENSORTYPE, BASES_COUNT &gt;::ext_tensor_out</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_out</name>
+        <qualifiedname>TTL_common_buffering::ext_tensor_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being output </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" line="41" column="16" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__common__buffering_1aa79a64e19d86910847cbbdc5f8e9e909" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TTL_common_buffering&lt; TENSORTYPE, BASES_COUNT &gt;::TTL_local</definition>
+        <argsstring>(TENSORTYPE *) int_base[BASES_COUNT]</argsstring>
+        <name>TTL_local</name>
+        <qualifiedname>TTL_common_buffering::TTL_local</qualifiedname>
+        <param>
+          <type>TENSORTYPE *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The internal base addresses of the pipelined tiles. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" line="38" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_common_buffering&lt; TENSORTYPE, BASES_COUNT &gt;</label>
+        <link refid="structTTL__common__buffering"/>
+      </node>
+    </collaborationgraph>
+    <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" line="35" column="1" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" bodystart="35" bodyend="42"/>
+    <listofallmembers>
+      <member refid="structTTL__common__buffering_1a4a572b33a019058c82a3eddb8ca63007" prot="public" virt="non-virtual"><scope>TTL_common_buffering</scope><name>ext_tensor_in</name></member>
+      <member refid="structTTL__common__buffering_1a1a1a76f95a26173e2158d84ae263bdb9" prot="public" virt="non-virtual"><scope>TTL_common_buffering</scope><name>ext_tensor_out</name></member>
+      <member refid="structTTL__common__buffering_1a873256b398ea0c85ebef2854c9905485" prot="public" virt="non-virtual"><scope>TTL_common_buffering</scope><name>index</name></member>
+      <member refid="structTTL__common__buffering_1aa79a64e19d86910847cbbdc5f8e9e909" prot="public" virt="non-virtual"><scope>TTL_common_buffering</scope><name>TTL_local</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

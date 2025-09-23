@@ -1,0 +1,301 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__simplex__buffering" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_simplex_buffering</compoundname>
+    <includes refid="p_2pipelines_2TTL__simplex__scheme_8h" local="no">TTL_simplex_scheme.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TENSORTYPE</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__simplex__buffering_1acaee6a5bf6a6236a516887164dc08aa2" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__common__buffering" kindref="compound">TTL_common_buffering</ref>&lt; TENSORTYPE, 3 &gt;</type>
+        <definition>TTL_common_buffering&lt;TENSORTYPE, 3&gt; TTL_simplex_buffering&lt; TENSORTYPE &gt;::m_common</definition>
+        <argsstring></argsstring>
+        <name>m_common</name>
+        <qualifiedname>TTL_simplex_buffering::m_common</qualifiedname>
+        <briefdescription>
+<para>The information that is m_common to all pipeline schemes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" line="192" column="26" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__buffering_1accb38367f728f7705474483814a856d4" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2c_2TTL__import__export_8h_1af98dc25fb4e233ab0ad6a267924c8307" kindref="member">TTL_event</ref> *</type>
+        <definition>TTL_event* TTL_simplex_buffering&lt; TENSORTYPE &gt;::m_event_in</definition>
+        <argsstring></argsstring>
+        <name>m_event_in</name>
+        <qualifiedname>TTL_simplex_buffering::m_event_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" line="194" column="15" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__buffering_1a6f3a9305e0c35e8e8fa5885809991273" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2c_2TTL__import__export_8h_1af98dc25fb4e233ab0ad6a267924c8307" kindref="member">TTL_event</ref> *</type>
+        <definition>TTL_event* TTL_simplex_buffering&lt; TENSORTYPE &gt;::m_event_out</definition>
+        <argsstring></argsstring>
+        <name>m_event_out</name>
+        <qualifiedname>TTL_simplex_buffering::m_event_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" line="195" column="15" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__buffering_1a6fe920518b95fb3be06fd5c2aa0e4cd7" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__tile" kindref="compound">TTL_tile</ref></type>
+        <definition>TTL_tile TTL_simplex_buffering&lt; TENSORTYPE &gt;::m_next_exported_tile</definition>
+        <argsstring></argsstring>
+        <name>m_next_exported_tile</name>
+        <qualifiedname>TTL_simplex_buffering::m_next_exported_tile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" line="197" column="14" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__buffering_1a4d44f8db7dc3978ef9da66510ce9f026" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref>&lt; TENSORTYPE &gt;</type>
+        <definition>TTL_sub_tensor&lt;TENSORTYPE&gt; TTL_simplex_buffering&lt; TENSORTYPE &gt;::m_int_prev_imported</definition>
+        <argsstring></argsstring>
+        <name>m_int_prev_imported</name>
+        <qualifiedname>TTL_simplex_buffering::m_int_prev_imported</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" line="198" column="20" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__simplex__buffering_1ab717229d08ff48ead844ab754c7d7767" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_simplex_buffering&lt; TENSORTYPE &gt;::TTL_simplex_buffering</definition>
+        <argsstring>(TENSORTYPE *const int_base1, TENSORTYPE *const int_base2, TENSORTYPE *const int_base3, const TTL_tensor&lt; TENSORTYPE &gt; &amp;ext_tensor_in, const TTL_tensor&lt; TENSORTYPE &gt; &amp;ext_tensor_out, TTL_event *input_event_in, TTL_event *input_event_out, const TTL_tile first_tile)</argsstring>
+        <name>TTL_simplex_buffering</name>
+        <qualifiedname>TTL_simplex_buffering::TTL_simplex_buffering</qualifiedname>
+        <param>
+          <type>TENSORTYPE *const</type>
+          <declname>int_base1</declname>
+        </param>
+        <param>
+          <type>TENSORTYPE *const</type>
+          <declname>int_base2</declname>
+        </param>
+        <param>
+          <type>TENSORTYPE *const</type>
+          <declname>int_base3</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__tensor" kindref="compound">TTL_tensor</ref>&lt; TENSORTYPE &gt; &amp;</type>
+          <declname>ext_tensor_in</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__tensor" kindref="compound">TTL_tensor</ref>&lt; TENSORTYPE &gt; &amp;</type>
+          <declname>ext_tensor_out</declname>
+        </param>
+        <param>
+          <type><ref refid="TTL__cpp_2c_2TTL__import__export_8h_1af98dc25fb4e233ab0ad6a267924c8307" kindref="member">TTL_event</ref> *</type>
+          <declname>input_event_in</declname>
+        </param>
+        <param>
+          <type><ref refid="TTL__cpp_2c_2TTL__import__export_8h_1af98dc25fb4e233ab0ad6a267924c8307" kindref="member">TTL_event</ref> *</type>
+          <declname>input_event_out</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__tile" kindref="compound">TTL_tile</ref></type>
+          <declname>first_tile</declname>
+        </param>
+        <briefdescription>
+<para>Create a <ref refid="structTTL__simplex__buffering" kindref="compound">TTL_simplex_buffering</ref> and begin the buffering process. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>int_base1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address of the first buffer to be used in local memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>int_base2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address of the second buffer to be used in local memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>int_base3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address of the third buffer to be used in local memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ext_tensor_in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The external tensor to import the input data from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ext_tensor_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The external tensor to export the output data to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m_event_in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the event to use for the inward (external to internal) transfer completion </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m_event_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the event to use for the inward (internal to external) transfer completion </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>first_tile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first tile to fetch for the scheme</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Solid description of <ref refid="structTTL__simplex__buffering" kindref="compound">TTL_simplex_buffering</ref> buffering here</para>
+<para><simplesect kind="return"><para>The <ref refid="structTTL__simplex__buffering" kindref="compound">TTL_simplex_buffering</ref> created from the input parameters</para>
+</simplesect>
+Example: <programlisting><codeline><highlight class="normal"><ref refid="TTL__cpp_2c_2TTL__import__export_8h_1af98dc25fb4e233ab0ad6a267924c8307" kindref="member">TTL_event</ref><sp/>tb_e_in<sp/>=<sp/><ref refid="TTL__c_2opencl_2TTL__import__export_8h_1ab52c0b665518000f2c402c5170a58ee2" kindref="member">TTL_get_event</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="TTL__cpp_2c_2TTL__import__export_8h_1af98dc25fb4e233ab0ad6a267924c8307" kindref="member">TTL_event</ref><sp/>tb_e_out<sp/>=<sp/><ref refid="TTL__c_2opencl_2TTL__import__export_8h_1ab52c0b665518000f2c402c5170a58ee2" kindref="member">TTL_get_event</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structTTL__simplex__buffering_1ab717229d08ff48ead844ab754c7d7767" kindref="member">TTL_simplex_buffering</ref><sp/>tb_scheme(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ext_base_in,<sp/>ext_base_out,<sp/>l_buff1,<sp/>l_buff2,<sp/>l_buff3,<sp/>ext_layout_in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ext_layout_out,<sp/>&amp;tb_e_in,<sp/>&amp;tb_e_out);</highlight></codeline>
+</programlisting> <linebreak/>
+ This can be optimized and standardized using the TTL_step_buffering call.</para>
+<para><plantuml engine="uml">start
+
+
+stop</plantuml>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" line="103" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" bodystart="103" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__simplex__buffering_1a7bf43f1df7f751312658d8b5f0763cfc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__io__tensors" kindref="compound">TTL_io_tensors</ref>&lt; TENSORTYPE &gt;</type>
+        <definition>TTL_io_tensors&lt; TENSORTYPE &gt; TTL_simplex_buffering&lt; TENSORTYPE &gt;::step_buffering</definition>
+        <argsstring>(const TTL_tile &amp;tile_next_import, const TTL_tile &amp;tile_current_export)</argsstring>
+        <name>step_buffering</name>
+        <qualifiedname>TTL_simplex_buffering::step_buffering</qualifiedname>
+        <param>
+          <type>const <ref refid="structTTL__tile" kindref="compound">TTL_tile</ref> &amp;</type>
+          <declname>tile_next_import</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__tile" kindref="compound">TTL_tile</ref> &amp;</type>
+          <declname>tile_current_export</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" line="122" column="20" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" bodystart="122" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__simplex__buffering_1a9f9c69e0c29f522d745fa0d5a18c766b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TTL_simplex_buffering&lt; TENSORTYPE &gt;::finish_buffering</definition>
+        <argsstring>()</argsstring>
+        <name>finish_buffering</name>
+        <qualifiedname>TTL_simplex_buffering::finish_buffering</qualifiedname>
+        <briefdescription>
+<para>Complete any transfers required to finish the buffering process. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Any transfers that are still in progress will be completed and any transfers that need to be started and completed before finish_buffering returns </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" line="187" column="10" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" bodystart="187" bodyend="190"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>TTL_common_buffering&lt; TENSORTYPE, 3 &gt;</label>
+        <link refid="structTTL__common__buffering"/>
+      </node>
+      <node id="5">
+        <label>TTL_offset</label>
+        <link refid="structTTL__offset"/>
+      </node>
+      <node id="4">
+        <label>TTL_shape</label>
+        <link refid="structTTL__shape"/>
+      </node>
+      <node id="1">
+        <label>TTL_simplex_buffering&lt; TENSORTYPE &gt;</label>
+        <link refid="structTTL__simplex__buffering"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+m_common</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+m_next_exported_tile</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TTL_tile</label>
+        <link refid="structTTL__tile"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>+offset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" line="61" column="1" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_simplex_scheme.h" bodystart="61" bodyend="199"/>
+    <listofallmembers>
+      <member refid="structTTL__simplex__buffering_1a9f9c69e0c29f522d745fa0d5a18c766b" prot="public" virt="non-virtual"><scope>TTL_simplex_buffering</scope><name>finish_buffering</name></member>
+      <member refid="structTTL__simplex__buffering_1acaee6a5bf6a6236a516887164dc08aa2" prot="public" virt="non-virtual"><scope>TTL_simplex_buffering</scope><name>m_common</name></member>
+      <member refid="structTTL__simplex__buffering_1accb38367f728f7705474483814a856d4" prot="public" virt="non-virtual"><scope>TTL_simplex_buffering</scope><name>m_event_in</name></member>
+      <member refid="structTTL__simplex__buffering_1a6f3a9305e0c35e8e8fa5885809991273" prot="public" virt="non-virtual"><scope>TTL_simplex_buffering</scope><name>m_event_out</name></member>
+      <member refid="structTTL__simplex__buffering_1a4d44f8db7dc3978ef9da66510ce9f026" prot="public" virt="non-virtual"><scope>TTL_simplex_buffering</scope><name>m_int_prev_imported</name></member>
+      <member refid="structTTL__simplex__buffering_1a6fe920518b95fb3be06fd5c2aa0e4cd7" prot="public" virt="non-virtual"><scope>TTL_simplex_buffering</scope><name>m_next_exported_tile</name></member>
+      <member refid="structTTL__simplex__buffering_1a7bf43f1df7f751312658d8b5f0763cfc" prot="public" virt="non-virtual"><scope>TTL_simplex_buffering</scope><name>step_buffering</name></member>
+      <member refid="structTTL__simplex__buffering_1ab717229d08ff48ead844ab754c7d7767" prot="public" virt="non-virtual"><scope>TTL_simplex_buffering</scope><name>TTL_simplex_buffering</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

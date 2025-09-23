@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_e90b09627bbabab6a7b905008e437092" kind="dir">
+    <compoundname>tutorials</compoundname>
+    <innerdir refid="dir_9aaaa1064531b9838134dcb488694fcf">introduction_to_ttl</innerdir>
+    <innerdir refid="dir_3a9cb9fd1789c89b6a1644c76302a02d">pipelining_dma_tiled_loops</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="bwnZUCP_TTL/doc/tutorials/"/>
+  </compounddef>
+</doxygen>

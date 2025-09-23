@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_cbd8e4829c3d0b1491d16630103752f3" kind="dir">
+    <compoundname>TTL_c</compoundname>
+    <innerdir refid="dir_7b25626ad27a94b4db8d2c9a70a5f484">c</innerdir>
+    <innerdir refid="dir_c8a8fed4b72dcd855f4ac1d0fdcc7b60">import_export</innerdir>
+    <innerdir refid="dir_c9bde996daecc8fda5d3066cb05491da">opencl</innerdir>
+    <innerdir refid="dir_d993dd0d00f25ced0c07de06449d2242">pipelines</innerdir>
+    <innerdir refid="dir_3de415417a0403dc23285241237341cf">tensors</innerdir>
+    <innerfile refid="TTL__c_2TTL_8h">TTL_c/TTL.h</innerfile>
+    <innerfile refid="TTL__c_2TTL__core_8h">TTL_c/TTL_core.h</innerfile>
+    <innerfile refid="TTL__create__type_8h">TTL_create_type.h</innerfile>
+    <innerfile refid="TTL__create__types_8h">TTL_create_types.h</innerfile>
+    <innerfile refid="TTL__c_2TTL__debug_8h">TTL_c/TTL_debug.h</innerfile>
+    <innerfile refid="TTL__c_2TTL__import__export_8h">TTL_c/TTL_import_export.h</innerfile>
+    <innerfile refid="TTL__c_2TTL__macros_8h">TTL_c/TTL_macros.h</innerfile>
+    <innerfile refid="TTL__c_2TTL__pipeline__schemes_8h">TTL_c/TTL_pipeline_schemes.h</innerfile>
+    <innerfile refid="TTL__c_2TTL__tensors_8h">TTL_c/TTL_tensors.h</innerfile>
+    <innerfile refid="TTL__c_2TTL__tiles_8h">TTL_c/TTL_tiles.h</innerfile>
+    <innerfile refid="TTL__trace__macros_8h">TTL_trace_macros.h</innerfile>
+    <innerfile refid="TTL__c_2TTL__types_8h">TTL_c/TTL_types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="bwnZUCP_TTL/TTL_c/"/>
+  </compounddef>
+</doxygen>

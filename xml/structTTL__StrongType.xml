@@ -1,0 +1,602 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__StrongType" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_StrongType</compoundname>
+    <includes refid="TTL__strong__type_8h" local="no">TTL_strong_type.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename UNIQUE_ENUM_CLASS</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structTTL__StrongType_1a4663294b3021e1a73e3110716f475ce1" prot="public" static="no">
+        <type>T</type>
+        <definition>typedef T TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::TYPE</definition>
+        <argsstring></argsstring>
+        <name>TYPE</name>
+        <qualifiedname>TTL_StrongType::TYPE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="54" column="15" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structTTL__StrongType_1ae368e76d900e7a58b04ab9a157655313" prot="public" static="no">
+        <type>T</type>
+        <definition>using TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::Type =  T</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <qualifiedname>TTL_StrongType::Type</qualifiedname>
+        <briefdescription>
+<para>Allow compile time access to the underling type, this can be useful for template parameters etc. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="282" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structTTL__StrongType_1acb5a67573e91e1c3d982313dcfa05ac9" prot="private" static="no" mutable="no">
+        <type>T</type>
+        <definition>T TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>TTL_StrongType::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="291" column="7" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="structTTL__StrongType_1aa468bb6fd5a40f3786717ce90fe91d2e" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>UNIQUE_ENUM_CLASS</type>
+        <definition>UNIQUE_ENUM_CLASS TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::unique</definition>
+        <argsstring></argsstring>
+        <name>unique</name>
+        <qualifiedname>TTL_StrongType::unique</qualifiedname>
+        <initializer>= UNIQUE_ENUM_CLASS(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This makes the type unique. It cannot be accessed, uses no storage but gives the type a unique signature. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="297" column="40" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="297" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::TTL_StrongType</definition>
+        <argsstring>()</argsstring>
+        <name>TTL_StrongType</name>
+        <qualifiedname>TTL_StrongType::TTL_StrongType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="57" column="17" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1a60f25fbd5c9a1f4b655804efcfeb9724" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::TTL_StrongType</definition>
+        <argsstring>(T value)</argsstring>
+        <name>TTL_StrongType</name>
+        <qualifiedname>TTL_StrongType::TTL_StrongType</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="60" column="17" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1a4a10aecb16ac648dfd77dba555765040" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::Underlying</definition>
+        <argsstring>() const</argsstring>
+        <name>Underlying</name>
+        <qualifiedname>TTL_StrongType::Underlying</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="63" column="19" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="63" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1ab5acdc71d4f0a204733b6df0d76e2cac" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+        <definition>TTL_StrongType TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator-</definition>
+        <argsstring>() const</argsstring>
+        <name>operator-</name>
+        <qualifiedname>TTL_StrongType::operator-</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is acceptable to negate the underlying type</para>
+<para><itemizedlist>
+<listitem><para>-2 Cats = 2 Cats. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="72" column="32" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1ae774166466b5d68078e719876ea41984" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> &amp;</type>
+        <definition>TTL_StrongType &amp; TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator+=</definition>
+        <argsstring>(TTL_StrongType const &amp;rhs)</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>TTL_StrongType::operator+=</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is acceptable to add 2 things of the same type. The rules of the underlying value are used for the addition.</para>
+<para>2 Cats + 2 Cats = 4 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="82" column="32" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1a2cda6d720963776062ad75ce0a18440d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+        <definition>TTL_StrongType TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator+</definition>
+        <argsstring>(TTL_StrongType const &amp;rhs) const</argsstring>
+        <name>operator+</name>
+        <qualifiedname>TTL_StrongType::operator+</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is acceptable to add 2 things of the same type. The rules of the underlying value are used for the addition.</para>
+<para>2 Cats + 2 Cats = 4 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="93" column="32" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="93" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1a7bb5cc5f10b87716ea69e4ad7a627afe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> &amp;</type>
+        <definition>TTL_StrongType &amp; TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator++</definition>
+        <argsstring>()</argsstring>
+        <name>operator++</name>
+        <qualifiedname>TTL_StrongType::operator++</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Prefix increment</para>
+<para>It is acceptable to add another thing of the same type. The rules of the underlying value are used for the addition.</para>
+<para>2 Cats + 1 Cats = 3 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="105" column="22" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="105" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1adc35b6caab0c7304ae90d28713691235" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+        <definition>TTL_StrongType TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator++</definition>
+        <argsstring>(int)</argsstring>
+        <name>operator++</name>
+        <qualifiedname>TTL_StrongType::operator++</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Postfix increment</para>
+<para>It is acceptable to add another thing of the same type. The rules of the underlying value are used for the addition.</para>
+<para>2 Cats + 1 Cats = 3 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="118" column="22" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="118" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1ab51a995e83048392beea6ef8427606e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> &amp;</type>
+        <definition>TTL_StrongType &amp; TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator--</definition>
+        <argsstring>()</argsstring>
+        <name>operator--</name>
+        <qualifiedname>TTL_StrongType::operator--</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Prefix increment</para>
+<para>It is acceptable to subtract another thing of the same type. The rules of the underlying value are used for the subtraction.</para>
+<para>2 Cats - 1 Cats = 1 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="132" column="22" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="132" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1ade77dbbb9c5f6f380e251087819d57a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+        <definition>TTL_StrongType TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator--</definition>
+        <argsstring>(int)</argsstring>
+        <name>operator--</name>
+        <qualifiedname>TTL_StrongType::operator--</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Postfix increment</para>
+<para>It is acceptable to subtract another thing of the same type. The rules of the underlying value are used for the subtraction.</para>
+<para>2 Cats - 1 Cats = 1 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="145" column="22" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="145" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1af7a82578760ba53224c028cb226569da" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> &amp;</type>
+        <definition>TTL_StrongType &amp; TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator-=</definition>
+        <argsstring>(TTL_StrongType const &amp;rhs)</argsstring>
+        <name>operator-=</name>
+        <qualifiedname>TTL_StrongType::operator-=</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is acceptable to subtract 2 things of the same type. The rules of the underlying value are used for the addition.</para>
+<para>2 Cats - 2 Cats = 0 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="157" column="32" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="157" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1a740043e84110f570b2561e3277ccd46a" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+        <definition>TTL_StrongType TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator-</definition>
+        <argsstring>(TTL_StrongType const &amp;rhs) const</argsstring>
+        <name>operator-</name>
+        <qualifiedname>TTL_StrongType::operator-</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is acceptable to subtract 2 things of the same type. The rules of the underlying value are used for the addition.</para>
+<para>2 Cats - 2 Cats = 0 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="168" column="32" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="168" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1a7542fb2a2d82f89f995f62622b7a6eb3" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+        <definition>TTL_StrongType TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator*</definition>
+        <argsstring>(T rhs) const</argsstring>
+        <name>operator*</name>
+        <qualifiedname>TTL_StrongType::operator*</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is generally acceptable to multiple by the underlying type. The underlying type tends to mean that sign rules are obeyed.</para>
+<para>2 Cats * 2 = 4 Cats. -2 Cats * -2 = 4 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="179" column="32" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="179" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1aa0c0eb00d869b51628e81391cb5dea67" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+        <definition>TTL_StrongType TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator/</definition>
+        <argsstring>(T rhs) const</argsstring>
+        <name>operator/</name>
+        <qualifiedname>TTL_StrongType::operator/</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is generally acceptable to divide by the underlying type. The underlying type tends to mean that sign rules are obeyed.</para>
+<para>2 Cats / 2 = 1 Cats. -2 Cats / -2 = 1 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="190" column="32" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="190" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1afce7560cd25cb4974b70bef1675815f3" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator/</definition>
+        <argsstring>(TTL_StrongType rhs) const</argsstring>
+        <name>operator/</name>
+        <qualifiedname>TTL_StrongType::operator/</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is generally acceptable to divide by the type.</para>
+<para>2 Cats / 2 Cats = 1. -2 Cats / 2 Cats = -1. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="200" column="19" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="200" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1a5483c878543a18d6a67b72937c75c18e" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+        <definition>TTL_StrongType TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator%</definition>
+        <argsstring>(TTL_StrongType rhs) const</argsstring>
+        <name>operator%</name>
+        <qualifiedname>TTL_StrongType::operator%</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is generally acceptable to modulo by the type.</para>
+<para>3 Cats % 2 Cats = 1 Cats. -3 Cats % -2 = 1 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="210" column="32" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="210" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1a7ee8a3f9b10a5390546c644c0bf46fad" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+        <definition>TTL_StrongType TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator%</definition>
+        <argsstring>(T rhs) const</argsstring>
+        <name>operator%</name>
+        <qualifiedname>TTL_StrongType::operator%</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is generally acceptable to modulo by the underlying type. The underlying type tends to mean that sign rules are obeyed.</para>
+<para>3 Cats % 2 = 1 Cats. -3 Cats % -2 = 1 Cats. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="221" column="32" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="221" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1aa93a27ab72e09ea53cf565dcdc7ced19" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator&gt;</definition>
+        <argsstring>(TTL_StrongType const &amp;rhs) const</argsstring>
+        <name>operator&gt;</name>
+        <qualifiedname>TTL_StrongType::operator&gt;</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is generally acceptable to compare.</para>
+<para>3 Cats &gt; 2 Cats = true. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="230" column="22" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="230" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1ae952759b776dab317e5679f06a305d9d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator&gt;=</definition>
+        <argsstring>(TTL_StrongType const &amp;rhs) const</argsstring>
+        <name>operator&gt;=</name>
+        <qualifiedname>TTL_StrongType::operator&gt;=</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is generally acceptable to compare.</para>
+<para>3 Cats &gt;= 3 Cats = true. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="239" column="22" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="239" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1a47ffb1a164d14398ac0dea4853f600fc" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator&lt;</definition>
+        <argsstring>(TTL_StrongType const &amp;rhs) const</argsstring>
+        <name>operator&lt;</name>
+        <qualifiedname>TTL_StrongType::operator&lt;</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is generally acceptable to compare.</para>
+<para>3 Cats &lt; 2 Cats = false. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="248" column="17" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="248" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1a9d81a0f828b7cfb039ed9de9eb980141" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator&lt;=</definition>
+        <argsstring>(TTL_StrongType const &amp;rhs) const</argsstring>
+        <name>operator&lt;=</name>
+        <qualifiedname>TTL_StrongType::operator&lt;=</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is generally acceptable to compare.</para>
+<para>3 Cats &lt;= 2 Cats = false. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="257" column="17" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="257" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1ada458d4d068a2b96de35264697d27fd8" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator==</definition>
+        <argsstring>(TTL_StrongType const &amp;rhs) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>TTL_StrongType::operator==</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is generally acceptable to compare.</para>
+<para>3 Cats == 2 Cats = false. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="266" column="22" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="266" bodyend="268"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__StrongType_1a939ddda351a4b2d306a446e725efaff8" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;::operator!=</definition>
+        <argsstring>(TTL_StrongType const &amp;rhs) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>TTL_StrongType::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is generally acceptable to compare.</para>
+<para>3 Cats != 2 Cats = true. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="275" column="22" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="275" bodyend="277"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="structTTL__StrongType_1afe310b43eee9560b68bd707a872eec6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+          </param>
+        </templateparamlist>
+        <type>U &amp;</type>
+        <definition>U &amp; operator&lt;&lt;</definition>
+        <argsstring>(U &amp;os, const TTL_StrongType ttl_string_type)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>TTL_StrongType::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>U &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType</ref></type>
+          <declname>ttl_string_type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="285" column="12" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="285" bodyend="287"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Wrapper for strong type. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Strong types reinforce interfaces by making them more expressive, and less error-prone by forcing the right type. This is implemented by the following thin wrapper.</para>
+<para>For example, In order to define a FrequencyKHz, uint16_t type:</para>
+<para>enum class StKHz : uint32_t; // This just needs to be a unique. using KHz = <ref refid="structTTL__StrongType" kindref="compound">TTL_StrongType&lt;uint16_t, StKHz&gt;</ref>;</para>
+<para>StrongTypes can be used in anywhere because to the outside world it looks exactly like the underlying type.</para>
+<para>So a structure from the outside world can contain the follow when a KHz frequency is expected as a uint16_t;<itemizedlist>
+<listitem><para>struct ExternalData { KHz input_frequency_khz; }</para>
+</listitem></itemizedlist>
+</para>
+<para>would be 100% compability with the other unsafe code in the external entity that simple said</para>
+<para>struct ExternalData { uint16_t input_frequency_khz; } </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_StrongType&lt; T, UNIQUE_ENUM_CLASS &gt;</label>
+        <link refid="structTTL__StrongType"/>
+      </node>
+    </collaborationgraph>
+    <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" line="53" column="1" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h" bodystart="53" bodyend="298"/>
+    <listofallmembers>
+      <member refid="structTTL__StrongType_1a939ddda351a4b2d306a446e725efaff8" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator!=</name></member>
+      <member refid="structTTL__StrongType_1a5483c878543a18d6a67b72937c75c18e" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator%</name></member>
+      <member refid="structTTL__StrongType_1a7ee8a3f9b10a5390546c644c0bf46fad" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator%</name></member>
+      <member refid="structTTL__StrongType_1a7542fb2a2d82f89f995f62622b7a6eb3" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator*</name></member>
+      <member refid="structTTL__StrongType_1a2cda6d720963776062ad75ce0a18440d" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator+</name></member>
+      <member refid="structTTL__StrongType_1a7bb5cc5f10b87716ea69e4ad7a627afe" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator++</name></member>
+      <member refid="structTTL__StrongType_1adc35b6caab0c7304ae90d28713691235" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator++</name></member>
+      <member refid="structTTL__StrongType_1ae774166466b5d68078e719876ea41984" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator+=</name></member>
+      <member refid="structTTL__StrongType_1ab5acdc71d4f0a204733b6df0d76e2cac" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator-</name></member>
+      <member refid="structTTL__StrongType_1a740043e84110f570b2561e3277ccd46a" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator-</name></member>
+      <member refid="structTTL__StrongType_1ab51a995e83048392beea6ef8427606e4" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator--</name></member>
+      <member refid="structTTL__StrongType_1ade77dbbb9c5f6f380e251087819d57a3" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator--</name></member>
+      <member refid="structTTL__StrongType_1af7a82578760ba53224c028cb226569da" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator-=</name></member>
+      <member refid="structTTL__StrongType_1aa0c0eb00d869b51628e81391cb5dea67" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator/</name></member>
+      <member refid="structTTL__StrongType_1afce7560cd25cb4974b70bef1675815f3" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator/</name></member>
+      <member refid="structTTL__StrongType_1a47ffb1a164d14398ac0dea4853f600fc" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator&lt;</name></member>
+      <member refid="structTTL__StrongType_1afe310b43eee9560b68bd707a872eec6c" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator&lt;&lt;</name></member>
+      <member refid="structTTL__StrongType_1a9d81a0f828b7cfb039ed9de9eb980141" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator&lt;=</name></member>
+      <member refid="structTTL__StrongType_1ada458d4d068a2b96de35264697d27fd8" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator==</name></member>
+      <member refid="structTTL__StrongType_1aa93a27ab72e09ea53cf565dcdc7ced19" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator&gt;</name></member>
+      <member refid="structTTL__StrongType_1ae952759b776dab317e5679f06a305d9d" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>operator&gt;=</name></member>
+      <member refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>TTL_StrongType</name></member>
+      <member refid="structTTL__StrongType_1a60f25fbd5c9a1f4b655804efcfeb9724" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>TTL_StrongType</name></member>
+      <member refid="structTTL__StrongType_1a4663294b3021e1a73e3110716f475ce1" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>TYPE</name></member>
+      <member refid="structTTL__StrongType_1ae368e76d900e7a58b04ab9a157655313" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>Type</name></member>
+      <member refid="structTTL__StrongType_1a4a10aecb16ac648dfd77dba555765040" prot="public" virt="non-virtual"><scope>TTL_StrongType</scope><name>Underlying</name></member>
+      <member refid="structTTL__StrongType_1aa468bb6fd5a40f3786717ce90fe91d2e" prot="private" virt="non-virtual"><scope>TTL_StrongType</scope><name>unique</name></member>
+      <member refid="structTTL__StrongType_1acb5a67573e91e1c3d982313dcfa05ac9" prot="private" virt="non-virtual"><scope>TTL_StrongType</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

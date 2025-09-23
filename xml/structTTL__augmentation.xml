@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__augmentation" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_augmentation</compoundname>
+    <includes refid="TTL__cpp_2TTL__tiles_8h" local="no">TTL_tiles.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__augmentation_1af865108b553f8f9c4e05028e6d83262e" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+        <definition>TTL_augmented_dim TTL_augmentation::left</definition>
+        <argsstring></argsstring>
+        <name>left</name>
+        <qualifiedname>TTL_augmentation::left</qualifiedname>
+        <briefdescription>
+<para>Left hand augmentation in elements. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="73" column="23" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__augmentation_1a03e0281638af54db8ac5d0fab6b01024" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+        <definition>TTL_augmented_dim TTL_augmentation::right</definition>
+        <argsstring></argsstring>
+        <name>right</name>
+        <qualifiedname>TTL_augmentation::right</qualifiedname>
+        <briefdescription>
+<para>Right hand augmentation in elements. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="74" column="23" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__augmentation_1ae130626ebda08797262bf0141eb76897" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+        <definition>TTL_augmented_dim TTL_augmentation::top</definition>
+        <argsstring></argsstring>
+        <name>top</name>
+        <qualifiedname>TTL_augmentation::top</qualifiedname>
+        <briefdescription>
+<para>Top augmentation in elements. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="75" column="23" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__augmentation_1a270ed5c56b54284d8ed43bd0e6c6eedc" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+        <definition>TTL_augmented_dim TTL_augmentation::bottom</definition>
+        <argsstring></argsstring>
+        <name>bottom</name>
+        <qualifiedname>TTL_augmentation::bottom</qualifiedname>
+        <briefdescription>
+<para>Bottom augmentation in elements. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="76" column="23" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__augmentation_1ac071c6bc3d90a3d2ea2ed5b45d87a583" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+        <definition>TTL_augmented_dim TTL_augmentation::front</definition>
+        <argsstring></argsstring>
+        <name>front</name>
+        <qualifiedname>TTL_augmentation::front</qualifiedname>
+        <briefdescription>
+<para>Front augmentation in elements. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="77" column="23" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__augmentation_1a28eefe54d58ecb7ad3830679509d5290" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+        <definition>TTL_augmented_dim TTL_augmentation::back</definition>
+        <argsstring></argsstring>
+        <name>back</name>
+        <qualifiedname>TTL_augmentation::back</qualifiedname>
+        <briefdescription>
+<para>Back augmentation in elements. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="78" column="23" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__augmentation_1a997146164f9056d2dc24317f1806aa25" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_augmentation::TTL_augmentation</definition>
+        <argsstring>(const TTL_augmented_dim left=0, const TTL_augmented_dim right=0, const TTL_augmented_dim top=0, const TTL_augmented_dim bottom=0, const TTL_augmented_dim front=0, const TTL_augmented_dim back=0)</argsstring>
+        <name>TTL_augmentation</name>
+        <qualifiedname>TTL_augmentation::TTL_augmentation</qualifiedname>
+        <param>
+          <type>const <ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+          <declname>left</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+          <declname>right</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+          <declname>top</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+          <declname>bottom</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+          <declname>front</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__cpp_2TTL__tiles_8h_1a753df90feb169ea20f05fd0d39aa83b6" kindref="member">TTL_augmented_dim</ref></type>
+          <declname>back</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Create a 3D Description of a Tile augmentation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__overlap" kindref="compound">TTL_overlap</ref> for more information.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>left</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Left hand augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>right</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Right hand augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Top augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bottom</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Bottom augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>front</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Front augmentation in elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>back</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>///&lt; Back augmentation in elements</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="structTTL__augmentation" kindref="compound">TTL_augmentation</ref> describing in 3D the overlap requested. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="68" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="68" bodyend="71"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>3D description of the augmented margins </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="structTTL__augmentation" kindref="compound">TTL_augmentation</ref> represents the number of elements that a tensor will be expanded in each dimension.</para>
+<para>For example if left = 1 then one column of elements will be added to a tensor thereby increasing its width by 1.</para>
+<para>The type used to hold the augmentation of tiles along all dimensions </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_augmentation</label>
+        <link refid="structTTL__augmentation"/>
+      </node>
+    </collaborationgraph>
+    <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="53" column="1" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="53" bodyend="79"/>
+    <listofallmembers>
+      <member refid="structTTL__augmentation_1a28eefe54d58ecb7ad3830679509d5290" prot="public" virt="non-virtual"><scope>TTL_augmentation</scope><name>back</name></member>
+      <member refid="structTTL__augmentation_1a270ed5c56b54284d8ed43bd0e6c6eedc" prot="public" virt="non-virtual"><scope>TTL_augmentation</scope><name>bottom</name></member>
+      <member refid="structTTL__augmentation_1ac071c6bc3d90a3d2ea2ed5b45d87a583" prot="public" virt="non-virtual"><scope>TTL_augmentation</scope><name>front</name></member>
+      <member refid="structTTL__augmentation_1af865108b553f8f9c4e05028e6d83262e" prot="public" virt="non-virtual"><scope>TTL_augmentation</scope><name>left</name></member>
+      <member refid="structTTL__augmentation_1a03e0281638af54db8ac5d0fab6b01024" prot="public" virt="non-virtual"><scope>TTL_augmentation</scope><name>right</name></member>
+      <member refid="structTTL__augmentation_1ae130626ebda08797262bf0141eb76897" prot="public" virt="non-virtual"><scope>TTL_augmentation</scope><name>top</name></member>
+      <member refid="structTTL__augmentation_1a997146164f9056d2dc24317f1806aa25" prot="public" virt="non-virtual"><scope>TTL_augmentation</scope><name>TTL_augmentation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

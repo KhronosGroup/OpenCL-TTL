@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_d993dd0d00f25ced0c07de06449d2242" kind="dir">
+    <compoundname>pipelines</compoundname>
+    <innerfile refid="pipelines_2TTL__double__scheme_8h">pipelines/TTL_double_scheme.h</innerfile>
+    <innerfile refid="TTL__double__scheme__template_8h">TTL_double_scheme_template.h</innerfile>
+    <innerfile refid="pipelines_2TTL__duplex__scheme_8h">pipelines/TTL_duplex_scheme.h</innerfile>
+    <innerfile refid="pipelines_2TTL__schemes__common_8h">pipelines/TTL_schemes_common.h</innerfile>
+    <innerfile refid="pipelines_2TTL__simplex__scheme_8h">pipelines/TTL_simplex_scheme.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="bwnZUCP_TTL/TTL_c/pipelines/"/>
+  </compounddef>
+</doxygen>

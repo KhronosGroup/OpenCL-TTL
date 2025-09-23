@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__tile" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_tile</compoundname>
+    <includes refid="TTL__cpp_2TTL__tiles_8h" local="no">TTL_tiles.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__tile_1ae80d7f8fd1135741cd483ee8340ce4f4" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref></type>
+        <definition>TTL_shape TTL_tile::shape</definition>
+        <argsstring></argsstring>
+        <name>shape</name>
+        <qualifiedname>TTL_tile::shape</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="111" column="15" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tile_1a1457913511455bf0b050d5837ad875ad" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref></type>
+        <definition>TTL_offset TTL_tile::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <qualifiedname>TTL_tile::offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="112" column="16" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__tile_1aed8b3ca5943ea7f67c4a8768caceaa5b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_tile::TTL_tile</definition>
+        <argsstring>()</argsstring>
+        <name>TTL_tile</name>
+        <qualifiedname>TTL_tile::TTL_tile</qualifiedname>
+        <briefdescription>
+<para>Create an empty tile. Empty means it has all dimensions set to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Most operations on an empty tile should turn into no-ops and so an empty tile is the safest default state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="95" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="95" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__tile_1afc24b4f768b24aa4dcb07cb6b5a7cd57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TTL_tile::empty</definition>
+        <argsstring>() const</argsstring>
+        <name>empty</name>
+        <qualifiedname>TTL_tile::empty</qualifiedname>
+        <briefdescription>
+<para>Check if the tile passed is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Empty is defined as width of the shape being equal to 0.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tile to check the emptiness of.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if shape is empty </para>
+</simplesect>
+<simplesect kind="return"><para>false if shape is not empty </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="107" column="10" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="107" bodyend="109"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>TTL_offset</label>
+        <link refid="structTTL__offset"/>
+      </node>
+      <node id="2">
+        <label>TTL_shape</label>
+        <link refid="structTTL__shape"/>
+      </node>
+      <node id="1">
+        <label>TTL_tile</label>
+        <link refid="structTTL__tile"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+offset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" line="88" column="1" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tiles.h" bodystart="88" bodyend="113"/>
+    <listofallmembers>
+      <member refid="structTTL__tile_1afc24b4f768b24aa4dcb07cb6b5a7cd57" prot="public" virt="non-virtual"><scope>TTL_tile</scope><name>empty</name></member>
+      <member refid="structTTL__tile_1a1457913511455bf0b050d5837ad875ad" prot="public" virt="non-virtual"><scope>TTL_tile</scope><name>offset</name></member>
+      <member refid="structTTL__tile_1ae80d7f8fd1135741cd483ee8340ce4f4" prot="public" virt="non-virtual"><scope>TTL_tile</scope><name>shape</name></member>
+      <member refid="structTTL__tile_1aed8b3ca5943ea7f67c4a8768caceaa5b" prot="public" virt="non-virtual"><scope>TTL_tile</scope><name>TTL_tile</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

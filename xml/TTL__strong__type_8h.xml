@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="TTL__strong__type_8h" kind="file" language="C++">
+    <compoundname>TTL_strong_type.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="TTL__cpp_2TTL__types_8h" local="yes">TTL_types.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>TTL_strong_type.h</label>
+        <link refid="TTL__strong__type_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6">
+        <label>TTL.h</label>
+        <link refid="TTL__cpp_2TTL_8h"/>
+      </node>
+      <node id="3">
+        <label>TTL_core.h</label>
+        <link refid="TTL__cpp_2TTL__core_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>TTL_debug.h</label>
+        <link refid="TTL__cpp_2TTL__debug_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>TTL_import_export.h</label>
+        <link refid="TTL__cpp_2TTL__import__export_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>TTL_pipeline_schemes.h</label>
+        <link refid="TTL__cpp_2TTL__pipeline__schemes_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_strong_type.h</label>
+        <link refid="TTL__strong__type_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>TTL_tensors.h</label>
+        <link refid="TTL__cpp_2TTL__tensors_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>TTL_tiles.h</label>
+        <link refid="TTL__cpp_2TTL__tiles_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TTL_types.h</label>
+        <link refid="TTL__cpp_2TTL__types_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structTTL__StrongType" prot="public">TTL_StrongType</innerclass>
+    <innerclass refid="structStrongTypeConversion" prot="public">StrongTypeConversion</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_strong_type.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2025<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="23"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Wrapper<sp/>for<sp/>strong<sp/>type.</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>Strong<sp/>types<sp/>reinforce<sp/>interfaces<sp/>by<sp/>making<sp/>them<sp/>more<sp/>expressive,</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>and<sp/>less<sp/>error-prone<sp/>by<sp/>forcing<sp/>the<sp/>right<sp/>type.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>implemented<sp/>by<sp/>the<sp/>following<sp/>thin<sp/>wrapper.</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>For<sp/>example,<sp/>In<sp/>order<sp/>to<sp/>define<sp/>a<sp/>FrequencyKHz,<sp/>uint16_t<sp/>type:</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>enum<sp/>class<sp/>StKHz<sp/>:<sp/>uint32_t;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>This<sp/>just<sp/>needs<sp/>to<sp/>be<sp/>a<sp/>unique.</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>using<sp/>KHz<sp/>=<sp/>TTL_StrongType&lt;uint16_t,<sp/>StKHz&gt;;</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>StrongTypes<sp/>can<sp/>be<sp/>used<sp/>in<sp/>anywhere<sp/>because<sp/>to<sp/>the<sp/>outside<sp/>world<sp/>it<sp/>looks<sp/>exactly</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>like<sp/>the<sp/>underlying<sp/>type.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>So<sp/>a<sp/>structure<sp/>from<sp/>the<sp/>outside<sp/>world<sp/>can<sp/>contain<sp/>the<sp/>follow<sp/>when<sp/>a<sp/>KHz<sp/>frequency<sp/>is</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>expected<sp/>as<sp/>a<sp/>uint16_t;</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/>*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>struct<sp/>ExternalData<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>KHz<sp/>input_frequency_khz;</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>would<sp/>be<sp/>100%<sp/>compability<sp/>with<sp/>the<sp/>other<sp/>unsafe<sp/>code<sp/>in<sp/>the<sp/>external<sp/>entity<sp/>that</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>simple<sp/>said</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>struct<sp/>ExternalData<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>uint16_t<sp/>input_frequency_khz;</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>UNIQUE_ENUM_CLASS&gt;</highlight></codeline>
+<codeline lineno="53" refid="structTTL__StrongType" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/>{</highlight></codeline>
+<codeline lineno="54" refid="structTTL__StrongType_1a4663294b3021e1a73e3110716f475ce1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>T<sp/><ref refid="structTTL__StrongType_1a4663294b3021e1a73e3110716f475ce1" kindref="member">TYPE</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Default<sp/>constructor<sp/>which<sp/>initializes<sp/>members<sp/>with<sp/>default<sp/>(calling<sp/>the<sp/>default<sp/>constructor).<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref>()<sp/>:<sp/>value()<sp/>{}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Construction<sp/>from<sp/>a<sp/>fundamental<sp/>value.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="structTTL__StrongType_1a60f25fbd5c9a1f4b655804efcfeb9724" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1a60f25fbd5c9a1f4b655804efcfeb9724" kindref="member">TTL_StrongType</ref>(T<sp/>value)<sp/>:<sp/>value(value)<sp/>{}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Conversion<sp/>back<sp/>to<sp/>the<sp/>fundamental<sp/>data<sp/>type.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="structTTL__StrongType_1a4a10aecb16ac648dfd77dba555765040" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>T<sp/><ref refid="structTTL__StrongType_1a4a10aecb16ac648dfd77dba555765040" kindref="member">Underlying</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>acceptable<sp/>to<sp/>negate<sp/>the<sp/>underlying<sp/>type</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>-<sp/>-2<sp/>Cats<sp/>=<sp/>2<sp/>Cats.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="structTTL__StrongType_1ab5acdc71d4f0a204733b6df0d76e2cac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/><ref refid="structTTL__StrongType_1ab5acdc71d4f0a204733b6df0d76e2cac" kindref="member">operator-</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref>(-value);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>acceptable<sp/>to<sp/>add<sp/>2<sp/>things<sp/>of<sp/>the<sp/>same<sp/>type.<sp/>The<sp/>rules<sp/>of<sp/>the<sp/>underlying</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>value<sp/>are<sp/>used<sp/>for<sp/>the<sp/>addition.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>2<sp/>Cats<sp/>+<sp/>2<sp/>Cats<sp/>=<sp/>4<sp/>Cats.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="structTTL__StrongType_1ae774166466b5d68078e719876ea41984" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/>&amp;<ref refid="structTTL__StrongType_1ae774166466b5d68078e719876ea41984" kindref="member">operator+=</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>+=<sp/>rhs.value;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>acceptable<sp/>to<sp/>add<sp/>2<sp/>things<sp/>of<sp/>the<sp/>same<sp/>type.<sp/>The<sp/>rules<sp/>of<sp/>the<sp/>underlying</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>value<sp/>are<sp/>used<sp/>for<sp/>the<sp/>addition.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>2<sp/>Cats<sp/>+<sp/>2<sp/>Cats<sp/>=<sp/>4<sp/>Cats.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="structTTL__StrongType_1a2cda6d720963776062ad75ce0a18440d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/><ref refid="structTTL__StrongType_1a2cda6d720963776062ad75ce0a18440d" kindref="member">operator+</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref>(value)<sp/>+=<sp/>rhs;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Prefix<sp/>increment</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>acceptable<sp/>to<sp/>add<sp/>another<sp/>thing<sp/>of<sp/>the<sp/>same<sp/>type.<sp/>The<sp/>rules<sp/>of<sp/>the<sp/>underlying</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>value<sp/>are<sp/>used<sp/>for<sp/>the<sp/>addition.</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>2<sp/>Cats<sp/>+<sp/>1<sp/>Cats<sp/>=<sp/>3<sp/>Cats.</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="structTTL__StrongType_1a7bb5cc5f10b87716ea69e4ad7a627afe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/>&amp;<ref refid="structTTL__StrongType_1a7bb5cc5f10b87716ea69e4ad7a627afe" kindref="member">operator++</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++value;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Postfix<sp/>increment</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>acceptable<sp/>to<sp/>add<sp/>another<sp/>thing<sp/>of<sp/>the<sp/>same<sp/>type.<sp/>The<sp/>rules<sp/>of<sp/>the<sp/>underlying</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>value<sp/>are<sp/>used<sp/>for<sp/>the<sp/>addition.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>2<sp/>Cats<sp/>+<sp/>1<sp/>Cats<sp/>=<sp/>3<sp/>Cats.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="structTTL__StrongType_1adc35b6caab0c7304ae90d28713691235" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/><ref refid="structTTL__StrongType_1adc35b6caab0c7304ae90d28713691235" kindref="member">operator++</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/>current_value<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>current_value;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Prefix<sp/>increment</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>acceptable<sp/>to<sp/>subtract<sp/>another<sp/>thing<sp/>of<sp/>the<sp/>same<sp/>type.<sp/>The<sp/>rules<sp/>of<sp/>the<sp/>underlying</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>value<sp/>are<sp/>used<sp/>for<sp/>the<sp/>subtraction.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>2<sp/>Cats<sp/>-<sp/>1<sp/>Cats<sp/>=<sp/>1<sp/>Cats.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="structTTL__StrongType_1ab51a995e83048392beea6ef8427606e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/>&amp;<ref refid="structTTL__StrongType_1ab51a995e83048392beea6ef8427606e4" kindref="member">operator--</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>--value;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Postfix<sp/>increment</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>acceptable<sp/>to<sp/>subtract<sp/>another<sp/>thing<sp/>of<sp/>the<sp/>same<sp/>type.<sp/>The<sp/>rules<sp/>of<sp/>the<sp/>underlying</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>value<sp/>are<sp/>used<sp/>for<sp/>the<sp/>subtraction.</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>2<sp/>Cats<sp/>-<sp/>1<sp/>Cats<sp/>=<sp/>1<sp/>Cats.</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="structTTL__StrongType_1ade77dbbb9c5f6f380e251087819d57a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/><ref refid="structTTL__StrongType_1ade77dbbb9c5f6f380e251087819d57a3" kindref="member">operator--</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/>current_value<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>--*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>current_value;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>acceptable<sp/>to<sp/>subtract<sp/>2<sp/>things<sp/>of<sp/>the<sp/>same<sp/>type.<sp/>The<sp/>rules<sp/>of<sp/>the<sp/>underlying</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>value<sp/>are<sp/>used<sp/>for<sp/>the<sp/>addition.</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>2<sp/>Cats<sp/>-<sp/>2<sp/>Cats<sp/>=<sp/>0<sp/>Cats.</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="structTTL__StrongType_1af7a82578760ba53224c028cb226569da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/>&amp;<ref refid="structTTL__StrongType_1af7a82578760ba53224c028cb226569da" kindref="member">operator-=</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>+<sp/>rhs.value;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>acceptable<sp/>to<sp/>subtract<sp/>2<sp/>things<sp/>of<sp/>the<sp/>same<sp/>type.<sp/>The<sp/>rules<sp/>of<sp/>the<sp/>underlying</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>value<sp/>are<sp/>used<sp/>for<sp/>the<sp/>addition.</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>2<sp/>Cats<sp/>-<sp/>2<sp/>Cats<sp/>=<sp/>0<sp/>Cats.</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="structTTL__StrongType_1a740043e84110f570b2561e3277ccd46a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/><ref refid="structTTL__StrongType_1a740043e84110f570b2561e3277ccd46a" kindref="member">operator-</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref>(value)<sp/>-=<sp/>rhs;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>generally<sp/>acceptable<sp/>to<sp/>multiple<sp/>by<sp/>the<sp/>underlying<sp/>type.<sp/>The<sp/>underlying<sp/>type</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>tends<sp/>to<sp/>mean<sp/>that<sp/>sign<sp/>rules<sp/>are<sp/>obeyed.</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>2<sp/>Cats<sp/>*<sp/>2<sp/>=<sp/>4<sp/>Cats.</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>-2<sp/>Cats<sp/>*<sp/>-2<sp/>=<sp/>4<sp/>Cats.</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="structTTL__StrongType_1a7542fb2a2d82f89f995f62622b7a6eb3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/><ref refid="structTTL__StrongType_1a7542fb2a2d82f89f995f62622b7a6eb3" kindref="member">operator*</ref>(T<sp/>rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref>(value<sp/>*<sp/>rhs);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>generally<sp/>acceptable<sp/>to<sp/>divide<sp/>by<sp/>the<sp/>underlying<sp/>type.<sp/>The<sp/>underlying<sp/>type</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>tends<sp/>to<sp/>mean<sp/>that<sp/>sign<sp/>rules<sp/>are<sp/>obeyed.</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>2<sp/>Cats<sp/>/<sp/>2<sp/>=<sp/>1<sp/>Cats.</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>-2<sp/>Cats<sp/>/<sp/>-2<sp/>=<sp/>1<sp/>Cats.</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="structTTL__StrongType_1aa0c0eb00d869b51628e81391cb5dea67" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/><ref refid="structTTL__StrongType_1aa0c0eb00d869b51628e81391cb5dea67" kindref="member">operator/</ref>(T<sp/>rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref>(value<sp/>/<sp/>rhs);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>generally<sp/>acceptable<sp/>to<sp/>divide<sp/>by<sp/>the<sp/>type.</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>2<sp/>Cats<sp/>/<sp/>2<sp/>Cats<sp/>=<sp/>1.</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>-2<sp/>Cats<sp/>/<sp/>2<sp/>Cats<sp/>=<sp/>-1.</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="structTTL__StrongType_1afce7560cd25cb4974b70bef1675815f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>T<sp/><ref refid="structTTL__StrongType_1afce7560cd25cb4974b70bef1675815f3" kindref="member">operator/</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/>rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value<sp/>/<sp/>rhs.value;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>generally<sp/>acceptable<sp/>to<sp/>modulo<sp/>by<sp/>the<sp/>type.</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>3<sp/>Cats<sp/>%<sp/>2<sp/>Cats<sp/>=<sp/>1<sp/>Cats.</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>-3<sp/>Cats<sp/>%<sp/>-2<sp/>=<sp/>1<sp/>Cats.</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210" refid="structTTL__StrongType_1a5483c878543a18d6a67b72937c75c18e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/><ref refid="structTTL__StrongType_1a5483c878543a18d6a67b72937c75c18e" kindref="member">operator%</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/>rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref>(value<sp/>%<sp/>rhs.value);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>generally<sp/>acceptable<sp/>to<sp/>modulo<sp/>by<sp/>the<sp/>underlying<sp/>type.<sp/>The<sp/>underlying<sp/>type</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>tends<sp/>to<sp/>mean<sp/>that<sp/>sign<sp/>rules<sp/>are<sp/>obeyed.</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>3<sp/>Cats<sp/>%<sp/>2<sp/>=<sp/>1<sp/>Cats.</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>-3<sp/>Cats<sp/>%<sp/>-2<sp/>=<sp/>1<sp/>Cats.</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="structTTL__StrongType_1a7ee8a3f9b10a5390546c644c0bf46fad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/><ref refid="structTTL__StrongType_1a7ee8a3f9b10a5390546c644c0bf46fad" kindref="member">operator%</ref>(T<sp/>rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref>(value<sp/>%<sp/>rhs);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>generally<sp/>acceptable<sp/>to<sp/>compare.</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>3<sp/>Cats<sp/>&gt;<sp/>2<sp/>Cats<sp/>=<sp/>true.</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="structTTL__StrongType_1aa93a27ab72e09ea53cf565dcdc7ced19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1aa93a27ab72e09ea53cf565dcdc7ced19" kindref="member">operator&gt;</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value<sp/>&gt;<sp/>rhs.value;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>generally<sp/>acceptable<sp/>to<sp/>compare.</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>3<sp/>Cats<sp/>&gt;=<sp/>3<sp/>Cats<sp/>=<sp/>true.</highlight></codeline>
+<codeline lineno="238"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239" refid="structTTL__StrongType_1ae952759b776dab317e5679f06a305d9d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ae952759b776dab317e5679f06a305d9d" kindref="member">operator&gt;=</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value<sp/>&gt;=<sp/>rhs.value;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>generally<sp/>acceptable<sp/>to<sp/>compare.</highlight></codeline>
+<codeline lineno="245"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="246"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>3<sp/>Cats<sp/>&lt;<sp/>2<sp/>Cats<sp/>=<sp/>false.</highlight></codeline>
+<codeline lineno="247"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="structTTL__StrongType_1a47ffb1a164d14398ac0dea4853f600fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1a47ffb1a164d14398ac0dea4853f600fc" kindref="member">operator&lt;</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value<sp/>&lt;<sp/>rhs.value;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="252"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>generally<sp/>acceptable<sp/>to<sp/>compare.</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="255"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>3<sp/>Cats<sp/>&lt;=<sp/>2<sp/>Cats<sp/>=<sp/>false.</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="structTTL__StrongType_1a9d81a0f828b7cfb039ed9de9eb980141" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1a9d81a0f828b7cfb039ed9de9eb980141" kindref="member">operator&lt;=</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value<sp/>&lt;=<sp/>rhs.value;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="261"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="262"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>generally<sp/>acceptable<sp/>to<sp/>compare.</highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="264"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>3<sp/>Cats<sp/>==<sp/>2<sp/>Cats<sp/>=<sp/>false.</highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266" refid="structTTL__StrongType_1ada458d4d068a2b96de35264697d27fd8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ada458d4d068a2b96de35264697d27fd8" kindref="member">operator==</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value<sp/>==<sp/>rhs.value;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="271"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>generally<sp/>acceptable<sp/>to<sp/>compare.</highlight></codeline>
+<codeline lineno="272"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>3<sp/>Cats<sp/>!=<sp/>2<sp/>Cats<sp/>=<sp/>true.</highlight></codeline>
+<codeline lineno="274"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275" refid="structTTL__StrongType_1a939ddda351a4b2d306a446e725efaff8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>__attribute__((always_inline))<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1a939ddda351a4b2d306a446e725efaff8" kindref="member">operator!=</ref>(<ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value<sp/>!=<sp/>rhs.value;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="279"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="280"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allow<sp/>compile<sp/>time<sp/>access<sp/>to<sp/>the<sp/>underling<sp/>type,<sp/>this<sp/>can<sp/>be<sp/>useful<sp/>for<sp/>template<sp/>parameters<sp/>etc.</highlight></codeline>
+<codeline lineno="281"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="structTTL__StrongType_1ae368e76d900e7a58b04ab9a157655313" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="structTTL__StrongType_1ae368e76d900e7a58b04ab9a157655313" kindref="member">Type</ref><sp/>=<sp/>T;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="285" refid="structTTL__StrongType_1afe310b43eee9560b68bd707a872eec6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>U<sp/>&amp;<ref refid="structTTL__StrongType_1afe310b43eee9560b68bd707a872eec6c" kindref="member">operator&lt;&lt;</ref>(U<sp/>&amp;os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__StrongType_1ad74beabf4f6ac6e97b0a36cf397e1fcc" kindref="member">TTL_StrongType</ref><sp/>ttl_string_type)<sp/>{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/>ttl_string_type.value;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>The<sp/>actual<sp/>fundamental<sp/>value.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>value;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="293"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="294"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>This<sp/>makes<sp/>the<sp/>type<sp/>unique.<sp/>It<sp/>cannot<sp/>be<sp/>accessed,<sp/>uses<sp/>no<sp/>storage<sp/>but<sp/>gives</highlight></codeline>
+<codeline lineno="295"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>the<sp/>type<sp/>a<sp/>unique<sp/>signature.</highlight></codeline>
+<codeline lineno="296"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>UNIQUE_ENUM_CLASS<sp/>unique<sp/>=<sp/>UNIQUE_ENUM_CLASS(0);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="300"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="301"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Wrapper<sp/>to<sp/>allow<sp/>a<sp/>single<sp/>conversion<sp/>to<sp/>another<sp/>type.</highlight></codeline>
+<codeline lineno="302"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="303"><highlight class="comment"><sp/>*<sp/>For<sp/>example</highlight></codeline>
+<codeline lineno="304"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="305"><highlight class="comment"><sp/>*<sp/>Conversion<sp/>from<sp/>Hz<sp/>to<sp/>Mhz<sp/>can<sp/>be<sp/>achieved<sp/>by<sp/>defining</highlight></codeline>
+<codeline lineno="306"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="307"><highlight class="comment"><sp/>*<sp/>using<sp/>FrequencyHzToMHz<sp/>=<sp/>StrongTypeConversion&lt;FrequencyMHz,<sp/>FrequencyHz,<sp/>1,<sp/>1000000&gt;;</highlight></codeline>
+<codeline lineno="308"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="309"><highlight class="comment"><sp/>*<sp/>Then</highlight></codeline>
+<codeline lineno="310"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="311"><highlight class="comment"><sp/>*<sp/>FrequencyHz<sp/>hz(1000000);</highlight></codeline>
+<codeline lineno="312"><highlight class="comment"><sp/>*<sp/>FrequencyHz<sp/>mhz<sp/>=<sp/>HzToMHz(hz);</highlight></codeline>
+<codeline lineno="313"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="314"><highlight class="comment"><sp/>*<sp/>Would<sp/>give<sp/>mhz<sp/>=<sp/>1.</highlight></codeline>
+<codeline lineno="315"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TARGET_TYPE,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SOURCE_TYPE,<sp/>u</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">32_t<sp/>CONVERSION_MULTIPLY,<sp/>u</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">32_t<sp/>CONVERSION_DIVISION&gt;</highlight></codeline>
+<codeline lineno="318" refid="structStrongTypeConversion" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structStrongTypeConversion_1a3046deb9a1e5fc0a130d591b6cbb4369" kindref="member">StrongTypeConversion</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>TARGET_TYPE<sp/>{</highlight></codeline>
+<codeline lineno="319" refid="structStrongTypeConversion_1a3046deb9a1e5fc0a130d591b6cbb4369" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structStrongTypeConversion_1a3046deb9a1e5fc0a130d591b6cbb4369" kindref="member">StrongTypeConversion</ref>(SOURCE_TYPE<sp/>source_value)</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>TARGET_TYPE(CONVERSION_MULTIPLY<sp/>==<sp/>1<sp/>?<sp/>source_value.Underlying()<sp/>/<sp/>CONVERSION_DIVISION</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>source_value.Underlying()<sp/>*<sp/>CONVERSION_MULTIPLY)<sp/>{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">((CONVERSION_MULTIPLY<sp/>==<sp/>1)<sp/>||<sp/>(CONVERSION_DIVISION<sp/>==<sp/>1),</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;StrongTypeConversion<sp/>must<sp/>have<sp/>one<sp/>of<sp/>the<sp/>conversion<sp/>parameters<sp/>set<sp/>to<sp/>1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326" refid="structStrongTypeConversion_1a8b771dd0d45e5da8f0aa2810207446e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>TARGET_TYPE()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>TARGET_TYPE::Underlying();</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="bwnZUCP_TTL/TTL_cpp/TTL_strong_type.h"/>
+  </compounddef>
+</doxygen>

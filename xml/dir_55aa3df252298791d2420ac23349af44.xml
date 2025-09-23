@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_55aa3df252298791d2420ac23349af44" kind="dir">
+    <compoundname>c</compoundname>
+    <innerfile refid="TTL__cpp_2c_2TTL__import__export_8h">TTL_cpp/c/TTL_import_export.h</innerfile>
+    <innerfile refid="TTL__cpp_2c_2TTL__types_8h">TTL_cpp/c/TTL_types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="bwnZUCP_TTL/TTL_cpp/c/"/>
+  </compounddef>
+</doxygen>

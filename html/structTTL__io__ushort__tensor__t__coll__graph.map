@@ -1,0 +1,14 @@
+<map id="TTL_io_ushort_tensor_t" name="TTL_io_ushort_tensor_t">
+<area shape="rect" id="Node000001" title="Describes a pair of internal Tensors after an operation." alt="" coords="131,505,280,571"/>
+<area shape="rect" id="Node000002" href="$structTTL__int__ushort__sub__tensor__t.html" title="const and non&#45;const sub tensors in the appropriate address space" alt="" coords="142,345,269,427"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,427,208,488,203,488,203,427"/>
+<area shape="rect" id="Node000003" href="$structTTL__int__ushort__tensor__t.html" title="const and non&#45;const tensors in the appropriate address space" alt="" coords="5,186,158,272"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="108,270,142,320,152,331,148,335,138,323,103,273"/>
+<area shape="rect" id="Node000004" href="$structTTL__layout__t.html" title="Description of a Tensor layout in memory." alt="" coords="10,16,116,102"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="65,102,67,151,70,169,65,170,62,152,59,102"/>
+<area shape="rect" id="Node000005" href="$structTTL__shape__t.html" title="Description of a Shape." alt="" coords="151,5,239,112"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="199,112,206,328,201,328,194,112"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="160,114,143,138,120,173,116,170,139,135,156,110"/>
+<area shape="rect" id="Node000006" href="$structTTL__offset__t.html" title="Description of the 3D offset of an object." alt="" coords="275,175,360,282"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="282,284,246,333,242,330,278,280"/>
+</map>

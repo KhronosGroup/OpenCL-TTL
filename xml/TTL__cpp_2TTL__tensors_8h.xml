@@ -1,0 +1,559 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="TTL__cpp_2TTL__tensors_8h" kind="file" language="C++">
+    <compoundname>TTL_cpp/TTL_tensors.h</compoundname>
+    <includes refid="TTL__cpp_2TTL__types_8h" local="yes">TTL_types.h</includes>
+    <includedby refid="TTL__cpp_2TTL__core_8h" local="yes">TTL_core.h</includedby>
+    <includedby refid="TTL__cpp_2TTL__debug_8h" local="yes">TTL_debug.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>TTL_macros.h</label>
+        <link refid="TTL__cpp_2TTL__macros_8h"/>
+      </node>
+      <node id="4">
+        <label>TTL_strong_type.h</label>
+        <link refid="TTL__strong__type_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_tensors.h</label>
+        <link refid="TTL__cpp_2TTL__tensors_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TTL_types.h</label>
+        <link refid="TTL__cpp_2TTL__types_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>TTL.h</label>
+        <link refid="TTL__cpp_2TTL_8h"/>
+      </node>
+      <node id="2">
+        <label>TTL_core.h</label>
+        <link refid="TTL__cpp_2TTL__core_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>TTL_debug.h</label>
+        <link refid="TTL__cpp_2TTL__debug_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TTL_import_export.h</label>
+        <link refid="TTL__cpp_2TTL__import__export_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>TTL_pipeline_schemes.h</label>
+        <link refid="TTL__cpp_2TTL__pipeline__schemes_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_tensors.h</label>
+        <link refid="TTL__cpp_2TTL__tensors_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structTTL__layout" prot="public">TTL_layout</innerclass>
+    <innerclass refid="structTTL__tensor" prot="public">TTL_tensor</innerclass>
+    <innerclass refid="structTTL__sub__tensor" prot="public">TTL_sub_tensor</innerclass>
+    <innerclass refid="structTTL__sub__tensor_1_1Origin" prot="public">TTL_sub_tensor::Origin</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="TTL__cpp_2TTL__tensors_8h_1a21c2e0b38c8a044e08a1f01f5bd120d3" prot="public" static="no">
+        <name>TTL_SIZEOF</name>
+        <param><defname>type</defname></param>
+        <initializer>sizeof(type)</initializer>
+        <briefdescription>
+<para>opencl doesn&apos;t like sizeof(void) so for it to be 1 like normal c </para>
+        </briefdescription>
+        <detaileddescription>
+<para>OpenCl will produce error: invalid application of &apos;sizeof&apos; to a void type</para>
+<para>This will need to be expanded with more types - or a different language used! </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="36" column="9" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="TTL__cpp_2TTL__tensors_8h_1aa341cb5a476277db84977a8c7adebf70" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref></type>
+        <definition>static TTL_offset_dim TTL_linearize</definition>
+        <argsstring>(const TTL_offset &amp;offset, const TTL_layout &amp;layout)</argsstring>
+        <name>TTL_linearize</name>
+        <param>
+          <type>const <ref refid="structTTL__offset" kindref="compound">TTL_offset</ref> &amp;</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout" kindref="compound">TTL_layout</ref> &amp;</type>
+          <declname>layout</declname>
+        </param>
+        <briefdescription>
+<para>Calculate the absolute linear offset in elements, based on a given tensor offset and layout. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The 3D offset of the required linear offset. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of the offset being calculated</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The offset in linear address space of the 3D offset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="81" column="30" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="81" bodyend="83"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_tensors_common.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2025<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__cpp_2TTL__types_8h" kindref="compound">TTL_types.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">/************************************************************************************************************</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>Allow<sp/>for<sp/>sizeof<sp/>anything<sp/>-<sp/>deals<sp/>with<sp/>sizeof(void)</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>************************************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="27"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>@def<sp/>TTL_SIZEOF</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>@brief<sp/>opencl<sp/>doesn&apos;t<sp/>like<sp/>sizeof(void)<sp/>so<sp/>for<sp/>it<sp/>to<sp/>be<sp/>1<sp/>like<sp/>normal<sp/>c</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>OpenCl<sp/>will<sp/>produce<sp/>error:<sp/>invalid<sp/>application<sp/>of<sp/>&apos;sizeof&apos;<sp/>to<sp/>a<sp/>void<sp/>type</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>This<sp/>will<sp/>need<sp/>to<sp/>be<sp/>expanded<sp/>with<sp/>more<sp/>types<sp/>-<sp/>or<sp/>a<sp/>different<sp/>language<sp/>used!</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="TTL__cpp_2TTL__tensors_8h_1a21c2e0b38c8a044e08a1f01f5bd120d3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TTL_SIZEOF(type)<sp/>sizeof(type)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">/************************************************************************************************************</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>Define<sp/>Layout</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>***********************************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="42"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Description<sp/>of<sp/>a<sp/>Tensor<sp/>layout<sp/>in<sp/>memory</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>Each<sp/>logical<sp/>tensor<sp/>is<sp/>embedded<sp/>in<sp/>both<sp/>global<sp/>and<sp/>local<sp/>memories<sp/>within<sp/>some</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>enclosing<sp/>physical<sp/>tensors.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>This<sp/>embedding<sp/>is<sp/>referred<sp/>to<sp/>as<sp/>&apos;layout&apos;,<sp/>which<sp/>specifies<sp/>the<sp/>actual<sp/>distance<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>between<sp/>the<sp/>start<sp/>of<sp/>consecutive<sp/>data<sp/>elements<sp/>in<sp/>each<sp/>dimension.</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>For<sp/>the<sp/>first<sp/>axis<sp/>the<sp/>distance<sp/>is<sp/>always<sp/>1<sp/>element<sp/>and<sp/>and<sp/>so<sp/>this<sp/>value<sp/>is<sp/>not<sp/>stored.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>line_length<sp/>and<sp/>plane_area<sp/>in<sp/>memory,<sp/>in<sp/>units<sp/>of<sp/>an<sp/>element.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="structTTL__layout" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTTL__layout_1ae803dbe8ed50a4c103f2a22c9faf588e" kindref="member">TTL_layout</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>3D<sp/>Description<sp/>of<sp/>a<sp/>Tensor<sp/>layout<sp/>in<sp/>memory</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>TTL_layout<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>row_spacing;<sp/><sp/><sp/>The<sp/>distance<sp/>between<sp/>the<sp/>start<sp/>of<sp/>consequtive<sp/>rows<sp/>in<sp/>units<sp/>of<sp/>elements.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>plane_spacing;<sp/><sp/><sp/>The<sp/>distance<sp/>between<sp/>the<sp/>start<sp/>of<sp/>consequtive<sp/>planes<sp/>in<sp/>units<sp/>of<sp/>elements.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="structTTL__layout_1ae803dbe8ed50a4c103f2a22c9faf588e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__layout_1ae803dbe8ed50a4c103f2a22c9faf588e" kindref="member">TTL_layout</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__layout_1adcd934e98f18eb29cf04e466e9728f28" kindref="member">row_spacing</ref><sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__layout_1a8e7358956b29e740a01b25f7048990f2" kindref="member">plane_spacing</ref><sp/>=<sp/>0)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__layout_1adcd934e98f18eb29cf04e466e9728f28" kindref="member">row_spacing</ref>(<ref refid="structTTL__layout_1adcd934e98f18eb29cf04e466e9728f28" kindref="member">row_spacing</ref>),<sp/><ref refid="structTTL__layout_1a8e7358956b29e740a01b25f7048990f2" kindref="member">plane_spacing</ref>(<ref refid="structTTL__layout_1a8e7358956b29e740a01b25f7048990f2" kindref="member">plane_spacing</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="structTTL__layout_1adcd934e98f18eb29cf04e466e9728f28" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__layout_1adcd934e98f18eb29cf04e466e9728f28" kindref="member">row_spacing</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>The<sp/>distance<sp/>between<sp/>the<sp/>start<sp/>of<sp/>consequtive<sp/>rows<sp/>in<sp/>units<sp/>of<sp/>elements.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="structTTL__layout_1a8e7358956b29e740a01b25f7048990f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__layout_1a8e7358956b29e740a01b25f7048990f2" kindref="member">plane_spacing</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>The<sp/>distance<sp/>between<sp/>the<sp/>start<sp/>of<sp/>consequtive<sp/>planes<sp/>in<sp/>units<sp/>of<sp/>elements.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="72"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Calculate<sp/>the<sp/>absolute<sp/>linear<sp/>offset<sp/>in<sp/>elements,<sp/>based<sp/>on<sp/>a<sp/>given</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>tensor<sp/>offset<sp/>and<sp/>layout</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>@param<sp/>offset<sp/>The<sp/>3D<sp/>offset<sp/>of<sp/>the<sp/>required<sp/>linear<sp/>offset.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*<sp/>@param<sp/>layout<sp/>The<sp/>layout<sp/>of<sp/>the<sp/>offset<sp/>being<sp/>calculated</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>offset<sp/>in<sp/>linear<sp/>address<sp/>space<sp/>of<sp/>the<sp/>3D<sp/>offset</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="TTL__cpp_2TTL__tensors_8h_1aa341cb5a476277db84977a8c7adebf70" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref><sp/><ref refid="TTL__cpp_2TTL__tensors_8h_1aa341cb5a476277db84977a8c7adebf70" kindref="member">TTL_linearize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref><sp/>&amp;offset,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref><sp/>&amp;layout)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((offset.<ref refid="structTTL__offset_1a11476dfa0a44a26128268071e40ad41f" kindref="member">z</ref><sp/>*<sp/>layout.<ref refid="structTTL__layout_1a8e7358956b29e740a01b25f7048990f2" kindref="member">plane_spacing</ref>)<sp/>+<sp/>(offset.<ref refid="structTTL__offset_1a12f2cddc72b26b78ff94dac7fc120d86" kindref="member">y</ref><sp/>*<sp/>layout.<ref refid="structTTL__layout_1adcd934e98f18eb29cf04e466e9728f28" kindref="member">row_spacing</ref>)<sp/>+<sp/>offset.<ref refid="structTTL__offset_1ab94c508c8832f23f7bd033509c0cd260" kindref="member">x</ref>);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">/************************************************************************************************************</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>Structure<sp/>of<sp/>a<sp/>tensor</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>***********************************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="89"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*<sp/>@brief<sp/>A<sp/>poor<sp/>mans<sp/>base<sp/>class<sp/>for<sp/>an<sp/>a<sp/>tensor<sp/>in<sp/>the<sp/>passed<sp/>address<sp/>space</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>TTL_tensor<sp/>contains<sp/>both<sp/>the<sp/>logical<sp/>dimensions<sp/>of<sp/>a<sp/>tile<sp/>as<sp/>well<sp/>as</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>its<sp/>physical<sp/>mapping<sp/>to<sp/>memory.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>@param<sp/>TTL_scope<sp/>The<sp/>scope<sp/>of<sp/>the<sp/>creation<sp/>can<sp/>be<sp/>TTL_global<sp/>or<sp/>TTL_local</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>@param<sp/>const_1<sp/>The<sp/>const<sp/>name<sp/>to<sp/>place<sp/>after<sp/>the<sp/>prefix<sp/>-<sp/>should<sp/>be<sp/>empty<sp/>or<sp/>const_</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>@param<sp/>location<sp/>The<sp/>location<sp/>of<sp/>the<sp/>tensor<sp/>-<sp/>should<sp/>be<sp/>ext<sp/>or<sp/>int</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>@param<sp/>type<sp/>The<sp/>type<sp/>of<sp/>the<sp/>tensor<sp/>-<sp/>should<sp/>be<sp/>any<sp/>valid<sp/>c<sp/>type</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*<sp/>@param<sp/>const_2<sp/>The<sp/>const<sp/>type<sp/>to<sp/>create<sp/>-<sp/>should<sp/>be<sp/>empty<sp/>or<sp/>const</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TENSORTYPE&gt;</highlight></codeline>
+<codeline lineno="102" refid="structTTL__tensor" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTTL__tensor_1ad7772175000d72f9e47292669c7119e1" kindref="member">TTL_tensor</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>TTL_tensor(TTL_create_,<sp/>const_2,<sp/>location,<sp/>type,<sp/>sub,<sp/>_5_params)</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>base<sp/>The<sp/>##<sp/>TTL_scope<sp/>##<sp/>base<sp/>address<sp/>of<sp/>the<sp/>tensor<sp/>in<sp/>##<sp/>location<sp/>##<sp/>memory</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>shape<sp/>Description<sp/>of<sp/>the<sp/>shape<sp/>of<sp/>the<sp/>tensor<sp/>that<sp/>base<sp/>points</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>layout<sp/>The<sp/>layout<sp/>of<sp/>the<sp/>##<sp/>location<sp/>##<sp/>tensor</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>offset<sp/>The<sp/>offset<sp/>of<sp/>the<sp/>tensor<sp/>from<sp/>the<sp/>base.<sp/>@see<sp/>TTL_offset</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>elem_size<sp/>The<sp/>size<sp/>of<sp/>a<sp/>single<sp/>element<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>return<sp/>a<sp/>TTL_tensor(TTL_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_t)</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="structTTL__tensor_1ad7772175000d72f9e47292669c7119e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tensor_1ad7772175000d72f9e47292669c7119e1" kindref="member">TTL_tensor</ref>(TENSORTYPE<sp/>*<ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/>&amp;<ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref><sp/>&amp;<ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref><sp/>&amp;offset,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tensor_1a21342da2d02100d95f009259bfd4bb08" kindref="member">elem_size</ref>)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>(<ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref><sp/>+<sp/><ref refid="TTL__cpp_2TTL__tensors_8h_1aa341cb5a476277db84977a8c7adebf70" kindref="member">TTL_linearize</ref>(offset,<sp/><ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>)),<sp/><ref refid="structTTL__tensor_1a21342da2d02100d95f009259bfd4bb08" kindref="member">elem_size</ref>(<ref refid="structTTL__tensor_1a21342da2d02100d95f009259bfd4bb08" kindref="member">elem_size</ref>),<sp/><ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>(<ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>),<sp/><ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>(<ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Create<sp/>an<sp/>empty<sp/>location<sp/>tensor.<sp/>Empty<sp/>means<sp/>it<sp/>has<sp/>all<sp/>dimensions<sp/>set</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>to<sp/>zero</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Most<sp/>operations<sp/>on<sp/>an<sp/>empty<sp/>tensor<sp/>should<sp/>turn<sp/>into<sp/>no-ops<sp/>and<sp/>so<sp/>an<sp/>empty</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>tensor<sp/>is<sp/>the<sp/>safest<sp/>default<sp/>state.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="structTTL__tensor_1a6bdb94b69dfaf48139ad82520afc1c46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tensor_1a6bdb94b69dfaf48139ad82520afc1c46" kindref="member">TTL_tensor</ref>()<sp/>:<sp/><ref refid="structTTL__tensor_1ad7772175000d72f9e47292669c7119e1" kindref="member">TTL_tensor</ref>(0,<sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref>(),<sp/><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref>(),<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>(),<sp/>0){};</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Create<sp/>an<sp/>empty<sp/>location<sp/>tensor.<sp/>Empty<sp/>means<sp/>it<sp/>has<sp/>all<sp/>dimensions<sp/>set</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>to<sp/>zero</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Most<sp/>operations<sp/>on<sp/>an<sp/>empty<sp/>tensor<sp/>should<sp/>turn<sp/>into<sp/>no-ops<sp/>and<sp/>so<sp/>an<sp/>empty</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>tensor<sp/>is<sp/>the<sp/>safest<sp/>default<sp/>state.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TTL_tensor(const<sp/>TTL_tensor<sp/>&amp;tensor)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>:<sp/>TTL_tensor(tensor.base,<sp/>tensor.shape,<sp/>tensor.layout,<sp/>TTL_offset(),<sp/>tensor.elem_size){};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>TTL_tensor(TTL_create_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>)</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>base<sp/>The<sp/>##<sp/>TTL_scope<sp/>##<sp/>base<sp/>address<sp/>of<sp/>the<sp/>tensor<sp/>in<sp/>##<sp/>location<sp/>##<sp/>memory</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>shape<sp/>Description<sp/>of<sp/>the<sp/>shape<sp/>of<sp/>the<sp/>tensor<sp/>that<sp/>base<sp/>points</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>layout<sp/>The<sp/>layout<sp/>of<sp/>the<sp/>##<sp/>location<sp/>##<sp/>tensor</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>elem_size<sp/>The<sp/>size<sp/>of<sp/>a<sp/>single<sp/>element<sp/>in<sp/>the<sp/>tensor</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>The<sp/>layout<sp/>of<sp/>the<sp/>created<sp/>tensor<sp/>will<sp/>have<sp/>an<sp/>offset<sp/>of<sp/>(0,<sp/>0,<sp/>0)</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>return<sp/>a<sp/>TTL_tensor(TTL_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_t)</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="structTTL__tensor_1a5f4de3315ede2ca04bbf8ac38f85419d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tensor_1a5f4de3315ede2ca04bbf8ac38f85419d" kindref="member">TTL_tensor</ref>(TENSORTYPE<sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/>&amp;<ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref><sp/>&amp;<ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tensor_1a21342da2d02100d95f009259bfd4bb08" kindref="member">elem_size</ref>)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__tensor_1ad7772175000d72f9e47292669c7119e1" kindref="member">TTL_tensor</ref>(<ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>,<sp/><ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>,<sp/><ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>,<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>(),<sp/><ref refid="structTTL__tensor_1a21342da2d02100d95f009259bfd4bb08" kindref="member">elem_size</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>TTL_tensor(TTL_create_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>)</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>base<sp/>A<sp/>pointer<sp/>to<sp/>a<sp/>global<sp/>address</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>shape<sp/>Description<sp/>of<sp/>the<sp/>shape<sp/>of<sp/>the<sp/>tensor<sp/>that<sp/>base<sp/>points</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>layout<sp/>The<sp/>layout<sp/>of<sp/>the<sp/>##<sp/>location<sp/>##<sp/>tensor</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>The<sp/>layout<sp/>of<sp/>the<sp/>created<sp/>tensor<sp/>will<sp/>have<sp/>an<sp/>offset<sp/>of<sp/>(0,<sp/>0,<sp/>0)\n</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>The<sp/>element<sp/>size<sp/>is<sp/>inferred<sp/>from<sp/>the<sp/>base_address<sp/>pointer<sp/>type.\n</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>return<sp/>a<sp/>TTL_tensor(TTL_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_t)</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="structTTL__tensor_1ad057027f4ac219946ef2d4a2e08afc4e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tensor_1ad057027f4ac219946ef2d4a2e08afc4e" kindref="member">TTL_tensor</ref>(TENSORTYPE<sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/>&amp;<ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref><sp/>&amp;<ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>)</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__tensor_1ad7772175000d72f9e47292669c7119e1" kindref="member">TTL_tensor</ref>(<ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>,<sp/><ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>,<sp/><ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>,<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>(),<sp/><ref refid="TTL__cpp_2TTL__tensors_8h_1a21c2e0b38c8a044e08a1f01f5bd120d3" kindref="member">TTL_SIZEOF</ref>(*<ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>))<sp/>{}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>TTL_tensor(TTL_create_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>)</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>base<sp/>A<sp/>pointer<sp/>to<sp/>a<sp/>global<sp/>address</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>shape<sp/>Description<sp/>of<sp/>the<sp/>shape<sp/>of<sp/>the<sp/>tensor<sp/>that<sp/>base<sp/>points<sp/>to</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>elem_size<sp/>The<sp/>size<sp/>of<sp/>a<sp/>single<sp/>element<sp/>in<sp/>the<sp/>tensor</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Layout<sp/>is<sp/>inferred<sp/>from<sp/>the<sp/>shape.</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Offset<sp/>is<sp/>taken<sp/>to<sp/>be<sp/>zero.</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>return<sp/>a<sp/>TTL_tensor(TTL_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_t)</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="structTTL__tensor_1ac221a99d16000693bd25b74861587350" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tensor_1ac221a99d16000693bd25b74861587350" kindref="member">TTL_tensor</ref>(TENSORTYPE<sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/>&amp;<ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tensor_1a21342da2d02100d95f009259bfd4bb08" kindref="member">elem_size</ref>)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__tensor_1ad7772175000d72f9e47292669c7119e1" kindref="member">TTL_tensor</ref>(<ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>,<sp/><ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>,<sp/><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref>(<ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>.width,<sp/><ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>.height),<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>(),<sp/><ref refid="structTTL__tensor_1a21342da2d02100d95f009259bfd4bb08" kindref="member">elem_size</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>TTL_tensor(TTL_create_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>)</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>base<sp/>A<sp/>pointer<sp/>to<sp/>a<sp/>global<sp/>address</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>shape<sp/>Description<sp/>of<sp/>the<sp/>shape<sp/>of<sp/>the<sp/>tensor<sp/>that<sp/>base<sp/>points<sp/>to</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Element<sp/>size<sp/>is<sp/>inferred<sp/>from<sp/>the<sp/>base_address<sp/>pointer<sp/>type.</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Layout<sp/>is<sp/>inferred<sp/>from<sp/>the<sp/>shape.</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Offset<sp/>is<sp/>taken<sp/>to<sp/>be<sp/>zero.</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>return<sp/>a<sp/>TTL_tensor(TTL_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_t)</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="structTTL__tensor_1a7b5c8fc5c706dbc8f54645f703f9cfe9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tensor_1a7b5c8fc5c706dbc8f54645f703f9cfe9" kindref="member">TTL_tensor</ref>(TENSORTYPE<sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/>&amp;<ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>)</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__tensor_1ad7772175000d72f9e47292669c7119e1" kindref="member">TTL_tensor</ref>(<ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>,<sp/><ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>,<sp/><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref>(<ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>.width,<sp/><ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>.height),<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>(),<sp/><ref refid="TTL__cpp_2TTL__tensors_8h_1a21c2e0b38c8a044e08a1f01f5bd120d3" kindref="member">TTL_SIZEOF</ref>(*<ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>))<sp/>{}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Cast<sp/>a<sp/>TTL_tensor(_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>,<sp/>)<sp/>to<sp/>a<sp/>TTL_tensor(TTL_,</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>const_1,<sp/>location,<sp/>type,<sp/>,<sp/>_t)</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>This<sp/>is<sp/>a<sp/>safe<sp/>cast,<sp/>and<sp/>implimented<sp/>as<sp/>a<sp/>function<sp/>with<sp/>helper<sp/>macro<sp/>for<sp/>type<sp/>safety</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tensor<sp/>The<sp/>TTL_tensor(TTL_,<sp/>,<sp/>location,<sp/>type,<sp/>,<sp/>_t)<sp/>to<sp/>be<sp/>cast<sp/>to<sp/>a</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TTL_tensor(TTL_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>,<sp/>_t)</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>TTL_tensor(TTL_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>,<sp/>_t)<sp/>version<sp/>of<sp/>the<sp/>input<sp/>tensor</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212" refid="structTTL__tensor_1a99b2d729a3d0d004e186fa280500f40c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor_1a6bdb94b69dfaf48139ad82520afc1c46" kindref="member">TTL_tensor&lt;const TENSORTYPE&gt;</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor_1a6bdb94b69dfaf48139ad82520afc1c46" kindref="member">TTL_tensor&lt;const TENSORTYPE&gt;</ref>(<ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>,<sp/><ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>,<sp/><ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>,<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>(),<sp/><ref refid="structTTL__tensor_1a21342da2d02100d95f009259bfd4bb08" kindref="member">elem_size</ref>);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/><sp/>Read<sp/>a<sp/>value<sp/>from<sp/>a<sp/>tensor</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>x<sp/>dimension</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>y<sp/>dimension</highlight></codeline>
+<codeline lineno="221"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>z<sp/>dimension</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="223"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>No<sp/>bounds<sp/>checking<sp/>is<sp/>performed.</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>value<sp/>read</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227" refid="structTTL__tensor_1a6d55108f54e99fa72ef59eb725cce898" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TENSORTYPE<sp/>&amp;<ref refid="structTTL__tensor_1a6d55108f54e99fa72ef59eb725cce898" kindref="member">read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z<sp/>=<sp/>0)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>[x<sp/>+<sp/>(<ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>.row_spacing<sp/>*<sp/>y)<sp/>+<sp/>(<ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>.plane_spacing<sp/>*<sp/>z)];</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/><sp/>Write<sp/>a<sp/>value<sp/>to<sp/>a<sp/>tensor</highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>value<sp/>The<sp/>value<sp/>to<sp/>write</highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>x<sp/>dimension</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>y<sp/>dimension</highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>z<sp/>dimension</highlight></codeline>
+<codeline lineno="238"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239" refid="structTTL__tensor_1a25fef4a62a868aea689549044caf4d38" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>TENSORTYPE<sp/><ref refid="structTTL__tensor_1a25fef4a62a868aea689549044caf4d38" kindref="member">write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TENSORTYPE<sp/>value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z<sp/>=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>[x<sp/>+<sp/>(<ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>.row_spacing<sp/>*<sp/>y)<sp/>+<sp/>(<ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>.plane_spacing<sp/>*<sp/>z)]<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="245"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>A<sp/>Tensor<sp/>is<sp/>empty<sp/>if<sp/>its<sp/>shape<sp/>is<sp/>empty<sp/>@see<sp/>TTL_shape_empty</highlight></codeline>
+<codeline lineno="246"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="247"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tensor<sp/>The<sp/>tensor<sp/>to<sp/>test<sp/>for<sp/>emptiness</highlight></codeline>
+<codeline lineno="248"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="249"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>true<sp/>is<sp/>the<sp/>tensor<sp/>is<sp/>empty</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>false<sp/>is<sp/>the<sp/>tensor<sp/>is<sp/>not<sp/>empty</highlight></codeline>
+<codeline lineno="251"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252" refid="structTTL__tensor_1a0e95a8b935eb60ca2ecf2eb1fbbe6adf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor_1a0e95a8b935eb60ca2ecf2eb1fbbe6adf" kindref="member">empty</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>.empty();</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256" refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>TENSORTYPE<sp/>*<ref refid="structTTL__tensor_1af465e32d106608cc4468b64f6d718dbe" kindref="member">base</ref>;<sp/><sp/></highlight><highlight class="comment">/*!&lt;<sp/>The<sp/>base<sp/>address<sp/>of<sp/>the<sp/>tensor<sp/>in<sp/>the<sp/>local<sp/>address<sp/>space<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="structTTL__tensor_1a21342da2d02100d95f009259bfd4bb08" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__tensor_1a21342da2d02100d95f009259bfd4bb08" kindref="member">elem_size</ref>;<sp/></highlight><highlight class="comment">/*!&lt;<sp/>The<sp/>sizeof<sp/>the<sp/>elements<sp/>in<sp/>the<sp/>tensor<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258" refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref><sp/><ref refid="structTTL__tensor_1a8a0465930863308cbea3ccb3355920d8" kindref="member">layout</ref>;<sp/></highlight><highlight class="comment">/*!&lt;<sp/>The<sp/>layout<sp/>of<sp/>the<sp/>tensor,<sp/>@see<sp/>TTL_layout<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259" refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/><ref refid="structTTL__tensor_1a5d353f04e2376fb96e0f72ab23188409" kindref="member">shape</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">/*!&lt;<sp/>The<sp/>shape<sp/>of<sp/>the<sp/>tensor<sp/>in<sp/>3<sp/>dimensions<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="262"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/>*<sp/>@brief<sp/>A<sp/>tensor<sp/>plus<sp/>its<sp/>reference<sp/>to<sp/>its<sp/>parent<sp/>tensor</highlight></codeline>
+<codeline lineno="264"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/>*<sp/>TTL_sub_tensor<sp/>contains<sp/>both<sp/>the<sp/>logical<sp/>dimensions<sp/>of<sp/>a<sp/>tile<sp/>as<sp/>well<sp/>as</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/>*<sp/>its<sp/>physical<sp/>mapping<sp/>to<sp/>memory.</highlight></codeline>
+<codeline lineno="267"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="268"><highlight class="comment"><sp/>*<sp/>@param<sp/>TTL_scope<sp/>The<sp/>scope<sp/>of<sp/>the<sp/>creation<sp/>can<sp/>be<sp/>TTL_global<sp/>or<sp/>TTL_local</highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp/>*<sp/>@param<sp/>const_1<sp/>The<sp/>const<sp/>name<sp/>to<sp/>place<sp/>after<sp/>the<sp/>prefix<sp/>-<sp/>should<sp/>be<sp/>empty<sp/>or<sp/>const_</highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/>*<sp/>@param<sp/>location<sp/>The<sp/>location<sp/>of<sp/>the<sp/>tensor<sp/>-<sp/>should<sp/>be<sp/>ext<sp/>or<sp/>int</highlight></codeline>
+<codeline lineno="271"><highlight class="comment"><sp/>*<sp/>@param<sp/>type<sp/>The<sp/>type<sp/>of<sp/>the<sp/>tensor<sp/>-<sp/>should<sp/>be<sp/>any<sp/>valid<sp/>c<sp/>type</highlight></codeline>
+<codeline lineno="272"><highlight class="comment"><sp/>*<sp/>@param<sp/>const_2<sp/>The<sp/>const<sp/>type<sp/>to<sp/>create<sp/>-<sp/>should<sp/>be<sp/>empty<sp/>or<sp/>const</highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TENSORTYPE&gt;</highlight></codeline>
+<codeline lineno="275" refid="structTTL__sub__tensor" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTTL__sub__tensor_1afe59bc92b1614636a6195681efa9c997" kindref="member">TTL_sub_tensor</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="276"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="277"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>TTL_sub_tensor(TTL_create_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_7_params)</highlight></codeline>
+<codeline lineno="278"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="279"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>base<sp/>The<sp/>##<sp/>TTL_scope<sp/>##<sp/>base<sp/>address<sp/>of<sp/>the<sp/>tensor<sp/>in<sp/>##<sp/>location<sp/>##<sp/>memory</highlight></codeline>
+<codeline lineno="280"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>shape<sp/>Description<sp/>of<sp/>the<sp/>shape<sp/>of<sp/>the<sp/>tensor<sp/>that<sp/>base<sp/>points</highlight></codeline>
+<codeline lineno="281"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>layout<sp/>The<sp/>layout<sp/>of<sp/>the<sp/>##<sp/>location<sp/>##<sp/>tensor</highlight></codeline>
+<codeline lineno="282"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>elem_size<sp/>The<sp/>size<sp/>of<sp/>a<sp/>single<sp/>element<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="283"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>offset<sp/>The<sp/>offset<sp/>of<sp/>the<sp/>tensor<sp/>from<sp/>the<sp/>base.<sp/>@see<sp/>TTL_offset</highlight></codeline>
+<codeline lineno="284"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>origin_shape<sp/>The<sp/>shape<sp/>of<sp/>the<sp/>tensor<sp/>that<sp/>originated<sp/>the<sp/>sub<sp/>tensor</highlight></codeline>
+<codeline lineno="285"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>origin_offset<sp/>The<sp/>offset<sp/>of<sp/>the<sp/>tensor<sp/>from<sp/>the<sp/>souce<sp/>tensor.<sp/>@see<sp/>TTL_offset</highlight></codeline>
+<codeline lineno="286"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="287"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>return<sp/>a<sp/>TTL_sub_tensor(TTL_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_t)</highlight></codeline>
+<codeline lineno="288"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289" refid="structTTL__sub__tensor_1afe59bc92b1614636a6195681efa9c997" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__sub__tensor_1afe59bc92b1614636a6195681efa9c997" kindref="member">TTL_sub_tensor</ref>(TENSORTYPE<sp/>*base,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/>&amp;shape,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref><sp/>&amp;layout,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/>elem_size,</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref><sp/>offset,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/>origin_shape,<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref><sp/>origin_offset)</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__sub__tensor_1a686e41b10156f148a5ec383da3c22cb4" kindref="member">tensor</ref>(base,<sp/>shape,<sp/>layout,<sp/>offset,<sp/>elem_size),<sp/><ref refid="structTTL__sub__tensor_1ad97c56c1e69754ad6c7b1f771b9cbea0" kindref="member">origin</ref>(origin_shape,<sp/>origin_offset)<sp/>{}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="293"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="294"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>TTL_sub_tensor(TTL_create_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_5_params)</highlight></codeline>
+<codeline lineno="295"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="296"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>base<sp/>The<sp/>##<sp/>TTL_scope<sp/>##<sp/>base<sp/>address<sp/>of<sp/>the<sp/>tensor<sp/>in<sp/>##<sp/>location<sp/>##<sp/>memory</highlight></codeline>
+<codeline lineno="297"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>shape<sp/>Description<sp/>of<sp/>the<sp/>shape<sp/>of<sp/>the<sp/>tensor<sp/>that<sp/>base<sp/>points</highlight></codeline>
+<codeline lineno="298"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>layout<sp/>The<sp/>layout<sp/>of<sp/>the<sp/>##<sp/>location<sp/>##<sp/>tensor</highlight></codeline>
+<codeline lineno="299"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>origin_tensor<sp/>The<sp/>tensor<sp/>that<sp/>originated<sp/>the<sp/>sub<sp/>tensor</highlight></codeline>
+<codeline lineno="300"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>sub_offset<sp/>The<sp/>offset<sp/>of<sp/>the<sp/>tensor<sp/>from<sp/>the<sp/>souce<sp/>tensor.<sp/>@see<sp/>TTL_offset</highlight></codeline>
+<codeline lineno="301"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="302"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="303"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>The<sp/>element<sp/>size<sp/>of<sp/>the<sp/>tensor<sp/>is<sp/>taken<sp/>from<sp/>the<sp/>origin<sp/>tensor</highlight></codeline>
+<codeline lineno="304"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>The<sp/>offset<sp/>of<sp/>the<sp/>sub<sp/>tensor<sp/>is<sp/>taken<sp/>to<sp/>be<sp/>(0,<sp/>0,<sp/>0)</highlight></codeline>
+<codeline lineno="305"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="306"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>return<sp/>a<sp/>TTL_sub_tensor(TTL_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_t)</highlight></codeline>
+<codeline lineno="307"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308" refid="structTTL__sub__tensor_1a7943ef39375d4befc48973f435b6443b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__sub__tensor_1a7943ef39375d4befc48973f435b6443b" kindref="member">TTL_sub_tensor</ref>(TENSORTYPE<sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>base,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/>&amp;shape,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref><sp/>&amp;layout,</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor" kindref="compound">TTL_tensor&lt;TENSORTYPE&gt;</ref><sp/>&amp;origin_tensor,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref><sp/>&amp;sub_offset)</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__sub__tensor_1afe59bc92b1614636a6195681efa9c997" kindref="member">TTL_sub_tensor</ref>(base,<sp/>shape,<sp/>layout,<sp/>origin_tensor.elem_size,<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>(),<sp/>origin_tensor.shape,<sp/>sub_offset)<sp/>{}</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="312"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="313"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>TTL_sub_tensor(TTL_create_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_2_params)</highlight></codeline>
+<codeline lineno="314"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="315"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Simply<sp/>create<sp/>a<sp/>sub_tensor<sp/>from<sp/>an<sp/>origin<sp/>tensor</highlight></codeline>
+<codeline lineno="316"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="317"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>base<sp/>The<sp/>##<sp/>TTL_scope<sp/>##<sp/>base<sp/>address<sp/>of<sp/>the<sp/>tensor<sp/>in<sp/>##<sp/>location<sp/>##<sp/>memory</highlight></codeline>
+<codeline lineno="318"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>origin_tensor<sp/>The<sp/>tensor<sp/>that<sp/>originated<sp/>the<sp/>sub<sp/>tensor</highlight></codeline>
+<codeline lineno="319"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="320"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="321"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>The<sp/>element<sp/>size<sp/>of<sp/>the<sp/>tensor<sp/>is<sp/>taken<sp/>from<sp/>the<sp/>origin<sp/>tensor</highlight></codeline>
+<codeline lineno="322"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>The<sp/>offset<sp/>of<sp/>the<sp/>sub<sp/>tensor<sp/>is<sp/>taken<sp/>to<sp/>be<sp/>(0,<sp/>0,<sp/>0)</highlight></codeline>
+<codeline lineno="323"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>The<sp/>offset<sp/>of<sp/>the<sp/>sub<sp/>tensor<sp/>relative<sp/>to<sp/>the<sp/>source<sp/>tensor<sp/>is<sp/>taken<sp/>to<sp/>be<sp/>(0,<sp/>0,<sp/>0)</highlight></codeline>
+<codeline lineno="324"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="325"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>return<sp/>a<sp/>TTL_sub_tensor(TTL_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_t)</highlight></codeline>
+<codeline lineno="326"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327" refid="structTTL__sub__tensor_1a5eabeaa82bc13094a2b44418901cc495" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__sub__tensor_1a5eabeaa82bc13094a2b44418901cc495" kindref="member">TTL_sub_tensor</ref>(TENSORTYPE<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>base,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor" kindref="compound">TTL_tensor&lt;TENSORTYPE&gt;</ref><sp/>&amp;origin_tensor)</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__sub__tensor_1afe59bc92b1614636a6195681efa9c997" kindref="member">TTL_sub_tensor</ref>(base,<sp/>origin_tensor.shape,<sp/>origin_tensor.layout,<sp/>origin_tensor.elem_size,<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>(),</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_tensor.shape,<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>())<sp/>{}</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="331"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="332"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>TTL_sub_tensor(TTL_create_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_1_param)</highlight></codeline>
+<codeline lineno="333"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="334"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Simply<sp/>create<sp/>a<sp/>sub_tensor<sp/>from<sp/>an<sp/>origin<sp/>tensor</highlight></codeline>
+<codeline lineno="335"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="336"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>origin_tensor<sp/>The<sp/>tensor<sp/>that<sp/>originated<sp/>the<sp/>sub<sp/>tensor</highlight></codeline>
+<codeline lineno="337"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="338"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="339"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Effective<sp/>creates<sp/>a<sp/>sub-tensor<sp/>that<sp/>is<sp/>a<sp/>tensor<sp/>covering<sp/>100%<sp/>of<sp/>the<sp/>source<sp/>tensor</highlight></codeline>
+<codeline lineno="340"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="341"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>return<sp/>a<sp/>TTL_sub_tensor(TTL_,<sp/>const_1,<sp/>location,<sp/>type,<sp/>sub,<sp/>_t)</highlight></codeline>
+<codeline lineno="342"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343" refid="structTTL__sub__tensor_1a21cc2c7b146ea8d5cd6cd5679993510d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__sub__tensor_1a21cc2c7b146ea8d5cd6cd5679993510d" kindref="member">TTL_sub_tensor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTTL__tensor" kindref="compound">TTL_tensor&lt;TENSORTYPE&gt;</ref><sp/>&amp;origin_tensor)</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__sub__tensor_1afe59bc92b1614636a6195681efa9c997" kindref="member">TTL_sub_tensor</ref>(origin_tensor.base,<sp/>origin_tensor.shape,<sp/>origin_tensor.layout,<sp/>origin_tensor.elem_size,</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>(),<sp/>origin_tensor.shape,<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>())<sp/>{}</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="347"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="348"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Create<sp/>an<sp/>empty<sp/>tiled<sp/>internal<sp/>tensor.<sp/>Empty<sp/>means<sp/>it<sp/>has<sp/>all<sp/>dimensions<sp/>set</highlight></codeline>
+<codeline lineno="349"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>to<sp/>zero</highlight></codeline>
+<codeline lineno="350"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="351"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Most<sp/>operations<sp/>on<sp/>an<sp/>empty<sp/>tensor<sp/>should<sp/>turn<sp/>into<sp/>no-ops<sp/>and<sp/>so<sp/>an<sp/>empty</highlight></codeline>
+<codeline lineno="352"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>tensor<sp/>is<sp/>the<sp/>safest<sp/>default<sp/>state.</highlight></codeline>
+<codeline lineno="353"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354" refid="structTTL__sub__tensor_1a3edcd8c94b38d18bfd9826a532a27c1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__sub__tensor_1a3edcd8c94b38d18bfd9826a532a27c1d" kindref="member">TTL_sub_tensor</ref>()<sp/>:<sp/><ref refid="structTTL__sub__tensor_1afe59bc92b1614636a6195681efa9c997" kindref="member">TTL_sub_tensor</ref>(nullptr,<sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref>(),<sp/><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref>(),<sp/>0,<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>(),<sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref>(),<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>())<sp/>{}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="356"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="357"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/><sp/>Read<sp/>a<sp/>value<sp/>from<sp/>a<sp/>sub_tensor</highlight></codeline>
+<codeline lineno="358"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="359"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>x<sp/>dimension</highlight></codeline>
+<codeline lineno="360"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>y<sp/>dimension</highlight></codeline>
+<codeline lineno="361"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>z<sp/>dimension</highlight></codeline>
+<codeline lineno="362"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="363"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>No<sp/>bounds<sp/>checking<sp/>is<sp/>performed.</highlight></codeline>
+<codeline lineno="364"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="365"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>value<sp/>read</highlight></codeline>
+<codeline lineno="366"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367" refid="structTTL__sub__tensor_1a8da8f6cea1a3f3127010cf916978bac9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TENSORTYPE<sp/>&amp;<ref refid="structTTL__sub__tensor_1a8da8f6cea1a3f3127010cf916978bac9" kindref="member">read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z<sp/>=<sp/>0)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__sub__tensor_1a686e41b10156f148a5ec383da3c22cb4" kindref="member">tensor</ref>.read(x,<sp/>y,<sp/>z);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="371"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="372"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/><sp/>Write<sp/>a<sp/>value<sp/>to<sp/>a<sp/>sub_tensor</highlight></codeline>
+<codeline lineno="373"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="374"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>value<sp/>The<sp/>value<sp/>to<sp/>write</highlight></codeline>
+<codeline lineno="375"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>x<sp/>dimension</highlight></codeline>
+<codeline lineno="376"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>y<sp/>dimension</highlight></codeline>
+<codeline lineno="377"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>offset<sp/>in<sp/>the<sp/>z<sp/>dimension</highlight></codeline>
+<codeline lineno="378"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="379" refid="structTTL__sub__tensor_1ac3d76bc481cd2f56afd5d3f6f69f209c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>TENSORTYPE<sp/><ref refid="structTTL__sub__tensor_1ac3d76bc481cd2f56afd5d3f6f69f209c" kindref="member">write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TENSORTYPE<sp/>value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z<sp/>=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__sub__tensor_1a686e41b10156f148a5ec383da3c22cb4" kindref="member">tensor</ref>.write(value,<sp/>x,<sp/>y,<sp/>z);</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="383"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="384"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>A<sp/>Tensor<sp/>is<sp/>empty<sp/>if<sp/>its<sp/>shape<sp/>is<sp/>empty<sp/>@see<sp/>TTL_shape_empty</highlight></codeline>
+<codeline lineno="385"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="386"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>tensor<sp/>The<sp/>tensor<sp/>to<sp/>test<sp/>for<sp/>emptiness</highlight></codeline>
+<codeline lineno="387"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="388"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>true<sp/>is<sp/>the<sp/>tensor<sp/>is<sp/>empty</highlight></codeline>
+<codeline lineno="389"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>false<sp/>is<sp/>the<sp/>tensor<sp/>is<sp/>not<sp/>empty</highlight></codeline>
+<codeline lineno="390"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="391" refid="structTTL__sub__tensor_1ad11a11a643ce0d14c6e99295684bc960" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structTTL__sub__tensor_1ad11a11a643ce0d14c6e99295684bc960" kindref="member">empty</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__sub__tensor_1a686e41b10156f148a5ec383da3c22cb4" kindref="member">tensor</ref>.empty();</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="394" refid="structTTL__sub__tensor_1_1Origin" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTTL__sub__tensor_1_1Origin_1a77fe118003836255a087b7d81261b7bf" kindref="member">Origin</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="395"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="396"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@Brief<sp/>Store<sp/>of<sp/>the<sp/>origin<sp/>information.</highlight></codeline>
+<codeline lineno="397"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="398"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>shape<sp/>The<sp/>shape<sp/>of<sp/>the<sp/>origin<sp/>tensor<sp/>in<sp/>3<sp/>dimensions</highlight></codeline>
+<codeline lineno="399"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>sub_offset<sp/>The<sp/>offset<sp/>of<sp/>the<sp/>sub<sp/>tensor<sp/>from<sp/>the<sp/>origin<sp/>sensor</highlight></codeline>
+<codeline lineno="400"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="401" refid="structTTL__sub__tensor_1_1Origin_1a77fe118003836255a087b7d81261b7bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__sub__tensor_1_1Origin_1a77fe118003836255a087b7d81261b7bf" kindref="member">Origin</ref>(<ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/><ref refid="structTTL__sub__tensor_1_1Origin_1acd7b30a7a5fa5832d4d8ac20b6f74e1f" kindref="member">shape</ref>,<sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref><sp/><ref refid="structTTL__sub__tensor_1_1Origin_1aa02fbc95bc7b934e703ea61ddc4efe64" kindref="member">sub_offset</ref>)<sp/>:<sp/><ref refid="structTTL__sub__tensor_1_1Origin_1acd7b30a7a5fa5832d4d8ac20b6f74e1f" kindref="member">shape</ref>(<ref refid="structTTL__sub__tensor_1_1Origin_1acd7b30a7a5fa5832d4d8ac20b6f74e1f" kindref="member">shape</ref>),<sp/><ref refid="structTTL__sub__tensor_1_1Origin_1aa02fbc95bc7b934e703ea61ddc4efe64" kindref="member">sub_offset</ref>(<ref refid="structTTL__sub__tensor_1_1Origin_1aa02fbc95bc7b934e703ea61ddc4efe64" kindref="member">sub_offset</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403" refid="structTTL__sub__tensor_1_1Origin_1acd7b30a7a5fa5832d4d8ac20b6f74e1f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref><sp/><ref refid="structTTL__sub__tensor_1_1Origin_1acd7b30a7a5fa5832d4d8ac20b6f74e1f" kindref="member">shape</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>The<sp/>shape<sp/>of<sp/>the<sp/>origin<sp/>tensor<sp/>in<sp/>3<sp/>dimensions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="404" refid="structTTL__sub__tensor_1_1Origin_1aa02fbc95bc7b934e703ea61ddc4efe64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref><sp/><ref refid="structTTL__sub__tensor_1_1Origin_1aa02fbc95bc7b934e703ea61ddc4efe64" kindref="member">sub_offset</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>The<sp/>offset<sp/>of<sp/>the<sp/>sub<sp/>tensor<sp/>from<sp/>the<sp/>origin<sp/>sensor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="407" refid="structTTL__sub__tensor_1a686e41b10156f148a5ec383da3c22cb4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__tensor" kindref="compound">TTL_tensor&lt;TENSORTYPE&gt;</ref><sp/><ref refid="structTTL__sub__tensor_1a686e41b10156f148a5ec383da3c22cb4" kindref="member">tensor</ref>;</highlight></codeline>
+<codeline lineno="408" refid="structTTL__sub__tensor_1ad97c56c1e69754ad6c7b1f771b9cbea0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__sub__tensor_1_1Origin" kindref="compound">Origin</ref><sp/><ref refid="structTTL__sub__tensor_1ad97c56c1e69754ad6c7b1f771b9cbea0" kindref="member">origin</ref>;</highlight></codeline>
+<codeline lineno="409"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h"/>
+  </compounddef>
+</doxygen>

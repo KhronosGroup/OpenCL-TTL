@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_102a9c1b291dd687d6bf07805d7b74fa" kind="dir">
+    <compoundname>opencl</compoundname>
+    <innerfile refid="p_2opencl_2TTL__async__work__group__copy__3D3D_8h">p/opencl/TTL_async_work_group_copy_3D3D.h</innerfile>
+    <innerfile refid="TTL__cpp_2opencl_2TTL__import__export_8h">TTL_cpp/opencl/TTL_import_export.h</innerfile>
+    <innerfile refid="TTL__cpp_2opencl_2TTL__types_8h">TTL_cpp/opencl/TTL_types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="bwnZUCP_TTL/TTL_cpp/opencl/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,573 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__sub__tensor" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_sub_tensor</compoundname>
+    <includes refid="TTL__cpp_2TTL__tensors_8h" local="no">TTL_tensors.h</includes>
+    <innerclass refid="structTTL__sub__tensor_1_1Origin" prot="public">TTL_sub_tensor::Origin</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename TENSORTYPE</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__sub__tensor_1a686e41b10156f148a5ec383da3c22cb4" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__tensor" kindref="compound">TTL_tensor</ref>&lt; TENSORTYPE &gt;</type>
+        <definition>TTL_tensor&lt;TENSORTYPE&gt; TTL_sub_tensor&lt; TENSORTYPE &gt;::tensor</definition>
+        <argsstring></argsstring>
+        <name>tensor</name>
+        <qualifiedname>TTL_sub_tensor::tensor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="407" column="16" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="407" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__sub__tensor_1ad97c56c1e69754ad6c7b1f771b9cbea0" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__sub__tensor_1_1Origin" kindref="compound">Origin</ref></type>
+        <definition>Origin TTL_sub_tensor&lt; TENSORTYPE &gt;::origin</definition>
+        <argsstring></argsstring>
+        <name>origin</name>
+        <qualifiedname>TTL_sub_tensor::origin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="408" column="12" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="408" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__sub__tensor_1afe59bc92b1614636a6195681efa9c997" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_sub_tensor&lt; TENSORTYPE &gt;::TTL_sub_tensor</definition>
+        <argsstring>(TENSORTYPE *base, const TTL_shape &amp;shape, const TTL_layout &amp;layout, const TTL_dim elem_size, const TTL_offset offset, const TTL_shape origin_shape, TTL_offset origin_offset)</argsstring>
+        <name>TTL_sub_tensor</name>
+        <qualifiedname>TTL_sub_tensor::TTL_sub_tensor</qualifiedname>
+        <param>
+          <type>TENSORTYPE *</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape" kindref="compound">TTL_shape</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout" kindref="compound">TTL_layout</ref> &amp;</type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref></type>
+          <declname>elem_size</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__offset" kindref="compound">TTL_offset</ref></type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape" kindref="compound">TTL_shape</ref></type>
+          <declname>origin_shape</declname>
+        </param>
+        <param>
+          <type><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref></type>
+          <declname>origin_offset</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor(TTL_create_, const_1, location, type, sub, _7_params)</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ## TTL_scope ## base address of the tensor in ## location ## memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of the ## location ## tensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elem_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of a single element in the </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the tensor from the base. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref> </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>origin_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The shape of the tensor that originated the sub tensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the tensor from the souce tensor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref></para>
+</simplesect>
+<simplesect kind="return"><para>return a <ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor(TTL_, const_1, location, type, sub, _t)</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="289" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="289" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__sub__tensor_1a7943ef39375d4befc48973f435b6443b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_sub_tensor&lt; TENSORTYPE &gt;::TTL_sub_tensor</definition>
+        <argsstring>(TENSORTYPE *const base, const TTL_shape &amp;shape, const TTL_layout &amp;layout, const TTL_tensor&lt; TENSORTYPE &gt; &amp;origin_tensor, const TTL_offset &amp;sub_offset)</argsstring>
+        <name>TTL_sub_tensor</name>
+        <qualifiedname>TTL_sub_tensor::TTL_sub_tensor</qualifiedname>
+        <param>
+          <type>TENSORTYPE *const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__shape" kindref="compound">TTL_shape</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__layout" kindref="compound">TTL_layout</ref> &amp;</type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__tensor" kindref="compound">TTL_tensor</ref>&lt; TENSORTYPE &gt; &amp;</type>
+          <declname>origin_tensor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__offset" kindref="compound">TTL_offset</ref> &amp;</type>
+          <declname>sub_offset</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor(TTL_create_, const_1, location, type, sub, _5_params)</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ## TTL_scope ## base address of the tensor in ## location ## memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the shape of the tensor that base points </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layout of the ## location ## tensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor that originated the sub tensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sub_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the tensor from the souce tensor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref></para>
+</simplesect>
+The element size of the tensor is taken from the origin tensor The offset of the sub tensor is taken to be (0, 0, 0)</para>
+<para><simplesect kind="return"><para>return a <ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor(TTL_, const_1, location, type, sub, _t)</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="308" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="308" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__sub__tensor_1a5eabeaa82bc13094a2b44418901cc495" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_sub_tensor&lt; TENSORTYPE &gt;::TTL_sub_tensor</definition>
+        <argsstring>(TENSORTYPE const base, const TTL_tensor&lt; TENSORTYPE &gt; &amp;origin_tensor)</argsstring>
+        <name>TTL_sub_tensor</name>
+        <qualifiedname>TTL_sub_tensor::TTL_sub_tensor</qualifiedname>
+        <param>
+          <type>TENSORTYPE const</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTTL__tensor" kindref="compound">TTL_tensor</ref>&lt; TENSORTYPE &gt; &amp;</type>
+          <declname>origin_tensor</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor(TTL_create_, const_1, location, type, sub, _2_params)</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Simply create a sub_tensor from an origin tensor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ## TTL_scope ## base address of the tensor in ## location ## memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor that originated the sub tensor</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+The element size of the tensor is taken from the origin tensor The offset of the sub tensor is taken to be (0, 0, 0) The offset of the sub tensor relative to the source tensor is taken to be (0, 0, 0)</para>
+<para><simplesect kind="return"><para>return a <ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor(TTL_, const_1, location, type, sub, _t)</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="327" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="327" bodyend="329"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__sub__tensor_1a21cc2c7b146ea8d5cd6cd5679993510d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_sub_tensor&lt; TENSORTYPE &gt;::TTL_sub_tensor</definition>
+        <argsstring>(const TTL_tensor&lt; TENSORTYPE &gt; &amp;origin_tensor)</argsstring>
+        <name>TTL_sub_tensor</name>
+        <qualifiedname>TTL_sub_tensor::TTL_sub_tensor</qualifiedname>
+        <param>
+          <type>const <ref refid="structTTL__tensor" kindref="compound">TTL_tensor</ref>&lt; TENSORTYPE &gt; &amp;</type>
+          <declname>origin_tensor</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor(TTL_create_, const_1, location, type, sub, _1_param)</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Simply create a sub_tensor from an origin tensor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>origin_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor that originated the sub tensor</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Effective creates a sub-tensor that is a tensor covering 100% of the source tensor</para>
+<para><simplesect kind="return"><para>return a <ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor(TTL_, const_1, location, type, sub, _t)</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="343" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="343" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__sub__tensor_1a3edcd8c94b38d18bfd9826a532a27c1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_sub_tensor&lt; TENSORTYPE &gt;::TTL_sub_tensor</definition>
+        <argsstring>()</argsstring>
+        <name>TTL_sub_tensor</name>
+        <qualifiedname>TTL_sub_tensor::TTL_sub_tensor</qualifiedname>
+        <briefdescription>
+<para>Create an empty tiled internal tensor. Empty means it has all dimensions set to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Most operations on an empty tensor should turn into no-ops and so an empty tensor is the safest default state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="354" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="354" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__sub__tensor_1a8da8f6cea1a3f3127010cf916978bac9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const TENSORTYPE &amp;</type>
+        <definition>const TENSORTYPE &amp; TTL_sub_tensor&lt; TENSORTYPE &gt;::read</definition>
+        <argsstring>(const unsigned int x, const unsigned int y=0, const unsigned int z=0) const</argsstring>
+        <name>read</name>
+        <qualifiedname>TTL_sub_tensor::read</qualifiedname>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>y</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>z</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read a value from a sub_tensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the x dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the y dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the z dimension</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+No bounds checking is performed.</para>
+<para><simplesect kind="return"><para>The value read </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="367" column="22" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="367" bodyend="369"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__sub__tensor_1ac3d76bc481cd2f56afd5d3f6f69f209c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TENSORTYPE</type>
+        <definition>TENSORTYPE TTL_sub_tensor&lt; TENSORTYPE &gt;::write</definition>
+        <argsstring>(const TENSORTYPE value, const unsigned int x, const unsigned int y=0, const unsigned int z=0)</argsstring>
+        <name>write</name>
+        <qualifiedname>TTL_sub_tensor::write</qualifiedname>
+        <param>
+          <type>const TENSORTYPE</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>y</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>z</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Write a value to a sub_tensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the x dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the y dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset in the z dimension </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="379" column="16" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="379" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__sub__tensor_1ad11a11a643ce0d14c6e99295684bc960" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TTL_sub_tensor&lt; TENSORTYPE &gt;::empty</definition>
+        <argsstring>()</argsstring>
+        <name>empty</name>
+        <qualifiedname>TTL_sub_tensor::empty</qualifiedname>
+        <briefdescription>
+<para>A Tensor is empty if its shape is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="TTL__c_2tensors_2TTL__types_8h_1a7871ed21af1fda46f48e16bc4c68df06" kindref="member">TTL_shape_empty</ref></para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tensor to test for emptiness</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true is the tensor is empty </para>
+</simplesect>
+<simplesect kind="return"><para>false is the tensor is not empty </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="391" column="10" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="391" bodyend="393"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A tensor plus its reference to its parent tensor. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref> contains both the logical dimensions of a tile as well as its physical mapping to memory.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>TTL_scope</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scope of the creation can be TTL_global or TTL_local </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>const_1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The const name to place after the prefix - should be empty or const_ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The location of the tensor - should be ext or int </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the tensor - should be any valid c type </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>const_2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The const type to create - should be empty or const </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>TTL_offset</label>
+        <link refid="structTTL__offset"/>
+      </node>
+      <node id="3">
+        <label>TTL_shape</label>
+        <link refid="structTTL__shape"/>
+      </node>
+      <node id="2">
+        <label>TTL_sub_tensor&lt; TENSORTYPE &gt;::Origin</label>
+        <link refid="structTTL__sub__tensor_1_1Origin"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+sub_offset</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_sub_tensor&lt; TENSORTYPE &gt;</label>
+        <link refid="structTTL__sub__tensor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+origin</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="275" column="1" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="275" bodyend="409"/>
+    <listofallmembers>
+      <member refid="structTTL__sub__tensor_1ad11a11a643ce0d14c6e99295684bc960" prot="public" virt="non-virtual"><scope>TTL_sub_tensor</scope><name>empty</name></member>
+      <member refid="structTTL__sub__tensor_1ad97c56c1e69754ad6c7b1f771b9cbea0" prot="public" virt="non-virtual"><scope>TTL_sub_tensor</scope><name>origin</name></member>
+      <member refid="structTTL__sub__tensor_1a8da8f6cea1a3f3127010cf916978bac9" prot="public" virt="non-virtual"><scope>TTL_sub_tensor</scope><name>read</name></member>
+      <member refid="structTTL__sub__tensor_1a686e41b10156f148a5ec383da3c22cb4" prot="public" virt="non-virtual"><scope>TTL_sub_tensor</scope><name>tensor</name></member>
+      <member refid="structTTL__sub__tensor_1afe59bc92b1614636a6195681efa9c997" prot="public" virt="non-virtual"><scope>TTL_sub_tensor</scope><name>TTL_sub_tensor</name></member>
+      <member refid="structTTL__sub__tensor_1a7943ef39375d4befc48973f435b6443b" prot="public" virt="non-virtual"><scope>TTL_sub_tensor</scope><name>TTL_sub_tensor</name></member>
+      <member refid="structTTL__sub__tensor_1a5eabeaa82bc13094a2b44418901cc495" prot="public" virt="non-virtual"><scope>TTL_sub_tensor</scope><name>TTL_sub_tensor</name></member>
+      <member refid="structTTL__sub__tensor_1a21cc2c7b146ea8d5cd6cd5679993510d" prot="public" virt="non-virtual"><scope>TTL_sub_tensor</scope><name>TTL_sub_tensor</name></member>
+      <member refid="structTTL__sub__tensor_1a3edcd8c94b38d18bfd9826a532a27c1d" prot="public" virt="non-virtual"><scope>TTL_sub_tensor</scope><name>TTL_sub_tensor</name></member>
+      <member refid="structTTL__sub__tensor_1ac3d76bc481cd2f56afd5d3f6f69f209c" prot="public" virt="non-virtual"><scope>TTL_sub_tensor</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

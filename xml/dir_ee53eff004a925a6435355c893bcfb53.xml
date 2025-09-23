@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_ee53eff004a925a6435355c893bcfb53" kind="dir">
+    <compoundname>TTL_cpp</compoundname>
+    <innerdir refid="dir_55aa3df252298791d2420ac23349af44">c</innerdir>
+    <innerdir refid="dir_102a9c1b291dd687d6bf07805d7b74fa">opencl</innerdir>
+    <innerdir refid="dir_fe8077161f819270d94f37d7f402ab1c">pipelines</innerdir>
+    <innerfile refid="TTL__cpp_2TTL_8h">TTL_cpp/TTL.h</innerfile>
+    <innerfile refid="TTL__cpp_2TTL__core_8h">TTL_cpp/TTL_core.h</innerfile>
+    <innerfile refid="TTL__cpp_2TTL__debug_8h">TTL_cpp/TTL_debug.h</innerfile>
+    <innerfile refid="TTL__cpp_2TTL__import__export_8h">TTL_cpp/TTL_import_export.h</innerfile>
+    <innerfile refid="TTL__cpp_2TTL__macros_8h">TTL_cpp/TTL_macros.h</innerfile>
+    <innerfile refid="TTL__cpp_2TTL__pipeline__schemes_8h">TTL_cpp/TTL_pipeline_schemes.h</innerfile>
+    <innerfile refid="TTL__strong__type_8h">TTL_strong_type.h</innerfile>
+    <innerfile refid="TTL__cpp_2TTL__tensors_8h">TTL_cpp/TTL_tensors.h</innerfile>
+    <innerfile refid="TTL__cpp_2TTL__tiles_8h">TTL_cpp/TTL_tiles.h</innerfile>
+    <innerfile refid="TTL__cpp_2TTL__types_8h">TTL_cpp/TTL_types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="bwnZUCP_TTL/TTL_cpp/"/>
+  </compounddef>
+</doxygen>

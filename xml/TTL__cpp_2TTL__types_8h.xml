@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="TTL__cpp_2TTL__types_8h" kind="file" language="C++">
+    <compoundname>TTL_cpp/TTL_types.h</compoundname>
+    <includes refid="TTL__cpp_2TTL__macros_8h" local="yes">TTL_macros.h</includes>
+    <includes refid="TTL__strong__type_8h" local="yes">TTL_strong_type.h</includes>
+    <includedby refid="TTL__cpp_2TTL__core_8h" local="yes">TTL_core.h</includedby>
+    <includedby refid="TTL__cpp_2TTL__debug_8h" local="yes">TTL_debug.h</includedby>
+    <includedby refid="TTL__cpp_2TTL__tensors_8h" local="yes">TTL_tensors.h</includedby>
+    <includedby refid="TTL__cpp_2TTL__tiles_8h" local="yes">TTL_tiles.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>TTL_macros.h</label>
+        <link refid="TTL__cpp_2TTL__macros_8h"/>
+      </node>
+      <node id="3">
+        <label>TTL_strong_type.h</label>
+        <link refid="TTL__strong__type_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_types.h</label>
+        <link refid="TTL__cpp_2TTL__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>TTL.h</label>
+        <link refid="TTL__cpp_2TTL_8h"/>
+      </node>
+      <node id="2">
+        <label>TTL_core.h</label>
+        <link refid="TTL__cpp_2TTL__core_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>TTL_debug.h</label>
+        <link refid="TTL__cpp_2TTL__debug_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TTL_import_export.h</label>
+        <link refid="TTL__cpp_2TTL__import__export_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>TTL_pipeline_schemes.h</label>
+        <link refid="TTL__cpp_2TTL__pipeline__schemes_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>TTL_tensors.h</label>
+        <link refid="TTL__cpp_2TTL__tensors_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>TTL_tiles.h</label>
+        <link refid="TTL__cpp_2TTL__tiles_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TTL_types.h</label>
+        <link refid="TTL__cpp_2TTL__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structTTL__shape" prot="public">TTL_shape</innerclass>
+    <innerclass refid="structTTL__offset" prot="public">TTL_offset</innerclass>
+    <innerclass refid="structTTL__overlap" prot="public">TTL_overlap</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="TTL__cpp_2TTL__types_8h_1a99a2947cb51c6bafad14a00d1ca25ec7" prot="public" static="no">
+        <type>unsigned char</type>
+        <definition>typedef unsigned char TTL_overlap_dim</definition>
+        <argsstring></argsstring>
+        <name>TTL_overlap_dim</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Overlap of a &quot;adjacent&quot; tiles in the unit of elements </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_types.h" line="87" column="23" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_types.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>TTL_types.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2025<sp/>Mobileye</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>License);</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>AS<sp/>IS<sp/>BASIS,</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__cpp_2TTL__macros_8h" kindref="compound">TTL_macros.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="TTL__strong__type_8h" kindref="compound">TTL_strong_type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="24"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Description<sp/>of<sp/>a<sp/>Shape</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>A<sp/>Shape<sp/>is<sp/>a<sp/>3D<sp/>description<sp/>of<sp/>an<sp/>object.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>The<sp/>units<sp/>are<sp/>elements</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="structTTL__shape" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTTL__shape_1af50ba22bd5c68b76238165a7532e1444" kindref="member">TTL_shape</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>description<sp/>of<sp/>a<sp/>Shape</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>TTL_shape<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>width<sp/>The<sp/>number<sp/>of<sp/>elements<sp/>of<sp/>the<sp/>Tile<sp/>Shape<sp/>in<sp/>the<sp/>x-axis</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>height<sp/>The<sp/>number<sp/>of<sp/>elements<sp/>of<sp/>the<sp/>Tile<sp/>Shape<sp/>in<sp/>the<sp/>y-axis</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>depth<sp/>The<sp/>number<sp/>of<sp/>elements<sp/>of<sp/>the<sp/>Tile<sp/>Shape<sp/>in<sp/>the<sp/>z-axis</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>TTL_shape<sp/>describing<sp/>in<sp/>Tile<sp/>Shape<sp/>requested.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="structTTL__shape_1af50ba22bd5c68b76238165a7532e1444" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__shape_1af50ba22bd5c68b76238165a7532e1444" kindref="member">TTL_shape</ref>(<ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__shape_1a6bf461258040e8889775fba47de4b3a2" kindref="member">width</ref><sp/>=<sp/>0,<sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__shape_1a0eb7b91266de3a011bdfd826f770ab19" kindref="member">height</ref><sp/>=<sp/>1,<sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__shape_1a4397e51b3e3c0cc5b0220b3d37b5baf1" kindref="member">depth</ref><sp/>=<sp/>1)<sp/>:<sp/><ref refid="structTTL__shape_1a6bf461258040e8889775fba47de4b3a2" kindref="member">width</ref>(<ref refid="structTTL__shape_1a6bf461258040e8889775fba47de4b3a2" kindref="member">width</ref>),<sp/><ref refid="structTTL__shape_1a0eb7b91266de3a011bdfd826f770ab19" kindref="member">height</ref>(<ref refid="structTTL__shape_1a0eb7b91266de3a011bdfd826f770ab19" kindref="member">height</ref>),<sp/><ref refid="structTTL__shape_1a4397e51b3e3c0cc5b0220b3d37b5baf1" kindref="member">depth</ref>(<ref refid="structTTL__shape_1a4397e51b3e3c0cc5b0220b3d37b5baf1" kindref="member">depth</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>A<sp/>Shape<sp/>is<sp/>empty<sp/>if<sp/>its<sp/>width<sp/>is<sp/>0</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="structTTL__shape_1a6e0072e5661416f7b0696534ecc9cc88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape_1a6e0072e5661416f7b0696534ecc9cc88" kindref="member">empty</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structTTL__shape_1a6bf461258040e8889775fba47de4b3a2" kindref="member">width</ref><sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="structTTL__shape_1a6bf461258040e8889775fba47de4b3a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__shape_1a6bf461258040e8889775fba47de4b3a2" kindref="member">width</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Number<sp/>of<sp/>elements<sp/>along<sp/>dimension<sp/>x.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="structTTL__shape_1a0eb7b91266de3a011bdfd826f770ab19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__shape_1a0eb7b91266de3a011bdfd826f770ab19" kindref="member">height</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Number<sp/>of<sp/>rows<sp/>along<sp/>dimension<sp/>y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="structTTL__shape_1a4397e51b3e3c0cc5b0220b3d37b5baf1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref><sp/><ref refid="structTTL__shape_1a4397e51b3e3c0cc5b0220b3d37b5baf1" kindref="member">depth</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Number<sp/>of<sp/>planes<sp/>along<sp/>dimension<sp/>z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">/******************************************************</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/>OFFSET</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*****************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Description<sp/>of<sp/>the<sp/>3D<sp/>offset<sp/>of<sp/>an<sp/>object.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>A<sp/>offset<sp/>of<sp/>an<sp/>object<sp/>from<sp/>some<sp/>other<sp/>reference<sp/>point.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>The<sp/>units<sp/>are<sp/>elements</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="structTTL__offset" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTTL__offset_1ace96dbd7f269fa5032a3e3efe00b2c79" kindref="member">TTL_offset</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>TTL_offset</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>x<sp/>The<sp/>x<sp/>offset</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>y<sp/>The<sp/>y<sp/>offset</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>z<sp/>The<sp/>z<sp/>offset</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="structTTL__offset_1ace96dbd7f269fa5032a3e3efe00b2c79" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__offset_1ace96dbd7f269fa5032a3e3efe00b2c79" kindref="member">TTL_offset</ref>(<ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref><sp/><ref refid="structTTL__offset_1ab94c508c8832f23f7bd033509c0cd260" kindref="member">x</ref><sp/>=<sp/>0,<sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref><sp/><ref refid="structTTL__offset_1a12f2cddc72b26b78ff94dac7fc120d86" kindref="member">y</ref><sp/>=<sp/>0,<sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref><sp/><ref refid="structTTL__offset_1a11476dfa0a44a26128268071e40ad41f" kindref="member">z</ref><sp/>=<sp/>0)<sp/>:<sp/><ref refid="structTTL__offset_1ab94c508c8832f23f7bd033509c0cd260" kindref="member">x</ref>(<ref refid="structTTL__offset_1ab94c508c8832f23f7bd033509c0cd260" kindref="member">x</ref>),<sp/><ref refid="structTTL__offset_1a12f2cddc72b26b78ff94dac7fc120d86" kindref="member">y</ref>(<ref refid="structTTL__offset_1a12f2cddc72b26b78ff94dac7fc120d86" kindref="member">y</ref>),<sp/><ref refid="structTTL__offset_1a11476dfa0a44a26128268071e40ad41f" kindref="member">z</ref>(<ref refid="structTTL__offset_1a11476dfa0a44a26128268071e40ad41f" kindref="member">z</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="structTTL__offset_1ab94c508c8832f23f7bd033509c0cd260" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref><sp/><ref refid="structTTL__offset_1ab94c508c8832f23f7bd033509c0cd260" kindref="member">x</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Offset<sp/>in<sp/>dimension<sp/>x.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="structTTL__offset_1a12f2cddc72b26b78ff94dac7fc120d86" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref><sp/><ref refid="structTTL__offset_1a12f2cddc72b26b78ff94dac7fc120d86" kindref="member">y</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Offset<sp/>in<sp/>dimension<sp/>y.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="structTTL__offset_1a11476dfa0a44a26128268071e40ad41f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref><sp/><ref refid="structTTL__offset_1a11476dfa0a44a26128268071e40ad41f" kindref="member">z</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Offset<sp/>in<sp/>dimension<sp/>z.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">/******************************************************</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*<sp/>OVERLAP</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*****************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="TTL__cpp_2TTL__types_8h_1a99a2947cb51c6bafad14a00d1ca25ec7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2TTL__types_8h_1a99a2947cb51c6bafad14a00d1ca25ec7" kindref="member">TTL_overlap_dim</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>Overlap<sp/>of<sp/>a<sp/>&quot;adjacent&quot;<sp/>tiles<sp/>in</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>///&lt;<sp/>the<sp/>unit<sp/>of<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Description<sp/>of<sp/>the<sp/>overlap<sp/>in<sp/>3D<sp/>space<sp/>of<sp/>adjacent<sp/>tiles.</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>TTL_overlap<sp/>represents<sp/>the<sp/>number<sp/>of<sp/>overlapped<sp/>elements<sp/>between</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>adjacent<sp/>tiles<sp/>in<sp/>each<sp/>dimension.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>For<sp/>example,<sp/>overlap.x=1<sp/>means<sp/>that<sp/>every<sp/>horizontally-adjacent</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>tiles<sp/>share<sp/>elements<sp/>on<sp/>one<sp/>column.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>The<sp/>type<sp/>used<sp/>to<sp/>hold<sp/>the<sp/>overlap<sp/>between<sp/>adjacent<sp/>tiles<sp/>along<sp/>all<sp/>dimensions</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="structTTL__overlap" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTTL__overlap_1ae72e15947ca70f189185be65645273c1" kindref="member">TTL_overlap</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Create<sp/>a<sp/>3D<sp/>Description<sp/>of<sp/>a<sp/>Tile<sp/>overlap</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>TTL_overlap<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>width<sp/><sp/><sp/>///&lt;<sp/>Overlap<sp/>width<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>height<sp/><sp/><sp/>///&lt;<sp/>Overlap<sp/>height<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>depth<sp/><sp/><sp/>///&lt;<sp/>Overlap<sp/>depth<sp/>in<sp/>elements</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>TTL_overlap<sp/>describing<sp/>in<sp/>3D<sp/>the<sp/>overlap<sp/>requested.</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="structTTL__overlap_1ae72e15947ca70f189185be65645273c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTTL__overlap_1ae72e15947ca70f189185be65645273c1" kindref="member">TTL_overlap</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2TTL__types_8h_1a99a2947cb51c6bafad14a00d1ca25ec7" kindref="member">TTL_overlap_dim</ref><sp/><ref refid="structTTL__overlap_1a6458f8550ffab8de6d954643fd28aa26" kindref="member">width</ref><sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2TTL__types_8h_1a99a2947cb51c6bafad14a00d1ca25ec7" kindref="member">TTL_overlap_dim</ref><sp/><ref refid="structTTL__overlap_1a57612bec07e3541536385d19c6778611" kindref="member">height</ref><sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="TTL__cpp_2TTL__types_8h_1a99a2947cb51c6bafad14a00d1ca25ec7" kindref="member">TTL_overlap_dim</ref><sp/><ref refid="structTTL__overlap_1a3203ede0555b61411f47f7ca8fb37aea" kindref="member">depth</ref><sp/>=<sp/>0)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structTTL__overlap_1a6458f8550ffab8de6d954643fd28aa26" kindref="member">width</ref>(<ref refid="structTTL__overlap_1a6458f8550ffab8de6d954643fd28aa26" kindref="member">width</ref>),<sp/><ref refid="structTTL__overlap_1a57612bec07e3541536385d19c6778611" kindref="member">height</ref>(<ref refid="structTTL__overlap_1a57612bec07e3541536385d19c6778611" kindref="member">height</ref>),<sp/><ref refid="structTTL__overlap_1a3203ede0555b61411f47f7ca8fb37aea" kindref="member">depth</ref>(<ref refid="structTTL__overlap_1a3203ede0555b61411f47f7ca8fb37aea" kindref="member">depth</ref>){};</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="structTTL__overlap_1a6458f8550ffab8de6d954643fd28aa26" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2TTL__types_8h_1a99a2947cb51c6bafad14a00d1ca25ec7" kindref="member">TTL_overlap_dim</ref><sp/><ref refid="structTTL__overlap_1a6458f8550ffab8de6d954643fd28aa26" kindref="member">width</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>width<sp/>overlap<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="structTTL__overlap_1a57612bec07e3541536385d19c6778611" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2TTL__types_8h_1a99a2947cb51c6bafad14a00d1ca25ec7" kindref="member">TTL_overlap_dim</ref><sp/><ref refid="structTTL__overlap_1a57612bec07e3541536385d19c6778611" kindref="member">height</ref>;<sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>height<sp/>overlap<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="structTTL__overlap_1a3203ede0555b61411f47f7ca8fb37aea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TTL__cpp_2TTL__types_8h_1a99a2947cb51c6bafad14a00d1ca25ec7" kindref="member">TTL_overlap_dim</ref><sp/><ref refid="structTTL__overlap_1a3203ede0555b61411f47f7ca8fb37aea" kindref="member">depth</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">///&lt;<sp/>depth<sp/>overlap<sp/>in<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="bwnZUCP_TTL/TTL_cpp/TTL_types.h"/>
+  </compounddef>
+</doxygen>

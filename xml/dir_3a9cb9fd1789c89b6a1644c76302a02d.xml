@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_3a9cb9fd1789c89b6a1644c76302a02d" kind="dir">
+    <compoundname>pipelining_dma_tiled_loops</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="bwnZUCP_TTL/doc/tutorials/pipelining_dma_tiled_loops/"/>
+  </compounddef>
+</doxygen>

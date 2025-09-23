@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__io__tensors" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_io_tensors</compoundname>
+    <includes refid="p_2pipelines_2TTL__schemes__common_8h" local="no">TTL_schemes_common.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TENSORTYPE</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__io__tensors_1a1078faa9db24af83b338bc4dce93a773" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref>&lt; TENSORTYPE &gt;</type>
+        <definition>TTL_sub_tensor&lt;TENSORTYPE&gt; TTL_io_tensors&lt; TENSORTYPE &gt;::imported_to</definition>
+        <argsstring></argsstring>
+        <name>imported_to</name>
+        <qualifiedname>TTL_io_tensors::imported_to</qualifiedname>
+        <briefdescription>
+<para>The <ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref> that was most recently imported. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" line="69" column="20" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__io__tensors_1a10b4cfe1a2f18ebca443dcda03df4578" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref>&lt; TENSORTYPE &gt;</type>
+        <definition>TTL_sub_tensor&lt;TENSORTYPE&gt; TTL_io_tensors&lt; TENSORTYPE &gt;::to_export_from</definition>
+        <argsstring></argsstring>
+        <name>to_export_from</name>
+        <qualifiedname>TTL_io_tensors::to_export_from</qualifiedname>
+        <briefdescription>
+<para>The <ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref> that will be exported next. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" line="70" column="20" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__io__tensors_1a86837eec630dbcd6963f0bb7e1e43238" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_io_tensors&lt; TENSORTYPE &gt;::TTL_io_tensors</definition>
+        <argsstring>(TTL_sub_tensor&lt; TENSORTYPE &gt; imported_to, TTL_sub_tensor&lt; TENSORTYPE &gt; to_export_from)</argsstring>
+        <name>TTL_io_tensors</name>
+        <qualifiedname>TTL_io_tensors::TTL_io_tensors</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref>&lt; TENSORTYPE &gt;</type>
+          <declname>imported_to</declname>
+        </param>
+        <param>
+          <type><ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref>&lt; TENSORTYPE &gt;</type>
+          <declname>to_export_from</declname>
+        </param>
+        <briefdescription>
+<para>Create a <ref refid="structTTL__io__tensors" kindref="compound">TTL_io_tensors</ref> from a pair of tensors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>imported_to</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref> that was most recently imported </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>to_export_from</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref> that will be exported next</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="structTTL__io__tensors" kindref="compound">TTL_io_tensors</ref> structure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" line="62" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" bodystart="62" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__io__tensors_1a06e31228bd5a4c7d194ac87ff0ba483e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TTL_io_tensors&lt; TENSORTYPE &gt;::empty</definition>
+        <argsstring>() const</argsstring>
+        <name>empty</name>
+        <qualifiedname>TTL_io_tensors::empty</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" line="65" column="10" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" bodystart="65" bodyend="67"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Describes a pair of internal Tensors after an operation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The most likely usage is that compute input comes from the imported_to <ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref> and the compute output goes to the to_export_from <ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref>. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_io_tensors&lt; TENSORTYPE &gt;</label>
+        <link refid="structTTL__io__tensors"/>
+      </node>
+    </collaborationgraph>
+    <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" line="53" column="1" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_schemes_common.h" bodystart="53" bodyend="71"/>
+    <listofallmembers>
+      <member refid="structTTL__io__tensors_1a06e31228bd5a4c7d194ac87ff0ba483e" prot="public" virt="non-virtual"><scope>TTL_io_tensors</scope><name>empty</name></member>
+      <member refid="structTTL__io__tensors_1a1078faa9db24af83b338bc4dce93a773" prot="public" virt="non-virtual"><scope>TTL_io_tensors</scope><name>imported_to</name></member>
+      <member refid="structTTL__io__tensors_1a10b4cfe1a2f18ebca443dcda03df4578" prot="public" virt="non-virtual"><scope>TTL_io_tensors</scope><name>to_export_from</name></member>
+      <member refid="structTTL__io__tensors_1a86837eec630dbcd6963f0bb7e1e43238" prot="public" virt="non-virtual"><scope>TTL_io_tensors</scope><name>TTL_io_tensors</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

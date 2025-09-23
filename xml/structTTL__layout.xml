@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__layout" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_layout</compoundname>
+    <includes refid="TTL__cpp_2TTL__tensors_8h" local="no">TTL_tensors.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__layout_1adcd934e98f18eb29cf04e466e9728f28" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref></type>
+        <definition>TTL_dim TTL_layout::row_spacing</definition>
+        <argsstring></argsstring>
+        <name>row_spacing</name>
+        <qualifiedname>TTL_layout::row_spacing</qualifiedname>
+        <briefdescription>
+<para>The distance between the start of consequtive rows in units of elements. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="68" column="13" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__layout_1a8e7358956b29e740a01b25f7048990f2" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref></type>
+        <definition>TTL_dim TTL_layout::plane_spacing</definition>
+        <argsstring></argsstring>
+        <name>plane_spacing</name>
+        <qualifiedname>TTL_layout::plane_spacing</qualifiedname>
+        <briefdescription>
+<para>The distance between the start of consequtive planes in units of elements. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="69" column="13" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__layout_1ae803dbe8ed50a4c103f2a22c9faf588e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_layout::TTL_layout</definition>
+        <argsstring>(const TTL_dim row_spacing=0, const TTL_dim plane_spacing=0)</argsstring>
+        <name>TTL_layout</name>
+        <qualifiedname>TTL_layout::TTL_layout</qualifiedname>
+        <param>
+          <type>const <ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref></type>
+          <declname>row_spacing</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="TTL__cpp_2opencl_2TTL__types_8h_1acd16fb744309639039d7bf8726cd0726" kindref="member">TTL_dim</ref></type>
+          <declname>plane_spacing</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Create a 3D Description of a Tensor layout in memory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="structTTL__layout" kindref="compound">TTL_layout</ref> for more information.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>row_spacing;</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The distance between the start of consequtive rows in units of elements. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>plane_spacing;</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The distance between the start of consequtive planes in units of elements. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="65" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="65" bodyend="66"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Description of a Tensor layout in memory. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Each logical tensor is embedded in both global and local memories within some enclosing physical tensors.</para>
+<para>This embedding is referred to as &apos;layout&apos;, which specifies the actual distance in elements between the start of consecutive data elements in each dimension.</para>
+<para>For the first axis the distance is always 1 element and and so this value is not stored.</para>
+<para>line_length and plane_area in memory, in units of an element. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_layout</label>
+        <link refid="structTTL__layout"/>
+      </node>
+    </collaborationgraph>
+    <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="55" column="1" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="55" bodyend="70"/>
+    <listofallmembers>
+      <member refid="structTTL__layout_1a8e7358956b29e740a01b25f7048990f2" prot="public" virt="non-virtual"><scope>TTL_layout</scope><name>plane_spacing</name></member>
+      <member refid="structTTL__layout_1adcd934e98f18eb29cf04e466e9728f28" prot="public" virt="non-virtual"><scope>TTL_layout</scope><name>row_spacing</name></member>
+      <member refid="structTTL__layout_1ae803dbe8ed50a4c103f2a22c9faf588e" prot="public" virt="non-virtual"><scope>TTL_layout</scope><name>TTL_layout</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

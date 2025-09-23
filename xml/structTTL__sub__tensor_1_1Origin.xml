@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__sub__tensor_1_1Origin" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_sub_tensor::Origin</compoundname>
+    <includes refid="TTL__cpp_2TTL__tensors_8h" local="no">TTL_tensors.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__sub__tensor_1_1Origin_1acd7b30a7a5fa5832d4d8ac20b6f74e1f" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref></type>
+        <definition>TTL_shape TTL_sub_tensor&lt; TENSORTYPE &gt;::Origin::shape</definition>
+        <argsstring></argsstring>
+        <name>shape</name>
+        <qualifiedname>TTL_sub_tensor::Origin::shape</qualifiedname>
+        <briefdescription>
+<para>The shape of the origin tensor in 3 dimensions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="403" column="19" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="403" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__sub__tensor_1_1Origin_1aa02fbc95bc7b934e703ea61ddc4efe64" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref></type>
+        <definition>TTL_offset TTL_sub_tensor&lt; TENSORTYPE &gt;::Origin::sub_offset</definition>
+        <argsstring></argsstring>
+        <name>sub_offset</name>
+        <qualifiedname>TTL_sub_tensor::Origin::sub_offset</qualifiedname>
+        <briefdescription>
+<para>The offset of the sub tensor from the origin sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="404" column="20" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="404" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__sub__tensor_1_1Origin_1a77fe118003836255a087b7d81261b7bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_sub_tensor&lt; TENSORTYPE &gt;::Origin::Origin</definition>
+        <argsstring>(TTL_shape shape, TTL_offset sub_offset)</argsstring>
+        <name>Origin</name>
+        <qualifiedname>TTL_sub_tensor::Origin::Origin</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__shape" kindref="compound">TTL_shape</ref></type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type><ref refid="structTTL__offset" kindref="compound">TTL_offset</ref></type>
+          <declname>sub_offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>@Brief Store of the origin information.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The shape of the origin tensor in 3 dimensions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sub_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset of the sub tensor from the origin sensor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="401" column="9" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="401" bodyend="401"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>TTL_offset</label>
+        <link refid="structTTL__offset"/>
+      </node>
+      <node id="2">
+        <label>TTL_shape</label>
+        <link refid="structTTL__shape"/>
+      </node>
+      <node id="1">
+        <label>TTL_sub_tensor&lt; TENSORTYPE &gt;::Origin</label>
+        <link refid="structTTL__sub__tensor_1_1Origin"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+sub_offset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" line="394" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_tensors.h" bodystart="394" bodyend="405"/>
+    <listofallmembers>
+      <member refid="structTTL__sub__tensor_1_1Origin_1a77fe118003836255a087b7d81261b7bf" prot="public" virt="non-virtual"><scope>TTL_sub_tensor::Origin</scope><name>Origin</name></member>
+      <member refid="structTTL__sub__tensor_1_1Origin_1acd7b30a7a5fa5832d4d8ac20b6f74e1f" prot="public" virt="non-virtual"><scope>TTL_sub_tensor::Origin</scope><name>shape</name></member>
+      <member refid="structTTL__sub__tensor_1_1Origin_1aa02fbc95bc7b934e703ea61ddc4efe64" prot="public" virt="non-virtual"><scope>TTL_sub_tensor::Origin</scope><name>sub_offset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

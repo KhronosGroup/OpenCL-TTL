@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__offset" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_offset</compoundname>
+    <includes refid="TTL__cpp_2TTL__types_8h" local="no">TTL_types.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__offset_1ab94c508c8832f23f7bd033509c0cd260" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref></type>
+        <definition>TTL_offset_dim TTL_offset::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <qualifiedname>TTL_offset::x</qualifiedname>
+        <briefdescription>
+<para>Offset in dimension x. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_types.h" line="78" column="20" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_types.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__offset_1a12f2cddc72b26b78ff94dac7fc120d86" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref></type>
+        <definition>TTL_offset_dim TTL_offset::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <qualifiedname>TTL_offset::y</qualifiedname>
+        <briefdescription>
+<para>Offset in dimension y. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_types.h" line="79" column="20" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_types.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__offset_1a11476dfa0a44a26128268071e40ad41f" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref></type>
+        <definition>TTL_offset_dim TTL_offset::z</definition>
+        <argsstring></argsstring>
+        <name>z</name>
+        <qualifiedname>TTL_offset::z</qualifiedname>
+        <briefdescription>
+<para>Offset in dimension z. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_types.h" line="80" column="20" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_types.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__offset_1ace96dbd7f269fa5032a3e3efe00b2c79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_offset::TTL_offset</definition>
+        <argsstring>(TTL_offset_dim x=0, TTL_offset_dim y=0, TTL_offset_dim z=0)</argsstring>
+        <name>TTL_offset</name>
+        <qualifiedname>TTL_offset::TTL_offset</qualifiedname>
+        <param>
+          <type><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref></type>
+          <declname>x</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref></type>
+          <declname>y</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1ad7de989158ab0ab3f799b75147243e39" kindref="member">TTL_offset_dim</ref></type>
+          <declname>z</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Create a <ref refid="structTTL__offset" kindref="compound">TTL_offset</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x offset </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y offset </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The z offset </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/TTL_types.h" line="76" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_types.h" bodystart="76" bodyend="76"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Description of the 3D offset of an object. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A offset of an object from some other reference point.</para>
+<para>The units are elements </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_offset</label>
+        <link refid="structTTL__offset"/>
+      </node>
+    </collaborationgraph>
+    <location file="bwnZUCP_TTL/TTL_cpp/TTL_types.h" line="68" column="1" bodyfile="bwnZUCP_TTL/TTL_cpp/TTL_types.h" bodystart="68" bodyend="81"/>
+    <listofallmembers>
+      <member refid="structTTL__offset_1ace96dbd7f269fa5032a3e3efe00b2c79" prot="public" virt="non-virtual"><scope>TTL_offset</scope><name>TTL_offset</name></member>
+      <member refid="structTTL__offset_1ab94c508c8832f23f7bd033509c0cd260" prot="public" virt="non-virtual"><scope>TTL_offset</scope><name>x</name></member>
+      <member refid="structTTL__offset_1a12f2cddc72b26b78ff94dac7fc120d86" prot="public" virt="non-virtual"><scope>TTL_offset</scope><name>y</name></member>
+      <member refid="structTTL__offset_1a11476dfa0a44a26128268071e40ad41f" prot="public" virt="non-virtual"><scope>TTL_offset</scope><name>z</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

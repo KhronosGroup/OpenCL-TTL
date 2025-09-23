@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structTTL__export__double__buffering" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_export_double_buffering</compoundname>
+    <includes refid="p_2pipelines_2TTL__double__scheme_8h" local="no">TTL_double_scheme.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TENSORTYPE</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__export__double__buffering_1a2139481c897cc1893b0e00173f5ebba4" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__cpp_2c_2TTL__import__export_8h_1af98dc25fb4e233ab0ad6a267924c8307" kindref="member">TTL_event</ref> *</type>
+        <definition>TTL_event* TTL_export_double_buffering&lt; TENSORTYPE &gt;::m_event</definition>
+        <argsstring></argsstring>
+        <name>m_event</name>
+        <qualifiedname>TTL_export_double_buffering::m_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A pointer to the event that is used to track the progress of the transfer </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" line="222" column="15" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__export__double__buffering_1a4ff9f86a5e382319e3155d66db89dbdb" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__tile" kindref="compound">TTL_tile</ref></type>
+        <definition>TTL_tile TTL_export_double_buffering&lt; TENSORTYPE &gt;::m_prev_tile</definition>
+        <argsstring></argsstring>
+        <name>m_prev_tile</name>
+        <qualifiedname>TTL_export_double_buffering::m_prev_tile</qualifiedname>
+        <briefdescription>
+<para>Store of the previous imported tile *<zwj/>/. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" line="224" column="14" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__export__double__buffering_1a3d3b26a2a2fd082e2268f42d2dca9e13" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__common__buffering" kindref="compound">TTL_common_buffering</ref>&lt; TENSORTYPE, 2 &gt;</type>
+        <definition>TTL_common_buffering&lt;TENSORTYPE, 2&gt; TTL_export_double_buffering&lt; TENSORTYPE &gt;::m_common</definition>
+        <argsstring></argsstring>
+        <name>m_common</name>
+        <qualifiedname>TTL_export_double_buffering::m_common</qualifiedname>
+        <briefdescription>
+<para>The information that is m_common to all pipeline schemes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" line="226" column="26" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTTL__export__double__buffering_1ae3115ef1591ca7c7ad7fe3ed223cfeeb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TTL_export_double_buffering&lt; TENSORTYPE &gt;::TTL_export_double_buffering</definition>
+        <argsstring>(TTL_local(TENSORTYPE *) int_base1, TTL_local(TENSORTYPE *) int_base2, TTL_tensor&lt; TENSORTYPE &gt; ext_tensor, TTL_event *event)</argsstring>
+        <name>TTL_export_double_buffering</name>
+        <qualifiedname>TTL_export_double_buffering::TTL_export_double_buffering</qualifiedname>
+        <param>
+          <type><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1aeb0ea5125e9674af265edb2d191ff5ab" kindref="member">TTL_local</ref>(TENSORTYPE *)</type>
+          <declname>int_base1</declname>
+        </param>
+        <param>
+          <type><ref refid="TTL__cpp_2opencl_2TTL__types_8h_1aeb0ea5125e9674af265edb2d191ff5ab" kindref="member">TTL_local</ref>(TENSORTYPE *)</type>
+          <declname>int_base2</declname>
+        </param>
+        <param>
+          <type><ref refid="structTTL__tensor" kindref="compound">TTL_tensor</ref>&lt; TENSORTYPE &gt;</type>
+          <declname>ext_tensor</declname>
+        </param>
+        <param>
+          <type><ref refid="TTL__cpp_2c_2TTL__import__export_8h_1af98dc25fb4e233ab0ad6a267924c8307" kindref="member">TTL_event</ref> *</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Create a <ref refid="structTTL__import__double__buffering" kindref="compound">TTL_import_double_buffering</ref> and begin the buffering process. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>int_base1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the 1st local buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>int_base2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the 2nd local buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ext_tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A tensor describing the input in global memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the event to use for the inward (external to internal) transfer completion</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <ref refid="structTTL__export__double__buffering" kindref="compound">TTL_export_double_buffering</ref> created from the input parameters.</para>
+</simplesect>
+Example: <programlisting><codeline><highlight class="normal"><ref refid="TTL__cpp_2c_2TTL__import__export_8h_1af98dc25fb4e233ab0ad6a267924c8307" kindref="member">TTL_event</ref><sp/>import_DB_e<sp/>=<sp/><ref refid="TTL__c_2opencl_2TTL__import__export_8h_1ab52c0b665518000f2c402c5170a58ee2" kindref="member">TTL_get_event</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structTTL__export__double__buffering_1ae3115ef1591ca7c7ad7fe3ed223cfeeb" kindref="member">TTL_export_double_buffering</ref><sp/>import_db(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_in1,<sp/>l_in2,<sp/>ext_base_in,<sp/>ext_layout_in,<sp/>&amp;import_DB_e);</highlight></codeline>
+</programlisting> <linebreak/>
+ This can be optimized and standardized using the TTL_step_buffering call.</para>
+<para><plantuml engine="uml">start
+
+
+stop</plantuml>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" line="166" column="5" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" bodystart="166" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__export__double__buffering_1a3b9fe99cdf53338cee3acc794eaac69c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structTTL__sub__tensor" kindref="compound">TTL_sub_tensor</ref>&lt; TENSORTYPE &gt;</type>
+        <definition>TTL_sub_tensor&lt; TENSORTYPE &gt; TTL_export_double_buffering&lt; TENSORTYPE &gt;::step_buffering</definition>
+        <argsstring>(TTL_tile tile_current)</argsstring>
+        <name>step_buffering</name>
+        <qualifiedname>TTL_export_double_buffering::step_buffering</qualifiedname>
+        <param>
+          <type><ref refid="structTTL__tile" kindref="compound">TTL_tile</ref></type>
+          <declname>tile_current</declname>
+        </param>
+        <briefdescription>
+<para>Wait for the previous import operation to complete before beginning an export of next tile. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tile_current</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A description of the tile to begin exporting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" line="185" column="20" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" bodystart="185" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="structTTL__export__double__buffering_1a94b85229751e9edd8edde90c66567e68" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TTL_export_double_buffering&lt; TENSORTYPE &gt;::finish_buffering</definition>
+        <argsstring>()</argsstring>
+        <name>finish_buffering</name>
+        <qualifiedname>TTL_export_double_buffering::finish_buffering</qualifiedname>
+        <briefdescription>
+<para>Complete any transfers required to finish the buffering process. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Any transfers that are still in progress will be completed and any transfers that need to be started and completed before finish_buffering returns </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" line="217" column="10" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" bodystart="217" bodyend="220"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="5">
+        <label>TTL_common_buffering&lt; TENSORTYPE, 2 &gt;</label>
+        <link refid="structTTL__common__buffering"/>
+      </node>
+      <node id="1">
+        <label>TTL_export_double_buffering&lt; TENSORTYPE &gt;</label>
+        <link refid="structTTL__export__double__buffering"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+m_prev_tile</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>+m_common</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>TTL_offset</label>
+        <link refid="structTTL__offset"/>
+      </node>
+      <node id="3">
+        <label>TTL_shape</label>
+        <link refid="structTTL__shape"/>
+      </node>
+      <node id="2">
+        <label>TTL_tile</label>
+        <link refid="structTTL__tile"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+offset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" line="134" column="1" bodyfile="bwnZUCP_TTL/TTL_cpp/pipelines/TTL_double_scheme.h" bodystart="134" bodyend="227"/>
+    <listofallmembers>
+      <member refid="structTTL__export__double__buffering_1a94b85229751e9edd8edde90c66567e68" prot="public" virt="non-virtual"><scope>TTL_export_double_buffering</scope><name>finish_buffering</name></member>
+      <member refid="structTTL__export__double__buffering_1a3d3b26a2a2fd082e2268f42d2dca9e13" prot="public" virt="non-virtual"><scope>TTL_export_double_buffering</scope><name>m_common</name></member>
+      <member refid="structTTL__export__double__buffering_1a2139481c897cc1893b0e00173f5ebba4" prot="public" virt="non-virtual"><scope>TTL_export_double_buffering</scope><name>m_event</name></member>
+      <member refid="structTTL__export__double__buffering_1a4ff9f86a5e382319e3155d66db89dbdb" prot="public" virt="non-virtual"><scope>TTL_export_double_buffering</scope><name>m_prev_tile</name></member>
+      <member refid="structTTL__export__double__buffering_1a3b9fe99cdf53338cee3acc794eaac69c" prot="public" virt="non-virtual"><scope>TTL_export_double_buffering</scope><name>step_buffering</name></member>
+      <member refid="structTTL__export__double__buffering_1ae3115ef1591ca7c7ad7fe3ed223cfeeb" prot="public" virt="non-virtual"><scope>TTL_export_double_buffering</scope><name>TTL_export_double_buffering</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
