@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structTTL__duplex__const__int__tensor__buffering__t_1_1_0fstruct_0e_8common" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_duplex_const_int_tensor_buffering_t::[struct].common</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__duplex__const__int__tensor__buffering__t_1_1_0fstruct_0e_8common_1a0efe6e78b3c3b954f2b5f5f2260d407e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TTL_duplex_const_int_tensor_buffering_t::@117045051072360117341342352305101257017110207124::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <qualifiedname>TTL_duplex_const_int_tensor_buffering_t::[struct].common::index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describes the current buffer index when pipelining. For single 0-&gt;1-&gt;0, for double 0-&gt;1-&gt;0-&gt;1... etc </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="843" column="13"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__int__tensor__buffering__t_1_1_0fstruct_0e_8common_1a6a8f57bf4e778c33cd3a7e15cefdaa75" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref> int *</type>
+        <definition>__local int* TTL_duplex_const_int_tensor_buffering_t::@117045051072360117341342352305101257017110207124::int_base[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>int_base</name>
+        <qualifiedname>TTL_duplex_const_int_tensor_buffering_t::[struct].common::int_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The internal base addresses of the pipelined tiles. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="845" column="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__int__tensor__buffering__t_1_1_0fstruct_0e_8common_1a73298d097fdfae2208e5b0c7535c8a77" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__ext__int__tensor__t" kindref="compound">TTL_ext_int_tensor_t</ref></type>
+        <definition>TTL_ext_int_tensor_t TTL_duplex_const_int_tensor_buffering_t::@117045051072360117341342352305101257017110207124::ext_tensor_in</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_in</name>
+        <qualifiedname>TTL_duplex_const_int_tensor_buffering_t::[struct].common::ext_tensor_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being input </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="846" column="30"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__int__tensor__buffering__t_1_1_0fstruct_0e_8common_1a6ef1ef8fbbc7451b59c03dc3d2fecb46" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__ext__int__tensor__t" kindref="compound">TTL_ext_int_tensor_t</ref></type>
+        <definition>TTL_ext_int_tensor_t TTL_duplex_const_int_tensor_buffering_t::@117045051072360117341342352305101257017110207124::ext_tensor_out</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_out</name>
+        <qualifiedname>TTL_duplex_const_int_tensor_buffering_t::[struct].common::ext_tensor_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being output </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="847" column="30"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_duplex_const_int_tensor_buffering_t::[struct].common</label>
+        <link refid="structTTL__duplex__const__int__tensor__buffering__t_1_1_0fstruct_0e_8common"/>
+      </node>
+    </collaborationgraph>
+    <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="842" column="5" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" bodystart="842" bodyend="848"/>
+    <listofallmembers>
+      <member refid="structTTL__duplex__const__int__tensor__buffering__t_1_1_0fstruct_0e_8common_1a73298d097fdfae2208e5b0c7535c8a77" prot="public" virt="non-virtual"><scope>TTL_duplex_const_int_tensor_buffering_t::[struct].common</scope><name>ext_tensor_in</name></member>
+      <member refid="structTTL__duplex__const__int__tensor__buffering__t_1_1_0fstruct_0e_8common_1a6ef1ef8fbbc7451b59c03dc3d2fecb46" prot="public" virt="non-virtual"><scope>TTL_duplex_const_int_tensor_buffering_t::[struct].common</scope><name>ext_tensor_out</name></member>
+      <member refid="structTTL__duplex__const__int__tensor__buffering__t_1_1_0fstruct_0e_8common_1a0efe6e78b3c3b954f2b5f5f2260d407e" prot="public" virt="non-virtual"><scope>TTL_duplex_const_int_tensor_buffering_t::[struct].common</scope><name>index</name></member>
+      <member refid="structTTL__duplex__const__int__tensor__buffering__t_1_1_0fstruct_0e_8common_1a6a8f57bf4e778c33cd3a7e15cefdaa75" prot="public" virt="non-virtual"><scope>TTL_duplex_const_int_tensor_buffering_t::[struct].common</scope><name>int_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="CONTRIBUTING_8md" kind="file" language="Markdown">
+    <compoundname>CONTRIBUTING.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">&lt;!--</highlight></codeline>
+<codeline><highlight class="normal">SPDX-FileCopyrightText:<sp/>2026<sp/>The<sp/>Khronos<sp/>Group,<sp/>Inc.</highlight></codeline>
+<codeline><highlight class="normal">SPDX-License-Identifier:<sp/>CC-BY-4.0</highlight></codeline>
+<codeline><highlight class="normal">--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Contributing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Contributor<sp/>License<sp/>Agreement<sp/>(CLA)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">When<sp/>you<sp/>propose<sp/>a<sp/>pull<sp/>request<sp/>on<sp/>this<sp/>repository<sp/>you<sp/>must<sp/>execute<sp/>a<sp/>Khronos</highlight></codeline>
+<codeline><highlight class="normal">[Open<sp/>Source<sp/>Contributor<sp/>License<sp/>Agreement</highlight></codeline>
+<codeline><highlight class="normal">(CLA)](https://www.khronos.org/cla/KhronosGroup/OpenCL-TTL),<sp/>to<sp/>confirm</highlight></codeline>
+<codeline><highlight class="normal">you<sp/>own<sp/>your<sp/>work<sp/>and<sp/>are<sp/>granting<sp/>Khronos<sp/>the<sp/>necessary<sp/>permissions<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">redistribute<sp/>it<sp/>under<sp/>our<sp/>licenses.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>AI-Assisted<sp/>Contributions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">By<sp/>submitting<sp/>a<sp/>Contribution<sp/>to<sp/>this<sp/>repository,<sp/>you<sp/>additionally<sp/>represent</highlight></codeline>
+<codeline><highlight class="normal">that,<sp/>to<sp/>the<sp/>extent<sp/>any<sp/>of<sp/>Your<sp/>Contributions<sp/>were<sp/>developed<sp/>with<sp/>the<sp/>assistance</highlight></codeline>
+<codeline><highlight class="normal">of<sp/>artificial<sp/>intelligence<sp/>tools<sp/>or<sp/>AI-generated<sp/>code,<sp/>You<sp/>have<sp/>exercised</highlight></codeline>
+<codeline><highlight class="normal">sufficient<sp/>review,<sp/>judgment,<sp/>and<sp/>creative<sp/>direction<sp/>over<sp/>such<sp/>tools<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">resulting<sp/>material<sp/>to<sp/>reasonably<sp/>consider<sp/>it<sp/>Your<sp/>original<sp/>creation,<sp/>and<sp/>You<sp/>are</highlight></codeline>
+<codeline><highlight class="normal">not<sp/>aware<sp/>of<sp/>any<sp/>third-party<sp/>license,<sp/>intellectual<sp/>property<sp/>claim,<sp/>or<sp/>other</highlight></codeline>
+<codeline><highlight class="normal">restriction<sp/>arising<sp/>from<sp/>such<sp/>use<sp/>that<sp/>is<sp/>associated<sp/>with<sp/>any<sp/>part<sp/>of<sp/>Your</highlight></codeline>
+<codeline><highlight class="normal">Contribution<sp/>or<sp/>use<sp/>thereof.</highlight></codeline>
+    </programlisting>
+    <location file="bfhtJIP_TTL/CONTRIBUTING.md"/>
+  </compounddef>
+</doxygen>

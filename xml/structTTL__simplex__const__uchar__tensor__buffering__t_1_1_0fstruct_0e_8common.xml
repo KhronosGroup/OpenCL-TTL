@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structTTL__simplex__const__uchar__tensor__buffering__t_1_1_0fstruct_0e_8common" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_simplex_const_uchar_tensor_buffering_t::[struct].common</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__simplex__const__uchar__tensor__buffering__t_1_1_0fstruct_0e_8common_1a398b09205a4586336d7fbde1fdb51311" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TTL_simplex_const_uchar_tensor_buffering_t::@357131261313121243112304351221353327356125114147::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <qualifiedname>TTL_simplex_const_uchar_tensor_buffering_t::[struct].common::index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describes the current buffer index when pipelining. For single 0-&gt;1-&gt;0, for double 0-&gt;1-&gt;0-&gt;1... etc </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" line="515" column="13"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__const__uchar__tensor__buffering__t_1_1_0fstruct_0e_8common_1aafb5b87b5764a4378701b7d2ef8db241" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref> <ref refid="TTL__c_2c_2TTL__types_8h_1a65f85814a8290f9797005d3b28e7e5fc" kindref="member">uchar</ref> *</type>
+        <definition>__local uchar* TTL_simplex_const_uchar_tensor_buffering_t::@357131261313121243112304351221353327356125114147::int_base[3]</definition>
+        <argsstring>[3]</argsstring>
+        <name>int_base</name>
+        <qualifiedname>TTL_simplex_const_uchar_tensor_buffering_t::[struct].common::int_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The internal base addresses of the pipelined tiles. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" line="517" column="23"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__const__uchar__tensor__buffering__t_1_1_0fstruct_0e_8common_1af453cb6a8d902cad3a086fc0357a36f2" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__ext__uchar__tensor__t" kindref="compound">TTL_ext_uchar_tensor_t</ref></type>
+        <definition>TTL_ext_uchar_tensor_t TTL_simplex_const_uchar_tensor_buffering_t::@357131261313121243112304351221353327356125114147::ext_tensor_in</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_in</name>
+        <qualifiedname>TTL_simplex_const_uchar_tensor_buffering_t::[struct].common::ext_tensor_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being input </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" line="518" column="32"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__const__uchar__tensor__buffering__t_1_1_0fstruct_0e_8common_1a3434e0f42a35905ea94ae9bb208d547d" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__ext__uchar__tensor__t" kindref="compound">TTL_ext_uchar_tensor_t</ref></type>
+        <definition>TTL_ext_uchar_tensor_t TTL_simplex_const_uchar_tensor_buffering_t::@357131261313121243112304351221353327356125114147::ext_tensor_out</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_out</name>
+        <qualifiedname>TTL_simplex_const_uchar_tensor_buffering_t::[struct].common::ext_tensor_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being output </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" line="519" column="32"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_simplex_const_uchar_tensor_buffering_t::[struct].common</label>
+        <link refid="structTTL__simplex__const__uchar__tensor__buffering__t_1_1_0fstruct_0e_8common"/>
+      </node>
+    </collaborationgraph>
+    <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" line="514" column="5" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" bodystart="514" bodyend="520"/>
+    <listofallmembers>
+      <member refid="structTTL__simplex__const__uchar__tensor__buffering__t_1_1_0fstruct_0e_8common_1af453cb6a8d902cad3a086fc0357a36f2" prot="public" virt="non-virtual"><scope>TTL_simplex_const_uchar_tensor_buffering_t::[struct].common</scope><name>ext_tensor_in</name></member>
+      <member refid="structTTL__simplex__const__uchar__tensor__buffering__t_1_1_0fstruct_0e_8common_1a3434e0f42a35905ea94ae9bb208d547d" prot="public" virt="non-virtual"><scope>TTL_simplex_const_uchar_tensor_buffering_t::[struct].common</scope><name>ext_tensor_out</name></member>
+      <member refid="structTTL__simplex__const__uchar__tensor__buffering__t_1_1_0fstruct_0e_8common_1a398b09205a4586336d7fbde1fdb51311" prot="public" virt="non-virtual"><scope>TTL_simplex_const_uchar_tensor_buffering_t::[struct].common</scope><name>index</name></member>
+      <member refid="structTTL__simplex__const__uchar__tensor__buffering__t_1_1_0fstruct_0e_8common_1aafb5b87b5764a4378701b7d2ef8db241" prot="public" virt="non-virtual"><scope>TTL_simplex_const_uchar_tensor_buffering_t::[struct].common</scope><name>int_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

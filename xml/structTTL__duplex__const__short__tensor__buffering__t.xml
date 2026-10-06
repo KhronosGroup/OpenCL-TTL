@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structTTL__duplex__const__short__tensor__buffering__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_duplex_const_short_tensor_buffering_t</compoundname>
+    <includes refid="pipelines_2TTL__duplex__scheme_8h" local="no">TTL_duplex_scheme.h</includes>
+    <innerclass refid="structTTL__duplex__const__short__tensor__buffering__t_1_1_0fstruct_0e_8common" prot="public">TTL_duplex_const_short_tensor_buffering_t::[struct].common</innerclass>
+    <innerclass refid="structTTL__duplex__const__short__tensor__buffering__t_1_1_0fstruct_0e_8prev__out__tensors" prot="public">TTL_duplex_const_short_tensor_buffering_t::[struct].prev_out_tensors</innerclass>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__duplex__const__short__tensor__buffering__t_1a862ba3df5b4133ff0a75e2823ec60a8f" prot="public" static="no" mutable="no">
+        <type>struct TTL_duplex_const_short_tensor_buffering_t::@351106363110351106354366372164335211253013237030</type>
+        <definition>struct TTL_duplex_const_short_tensor_buffering_t::@351106363110351106354366372164335211253013237030 TTL_duplex_const_short_tensor_buffering_t::common</definition>
+        <argsstring></argsstring>
+        <name>common</name>
+        <qualifiedname>TTL_duplex_const_short_tensor_buffering_t::common</qualifiedname>
+        <briefdescription>
+<para>The information that is common to all pipeline schemes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1362" column="51"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__short__tensor__buffering__t_1a6730c70a3fbcd8d2d9f802d157c27c79" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref>(*</type>
+        <definition>TTL_event_t(* TTL_duplex_const_short_tensor_buffering_t::events)[2]</definition>
+        <argsstring>)[2]</argsstring>
+        <name>events</name>
+        <qualifiedname>TTL_duplex_const_short_tensor_buffering_t::events</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>2 Events are required, 1 first is used for external to internal transfers, the second for internal to external transfers </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1364" column="5" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" bodystart="1364" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__short__tensor__buffering__t_1a11e9905832eb7eee7ce1663de63b2c18" prot="public" static="no" mutable="no">
+        <type>struct TTL_duplex_const_short_tensor_buffering_t::@042201163177140377046100354331020164064117120176</type>
+        <definition>struct TTL_duplex_const_short_tensor_buffering_t::@042201163177140377046100354331020164064117120176 TTL_duplex_const_short_tensor_buffering_t::prev_out_tensors</definition>
+        <argsstring></argsstring>
+        <name>prev_out_tensors</name>
+        <qualifiedname>TTL_duplex_const_short_tensor_buffering_t::prev_out_tensors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1375" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Data required to perform duplex buffer pipelining. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="pipelines_2TTL__duplex__scheme_8h_1a970d2a339451a2f0200908eafb3816e4" kindref="member">TTL_start_duplex_buffering</ref> for a description of duplex buffer pipelining. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_duplex_const_short_tensor_buffering_t</label>
+        <link refid="structTTL__duplex__const__short__tensor__buffering__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1355" column="1" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" bodystart="1355" bodyend="1376"/>
+    <listofallmembers>
+      <member refid="structTTL__duplex__const__short__tensor__buffering__t_1a862ba3df5b4133ff0a75e2823ec60a8f" prot="public" virt="non-virtual"><scope>TTL_duplex_const_short_tensor_buffering_t</scope><name>common</name></member>
+      <member refid="structTTL__duplex__const__short__tensor__buffering__t_1a6730c70a3fbcd8d2d9f802d157c27c79" prot="public" virt="non-virtual"><scope>TTL_duplex_const_short_tensor_buffering_t</scope><name>events</name></member>
+      <member refid="structTTL__duplex__const__short__tensor__buffering__t_1a11e9905832eb7eee7ce1663de63b2c18" prot="public" virt="non-virtual"><scope>TTL_duplex_const_short_tensor_buffering_t</scope><name>prev_out_tensors</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

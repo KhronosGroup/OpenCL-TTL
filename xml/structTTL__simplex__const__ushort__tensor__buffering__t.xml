@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structTTL__simplex__const__ushort__tensor__buffering__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_simplex_const_ushort_tensor_buffering_t</compoundname>
+    <includes refid="pipelines_2TTL__simplex__scheme_8h" local="no">TTL_simplex_scheme.h</includes>
+    <innerclass refid="structTTL__simplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8common" prot="public">TTL_simplex_const_ushort_tensor_buffering_t::[struct].common</innerclass>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__simplex__const__ushort__tensor__buffering__t_1a4a4c1f0b93f17dace75a28631ad4cbd0" prot="public" static="no" mutable="no">
+        <type>struct TTL_simplex_const_ushort_tensor_buffering_t::@174071045015036266314034346137252261240363202224</type>
+        <definition>struct TTL_simplex_const_ushort_tensor_buffering_t::@174071045015036266314034346137252261240363202224 TTL_simplex_const_ushort_tensor_buffering_t::common</definition>
+        <argsstring></argsstring>
+        <name>common</name>
+        <qualifiedname>TTL_simplex_const_ushort_tensor_buffering_t::common</qualifiedname>
+        <briefdescription>
+<para>The information that is common to all pipeline schemes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" line="1424" column="52"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__const__ushort__tensor__buffering__t_1a17dda884a1729e2397ccbe2d3e53ecec" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref> *</type>
+        <definition>TTL_event_t* TTL_simplex_const_ushort_tensor_buffering_t::event_in</definition>
+        <argsstring></argsstring>
+        <name>event_in</name>
+        <qualifiedname>TTL_simplex_const_ushort_tensor_buffering_t::event_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" line="1426" column="17" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" bodystart="1426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__const__ushort__tensor__buffering__t_1a034b6305b7db3b9acc1c6a1b0a30ffc8" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref> *</type>
+        <definition>TTL_event_t* TTL_simplex_const_ushort_tensor_buffering_t::event_out</definition>
+        <argsstring></argsstring>
+        <name>event_out</name>
+        <qualifiedname>TTL_simplex_const_ushort_tensor_buffering_t::event_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" line="1427" column="17" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" bodystart="1427" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__const__ushort__tensor__buffering__t_1aeb0da6da9dc8fc5fc74747bbc50e086e" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+        <definition>TTL_tile_t TTL_simplex_const_ushort_tensor_buffering_t::next_exported_tile</definition>
+        <argsstring></argsstring>
+        <name>next_exported_tile</name>
+        <qualifiedname>TTL_simplex_const_ushort_tensor_buffering_t::next_exported_tile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" line="1429" column="16" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" bodystart="1429" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__simplex__const__ushort__tensor__buffering__t_1a02cc8d298e6fa8fd687046813e1974b5" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__int__ushort__sub__tensor__t" kindref="compound">TTL_int_ushort_sub_tensor_t</ref></type>
+        <definition>TTL_int_ushort_sub_tensor_t TTL_simplex_const_ushort_tensor_buffering_t::int_prev_imported</definition>
+        <argsstring></argsstring>
+        <name>int_prev_imported</name>
+        <qualifiedname>TTL_simplex_const_ushort_tensor_buffering_t::int_prev_imported</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" line="1430" column="33" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" bodystart="1430" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="5">
+        <label>TTL_int_ushort_sub_tensor_t</label>
+        <link refid="structTTL__int__ushort__sub__tensor__t"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>+tensor</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>TTL_int_ushort_tensor_t</label>
+        <link refid="structTTL__int__ushort__tensor__t"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>+layout</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>TTL_layout_t</label>
+        <link refid="structTTL__layout__t"/>
+      </node>
+      <node id="4">
+        <label>TTL_offset_t</label>
+        <link refid="structTTL__offset__t"/>
+      </node>
+      <node id="3">
+        <label>TTL_shape_t</label>
+        <link refid="structTTL__shape__t"/>
+      </node>
+      <node id="1">
+        <label>TTL_simplex_const_ushort_tensor_buffering_t</label>
+        <link refid="structTTL__simplex__const__ushort__tensor__buffering__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+next_exported_tile</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>+int_prev_imported</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TTL_tile_t</label>
+        <link refid="structTTL__tile__t"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+offset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" line="1417" column="1" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_simplex_scheme.h" bodystart="1417" bodyend="1431"/>
+    <listofallmembers>
+      <member refid="structTTL__simplex__const__ushort__tensor__buffering__t_1a4a4c1f0b93f17dace75a28631ad4cbd0" prot="public" virt="non-virtual"><scope>TTL_simplex_const_ushort_tensor_buffering_t</scope><name>common</name></member>
+      <member refid="structTTL__simplex__const__ushort__tensor__buffering__t_1a17dda884a1729e2397ccbe2d3e53ecec" prot="public" virt="non-virtual"><scope>TTL_simplex_const_ushort_tensor_buffering_t</scope><name>event_in</name></member>
+      <member refid="structTTL__simplex__const__ushort__tensor__buffering__t_1a034b6305b7db3b9acc1c6a1b0a30ffc8" prot="public" virt="non-virtual"><scope>TTL_simplex_const_ushort_tensor_buffering_t</scope><name>event_out</name></member>
+      <member refid="structTTL__simplex__const__ushort__tensor__buffering__t_1a02cc8d298e6fa8fd687046813e1974b5" prot="public" virt="non-virtual"><scope>TTL_simplex_const_ushort_tensor_buffering_t</scope><name>int_prev_imported</name></member>
+      <member refid="structTTL__simplex__const__ushort__tensor__buffering__t_1aeb0da6da9dc8fc5fc74747bbc50e086e" prot="public" virt="non-virtual"><scope>TTL_simplex_const_ushort_tensor_buffering_t</scope><name>next_exported_tile</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

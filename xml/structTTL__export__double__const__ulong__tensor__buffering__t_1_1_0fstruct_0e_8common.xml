@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structTTL__export__double__const__ulong__tensor__buffering__t_1_1_0fstruct_0e_8common" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_export_double_const_ulong_tensor_buffering_t::[struct].common</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__export__double__const__ulong__tensor__buffering__t_1_1_0fstruct_0e_8common_1a590a591abb0248ce9049025a81adad44" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TTL_export_double_const_ulong_tensor_buffering_t::@352117156101072044275050165374275111222242155126::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <qualifiedname>TTL_export_double_const_ulong_tensor_buffering_t::[struct].common::index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describes the current buffer index when pipelining. For single 0-&gt;1-&gt;0, for double 0-&gt;1-&gt;0-&gt;1... etc </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" line="2281" column="13"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__export__double__const__ulong__tensor__buffering__t_1_1_0fstruct_0e_8common_1a4045e4af95397f86f56d14cbc962eac0" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref> <ref refid="TTL__c_2c_2TTL__types_8h_1a718b4eb2652c286f4d42dc18a8e71a1a" kindref="member">ulong</ref> *</type>
+        <definition>__local ulong* TTL_export_double_const_ulong_tensor_buffering_t::@352117156101072044275050165374275111222242155126::int_base[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>int_base</name>
+        <qualifiedname>TTL_export_double_const_ulong_tensor_buffering_t::[struct].common::int_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The internal base addresses of the pipelined tiles. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" line="2283" column="23"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__export__double__const__ulong__tensor__buffering__t_1_1_0fstruct_0e_8common_1a39e4127c17df37188db546b54b27c3c8" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__ext__ulong__tensor__t" kindref="compound">TTL_ext_ulong_tensor_t</ref></type>
+        <definition>TTL_ext_ulong_tensor_t TTL_export_double_const_ulong_tensor_buffering_t::@352117156101072044275050165374275111222242155126::ext_tensor_in</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_in</name>
+        <qualifiedname>TTL_export_double_const_ulong_tensor_buffering_t::[struct].common::ext_tensor_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being input </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" line="2284" column="32"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__export__double__const__ulong__tensor__buffering__t_1_1_0fstruct_0e_8common_1a00ff44ef8beec8d13f811c06d89042f2" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__ext__ulong__tensor__t" kindref="compound">TTL_ext_ulong_tensor_t</ref></type>
+        <definition>TTL_ext_ulong_tensor_t TTL_export_double_const_ulong_tensor_buffering_t::@352117156101072044275050165374275111222242155126::ext_tensor_out</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_out</name>
+        <qualifiedname>TTL_export_double_const_ulong_tensor_buffering_t::[struct].common::ext_tensor_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being output </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" line="2285" column="32"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_export_double_const_ulong_tensor_buffering_t::[struct].common</label>
+        <link refid="structTTL__export__double__const__ulong__tensor__buffering__t_1_1_0fstruct_0e_8common"/>
+      </node>
+    </collaborationgraph>
+    <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" line="2280" column="5" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" bodystart="2280" bodyend="2286"/>
+    <listofallmembers>
+      <member refid="structTTL__export__double__const__ulong__tensor__buffering__t_1_1_0fstruct_0e_8common_1a39e4127c17df37188db546b54b27c3c8" prot="public" virt="non-virtual"><scope>TTL_export_double_const_ulong_tensor_buffering_t::[struct].common</scope><name>ext_tensor_in</name></member>
+      <member refid="structTTL__export__double__const__ulong__tensor__buffering__t_1_1_0fstruct_0e_8common_1a00ff44ef8beec8d13f811c06d89042f2" prot="public" virt="non-virtual"><scope>TTL_export_double_const_ulong_tensor_buffering_t::[struct].common</scope><name>ext_tensor_out</name></member>
+      <member refid="structTTL__export__double__const__ulong__tensor__buffering__t_1_1_0fstruct_0e_8common_1a590a591abb0248ce9049025a81adad44" prot="public" virt="non-virtual"><scope>TTL_export_double_const_ulong_tensor_buffering_t::[struct].common</scope><name>index</name></member>
+      <member refid="structTTL__export__double__const__ulong__tensor__buffering__t_1_1_0fstruct_0e_8common_1a4045e4af95397f86f56d14cbc962eac0" prot="public" virt="non-virtual"><scope>TTL_export_double_const_ulong_tensor_buffering_t::[struct].common</scope><name>int_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

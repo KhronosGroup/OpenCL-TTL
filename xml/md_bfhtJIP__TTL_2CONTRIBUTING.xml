@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="md_bfhtJIP__TTL_2CONTRIBUTING" kind="page">
+    <compoundname>md_bfhtJIP__TTL_2CONTRIBUTING</compoundname>
+    <title>CONTRIBUTING</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><heading level="1">Contributing</heading>
+</para>
+<para><heading level="2">Contributor License Agreement (CLA)</heading>
+</para>
+<para>When you propose a pull request on this repository you must execute a Khronos <ulink url="https://www.khronos.org/cla/KhronosGroup/OpenCL-TTL">Open Source Contributor License Agreement (CLA)</ulink>, to confirm you own your work and are granting Khronos the necessary permissions to redistribute it under our licenses.</para>
+<para><heading level="2">AI-Assisted Contributions</heading>
+</para>
+<para>By submitting a Contribution to this repository, you additionally represent that, to the extent any of Your Contributions were developed with the assistance of artificial intelligence tools or AI-generated code, You have exercised sufficient review, judgment, and creative direction over such tools and resulting material to reasonably consider it Your original creation, and You are not aware of any third-party license, intellectual property claim, or other restriction arising from such use that is associated with any part of Your Contribution or use thereof. </para>
+    </detaileddescription>
+    <location file="bfhtJIP_TTL/CONTRIBUTING.md"/>
+  </compounddef>
+</doxygen>

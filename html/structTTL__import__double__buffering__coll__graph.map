@@ -1,0 +1,11 @@
+<map id="TTL_import_double_buffering&lt; TENSORTYPE &gt;" name="TTL_import_double_buffering&lt; TENSORTYPE &gt;">
+<area shape="rect" id="Node000001" title="Wait for the previous import operation to complete before beginning an import of the next tile." alt="" coords="94,397,294,519"/>
+<area shape="rect" id="Node000002" href="$structTTL__tile.html" title=" " alt="" coords="74,221,154,308"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,307,124,340,134,372,138,381,133,383,129,374,119,341,114,308"/>
+<area shape="rect" id="Node000003" href="$structTTL__shape.html" title="Description of a Shape." alt="" coords="5,5,103,133"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="76,132,99,204,94,206,71,133"/>
+<area shape="rect" id="Node000004" href="$structTTL__offset.html" title="Description of the 3D offset of an object." alt="" coords="127,16,222,122"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="163,123,146,180,138,206,133,204,141,179,158,122"/>
+<area shape="rect" id="Node000005" href="$structTTL__common__buffering.html" title=" " alt="" coords="178,204,326,326"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="236,326,220,381,215,380,231,324"/>
+</map>

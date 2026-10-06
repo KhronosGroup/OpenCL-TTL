@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structTTL__const__int__uint__sub__tensor__t_1_1_0fstruct_0e_8origin" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_const_int_uint_sub_tensor_t::[struct].origin</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__const__int__uint__sub__tensor__t_1_1_0fstruct_0e_8origin_1a2130aeb3265d954779571ea27731528f" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__shape__t" kindref="compound">TTL_shape_t</ref></type>
+        <definition>TTL_shape_t TTL_const_int_uint_sub_tensor_t::@323277121130133305072377173323235165217264344065::shape</definition>
+        <argsstring></argsstring>
+        <name>shape</name>
+        <qualifiedname>TTL_const_int_uint_sub_tensor_t::[struct].origin::shape</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The shape of the origin tensor in 3 dimensions </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/tensors/TTL_int_ext_typed_tensors.h" line="10903" column="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__const__int__uint__sub__tensor__t_1_1_0fstruct_0e_8origin_1a880d65eb6aa734c6847e0a27383218a9" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__offset__t" kindref="compound">TTL_offset_t</ref></type>
+        <definition>TTL_offset_t TTL_const_int_uint_sub_tensor_t::@323277121130133305072377173323235165217264344065::sub_offset</definition>
+        <argsstring></argsstring>
+        <name>sub_offset</name>
+        <qualifiedname>TTL_const_int_uint_sub_tensor_t::[struct].origin::sub_offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The offset of the sub tensor from the origin sensor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/tensors/TTL_int_ext_typed_tensors.h" line="10904" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_const_int_uint_sub_tensor_t::[struct].origin</label>
+        <link refid="structTTL__const__int__uint__sub__tensor__t_1_1_0fstruct_0e_8origin"/>
+      </node>
+    </collaborationgraph>
+    <location file="bfhtJIP_TTL/TTL_c/tensors/TTL_int_ext_typed_tensors.h" line="10902" column="5" bodyfile="bfhtJIP_TTL/TTL_c/tensors/TTL_int_ext_typed_tensors.h" bodystart="10902" bodyend="10905"/>
+    <listofallmembers>
+      <member refid="structTTL__const__int__uint__sub__tensor__t_1_1_0fstruct_0e_8origin_1a2130aeb3265d954779571ea27731528f" prot="public" virt="non-virtual"><scope>TTL_const_int_uint_sub_tensor_t::[struct].origin</scope><name>shape</name></member>
+      <member refid="structTTL__const__int__uint__sub__tensor__t_1_1_0fstruct_0e_8origin_1a880d65eb6aa734c6847e0a27383218a9" prot="public" virt="non-virtual"><scope>TTL_const_int_uint_sub_tensor_t::[struct].origin</scope><name>sub_offset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

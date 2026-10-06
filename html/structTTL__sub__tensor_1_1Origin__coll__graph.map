@@ -1,0 +1,7 @@
+<map id="TTL_sub_tensor&lt; TENSORTYPE &gt;::Origin" name="TTL_sub_tensor&lt; TENSORTYPE &gt;::Origin">
+<area shape="rect" id="Node000001" title=" " alt="" coords="12,204,217,285"/>
+<area shape="rect" id="Node000002" href="$structTTL__shape.html" title="Description of a Shape." alt="" coords="5,5,103,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,131,98,187,93,189,73,133"/>
+<area shape="rect" id="Node000003" href="$structTTL__offset.html" title="Description of the 3D offset of an object." alt="" coords="127,16,222,122"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,123,148,181,144,189,139,187,142,179,160,121"/>
+</map>

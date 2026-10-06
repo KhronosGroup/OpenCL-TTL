@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structTTL__tiler__t_1_1_0fstruct_0e_8cache" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_tiler_t::[struct].cache</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__tiler__t_1_1_0fstruct_0e_8cache_1aef70c577f3c1bd645ff7af62315aba0f" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_tiler_t::@056067337253253360266315236303132002174001244016::number_of_tiles</definition>
+        <argsstring></argsstring>
+        <name>number_of_tiles</name>
+        <qualifiedname>TTL_tiler_t::[struct].cache::number_of_tiles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/TTL_tiles.h" line="146" column="19"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1_1_0fstruct_0e_8cache_1a8c564841022aa232897abdc2feb822dd" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_tiler_t::@056067337253253360266315236303132002174001244016::tiles_in_width</definition>
+        <argsstring></argsstring>
+        <name>tiles_in_width</name>
+        <qualifiedname>TTL_tiler_t::[struct].cache::tiles_in_width</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/TTL_tiles.h" line="147" column="19"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1_1_0fstruct_0e_8cache_1a78e05a557cf4b7bb036b5acf43d071b3" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_tiler_t::@056067337253253360266315236303132002174001244016::tiles_in_height</definition>
+        <argsstring></argsstring>
+        <name>tiles_in_height</name>
+        <qualifiedname>TTL_tiler_t::[struct].cache::tiles_in_height</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/TTL_tiles.h" line="148" column="19"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1_1_0fstruct_0e_8cache_1a7c901c24bdf2cbc1189ed4cccf47c016" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_tiler_t::@056067337253253360266315236303132002174001244016::tiles_in_depth</definition>
+        <argsstring></argsstring>
+        <name>tiles_in_depth</name>
+        <qualifiedname>TTL_tiler_t::[struct].cache::tiles_in_depth</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/TTL_tiles.h" line="149" column="19"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__tiler__t_1_1_0fstruct_0e_8cache_1a397b1b33d2746c25f28945ecb317b9d5" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2opencl_2TTL__types_8h_1ac23a033f2d901aaa292396a1af7b401d" kindref="member">TTL_dim_t</ref></type>
+        <definition>TTL_dim_t TTL_tiler_t::@056067337253253360266315236303132002174001244016::tiles_in_plane</definition>
+        <argsstring></argsstring>
+        <name>tiles_in_plane</name>
+        <qualifiedname>TTL_tiler_t::[struct].cache::tiles_in_plane</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/TTL_tiles.h" line="150" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Precomputed information to speed up later reuse. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_tiler_t::[struct].cache</label>
+        <link refid="structTTL__tiler__t_1_1_0fstruct_0e_8cache"/>
+      </node>
+    </collaborationgraph>
+    <location file="bfhtJIP_TTL/TTL_c/TTL_tiles.h" line="145" column="5" bodyfile="bfhtJIP_TTL/TTL_c/TTL_tiles.h" bodystart="145" bodyend="151"/>
+    <listofallmembers>
+      <member refid="structTTL__tiler__t_1_1_0fstruct_0e_8cache_1aef70c577f3c1bd645ff7af62315aba0f" prot="public" virt="non-virtual"><scope>TTL_tiler_t::[struct].cache</scope><name>number_of_tiles</name></member>
+      <member refid="structTTL__tiler__t_1_1_0fstruct_0e_8cache_1a7c901c24bdf2cbc1189ed4cccf47c016" prot="public" virt="non-virtual"><scope>TTL_tiler_t::[struct].cache</scope><name>tiles_in_depth</name></member>
+      <member refid="structTTL__tiler__t_1_1_0fstruct_0e_8cache_1a78e05a557cf4b7bb036b5acf43d071b3" prot="public" virt="non-virtual"><scope>TTL_tiler_t::[struct].cache</scope><name>tiles_in_height</name></member>
+      <member refid="structTTL__tiler__t_1_1_0fstruct_0e_8cache_1a397b1b33d2746c25f28945ecb317b9d5" prot="public" virt="non-virtual"><scope>TTL_tiler_t::[struct].cache</scope><name>tiles_in_plane</name></member>
+      <member refid="structTTL__tiler__t_1_1_0fstruct_0e_8cache_1a8c564841022aa232897abdc2feb822dd" prot="public" virt="non-virtual"><scope>TTL_tiler_t::[struct].cache</scope><name>tiles_in_width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

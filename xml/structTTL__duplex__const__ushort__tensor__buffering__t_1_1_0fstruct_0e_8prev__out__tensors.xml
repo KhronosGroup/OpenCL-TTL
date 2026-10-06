@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8prev__out__tensors" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_duplex_const_ushort_tensor_buffering_t::[struct].prev_out_tensors</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8prev__out__tensors_1ac79628a987f7fb9d58f9bdacd28f7e45" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__ext__ushort__tensor__t" kindref="compound">TTL_ext_ushort_tensor_t</ref></type>
+        <definition>TTL_ext_ushort_tensor_t TTL_duplex_const_ushort_tensor_buffering_t::@077203244370161074140245124121346073372134261303::to_export_to</definition>
+        <argsstring></argsstring>
+        <name>to_export_to</name>
+        <qualifiedname>TTL_duplex_const_ushort_tensor_buffering_t::[struct].prev_out_tensors::to_export_to</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1631" column="33"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8prev__out__tensors_1aecfe165134b17ad50d355d64d4182f4d" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__const__int__ushort__tensor__t" kindref="compound">TTL_const_int_ushort_tensor_t</ref></type>
+        <definition>TTL_const_int_ushort_tensor_t TTL_duplex_const_ushort_tensor_buffering_t::@077203244370161074140245124121346073372134261303::to_export_from</definition>
+        <argsstring></argsstring>
+        <name>to_export_from</name>
+        <qualifiedname>TTL_duplex_const_ushort_tensor_buffering_t::[struct].prev_out_tensors::to_export_from</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1632" column="39"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Store of the buffers used for the previous import/export cycles. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_duplex_const_ushort_tensor_buffering_t::[struct].prev_out_tensors</label>
+        <link refid="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8prev__out__tensors"/>
+      </node>
+    </collaborationgraph>
+    <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1630" column="5" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" bodystart="1630" bodyend="1633"/>
+    <listofallmembers>
+      <member refid="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8prev__out__tensors_1aecfe165134b17ad50d355d64d4182f4d" prot="public" virt="non-virtual"><scope>TTL_duplex_const_ushort_tensor_buffering_t::[struct].prev_out_tensors</scope><name>to_export_from</name></member>
+      <member refid="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8prev__out__tensors_1ac79628a987f7fb9d58f9bdacd28f7e45" prot="public" virt="non-virtual"><scope>TTL_duplex_const_ushort_tensor_buffering_t::[struct].prev_out_tensors</scope><name>to_export_to</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

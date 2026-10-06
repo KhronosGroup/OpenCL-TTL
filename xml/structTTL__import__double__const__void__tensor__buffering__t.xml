@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structTTL__import__double__const__void__tensor__buffering__t" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_import_double_const_void_tensor_buffering_t</compoundname>
+    <includes refid="TTL__double__scheme__template_8h" local="no">TTL_double_scheme_template.h</includes>
+    <innerclass refid="structTTL__import__double__const__void__tensor__buffering__t_1_1_0fstruct_0e_8common" prot="public">TTL_import_double_const_void_tensor_buffering_t::[struct].common</innerclass>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__import__double__const__void__tensor__buffering__t_1a48989d38ce39f993a2ac5b0b2fa7d74d" prot="public" static="no" mutable="no">
+        <type>struct TTL_import_double_const_void_tensor_buffering_t::@203300061232242366253374042065104065001166324352</type>
+        <definition>struct TTL_import_double_const_void_tensor_buffering_t::@203300061232242366253374042065104065001166324352 TTL_import_double_const_void_tensor_buffering_t::common</definition>
+        <argsstring></argsstring>
+        <name>common</name>
+        <qualifiedname>TTL_import_double_const_void_tensor_buffering_t::common</qualifiedname>
+        <briefdescription>
+<para>The information that is common to all pipeline schemes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" line="67" column="56"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__import__double__const__void__tensor__buffering__t_1aa1654cfe54c90dc801982369e237755b" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2c_2TTL__import__export_8h_1a96dbbce35695c1e2f6cf31e3226343cd" kindref="member">TTL_event_t</ref> *</type>
+        <definition>TTL_event_t* TTL_import_double_const_void_tensor_buffering_t::event</definition>
+        <argsstring></argsstring>
+        <name>event</name>
+        <qualifiedname>TTL_import_double_const_void_tensor_buffering_t::event</qualifiedname>
+        <briefdescription>
+<para>A pointer to the event that is used to track the progress of the transfer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" line="68" column="17" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__import__double__const__void__tensor__buffering__t_1a64ed557c20ee705fc3cff6739285e8e5" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__tile__t" kindref="compound">TTL_tile_t</ref></type>
+        <definition>TTL_tile_t TTL_import_double_const_void_tensor_buffering_t::prev_tile</definition>
+        <argsstring></argsstring>
+        <name>prev_tile</name>
+        <qualifiedname>TTL_import_double_const_void_tensor_buffering_t::prev_tile</qualifiedname>
+        <briefdescription>
+<para>Store of the previous imported/exported tile *<zwj/>/. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" line="69" column="16" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Data required to perform double buffer pipelining. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="TTL__double__scheme__template_8h_1af48346308548d7ee4fb27152a025edb3" kindref="member">TTL_start_import_double_buffering</ref> and <ref refid="TTL__double__scheme__template_8h_1a4e2b9ab90fb92e2c6e8765ee9474de56" kindref="member">TTL_start_export_double_buffering</ref> for a description of double buffer pipelining. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_import_double_const_void_tensor_buffering_t</label>
+        <link refid="structTTL__import__double__const__void__tensor__buffering__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+prev_tile</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>TTL_offset_t</label>
+        <link refid="structTTL__offset__t"/>
+      </node>
+      <node id="3">
+        <label>TTL_shape_t</label>
+        <link refid="structTTL__shape__t"/>
+      </node>
+      <node id="2">
+        <label>TTL_tile_t</label>
+        <link refid="structTTL__tile__t"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+shape</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+offset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" line="60" column="1" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_double_scheme_template.h" bodystart="60" bodyend="70"/>
+    <listofallmembers>
+      <member refid="structTTL__import__double__const__void__tensor__buffering__t_1a48989d38ce39f993a2ac5b0b2fa7d74d" prot="public" virt="non-virtual"><scope>TTL_import_double_const_void_tensor_buffering_t</scope><name>common</name></member>
+      <member refid="structTTL__import__double__const__void__tensor__buffering__t_1aa1654cfe54c90dc801982369e237755b" prot="public" virt="non-virtual"><scope>TTL_import_double_const_void_tensor_buffering_t</scope><name>event</name></member>
+      <member refid="structTTL__import__double__const__void__tensor__buffering__t_1a64ed557c20ee705fc3cff6739285e8e5" prot="public" virt="non-virtual"><scope>TTL_import_double_const_void_tensor_buffering_t</scope><name>prev_tile</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

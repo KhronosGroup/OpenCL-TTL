@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8common" kind="struct" language="C++" prot="public">
+    <compoundname>TTL_duplex_const_ushort_tensor_buffering_t::[struct].common</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8common_1afa3205001b0dae1b9a2e0b599e8703c2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TTL_duplex_const_ushort_tensor_buffering_t::@373347261262023210331120243260274256167114174121::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <qualifiedname>TTL_duplex_const_ushort_tensor_buffering_t::[struct].common::index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describes the current buffer index when pipelining. For single 0-&gt;1-&gt;0, for double 0-&gt;1-&gt;0-&gt;1... etc </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1615" column="13"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8common_1a6d985205c063e93dce9da3a9fee1ba64" prot="public" static="no" mutable="no">
+        <type><ref refid="TTL__c_2c_2TTL__types_8h_1a16d401f6ba8f83048211693549eba342" kindref="member">__local</ref> <ref refid="TTL__c_2c_2TTL__types_8h_1ab95f123a6c9bcfee6a343170ef8c5f69" kindref="member">ushort</ref> *</type>
+        <definition>__local ushort* TTL_duplex_const_ushort_tensor_buffering_t::@373347261262023210331120243260274256167114174121::int_base[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>int_base</name>
+        <qualifiedname>TTL_duplex_const_ushort_tensor_buffering_t::[struct].common::int_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The internal base addresses of the pipelined tiles. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1617" column="24"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8common_1a10972465b788ef933543f65b6095dbf1" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__ext__ushort__tensor__t" kindref="compound">TTL_ext_ushort_tensor_t</ref></type>
+        <definition>TTL_ext_ushort_tensor_t TTL_duplex_const_ushort_tensor_buffering_t::@373347261262023210331120243260274256167114174121::ext_tensor_in</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_in</name>
+        <qualifiedname>TTL_duplex_const_ushort_tensor_buffering_t::[struct].common::ext_tensor_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being input </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1618" column="33"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8common_1a750d5d3bf53a0cc70ab3e53d38b4c581" prot="public" static="no" mutable="no">
+        <type><ref refid="structTTL__ext__ushort__tensor__t" kindref="compound">TTL_ext_ushort_tensor_t</ref></type>
+        <definition>TTL_ext_ushort_tensor_t TTL_duplex_const_ushort_tensor_buffering_t::@373347261262023210331120243260274256167114174121::ext_tensor_out</definition>
+        <argsstring></argsstring>
+        <name>ext_tensor_out</name>
+        <qualifiedname>TTL_duplex_const_ushort_tensor_buffering_t::[struct].common::ext_tensor_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The external tensor being output </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1619" column="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TTL_duplex_const_ushort_tensor_buffering_t::[struct].common</label>
+        <link refid="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8common"/>
+      </node>
+    </collaborationgraph>
+    <location file="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" line="1614" column="5" bodyfile="bfhtJIP_TTL/TTL_c/pipelines/TTL_duplex_scheme.h" bodystart="1614" bodyend="1620"/>
+    <listofallmembers>
+      <member refid="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8common_1a10972465b788ef933543f65b6095dbf1" prot="public" virt="non-virtual"><scope>TTL_duplex_const_ushort_tensor_buffering_t::[struct].common</scope><name>ext_tensor_in</name></member>
+      <member refid="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8common_1a750d5d3bf53a0cc70ab3e53d38b4c581" prot="public" virt="non-virtual"><scope>TTL_duplex_const_ushort_tensor_buffering_t::[struct].common</scope><name>ext_tensor_out</name></member>
+      <member refid="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8common_1afa3205001b0dae1b9a2e0b599e8703c2" prot="public" virt="non-virtual"><scope>TTL_duplex_const_ushort_tensor_buffering_t::[struct].common</scope><name>index</name></member>
+      <member refid="structTTL__duplex__const__ushort__tensor__buffering__t_1_1_0fstruct_0e_8common_1a6d985205c063e93dce9da3a9fee1ba64" prot="public" virt="non-virtual"><scope>TTL_duplex_const_ushort_tensor_buffering_t::[struct].common</scope><name>int_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
